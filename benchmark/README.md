@@ -33,13 +33,17 @@ The framework is now frozen for v1 acceptance. The next step is to use this
 framework for new experiments; do not expand the benchmark framework unless a
 new experiment requires a separately justified protocol change.
 
+The v1.1 reporting layer adds immutable run metadata, environment fingerprints,
+validation gates, and standardized figures without changing quantization or
+checkpoint generation.
+
 This framework evaluates existing FP16, GPTQ, and AWQ artifacts. It does not
 quantize models. Version 1 standardizes four things:
 
 1. YAML experiment configs.
 2. One WikiText-2 sliding-window PPL implementation.
 3. Isolated-process CUDA memory and repeated generation benchmarks.
-4. One JSON schema with JSON/CSV/Markdown summaries.
+4. One JSON schema with JSON/CSV/Markdown summaries and a visual HTML dashboard.
 
 ## Structure
 
@@ -48,10 +52,15 @@ benchmark/
 ├── configs/                 # model × method × configuration
 ├── eval/                    # reusable PPL, generation, memory, and loaders
 ├── runners/                 # parent process → isolated worker
-├── results/raw/             # one merged JSON per experiment_id
-├── results/summary/         # generated JSON, CSV, and Markdown
+├── results/raw/             # latest JSON per experiment_id
+├── results/raw/runs/        # immutable v1.1 run snapshots
+├── results/summary/         # generated JSON, CSV, Markdown, and visual HTML
+├── results/figures/         # standardized PNG and SVG figures
 ├── config.py                # schema and result persistence
+├── figures.py               # unified figure pipeline
+├── validation.py            # regression and protocol gates
 ├── freeze_current_results.py
+├── migrate_v11.py
 ├── check_v1.py
 └── summarize.py
 ```
@@ -109,3 +118,32 @@ Regenerate summaries after any run:
 ```powershell
 & .venv\Scripts\python.exe -X utf8 -m benchmark.summarize
 ```
+
+For an existing v1 checkout, migrate the current latest results once before
+running the v1.1 summary gate:
+
+```powershell
+& .venv\Scripts\python.exe -X utf8 -m benchmark.migrate_v11
+```
+
+Every summary run also regenerates the standalone visual report:
+
+```text
+benchmark/results/summary/benchmark_v1_summary.html
+```
+
+It also regenerates these paired PNG/SVG figures:
+
+```text
+benchmark/results/figures/
+├── ppl_comparison.{png,svg}
+├── ppl_delta.{png,svg}
+├── vram_comparison.{png,svg}
+├── throughput.{png,svg}
+├── quality_vs_memory_tradeoff.{png,svg}
+└── quality_vs_checkpoint_tradeoff.{png,svg}
+```
+
+If validation fails, `summarize` stops before writing new summaries or figures
+and prints the failed regression gate. AWQ system rows are excluded from
+system comparison whenever `system_metrics_comparable=false`.

@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.1",
+  "experiment_id": "gptq_g128",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "method": "GPTQ",
+  "bits": 4,
+  "group_size": 128,
+  "symmetric": true,
+  "checkpoint": "E:\\quant-thesis\\artifacts\\group_size_ablation_calib64\\qwen2.5-0.5b-instruct-gptq-w4a16-g128-calib64-wttrain512",
+  "calibration": {
+    "samples": 64,
+    "sequence_length": 512,
+    "pool_sha256": "2bd6cacca4c7894b00d8779d76fc9b1d5776345bd69bc0d981054b2dbf579a76"
+  },
+  "protocol": {
+    "ppl": {
+      "dataset_id": "Salesforce/wikitext",
+      "dataset_config": "wikitext-2-raw-v1",
+      "split": "test",
+      "scope": "full",
+      "smoke_tokens": 8192,
+      "max_length": 2048,
+      "stride": 512
+    },
+    "generation": {
+      "prompt": "请用三点解释为什么低比特权重量化可以减少大语言模型的显存占用。",
+      "warmup_runs": 3,
+      "benchmark_runs": 5,
+      "max_new_tokens": 128
+    }
+  },
+  "runtime": {
+    "backend": "gptqmodel_torch_eager",
+    "system_metrics_comparable": true,
+    "comparability_note": "Uses the validated Windows GPTQModel eager kernel."
+  },
+  "updated_at_utc": "2026-09-14T11:28:19+00:00",
+  "quality": {
+    "dataset": "Salesforce/wikitext:wikitext-2-raw-v1:test",
+    "scope": "full",
+    "num_input_tokens": 299078,
+    "evaluated_tokens": 299077,
+    "max_length": 2048,
+    "stride": 512,
+    "avg_nll": 2.6280158931657995,
+    "ppl": 13.846270150694822,
+    "ppl_delta": 1.3826515047321735,
+    "ppl_relative_increase_percent": 11.093499761243555
+  },
+  "storage": {
+    "checkpoint_mib": 453.3859910964966
+  },
+  "memory": {
+    "measurement": "legacy_torch_cuda_memory_allocated",
+    "resident_vram_mib": 438.55029296875,
+    "resident_after_warmup_mib": 446.67529296875,
+    "generation_baseline_mib": 446.67529296875,
+    "peak_vram_mib": 474.189453125,
+    "generation_extra_mib": 27.51416015625
+  },
+  "performance": {
+    "warmup_runs": 1,
+    "benchmark_runs": 3,
+    "max_new_tokens": 96,
+    "tokens_per_second_mean": 12.428053544928582,
+    "tokens_per_second_std": null,
+    "latency_seconds_median": 7.7244597999961115,
+    "aggregation": "legacy_median_latency_derived"
+  },
+  "quantization": {
+    "quantization_seconds": 126.45228300004965,
+    "save_seconds": 0.81480819999706,
+    "total_seconds": 128.0668029000517
+  },
+  "provenance": {
+    "status": "legacy_frozen",
+    "frozen_at_utc": "2026-09-14T11:28:19+00:00",
+    "source_files": [
+      "E:\\quant-thesis\\practice\\full_w4a16\\results\\group_size_tradeoff_g128.json",
+      "E:\\quant-thesis\\practice\\full_w4a16\\results\\group_size_vram_isolated_g128.json"
+    ],
+    "metadata_migration": "v1_to_v1.1"
+  },
+  "run_id": "migrated_20260914_112819_gptq_g128",
+  "status": "passed",
+  "environment": {
+    "captured_at_utc": "2026-09-14T17:05:15+00:00",
+    "python": "3.12.10",
+    "python_executable": "E:\\quant-thesis\\.venv-gptq\\Scripts\\python.exe",
+    "torch": "2.6.0+cu124",
+    "transformers": "4.49.0",
+    "gptqmodel": "2.2.0",
+    "llmcompressor": null,
+    "compressed_tensors": null,
+    "datasets": "5.0.1",
+    "cuda_runtime": "12.4",
+    "cuda_available": true,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_driver": "555.97",
+    "os": "Windows-11-10.0.26200-SP0",
+    "git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0",
+    "git_dirty": true,
+    "capture_status": "backfilled_during_v1_migration",
+    "original_run_environment_recorded": false
+  }
+}

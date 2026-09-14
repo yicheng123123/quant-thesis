@@ -1,8 +1,313 @@
 {
-  "schema_version": 1,
-  "generated_at_utc": "2026-09-14T13:47:24+00:00",
+  "schema_version": "1.1",
+  "generated_at_utc": "2026-09-14T17:06:48+00:00",
+  "validation": {
+    "schema_version": "1.1",
+    "status": "passed",
+    "errors": [],
+    "warnings": [
+      "awq_g64.system: system metrics are excluded because comparable=false",
+      "fp16.performance: legacy frozen speed row is excluded from v1 repeated-run gates",
+      "gptq_g128.performance: legacy frozen speed row is excluded from v1 repeated-run gates",
+      "gptq_g32.performance: legacy frozen speed row is excluded from v1 repeated-run gates"
+    ],
+    "checks": [
+      {
+        "name": "awq_g64.schema_version",
+        "status": "passed",
+        "detail": "expected '1.1', got '1.1'"
+      },
+      {
+        "name": "awq_g64.run_id",
+        "status": "passed",
+        "detail": "run_id must be a unique non-empty string"
+      },
+      {
+        "name": "awq_g64.status",
+        "status": "passed",
+        "detail": "expected 'passed', got 'passed'"
+      },
+      {
+        "name": "awq_g64.environment",
+        "status": "passed",
+        "detail": "missing fields: []"
+      },
+      {
+        "name": "awq_g64.protocol.warmup_runs",
+        "status": "passed",
+        "detail": "expected 3, got 3"
+      },
+      {
+        "name": "awq_g64.protocol.benchmark_runs",
+        "status": "passed",
+        "detail": "expected 5, got 5"
+      },
+      {
+        "name": "awq_g64.protocol.max_new_tokens",
+        "status": "passed",
+        "detail": "expected 128, got 128"
+      },
+      {
+        "name": "awq_g64.quality.ppl",
+        "status": "passed",
+        "detail": "actual=14.489811246371, expected=14.489811246371, tolerance=0.01"
+      },
+      {
+        "name": "awq_g64.quality.evaluated_tokens",
+        "status": "passed",
+        "detail": "expected 299077, got 299077"
+      },
+      {
+        "name": "awq_g64.quality.token_coverage",
+        "status": "passed",
+        "detail": "expected evaluated_tokens == num_input_tokens - 1, got 299078 and 299077"
+      },
+      {
+        "name": "fp16.schema_version",
+        "status": "passed",
+        "detail": "expected '1.1', got '1.1'"
+      },
+      {
+        "name": "fp16.run_id",
+        "status": "passed",
+        "detail": "run_id must be a unique non-empty string"
+      },
+      {
+        "name": "fp16.status",
+        "status": "passed",
+        "detail": "expected 'passed', got 'passed'"
+      },
+      {
+        "name": "fp16.environment",
+        "status": "passed",
+        "detail": "missing fields: []"
+      },
+      {
+        "name": "fp16.protocol.warmup_runs",
+        "status": "passed",
+        "detail": "expected 3, got 3"
+      },
+      {
+        "name": "fp16.protocol.benchmark_runs",
+        "status": "passed",
+        "detail": "expected 5, got 5"
+      },
+      {
+        "name": "fp16.protocol.max_new_tokens",
+        "status": "passed",
+        "detail": "expected 128, got 128"
+      },
+      {
+        "name": "fp16.quality.ppl",
+        "status": "passed",
+        "detail": "actual=12.463618645963, expected=12.463618645963, tolerance=0.01"
+      },
+      {
+        "name": "fp16.quality.evaluated_tokens",
+        "status": "passed",
+        "detail": "expected 299077, got 299077"
+      },
+      {
+        "name": "fp16.quality.token_coverage",
+        "status": "passed",
+        "detail": "expected evaluated_tokens == num_input_tokens - 1, got 299078 and 299077"
+      },
+      {
+        "name": "gptq_g128.schema_version",
+        "status": "passed",
+        "detail": "expected '1.1', got '1.1'"
+      },
+      {
+        "name": "gptq_g128.run_id",
+        "status": "passed",
+        "detail": "run_id must be a unique non-empty string"
+      },
+      {
+        "name": "gptq_g128.status",
+        "status": "passed",
+        "detail": "expected 'passed', got 'passed'"
+      },
+      {
+        "name": "gptq_g128.environment",
+        "status": "passed",
+        "detail": "missing fields: []"
+      },
+      {
+        "name": "gptq_g128.protocol.warmup_runs",
+        "status": "passed",
+        "detail": "expected 3, got 3"
+      },
+      {
+        "name": "gptq_g128.protocol.benchmark_runs",
+        "status": "passed",
+        "detail": "expected 5, got 5"
+      },
+      {
+        "name": "gptq_g128.protocol.max_new_tokens",
+        "status": "passed",
+        "detail": "expected 128, got 128"
+      },
+      {
+        "name": "gptq_g128.quality.ppl",
+        "status": "passed",
+        "detail": "actual=13.846270150695, expected=13.846270150695, tolerance=0.01"
+      },
+      {
+        "name": "gptq_g128.quality.evaluated_tokens",
+        "status": "passed",
+        "detail": "expected 299077, got 299077"
+      },
+      {
+        "name": "gptq_g128.quality.token_coverage",
+        "status": "passed",
+        "detail": "expected evaluated_tokens == num_input_tokens - 1, got 299078 and 299077"
+      },
+      {
+        "name": "gptq_g128.memory.order",
+        "status": "passed",
+        "detail": "peak=474.1895 must be >= resident=438.5503"
+      },
+      {
+        "name": "gptq_g32.schema_version",
+        "status": "passed",
+        "detail": "expected '1.1', got '1.1'"
+      },
+      {
+        "name": "gptq_g32.run_id",
+        "status": "passed",
+        "detail": "run_id must be a unique non-empty string"
+      },
+      {
+        "name": "gptq_g32.status",
+        "status": "passed",
+        "detail": "expected 'passed', got 'passed'"
+      },
+      {
+        "name": "gptq_g32.environment",
+        "status": "passed",
+        "detail": "missing fields: []"
+      },
+      {
+        "name": "gptq_g32.protocol.warmup_runs",
+        "status": "passed",
+        "detail": "expected 3, got 3"
+      },
+      {
+        "name": "gptq_g32.protocol.benchmark_runs",
+        "status": "passed",
+        "detail": "expected 5, got 5"
+      },
+      {
+        "name": "gptq_g32.protocol.max_new_tokens",
+        "status": "passed",
+        "detail": "expected 128, got 128"
+      },
+      {
+        "name": "gptq_g32.quality.ppl",
+        "status": "passed",
+        "detail": "actual=13.306268241553, expected=13.306268241553, tolerance=0.01"
+      },
+      {
+        "name": "gptq_g32.quality.evaluated_tokens",
+        "status": "passed",
+        "detail": "expected 299077, got 299077"
+      },
+      {
+        "name": "gptq_g32.quality.token_coverage",
+        "status": "passed",
+        "detail": "expected evaluated_tokens == num_input_tokens - 1, got 299078 and 299077"
+      },
+      {
+        "name": "gptq_g32.memory.order",
+        "status": "passed",
+        "detail": "peak=494.2319 must be >= resident=458.4956"
+      },
+      {
+        "name": "gptq_g64.schema_version",
+        "status": "passed",
+        "detail": "expected '1.1', got '1.1'"
+      },
+      {
+        "name": "gptq_g64.run_id",
+        "status": "passed",
+        "detail": "run_id must be a unique non-empty string"
+      },
+      {
+        "name": "gptq_g64.status",
+        "status": "passed",
+        "detail": "expected 'passed', got 'passed'"
+      },
+      {
+        "name": "gptq_g64.environment",
+        "status": "passed",
+        "detail": "missing fields: []"
+      },
+      {
+        "name": "gptq_g64.protocol.warmup_runs",
+        "status": "passed",
+        "detail": "expected 3, got 3"
+      },
+      {
+        "name": "gptq_g64.protocol.benchmark_runs",
+        "status": "passed",
+        "detail": "expected 5, got 5"
+      },
+      {
+        "name": "gptq_g64.protocol.max_new_tokens",
+        "status": "passed",
+        "detail": "expected 128, got 128"
+      },
+      {
+        "name": "gptq_g64.quality.ppl",
+        "status": "passed",
+        "detail": "actual=13.492837547663, expected=13.492837547663, tolerance=0.01"
+      },
+      {
+        "name": "gptq_g64.quality.evaluated_tokens",
+        "status": "passed",
+        "detail": "expected 299077, got 299077"
+      },
+      {
+        "name": "gptq_g64.quality.token_coverage",
+        "status": "passed",
+        "detail": "expected evaluated_tokens == num_input_tokens - 1, got 299078 and 299077"
+      },
+      {
+        "name": "gptq_g64.performance.warmup_runs",
+        "status": "passed",
+        "detail": "expected 3, got 3"
+      },
+      {
+        "name": "gptq_g64.performance.measure_runs",
+        "status": "passed",
+        "detail": "expected 5, got 5"
+      },
+      {
+        "name": "gptq_g64.memory.order",
+        "status": "passed",
+        "detail": "peak=481.2310 must be >= resident=445.1831"
+      }
+    ]
+  },
+  "figures": [
+    "ppl_comparison.png",
+    "ppl_comparison.svg",
+    "ppl_delta.png",
+    "ppl_delta.svg",
+    "vram_comparison.png",
+    "vram_comparison.svg",
+    "throughput.png",
+    "throughput.svg",
+    "quality_vs_memory_tradeoff.png",
+    "quality_vs_memory_tradeoff.svg",
+    "quality_vs_checkpoint_tradeoff.png",
+    "quality_vs_checkpoint_tradeoff.svg"
+  ],
   "rows": [
     {
+      "schema_version": "1.1",
+      "run_id": "migrated_20260914_112819_fp16",
+      "status": "passed",
       "experiment_id": "fp16",
       "method": "FP16",
       "group_size": null,
@@ -17,9 +322,17 @@
       "tokens_per_second_std": null,
       "system_metrics_comparable": true,
       "runtime_backend": "transformers_fp16",
-      "provenance_status": "legacy_frozen"
+      "provenance_status": "legacy_frozen",
+      "environment_python": "3.12.10",
+      "environment_torch": "2.6.0+cu124",
+      "environment_cuda_runtime": "12.4",
+      "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "environment_git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0"
     },
     {
+      "schema_version": "1.1",
+      "run_id": "migrated_20260914_112819_gptq_g32",
+      "status": "passed",
       "experiment_id": "gptq_g32",
       "method": "GPTQ",
       "group_size": 32,
@@ -34,9 +347,17 @@
       "tokens_per_second_std": null,
       "system_metrics_comparable": true,
       "runtime_backend": "gptqmodel_torch_eager",
-      "provenance_status": "legacy_frozen"
+      "provenance_status": "legacy_frozen",
+      "environment_python": "3.12.10",
+      "environment_torch": "2.6.0+cu124",
+      "environment_cuda_runtime": "12.4",
+      "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "environment_git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0"
     },
     {
+      "schema_version": "1.1",
+      "run_id": "migrated_20260914_134043_gptq_g64",
+      "status": "passed",
       "experiment_id": "gptq_g64",
       "method": "GPTQ",
       "group_size": 64,
@@ -51,9 +372,17 @@
       "tokens_per_second_std": 0.7263181407141165,
       "system_metrics_comparable": true,
       "runtime_backend": "gptqmodel_torch_eager",
-      "provenance_status": "v1_rerun"
+      "provenance_status": "v1_rerun",
+      "environment_python": "3.12.10",
+      "environment_torch": "2.6.0+cu124",
+      "environment_cuda_runtime": "12.4",
+      "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "environment_git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0"
     },
     {
+      "schema_version": "1.1",
+      "run_id": "migrated_20260914_112819_gptq_g128",
+      "status": "passed",
       "experiment_id": "gptq_g128",
       "method": "GPTQ",
       "group_size": 128,
@@ -68,9 +397,17 @@
       "tokens_per_second_std": null,
       "system_metrics_comparable": true,
       "runtime_backend": "gptqmodel_torch_eager",
-      "provenance_status": "legacy_frozen"
+      "provenance_status": "legacy_frozen",
+      "environment_python": "3.12.10",
+      "environment_torch": "2.6.0+cu124",
+      "environment_cuda_runtime": "12.4",
+      "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "environment_git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0"
     },
     {
+      "schema_version": "1.1",
+      "run_id": "migrated_20260914_134701_awq_g64",
+      "status": "passed",
       "experiment_id": "awq_g64",
       "method": "AWQ",
       "group_size": 64,
@@ -85,7 +422,12 @@
       "tokens_per_second_std": null,
       "system_metrics_comparable": false,
       "runtime_backend": "compressed_tensors_decompressed",
-      "provenance_status": "v1_rerun"
+      "provenance_status": "v1_rerun",
+      "environment_python": "3.12.10",
+      "environment_torch": "2.13.0+cu126",
+      "environment_cuda_runtime": "12.6",
+      "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "environment_git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0"
     }
   ]
 }

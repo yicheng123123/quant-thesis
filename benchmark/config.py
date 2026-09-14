@@ -3,7 +3,12 @@
 from __future__ import annotations
 
 import json
+import importlib.metadata as package_metadata
 import os
+import platform
+import subprocess
+import sys
+import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -18,7 +23,10 @@ except ModuleNotFoundError:  # pragma: no cover - used by the stdlib-only freeze
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 BENCHMARK_ROOT = PROJECT_ROOT / "benchmark"
 RAW_RESULTS_DIR = BENCHMARK_ROOT / "results" / "raw"
+RAW_RUNS_DIR = RAW_RESULTS_DIR / "runs"
 SUMMARY_RESULTS_DIR = BENCHMARK_ROOT / "results" / "summary"
+FIGURES_RESULTS_DIR = BENCHMARK_ROOT / "results" / "figures"
+SCHEMA_VERSION = "1.1"
 ALLOWED_METHODS = {"fp16", "gptq", "awq"}
 
 
@@ -77,6 +85,99 @@ def _fallback_yaml_mapping(text: str) -> dict[str, Any]:
 def utc_now() -> str:
     """Return a compact UTC timestamp for result provenance."""
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+def make_run_id(experiment_id: str) -> str:
+    """Create a readable, collision-resistant immutable run identifier."""
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
+    return f"{timestamp}_{experiment_id}_{uuid.uuid4().hex[:8]}"
+
+
+def _package_version(distribution: str) -> str | None:
+    """Read an installed distribution version without requiring the package."""
+    try:
+        return package_metadata.version(distribution)
+    except package_metadata.PackageNotFoundError:
+        return None
+
+
+def _command_output(command: list[str]) -> str | None:
+    """Return a short command result for environment provenance."""
+    try:
+        completed = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=5,
+        )
+    except (FileNotFoundError, OSError, subprocess.TimeoutExpired):
+        return None
+    if completed.returncode != 0:
+        return None
+    value = completed.stdout.strip()
+    return value or None
+
+
+def collect_environment_fingerprint() -> dict[str, Any]:
+    """Capture software, CUDA, GPU, OS, and Git provenance for a run."""
+    try:
+        import torch
+    except Exception:  # pragma: no cover - migration can run without torch
+        torch = None
+
+    cuda_available = bool(torch is not None and torch.cuda.is_available())
+    gpu_name = None
+    if cuda_available:
+        gpu_name = torch.cuda.get_device_name(0)
+    driver = _command_output(
+        ["nvidia-smi", "--query-gpu=driver_version", "--format=csv,noheader"]
+    )
+    git_commit = _command_output(
+        [
+            "git",
+            "-c",
+            f"safe.directory={PROJECT_ROOT}",
+            "-C",
+            str(PROJECT_ROOT),
+            "rev-parse",
+            "HEAD",
+        ]
+    )
+    git_status = _command_output(
+        [
+            "git",
+            "-c",
+            f"safe.directory={PROJECT_ROOT}",
+            "-C",
+            str(PROJECT_ROOT),
+            "status",
+            "--porcelain",
+            "--untracked-files=no",
+        ]
+    )
+    return {
+        "captured_at_utc": utc_now(),
+        "python": platform.python_version(),
+        "python_executable": sys.executable,
+        "torch": getattr(torch, "__version__", None) if torch is not None else _package_version("torch"),
+        "transformers": _package_version("transformers"),
+        "gptqmodel": _package_version("gptqmodel"),
+        "llmcompressor": _package_version("llmcompressor"),
+        "compressed_tensors": _package_version("compressed-tensors"),
+        "datasets": _package_version("datasets"),
+        "cuda_runtime": (
+            getattr(getattr(torch, "version", None), "cuda", None)
+            if torch is not None
+            else None
+        ),
+        "cuda_available": cuda_available,
+        "gpu_name": gpu_name,
+        "gpu_driver": driver.splitlines()[0].strip() if driver else None,
+        "os": platform.platform(),
+        "git_commit": git_commit,
+        "git_dirty": bool(git_status),
+    }
 
 
 def resolve_path(value: str | None) -> Path | None:
@@ -214,7 +315,7 @@ def directory_size_mib(path: Path | None) -> float | None:
 def base_result(config: ExperimentConfig) -> dict[str, Any]:
     """Create the stable top-level portion of a unified raw result."""
     return {
-        "schema_version": 1,
+        "schema_version": SCHEMA_VERSION,
         "experiment_id": config.experiment_id,
         "model_id": config.model_id,
         "method": config.method.upper(),
@@ -257,6 +358,11 @@ def write_result(
             result[key] = {**result[key], **value}
         else:
             result[key] = value
+    run_id = make_run_id(config.experiment_id)
+    result["schema_version"] = SCHEMA_VERSION
+    result["run_id"] = run_id
+    result["status"] = "passed"
+    result["environment"] = collect_environment_fingerprint()
     result["updated_at_utc"] = utc_now()
     temp_path = config.raw_result_path.with_suffix(".json.tmp")
     temp_path.write_text(
@@ -264,6 +370,12 @@ def write_result(
         encoding="utf-8",
     )
     temp_path.replace(config.raw_result_path)
+    RAW_RUNS_DIR.mkdir(parents=True, exist_ok=True)
+    run_path = RAW_RUNS_DIR / f"{run_id}.json"
+    run_path.write_text(
+        json.dumps(result, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
     return config.raw_result_path
 
 

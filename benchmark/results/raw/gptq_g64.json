@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": "1.1",
   "experiment_id": "gptq_g64",
   "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
   "method": "GPTQ",
@@ -121,7 +121,8 @@
     "system_metrics_comparable": true,
     "system": "benchmark_v1_isolated_worker",
     "system_run_at_utc": "2026-09-14T13:40:43+00:00",
-    "prompt": "请用三点解释为什么低比特权重量化可以减少大语言模型的显存占用。"
+    "prompt": "请用三点解释为什么低比特权重量化可以减少大语言模型的显存占用。",
+    "metadata_migration": "v1_to_v1.1"
   },
   "quality_validation": {
     "reference": "legacy_frozen",
@@ -136,5 +137,27 @@
     "backend": "gptqmodel_torch_eager",
     "environment": "E:\\quant-thesis\\.venv-gptq\\Scripts\\python.exe",
     "comparability_note": "Uses the validated Windows GPTQModel eager kernel."
+  },
+  "run_id": "migrated_20260914_134043_gptq_g64",
+  "status": "passed",
+  "environment": {
+    "captured_at_utc": "2026-09-14T17:05:20+00:00",
+    "python": "3.12.10",
+    "python_executable": "E:\\quant-thesis\\.venv-gptq\\Scripts\\python.exe",
+    "torch": "2.6.0+cu124",
+    "transformers": "4.49.0",
+    "gptqmodel": "2.2.0",
+    "llmcompressor": null,
+    "compressed_tensors": null,
+    "datasets": "5.0.1",
+    "cuda_runtime": "12.4",
+    "cuda_available": true,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_driver": "555.97",
+    "os": "Windows-11-10.0.26200-SP0",
+    "git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0",
+    "git_dirty": true,
+    "capture_status": "backfilled_during_v1_migration",
+    "original_run_environment_recorded": false
   }
 }

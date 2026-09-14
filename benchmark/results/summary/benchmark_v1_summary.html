@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quantization benchmark v1</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-soft: #edf1f7;
+      --text: #172033;
+      --muted: #657089;
+      --line: #d8deea;
+      --fp16: #2878ff;
+      --gptq: #7357d9;
+      --awq: #e08a1e;
+      --success: #16845b;
+      --shadow: 0 12px 32px rgba(29, 43, 76, 0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1420;
+        --surface: #171e2c;
+        --surface-soft: #20293a;
+        --text: #edf1f8;
+        --muted: #a8b2c7;
+        --line: #303b50;
+        --fp16: #6aa0ff;
+        --gptq: #a48af4;
+        --awq: #f1ab52;
+        --success: #56c99a;
+        --shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main { max-width: 1180px; margin: 0 auto; padding: 32px 20px 48px; }
+    header { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; margin-bottom: 22px; }
+    h1 { margin: 4px 0 6px; font-size: clamp(28px, 4vw, 44px); line-height: 1.08; }
+    h2 { margin: 0; font-size: 18px; }
+    p { margin: 0; color: var(--muted); }
+    .eyebrow { color: var(--muted); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
+    .status { color: var(--success); border: 1px solid currentColor; border-radius: 999px; padding: 7px 12px; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; }
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+    .stat, .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); }
+    .stat { padding: 16px; }
+    .stat-label { color: var(--muted); font-size: 12px; margin-bottom: 7px; }
+    .stat-value { font-size: 22px; font-weight: 750; font-variant-numeric: tabular-nums; }
+    .stat-note { color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .panel { padding: 18px; min-width: 0; }
+    .panel.wide { grid-column: 1 / -1; }
+    .panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+    .panel-head span { color: var(--muted); font-size: 12px; }
+    .chart { display: grid; gap: 11px; }
+    .chart-row { display: grid; grid-template-columns: 112px minmax(90px, 1fr) 174px; align-items: center; gap: 10px; }
+    .row-name { min-width: 0; }
+    .row-name span { display: block; font-weight: 650; white-space: nowrap; }
+    .row-name small { display: block; color: var(--muted); margin-top: 2px; }
+    .bar-track { height: 18px; background: var(--surface-soft); border-radius: 5px; overflow: hidden; position: relative; }
+    .bar-fill { height: 100%; min-width: 3px; border-radius: inherit; }
+    .bar-fill.fp16 { background: var(--fp16); }
+    .bar-fill.gptq { background: var(--gptq); }
+    .bar-fill.awq { background: var(--awq); }
+    .legacy .bar-fill { opacity: 0.52; }
+    .bar-track.unavailable { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 11px; letter-spacing: 0.08em; }
+    .row-value { text-align: right; font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font-size: 12px; margin-top: 14px; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+    .dot.fp16 { background: var(--fp16); }
+    .dot.gptq { background: var(--gptq); }
+    .dot.awq { background: var(--awq); }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { padding: 10px 9px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    th { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+    th:first-child, td:first-child { text-align: left; }
+    tbody tr:last-child td { border-bottom: 0; }
+    footer { color: var(--muted); font-size: 12px; margin-top: 16px; text-align: center; }
+    @media (max-width: 880px) {
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid { grid-template-columns: minmax(0, 1fr); }
+      .panel.wide { grid-column: auto; }
+    }
+    @media (max-width: 620px) {
+      main { padding: 22px 12px 36px; }
+      header { align-items: center; }
+      .stats { grid-template-columns: minmax(0, 1fr); }
+      .chart-row { grid-template-columns: 90px minmax(72px, 1fr); }
+      .row-value { grid-column: 2; text-align: left; white-space: normal; }
+      .panel { padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <div class="eyebrow">Unified quantization evaluation</div>
+        <h1>Benchmark v1</h1>
+        <p>Quality, throughput, memory, and comparability from unified raw results.</p>
+      </div>
+      <div class="status">VALIDATED</div>
+    </header>
+
+    <section class="stats" aria-label="Benchmark highlights">
+      <article class="stat">
+        <div class="stat-label">Configurations</div>
+        <div class="stat-value">5</div>
+        <div class="stat-note">FP16 · GPTQ · AWQ</div>
+      </article>
+      <article class="stat">
+        <div class="stat-label">Best 4-bit PPL</div>
+        <div class="stat-value">13.3063</div>
+        <div class="stat-note">GPTQ G32</div>
+      </article>
+      <article class="stat">
+        <div class="stat-label">GPTQ G64 throughput</div>
+        <div class="stat-value">9.63 tok/s</div>
+        <div class="stat-note">validated system rerun</div>
+      </article>
+      <article class="stat">
+        <div class="stat-label">System protocol</div>
+        <div class="stat-value">3 + 5</div>
+        <div class="stat-note">warmups + runs · 128 tokens</div>
+      </article>
+    </section>
+
+    <section class="grid">
+      <article class="panel wide">
+        <div class="panel-head"><h2>Quality loss vs FP16</h2><span>Shorter is better</span></div>
+        <div class="chart"><div class="chart-row legacy"><div class="row-name"><span>FP16</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill fp16" style="width:1.200%"></div></div><div class="row-value">PPL 12.4636 · baseline</div></div>
+<div class="chart-row legacy"><div class="row-name"><span>GPTQ G32</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:41.588%"></div></div><div class="row-value">PPL 13.3063 · Δ +0.8426</div></div>
+<div class="chart-row"><div class="row-name"><span>GPTQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:50.796%"></div></div><div class="row-value">PPL 13.4928 · Δ +1.0292</div></div>
+<div class="chart-row legacy"><div class="row-name"><span>GPTQ G128</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:68.239%"></div></div><div class="row-value">PPL 13.8463 · Δ +1.3827</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill awq" style="width:100.000%"></div></div><div class="row-value">PPL 14.4898 · Δ +2.0262</div></div></div>
+        <div class="legend">
+          <span><i class="dot fp16"></i>FP16</span>
+          <span><i class="dot gptq"></i>GPTQ</span>
+          <span><i class="dot awq"></i>AWQ</span>
+          <span>Muted bars = legacy frozen system rows</span>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head"><h2>Generation throughput</h2><span>Higher is better</span></div>
+        <div class="chart"><div class="chart-row legacy"><div class="row-name"><span>FP16</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill fp16" style="width:100.000%"></div></div><div class="row-value">43.20 tok/s</div></div>
+<div class="chart-row legacy"><div class="row-name"><span>GPTQ G32</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:35.576%"></div></div><div class="row-value">15.37 tok/s</div></div>
+<div class="chart-row"><div class="row-name"><span>GPTQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:22.289%"></div></div><div class="row-value">9.63 ± 0.73 tok/s</div></div>
+<div class="chart-row legacy"><div class="row-name"><span>GPTQ G128</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:28.769%"></div></div><div class="row-value">12.43 tok/s</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div></div>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head"><h2>Peak allocated VRAM</h2><span>Lower is better</span></div>
+        <div class="chart"><div class="chart-row legacy"><div class="row-name"><span>FP16</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill fp16" style="width:100.000%"></div></div><div class="row-value">961.98 MiB</div></div>
+<div class="chart-row legacy"><div class="row-name"><span>GPTQ G32</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:51.377%"></div></div><div class="row-value">494.23 MiB</div></div>
+<div class="chart-row"><div class="row-name"><span>GPTQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:50.025%"></div></div><div class="row-value">481.23 MiB</div></div>
+<div class="chart-row legacy"><div class="row-name"><span>GPTQ G128</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:49.293%"></div></div><div class="row-value">474.19 MiB</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div></div>
+      </article>
+
+      <article class="panel wide">
+        <div class="panel-head"><h2>Exact results</h2><span>N/C = system representation not comparable</span></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Configuration</th><th>PPL</th><th>ΔPPL</th><th>Checkpoint MiB</th><th>Peak MiB</th><th>tok/s mean ± std</th><th>System</th><th>Provenance</th></tr>
+            </thead>
+            <tbody><tr><td>FP16</td><td>12.4636</td><td>0.0000</td><td>953.28</td><td>961.98</td><td>43.20 ± —</td><td>comparable</td><td>legacy frozen</td></tr>
+<tr><td>GPTQ G32</td><td>13.3063</td><td>0.8426</td><td>473.38</td><td>494.23</td><td>15.37 ± —</td><td>comparable</td><td>legacy frozen</td></tr>
+<tr><td>GPTQ G64</td><td>13.4928</td><td>1.0292</td><td>460.05</td><td>481.23</td><td>9.63 ± 0.73</td><td>comparable</td><td>v1 rerun</td></tr>
+<tr><td>GPTQ G128</td><td>13.8463</td><td>1.3827</td><td>453.39</td><td>474.19</td><td>12.43 ± —</td><td>comparable</td><td>legacy frozen</td></tr>
+<tr><td>AWQ G64</td><td>14.4898</td><td>2.0262</td><td>452.05</td><td>—</td><td>—</td><td>N/C</td><td>v1 rerun</td></tr></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+
+    <footer>Generated 2026-09-14T17:06:48+00:00 from benchmark/results/raw/*.json</footer>
+  </main>
+</body>
+</html>

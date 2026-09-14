@@ -114,7 +114,7 @@
     <section class="stats" aria-label="Benchmark highlights">
       <article class="stat">
         <div class="stat-label">Configurations</div>
-        <div class="stat-value">5</div>
+        <div class="stat-value">7</div>
         <div class="stat-note">FP16 · GPTQ · AWQ</div>
       </article>
       <article class="stat">
@@ -138,10 +138,12 @@
       <article class="panel wide">
         <div class="panel-head"><h2>Quality loss vs FP16</h2><span>Shorter is better</span></div>
         <div class="chart"><div class="chart-row legacy"><div class="row-name"><span>FP16</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill fp16" style="width:1.200%"></div></div><div class="row-value">PPL 12.4636 · baseline</div></div>
-<div class="chart-row legacy"><div class="row-name"><span>GPTQ G32</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:41.588%"></div></div><div class="row-value">PPL 13.3063 · Δ +0.8426</div></div>
-<div class="chart-row"><div class="row-name"><span>GPTQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:50.796%"></div></div><div class="row-value">PPL 13.4928 · Δ +1.0292</div></div>
-<div class="chart-row legacy"><div class="row-name"><span>GPTQ G128</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:68.239%"></div></div><div class="row-value">PPL 13.8463 · Δ +1.3827</div></div>
-<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill awq" style="width:100.000%"></div></div><div class="row-value">PPL 14.4898 · Δ +2.0262</div></div></div>
+<div class="chart-row legacy"><div class="row-name"><span>GPTQ G32</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:40.393%"></div></div><div class="row-value">PPL 13.3063 · Δ +0.8426</div></div>
+<div class="chart-row"><div class="row-name"><span>GPTQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:49.336%"></div></div><div class="row-value">PPL 13.4928 · Δ +1.0292</div></div>
+<div class="chart-row legacy"><div class="row-name"><span>GPTQ G128</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:66.278%"></div></div><div class="row-value">PPL 13.8463 · Δ +1.3827</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill awq" style="width:97.127%"></div></div><div class="row-value">PPL 14.4898 · Δ +2.0262</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill awq" style="width:97.127%"></div></div><div class="row-value">PPL 14.4898 · Δ +2.0262</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill awq" style="width:100.000%"></div></div><div class="row-value">PPL 14.5498 · Δ +2.0861</div></div></div>
         <div class="legend">
           <span><i class="dot fp16"></i>FP16</span>
           <span><i class="dot gptq"></i>GPTQ</span>
@@ -156,6 +158,8 @@
 <div class="chart-row legacy"><div class="row-name"><span>GPTQ G32</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:35.576%"></div></div><div class="row-value">15.37 tok/s</div></div>
 <div class="chart-row"><div class="row-name"><span>GPTQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:22.289%"></div></div><div class="row-value">9.63 ± 0.73 tok/s</div></div>
 <div class="chart-row legacy"><div class="row-name"><span>GPTQ G128</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:28.769%"></div></div><div class="row-value">12.43 tok/s</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div>
 <div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div></div>
       </article>
 
@@ -165,6 +169,8 @@
 <div class="chart-row legacy"><div class="row-name"><span>GPTQ G32</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:51.377%"></div></div><div class="row-value">494.23 MiB</div></div>
 <div class="chart-row"><div class="row-name"><span>GPTQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:50.025%"></div></div><div class="row-value">481.23 MiB</div></div>
 <div class="chart-row legacy"><div class="row-name"><span>GPTQ G128</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:49.293%"></div></div><div class="row-value">474.19 MiB</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div>
 <div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div></div>
       </article>
 
@@ -179,13 +185,15 @@
 <tr><td>GPTQ G32</td><td>13.3063</td><td>0.8426</td><td>473.38</td><td>494.23</td><td>15.37 ± —</td><td>comparable</td><td>legacy frozen</td></tr>
 <tr><td>GPTQ G64</td><td>13.4928</td><td>1.0292</td><td>460.05</td><td>481.23</td><td>9.63 ± 0.73</td><td>comparable</td><td>v1 rerun</td></tr>
 <tr><td>GPTQ G128</td><td>13.8463</td><td>1.3827</td><td>453.39</td><td>474.19</td><td>12.43 ± —</td><td>comparable</td><td>legacy frozen</td></tr>
-<tr><td>AWQ G64</td><td>14.4898</td><td>2.0262</td><td>452.05</td><td>—</td><td>—</td><td>N/C</td><td>v1 rerun</td></tr></tbody>
+<tr><td>AWQ G64</td><td>14.4898</td><td>2.0262</td><td>452.05</td><td>—</td><td>—</td><td>N/C</td><td>v1 rerun</td></tr>
+<tr><td>AWQ G64</td><td>14.4898</td><td>2.0262</td><td>452.05</td><td>—</td><td>—</td><td>N/C</td><td>v1 rerun</td></tr>
+<tr><td>AWQ G64</td><td>14.5498</td><td>2.0861</td><td>452.05</td><td>—</td><td>—</td><td>N/C</td><td>v1 rerun</td></tr></tbody>
           </table>
         </div>
       </article>
     </section>
 
-    <footer>Generated 2026-09-14T17:06:48+00:00 from benchmark/results/raw/*.json</footer>
+    <footer>Generated 2026-09-14T17:34:52+00:00 from benchmark/results/raw/*.json</footer>
   </main>
 </body>
 </html>

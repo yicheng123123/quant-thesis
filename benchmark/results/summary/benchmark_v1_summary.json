@@ -1,12 +1,14 @@
 {
   "schema_version": "1.1",
-  "generated_at_utc": "2026-09-14T17:06:48+00:00",
+  "generated_at_utc": "2026-09-14T17:34:52+00:00",
   "validation": {
     "schema_version": "1.1",
     "status": "passed",
     "errors": [],
     "warnings": [
       "awq_g64.system: system metrics are excluded because comparable=false",
+      "awq_g64_duo_false.system: system metrics are excluded because comparable=false",
+      "awq_g64_duo_true.system: system metrics are excluded because comparable=false",
       "fp16.performance: legacy frozen speed row is excluded from v1 repeated-run gates",
       "gptq_g128.performance: legacy frozen speed row is excluded from v1 repeated-run gates",
       "gptq_g32.performance: legacy frozen speed row is excluded from v1 repeated-run gates"
@@ -59,6 +61,106 @@
       },
       {
         "name": "awq_g64.quality.token_coverage",
+        "status": "passed",
+        "detail": "expected evaluated_tokens == num_input_tokens - 1, got 299078 and 299077"
+      },
+      {
+        "name": "awq_g64_duo_false.schema_version",
+        "status": "passed",
+        "detail": "expected '1.1', got '1.1'"
+      },
+      {
+        "name": "awq_g64_duo_false.run_id",
+        "status": "passed",
+        "detail": "run_id must be a unique non-empty string"
+      },
+      {
+        "name": "awq_g64_duo_false.status",
+        "status": "passed",
+        "detail": "expected 'passed', got 'passed'"
+      },
+      {
+        "name": "awq_g64_duo_false.environment",
+        "status": "passed",
+        "detail": "missing fields: []"
+      },
+      {
+        "name": "awq_g64_duo_false.protocol.warmup_runs",
+        "status": "passed",
+        "detail": "expected 3, got 3"
+      },
+      {
+        "name": "awq_g64_duo_false.protocol.benchmark_runs",
+        "status": "passed",
+        "detail": "expected 5, got 5"
+      },
+      {
+        "name": "awq_g64_duo_false.protocol.max_new_tokens",
+        "status": "passed",
+        "detail": "expected 128, got 128"
+      },
+      {
+        "name": "awq_g64_duo_false.quality.ppl",
+        "status": "passed",
+        "detail": "actual=14.489811246371, expected=14.489811246371, tolerance=0.01"
+      },
+      {
+        "name": "awq_g64_duo_false.quality.evaluated_tokens",
+        "status": "passed",
+        "detail": "expected 299077, got 299077"
+      },
+      {
+        "name": "awq_g64_duo_false.quality.token_coverage",
+        "status": "passed",
+        "detail": "expected evaluated_tokens == num_input_tokens - 1, got 299078 and 299077"
+      },
+      {
+        "name": "awq_g64_duo_true.schema_version",
+        "status": "passed",
+        "detail": "expected '1.1', got '1.1'"
+      },
+      {
+        "name": "awq_g64_duo_true.run_id",
+        "status": "passed",
+        "detail": "run_id must be a unique non-empty string"
+      },
+      {
+        "name": "awq_g64_duo_true.status",
+        "status": "passed",
+        "detail": "expected 'passed', got 'passed'"
+      },
+      {
+        "name": "awq_g64_duo_true.environment",
+        "status": "passed",
+        "detail": "missing fields: []"
+      },
+      {
+        "name": "awq_g64_duo_true.protocol.warmup_runs",
+        "status": "passed",
+        "detail": "expected 3, got 3"
+      },
+      {
+        "name": "awq_g64_duo_true.protocol.benchmark_runs",
+        "status": "passed",
+        "detail": "expected 5, got 5"
+      },
+      {
+        "name": "awq_g64_duo_true.protocol.max_new_tokens",
+        "status": "passed",
+        "detail": "expected 128, got 128"
+      },
+      {
+        "name": "awq_g64_duo_true.quality.ppl",
+        "status": "passed",
+        "detail": "actual=14.549754088369, expected=14.549754088369, tolerance=0.01"
+      },
+      {
+        "name": "awq_g64_duo_true.quality.evaluated_tokens",
+        "status": "passed",
+        "detail": "expected 299077, got 299077"
+      },
+      {
+        "name": "awq_g64_duo_true.quality.token_coverage",
         "status": "passed",
         "detail": "expected evaluated_tokens == num_input_tokens - 1, got 299078 and 299077"
       },
@@ -428,6 +530,56 @@
       "environment_cuda_runtime": "12.6",
       "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
       "environment_git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0"
+    },
+    {
+      "schema_version": "1.1",
+      "run_id": "20260914_172844_awq_g64_duo_false_b32426c0",
+      "status": "passed",
+      "experiment_id": "awq_g64_duo_false",
+      "method": "AWQ",
+      "group_size": 64,
+      "bits": 4,
+      "ppl": 14.489811246370849,
+      "ppl_delta": 2.0261926004081996,
+      "ppl_relative_increase_percent": 16.256856519471143,
+      "checkpoint_mib": 452.05064487457275,
+      "resident_vram_mib": null,
+      "peak_vram_mib": null,
+      "tokens_per_second_mean": null,
+      "tokens_per_second_std": null,
+      "system_metrics_comparable": false,
+      "runtime_backend": "compressed_tensors_decompressed",
+      "provenance_status": "v1_rerun",
+      "environment_python": "3.12.10",
+      "environment_torch": "2.13.0+cu126",
+      "environment_cuda_runtime": "12.6",
+      "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "environment_git_commit": "2dcb58cf4db93ff2cc5bfed2c8f9fc00ecd69537"
+    },
+    {
+      "schema_version": "1.1",
+      "run_id": "20260914_173436_awq_g64_duo_true_0c32c902",
+      "status": "passed",
+      "experiment_id": "awq_g64_duo_true",
+      "method": "AWQ",
+      "group_size": 64,
+      "bits": 4,
+      "ppl": 14.549754088368703,
+      "ppl_delta": 2.0861354424060536,
+      "ppl_relative_increase_percent": 16.737799042670623,
+      "checkpoint_mib": 452.05057430267334,
+      "resident_vram_mib": null,
+      "peak_vram_mib": null,
+      "tokens_per_second_mean": null,
+      "tokens_per_second_std": null,
+      "system_metrics_comparable": false,
+      "runtime_backend": "compressed_tensors_decompressed",
+      "provenance_status": "v1_rerun",
+      "environment_python": "3.12.10",
+      "environment_torch": "2.13.0+cu126",
+      "environment_cuda_runtime": "12.6",
+      "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "environment_git_commit": "2dcb58cf4db93ff2cc5bfed2c8f9fc00ecd69537"
     }
   ]
 }

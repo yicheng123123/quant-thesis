@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "experiment_id": "awq_g64",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "method": "AWQ",
+  "bits": 4,
+  "group_size": 64,
+  "symmetric": true,
+  "checkpoint": "E:\\quant-thesis\\artifacts\\qwen2.5-0.5b-instruct-awq-w4a16-g64-sym-calib64-wttrain512",
+  "calibration": {
+    "samples": 64,
+    "sequence_length": 512,
+    "pool_sha256": "2bd6cacca4c7894b00d8779d76fc9b1d5776345bd69bc0d981054b2dbf579a76",
+    "duo_scaling": false
+  },
+  "protocol": {
+    "ppl": {
+      "dataset_id": "Salesforce/wikitext",
+      "dataset_config": "wikitext-2-raw-v1",
+      "split": "test",
+      "scope": "full",
+      "smoke_tokens": 8192,
+      "max_length": 2048,
+      "stride": 512
+    },
+    "generation": {
+      "prompt": "请用三点解释为什么低比特权重量化可以减少大语言模型的显存占用。",
+      "warmup_runs": 3,
+      "benchmark_runs": 5,
+      "max_new_tokens": 128
+    }
+  },
+  "runtime": {
+    "backend": "compressed_tensors_decompressed",
+    "system_metrics_comparable": false,
+    "comparability_note": "Transformers decompresses this checkpoint; quality is valid but runtime metrics are not comparable to the GPTQ quantized kernel."
+  },
+  "updated_at_utc": "2026-09-14T13:47:01+00:00",
+  "quality": {
+    "dataset": "Salesforce/wikitext:wikitext-2-raw-v1:test",
+    "scope": "full",
+    "num_input_tokens": 299078,
+    "evaluated_tokens": 299077,
+    "max_length": 2048,
+    "stride": 512,
+    "avg_nll": 2.673445729772304,
+    "ppl": 14.489811246370849,
+    "ppl_delta": 2.0261926004081996,
+    "ppl_relative_increase_percent": 16.256856519471143
+  },
+  "storage": {
+    "checkpoint_mib": 452.05064487457275
+  },
+  "memory": null,
+  "performance": null,
+  "quantization": {
+    "quantization_seconds": 86.89008070004638,
+    "timing_scope": "llmcompressor_oneshot"
+  },
+  "provenance": {
+    "status": "v1_rerun",
+    "frozen_at_utc": "2026-09-14T11:28:19+00:00",
+    "source_files": [
+      "E:\\quant-thesis\\practice\\awq\\results\\awq_sym_g64_full_ppl.json",
+      "E:\\quant-thesis\\artifacts\\qwen2.5-0.5b-instruct-awq-w4a16-g64-sym-calib64-wttrain512\\awq_metadata.json"
+    ],
+    "legacy_frozen": true,
+    "quality": "benchmark_v1_worker",
+    "quality_run_at_utc": "2026-09-14T13:47:01+00:00",
+    "backend": "compressed_tensors_decompressed",
+    "environment": "E:\\quant-thesis\\.venv-awq\\Scripts\\python.exe",
+    "checkpoint": "E:\\quant-thesis\\artifacts\\qwen2.5-0.5b-instruct-awq-w4a16-g64-sym-calib64-wttrain512",
+    "input_tokens": 299078,
+    "max_new_tokens": 128,
+    "warmup_runs": 3,
+    "measure_runs": 5,
+    "comparable": true,
+    "system_metrics_comparable": false
+  },
+  "quality_validation": {
+    "reference": "legacy_frozen",
+    "expected_ppl": 14.489811246370849,
+    "absolute_difference": 0.0,
+    "tolerance": 0.01,
+    "within_tolerance": true
+  }
+}

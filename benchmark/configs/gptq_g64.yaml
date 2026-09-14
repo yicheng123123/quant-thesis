@@ -1,0 +1,35 @@
+schema_version: 1
+experiment_id: gptq_g64
+model_id: Qwen/Qwen2.5-0.5B-Instruct
+method: gptq
+bits: 4
+group_size: 64
+symmetric: true
+checkpoint: E:/quant-thesis/artifacts/group_size_ablation_calib64/qwen2.5-0.5b-instruct-gptq-w4a16-g64-calib64-wttrain512
+baseline_experiment_id: fp16
+calibration:
+  samples: 64
+  sequence_length: 512
+  pool_sha256: 2bd6cacca4c7894b00d8779d76fc9b1d5776345bd69bc0d981054b2dbf579a76
+runtime:
+  python: E:/quant-thesis/.venv-gptq/Scripts/python.exe
+  backend: gptqmodel_torch_eager
+  system_metrics_comparable: true
+  comparability_note: Uses the validated Windows GPTQModel eager kernel.
+ppl:
+  dataset_id: Salesforce/wikitext
+  dataset_config: wikitext-2-raw-v1
+  split: test
+  scope: full
+  smoke_tokens: 8192
+  max_length: 2048
+  stride: 512
+generation:
+  prompt: 请用三点解释为什么低比特权重量化可以减少大语言模型的显存占用。
+  warmup_runs: 3
+  benchmark_runs: 5
+  max_new_tokens: 128
+validation:
+  expected_ppl: 13.492837547663278
+  ppl_tolerance: 0.01
+

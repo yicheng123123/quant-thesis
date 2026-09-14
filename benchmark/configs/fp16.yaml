@@ -1,0 +1,32 @@
+schema_version: 1
+experiment_id: fp16
+model_id: Qwen/Qwen2.5-0.5B-Instruct
+method: fp16
+bits: 16
+group_size: null
+symmetric: null
+checkpoint: null
+baseline_experiment_id: null
+calibration: null
+runtime:
+  python: E:/quant-thesis/.venv/Scripts/python.exe
+  backend: transformers_fp16
+  system_metrics_comparable: true
+  comparability_note: FP16 Transformers baseline on the same GPU and generation protocol.
+ppl:
+  dataset_id: Salesforce/wikitext
+  dataset_config: wikitext-2-raw-v1
+  split: test
+  scope: full
+  smoke_tokens: 8192
+  max_length: 2048
+  stride: 512
+generation:
+  prompt: 请用三点解释为什么低比特权重量化可以减少大语言模型的显存占用。
+  warmup_runs: 3
+  benchmark_runs: 5
+  max_new_tokens: 128
+validation:
+  expected_ppl: 12.463618645962649
+  ppl_tolerance: 0.01
+

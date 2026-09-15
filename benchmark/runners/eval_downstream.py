@@ -13,6 +13,7 @@ from benchmark.config import (
     PROJECT_ROOT,
     apply_runtime_environment,
     load_config,
+    print_manifest,
     utc_now,
     write_result,
 )
@@ -30,9 +31,22 @@ def _existing_downstream(config_path: Path) -> dict[str, Any]:
     return dict(downstream) if isinstance(downstream, dict) else {}
 
 
+def _display_task(task_name: str) -> str:
+    """Use the benchmark's conventional capitalization in manifests."""
+    return "HellaSwag" if task_name.lower() == "hellaswag" else task_name
+
+
 def run_worker(config_path: Path, task_name: str, scope: str) -> None:
     """Load one model, run one downstream task, and write a unified result."""
     config = load_config(config_path, check_paths=True)
+    _validate_request(config, task_name, scope)
+    manifest = print_manifest(
+        config,
+        task=_display_task(task_name),
+        scope=scope,
+        dataset="Rowan/hellaswag",
+        split="validation",
+    )
     apply_runtime_environment()
     os.environ["HF_DATASETS_CACHE"] = str(PROJECT_ROOT / ".hf_cache" / "datasets")
     os.environ["HF_HUB_OFFLINE"] = "1"
@@ -57,6 +71,7 @@ def run_worker(config_path: Path, task_name: str, scope: str) -> None:
                 "downstream_offline": True,
             },
         },
+        manifest=manifest,
     )
     print(f"downstream_result={result_path}", flush=True)
     print(
@@ -69,6 +84,14 @@ def run_worker(config_path: Path, task_name: str, scope: str) -> None:
 def launch_isolated(config_path: Path, task_name: str, scope: str) -> None:
     """Spawn the worker under the Python interpreter declared by the config."""
     config = load_config(config_path, check_paths=True)
+    _validate_request(config, task_name, scope)
+    print_manifest(
+        config,
+        task=_display_task(task_name),
+        scope=scope,
+        dataset="Rowan/hellaswag",
+        split="validation",
+    )
     command = [
         str(config.python_executable),
         "-X",
@@ -88,17 +111,52 @@ def launch_isolated(config_path: Path, task_name: str, scope: str) -> None:
     subprocess.run(command, cwd=PROJECT_ROOT, env=environment, check=True)
 
 
+def _validate_request(config: Any, task_name: str, scope: str) -> None:
+    """Validate a downstream task/scope request without importing an evaluator."""
+    downstream = config.data.get("downstream")
+    if not isinstance(downstream, dict) or downstream.get("enabled") is not True:
+        raise ValueError(f"Downstream evaluation is not enabled for {config.experiment_id}.")
+    tasks = {str(task.get("name")): task for task in downstream.get("tasks", []) if isinstance(task, dict)}
+    if task_name not in tasks:
+        raise ValueError(f"Task {task_name!r} is not configured for {config.experiment_id}.")
+    if scope not in {"smoke", "full"}:
+        raise ValueError(f"Unsupported downstream scope: {scope!r}.")
+    scope_config = downstream.get("scope")
+    if not isinstance(scope_config, dict):
+        raise ValueError("downstream.scope must be a mapping.")
+    if scope == "smoke" and int(scope_config.get("smoke_limit", 0)) < 1:
+        raise ValueError("downstream.scope.smoke_limit must be positive.")
+
+
+def dry_run(config_path: Path, task_name: str, scope: str) -> None:
+    """Validate and print the downstream manifest without starting a worker."""
+    config = load_config(config_path, check_paths=True)
+    _validate_request(config, task_name, scope)
+    print_manifest(
+        config,
+        task=_display_task(task_name),
+        scope=scope,
+        dataset="Rowan/hellaswag",
+        split="validation",
+    )
+    print("DRY RUN: model, CUDA, and evaluation were not initialized.", flush=True)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Unified isolated downstream runner")
     parser.add_argument("--config", type=Path, required=True)
     parser.add_argument("--task", default="hellaswag")
     parser.add_argument("--scope", choices=("smoke", "full"), default="smoke")
+    parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--worker", action="store_true", help=argparse.SUPPRESS)
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    if args.dry_run:
+        dry_run(args.config, args.task, args.scope)
+        return
     if args.worker:
         run_worker(args.config, args.task, args.scope)
     else:

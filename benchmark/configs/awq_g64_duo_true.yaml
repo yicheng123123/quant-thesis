@@ -12,6 +12,23 @@ calibration:
   sequence_length: 512
   pool_sha256: 2bd6cacca4c7894b00d8779d76fc9b1d5776345bd69bc0d981054b2dbf579a76
   duo_scaling: true
+experiment:
+  id: awq_g64_duo_true
+  base_model: Qwen/Qwen2.5-0.5B-Instruct
+  checkpoint: E:/quant-thesis/artifacts/qwen2.5-0.5b-instruct-awq-w4a16-g64-sym-duo-calib64-wttrain512
+  task: HellaSwag
+  scope: full
+  dataset: Rowan/hellaswag
+  split: validation
+quantization:
+  method: awq
+  weight_bits: 4
+  activation_bits: 16
+  activation_precision: A16
+  group_size: 64
+  symmetric: true
+  backend: compressed_tensors_decompressed
+  duo_scaling: true
 runtime:
   python: E:/quant-thesis/.venv-awq/Scripts/python.exe
   backend: compressed_tensors_decompressed

@@ -25,14 +25,18 @@ COLORS = {
 
 
 def label(row: dict[str, Any]) -> str:
-    special = {
-        "awq_g64_duo_false": "AWQ G64 duo=False",
-        "awq_g64_duo_true": "AWQ G64 duo=True",
-    }
-    if row.get("experiment_id") in special:
-        return special[str(row["experiment_id"])]
+    method = str(row.get("method", "")).upper()
     group_size = row.get("group_size")
-    return str(row["method"]) if group_size is None else f"{row['method']} G{group_size}"
+    if method == "FP16":
+        return "FP16"
+    if method == "AWQ":
+        duo_scaling = row.get("duo_scaling")
+        duo_label = "not_detectable" if duo_scaling is None else str(bool(duo_scaling))
+        label_text = f"AWQ G{group_size} duo={duo_label}"
+        if row.get("experiment_id") == "awq_g64":
+            return f"{label_text} (legacy)"
+        return label_text
+    return method if group_size is None else f"{method} G{group_size}"
 
 
 def _font(size: int, *, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:

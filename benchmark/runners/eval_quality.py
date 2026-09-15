@@ -14,6 +14,7 @@ from benchmark.config import (
     directory_size_mib,
     load_baseline_quality,
     load_config,
+    print_manifest,
     utc_now,
     write_result,
 )
@@ -22,6 +23,14 @@ from benchmark.config import (
 def run_worker(config_path: Path) -> None:
     """Load one model, evaluate one token stream, write one unified result."""
     config = load_config(config_path, check_paths=True)
+    ppl_config = config.data["ppl"]
+    manifest = print_manifest(
+        config,
+        task="PPL",
+        scope=str(ppl_config["scope"]),
+        dataset=f"{ppl_config['dataset_id']}:{ppl_config['dataset_config']}",
+        split=str(ppl_config["split"]),
+    )
     apply_runtime_environment()
 
     import torch
@@ -36,7 +45,6 @@ def run_worker(config_path: Path) -> None:
     if not torch.cuda.is_available():
         raise RuntimeError("Quality evaluation requires CUDA.")
 
-    ppl_config = config.data["ppl"]
     input_ids = prepare_wikitext_input_ids(
         config.model_id,
         ppl_config,
@@ -132,6 +140,7 @@ def run_worker(config_path: Path) -> None:
                 ),
             },
         },
+        manifest=manifest,
     )
     print(f"quality_result={result_path}", flush=True)
     print(f"ppl={ppl:.12f} avg_nll={average_nll:.12f}", flush=True)
@@ -140,6 +149,14 @@ def run_worker(config_path: Path) -> None:
 def launch_isolated(config_path: Path) -> None:
     """Spawn the worker under the Python interpreter declared by the config."""
     config = load_config(config_path, check_paths=True)
+    ppl_config = config.data["ppl"]
+    print_manifest(
+        config,
+        task="PPL",
+        scope=str(ppl_config["scope"]),
+        dataset=f"{ppl_config['dataset_id']}:{ppl_config['dataset_config']}",
+        split=str(ppl_config["split"]),
+    )
     command = [
         str(config.python_executable),
         "-X",
@@ -155,15 +172,33 @@ def launch_isolated(config_path: Path) -> None:
     subprocess.run(command, cwd=PROJECT_ROOT, env=environment, check=True)
 
 
+def dry_run(config_path: Path) -> None:
+    """Validate and print the PPL manifest without starting a worker."""
+    config = load_config(config_path, check_paths=True)
+    ppl_config = config.data["ppl"]
+    print_manifest(
+        config,
+        task="PPL",
+        scope=str(ppl_config["scope"]),
+        dataset=f"{ppl_config['dataset_id']}:{ppl_config['dataset_config']}",
+        split=str(ppl_config["split"]),
+    )
+    print("DRY RUN: model, CUDA, and evaluation were not initialized.", flush=True)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Unified isolated PPL runner")
     parser.add_argument("--config", type=Path, required=True)
+    parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--worker", action="store_true", help=argparse.SUPPRESS)
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    if args.dry_run:
+        dry_run(args.config)
+        return
     if args.worker:
         run_worker(args.config)
     else:

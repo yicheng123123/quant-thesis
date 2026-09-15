@@ -15,6 +15,7 @@ from benchmark.config import (
     RAW_RESULTS_DIR,
     SCHEMA_VERSION,
     load_config,
+    manifest_context,
 )
 
 
@@ -64,7 +65,7 @@ def migrate_file(path: Path, *, force: bool) -> Path | None:
     payload = json.loads(path.read_text(encoding="utf-8"))
     if not isinstance(payload, dict):
         raise TypeError(f"Expected JSON object: {path}")
-    if payload.get("schema_version") == SCHEMA_VERSION and payload.get("run_id"):
+    if payload.get("schema_version") in {SCHEMA_VERSION, "1.2", "1.1"} and payload.get("run_id"):
         return None
 
     config = load_config(BENCHMARK_ROOT / "configs" / f"{payload['experiment_id']}.yaml")
@@ -74,6 +75,7 @@ def migrate_file(path: Path, *, force: bool) -> Path | None:
     payload["schema_version"] = SCHEMA_VERSION
     payload["run_id"] = run_id
     payload["status"] = "passed"
+    payload["experiment_metadata"] = manifest_context(config)
     environment = _probe_environment(config.python_executable)
     environment["capture_status"] = "backfilled_during_v1_migration"
     environment["original_run_environment_recorded"] = False
@@ -81,7 +83,7 @@ def migrate_file(path: Path, *, force: bool) -> Path | None:
     provenance = payload.get("provenance")
     if not isinstance(provenance, dict):
         provenance = {}
-    provenance["metadata_migration"] = "v1_to_v1.1"
+    provenance["metadata_migration"] = "v1_to_v1.2.1"
     payload["provenance"] = provenance
 
     run_dir = RAW_RESULTS_DIR / "runs"

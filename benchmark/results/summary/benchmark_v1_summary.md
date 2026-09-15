@@ -1,4 +1,4 @@
-# Unified quantization benchmark v1.2
+# Unified quantization benchmark v1.2.1
 
 | Configuration | G | PPL | ΔPPL | CKPT MiB | Resident MiB | Peak MiB | System | tok/s mean ± std |
 |---|---:|---:|---:|---:|---:|---:|---|---:|
@@ -6,7 +6,7 @@
 | GPTQ G32 | 32 | 13.3063 | 0.8426 | 473.38 | 458.50 | 494.23 | comparable | 15.37 ± — |
 | GPTQ G64 | 64 | 13.4928 | 1.0292 | 460.05 | 445.18 | 481.23 | comparable | 9.63 ± 0.73 |
 | GPTQ G128 | 128 | 13.8463 | 1.3827 | 453.39 | 438.55 | 474.19 | comparable | 12.43 ± — |
-| AWQ G64 | 64 | 14.4898 | 2.0262 | 452.05 | — | — | N/C | — |
+| AWQ G64 duo=False (legacy) | 64 | 14.4898 | 2.0262 | 452.05 | — | — | N/C | — |
 | AWQ G64 duo=False | 64 | 14.4898 | 2.0262 | 452.05 | — | — | N/C | — |
 | AWQ G64 duo=True | 64 | 14.5498 | 2.0861 | 452.05 | — | — | N/C | — |
 

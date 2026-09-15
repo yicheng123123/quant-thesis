@@ -29,6 +29,28 @@ The four-configuration downstream matrix is FP16, GPTQ G64, AWQ G64
 `duo_scaling=false`, and AWQ G64 `duo_scaling=true`. G32 and G128 are not part
 of the v1.2 downstream acceptance matrix.
 
+## Transparency patch (v1.2.1)
+
+Every config now contains an explicit `experiment` identity block and a
+`quantization` block covering method, W/A precision, group size, symmetry,
+backend, and AWQ `duo_scaling`. Each runner prints the same startup manifest,
+including the task, smoke/full scope, dataset/split, checkpoint identity, and
+result paths. Checkpoint-side JSON metadata is cross-checked before model
+loading when the format exposes method, bits, group size, or symmetry.
+
+Use `--dry-run` to validate a config and inspect the manifest without importing
+Torch, initializing CUDA, loading a model, or evaluating anything:
+
+```powershell
+& .\.venv-gptq\Scripts\python.exe -X utf8 `
+  -m benchmark.runners.eval_quality `
+  --config .\benchmark\configs\gptq_g64.yaml `
+  --dry-run
+```
+
+The lightweight regression suite is `python -m benchmark.check_v121`; it does
+not run any model or expensive benchmark.
+
 ## Structure
 
 ```text

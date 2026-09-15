@@ -11,6 +11,23 @@ calibration:
   samples: 64
   sequence_length: 512
   pool_sha256: 2bd6cacca4c7894b00d8779d76fc9b1d5776345bd69bc0d981054b2dbf579a76
+experiment:
+  id: gptq_g32
+  base_model: Qwen/Qwen2.5-0.5B-Instruct
+  checkpoint: E:/quant-thesis/artifacts/group_size_ablation_calib64/qwen2.5-0.5b-instruct-gptq-w4a16-g32-calib64-wttrain512
+  task: HellaSwag
+  scope: full
+  dataset: Rowan/hellaswag
+  split: validation
+quantization:
+  method: gptq
+  weight_bits: 4
+  activation_bits: 16
+  activation_precision: A16
+  group_size: 32
+  symmetric: true
+  backend: gptqmodel_torch_eager
+  duo_scaling: null
 runtime:
   python: E:/quant-thesis/.venv-gptq/Scripts/python.exe
   backend: gptqmodel_torch_eager

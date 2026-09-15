@@ -49,17 +49,15 @@ def validate_payloads(payloads: list[dict[str, Any]]) -> dict[str, Any]:
         schema_version = payload.get("schema_version")
         downstream_config = config.data.get("downstream")
         requires_downstream = isinstance(downstream_config, dict) and downstream_config.get("enabled") is True
-        schema_valid = schema_version == SCHEMA_VERSION or (
-            not requires_downstream and schema_version in LEGACY_SCHEMA_VERSIONS
-        )
+        schema_valid = schema_version == SCHEMA_VERSION or schema_version in LEGACY_SCHEMA_VERSIONS
         check(
             f"{experiment_id}.schema_version",
             schema_valid,
-            f"expected {SCHEMA_VERSION!r} for downstream configs, got {schema_version!r}",
+            f"expected {SCHEMA_VERSION!r} or a supported legacy version, got {schema_version!r}",
         )
         if schema_version in LEGACY_SCHEMA_VERSIONS:
             warnings.append(
-                f"{experiment_id}.schema_version: retained legacy {schema_version} result without downstream scope"
+                f"{experiment_id}.schema_version: retained legacy {schema_version} result"
             )
 
         run_id = payload.get("run_id")
@@ -80,6 +78,23 @@ def validate_payloads(payloads: list[dict[str, Any]]) -> dict[str, Any]:
             payload.get("status") == "passed",
             f"expected 'passed', got {payload.get('status')!r}",
         )
+
+        metadata = payload.get("experiment_metadata")
+        if metadata is not None:
+            metadata_ok = isinstance(metadata, dict)
+            if metadata_ok:
+                identity = metadata.get("identity")
+                quantization = metadata.get("quantization")
+                evaluation = metadata.get("evaluation")
+                metadata_ok = all(
+                    isinstance(section, dict)
+                    for section in (identity, quantization, evaluation)
+                ) and metadata.get("experiment_id") == experiment_id
+            check(
+                f"{experiment_id}.experiment_metadata",
+                metadata_ok,
+                "new raw results must carry identity, quantization, and evaluation metadata",
+            )
 
         provenance = payload.get("provenance") if isinstance(payload.get("provenance"), dict) else {}
         provenance_status = provenance.get("status")

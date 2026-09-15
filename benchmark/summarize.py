@@ -40,15 +40,28 @@ def build_row(payload: dict[str, Any]) -> dict[str, Any]:
     downstream = quality.get("downstream") if isinstance(quality.get("downstream"), dict) else {}
     hellaswag = downstream.get("hellaswag") if isinstance(downstream.get("hellaswag"), dict) else {}
     calibration = payload.get("calibration") if isinstance(payload.get("calibration"), dict) else {}
+    metadata = payload.get("experiment_metadata") if isinstance(payload.get("experiment_metadata"), dict) else {}
+    metadata_quantization = metadata.get("quantization") if isinstance(metadata.get("quantization"), dict) else {}
+    method = metadata.get("method", metadata_quantization.get("method", payload.get("method")))
+    group_size = metadata.get("group_size", metadata_quantization.get("group_size", payload.get("group_size")))
+    duo_scaling = metadata.get("duo_scaling", metadata_quantization.get("duo_scaling", calibration.get("duo_scaling")))
     return {
         "schema_version": payload.get("schema_version"),
         "run_id": payload.get("run_id"),
         "status": payload.get("status"),
         "experiment_id": payload["experiment_id"],
-        "method": payload["method"],
-        "group_size": payload.get("group_size"),
-        "bits": payload["bits"],
-        "duo_scaling": calibration.get("duo_scaling"),
+        "method": method,
+        "group_size": group_size,
+        "bits": metadata.get("weight_bits", metadata_quantization.get("weight_bits", payload["bits"])),
+        "activation_bits": metadata.get("activation_bits", metadata_quantization.get("activation_bits")),
+        "activation_precision": metadata.get("activation_precision", metadata_quantization.get("activation_precision")),
+        "symmetric": metadata.get("symmetric", payload.get("symmetric")),
+        "duo_scaling": duo_scaling,
+        "runtime_backend": metadata.get("backend", nested(payload, "runtime", "backend")),
+        "evaluation_task": metadata.get("task"),
+        "evaluation_scope": metadata.get("scope"),
+        "evaluation_dataset": metadata.get("dataset"),
+        "evaluation_split": metadata.get("split"),
         "ppl": nested(payload, "quality", "ppl"),
         "ppl_delta": nested(payload, "quality", "ppl_delta"),
         "ppl_relative_increase_percent": nested(
@@ -60,7 +73,6 @@ def build_row(payload: dict[str, Any]) -> dict[str, Any]:
         "tokens_per_second_mean": throughput_mean,
         "tokens_per_second_std": throughput_std,
         "system_metrics_comparable": comparable,
-        "runtime_backend": nested(payload, "runtime", "backend"),
         "hellaswag_acc": hellaswag.get("acc"),
         "hellaswag_acc_stderr": hellaswag.get("acc_stderr"),
         "hellaswag_acc_norm": hellaswag.get("acc_norm"),
@@ -88,7 +100,7 @@ def format_number(value: Any, digits: int = 2) -> str:
 def markdown_table(rows: list[dict[str, Any]]) -> str:
     """Render the compact human-readable v1 benchmark table."""
     lines = [
-        "# Unified quantization benchmark v1.2",
+        "# Unified quantization benchmark v1.2.1",
         "",
         "| Configuration | G | PPL | ΔPPL | CKPT MiB | Resident MiB | Peak MiB | System | tok/s mean ± std |",
         "|---|---:|---:|---:|---:|---:|---:|---|---:|",
@@ -156,14 +168,20 @@ def markdown_table(rows: list[dict[str, Any]]) -> str:
 
 def experiment_label(row: dict[str, Any]) -> str:
     """Return a compact human-readable experiment label."""
-    special = {
-        "awq_g64_duo_false": "AWQ G64 duo=False",
-        "awq_g64_duo_true": "AWQ G64 duo=True",
-    }
-    if row["experiment_id"] in special:
-        return special[row["experiment_id"]]
-    group_size = row["group_size"]
-    return row["method"] if group_size is None else f"{row['method']} G{group_size}"
+    method = str(row.get("method", "")).upper()
+    group_size = row.get("group_size")
+    if method == "FP16":
+        return "FP16"
+    if method == "AWQ":
+        duo_scaling = row.get("duo_scaling")
+        duo_label = "not_detectable" if duo_scaling is None else str(bool(duo_scaling))
+        label = f"AWQ G{group_size} duo={duo_label}"
+        if row.get("experiment_id") == "awq_g64":
+            return f"{label} (legacy)"
+        return label
+    if group_size is None:
+        return method
+    return f"{method} G{group_size}"
 
 
 def automatic_conclusions(rows: list[dict[str, Any]]) -> list[str]:
@@ -366,7 +384,7 @@ def html_dashboard(
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quantization benchmark v1.2</title>
+  <title>Quantization benchmark v1.2.1</title>
   <style>
     :root {{
       color-scheme: light dark;
@@ -468,7 +486,7 @@ def html_dashboard(
     <header>
       <div>
         <div class="eyebrow">Unified quantization evaluation</div>
-        <h1>Benchmark v1.2</h1>
+        <h1>Benchmark v1.2.1</h1>
         <p>PPL, HellaSwag downstream quality, throughput, memory, and comparability.</p>
       </div>
       <div class="status">VALIDATED</div>
@@ -551,6 +569,8 @@ def main() -> None:
         (build_row(payload) for payload in payloads),
         key=lambda row: (ORDER.get(row["experiment_id"], 999), row["experiment_id"]),
     )
+    for row in rows:
+        row["configuration_label"] = experiment_label(row)
     if not rows:
         raise RuntimeError("No unified raw results were found.")
 

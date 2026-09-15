@@ -1,26 +1,30 @@
 {
-  "schema_version": "1.2",
-  "generated_at_utc": "2026-09-15T10:28:44+00:00",
+  "schema_version": "1.2.1",
+  "generated_at_utc": "2026-09-15T16:46:40+00:00",
   "validation": {
-    "schema_version": "1.2",
+    "schema_version": "1.2.1",
     "status": "passed",
     "errors": [],
     "warnings": [
-      "awq_g64.schema_version: retained legacy 1.1 result without downstream scope",
+      "awq_g64.schema_version: retained legacy 1.1 result",
       "awq_g64.system: system metrics are excluded because comparable=false",
+      "awq_g64_duo_false.schema_version: retained legacy 1.2 result",
       "awq_g64_duo_false.system: system metrics are excluded because comparable=false",
+      "awq_g64_duo_true.schema_version: retained legacy 1.2 result",
       "awq_g64_duo_true.system: system metrics are excluded because comparable=false",
+      "fp16.schema_version: retained legacy 1.2 result",
       "fp16.performance: legacy frozen speed row is excluded from v1 repeated-run gates",
-      "gptq_g128.schema_version: retained legacy 1.1 result without downstream scope",
+      "gptq_g128.schema_version: retained legacy 1.1 result",
       "gptq_g128.performance: legacy frozen speed row is excluded from v1 repeated-run gates",
-      "gptq_g32.schema_version: retained legacy 1.1 result without downstream scope",
-      "gptq_g32.performance: legacy frozen speed row is excluded from v1 repeated-run gates"
+      "gptq_g32.schema_version: retained legacy 1.1 result",
+      "gptq_g32.performance: legacy frozen speed row is excluded from v1 repeated-run gates",
+      "gptq_g64.schema_version: retained legacy 1.2 result"
     ],
     "checks": [
       {
         "name": "awq_g64.schema_version",
         "status": "passed",
-        "detail": "expected '1.2' for downstream configs, got '1.1'"
+        "detail": "expected '1.2.1' or a supported legacy version, got '1.1'"
       },
       {
         "name": "awq_g64.run_id",
@@ -70,7 +74,7 @@
       {
         "name": "awq_g64_duo_false.schema_version",
         "status": "passed",
-        "detail": "expected '1.2' for downstream configs, got '1.2'"
+        "detail": "expected '1.2.1' or a supported legacy version, got '1.2'"
       },
       {
         "name": "awq_g64_duo_false.run_id",
@@ -185,7 +189,7 @@
       {
         "name": "awq_g64_duo_true.schema_version",
         "status": "passed",
-        "detail": "expected '1.2' for downstream configs, got '1.2'"
+        "detail": "expected '1.2.1' or a supported legacy version, got '1.2'"
       },
       {
         "name": "awq_g64_duo_true.run_id",
@@ -300,7 +304,7 @@
       {
         "name": "fp16.schema_version",
         "status": "passed",
-        "detail": "expected '1.2' for downstream configs, got '1.2'"
+        "detail": "expected '1.2.1' or a supported legacy version, got '1.2'"
       },
       {
         "name": "fp16.run_id",
@@ -415,7 +419,7 @@
       {
         "name": "gptq_g128.schema_version",
         "status": "passed",
-        "detail": "expected '1.2' for downstream configs, got '1.1'"
+        "detail": "expected '1.2.1' or a supported legacy version, got '1.1'"
       },
       {
         "name": "gptq_g128.run_id",
@@ -470,7 +474,7 @@
       {
         "name": "gptq_g32.schema_version",
         "status": "passed",
-        "detail": "expected '1.2' for downstream configs, got '1.1'"
+        "detail": "expected '1.2.1' or a supported legacy version, got '1.1'"
       },
       {
         "name": "gptq_g32.run_id",
@@ -525,7 +529,7 @@
       {
         "name": "gptq_g64.schema_version",
         "status": "passed",
-        "detail": "expected '1.2' for downstream configs, got '1.2'"
+        "detail": "expected '1.2.1' or a supported legacy version, got '1.2'"
       },
       {
         "name": "gptq_g64.run_id",
@@ -769,7 +773,15 @@
       "method": "FP16",
       "group_size": null,
       "bits": 16,
+      "activation_bits": null,
+      "activation_precision": null,
+      "symmetric": null,
       "duo_scaling": null,
+      "runtime_backend": "transformers_fp16",
+      "evaluation_task": null,
+      "evaluation_scope": null,
+      "evaluation_dataset": null,
+      "evaluation_split": null,
       "ppl": 12.463618645962649,
       "ppl_delta": 0.0,
       "ppl_relative_increase_percent": 0.0,
@@ -779,7 +791,6 @@
       "tokens_per_second_mean": 43.19953193321636,
       "tokens_per_second_std": null,
       "system_metrics_comparable": true,
-      "runtime_backend": "transformers_fp16",
       "hellaswag_acc": 0.4062935670185222,
       "hellaswag_acc_stderr": 0.004901368629533411,
       "hellaswag_acc_norm": 0.5247958573989245,
@@ -795,7 +806,8 @@
       "environment_torch": "2.6.0+cu124",
       "environment_cuda_runtime": "12.4",
       "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
-      "environment_git_commit": "8440c93aae6d29072421616ca171477717ce1f48"
+      "environment_git_commit": "8440c93aae6d29072421616ca171477717ce1f48",
+      "configuration_label": "FP16"
     },
     {
       "schema_version": "1.1",
@@ -805,7 +817,15 @@
       "method": "GPTQ",
       "group_size": 32,
       "bits": 4,
+      "activation_bits": null,
+      "activation_precision": null,
+      "symmetric": true,
       "duo_scaling": null,
+      "runtime_backend": "gptqmodel_torch_eager",
+      "evaluation_task": null,
+      "evaluation_scope": null,
+      "evaluation_dataset": null,
+      "evaluation_split": null,
       "ppl": 13.306268241552718,
       "ppl_delta": 0.8426495955900695,
       "ppl_relative_increase_percent": 6.760874345774609,
@@ -815,7 +835,6 @@
       "tokens_per_second_mean": 15.368621919800201,
       "tokens_per_second_std": null,
       "system_metrics_comparable": true,
-      "runtime_backend": "gptqmodel_torch_eager",
       "hellaswag_acc": null,
       "hellaswag_acc_stderr": null,
       "hellaswag_acc_norm": null,
@@ -831,7 +850,8 @@
       "environment_torch": "2.6.0+cu124",
       "environment_cuda_runtime": "12.4",
       "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
-      "environment_git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0"
+      "environment_git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0",
+      "configuration_label": "GPTQ G32"
     },
     {
       "schema_version": "1.2",
@@ -841,7 +861,15 @@
       "method": "GPTQ",
       "group_size": 64,
       "bits": 4,
+      "activation_bits": null,
+      "activation_precision": null,
+      "symmetric": true,
       "duo_scaling": null,
+      "runtime_backend": "gptqmodel_torch_eager",
+      "evaluation_task": null,
+      "evaluation_scope": null,
+      "evaluation_dataset": null,
+      "evaluation_split": null,
       "ppl": 13.492837547663278,
       "ppl_delta": 1.029218901700629,
       "ppl_relative_increase_percent": 8.2577855672279,
@@ -851,7 +879,6 @@
       "tokens_per_second_mean": 9.628729817719844,
       "tokens_per_second_std": 0.7263181407141165,
       "system_metrics_comparable": true,
-      "runtime_backend": "gptqmodel_torch_eager",
       "hellaswag_acc": 0.39464250149372637,
       "hellaswag_acc_stderr": 0.004877748536428776,
       "hellaswag_acc_norm": 0.502688707428799,
@@ -867,7 +894,8 @@
       "environment_torch": "2.6.0+cu124",
       "environment_cuda_runtime": "12.4",
       "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
-      "environment_git_commit": "8440c93aae6d29072421616ca171477717ce1f48"
+      "environment_git_commit": "8440c93aae6d29072421616ca171477717ce1f48",
+      "configuration_label": "GPTQ G64"
     },
     {
       "schema_version": "1.1",
@@ -877,7 +905,15 @@
       "method": "GPTQ",
       "group_size": 128,
       "bits": 4,
+      "activation_bits": null,
+      "activation_precision": null,
+      "symmetric": true,
       "duo_scaling": null,
+      "runtime_backend": "gptqmodel_torch_eager",
+      "evaluation_task": null,
+      "evaluation_scope": null,
+      "evaluation_dataset": null,
+      "evaluation_split": null,
       "ppl": 13.846270150694822,
       "ppl_delta": 1.3826515047321735,
       "ppl_relative_increase_percent": 11.093499761243555,
@@ -887,7 +923,6 @@
       "tokens_per_second_mean": 12.428053544928582,
       "tokens_per_second_std": null,
       "system_metrics_comparable": true,
-      "runtime_backend": "gptqmodel_torch_eager",
       "hellaswag_acc": null,
       "hellaswag_acc_stderr": null,
       "hellaswag_acc_norm": null,
@@ -903,7 +938,8 @@
       "environment_torch": "2.6.0+cu124",
       "environment_cuda_runtime": "12.4",
       "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
-      "environment_git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0"
+      "environment_git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0",
+      "configuration_label": "GPTQ G128"
     },
     {
       "schema_version": "1.1",
@@ -913,7 +949,15 @@
       "method": "AWQ",
       "group_size": 64,
       "bits": 4,
+      "activation_bits": null,
+      "activation_precision": null,
+      "symmetric": true,
       "duo_scaling": false,
+      "runtime_backend": "compressed_tensors_decompressed",
+      "evaluation_task": null,
+      "evaluation_scope": null,
+      "evaluation_dataset": null,
+      "evaluation_split": null,
       "ppl": 14.489811246370849,
       "ppl_delta": 2.0261926004081996,
       "ppl_relative_increase_percent": 16.256856519471143,
@@ -923,7 +967,6 @@
       "tokens_per_second_mean": null,
       "tokens_per_second_std": null,
       "system_metrics_comparable": false,
-      "runtime_backend": "compressed_tensors_decompressed",
       "hellaswag_acc": null,
       "hellaswag_acc_stderr": null,
       "hellaswag_acc_norm": null,
@@ -939,7 +982,8 @@
       "environment_torch": "2.13.0+cu126",
       "environment_cuda_runtime": "12.6",
       "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
-      "environment_git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0"
+      "environment_git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0",
+      "configuration_label": "AWQ G64 duo=False (legacy)"
     },
     {
       "schema_version": "1.2",
@@ -949,7 +993,15 @@
       "method": "AWQ",
       "group_size": 64,
       "bits": 4,
+      "activation_bits": null,
+      "activation_precision": null,
+      "symmetric": true,
       "duo_scaling": false,
+      "runtime_backend": "compressed_tensors_decompressed",
+      "evaluation_task": null,
+      "evaluation_scope": null,
+      "evaluation_dataset": null,
+      "evaluation_split": null,
       "ppl": 14.489811246370849,
       "ppl_delta": 2.0261926004081996,
       "ppl_relative_increase_percent": 16.256856519471143,
@@ -959,7 +1011,6 @@
       "tokens_per_second_mean": null,
       "tokens_per_second_std": null,
       "system_metrics_comparable": false,
-      "runtime_backend": "compressed_tensors_decompressed",
       "hellaswag_acc": 0.392850029874527,
       "hellaswag_acc_stderr": 0.004873858323840718,
       "hellaswag_acc_norm": 0.49422425811591314,
@@ -975,7 +1026,8 @@
       "environment_torch": "2.13.0+cu126",
       "environment_cuda_runtime": "12.6",
       "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
-      "environment_git_commit": "8440c93aae6d29072421616ca171477717ce1f48"
+      "environment_git_commit": "8440c93aae6d29072421616ca171477717ce1f48",
+      "configuration_label": "AWQ G64 duo=False"
     },
     {
       "schema_version": "1.2",
@@ -985,7 +1037,15 @@
       "method": "AWQ",
       "group_size": 64,
       "bits": 4,
+      "activation_bits": null,
+      "activation_precision": null,
+      "symmetric": true,
       "duo_scaling": true,
+      "runtime_backend": "compressed_tensors_decompressed",
+      "evaluation_task": null,
+      "evaluation_scope": null,
+      "evaluation_dataset": null,
+      "evaluation_split": null,
       "ppl": 14.549754088368703,
       "ppl_delta": 2.0861354424060536,
       "ppl_relative_increase_percent": 16.737799042670623,
@@ -995,7 +1055,6 @@
       "tokens_per_second_mean": null,
       "tokens_per_second_std": null,
       "system_metrics_comparable": false,
-      "runtime_backend": "compressed_tensors_decompressed",
       "hellaswag_acc": 0.3891655048795061,
       "hellaswag_acc_stderr": 0.004865645485910459,
       "hellaswag_acc_norm": 0.4991037641904003,
@@ -1011,7 +1070,8 @@
       "environment_torch": "2.13.0+cu126",
       "environment_cuda_runtime": "12.6",
       "environment_gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
-      "environment_git_commit": "8440c93aae6d29072421616ca171477717ce1f48"
+      "environment_git_commit": "8440c93aae6d29072421616ca171477717ce1f48",
+      "configuration_label": "AWQ G64 duo=True"
     }
   ]
 }

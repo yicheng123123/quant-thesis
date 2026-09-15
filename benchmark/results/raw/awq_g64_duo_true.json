@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "experiment_id": "awq_g64_duo_true",
   "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
   "method": "AWQ",
@@ -35,7 +35,7 @@
     "system_metrics_comparable": false,
     "comparability_note": "Transformers decompresses this checkpoint; quality is valid but runtime metrics are not comparable to the GPTQ quantized kernel."
   },
-  "updated_at_utc": "2026-09-14T17:34:36+00:00",
+  "updated_at_utc": "2026-09-15T10:23:30+00:00",
   "quality": {
     "dataset": "Salesforce/wikitext:wikitext-2-raw-v1:test",
     "scope": "full",
@@ -46,7 +46,37 @@
     "avg_nll": 2.677574092331631,
     "ppl": 14.549754088368703,
     "ppl_delta": 2.0861354424060536,
-    "ppl_relative_increase_percent": 16.737799042670623
+    "ppl_relative_increase_percent": 16.737799042670623,
+    "downstream": {
+      "hellaswag": {
+        "acc": 0.3891655048795061,
+        "acc_stderr": 0.004865645485910459,
+        "acc_norm": 0.4991037641904003,
+        "acc_norm_stderr": 0.004989773395469078,
+        "num_fewshot": 0,
+        "n_samples": 10042,
+        "original_samples": 10042,
+        "scope": "full",
+        "limit": null,
+        "primary_metric": "acc_norm",
+        "harness": "lm-evaluation-harness",
+        "harness_version": "0.4.13",
+        "task_version": "1.0",
+        "task_name": "hellaswag",
+        "task_config_sha256": "e9ef8ac3fed02bf283777d946ae76cbf906152e9c92533c9794e5a9dad78d1cf",
+        "dataset_name": "Rowan/hellaswag",
+        "dataset_split": "validation",
+        "dataset_fingerprint": "71a62ba9d49be089",
+        "apply_chat_template": false,
+        "batch_size": 8,
+        "tokenizer_class": "Qwen2Tokenizer",
+        "tokenizer_vocab_size": 151665,
+        "tokenizer_fingerprint": "4bc7093b8cf0a2363a56b2a15cfe85bd246b17f7e5fa96a536706cb091f4ebaa",
+        "tokenizer_fingerprint_algorithm": "v1.2-vocab-special-probes",
+        "offline": true,
+        "quality_comparable": true
+      }
+    }
   },
   "storage": {
     "checkpoint_mib": 452.05057430267334
@@ -71,12 +101,17 @@
     "warmup_runs": 3,
     "measure_runs": 5,
     "comparable": true,
-    "system_metrics_comparable": false
+    "system_metrics_comparable": false,
+    "downstream": "lm-evaluation-harness",
+    "downstream_run_at_utc": "2026-09-15T10:23:29+00:00",
+    "downstream_scope": "full",
+    "downstream_task": "hellaswag",
+    "downstream_offline": true
   },
-  "run_id": "20260914_173436_awq_g64_duo_true_0c32c902",
+  "run_id": "20260915_102329_awq_g64_duo_true_2bfdca16",
   "status": "passed",
   "environment": {
-    "captured_at_utc": "2026-09-14T17:34:36+00:00",
+    "captured_at_utc": "2026-09-15T10:23:30+00:00",
     "python": "3.12.10",
     "python_executable": "E:\\quant-thesis\\.venv-awq\\Scripts\\python.exe",
     "torch": "2.13.0+cu126",
@@ -85,12 +120,13 @@
     "llmcompressor": "0.13.0",
     "compressed_tensors": "0.18.0",
     "datasets": "5.0.1",
+    "lm_eval": "0.4.13",
     "cuda_runtime": "12.6",
     "cuda_available": true,
     "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
     "gpu_driver": "555.97",
     "os": "Windows-11-10.0.26200-SP0",
-    "git_commit": "2dcb58cf4db93ff2cc5bfed2c8f9fc00ecd69537",
-    "git_dirty": false
+    "git_commit": "8440c93aae6d29072421616ca171477717ce1f48",
+    "git_dirty": true
   }
 }

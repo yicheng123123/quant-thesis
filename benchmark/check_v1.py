@@ -1,4 +1,4 @@
-"""Fast offline checks for config schema, PPL coverage, and result summaries."""
+"""Fast offline checks for config schema, PPL coverage, and v1.2 scope."""
 
 from __future__ import annotations
 
@@ -43,8 +43,8 @@ def sliding_window_target_counts(
 
 def main() -> None:
     config_paths = sorted((BENCHMARK_ROOT / "configs").glob("*.yaml"))
-    if len(config_paths) != 5:
-        raise AssertionError(f"Expected five configs, found {len(config_paths)}")
+    if len(config_paths) != 7:
+        raise AssertionError(f"Expected seven configs, found {len(config_paths)}")
     configs = [load_config(path, check_paths=True) for path in config_paths]
     if {config.experiment_id for config in configs} != {
         "fp16",
@@ -52,8 +52,24 @@ def main() -> None:
         "gptq_g64",
         "gptq_g128",
         "awq_g64",
+        "awq_g64_duo_false",
+        "awq_g64_duo_true",
     }:
         raise AssertionError("The config experiment IDs are incomplete.")
+
+    downstream_ids = {
+        "fp16",
+        "gptq_g64",
+        "awq_g64_duo_false",
+        "awq_g64_duo_true",
+    }
+    for config in configs:
+        if config.experiment_id in downstream_ids:
+            downstream = config.data.get("downstream")
+            if not isinstance(downstream, dict) or downstream.get("enabled") is not True:
+                raise AssertionError(f"Downstream config missing for {config.experiment_id}.")
+            if downstream.get("harness") != "lm_eval":
+                raise AssertionError(f"Unexpected downstream harness for {config.experiment_id}.")
 
     full_length = select_scope_length(10, "full", 6)
     smoke_length = select_scope_length(10, "smoke", 6)
@@ -67,7 +83,7 @@ def main() -> None:
     if tokens != 9 or abs(average_nll - 2.0) > 1e-9 or abs(ppl - math.exp(2.0)) > 1e-6:
         raise AssertionError("Sliding-window token weighting failed.")
     print(
-        "PASS: five configs, local paths, scope selection, and PPL token weighting "
+        "PASS: seven configs, local paths, downstream scope, and PPL token weighting "
         "(stdlib-only offline check)"
     )
 

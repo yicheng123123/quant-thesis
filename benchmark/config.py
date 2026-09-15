@@ -26,7 +26,8 @@ RAW_RESULTS_DIR = BENCHMARK_ROOT / "results" / "raw"
 RAW_RUNS_DIR = RAW_RESULTS_DIR / "runs"
 SUMMARY_RESULTS_DIR = BENCHMARK_ROOT / "results" / "summary"
 FIGURES_RESULTS_DIR = BENCHMARK_ROOT / "results" / "figures"
-SCHEMA_VERSION = "1.1"
+SCHEMA_VERSION = "1.2"
+LEGACY_SCHEMA_VERSIONS = {"1.1"}
 ALLOWED_METHODS = {"fp16", "gptq", "awq"}
 
 
@@ -59,22 +60,53 @@ def _fallback_yaml_mapping(text: str) -> dict[str, Any]:
     whenever it is installed in the project virtual environment.
     """
     root: dict[str, Any] = {}
-    stack: list[tuple[int, dict[str, Any]]] = [(-1, root)]
-    for line_number, line in enumerate(text.splitlines(), start=1):
-        if not line.strip() or line.lstrip().startswith("#"):
-            continue
+    lines = [
+        (line_number, line)
+        for line_number, line in enumerate(text.splitlines(), start=1)
+        if line.strip() and not line.lstrip().startswith("#")
+    ]
+    stack: list[tuple[int, dict[str, Any] | list[Any]]] = [(-1, root)]
+    for index, (line_number, line) in enumerate(lines):
         indent = len(line) - len(line.lstrip(" "))
         stripped = line.strip()
-        if stripped.startswith("-"):
-            raise ValueError(f"Lists are not supported by fallback YAML parser at line {line_number}.")
-        key, separator, raw_value = stripped.partition(":")
-        if not separator or not key.strip():
-            raise ValueError(f"Invalid YAML mapping at line {line_number}: {line!r}")
         while stack[-1][0] >= indent:
             stack.pop()
         parent = stack[-1][1]
+
+        if stripped.startswith("- "):
+            if not isinstance(parent, list):
+                raise ValueError(f"Unexpected YAML list item at line {line_number}.")
+            item_text = stripped[2:].strip()
+            if not item_text:
+                item: dict[str, Any] = {}
+                parent.append(item)
+                stack.append((indent, item))
+                continue
+            key, separator, raw_value = item_text.partition(":")
+            if separator:
+                item = {}
+                parent.append(item)
+                if raw_value.strip():
+                    item[key.strip()] = _parse_scalar(raw_value)
+                else:
+                    item[key.strip()] = {}
+                stack.append((indent, item))
+            else:
+                parent.append(_parse_scalar(item_text))
+            continue
+
+        key, separator, raw_value = stripped.partition(":")
+        if not separator or not key.strip():
+            raise ValueError(f"Invalid YAML mapping at line {line_number}: {line!r}")
+        if not isinstance(parent, dict):
+            raise ValueError(f"Expected a YAML mapping at line {line_number}.")
         if not raw_value.strip():
-            child: dict[str, Any] = {}
+            next_is_list = False
+            if index + 1 < len(lines):
+                _, next_line = lines[index + 1]
+                next_indent = len(next_line) - len(next_line.lstrip(" "))
+                next_is_list = next_indent > indent and next_line.strip().startswith("- ")
+            child: dict[str, Any] | list[Any] = [] if next_is_list else {}
             parent[key.strip()] = child
             stack.append((indent, child))
         else:
@@ -166,6 +198,7 @@ def collect_environment_fingerprint() -> dict[str, Any]:
         "llmcompressor": _package_version("llmcompressor"),
         "compressed_tensors": _package_version("compressed-tensors"),
         "datasets": _package_version("datasets"),
+        "lm_eval": _package_version("lm_eval"),
         "cuda_runtime": (
             getattr(getattr(torch, "version", None), "cuda", None)
             if torch is not None
@@ -240,6 +273,34 @@ class ExperimentConfig:
             raise TypeError("ppl and generation must be mappings.")
         if not isinstance(runtime, dict):
             raise TypeError("runtime must be a mapping.")
+
+        downstream = self.data.get("downstream")
+        if downstream is not None:
+            if not isinstance(downstream, dict):
+                raise TypeError("downstream must be a mapping.")
+            if downstream.get("enabled") is not True:
+                raise ValueError("Configured downstream evaluation must set enabled=true.")
+            if downstream.get("harness") != "lm_eval":
+                raise ValueError("benchmark v1.2 supports downstream.harness=lm_eval only.")
+            tasks = downstream.get("tasks")
+            if not isinstance(tasks, list) or not tasks:
+                raise TypeError("downstream.tasks must be a non-empty list.")
+            for task in tasks:
+                if not isinstance(task, dict) or not task.get("name"):
+                    raise TypeError("Each downstream task must be a mapping with a name.")
+                if int(task.get("num_fewshot", -1)) != 0:
+                    raise ValueError("benchmark v1.2 downstream tasks must be zero-shot.")
+                if task.get("primary_metric") not in {"acc", "acc_norm"}:
+                    raise ValueError("Downstream primary_metric must be acc or acc_norm.")
+            if int(downstream.get("batch_size", 0)) < 1:
+                raise ValueError("downstream.batch_size must be positive.")
+            if downstream.get("apply_chat_template") is not False:
+                raise ValueError("benchmark v1.2 requires apply_chat_template=false.")
+            scope = downstream.get("scope")
+            if not isinstance(scope, dict) or int(scope.get("smoke_limit", 0)) < 1:
+                raise ValueError("downstream.scope.smoke_limit must be positive.")
+            if scope.get("full_limit") is not None:
+                raise ValueError("downstream.scope.full_limit must be null for full evaluation.")
         if not 0 < int(ppl["stride"]) <= int(ppl["max_length"]):
             raise ValueError("PPL requires 0 < stride <= max_length.")
         if ppl.get("scope") not in {"smoke", "full"}:
@@ -327,6 +388,7 @@ def base_result(config: ExperimentConfig) -> dict[str, Any]:
         "protocol": {
             "ppl": config.data["ppl"],
             "generation": config.data["generation"],
+            "downstream": config.data.get("downstream"),
         },
         "runtime": {
             "backend": config.data["runtime"]["backend"],

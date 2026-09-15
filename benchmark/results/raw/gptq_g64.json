@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "experiment_id": "gptq_g64",
   "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
   "method": "GPTQ",
@@ -34,7 +34,7 @@
     "system_metrics_comparable": true,
     "comparability_note": "Uses the validated Windows GPTQModel eager kernel."
   },
-  "updated_at_utc": "2026-09-14T13:40:43+00:00",
+  "updated_at_utc": "2026-09-15T09:55:50+00:00",
   "quality": {
     "dataset": "Salesforce/wikitext:wikitext-2-raw-v1:test",
     "scope": "full",
@@ -45,7 +45,37 @@
     "avg_nll": 2.602158992626915,
     "ppl": 13.492837547663278,
     "ppl_delta": 1.029218901700629,
-    "ppl_relative_increase_percent": 8.2577855672279
+    "ppl_relative_increase_percent": 8.2577855672279,
+    "downstream": {
+      "hellaswag": {
+        "acc": 0.39464250149372637,
+        "acc_stderr": 0.004877748536428776,
+        "acc_norm": 0.502688707428799,
+        "acc_norm_stderr": 0.0049897092671913005,
+        "num_fewshot": 0,
+        "n_samples": 10042,
+        "original_samples": 10042,
+        "scope": "full",
+        "limit": null,
+        "primary_metric": "acc_norm",
+        "harness": "lm-evaluation-harness",
+        "harness_version": "0.4.13",
+        "task_version": "1.0",
+        "task_name": "hellaswag",
+        "task_config_sha256": "e9ef8ac3fed02bf283777d946ae76cbf906152e9c92533c9794e5a9dad78d1cf",
+        "dataset_name": "Rowan/hellaswag",
+        "dataset_split": "validation",
+        "dataset_fingerprint": "71a62ba9d49be089",
+        "apply_chat_template": false,
+        "batch_size": 8,
+        "tokenizer_class": "Qwen2TokenizerFast",
+        "tokenizer_vocab_size": 151665,
+        "tokenizer_fingerprint": "4bc7093b8cf0a2363a56b2a15cfe85bd246b17f7e5fa96a536706cb091f4ebaa",
+        "tokenizer_fingerprint_algorithm": "v1.2-vocab-special-probes",
+        "offline": true,
+        "quality_comparable": true
+      }
+    }
   },
   "storage": {
     "checkpoint_mib": 460.051305770874
@@ -122,7 +152,12 @@
     "system": "benchmark_v1_isolated_worker",
     "system_run_at_utc": "2026-09-14T13:40:43+00:00",
     "prompt": "请用三点解释为什么低比特权重量化可以减少大语言模型的显存占用。",
-    "metadata_migration": "v1_to_v1.1"
+    "metadata_migration": "v1_to_v1.1",
+    "downstream": "lm-evaluation-harness",
+    "downstream_run_at_utc": "2026-09-15T09:55:50+00:00",
+    "downstream_scope": "full",
+    "downstream_task": "hellaswag",
+    "downstream_offline": true
   },
   "quality_validation": {
     "reference": "legacy_frozen",
@@ -138,10 +173,10 @@
     "environment": "E:\\quant-thesis\\.venv-gptq\\Scripts\\python.exe",
     "comparability_note": "Uses the validated Windows GPTQModel eager kernel."
   },
-  "run_id": "migrated_20260914_134043_gptq_g64",
+  "run_id": "20260915_095550_gptq_g64_8cb908d5",
   "status": "passed",
   "environment": {
-    "captured_at_utc": "2026-09-14T17:05:20+00:00",
+    "captured_at_utc": "2026-09-15T09:55:50+00:00",
     "python": "3.12.10",
     "python_executable": "E:\\quant-thesis\\.venv-gptq\\Scripts\\python.exe",
     "torch": "2.6.0+cu124",
@@ -150,14 +185,13 @@
     "llmcompressor": null,
     "compressed_tensors": null,
     "datasets": "5.0.1",
+    "lm_eval": "0.4.13",
     "cuda_runtime": "12.4",
     "cuda_available": true,
     "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
     "gpu_driver": "555.97",
     "os": "Windows-11-10.0.26200-SP0",
-    "git_commit": "90ec445500b6f800db83200aa108a20513c7a8c0",
-    "git_dirty": true,
-    "capture_status": "backfilled_during_v1_migration",
-    "original_run_environment_recorded": false
+    "git_commit": "8440c93aae6d29072421616ca171477717ce1f48",
+    "git_dirty": true
   }
 }

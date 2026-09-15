@@ -1,149 +1,145 @@
-# Unified quantization benchmark v1
+# Unified quantization benchmark v1.2
 
 ## Status: validated
 
 ```yaml
-benchmark: v1
+benchmark: v1.2
 status: validated
 
 validated_configurations:
-  - GPTQ W4A16 SYM G64: quality + system
-  - AWQ W4A16 SYM G64: quality
+  - FP16: PPL + HellaSwag
+  - GPTQ W4A16 SYM G64: PPL + system + HellaSwag
+  - AWQ W4A16 SYM G64 duo_scaling=false: PPL + HellaSwag
+  - AWQ W4A16 SYM G64 duo_scaling=true: PPL + HellaSwag
 
-quality_reproducibility:
-  gptq_ppl: 13.4928375
-  awq_ppl: 14.4898112
-
-system_protocol:
-  process: independent
-  warmup: 3
-  measure: 5
-  generation: fixed deterministic protocol
+downstream_protocol:
+  harness: lm-evaluation-harness 0.4.13
+  task: HellaSwag
+  mode: zero-shot continuation likelihood
+  num_fewshot: 0
+  apply_chat_template: false
+  formal_runs: offline/cache-only
 ```
 
-Validated v1 results:
+Version 1.2 adds one controlled capability to v1.1: downstream HellaSwag
+quality evaluation through `lm-evaluation-harness`. Existing PPL, system,
+quantizer, checkpoint, and system-comparability logic is unchanged.
 
-- GPTQ G64 quality PPL: `13.492837547663`
-- GPTQ G64 system throughput: `9.6287 ± 0.7263 tok/s`
-- AWQ G64 quality PPL: `14.489811246371`
-- AWQ system metrics remain `comparable=false` because the current
-  Transformers path decompresses the AWQ checkpoint.
-
-The framework is now frozen for v1 acceptance. The next step is to use this
-framework for new experiments; do not expand the benchmark framework unless a
-new experiment requires a separately justified protocol change.
-
-The v1.1 reporting layer adds immutable run metadata, environment fingerprints,
-validation gates, and standardized figures without changing quantization or
-checkpoint generation.
-
-This framework evaluates existing FP16, GPTQ, and AWQ artifacts. It does not
-quantize models. Version 1 standardizes four things:
-
-1. YAML experiment configs.
-2. One WikiText-2 sliding-window PPL implementation.
-3. Isolated-process CUDA memory and repeated generation benchmarks.
-4. One JSON schema with JSON/CSV/Markdown summaries and a visual HTML dashboard.
+The four-configuration downstream matrix is FP16, GPTQ G64, AWQ G64
+`duo_scaling=false`, and AWQ G64 `duo_scaling=true`. G32 and G128 are not part
+of the v1.2 downstream acceptance matrix.
 
 ## Structure
 
 ```text
 benchmark/
-├── configs/                 # model × method × configuration
-├── eval/                    # reusable PPL, generation, memory, and loaders
-├── runners/                 # parent process → isolated worker
+├── configs/                 # model × method × controlled protocol
+├── eval/
+│   ├── model.py             # existing method-aware loader
+│   ├── ppl.py               # existing WikiText-2 PPL
+│   └── downstream.py        # lm-eval adapter + provenance capture
+├── runners/
+│   ├── eval_quality.py      # existing PPL runner
+│   ├── eval_system.py       # existing isolated system runner
+│   └── eval_downstream.py   # isolated downstream runner
 ├── results/raw/             # latest JSON per experiment_id
-├── results/raw/runs/        # immutable v1.1 run snapshots
-├── results/summary/         # generated JSON, CSV, Markdown, and visual HTML
-├── results/figures/         # standardized PNG and SVG figures
-├── config.py                # schema and result persistence
+├── results/raw/runs/        # immutable run snapshots
+├── results/summary/         # JSON, CSV, Markdown, and HTML
+├── results/figures/         # paired PNG/SVG scientific figures
+├── config.py                # schema and persistence
+├── validation.py            # regression + comparability gates
 ├── figures.py               # unified figure pipeline
-├── validation.py            # regression and protocol gates
-├── freeze_current_results.py
-├── migrate_v11.py
-├── check_v1.py
-└── summarize.py
+└── summarize.py             # validate → summarize → visualize
 ```
 
-## Freeze and validate the current experiments
+The learning-only implementation is
+`practice/hellaswag/01_manual_scoring.py`. It exposes one sample's candidate
+log-likelihoods and predictions. It is not used for formal scores; formal
+downstream results always come from the harness task definition.
 
-Run from `E:\quant-thesis`:
+## Fixed harness dependency
+
+The formal v1.2 protocol fixes `lm_eval==0.4.13` in every runtime used by the
+four configurations:
 
 ```powershell
-& .venv\Scripts\python.exe -X utf8 -m benchmark.freeze_current_results
-& .venv\Scripts\python.exe -X utf8 -m benchmark.check_v1
-& .venv\Scripts\python.exe -X utf8 -m benchmark.summarize
+& .\.venv\Scripts\python.exe -m pip install "lm_eval==0.4.13"
+& .\.venv-gptq\Scripts\python.exe -m pip install "lm_eval==0.4.13"
+& .\.venv-awq\Scripts\python.exe -m pip install "lm_eval==0.4.13"
 ```
 
-The frozen rows preserve their original protocol. The old system benchmark
-used one warmup, three measurements, 96 generated tokens, and did not save a
-throughput standard deviation. It is not presented as a v1 repeated result.
+Do not upgrade Torch, Transformers, GPTQModel, llmcompressor, or the existing
+quantization environments as part of downstream evaluation.
 
-## Run quality in an isolated process
+## Prepare once, evaluate offline
 
-The lightweight parent reads the YAML and starts a worker using the config's
-own Python environment. The worker loads one model, writes its result, and
-exits before another configuration starts.
+Dataset preparation is intentionally separate from formal runs. Cache
+`Rowan/hellaswag` under the project `.hf_cache` once while online, then run the
+benchmark worker with the cache in offline mode. The runner sets
+`HF_HUB_OFFLINE=1` and `HF_DATASETS_OFFLINE=1` before loading the dataset.
+
+Each raw downstream result records:
+
+- `acc`, `acc_norm`, and both standard errors;
+- effective and original sample counts;
+- `num_fewshot`, chat-template setting, batch size, and smoke/full scope;
+- harness and task versions plus the task YAML SHA-256;
+- dataset name, split, and fingerprint;
+- tokenizer class, vocabulary size, and behavior fingerprint.
+
+## Smoke then full
+
+Run from `E:\quant-thesis`. A smoke run checks 32 examples but is marked
+`quality_comparable=false` and cannot enter formal comparison figures.
 
 ```powershell
-& .venv\Scripts\python.exe -X utf8 -m benchmark.runners.eval_quality `
-  --config benchmark\configs\gptq_g64.yaml
-
-& .venv\Scripts\python.exe -X utf8 -m benchmark.runners.eval_quality `
-  --config benchmark\configs\awq_g64.yaml
+& .\.venv-gptq\Scripts\python.exe -X utf8 `
+  -m benchmark.runners.eval_downstream `
+  --config .\benchmark\configs\gptq_g64.yaml `
+  --task hellaswag `
+  --scope smoke
 ```
 
-Each config contains a frozen reference PPL. A new run must match it within
-the configured tolerance.
-
-## Run system metrics in an isolated process
-
-Every invocation creates one fresh worker. The standardized generation
-protocol is three warmups, five measured runs, and 128 maximum new tokens.
+After smoke passes, run the full matrix sequentially so GPU workloads never
+overlap:
 
 ```powershell
-& .venv\Scripts\python.exe -X utf8 -m benchmark.runners.eval_system `
-  --config benchmark\configs\gptq_g64.yaml
-
-& .venv\Scripts\python.exe -X utf8 -m benchmark.runners.eval_system `
-  --config benchmark\configs\awq_g64.yaml
+& .\.venv\Scripts\python.exe -X utf8 -m benchmark.runners.eval_downstream --config .\benchmark\configs\fp16.yaml --task hellaswag --scope full
+& .\.venv-gptq\Scripts\python.exe -X utf8 -m benchmark.runners.eval_downstream --config .\benchmark\configs\gptq_g64.yaml --task hellaswag --scope full
+& .\.venv-awq\Scripts\python.exe -X utf8 -m benchmark.runners.eval_downstream --config .\benchmark\configs\awq_g64_duo_false.yaml --task hellaswag --scope full
+& .\.venv-awq\Scripts\python.exe -X utf8 -m benchmark.runners.eval_downstream --config .\benchmark\configs\awq_g64_duo_true.yaml --task hellaswag --scope full
 ```
 
-The current AWQ Transformers path decompresses the checkpoint. Its PPL is
-valid, but its system metrics are saved with `system_metrics_comparable=false`
-and must not be ranked against the GPTQ quantized kernel.
-
-Regenerate summaries after any run:
+Inspect one sample independently for learning:
 
 ```powershell
-& .venv\Scripts\python.exe -X utf8 -m benchmark.summarize
+& .\.venv\Scripts\python.exe -X utf8 .\practice\hellaswag\01_manual_scoring.py
 ```
 
-For an existing v1 checkout, migrate the current latest results once before
-running the v1.1 summary gate:
+## Validate, summarize, and visualize
 
 ```powershell
-& .venv\Scripts\python.exe -X utf8 -m benchmark.migrate_v11
+& .\.venv\Scripts\python.exe -X utf8 -m benchmark.summarize
 ```
 
-Every summary run also regenerates the standalone visual report:
+`summarize` first applies per-run and cross-run gates. All four formal rows must
+use the same harness/task definition, dataset fingerprint, sample count,
+zero-shot protocol, no chat template, and tokenizer behavior. A failure stops
+summary and figure generation.
+
+The report layer generates JSON, CSV, Markdown, HTML, and paired PNG/SVG
+figures. Version 1.2 adds only:
 
 ```text
-benchmark/results/summary/benchmark_v1_summary.html
+hellaswag_acc.{png,svg}
+hellaswag_acc_norm.{png,svg}
+ppl_vs_hellaswag_acc_norm.{png,svg}
 ```
 
-It also regenerates these paired PNG/SVG figures:
+Accuracy bars include standard-error bars. Automatic prose reports PPL changes
+and downstream changes in percentage points; it describes observed association
+without claiming causality.
 
-```text
-benchmark/results/figures/
-├── ppl_comparison.{png,svg}
-├── ppl_delta.{png,svg}
-├── vram_comparison.{png,svg}
-├── throughput.{png,svg}
-├── quality_vs_memory_tradeoff.{png,svg}
-└── quality_vs_checkpoint_tradeoff.{png,svg}
-```
-
-If validation fails, `summarize` stops before writing new summaries or figures
-and prints the failed regression gate. AWQ system rows are excluded from
-system comparison whenever `system_metrics_comparable=false`.
+AWQ system metrics remain `system_metrics_comparable=false` because the current
+Transformers path decompresses those checkpoints. They are excluded from all
+cross-method system figures and rankings.

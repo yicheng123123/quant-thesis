@@ -14,7 +14,15 @@ from benchmark.figures import generate_figures
 from benchmark.validation import load_raw_payloads, validate_payloads
 
 
-ORDER = {"fp16": 0, "gptq_g32": 1, "gptq_g64": 2, "gptq_g128": 3, "awq_g64": 4}
+ORDER = {
+    "fp16": 0,
+    "gptq_g32": 1,
+    "gptq_g64": 2,
+    "gptq_g128": 3,
+    "awq_g64": 4,
+    "awq_g64_duo_false": 5,
+    "awq_g64_duo_true": 6,
+}
 
 
 def nested(payload: dict[str, Any], section: str, field: str) -> Any:
@@ -28,6 +36,10 @@ def build_row(payload: dict[str, Any]) -> dict[str, Any]:
     throughput_mean = nested(payload, "performance", "tokens_per_second_mean")
     throughput_std = nested(payload, "performance", "tokens_per_second_std")
     comparable = bool(nested(payload, "runtime", "system_metrics_comparable"))
+    quality = payload.get("quality") if isinstance(payload.get("quality"), dict) else {}
+    downstream = quality.get("downstream") if isinstance(quality.get("downstream"), dict) else {}
+    hellaswag = downstream.get("hellaswag") if isinstance(downstream.get("hellaswag"), dict) else {}
+    calibration = payload.get("calibration") if isinstance(payload.get("calibration"), dict) else {}
     return {
         "schema_version": payload.get("schema_version"),
         "run_id": payload.get("run_id"),
@@ -36,6 +48,7 @@ def build_row(payload: dict[str, Any]) -> dict[str, Any]:
         "method": payload["method"],
         "group_size": payload.get("group_size"),
         "bits": payload["bits"],
+        "duo_scaling": calibration.get("duo_scaling"),
         "ppl": nested(payload, "quality", "ppl"),
         "ppl_delta": nested(payload, "quality", "ppl_delta"),
         "ppl_relative_increase_percent": nested(
@@ -48,6 +61,16 @@ def build_row(payload: dict[str, Any]) -> dict[str, Any]:
         "tokens_per_second_std": throughput_std,
         "system_metrics_comparable": comparable,
         "runtime_backend": nested(payload, "runtime", "backend"),
+        "hellaswag_acc": hellaswag.get("acc"),
+        "hellaswag_acc_stderr": hellaswag.get("acc_stderr"),
+        "hellaswag_acc_norm": hellaswag.get("acc_norm"),
+        "hellaswag_acc_norm_stderr": hellaswag.get("acc_norm_stderr"),
+        "hellaswag_n_samples": hellaswag.get("n_samples"),
+        "hellaswag_harness_version": hellaswag.get("harness_version"),
+        "hellaswag_task_version": hellaswag.get("task_version"),
+        "hellaswag_dataset_fingerprint": hellaswag.get("dataset_fingerprint"),
+        "hellaswag_tokenizer_fingerprint": hellaswag.get("tokenizer_fingerprint"),
+        "downstream_quality_comparable": bool(hellaswag.get("quality_comparable")),
         "provenance_status": nested(payload, "provenance", "status"),
         "environment_python": nested(payload, "environment", "python"),
         "environment_torch": nested(payload, "environment", "torch"),
@@ -65,9 +88,9 @@ def format_number(value: Any, digits: int = 2) -> str:
 def markdown_table(rows: list[dict[str, Any]]) -> str:
     """Render the compact human-readable v1 benchmark table."""
     lines = [
-        "# Unified quantization benchmark v1",
+        "# Unified quantization benchmark v1.2",
         "",
-        "| Method | G | PPL | ΔPPL | CKPT MiB | Resident MiB | Peak MiB | System | tok/s mean ± std |",
+        "| Configuration | G | PPL | ΔPPL | CKPT MiB | Resident MiB | Peak MiB | System | tok/s mean ± std |",
         "|---|---:|---:|---:|---:|---:|---:|---|---:|",
     ]
     for row in rows:
@@ -86,7 +109,7 @@ def markdown_table(rows: list[dict[str, Any]]) -> str:
             "| "
             + " | ".join(
                 [
-                    row["method"],
+                    experiment_label(row),
                     group,
                     format_number(row["ppl"], 4),
                     format_number(row["ppl_delta"], 4),
@@ -107,13 +130,79 @@ def markdown_table(rows: list[dict[str, Any]]) -> str:
             "",
         ]
     )
+    downstream_rows = [row for row in rows if row["hellaswag_acc"] is not None]
+    lines.extend(
+        [
+            "## HellaSwag downstream quality",
+            "",
+            "| Configuration | PPL | ΔPPL | HS acc ± stderr | HS acc_norm ± stderr | n |",
+            "|---|---:|---:|---:|---:|---:|",
+        ]
+    )
+    for row in downstream_rows:
+        acc = f"{float(row['hellaswag_acc']) * 100:.2f}% ± {float(row['hellaswag_acc_stderr']) * 100:.2f} pp"
+        acc_norm = f"{float(row['hellaswag_acc_norm']) * 100:.2f}% ± {float(row['hellaswag_acc_norm_stderr']) * 100:.2f} pp"
+        lines.append(
+            f"| {experiment_label(row)} | {format_number(row['ppl'], 4)} | "
+            f"{format_number(row['ppl_delta'], 4)} | {acc} | {acc_norm} | "
+            f"{row['hellaswag_n_samples']} |"
+        )
+    conclusions = automatic_conclusions(rows)
+    lines.extend(["", "## Automatic factual conclusions", ""])
+    lines.extend(f"- {conclusion}" for conclusion in conclusions)
+    lines.append("")
     return "\n".join(lines)
 
 
 def experiment_label(row: dict[str, Any]) -> str:
     """Return a compact human-readable experiment label."""
+    special = {
+        "awq_g64_duo_false": "AWQ G64 duo=False",
+        "awq_g64_duo_true": "AWQ G64 duo=True",
+    }
+    if row["experiment_id"] in special:
+        return special[row["experiment_id"]]
     group_size = row["group_size"]
     return row["method"] if group_size is None else f"{row['method']} G{group_size}"
+
+
+def automatic_conclusions(rows: list[dict[str, Any]]) -> list[str]:
+    """Generate arithmetic-only quality statements without causal claims."""
+    baseline = next(
+        (
+            row
+            for row in rows
+            if row["experiment_id"] == "fp16" and row["hellaswag_acc_norm"] is not None
+        ),
+        None,
+    )
+    if baseline is None:
+        return []
+    baseline_acc_norm = float(baseline["hellaswag_acc_norm"])
+    conclusions: list[str] = []
+    downstream_rows = [
+        row
+        for row in rows
+        if row["experiment_id"] != "fp16"
+        and row["hellaswag_acc_norm"] is not None
+        and row["ppl_relative_increase_percent"] is not None
+    ]
+    for row in downstream_rows:
+        delta_pp = (float(row["hellaswag_acc_norm"]) - baseline_acc_norm) * 100.0
+        conclusions.append(
+            f"{experiment_label(row)} increased PPL by "
+            f"{float(row['ppl_relative_increase_percent']):.2f}% relative to FP16; "
+            f"HellaSwag acc_norm changed by {delta_pp:+.2f} percentage points."
+        )
+    if downstream_rows and all(
+        float(row["ppl_delta"]) > 0
+        and float(row["hellaswag_acc_norm"]) < baseline_acc_norm
+        for row in downstream_rows
+    ):
+        conclusions.append(
+            "Higher PPL was accompanied by lower HellaSwag acc_norm in these evaluated configurations."
+        )
+    return conclusions
 
 
 def provenance_label(row: dict[str, Any]) -> str:
@@ -224,11 +313,23 @@ def html_table_rows(rows: list[dict[str, Any]]) -> str:
                 f"{float(row['tokens_per_second_std']):.2f}"
             )
         system = "comparable" if row["system_metrics_comparable"] else "N/C"
+        hs_acc = (
+            "—"
+            if row["hellaswag_acc"] is None
+            else f"{float(row['hellaswag_acc']) * 100:.2f}% ± {float(row['hellaswag_acc_stderr']) * 100:.2f} pp"
+        )
+        hs_acc_norm = (
+            "—"
+            if row["hellaswag_acc_norm"] is None
+            else f"{float(row['hellaswag_acc_norm']) * 100:.2f}% ± {float(row['hellaswag_acc_norm_stderr']) * 100:.2f} pp"
+        )
         output.append(
             "<tr>"
             f"<td>{escape(experiment_label(row))}</td>"
             f"<td>{escape(format_number(row['ppl'], 4))}</td>"
             f"<td>{escape(format_number(row['ppl_delta'], 4))}</td>"
+            f"<td>{escape(hs_acc)}</td>"
+            f"<td>{escape(hs_acc_norm)}</td>"
             f"<td>{escape(format_number(row['checkpoint_mib'], 2))}</td>"
             f"<td>{escape(format_number(row['peak_vram_mib'], 2))}</td>"
             f"<td>{escape(throughput)}</td>"
@@ -257,13 +358,15 @@ def html_dashboard(
     warmup_runs = generation_protocol.get("warmup_runs", "—")
     benchmark_runs = generation_protocol.get("benchmark_runs", "—")
     max_new_tokens = generation_protocol.get("max_new_tokens", "—")
+    conclusions = automatic_conclusions(rows)
+    conclusions_html = "".join(f"<li>{escape(item)}</li>" for item in conclusions)
 
     return f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quantization benchmark v1</title>
+  <title>Quantization benchmark v1.2</title>
   <style>
     :root {{
       color-scheme: light dark;
@@ -365,8 +468,8 @@ def html_dashboard(
     <header>
       <div>
         <div class="eyebrow">Unified quantization evaluation</div>
-        <h1>Benchmark v1</h1>
-        <p>Quality, throughput, memory, and comparability from unified raw results.</p>
+        <h1>Benchmark v1.2</h1>
+        <p>PPL, HellaSwag downstream quality, throughput, memory, and comparability.</p>
       </div>
       <div class="status">VALIDATED</div>
     </header>
@@ -421,11 +524,15 @@ def html_dashboard(
         <div class="table-wrap">
           <table>
             <thead>
-              <tr><th>Configuration</th><th>PPL</th><th>ΔPPL</th><th>Checkpoint MiB</th><th>Peak MiB</th><th>tok/s mean ± std</th><th>System</th><th>Provenance</th></tr>
+              <tr><th>Configuration</th><th>PPL</th><th>ΔPPL</th><th>HS acc</th><th>HS acc_norm</th><th>Checkpoint MiB</th><th>Peak MiB</th><th>tok/s mean ± std</th><th>System</th><th>Provenance</th></tr>
             </thead>
             <tbody>{html_table_rows(rows)}</tbody>
           </table>
         </div>
+      </article>
+      <article class="panel wide">
+        <div class="panel-head"><h2>Automatic factual conclusions</h2><span>Percentage-point changes; no causal claims</span></div>
+        <ul>{conclusions_html}</ul>
       </article>
     </section>
 
@@ -473,6 +580,7 @@ def main() -> None:
                 "generated_at_utc": generated_at_utc,
                 "validation": validation,
                 "figures": [path.name for path in figure_paths],
+                "conclusions": automatic_conclusions(rows),
                 "rows": rows,
             },
             ensure_ascii=False,

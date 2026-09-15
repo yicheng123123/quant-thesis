@@ -30,6 +30,18 @@ generation:
   warmup_runs: 3
   benchmark_runs: 5
   max_new_tokens: 128
+downstream:
+  enabled: true
+  harness: lm_eval
+  tasks:
+    - name: hellaswag
+      num_fewshot: 0
+      primary_metric: acc_norm
+  batch_size: 8
+  apply_chat_template: false
+  scope:
+    smoke_limit: 32
+    full_limit: null
 validation:
   expected_ppl: 14.549754088368804
   ppl_tolerance: 0.01

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quantization benchmark v1</title>
+  <title>Quantization benchmark v1.2</title>
   <style>
     :root {
       color-scheme: light dark;
@@ -105,8 +105,8 @@
     <header>
       <div>
         <div class="eyebrow">Unified quantization evaluation</div>
-        <h1>Benchmark v1</h1>
-        <p>Quality, throughput, memory, and comparability from unified raw results.</p>
+        <h1>Benchmark v1.2</h1>
+        <p>PPL, HellaSwag downstream quality, throughput, memory, and comparability.</p>
       </div>
       <div class="status">VALIDATED</div>
     </header>
@@ -142,8 +142,8 @@
 <div class="chart-row"><div class="row-name"><span>GPTQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:49.336%"></div></div><div class="row-value">PPL 13.4928 · Δ +1.0292</div></div>
 <div class="chart-row legacy"><div class="row-name"><span>GPTQ G128</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:66.278%"></div></div><div class="row-value">PPL 13.8463 · Δ +1.3827</div></div>
 <div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill awq" style="width:97.127%"></div></div><div class="row-value">PPL 14.4898 · Δ +2.0262</div></div>
-<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill awq" style="width:97.127%"></div></div><div class="row-value">PPL 14.4898 · Δ +2.0262</div></div>
-<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill awq" style="width:100.000%"></div></div><div class="row-value">PPL 14.5498 · Δ +2.0861</div></div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64 duo=False</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill awq" style="width:97.127%"></div></div><div class="row-value">PPL 14.4898 · Δ +2.0262</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64 duo=True</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill awq" style="width:100.000%"></div></div><div class="row-value">PPL 14.5498 · Δ +2.0861</div></div></div>
         <div class="legend">
           <span><i class="dot fp16"></i>FP16</span>
           <span><i class="dot gptq"></i>GPTQ</span>
@@ -159,8 +159,8 @@
 <div class="chart-row"><div class="row-name"><span>GPTQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:22.289%"></div></div><div class="row-value">9.63 ± 0.73 tok/s</div></div>
 <div class="chart-row legacy"><div class="row-name"><span>GPTQ G128</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:28.769%"></div></div><div class="row-value">12.43 tok/s</div></div>
 <div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div>
-<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div>
-<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64 duo=False</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64 duo=True</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div></div>
       </article>
 
       <article class="panel">
@@ -170,8 +170,8 @@
 <div class="chart-row"><div class="row-name"><span>GPTQ G64</span><small>v1 rerun</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:50.025%"></div></div><div class="row-value">481.23 MiB</div></div>
 <div class="chart-row legacy"><div class="row-name"><span>GPTQ G128</span><small>legacy frozen</small></div><div class="bar-track"><div class="bar-fill gptq" style="width:49.293%"></div></div><div class="row-value">474.19 MiB</div></div>
 <div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div>
-<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div>
-<div class="chart-row"><div class="row-name"><span>AWQ G64</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64 duo=False</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div>
+<div class="chart-row"><div class="row-name"><span>AWQ G64 duo=True</span><small>v1 rerun</small></div><div class="bar-track unavailable"><span>N/C</span></div><div class="row-value">N/C</div></div></div>
       </article>
 
       <article class="panel wide">
@@ -179,21 +179,25 @@
         <div class="table-wrap">
           <table>
             <thead>
-              <tr><th>Configuration</th><th>PPL</th><th>ΔPPL</th><th>Checkpoint MiB</th><th>Peak MiB</th><th>tok/s mean ± std</th><th>System</th><th>Provenance</th></tr>
+              <tr><th>Configuration</th><th>PPL</th><th>ΔPPL</th><th>HS acc</th><th>HS acc_norm</th><th>Checkpoint MiB</th><th>Peak MiB</th><th>tok/s mean ± std</th><th>System</th><th>Provenance</th></tr>
             </thead>
-            <tbody><tr><td>FP16</td><td>12.4636</td><td>0.0000</td><td>953.28</td><td>961.98</td><td>43.20 ± —</td><td>comparable</td><td>legacy frozen</td></tr>
-<tr><td>GPTQ G32</td><td>13.3063</td><td>0.8426</td><td>473.38</td><td>494.23</td><td>15.37 ± —</td><td>comparable</td><td>legacy frozen</td></tr>
-<tr><td>GPTQ G64</td><td>13.4928</td><td>1.0292</td><td>460.05</td><td>481.23</td><td>9.63 ± 0.73</td><td>comparable</td><td>v1 rerun</td></tr>
-<tr><td>GPTQ G128</td><td>13.8463</td><td>1.3827</td><td>453.39</td><td>474.19</td><td>12.43 ± —</td><td>comparable</td><td>legacy frozen</td></tr>
-<tr><td>AWQ G64</td><td>14.4898</td><td>2.0262</td><td>452.05</td><td>—</td><td>—</td><td>N/C</td><td>v1 rerun</td></tr>
-<tr><td>AWQ G64</td><td>14.4898</td><td>2.0262</td><td>452.05</td><td>—</td><td>—</td><td>N/C</td><td>v1 rerun</td></tr>
-<tr><td>AWQ G64</td><td>14.5498</td><td>2.0861</td><td>452.05</td><td>—</td><td>—</td><td>N/C</td><td>v1 rerun</td></tr></tbody>
+            <tbody><tr><td>FP16</td><td>12.4636</td><td>0.0000</td><td>40.63% ± 0.49 pp</td><td>52.48% ± 0.50 pp</td><td>953.28</td><td>961.98</td><td>43.20 ± —</td><td>comparable</td><td>legacy frozen</td></tr>
+<tr><td>GPTQ G32</td><td>13.3063</td><td>0.8426</td><td>—</td><td>—</td><td>473.38</td><td>494.23</td><td>15.37 ± —</td><td>comparable</td><td>legacy frozen</td></tr>
+<tr><td>GPTQ G64</td><td>13.4928</td><td>1.0292</td><td>39.46% ± 0.49 pp</td><td>50.27% ± 0.50 pp</td><td>460.05</td><td>481.23</td><td>9.63 ± 0.73</td><td>comparable</td><td>v1 rerun</td></tr>
+<tr><td>GPTQ G128</td><td>13.8463</td><td>1.3827</td><td>—</td><td>—</td><td>453.39</td><td>474.19</td><td>12.43 ± —</td><td>comparable</td><td>legacy frozen</td></tr>
+<tr><td>AWQ G64</td><td>14.4898</td><td>2.0262</td><td>—</td><td>—</td><td>452.05</td><td>—</td><td>—</td><td>N/C</td><td>v1 rerun</td></tr>
+<tr><td>AWQ G64 duo=False</td><td>14.4898</td><td>2.0262</td><td>39.29% ± 0.49 pp</td><td>49.42% ± 0.50 pp</td><td>452.05</td><td>—</td><td>—</td><td>N/C</td><td>v1 rerun</td></tr>
+<tr><td>AWQ G64 duo=True</td><td>14.5498</td><td>2.0861</td><td>38.92% ± 0.49 pp</td><td>49.91% ± 0.50 pp</td><td>452.05</td><td>—</td><td>—</td><td>N/C</td><td>v1 rerun</td></tr></tbody>
           </table>
         </div>
       </article>
+      <article class="panel wide">
+        <div class="panel-head"><h2>Automatic factual conclusions</h2><span>Percentage-point changes; no causal claims</span></div>
+        <ul><li>GPTQ G64 increased PPL by 8.26% relative to FP16; HellaSwag acc_norm changed by -2.21 percentage points.</li><li>AWQ G64 duo=False increased PPL by 16.26% relative to FP16; HellaSwag acc_norm changed by -3.06 percentage points.</li><li>AWQ G64 duo=True increased PPL by 16.74% relative to FP16; HellaSwag acc_norm changed by -2.57 percentage points.</li><li>Higher PPL was accompanied by lower HellaSwag acc_norm in these evaluated configurations.</li></ul>
+      </article>
     </section>
 
-    <footer>Generated 2026-09-14T17:34:52+00:00 from benchmark/results/raw/*.json</footer>
+    <footer>Generated 2026-09-15T10:28:44+00:00 from benchmark/results/raw/*.json</footer>
   </main>
 </body>
 </html>

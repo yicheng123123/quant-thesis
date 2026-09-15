@@ -25,6 +25,12 @@ COLORS = {
 
 
 def label(row: dict[str, Any]) -> str:
+    special = {
+        "awq_g64_duo_false": "AWQ G64 duo=False",
+        "awq_g64_duo_true": "AWQ G64 duo=True",
+    }
+    if row.get("experiment_id") in special:
+        return special[str(row["experiment_id"])]
     group_size = row.get("group_size")
     return str(row["method"]) if group_size is None else f"{row['method']} G{group_size}"
 
@@ -70,7 +76,12 @@ def _base_image(title: str, subtitle: str) -> tuple[Image.Image, ImageDraw.Image
     return image, draw
 
 
-def _draw_legend(draw: ImageDraw.ImageDraw, rows: list[dict[str, Any]], y: int) -> None:
+def _draw_legend(
+    draw: ImageDraw.ImageDraw,
+    rows: list[dict[str, Any]],
+    y: int,
+    note: str = "Muted = legacy frozen row",
+) -> None:
     x = 70
     for method in ("FP16", "GPTQ", "AWQ"):
         if not any(row["method"] == method for row in rows):
@@ -78,7 +89,7 @@ def _draw_legend(draw: ImageDraw.ImageDraw, rows: list[dict[str, Any]], y: int) 
         draw.rounded_rectangle((x, y, x + 18, y + 18), radius=4, fill=COLORS[method])
         draw.text((x + 28, y - 2), method, font=_font(16), fill=TEXT)
         x += 120
-    draw.text((x + 12, y - 2), "Muted = legacy frozen row", font=_font(16), fill=MUTED)
+    draw.text((x + 12, y - 2), note, font=_font(16), fill=MUTED)
 
 
 def _bar_figure(
@@ -92,16 +103,21 @@ def _bar_figure(
     unit: str,
     digits: int,
     comparable_only: bool = False,
-    include_std: bool = False,
+    std_field: str | None = None,
+    std_unit: str | None = None,
+    display_scale: float = 1.0,
+    comparable_field: str | None = None,
+    mute_legacy: bool = True,
 ) -> list[Path]:
     chart_rows = [
         row
         for row in rows
         if row.get(field) is not None
         and (not comparable_only or bool(row.get("system_metrics_comparable")))
+        and (comparable_field is None or bool(row.get(comparable_field)))
     ]
     values = [
-        float(row[field]) + (float(row.get("tokens_per_second_std") or 0) if include_std else 0)
+        float(row[field]) + (float(row.get(std_field) or 0) if std_field else 0)
         for row in chart_rows
     ]
     maximum = max(values, default=1.0) or 1.0
@@ -115,11 +131,11 @@ def _bar_figure(
         value = maximum * 1.15 * tick / 5
         x = x0 + (x1 - x0) * tick / 5
         draw.line((x, y0 - 18, x, y0 + plot_height - 18), fill=GRID, width=2)
-        draw.text((x - 18, y0 + plot_height + 4), f"{value:.{digits}f}", font=_font(15), fill=MUTED)
+        draw.text((x - 18, y0 + plot_height + 4), f"{value * display_scale:.{digits}f}", font=_font(15), fill=MUTED)
         body.extend(
             [
                 f'<line x1="{x:.1f}" y1="{y0 - 18}" x2="{x:.1f}" y2="{y0 + plot_height - 18}" stroke="{GRID}" stroke-width="2"/>',
-                f'<text x="{x:.1f}" y="{y0 + plot_height + 28}" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="{MUTED}">{value:.{digits}f}</text>',
+                f'<text x="{x:.1f}" y="{y0 + plot_height + 28}" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="{MUTED}">{value * display_scale:.{digits}f}</text>',
             ]
         )
 
@@ -129,16 +145,22 @@ def _bar_figure(
         bar_y = y + 10
         width = (x1 - x0) * value / (maximum * 1.15)
         method_color = _method_color(row)
-        alpha = 150 if row.get("provenance_status") == "legacy_frozen" else 255
+        alpha = 150 if mute_legacy and row.get("provenance_status") == "legacy_frozen" else 255
         fill = method_color if alpha == 255 else "#9ea8bd"
         draw.text((70, y + 4), label(row), font=_font(20, bold=True), fill=TEXT)
         draw.text((70, y + 34), "legacy frozen" if alpha != 255 else "v1 rerun", font=_font(15), fill=MUTED)
         draw.rounded_rectangle((x0, bar_y, x1, bar_y + 34), radius=7, fill=TRACK)
         draw.rounded_rectangle((x0, bar_y, x0 + max(width, 4), bar_y + 34), radius=7, fill=fill)
-        value_text = f"{value:.{digits}f} {unit}"
-        if include_std and row.get("tokens_per_second_std") is not None:
-            value_text = f"{value:.{digits}f} ± {float(row['tokens_per_second_std']):.{digits}f} {unit}"
-            std = float(row["tokens_per_second_std"])
+        unit_separator = "" if unit == "%" else " "
+        value_text = f"{value * display_scale:.{digits}f}{unit_separator}{unit}"
+        if std_field and row.get(std_field) is not None:
+            error_unit = std_unit or unit
+            error_separator = "" if error_unit == "%" else " "
+            value_text += (
+                f" ± {float(row[std_field]) * display_scale:.{digits}f}"
+                f"{error_separator}{error_unit}"
+            )
+            std = float(row[std_field])
             lower = x0 + (x1 - x0) * max(value - std, 0) / (maximum * 1.15)
             upper = x0 + (x1 - x0) * (value + std) / (maximum * 1.15)
             center = y + 27
@@ -154,8 +176,8 @@ def _bar_figure(
                 f'<rect x="{x0}" y="{bar_y}" width="{max(width, 4):.1f}" height="34" rx="7" fill="{fill}"/>',
             ]
         )
-        if include_std and row.get("tokens_per_second_std") is not None:
-            std = float(row["tokens_per_second_std"])
+        if std_field and row.get(std_field) is not None:
+            std = float(row[std_field])
             lower = x0 + (x1 - x0) * max(value - std, 0) / (maximum * 1.15)
             upper = x0 + (x1 - x0) * (value + std) / (maximum * 1.15)
             center = y + 27
@@ -170,7 +192,12 @@ def _bar_figure(
             f'<text x="{min(x0 + width + 14, 1320):.1f}" y="{y + 34}" font-family="Segoe UI, Arial, sans-serif" font-size="17" fill="{TEXT}">{_svg_text(value_text)}</text>'
         )
 
-    _draw_legend(draw, rows, 820)
+    legend_note = (
+        "Error bars = standard error"
+        if std_field and field.startswith("hellaswag_")
+        else "Muted = legacy frozen row"
+    )
+    _draw_legend(draw, rows, 820, legend_note)
     body.extend(
         [
             f'<line x1="70" y1="838" x2="88" y2="838" stroke="{COLORS["FP16"]}" stroke-width="14" stroke-linecap="round"/>',
@@ -179,7 +206,7 @@ def _bar_figure(
             f'<text x="218" y="844" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="{TEXT}">GPTQ</text>',
             f'<line x1="310" y1="838" x2="328" y2="838" stroke="{COLORS["AWQ"]}" stroke-width="14" stroke-linecap="round"/>',
             f'<text x="338" y="844" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="{TEXT}">AWQ</text>',
-            f'<text x="450" y="844" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="{MUTED}">Muted = legacy frozen row</text>',
+            f'<text x="450" y="844" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="{MUTED}">{_svg_text(legend_note)}</text>',
         ]
     )
 
@@ -296,8 +323,119 @@ def _scatter_figure(
     return [png_path, svg_path]
 
 
+def _downstream_scatter_figure(
+    rows: list[dict[str, Any]],
+    *,
+    output_dir: Path,
+) -> list[Path]:
+    """Plot PPL delta against HellaSwag acc_norm with standard-error bars."""
+    points = [
+        (
+            float(row["ppl_delta"]),
+            float(row["hellaswag_acc_norm"]),
+            float(row["hellaswag_acc_norm_stderr"]),
+            row,
+        )
+        for row in rows
+        if row.get("ppl_delta") is not None
+        and row.get("hellaswag_acc_norm") is not None
+        and row.get("hellaswag_acc_norm_stderr") is not None
+        and row.get("downstream_quality_comparable")
+    ]
+    if not points:
+        return []
+
+    xs = [point[0] for point in points]
+    y_lower = [point[1] - point[2] for point in points]
+    y_upper = [point[1] + point[2] for point in points]
+    xmin, xmax = min(xs), max(xs)
+    ymin, ymax = min(y_lower), max(y_upper)
+    xpad = max((xmax - xmin) * 0.10, 0.15)
+    ypad = max((ymax - ymin) * 0.18, 0.01)
+    xmin, xmax = max(0.0, xmin - xpad), xmax + xpad
+    ymin, ymax = max(0.0, ymin - ypad), min(1.0, ymax + ypad)
+    x0, x1, y0, y1 = 190, 1450, 190, 760
+
+    title = "PPL loss vs HellaSwag normalized accuracy"
+    subtitle = "Zero-shot HellaSwag · vertical whiskers are standard error · association, not causation"
+    image, draw = _base_image(title, subtitle)
+    body: list[str] = []
+
+    def sx(value: float) -> float:
+        return x0 + (value - xmin) / (xmax - xmin) * (x1 - x0)
+
+    def sy(value: float) -> float:
+        return y1 - (value - ymin) / (ymax - ymin) * (y1 - y0)
+
+    for tick in range(6):
+        value = xmin + (xmax - xmin) * tick / 5
+        x = sx(value)
+        draw.line((x, y0, x, y1), fill=GRID, width=2)
+        draw.text((x - 24, y1 + 16), f"{value:.2f}", font=_font(15), fill=MUTED)
+        body.extend(
+            [
+                f'<line x1="{x:.1f}" y1="{y0}" x2="{x:.1f}" y2="{y1}" stroke="{GRID}" stroke-width="2"/>',
+                f'<text x="{x:.1f}" y="{y1 + 40}" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="{MUTED}">{value:.2f}</text>',
+            ]
+        )
+    for tick in range(6):
+        value = ymin + (ymax - ymin) * tick / 5
+        y = sy(value)
+        draw.line((x0, y, x1, y), fill=GRID, width=2)
+        draw.text((x0 - 74, y - 10), f"{value * 100:.1f}%", font=_font(15), fill=MUTED)
+        body.extend(
+            [
+                f'<line x1="{x0}" y1="{y:.1f}" x2="{x1}" y2="{y:.1f}" stroke="{GRID}" stroke-width="2"/>',
+                f'<text x="{x0 - 18}" y="{y + 5:.1f}" text-anchor="end" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="{MUTED}">{value * 100:.1f}%</text>',
+            ]
+        )
+
+    label_offsets = {
+        "awq_g64_duo_false": (-238, 16),
+        "awq_g64_duo_true": (18, -38),
+    }
+    for x_value, y_value, stderr, row in points:
+        x, y = sx(x_value), sy(y_value)
+        low, high = sy(y_value - stderr), sy(y_value + stderr)
+        color = _method_color(row)
+        draw.line((x, high, x, low), fill=TEXT, width=3)
+        draw.line((x - 9, high, x + 9, high), fill=TEXT, width=3)
+        draw.line((x - 9, low, x + 9, low), fill=TEXT, width=3)
+        draw.ellipse((x - 12, y - 12, x + 12, y + 12), fill=color, outline=BACKGROUND, width=3)
+        dx, dy = label_offsets.get(str(row.get("experiment_id")), (18, -12))
+        draw.text((x + dx, y + dy), label(row), font=_font(17, bold=True), fill=TEXT)
+        body.extend(
+            [
+                f'<line x1="{x:.1f}" y1="{high:.1f}" x2="{x:.1f}" y2="{low:.1f}" stroke="{TEXT}" stroke-width="3"/>',
+                f'<line x1="{x - 9:.1f}" y1="{high:.1f}" x2="{x + 9:.1f}" y2="{high:.1f}" stroke="{TEXT}" stroke-width="3"/>',
+                f'<line x1="{x - 9:.1f}" y1="{low:.1f}" x2="{x + 9:.1f}" y2="{low:.1f}" stroke="{TEXT}" stroke-width="3"/>',
+                f'<circle cx="{x:.1f}" cy="{y:.1f}" r="12" fill="{color}" stroke="{BACKGROUND}" stroke-width="3"/>',
+                f'<text x="{x + dx:.1f}" y="{y + dy + 18:.1f}" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="{TEXT}">{_svg_text(label(row))}</text>',
+            ]
+        )
+
+    draw.text((690, 810), "ΔPPL vs FP16", font=_font(18, bold=True), fill=TEXT)
+    axis_label = Image.new("RGBA", (260, 48), (0, 0, 0, 0))
+    axis_draw = ImageDraw.Draw(axis_label)
+    axis_draw.text((0, 8), "HellaSwag acc_norm", font=_font(18, bold=True), fill=TEXT)
+    rotated_axis_label = axis_label.rotate(90, expand=True)
+    image.paste(rotated_axis_label, (24, 350), rotated_axis_label)
+    body.extend(
+        [
+            '<text x="820" y="850" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="{0}">ΔPPL vs FP16</text>'.format(TEXT),
+            '<text x="42" y="475" transform="rotate(-90 42 475)" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="{0}">HellaSwag acc_norm</text>'.format(TEXT),
+        ]
+    )
+
+    png_path = output_dir / "ppl_vs_hellaswag_acc_norm.png"
+    svg_path = output_dir / "ppl_vs_hellaswag_acc_norm.svg"
+    image.save(png_path, format="PNG", optimize=True)
+    _write_svg(svg_path, title, subtitle, body)
+    return [png_path, svg_path]
+
+
 def generate_figures(rows: list[dict[str, Any]], output_dir: Path) -> list[Path]:
-    """Generate the standardized v1.1 figure set in PNG and SVG formats."""
+    """Generate the standardized v1.2 figure set in PNG and SVG formats."""
     output_dir.mkdir(parents=True, exist_ok=True)
     paths: list[Path] = []
     paths.extend(
@@ -348,7 +486,7 @@ def generate_figures(rows: list[dict[str, Any]], output_dir: Path) -> list[Path]
             unit="tok/s",
             digits=2,
             comparable_only=True,
-            include_std=True,
+            std_field="tokens_per_second_std",
         )
     )
     paths.extend(
@@ -373,4 +511,39 @@ def generate_figures(rows: list[dict[str, Any]], output_dir: Path) -> list[Path]
             x_label="Checkpoint size (MiB)",
         )
     )
+    paths.extend(
+        _bar_figure(
+            rows,
+            output_dir=output_dir,
+            stem="hellaswag_acc",
+            title="HellaSwag accuracy",
+            subtitle="Zero-shot continuation likelihood · error bars show standard error",
+            field="hellaswag_acc",
+            unit="%",
+            digits=2,
+            std_field="hellaswag_acc_stderr",
+            std_unit="pp",
+            display_scale=100.0,
+            comparable_field="downstream_quality_comparable",
+            mute_legacy=False,
+        )
+    )
+    paths.extend(
+        _bar_figure(
+            rows,
+            output_dir=output_dir,
+            stem="hellaswag_acc_norm",
+            title="HellaSwag normalized accuracy",
+            subtitle="Primary downstream metric · zero-shot · error bars show standard error",
+            field="hellaswag_acc_norm",
+            unit="%",
+            digits=2,
+            std_field="hellaswag_acc_norm_stderr",
+            std_unit="pp",
+            display_scale=100.0,
+            comparable_field="downstream_quality_comparable",
+            mute_legacy=False,
+        )
+    )
+    paths.extend(_downstream_scatter_figure(rows, output_dir=output_dir))
     return paths

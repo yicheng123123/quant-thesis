@@ -1,4 +1,4 @@
-"""Regression and protocol gates for benchmark v1.1 summary generation."""
+"""Regression and protocol gates for benchmark v1.2 summary generation."""
 
 from __future__ import annotations
 
@@ -6,7 +6,12 @@ import json
 from pathlib import Path
 from typing import Any
 
-from benchmark.config import BENCHMARK_ROOT, SCHEMA_VERSION, load_config
+from benchmark.config import (
+    BENCHMARK_ROOT,
+    LEGACY_SCHEMA_VERSIONS,
+    SCHEMA_VERSION,
+    load_config,
+)
 
 
 def _number(value: Any) -> float | None:
@@ -24,6 +29,7 @@ def validate_payloads(payloads: list[dict[str, Any]]) -> dict[str, Any]:
     warnings: list[str] = []
     checks: list[dict[str, Any]] = []
     seen_run_ids: set[str] = set()
+    downstream_protocols: list[tuple[str, dict[str, Any]]] = []
 
     def check(name: str, passed: bool, detail: str, *, warning: bool = False) -> None:
         check_status = "passed" if passed else "warning" if warning else "failed"
@@ -41,11 +47,20 @@ def validate_payloads(payloads: list[dict[str, Any]]) -> dict[str, Any]:
             continue
 
         schema_version = payload.get("schema_version")
+        downstream_config = config.data.get("downstream")
+        requires_downstream = isinstance(downstream_config, dict) and downstream_config.get("enabled") is True
+        schema_valid = schema_version == SCHEMA_VERSION or (
+            not requires_downstream and schema_version in LEGACY_SCHEMA_VERSIONS
+        )
         check(
             f"{experiment_id}.schema_version",
-            schema_version == SCHEMA_VERSION,
-            f"expected {SCHEMA_VERSION!r}, got {schema_version!r}",
+            schema_valid,
+            f"expected {SCHEMA_VERSION!r} for downstream configs, got {schema_version!r}",
         )
+        if schema_version in LEGACY_SCHEMA_VERSIONS:
+            warnings.append(
+                f"{experiment_id}.schema_version: retained legacy {schema_version} result without downstream scope"
+            )
 
         run_id = payload.get("run_id")
         run_id_valid = isinstance(run_id, str) and bool(run_id.strip())
@@ -78,6 +93,8 @@ def validate_payloads(payloads: list[dict[str, Any]]) -> dict[str, Any]:
             )
         else:
             required_environment = ("python", "torch", "transformers", "os", "git_commit")
+            if requires_downstream:
+                required_environment += ("lm_eval",)
             missing_environment = [key for key in required_environment if not environment.get(key)]
             check(
                 f"{experiment_id}.environment",
@@ -85,6 +102,99 @@ def validate_payloads(payloads: list[dict[str, Any]]) -> dict[str, Any]:
                 f"missing fields: {missing_environment}",
                 warning=provenance_status == "legacy_frozen",
             )
+
+        if requires_downstream:
+            quality_section = payload.get("quality")
+            downstream_results = (
+                quality_section.get("downstream")
+                if isinstance(quality_section, dict)
+                else None
+            )
+            task_config = downstream_config["tasks"][0]
+            task_name = str(task_config["name"])
+            task_result = (
+                downstream_results.get(task_name)
+                if isinstance(downstream_results, dict)
+                else None
+            )
+            if not isinstance(task_result, dict):
+                check(
+                    f"{experiment_id}.downstream.{task_name}",
+                    False,
+                    "full downstream result is missing",
+                )
+            else:
+                for metric in ("acc", "acc_stderr", "acc_norm", "acc_norm_stderr"):
+                    value = _number(task_result.get(metric))
+                    check(
+                        f"{experiment_id}.downstream.{task_name}.{metric}",
+                        value is not None and 0.0 <= value <= 1.0,
+                        f"expected a value in [0, 1], got {task_result.get(metric)!r}",
+                    )
+                check(
+                    f"{experiment_id}.downstream.{task_name}.task_name",
+                    task_result.get("task_name") == task_name == "hellaswag",
+                    f"expected hellaswag, got {task_result.get('task_name')!r}",
+                )
+                check(
+                    f"{experiment_id}.downstream.{task_name}.num_fewshot",
+                    task_result.get("num_fewshot") == task_config["num_fewshot"] == 0,
+                    f"expected zero-shot, got {task_result.get('num_fewshot')!r}",
+                )
+                check(
+                    f"{experiment_id}.downstream.{task_name}.apply_chat_template",
+                    task_result.get("apply_chat_template") is downstream_config["apply_chat_template"] is False,
+                    f"expected false, got {task_result.get('apply_chat_template')!r}",
+                )
+                check(
+                    f"{experiment_id}.downstream.{task_name}.scope",
+                    task_result.get("scope") == "full" and task_result.get("limit") is None,
+                    f"expected full scope with no limit, got scope={task_result.get('scope')!r}, limit={task_result.get('limit')!r}",
+                )
+                check(
+                    f"{experiment_id}.downstream.{task_name}.samples",
+                    isinstance(task_result.get("n_samples"), int)
+                    and task_result.get("n_samples") == task_result.get("original_samples")
+                    and task_result.get("n_samples") > 0,
+                    f"effective={task_result.get('n_samples')!r}, original={task_result.get('original_samples')!r}",
+                )
+                check(
+                    f"{experiment_id}.downstream.{task_name}.harness",
+                    task_result.get("harness") == "lm-evaluation-harness"
+                    and bool(task_result.get("harness_version")),
+                    f"harness={task_result.get('harness')!r}, version={task_result.get('harness_version')!r}",
+                )
+                check(
+                    f"{experiment_id}.downstream.{task_name}.environment_harness_version",
+                    isinstance(environment, dict)
+                    and environment.get("lm_eval") == task_result.get("harness_version"),
+                    "environment fingerprint and downstream result must record the same lm-eval version",
+                )
+                check(
+                    f"{experiment_id}.downstream.{task_name}.offline",
+                    task_result.get("offline") is True,
+                    f"expected cache-only execution, got {task_result.get('offline')!r}",
+                )
+                fingerprint_fields = (
+                    "harness_version",
+                    "task_version",
+                    "task_config_sha256",
+                    "dataset_name",
+                    "dataset_split",
+                    "dataset_fingerprint",
+                    "n_samples",
+                    "num_fewshot",
+                    "apply_chat_template",
+                    "tokenizer_fingerprint",
+                    "tokenizer_fingerprint_algorithm",
+                )
+                missing = [field for field in fingerprint_fields if task_result.get(field) in (None, "")]
+                check(
+                    f"{experiment_id}.downstream.{task_name}.fingerprint",
+                    not missing,
+                    f"missing fields: {missing}",
+                )
+                downstream_protocols.append((experiment_id, task_result))
 
         protocol = payload.get("protocol") if isinstance(payload.get("protocol"), dict) else {}
         generation = protocol.get("generation") if isinstance(protocol.get("generation"), dict) else {}
@@ -164,6 +274,40 @@ def validate_payloads(payloads: list[dict[str, Any]]) -> dict[str, Any]:
         if not comparable:
             warnings.append(
                 f"{experiment_id}.system: system metrics are excluded because comparable=false"
+            )
+
+    if downstream_protocols:
+        expected_downstream_count = 4
+        check(
+            "downstream.comparison.matrix",
+            len(downstream_protocols) == expected_downstream_count,
+            f"expected {expected_downstream_count} full HellaSwag rows, got {len(downstream_protocols)}",
+        )
+        comparison_fields = (
+            "harness_version",
+            "task_version",
+            "task_config_sha256",
+            "dataset_name",
+            "dataset_split",
+            "dataset_fingerprint",
+            "n_samples",
+            "num_fewshot",
+            "apply_chat_template",
+            "tokenizer_fingerprint",
+            "tokenizer_fingerprint_algorithm",
+        )
+        for field in comparison_fields:
+            values = {str(result.get(field)) for _, result in downstream_protocols}
+            check(
+                f"downstream.comparison.same_{field}",
+                len(values) == 1,
+                f"values differ across rows: {sorted(values)}",
+            )
+        for experiment_id, result in downstream_protocols:
+            check(
+                f"{experiment_id}.downstream.quality_comparable",
+                result.get("quality_comparable") is True,
+                "row is excluded from downstream comparison",
             )
 
     return {

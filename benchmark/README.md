@@ -74,11 +74,6 @@ benchmark/
 └── summarize.py             # validate → summarize → visualize
 ```
 
-The learning-only implementation is
-`practice/hellaswag/01_manual_scoring.py`. It exposes one sample's candidate
-log-likelihoods and predictions. It is not used for formal scores; formal
-downstream results always come from the harness task definition.
-
 ## Fixed harness dependency
 
 The formal v1.2 protocol fixes `lm_eval==0.4.13` in every runtime used by the
@@ -130,12 +125,6 @@ overlap:
 & .\.venv-gptq\Scripts\python.exe -X utf8 -m benchmark.runners.eval_downstream --config .\benchmark\configs\gptq_g64.yaml --task hellaswag --scope full
 & .\.venv-awq\Scripts\python.exe -X utf8 -m benchmark.runners.eval_downstream --config .\benchmark\configs\awq_g64_duo_false.yaml --task hellaswag --scope full
 & .\.venv-awq\Scripts\python.exe -X utf8 -m benchmark.runners.eval_downstream --config .\benchmark\configs\awq_g64_duo_true.yaml --task hellaswag --scope full
-```
-
-Inspect one sample independently for learning:
-
-```powershell
-& .\.venv\Scripts\python.exe -X utf8 .\practice\hellaswag\01_manual_scoring.py
 ```
 
 ## Validate, summarize, and visualize

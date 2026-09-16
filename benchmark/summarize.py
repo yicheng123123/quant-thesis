@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any
 
 from benchmark.config import FIGURES_RESULTS_DIR, RAW_RESULTS_DIR, SCHEMA_VERSION, SUMMARY_RESULTS_DIR
-from benchmark.figures import generate_figures
+from benchmark.figures import generate_figures, method_color
 from benchmark.validation import load_raw_payloads, validate_payloads
 
 
@@ -42,6 +42,8 @@ def build_row(payload: dict[str, Any]) -> dict[str, Any]:
     calibration = payload.get("calibration") if isinstance(payload.get("calibration"), dict) else {}
     metadata = payload.get("experiment_metadata") if isinstance(payload.get("experiment_metadata"), dict) else {}
     metadata_quantization = metadata.get("quantization") if isinstance(metadata.get("quantization"), dict) else {}
+    metadata_loader = metadata.get("loader") if isinstance(metadata.get("loader"), dict) else {}
+    metadata_runtime = metadata.get("runtime") if isinstance(metadata.get("runtime"), dict) else {}
     method = metadata.get("method", metadata_quantization.get("method", payload.get("method")))
     group_size = metadata.get("group_size", metadata_quantization.get("group_size", payload.get("group_size")))
     duo_scaling = metadata.get("duo_scaling", metadata_quantization.get("duo_scaling", calibration.get("duo_scaling")))
@@ -58,6 +60,10 @@ def build_row(payload: dict[str, Any]) -> dict[str, Any]:
         "symmetric": metadata.get("symmetric", payload.get("symmetric")),
         "duo_scaling": duo_scaling,
         "runtime_backend": metadata.get("backend", nested(payload, "runtime", "backend")),
+        "loader_adapter": metadata_loader.get("adapter", nested(payload, "runtime", "adapter")),
+        "packed_execution": metadata_runtime.get(
+            "packed_execution", nested(payload, "runtime", "packed_execution")
+        ),
         "evaluation_task": metadata.get("task"),
         "evaluation_scope": metadata.get("scope"),
         "evaluation_dataset": metadata.get("dataset"),
@@ -137,7 +143,7 @@ def markdown_table(rows: list[dict[str, Any]]) -> str:
     lines.extend(
         [
             "",
-            "`N/C` means the runtime representation is not comparable to the quantized GPTQ kernel.",
+            "`N/C` means the runtime representation is not comparable under the declared system protocol.",
             "Legacy frozen speed rows may not have a standard deviation; rerun `eval_system` for v1 mean/std.",
             "",
         ]
@@ -235,7 +241,7 @@ def chart_row(
     value_text: str,
 ) -> str:
     """Render one responsive horizontal chart row."""
-    method_class = str(row["method"]).lower()
+    color = method_color(row)
     provenance = provenance_label(row)
     legacy_class = " legacy" if provenance != "v1 rerun" else ""
     if width_percent is None:
@@ -244,7 +250,7 @@ def chart_row(
         bounded_width = min(max(width_percent, 0.0), 100.0)
         track = (
             '<div class="bar-track">'
-            f'<div class="bar-fill {method_class}" style="width:{bounded_width:.3f}%"></div>'
+            f'<div class="bar-fill" style="width:{bounded_width:.3f}%;background:{color}"></div>'
             "</div>"
         )
     return (
@@ -367,11 +373,24 @@ def html_dashboard(
     """Build a self-contained responsive benchmark dashboard."""
     quantized = [row for row in rows if int(row["bits"]) < 16 and row["ppl"] is not None]
     best_quantized = min(quantized, key=lambda row: float(row["ppl"]))
-    gptq_g64 = next((row for row in rows if row["experiment_id"] == "gptq_g64"), None)
-    if gptq_g64 is None or gptq_g64["tokens_per_second_mean"] is None:
-        gptq_speed = "—"
+    comparable_speed_rows = [
+        row
+        for row in rows
+        if row["system_metrics_comparable"] and row["tokens_per_second_mean"] is not None
+    ]
+    if not comparable_speed_rows:
+        fastest_speed = "—"
+        fastest_label = "no comparable result"
     else:
-        gptq_speed = f"{float(gptq_g64['tokens_per_second_mean']):.2f} tok/s"
+        fastest = max(comparable_speed_rows, key=lambda row: float(row["tokens_per_second_mean"]))
+        fastest_speed = f"{float(fastest['tokens_per_second_mean']):.2f} tok/s"
+        fastest_label = experiment_label(fastest)
+    methods = list(dict.fromkeys(str(row["method"]).upper() for row in rows))
+    method_note = " · ".join(methods)
+    legend_html = "".join(
+        f'<span><i class="dot" style="background:{method_color({"method": method})}"></i>{escape(method)}</span>'
+        for method in methods
+    )
 
     warmup_runs = generation_protocol.get("warmup_runs", "—")
     benchmark_runs = generation_protocol.get("benchmark_runs", "—")
@@ -384,7 +403,7 @@ def html_dashboard(
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Quantization benchmark v1.2.1</title>
+  <title>Quantization benchmark v{SCHEMA_VERSION}</title>
   <style>
     :root {{
       color-scheme: light dark;
@@ -394,9 +413,6 @@ def html_dashboard(
       --text: #172033;
       --muted: #657089;
       --line: #d8deea;
-      --fp16: #2878ff;
-      --gptq: #7357d9;
-      --awq: #e08a1e;
       --success: #16845b;
       --shadow: 0 12px 32px rgba(29, 43, 76, 0.08);
     }}
@@ -408,9 +424,6 @@ def html_dashboard(
         --text: #edf1f8;
         --muted: #a8b2c7;
         --line: #303b50;
-        --fp16: #6aa0ff;
-        --gptq: #a48af4;
-        --awq: #f1ab52;
         --success: #56c99a;
         --shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
       }}
@@ -447,18 +460,12 @@ def html_dashboard(
     .row-name small {{ display: block; color: var(--muted); margin-top: 2px; }}
     .bar-track {{ height: 18px; background: var(--surface-soft); border-radius: 5px; overflow: hidden; position: relative; }}
     .bar-fill {{ height: 100%; min-width: 3px; border-radius: inherit; }}
-    .bar-fill.fp16 {{ background: var(--fp16); }}
-    .bar-fill.gptq {{ background: var(--gptq); }}
-    .bar-fill.awq {{ background: var(--awq); }}
     .legacy .bar-fill {{ opacity: 0.52; }}
     .bar-track.unavailable {{ display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 11px; letter-spacing: 0.08em; }}
     .row-value {{ text-align: right; font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }}
     .legend {{ display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font-size: 12px; margin-top: 14px; }}
     .legend span {{ display: inline-flex; align-items: center; gap: 6px; }}
     .dot {{ width: 9px; height: 9px; border-radius: 50%; display: inline-block; }}
-    .dot.fp16 {{ background: var(--fp16); }}
-    .dot.gptq {{ background: var(--gptq); }}
-    .dot.awq {{ background: var(--awq); }}
     .table-wrap {{ overflow-x: auto; }}
     table {{ width: 100%; border-collapse: collapse; font-size: 13px; }}
     th, td {{ padding: 10px 9px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }}
@@ -486,7 +493,7 @@ def html_dashboard(
     <header>
       <div>
         <div class="eyebrow">Unified quantization evaluation</div>
-        <h1>Benchmark v1.2.1</h1>
+        <h1>Benchmark v{SCHEMA_VERSION}</h1>
         <p>PPL, HellaSwag downstream quality, throughput, memory, and comparability.</p>
       </div>
       <div class="status">VALIDATED</div>
@@ -496,17 +503,17 @@ def html_dashboard(
       <article class="stat">
         <div class="stat-label">Configurations</div>
         <div class="stat-value">{len(rows)}</div>
-        <div class="stat-note">FP16 · GPTQ · AWQ</div>
+        <div class="stat-note">{escape(method_note)}</div>
       </article>
       <article class="stat">
-        <div class="stat-label">Best 4-bit PPL</div>
+        <div class="stat-label">Best quantized PPL</div>
         <div class="stat-value">{float(best_quantized['ppl']):.4f}</div>
         <div class="stat-note">{escape(experiment_label(best_quantized))}</div>
       </article>
       <article class="stat">
-        <div class="stat-label">GPTQ G64 throughput</div>
-        <div class="stat-value">{escape(gptq_speed)}</div>
-        <div class="stat-note">validated system rerun</div>
+        <div class="stat-label">Best comparable throughput</div>
+        <div class="stat-value">{escape(fastest_speed)}</div>
+        <div class="stat-note">{escape(fastest_label)}</div>
       </article>
       <article class="stat">
         <div class="stat-label">System protocol</div>
@@ -520,9 +527,7 @@ def html_dashboard(
         <div class="panel-head"><h2>Quality loss vs FP16</h2><span>Shorter is better</span></div>
         <div class="chart">{quality_chart(rows)}</div>
         <div class="legend">
-          <span><i class="dot fp16"></i>FP16</span>
-          <span><i class="dot gptq"></i>GPTQ</span>
-          <span><i class="dot awq"></i>AWQ</span>
+          {legend_html}
           <span>Muted bars = legacy frozen system rows</span>
         </div>
       </article>

@@ -6,6 +6,7 @@ import argparse
 import gc
 import os
 import subprocess
+import sys
 from pathlib import Path
 
 from benchmark.config import (
@@ -22,6 +23,9 @@ from benchmark.config import (
 def run_worker(config_path: Path) -> None:
     """Load exactly one model, benchmark it, persist results, and release CUDA."""
     config = load_config(config_path, check_paths=True)
+    config.validate_active_python()
+    if not config.supports_evaluation("system"):
+        raise RuntimeError(f"Adapter {config.loader_adapter!r} does not support system evaluation.")
     manifest = print_manifest(
         config,
         task="Generation",
@@ -34,18 +38,19 @@ def run_worker(config_path: Path) -> None:
     import torch
 
     from benchmark.eval.memory import benchmark_system
-    from benchmark.eval.model import load_model_and_tokenizer
+    from benchmark.eval.model import load_model
 
     if not torch.cuda.is_available():
         raise RuntimeError("System evaluation requires CUDA.")
 
-    model, tokenizer = load_model_and_tokenizer(config)
+    loaded = load_model(config)
+    model, tokenizer = loaded.model, loaded.tokenizer
     memory, performance = benchmark_system(
         model,
         tokenizer,
         config.data["generation"],
     )
-    comparable = bool(config.data["runtime"]["system_metrics_comparable"])
+    comparable = config.system_metrics_comparable
     had_legacy_result = config.raw_result_path.is_file()
     result_path = write_result(
         config,
@@ -58,7 +63,7 @@ def run_worker(config_path: Path) -> None:
             "system_validation": {
                 "isolated_process": True,
                 "system_metrics_comparable": comparable,
-                "backend": config.data["runtime"]["backend"],
+                "backend": config.backend,
                 "environment": str(config.python_executable),
                 "comparability_note": config.data["runtime"].get(
                     "comparability_note"
@@ -69,7 +74,7 @@ def run_worker(config_path: Path) -> None:
                 "legacy_frozen": had_legacy_result,
                 "system": "benchmark_v1_isolated_worker",
                 "system_run_at_utc": utc_now(),
-                "backend": config.data["runtime"]["backend"],
+                "backend": config.backend,
                 "environment": str(config.python_executable),
                 "checkpoint": str(config.checkpoint) if config.checkpoint else None,
                 "input_tokens": performance["input_tokens"],
@@ -96,7 +101,7 @@ def run_worker(config_path: Path) -> None:
         flush=True,
     )
 
-    del model, tokenizer
+    del loaded, model, tokenizer
     gc.collect()
     torch.cuda.empty_cache()
 
@@ -104,6 +109,9 @@ def run_worker(config_path: Path) -> None:
 def launch_isolated(config_path: Path) -> None:
     """Spawn one worker and wait for complete process termination."""
     config = load_config(config_path, check_paths=True)
+    config.validate_active_python()
+    if not config.supports_evaluation("system"):
+        raise RuntimeError(f"Adapter {config.loader_adapter!r} does not support system evaluation.")
     print_manifest(
         config,
         task="Generation",
@@ -112,7 +120,7 @@ def launch_isolated(config_path: Path) -> None:
         split="n/a",
     )
     command = [
-        str(config.python_executable),
+        sys.executable,
         "-X",
         "utf8",
         "-m",
@@ -129,6 +137,8 @@ def launch_isolated(config_path: Path) -> None:
 def dry_run(config_path: Path) -> None:
     """Validate and print the system manifest without starting a worker."""
     config = load_config(config_path, check_paths=True)
+    if not config.supports_evaluation("system"):
+        raise RuntimeError(f"Adapter {config.loader_adapter!r} does not support system evaluation.")
     print_manifest(
         config,
         task="Generation",

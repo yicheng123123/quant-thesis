@@ -6,6 +6,7 @@ import argparse
 import json
 import os
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -39,6 +40,9 @@ def _display_task(task_name: str) -> str:
 def run_worker(config_path: Path, task_name: str, scope: str) -> None:
     """Load one model, run one downstream task, and write a unified result."""
     config = load_config(config_path, check_paths=True)
+    config.validate_active_python()
+    if not config.supports_evaluation("downstream"):
+        raise RuntimeError(f"Adapter {config.loader_adapter!r} does not support downstream evaluation.")
     _validate_request(config, task_name, scope)
     manifest = print_manifest(
         config,
@@ -82,8 +86,11 @@ def run_worker(config_path: Path, task_name: str, scope: str) -> None:
 
 
 def launch_isolated(config_path: Path, task_name: str, scope: str) -> None:
-    """Spawn the worker under the Python interpreter declared by the config."""
+    """Spawn the worker with the already-active, config-validated interpreter."""
     config = load_config(config_path, check_paths=True)
+    config.validate_active_python()
+    if not config.supports_evaluation("downstream"):
+        raise RuntimeError(f"Adapter {config.loader_adapter!r} does not support downstream evaluation.")
     _validate_request(config, task_name, scope)
     print_manifest(
         config,
@@ -93,7 +100,7 @@ def launch_isolated(config_path: Path, task_name: str, scope: str) -> None:
         split="validation",
     )
     command = [
-        str(config.python_executable),
+        sys.executable,
         "-X",
         "utf8",
         "-m",
@@ -131,6 +138,8 @@ def _validate_request(config: Any, task_name: str, scope: str) -> None:
 def dry_run(config_path: Path, task_name: str, scope: str) -> None:
     """Validate and print the downstream manifest without starting a worker."""
     config = load_config(config_path, check_paths=True)
+    if not config.supports_evaluation("downstream"):
+        raise RuntimeError(f"Adapter {config.loader_adapter!r} does not support downstream evaluation.")
     _validate_request(config, task_name, scope)
     print_manifest(
         config,

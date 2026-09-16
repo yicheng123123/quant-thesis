@@ -26,10 +26,9 @@ RAW_RESULTS_DIR = BENCHMARK_ROOT / "results" / "raw"
 RAW_RUNS_DIR = RAW_RESULTS_DIR / "runs"
 SUMMARY_RESULTS_DIR = BENCHMARK_ROOT / "results" / "summary"
 FIGURES_RESULTS_DIR = BENCHMARK_ROOT / "results" / "figures"
-SCHEMA_VERSION = "1.2.1"
-EXPERIMENT_METADATA_VERSION = "1.2.1"
-LEGACY_SCHEMA_VERSIONS = {"1.1", "1.2"}
-ALLOWED_METHODS = {"fp16", "gptq", "awq"}
+SCHEMA_VERSION = "1.2.2"
+EXPERIMENT_METADATA_VERSION = "1.2.2"
+LEGACY_SCHEMA_VERSIONS = {"1.1", "1.2", "1.2.1"}
 
 
 def _parse_scalar(raw: str) -> Any:
@@ -222,121 +221,21 @@ def resolve_path(value: str | None) -> Path | None:
     return path if path.is_absolute() else PROJECT_ROOT / path
 
 
-def _read_json(path: Path) -> dict[str, Any] | None:
-    """Read a checkpoint-side JSON mapping without importing model libraries."""
-    try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, UnicodeDecodeError, json.JSONDecodeError):
-        return None
-    return payload if isinstance(payload, dict) else None
-
-
-def _nested_mapping(payload: Any, *keys: str) -> dict[str, Any] | None:
-    current = payload
-    for key in keys:
-        if not isinstance(current, dict):
-            return None
-        current = current.get(key)
-    return current if isinstance(current, dict) else None
-
-
-def _first_value(*values: Any) -> Any:
-    for value in values:
-        if value is not None:
-            return value
-    return None
-
-
-def _normalize_checkpoint_method(value: Any) -> str | None:
-    if not isinstance(value, str):
-        return None
-    normalized = value.strip().lower().replace("_", "-")
-    if normalized in {"gptq", "gptqmodel", "gptq-v2"}:
-        return "GPTQ"
-    if normalized == "awq":
-        return "AWQ"
-    # compressed-tensors is a storage/format identifier, not proof of AWQ.
-    return None
-
-
 def inspect_checkpoint_metadata(checkpoint: Path | None) -> dict[str, Any]:
-    """Inspect known checkpoint metadata files, returning only detectable fields."""
-    if checkpoint is None:
-        return {"status": "not_applicable", "files": []}
-    if not checkpoint.is_dir():
-        return {"status": "not_detectable", "files": []}
+    """Backward-compatible generic probe; config validation uses its adapter."""
+    from benchmark.adapters.metadata import inspect_hf_checkpoint
 
-    metadata_files = (
-        "awq_metadata.json",
-        "group_size_ablation_metadata.json",
-        "ablation_metadata.json",
-        "config.json",
-    )
-    payloads: list[tuple[str, dict[str, Any]]] = []
-    for filename in metadata_files:
-        path = checkpoint / filename
-        if path.is_file():
-            payload = _read_json(path)
-            if payload is not None:
-                payloads.append((filename, payload))
-
-    awq = next((payload for filename, payload in payloads if filename == "awq_metadata.json"), {})
-    gptq = next(
-        (
-            payload
-            for filename, payload in payloads
-            if filename in {"group_size_ablation_metadata.json", "ablation_metadata.json"}
-        ),
-        {},
-    )
-    config = next((payload for filename, payload in payloads if filename == "config.json"), {})
-    qconfig = config.get("quantization_config")
-    if not isinstance(qconfig, dict):
-        qconfig = {}
-    awq_weights = _nested_mapping(qconfig, "config_groups", "group_0", "weights") or {}
-
-    method = _normalize_checkpoint_method(
-        _first_value(awq.get("method"), gptq.get("method"), qconfig.get("quant_method"))
-    )
-    bits = _first_value(
-        awq.get("bits"),
-        gptq.get("bits"),
-        qconfig.get("bits"),
-        awq_weights.get("num_bits"),
-    )
-    group_size = _first_value(
-        awq.get("group_size"),
-        gptq.get("group_size"),
-        qconfig.get("group_size"),
-        awq_weights.get("group_size"),
-    )
-    symmetric = _first_value(
-        awq.get("symmetric"),
-        gptq.get("symmetric"),
-        gptq.get("sym"),
-        qconfig.get("sym"),
-        qconfig.get("symmetric"),
-        awq_weights.get("symmetric"),
-    )
-    duo_scaling = _first_value(awq.get("duo_scaling"), gptq.get("duo_scaling"))
-    detectable = {
-        "method": method,
-        "bits": bits,
-        "group_size": group_size,
-        "symmetric": symmetric,
-        "duo_scaling": duo_scaling,
-    }
-    detected_fields = {key: value for key, value in detectable.items() if value is not None}
-    return {
-        "status": "detected" if detected_fields else "not_detectable",
-        "files": [filename for filename, _ in payloads],
-        **detected_fields,
-    }
+    return inspect_hf_checkpoint(checkpoint)
 
 
 def validate_checkpoint_identity(config: "ExperimentConfig") -> dict[str, Any]:
-    """Cross-check detectable checkpoint identity against the config declaration."""
-    metadata = inspect_checkpoint_metadata(config.checkpoint)
+    """Cross-check only adapter-detectable identity and expose a three-state result."""
+    adapter_cls = getattr(config, "adapter_class", None)
+    metadata = (
+        adapter_cls.inspect_checkpoint(config.checkpoint)
+        if adapter_cls is not None
+        else inspect_checkpoint_metadata(config.checkpoint)
+    )
     expected = config.experiment_metadata
     comparisons = {
         "method": (expected["method"], metadata.get("method")),
@@ -345,8 +244,13 @@ def validate_checkpoint_identity(config: "ExperimentConfig") -> dict[str, Any]:
         "symmetric": (expected["symmetric"], metadata.get("symmetric")),
         "duo_scaling": (expected["duo_scaling"], metadata.get("duo_scaling")),
     }
+    matched_fields: list[str] = []
+    missing_fields: list[str] = []
     for field, (configured, detected) in comparisons.items():
-        if detected is None or configured is None:
+        if configured is None:
+            continue
+        if detected is None:
+            missing_fields.append(field)
             continue
         if field == "method":
             matches = str(configured).upper() == str(detected).upper()
@@ -370,11 +274,18 @@ def validate_checkpoint_identity(config: "ExperimentConfig") -> dict[str, Any]:
             matches = configured == detected
         if not matches:
             raise ValueError(
-                f"Checkpoint metadata mismatch for {config.experiment_id}: "
+                f"Checkpoint identity MISMATCH for {config.experiment_id}: "
                 f"{field} configured={configured!r}, detected={detected!r} "
                 f"in {metadata.get('files', [])}."
             )
-    return metadata
+        matched_fields.append(field)
+    validation = "MATCH" if comparisons and not missing_fields else "NOT_DETECTABLE"
+    return {
+        **metadata,
+        "identity_validation": validation,
+        "matched_fields": matched_fields,
+        "missing_fields": missing_fields,
+    }
 
 
 def manifest_context(
@@ -418,6 +329,19 @@ def manifest_context(
         "backend": metadata["backend"],
         "duo_scaling": metadata["duo_scaling"],
     }
+    metadata["loader"] = {
+        "adapter": config.loader_adapter,
+        "module": config.loader_module,
+        "backend": config.backend,
+        "capabilities": config.adapter_capabilities,
+    }
+    metadata["runtime"] = {
+        "python": str(config.python_executable),
+        "active_python": sys.executable,
+        "python_matches": Path(sys.executable).resolve() == config.python_executable.resolve(),
+        "packed_execution": config.packed_execution,
+        "system_metrics_comparable": config.system_metrics_comparable,
+    }
     metadata["evaluation"] = {
         "task": metadata["task"],
         "scope": metadata["scope"],
@@ -460,6 +384,12 @@ def print_manifest(
     print(f"Group size    : {group_size}")
     print(f"Symmetric     : {symmetric}")
     print(f"Backend       : {manifest['backend']}")
+    print(f"Loader        : {manifest['loader']['adapter']}")
+    print(f"Runtime Python: {manifest['runtime']['python']}")
+    print(f"Active Python : {manifest['runtime']['active_python']}")
+    print(f"Python match  : {manifest['runtime']['python_matches']}")
+    print(f"Packed exec   : {manifest['runtime']['packed_execution']}")
+    print(f"System comparable: {manifest['runtime']['system_metrics_comparable']}")
     print(f"AWQ duo_scaling: {duo_scaling}")
     print(f"Task          : {manifest.get('task') or '<none>'}")
     print(f"Scope         : {manifest.get('scope') or '<none>'}")
@@ -467,7 +397,7 @@ def print_manifest(
     print(f"Split         : {manifest.get('split') or '<none>'}")
     print(f"Result path   : {manifest['output_paths']['result']}")
     print(f"Run snapshots : {manifest['output_paths']['run_snapshots_dir']}")
-    checkpoint_status = manifest["checkpoint_metadata"].get("status")
+    checkpoint_status = manifest["checkpoint_metadata"].get("identity_validation")
     print(f"Checkpoint ID : {checkpoint_status}")
     print("=" * 60)
     return manifest
@@ -482,26 +412,97 @@ class ExperimentConfig:
 
     @property
     def experiment_id(self) -> str:
+        experiment = self.data.get("experiment")
+        if isinstance(experiment, dict) and experiment.get("id") not in (None, ""):
+            return str(experiment["id"])
         return str(self.data["experiment_id"])
 
     @property
     def method(self) -> str:
+        quantization = self.data.get("quantization")
+        if isinstance(quantization, dict) and quantization.get("method") not in (None, ""):
+            return str(quantization["method"]).lower()
         return str(self.data["method"]).lower()
 
     @property
     def model_id(self) -> str:
+        model = self.data.get("model")
+        if isinstance(model, dict) and model.get("base_model") not in (None, ""):
+            return str(model["base_model"])
         return str(self.data["model_id"])
 
     @property
     def checkpoint(self) -> Path | None:
-        return resolve_path(self.data.get("checkpoint"))
+        model = self.data.get("model")
+        value = model.get("checkpoint") if isinstance(model, dict) else self.data.get("checkpoint")
+        return resolve_path(value)
 
     @property
     def python_executable(self) -> Path:
+        """Interpreter declared for provenance; adapters never switch processes."""
         value = self.data["runtime"]["python"]
         path = resolve_path(str(value))
         assert path is not None
         return path
+
+    @property
+    def loader_adapter(self) -> str:
+        return str(self.data["loader"]["adapter"]).lower()
+
+    @property
+    def loader_module(self) -> str | None:
+        value = self.data["loader"].get("module")
+        return str(value) if value not in (None, "") else None
+
+    @property
+    def loader_model_kwargs(self) -> dict[str, Any]:
+        value = self.data["loader"].get("model_kwargs", {})
+        return dict(value)
+
+    @property
+    def loader_tokenizer_kwargs(self) -> dict[str, Any]:
+        value = self.data["loader"].get("tokenizer_kwargs", {})
+        return dict(value)
+
+    @property
+    def adapter_class(self) -> Any:
+        from benchmark.adapters.registry import get_adapter
+
+        return get_adapter(self.loader_adapter, module=self.loader_module)
+
+    @property
+    def adapter_capabilities(self) -> dict[str, bool]:
+        return self.adapter_class.capabilities.to_dict()
+
+    @property
+    def system_metrics_comparable(self) -> bool:
+        return bool(self.data["runtime"]["system_metrics_comparable"])
+
+    @property
+    def packed_execution(self) -> bool:
+        return bool(self.data["runtime"]["packed_execution"])
+
+    def supports_evaluation(self, name: str) -> bool:
+        try:
+            return bool(self.adapter_capabilities[name])
+        except KeyError as exc:
+            raise ValueError(f"Unknown adapter capability: {name!r}") from exc
+
+    def require_checkpoint(self) -> Path:
+        checkpoint = self.checkpoint
+        if checkpoint is None or not checkpoint.is_dir():
+            raise FileNotFoundError(f"Checkpoint not found: {checkpoint}")
+        return checkpoint
+
+    def validate_active_python(self) -> None:
+        """Require explicit invocation from the config-declared environment."""
+        configured = self.python_executable.resolve()
+        active = Path(sys.executable).resolve()
+        if active != configured:
+            raise RuntimeError(
+                "Active Python does not match runtime.python. Invoke the runner with "
+                f"{configured}; active interpreter is {active}."
+            )
 
     @property
     def raw_result_path(self) -> Path:
@@ -511,16 +512,18 @@ class ExperimentConfig:
     def experiment_metadata(self) -> dict[str, Any]:
         """Return the normalized identity and quantization declaration.
 
-        v1.2 configs kept the original top-level fields for compatibility.  The
-        v1.2.1 ``experiment`` and ``quantization`` mappings are authoritative,
-        with the legacy fields accepted as aliases and checked for agreement.
+        v1.2.2 makes ``experiment``, ``model``, ``quantization``, and ``loader``
+        authoritative. Older top-level fields remain checked compatibility aliases.
         """
         identity = self.data.get("experiment")
+        model = self.data.get("model")
         quantization = self.data.get("quantization")
         if not isinstance(identity, dict):
             identity = {}
         if not isinstance(quantization, dict):
             quantization = {}
+        if not isinstance(model, dict):
+            model = {}
 
         method = str(quantization.get("method", self.data.get("method", ""))).lower()
         weight_bits = quantization.get("weight_bits", self.data.get("bits"))
@@ -543,14 +546,18 @@ class ExperimentConfig:
             calibration = self.data.get("calibration")
             if isinstance(calibration, dict):
                 duo_scaling = calibration.get("duo_scaling")
-        checkpoint_value = identity.get("checkpoint", self.data.get("checkpoint"))
+        base_model = model.get("base_model", identity.get("base_model", self.data.get("model_id", "")))
+        checkpoint_value = model.get("checkpoint", identity.get("checkpoint", self.data.get("checkpoint")))
         checkpoint = resolve_path(checkpoint_value)
         runtime = self.data.get("runtime")
         runtime_backend = runtime.get("backend") if isinstance(runtime, dict) else ""
+        loader = self.data.get("loader")
+        if not isinstance(loader, dict):
+            loader = {}
         return {
             "metadata_version": EXPERIMENT_METADATA_VERSION,
             "experiment_id": str(identity.get("id", self.data.get("experiment_id", ""))),
-            "base_model": str(identity.get("base_model", self.data.get("model_id", ""))),
+            "base_model": str(base_model),
             "checkpoint": str(checkpoint) if checkpoint else None,
             "method": method.upper(),
             "weight_bits": weight_bits,
@@ -563,7 +570,9 @@ class ExperimentConfig:
             ),
             "group_size": group_size,
             "symmetric": symmetric,
-            "backend": str(quantization.get("backend", runtime_backend)),
+            "backend": str(loader.get("backend", quantization.get("backend", runtime_backend))),
+            "loader_adapter": str(loader.get("adapter", "")),
+            "loader_module": loader.get("module"),
             "duo_scaling": duo_scaling,
             "task": identity.get("task"),
             "scope": identity.get("scope"),
@@ -598,20 +607,21 @@ class ExperimentConfig:
 
     @property
     def checkpoint_metadata(self) -> dict[str, Any]:
-        return inspect_checkpoint_metadata(self.checkpoint)
+        return self.adapter_class.inspect_checkpoint(self.checkpoint)
 
     def validate(self, *, check_paths: bool = False) -> None:
         """Validate v1 invariants and optionally verify local paths."""
-        required = ("schema_version", "experiment_id", "model_id", "method", "bits")
+        required = ("schema_version", "experiment", "model", "quantization", "loader")
         missing = [key for key in required if key not in self.data]
         if missing:
             raise ValueError(f"Missing config fields: {missing}")
         if self.data["schema_version"] != 1:
             raise ValueError("Only benchmark schema_version=1 is supported.")
-        if self.method not in ALLOWED_METHODS:
-            raise ValueError(f"Unsupported method: {self.method}")
+        if not self.method.strip():
+            raise ValueError("quantization.method must be non-empty.")
 
         self._validate_experiment_metadata()
+        self._validate_loader_runtime()
 
         ppl = self.data.get("ppl")
         generation = self.data.get("generation")
@@ -660,17 +670,20 @@ class ExperimentConfig:
             raise ValueError("generation.max_new_tokens must be positive.")
 
         if self.method == "fp16":
-            if int(self.data["bits"]) != 16 or self.checkpoint is not None:
+            if self.weight_bits != 16 or self.checkpoint is not None:
                 raise ValueError("FP16 must use bits=16 and checkpoint=null.")
         else:
-            if int(self.data["bits"]) != 4 or self.checkpoint is None:
-                raise ValueError("Quantized configs require bits=4 and a checkpoint.")
+            if not 1 <= self.weight_bits <= 16 or self.checkpoint is None:
+                raise ValueError("Quantized configs require 1-16 weight bits and a checkpoint.")
             calibration = self.data.get("calibration")
-            if not isinstance(calibration, dict):
-                raise TypeError("Quantized configs require calibration metadata.")
-            digest = str(calibration.get("pool_sha256", ""))
-            if len(digest) != 64 or any(char not in "0123456789abcdef" for char in digest):
-                raise ValueError("calibration.pool_sha256 must be a lowercase SHA256.")
+            if calibration is not None:
+                if not isinstance(calibration, dict):
+                    raise TypeError("calibration must be a mapping when supplied.")
+                digest = calibration.get("pool_sha256")
+                if digest is not None:
+                    digest = str(digest)
+                    if len(digest) != 64 or any(char not in "0123456789abcdef" for char in digest):
+                        raise ValueError("calibration.pool_sha256 must be a lowercase SHA256.")
 
         if check_paths:
             if not self.python_executable.is_file():
@@ -682,23 +695,23 @@ class ExperimentConfig:
                     f"Configured checkpoint does not exist: {self.checkpoint}"
                 )
 
-        if self.checkpoint is not None and self.checkpoint.is_dir():
-            validate_checkpoint_identity(self)
+        validate_checkpoint_identity(self)
 
     def _validate_experiment_metadata(self) -> None:
-        """Validate the explicit v1.2.1 declaration and legacy aliases."""
+        """Validate explicit v1.2.2 identity/representation and legacy aliases."""
         identity = self.data.get("experiment")
+        model = self.data.get("model")
         quantization = self.data.get("quantization")
         if not isinstance(identity, dict):
-            raise TypeError("experiment must be a mapping in benchmark v1.2.1 configs.")
+            raise TypeError("experiment must be a mapping in benchmark v1.2.2 configs.")
+        if not isinstance(model, dict):
+            raise TypeError("model must be a mapping in benchmark v1.2.2 configs.")
         if not isinstance(quantization, dict):
-            raise TypeError("quantization must be a mapping in benchmark v1.2.1 configs.")
+            raise TypeError("quantization must be a mapping in benchmark v1.2.2 configs.")
 
         metadata = self.experiment_metadata
         required = (
             "id",
-            "base_model",
-            "checkpoint",
             "task",
             "scope",
             "dataset",
@@ -707,11 +720,16 @@ class ExperimentConfig:
         missing_identity = [key for key in required if key not in identity]
         if missing_identity:
             raise ValueError(f"experiment is missing fields: {missing_identity}")
-        for key in ("id", "base_model", "task", "scope", "dataset", "split"):
+        for key in ("id", "task", "scope", "dataset", "split"):
             if identity.get(key) in (None, ""):
                 raise ValueError(f"experiment.{key} must be non-empty.")
         if identity.get("scope") not in {"smoke", "full"}:
             raise ValueError("experiment.scope must be smoke or full.")
+        missing_model = [key for key in ("base_model", "checkpoint") if key not in model]
+        if missing_model:
+            raise ValueError(f"model is missing fields: {missing_model}")
+        if model.get("base_model") in (None, ""):
+            raise ValueError("model.base_model must be non-empty.")
         required_quantization = (
             "method",
             "weight_bits",
@@ -719,7 +737,6 @@ class ExperimentConfig:
             "activation_precision",
             "group_size",
             "symmetric",
-            "backend",
             "duo_scaling",
         )
         missing_quantization = [key for key in required_quantization if key not in quantization]
@@ -728,24 +745,23 @@ class ExperimentConfig:
 
         aliases = {
             "experiment.id": (identity["id"], self.data.get("experiment_id")),
-            "experiment.base_model": (identity["base_model"], self.data.get("model_id")),
+            "experiment.base_model": (model["base_model"], identity.get("base_model")),
             "experiment.checkpoint": (
-                str(resolve_path(identity["checkpoint"])) if identity["checkpoint"] else None,
-                str(self.checkpoint) if self.checkpoint else None,
+                str(resolve_path(model["checkpoint"])) if model["checkpoint"] else None,
+                str(resolve_path(identity.get("checkpoint"))) if identity.get("checkpoint") else None,
             ),
-            "quantization.method": (str(quantization["method"]).lower(), self.method),
+            "model.base_model": (model["base_model"], self.data.get("model_id")),
+            "model.checkpoint": (
+                str(resolve_path(model["checkpoint"])) if model["checkpoint"] else None,
+                str(resolve_path(self.data.get("checkpoint"))) if self.data.get("checkpoint") else None,
+            ),
+            "quantization.method": (str(quantization["method"]).lower(), self.data.get("method")),
             "quantization.weight_bits": (quantization["weight_bits"], self.data.get("bits")),
             "quantization.group_size": (quantization["group_size"], self.data.get("group_size")),
             "quantization.symmetric": (quantization["symmetric"], self.data.get("symmetric")),
-            "quantization.backend": (
-                quantization["backend"],
-                self.data.get("runtime", {}).get("backend")
-                if isinstance(self.data.get("runtime"), dict)
-                else None,
-            ),
         }
         for field, (declared, legacy) in aliases.items():
-            if declared != legacy:
+            if legacy is not None and declared != legacy:
                 raise ValueError(f"{field} disagrees with its legacy config field: {declared!r} != {legacy!r}")
         if self.method == "awq" and quantization["duo_scaling"] not in {False, True}:
             raise ValueError("AWQ quantization.duo_scaling must be true or false.")
@@ -761,12 +777,52 @@ class ExperimentConfig:
                 "quantization.activation_precision must match activation_bits "
                 f"({expected_activation_precision})."
             )
-        if not str(quantization["backend"]).strip():
-            raise ValueError("quantization.backend must be non-empty.")
         if metadata["precision"] != (
             "FP16" if self.method == "fp16" else f"W{metadata['weight_bits']}A{metadata['activation_bits']}"
         ):
             raise ValueError("quantization precision declaration is inconsistent.")
+
+    def _validate_loader_runtime(self) -> None:
+        """Keep process environment, loading mechanism, and algorithm identity separate."""
+        loader = self.data.get("loader")
+        runtime = self.data.get("runtime")
+        if not isinstance(loader, dict):
+            raise TypeError("loader must be a mapping in benchmark v1.2.2 configs.")
+        if not isinstance(runtime, dict):
+            raise TypeError("runtime must be a mapping.")
+        missing_loader = [key for key in ("adapter", "backend") if loader.get(key) in (None, "")]
+        if missing_loader:
+            raise ValueError(f"loader is missing fields: {missing_loader}")
+        for key in ("model_kwargs", "tokenizer_kwargs"):
+            if key in loader and not isinstance(loader[key], dict):
+                raise TypeError(f"loader.{key} must be a mapping.")
+        missing_runtime = [
+            key for key in ("python", "packed_execution", "system_metrics_comparable")
+            if key not in runtime
+        ]
+        if missing_runtime:
+            raise ValueError(f"runtime is missing fields: {missing_runtime}")
+        if runtime.get("python") in (None, ""):
+            raise ValueError("runtime.python must be non-empty.")
+        for key in ("packed_execution", "system_metrics_comparable"):
+            if not isinstance(runtime[key], bool):
+                raise TypeError(f"runtime.{key} must be true or false.")
+
+        adapter_cls = self.adapter_class
+        if not adapter_cls.supports_method(self.method):
+            raise ValueError(
+                f"loader.adapter={self.loader_adapter!r} does not support configured "
+                f"quantization.method={self.method!r}."
+            )
+        legacy_backends = [
+            self.data.get("runtime", {}).get("backend"),
+            self.data.get("quantization", {}).get("backend"),
+        ]
+        for legacy in legacy_backends:
+            if legacy is not None and legacy != loader["backend"]:
+                raise ValueError(
+                    f"loader.backend disagrees with legacy backend: {loader['backend']!r} != {legacy!r}"
+                )
 
 
 def load_config(path: str | Path, *, check_paths: bool = False) -> ExperimentConfig:
@@ -818,9 +874,9 @@ def base_result(
         "experiment_id": config.experiment_id,
         "model_id": config.model_id,
         "method": config.method.upper(),
-        "bits": config.data["bits"],
-        "group_size": config.data.get("group_size"),
-        "symmetric": config.data.get("symmetric"),
+        "bits": config.weight_bits,
+        "group_size": config.experiment_metadata["group_size"],
+        "symmetric": config.experiment_metadata["symmetric"],
         "checkpoint": str(config.checkpoint) if config.checkpoint else None,
         "experiment_metadata": metadata,
         "calibration": config.data.get("calibration"),
@@ -830,10 +886,10 @@ def base_result(
             "downstream": config.data.get("downstream"),
         },
         "runtime": {
-            "backend": config.data["runtime"]["backend"],
-            "system_metrics_comparable": bool(
-                config.data["runtime"]["system_metrics_comparable"]
-            ),
+            "backend": config.backend,
+            "adapter": config.loader_adapter,
+            "packed_execution": config.packed_execution,
+            "system_metrics_comparable": config.system_metrics_comparable,
             "comparability_note": config.data["runtime"].get("comparability_note"),
         },
         "provenance": {

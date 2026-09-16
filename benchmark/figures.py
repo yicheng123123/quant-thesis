@@ -22,6 +22,7 @@ COLORS = {
     "GPTQ": "#7357d9",
     "AWQ": "#e08a1e",
 }
+FALLBACK_COLORS = ("#16845b", "#d14f69", "#247ba0", "#8c5e3c", "#6b7c2f")
 
 
 def label(row: dict[str, Any]) -> str:
@@ -50,8 +51,16 @@ def _font(size: int, *, bold: bool = False) -> ImageFont.FreeTypeFont | ImageFon
     return ImageFont.load_default()
 
 
-def _method_color(row: dict[str, Any]) -> str:
-    return COLORS.get(str(row["method"]), "#718096")
+def method_color(row: dict[str, Any]) -> str:
+    method = str(row["method"]).upper()
+    if method in COLORS:
+        return COLORS[method]
+    index = sum((position + 1) * ord(char) for position, char in enumerate(method))
+    return FALLBACK_COLORS[index % len(FALLBACK_COLORS)]
+
+
+def _legend_methods(rows: list[dict[str, Any]]) -> list[str]:
+    return list(dict.fromkeys(str(row["method"]).upper() for row in rows))
 
 
 def _svg_text(value: Any) -> str:
@@ -87,12 +96,11 @@ def _draw_legend(
     note: str = "Muted = legacy frozen row",
 ) -> None:
     x = 70
-    for method in ("FP16", "GPTQ", "AWQ"):
-        if not any(row["method"] == method for row in rows):
-            continue
-        draw.rounded_rectangle((x, y, x + 18, y + 18), radius=4, fill=COLORS[method])
+    for method in _legend_methods(rows):
+        color = method_color({"method": method})
+        draw.rounded_rectangle((x, y, x + 18, y + 18), radius=4, fill=color)
         draw.text((x + 28, y - 2), method, font=_font(16), fill=TEXT)
-        x += 120
+        x += max(120, 38 + len(method) * 11)
     draw.text((x + 12, y - 2), note, font=_font(16), fill=MUTED)
 
 
@@ -148,9 +156,9 @@ def _bar_figure(
         y = y0 + index * row_height
         bar_y = y + 10
         width = (x1 - x0) * value / (maximum * 1.15)
-        method_color = _method_color(row)
+        row_color = method_color(row)
         alpha = 150 if mute_legacy and row.get("provenance_status") == "legacy_frozen" else 255
-        fill = method_color if alpha == 255 else "#9ea8bd"
+        fill = row_color if alpha == 255 else "#9ea8bd"
         draw.text((70, y + 4), label(row), font=_font(20, bold=True), fill=TEXT)
         draw.text((70, y + 34), "legacy frozen" if alpha != 255 else "v1 rerun", font=_font(15), fill=MUTED)
         draw.rounded_rectangle((x0, bar_y, x1, bar_y + 34), radius=7, fill=TRACK)
@@ -202,16 +210,18 @@ def _bar_figure(
         else "Muted = legacy frozen row"
     )
     _draw_legend(draw, rows, 820, legend_note)
-    body.extend(
-        [
-            f'<line x1="70" y1="838" x2="88" y2="838" stroke="{COLORS["FP16"]}" stroke-width="14" stroke-linecap="round"/>',
-            f'<text x="98" y="844" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="{TEXT}">FP16</text>',
-            f'<line x1="190" y1="838" x2="208" y2="838" stroke="{COLORS["GPTQ"]}" stroke-width="14" stroke-linecap="round"/>',
-            f'<text x="218" y="844" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="{TEXT}">GPTQ</text>',
-            f'<line x1="310" y1="838" x2="328" y2="838" stroke="{COLORS["AWQ"]}" stroke-width="14" stroke-linecap="round"/>',
-            f'<text x="338" y="844" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="{TEXT}">AWQ</text>',
-            f'<text x="450" y="844" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="{MUTED}">{_svg_text(legend_note)}</text>',
-        ]
+    legend_x = 70
+    for method in _legend_methods(rows):
+        color = method_color({"method": method})
+        body.extend(
+            [
+                f'<line x1="{legend_x}" y1="838" x2="{legend_x + 18}" y2="838" stroke="{color}" stroke-width="14" stroke-linecap="round"/>',
+                f'<text x="{legend_x + 28}" y="844" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="{TEXT}">{_svg_text(method)}</text>',
+            ]
+        )
+        legend_x += max(120, 38 + len(method) * 11)
+    body.append(
+        f'<text x="{legend_x + 12}" y="844" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="{MUTED}">{_svg_text(legend_note)}</text>'
     )
 
     png_path = output_dir / f"{stem}.png"
@@ -300,12 +310,12 @@ def _scatter_figure(
 
     for x_value, y_value, row in points:
         x, y = sx(x_value), sy(y_value)
-        method_color = _method_color(row)
-        draw.ellipse((x - 12, y - 12, x + 12, y + 12), fill=method_color, outline=BACKGROUND, width=3)
+        row_color = method_color(row)
+        draw.ellipse((x - 12, y - 12, x + 12, y + 12), fill=row_color, outline=BACKGROUND, width=3)
         draw.text((x + 18, y - 12), label(row), font=_font(17, bold=True), fill=TEXT)
         body.extend(
             [
-                f'<circle cx="{x:.1f}" cy="{y:.1f}" r="12" fill="{method_color}" stroke="{BACKGROUND}" stroke-width="3"/>',
+                f'<circle cx="{x:.1f}" cy="{y:.1f}" r="12" fill="{row_color}" stroke="{BACKGROUND}" stroke-width="3"/>',
                 f'<text x="{x + 18:.1f}" y="{y + 6:.1f}" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="{TEXT}">{_svg_text(label(row))}</text>',
             ]
         )
@@ -401,7 +411,7 @@ def _downstream_scatter_figure(
     for x_value, y_value, stderr, row in points:
         x, y = sx(x_value), sy(y_value)
         low, high = sy(y_value - stderr), sy(y_value + stderr)
-        color = _method_color(row)
+        color = method_color(row)
         draw.line((x, high, x, low), fill=TEXT, width=3)
         draw.line((x - 9, high, x + 9, high), fill=TEXT, width=3)
         draw.line((x - 9, low, x + 9, low), fill=TEXT, width=3)
@@ -472,7 +482,7 @@ def generate_figures(rows: list[dict[str, Any]], output_dir: Path) -> list[Path]
             output_dir=output_dir,
             stem="vram_comparison",
             title="Peak allocated VRAM",
-            subtitle="Comparable system rows only · AWQ excluded because comparable=false",
+            subtitle="Comparable system rows only · non-comparable runtimes excluded",
             field="peak_vram_mib",
             unit="MiB",
             digits=1,

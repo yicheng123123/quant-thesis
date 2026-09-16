@@ -1,0 +1,71 @@
+# Copy this file to benchmark/configs/<experiment_id>.yaml and replace placeholders.
+schema_version: 1
+baseline_experiment_id: fp16
+
+experiment:
+  id: qwen25_05b_myquant_w4a16_g64
+  task: HellaSwag
+  scope: smoke
+  dataset: Rowan/hellaswag
+  split: validation
+
+model:
+  base_model: Qwen/Qwen2.5-0.5B-Instruct
+  checkpoint: E:/quant-thesis/artifacts/qwen2.5-0.5b-myquant-w4a16-g64
+
+quantization:
+  method: myquant
+  weight_bits: 4
+  activation_bits: 16
+  activation_precision: A16
+  group_size: 64
+  symmetric: true
+  duo_scaling: null
+
+loader:
+  # Algorithm identity and loading mechanism are intentionally independent.
+  adapter: hf_auto
+  backend: transformers_auto
+  model_kwargs:
+    device_map: auto
+    low_cpu_mem_usage: true
+    trust_remote_code: false
+  tokenizer_kwargs:
+    trust_remote_code: false
+
+runtime:
+  # Invoke runners explicitly with this interpreter; adapters never switch it.
+  python: E:/quant-thesis/.venv-myquant/Scripts/python.exe
+  packed_execution: true
+  system_metrics_comparable: false
+  comparability_note: Mark comparable only after verifying the actual execution backend.
+
+ppl:
+  dataset_id: Salesforce/wikitext
+  dataset_config: wikitext-2-raw-v1
+  split: test
+  scope: smoke
+  smoke_tokens: 8192
+  max_length: 2048
+  stride: 512
+
+generation:
+  prompt: 请用三点解释为什么低比特权重量化可以减少大语言模型的显存占用。
+  warmup_runs: 3
+  benchmark_runs: 5
+  max_new_tokens: 128
+
+downstream:
+  enabled: true
+  harness: lm_eval
+  tasks:
+    - name: hellaswag
+      num_fewshot: 0
+      primary_metric: acc_norm
+  batch_size: 8
+  apply_chat_template: false
+  scope:
+    smoke_limit: 32
+    full_limit: null
+
+# Add validation.expected_ppl only after a reviewed full PPL result is frozen.

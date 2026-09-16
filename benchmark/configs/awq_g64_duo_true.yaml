@@ -6,6 +6,9 @@ bits: 4
 group_size: 64
 symmetric: true
 checkpoint: E:/quant-thesis/artifacts/qwen2.5-0.5b-instruct-awq-w4a16-g64-sym-duo-calib64-wttrain512
+model:
+  base_model: Qwen/Qwen2.5-0.5B-Instruct
+  checkpoint: E:/quant-thesis/artifacts/qwen2.5-0.5b-instruct-awq-w4a16-g64-sym-duo-calib64-wttrain512
 baseline_experiment_id: fp16
 calibration:
   samples: 64
@@ -29,9 +32,13 @@ quantization:
   symmetric: true
   backend: compressed_tensors_decompressed
   duo_scaling: true
+loader:
+  adapter: awq
+  backend: compressed_tensors_decompressed
 runtime:
   python: E:/quant-thesis/.venv-awq/Scripts/python.exe
   backend: compressed_tensors_decompressed
+  packed_execution: false
   system_metrics_comparable: false
   comparability_note: Transformers decompresses this checkpoint; quality is valid but runtime metrics are not comparable to the GPTQ quantized kernel.
 ppl:

@@ -6,6 +6,9 @@ bits: 16
 group_size: null
 symmetric: null
 checkpoint: null
+model:
+  base_model: Qwen/Qwen2.5-0.5B-Instruct
+  checkpoint: null
 baseline_experiment_id: null
 calibration: null
 experiment:
@@ -25,9 +28,13 @@ quantization:
   symmetric: null
   backend: transformers_fp16
   duo_scaling: null
+loader:
+  adapter: fp16
+  backend: transformers_fp16
 runtime:
   python: E:/quant-thesis/.venv/Scripts/python.exe
   backend: transformers_fp16
+  packed_execution: false
   system_metrics_comparable: true
   comparability_note: FP16 Transformers baseline on the same GPU and generation protocol.
 ppl:

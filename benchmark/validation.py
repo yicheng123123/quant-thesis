@@ -86,9 +86,12 @@ def validate_payloads(payloads: list[dict[str, Any]]) -> dict[str, Any]:
                 identity = metadata.get("identity")
                 quantization = metadata.get("quantization")
                 evaluation = metadata.get("evaluation")
+                required_sections = [identity, quantization, evaluation]
+                if schema_version == SCHEMA_VERSION:
+                    required_sections.extend([metadata.get("loader"), metadata.get("runtime")])
                 metadata_ok = all(
                     isinstance(section, dict)
-                    for section in (identity, quantization, evaluation)
+                    for section in required_sections
                 ) and metadata.get("experiment_id") == experiment_id
             check(
                 f"{experiment_id}.experiment_metadata",

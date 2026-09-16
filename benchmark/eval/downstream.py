@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from benchmark.config import ExperimentConfig, PROJECT_ROOT
-from benchmark.eval.model import load_model_and_tokenizer
+from benchmark.eval.model import load_model
 
 
 HARNESS_NAME = "lm-evaluation-harness"
@@ -33,9 +33,9 @@ def _task_config_path(task_name: str) -> Path:
 def tokenizer_fingerprint(tokenizer: Any) -> str:
     """Hash stable tokenizer behavior without library-private serialization.
 
-    The same Qwen tokenizer is loaded by different Transformers releases in
-    the FP16, GPTQ, and AWQ environments. Hashing ``backend_tokenizer.to_str``
-    makes that implementation detail look like a protocol difference. The
+    The same Qwen tokenizer can be loaded by different Transformers releases
+    across runtime environments. Hashing ``backend_tokenizer.to_str`` makes
+    that implementation detail look like a protocol difference. The
     canonical fingerprint below instead covers the complete token-to-id map,
     special-token IDs, and representative encoding behavior.
     """
@@ -117,7 +117,8 @@ def evaluate_task(
     dataset_fingerprint = str(dataset_split._fingerprint)
     original_samples = len(dataset_split)
 
-    model, tokenizer = load_model_and_tokenizer(config)
+    loaded = load_model(config)
+    model, tokenizer = loaded.model, loaded.tokenizer
     tokenizer_digest = tokenizer_fingerprint(tokenizer)
     harness_model = HFLM(
         pretrained=model,

@@ -1,12 +1,33 @@
 # Qwen2.5 Quantization Benchmark
 
-A reproducible benchmark for comparing FP16, GPTQ, and AWQ variants of
+A reproducible, adapter-based framework for comparing quantized variants of
 `Qwen/Qwen2.5-0.5B-Instruct` across language-model quality, downstream
 accuracy, storage, memory, and generation performance.
 
-The latest validated release is **benchmark v1.2.1**. It adds explicit
-experiment identity, checkpoint/config cross-validation, startup manifests,
-dry-run inspection, raw-result provenance, and unambiguous summary labels.
+The checked-in numerical matrix remains the validated **benchmark v1.2.1**
+result set. The v1.2.2 code introduces a quantization-adapter architecture
+without changing those frozen raw results or evaluation protocols.
+
+## Add another quantization method
+
+Quantization identity and model loading are separate configuration fields:
+
+```yaml
+quantization:
+  method: hqq
+
+loader:
+  adapter: hf_auto
+```
+
+If the checkpoint works with `AutoModelForCausalLM.from_pretrained`, copy the
+[generic HF config template](benchmark/configs/_templates/hf_auto.yaml) and no
+benchmark code changes are required. A checkpoint that needs a special API
+requires one adapter plugin; PPL, HellaSwag, system evaluation, summaries, and
+figures remain algorithm-agnostic.
+
+`runtime.python` documents and validates the environment. It does not switch
+interpreters. Invoke the runner explicitly with the environment named there.
 
 ## Validated configurations
 
@@ -51,6 +72,7 @@ These checks do not load a model or rerun an expensive benchmark:
 
 ```powershell
 python -m benchmark.check_v121
+python -m benchmark.check_v122
 python -m benchmark.check_v1
 python -m benchmark.summarize
 git diff --check

@@ -6,6 +6,9 @@ bits: 4
 group_size: 128
 symmetric: true
 checkpoint: E:/quant-thesis/artifacts/group_size_ablation_calib64/qwen2.5-0.5b-instruct-gptq-w4a16-g128-calib64-wttrain512
+model:
+  base_model: Qwen/Qwen2.5-0.5B-Instruct
+  checkpoint: E:/quant-thesis/artifacts/group_size_ablation_calib64/qwen2.5-0.5b-instruct-gptq-w4a16-g128-calib64-wttrain512
 baseline_experiment_id: fp16
 calibration:
   samples: 64
@@ -28,9 +31,13 @@ quantization:
   symmetric: true
   backend: gptqmodel_torch_eager
   duo_scaling: null
+loader:
+  adapter: gptq
+  backend: gptqmodel_torch_eager
 runtime:
   python: E:/quant-thesis/.venv-gptq/Scripts/python.exe
   backend: gptqmodel_torch_eager
+  packed_execution: true
   system_metrics_comparable: true
   comparability_note: Uses the validated Windows GPTQModel eager kernel.
 ppl:

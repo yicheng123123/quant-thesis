@@ -1,4 +1,4 @@
-# Unified quantization benchmark v1.2
+# Unified quantization benchmark v1.2.2
 
 ## Status: validated
 
@@ -51,13 +51,88 @@ Torch, initializing CUDA, loading a model, or evaluating anything:
 The lightweight regression suite is `python -m benchmark.check_v121`; it does
 not run any model or expensive benchmark.
 
+## Quantization adapter architecture (v1.2.2)
+
+The benchmark now separates four concerns:
+
+```text
+quantization.method   algorithm identity, such as hqq or myquant
+quantization.*        physical representation, such as W4A16 G64 symmetric
+loader.adapter        loading mechanism, such as hf_auto or a native plugin
+runtime.*             process environment and experiment-level comparability
+```
+
+`quantization.method` never implicitly chooses a loader. For example, an HQQ
+checkpoint that Transformers can load directly uses:
+
+```yaml
+quantization:
+  method: hqq
+  weight_bits: 4
+  activation_bits: 16
+  activation_precision: A16
+  group_size: 64
+  symmetric: true
+  duo_scaling: null
+
+loader:
+  adapter: hf_auto
+  backend: transformers_hqq
+```
+
+Start from [`configs/_templates/hf_auto.yaml`](configs/_templates/hf_auto.yaml).
+The generic adapter supports arbitrary method names. It reports checkpoint
+identity as `MATCH`, `MISMATCH`, or `NOT_DETECTABLE`; absent metadata is never
+treated as proof of identity.
+
+For a checkpoint requiring a custom API, add one dependency-light module that
+subclasses `QuantizationAdapter`, decorate it with
+`@register_adapter("my_adapter")`, and set both fields explicitly:
+
+```yaml
+quantization:
+  method: myquant
+loader:
+  adapter: my_adapter
+  module: benchmark.adapters.myquant
+```
+
+Adapter modules must defer Torch and backend imports until `load()`. They return
+a single `LoadedModel` containing the model, tokenizer, detected checkpoint
+metadata, and capabilities. Evaluators consume that object without inspecting
+the quantization method.
+
+`runtime.python` is provenance and an environment-consistency contract only.
+It cannot switch the active interpreter. Run with the configured environment:
+
+```powershell
+& .\.venv-hqq\Scripts\python.exe -X utf8 `
+  -m benchmark.runners.eval_quality `
+  --config .\benchmark\configs\hqq_w4.yaml `
+  --dry-run
+```
+
+Workers use that already-active interpreter when creating their isolated child
+process. `runtime.packed_execution` and `runtime.system_metrics_comparable`
+describe this particular checkpoint/backend combination, not an intrinsic
+property of the algorithm. Existing AWQ configs therefore remain non-comparable
+because their current path executes decompressed weights.
+
+The v1.2.2 offline architecture regression is:
+
+```powershell
+python -m benchmark.check_v122
+```
+
 ## Structure
 
 ```text
 benchmark/
+├── adapters/                # plugin interface, registry, built-in loaders
+├── configs/_templates/      # config-only onboarding templates
 ├── configs/                 # model × method × controlled protocol
 ├── eval/
-│   ├── model.py             # existing method-aware loader
+│   ├── model.py             # algorithm-neutral adapter dispatch
 │   ├── ppl.py               # existing WikiText-2 PPL
 │   └── downstream.py        # lm-eval adapter + provenance capture
 ├── runners/

@@ -10,7 +10,7 @@
 | AWQ G64 duo=False | 64 | 14.4898 | 2.0262 | 452.05 | — | — | N/C | — |
 | AWQ G64 duo=True | 64 | 14.5498 | 2.0861 | 452.05 | — | — | N/C | — |
 
-`N/C` means the runtime representation is not comparable to the quantized GPTQ kernel.
+`N/C` means the runtime representation is not comparable under the declared system protocol.
 Legacy frozen speed rows may not have a standard deviation; rerun `eval_system` for v1 mean/std.
 
 ## HellaSwag downstream quality

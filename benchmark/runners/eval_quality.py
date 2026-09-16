@@ -23,6 +23,9 @@ from benchmark.config import (
 def run_worker(config_path: Path) -> None:
     """Load one model, evaluate one token stream, write one unified result."""
     config = load_config(config_path, check_paths=True)
+    config.validate_active_python()
+    if not config.supports_evaluation("quality"):
+        raise RuntimeError(f"Adapter {config.loader_adapter!r} does not support quality evaluation.")
     ppl_config = config.data["ppl"]
     manifest = print_manifest(
         config,
@@ -35,7 +38,7 @@ def run_worker(config_path: Path) -> None:
 
     import torch
 
-    from benchmark.eval.model import load_model_and_tokenizer
+    from benchmark.eval.model import load_model
     from benchmark.eval.ppl import (
         evaluate_ppl,
         prepare_wikitext_input_ids,
@@ -52,8 +55,8 @@ def run_worker(config_path: Path) -> None:
     )
     eval_ids = select_scope(input_ids, ppl_config)
     expected_targets = eval_ids.size(1) - 1
-    model, tokenizer = load_model_and_tokenizer(config)
-    del tokenizer
+    loaded = load_model(config)
+    model = loaded.model
 
     ppl, average_nll, evaluated_tokens = evaluate_ppl(
         model,
@@ -67,7 +70,7 @@ def run_worker(config_path: Path) -> None:
         )
 
     baseline = load_baseline_quality(config)
-    if config.method == "fp16":
+    if config.checkpoint is None and baseline is None:
         ppl_delta = 0.0
         relative_increase = 0.0
     elif baseline is None:
@@ -127,7 +130,7 @@ def run_worker(config_path: Path) -> None:
                 "legacy_frozen": had_legacy_result,
                 "quality": "benchmark_v1_worker",
                 "quality_run_at_utc": utc_now(),
-                "backend": config.data["runtime"]["backend"],
+                "backend": config.backend,
                 "environment": str(config.python_executable),
                 "checkpoint": str(config.checkpoint) if config.checkpoint else None,
                 "input_tokens": int(eval_ids.size(1)),
@@ -135,9 +138,7 @@ def run_worker(config_path: Path) -> None:
                 "warmup_runs": int(config.data["generation"]["warmup_runs"]),
                 "measure_runs": int(config.data["generation"]["benchmark_runs"]),
                 "comparable": True,
-                "system_metrics_comparable": bool(
-                    config.data["runtime"]["system_metrics_comparable"]
-                ),
+                "system_metrics_comparable": config.system_metrics_comparable,
             },
         },
         manifest=manifest,
@@ -147,8 +148,11 @@ def run_worker(config_path: Path) -> None:
 
 
 def launch_isolated(config_path: Path) -> None:
-    """Spawn the worker under the Python interpreter declared by the config."""
+    """Spawn the worker with the already-active, config-validated interpreter."""
     config = load_config(config_path, check_paths=True)
+    config.validate_active_python()
+    if not config.supports_evaluation("quality"):
+        raise RuntimeError(f"Adapter {config.loader_adapter!r} does not support quality evaluation.")
     ppl_config = config.data["ppl"]
     print_manifest(
         config,
@@ -158,7 +162,7 @@ def launch_isolated(config_path: Path) -> None:
         split=str(ppl_config["split"]),
     )
     command = [
-        str(config.python_executable),
+        sys.executable,
         "-X",
         "utf8",
         "-m",
@@ -175,6 +179,8 @@ def launch_isolated(config_path: Path) -> None:
 def dry_run(config_path: Path) -> None:
     """Validate and print the PPL manifest without starting a worker."""
     config = load_config(config_path, check_paths=True)
+    if not config.supports_evaluation("quality"):
+        raise RuntimeError(f"Adapter {config.loader_adapter!r} does not support quality evaluation.")
     ppl_config = config.data["ppl"]
     print_manifest(
         config,

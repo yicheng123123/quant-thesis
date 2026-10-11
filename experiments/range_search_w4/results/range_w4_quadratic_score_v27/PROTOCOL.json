@@ -1,0 +1,110 @@
+{
+  "name": "v27 frozen M2 mathematical-equivalent candidate score check",
+  "frozen_before_gpu": true,
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dtype": "FP16",
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "attention": "SDPA",
+    "use_cache": false,
+    "tf32": false
+  },
+  "calibration": {
+    "source": "v16 CALIBRATION_MANIFEST.json, copied byte-for-byte to this run directory",
+    "dataset": "WikiText-2 train",
+    "documents": 128,
+    "tokens_per_document": 2048,
+    "token_budget": 262144,
+    "seed": 20261005,
+    "special_tokens": false,
+    "resampling": false
+  },
+  "quantization": {
+    "scope": "all 168 decoder Linear modules; embeddings, tied lm_head, norms, and biases remain FP16",
+    "weight_bits": 4,
+    "activation_bits": 16,
+    "group_size": 128,
+    "block_size": 128,
+    "symmetric": true,
+    "desc_act": false,
+    "static_groups": false,
+    "true_sequential": true,
+    "damp_percent": 0.1,
+    "damp_auto_increment": 0,
+    "mse": 0.0,
+    "math": "FP32 GPTQ statistics and compensation; dense quantized weights stored FP16"
+  },
+  "m2": {
+    "alpha_grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "selection_unit": "independent alpha per output row, shared across all G128 groups of that row",
+    "objective": "direct local calibration output reconstruction MSE, X @ (Q_FP16.float() - W_FP16.float()).T",
+    "tie_break": "exact loss ties prefer the larger alpha",
+    "prefix": "the method's own previously committed dense quantized weights; q/k/v and up/gate use shared group input/H; refresh only at dependency boundaries",
+    "candidate_isolation": "all ten candidates use the same pristine current target W and shared H/Hinv state; candidate-local compensation state is fresh",
+    "candidate_calls": 1680,
+    "row_alpha_score_slots": 3041280
+  },
+  "targets": {
+    "up_proj": [
+      4864,
+      896
+    ],
+    "down_proj": [
+      896,
+      4864
+    ]
+  },
+  "input": "Read-only v26 captured formal 128x2048 own-prefix input, verified by frozen SHA256",
+  "reference": "same X times pristine FP16 W cast to FP32; Q cast FP32; target is X@(Q.float-W.float).T; bias cancels / absent in targets",
+  "direct_score": "v18 run_precheck.score_rows, 4-document chunks, FP32 matmul, FP64 output-square accumulation, divide by 262144",
+  "quadratic_score": "independently build C=sum(X_fp32.T@X_fp32)/262144 in FP32 from 4-doc chunks; e=Q_fp16.float-W_fp16.float; row score=sum_fp64(e*(e@C))",
+  "hessian_policy": "raw GPTQ H is mathematically 4096*C for 2048-token docs but uses different FP32 accumulation; not reused as C, never damped H/inverse",
+  "candidate_grid": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "candidate_generation": "once per alpha per full Linear using existing dynamic G128 native compensation; both scorers share the exact tensor",
+  "selection": "strictly smaller FP64 score; exact ties prefer larger alpha, as v18; any different selected alpha is mismatch, no tolerance relaxation",
+  "validation": "all rows/all ten alpha; raw score abs/relative errors; best-second gap; selected W/scale/zero/g_idx; original direct full-row rescore differing candidates",
+  "timing": "after validation, two warmed scorer repetitions; direct full10 versus C construction plus quadratic full10; CUDA sync at stage boundaries only; record peak allocated/reserved and reassessment cost",
+  "gpu_budget_seconds": 600,
+  "no_new_heldout_ppl_fullmodel": true,
+  "source_sha256": {
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\PROTOCOL.json": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\CALIBRATION_MANIFEST.json": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_precheck.py": "2bf4f624d7ce569cbb72dac9aabeac6c2ef31ebb5b96540df3c6316bf4900cf7",
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_formal.py": "b7cef35c7ce7cae4fbf2735227c0cb343bf5beb8df5d6519a984dfa18d6cc59b",
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\M2\\checkpoint\\final\\model.safetensors": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+    "experiments\\range_search_w4\\results\\range_w4_m2_runtime_v17_3\\optimized_native_m2.py": "14fbe7409efd8e8d7ac3df7f0f71c03506cc6b767febda496c9d4d18344ba0f7",
+    "experiments\\range_search_w4\\results\\range_w4_factor_cache_v26\\PROTOCOL.json": "7e1912746c9b5d002fc87f31374a93ef722067c18af91becb1aed7762ee7a54a",
+    "experiments\\range_search_w4\\results\\range_w4_factor_cache_v26\\ACTIVATION_CACHE.json": "e9b0eac7652525a425560f1b71891e8c4093e48d46b4d3d51104960a1b7fd083",
+    "experiments\\range_search_w4\\results\\range_w4_factor_cache_v26\\PROFILE_ORIGINAL.json": "ee663e3fb7af485b3422160cad12161e5ca5579e069d70d5fd85485cb213a1b8",
+    "experiments\\range_search_w4\\results\\range_w4_factor_cache_v26\\PROFILE_DECISION.json": "4a612ae41ba6b6b798e686365922ced39464ded48303a398e369122e9d5b094a",
+    ".venv-gptq\\Lib\\site-packages\\gptqmodel\\quantization\\gptq.py": "73f00f7950e611deb45efb157f68c84656a786386e782af04f7afc7b66087bd8"
+  },
+  "activation_sha256": {
+    "up_proj": "b164fb179e772e548542ed89b6cf82adee601b545e020ea619799dc66531e856",
+    "down_proj": "9a159128abbd83130edf5a5741be93808c6e05a92840434f386aed9f1e778eb5"
+  },
+  "historical_read_only": true
+}

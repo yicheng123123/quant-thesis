@@ -1,0 +1,39 @@
+{
+  "version": "v56",
+  "cap_seconds": 9000.0,
+  "historical_shared_v55_seconds_separate": 11037.312983,
+  "historical_shared_v55_included_in_v56_cap": false,
+  "raw_active_ledger_total_seconds": 8327.70557035268,
+  "raw_active_ledger_remaining_seconds": 672.2944296473197,
+  "conservative_accounted_total_seconds": 8590.488573099388,
+  "conservative_remaining_seconds": 409.5114269006117,
+  "finish_reserve_seconds": 360.0,
+  "reserve_met_on_conservative_accounting": true,
+  "components": {
+    "base_preflight_charge_seconds": 120.0,
+    "CPU_only_failure_and_audit_charges_seconds": 230.34934819996963,
+    "first_formal_process_ledger_wall_seconds_including_partial_eval_attempt": 5693.77837061882,
+    "first_run_formal_repair_elapsed_record_seconds": 5699.771163356906,
+    "discarded_partial_WT2_wall_upper_bound_seconds": 256.7902100086212,
+    "first_session_conservative_upper_bound_seconds": 5956.561373365527,
+    "evaluation_only_continuation_wall_seconds": 2283.5778515338898,
+    "successful_frozen_evaluation_stage_seconds": 2278.9823644999997,
+    "peak_GPU_allocated_bytes_recorded": 4745163776,
+    "peak_GPU_reserved_bytes_recorded": 6033506304,
+    "ledger_to_conservative_reconciliation_seconds": 262.7830027467071,
+    "historical_M1_build_seconds_separate": 648.8761009000009,
+    "historical_M2_build_seconds_separate": 2115.9353341000096,
+    "historical_M2_minus_M1_build_seconds": 1467.0592332000087,
+    "historical_M2_to_M1_build_ratio": 3.2609235124628193,
+    "v55_new_layer2_to23_block_wall_seconds_context_only": 4240.101995000034,
+    "v55_formal_runner_process_wall_seconds_context_only": 4383.6175282001495
+  },
+  "accounting_notes": [
+    "The raw v56 ledger remains unchanged and includes the first interrupted PPL attempt inside its first process segment.",
+    "The audit also records repair elapsed and a discarded partial-WT2 upper bound; their boundary does not reconcile exactly with that segment. Conservative total uses max(ledger first segment, repair elapsed plus partial-attempt upper bound), then adds the separately measured successful continuation and CPU charges.",
+    "The partial WT2 attempt is excluded from quality results; its possible runtime is not described as an independently measured GPU wall interval.",
+    "v55 shared history and original M1/M2 build costs are outside the new v56 9000-second cap.",
+    "v55 restored-chain work and v56 full-from-layer0 work are not a valid direct speed comparison.",
+    "Stage timing rows are reported separately and are not added to process wall because nested timers may overlap."
+  ]
+}

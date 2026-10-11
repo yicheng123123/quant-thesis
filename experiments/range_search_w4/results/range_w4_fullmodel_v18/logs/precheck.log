@@ -1,0 +1,102 @@
+
+
+[32mINFO[0m  ENV: Auto setting PYTORCH_CUDA_ALLOC_CONF='expandable_segments:True' for memory saving.
+
+[32mINFO[0m  ENV: Auto setting CUDA_DEVICE_ORDER=PCI_BUS_ID for correctness.          
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+E:\quant-thesis\.venv-gptq\Lib\site-packages\torch\nn\modules\module.py:1329: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  return t.to(
+[model] loaded in 1.42s alloc=996321792 reserved=1040187392
+[capture:qkv] 32/128
+[capture:qkv] 64/128
+[capture:qkv] 96/128
+[capture:qkv] 128/128
+[correctness] qkv hook parity PASS; input_sha256=09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96
+[hessian:start] L0 q_proj shape=(896, 896) samples=128 seq=2048
+[hessian:done] L0 q_proj seconds=0.265 nsamples=128
+[candidate:L0 q_proj] alpha=0.1
+[candidate:L0 q_proj] alpha=0.2
+[candidate:L0 q_proj] alpha=0.3
+[candidate:L0 q_proj] alpha=0.4
+[candidate:L0 q_proj] alpha=0.5
+[candidate:L0 q_proj] alpha=0.6
+[candidate:L0 q_proj] alpha=0.7
+[candidate:L0 q_proj] alpha=0.8
+[candidate:L0 q_proj] alpha=0.9
+[candidate:L0 q_proj] alpha=1.0
+[candidate-reverse:L0 q_proj] alpha=1.0
+[candidate-reverse:L0 q_proj] alpha=0.9
+[candidate-reverse:L0 q_proj] alpha=0.8
+[candidate-reverse:L0 q_proj] alpha=0.7
+[candidate-reverse:L0 q_proj] alpha=0.6
+[candidate-reverse:L0 q_proj] alpha=0.5
+[candidate-reverse:L0 q_proj] alpha=0.4
+[candidate-reverse:L0 q_proj] alpha=0.3
+[candidate-reverse:L0 q_proj] alpha=0.2
+[candidate-reverse:L0 q_proj] alpha=0.1
+[correctness] q full-row streaming/stitch/order/native parity PASS
+[forward:qkv_commit_to_o_input] 32/128
+[forward:qkv_commit_to_o_input] 64/128
+[forward:qkv_commit_to_o_input] 96/128
+[forward:qkv_commit_to_o_input] 128/128
+[hessian:start] L0 o_proj shape=(896, 896) samples=128 seq=2048
+[hessian:done] L0 o_proj seconds=0.216 nsamples=128
+[forward:o_commit_to_up_gate_input] 32/128
+[forward:o_commit_to_up_gate_input] 64/128
+[forward:o_commit_to_up_gate_input] 96/128
+[forward:o_commit_to_up_gate_input] 128/128
+[hessian:start] L0 up_proj shape=(4864, 896) samples=128 seq=2048
+[hessian:done] L0 up_proj seconds=0.241 nsamples=128
+[forward:up_gate_commit_to_down_input] 32/128
+[forward:up_gate_commit_to_down_input] 64/128
+[forward:up_gate_commit_to_down_input] 96/128
+[forward:up_gate_commit_to_down_input] 128/128
+[hessian:start] L0 down_proj shape=(896, 4864) samples=128 seq=2048
+[hessian:done] L0 down_proj seconds=3.008 nsamples=128
+[candidate:L0 up_proj] alpha=0.1
+[candidate:L0 up_proj] alpha=0.2
+[candidate:L0 up_proj] alpha=0.3
+[candidate:L0 up_proj] alpha=0.4
+[candidate:L0 up_proj] alpha=0.5
+[candidate:L0 up_proj] alpha=0.6
+[candidate:L0 up_proj] alpha=0.7
+[candidate:L0 up_proj] alpha=0.8
+[candidate:L0 up_proj] alpha=0.9
+[candidate:L0 up_proj] alpha=1.0
+[candidate:L0 down_proj] alpha=0.1
+[candidate:L0 down_proj] alpha=0.2
+[candidate:L0 down_proj] alpha=0.3
+[candidate:L0 down_proj] alpha=0.4
+[candidate:L0 down_proj] alpha=0.5
+[candidate:L0 down_proj] alpha=0.6
+[candidate:L0 down_proj] alpha=0.7
+[candidate:L0 down_proj] alpha=0.8
+[candidate:L0 down_proj] alpha=0.9
+[candidate:L0 down_proj] alpha=1.0
+[correctness] q/up/down alpha1 native parity and finite full-row grids PASS
+[forward:down-to-next] 128/128
+{
+  "precheck": "PASS",
+  "peak_allocated_bytes": 1995059200,
+  "q_seconds": {
+    "n": 10,
+    "median": 0.40669879999768455,
+    "p95_nearest_rank": 0.4524475999933202,
+    "min": 0.3928394000104163,
+    "max": 0.4524475999933202
+  },
+  "up_seconds": {
+    "n": 10,
+    "median": 0.39769969999906607,
+    "p95_nearest_rank": 0.4413967999862507,
+    "min": 0.37328279999201186,
+    "max": 0.4413967999862507
+  },
+  "down_seconds": {
+    "n": 10,
+    "median": 2.1238893999980064,
+    "p95_nearest_rank": 2.4162164999870583,
+    "min": 2.0556170999770984,
+    "max": 2.4162164999870583
+  }
+}

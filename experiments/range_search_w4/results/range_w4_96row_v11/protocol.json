@@ -1,0 +1,128 @@
+{
+  "id": "range_w4_96row_v11",
+  "stage": "Stage 1 screening only",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "checkpoint_dtype": "bfloat16 source, loaded as float16",
+  "model_dtype": "float16",
+  "math_dtype": "float32",
+  "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "layers": [
+    0,
+    12,
+    23
+  ],
+  "projections": [
+    "self_attn.q_proj",
+    "self_attn.o_proj",
+    "mlp.up_proj",
+    "mlp.down_proj"
+  ],
+  "weight_quantization": "symmetric uniform W4A16",
+  "integer_range": [
+    0,
+    15
+  ],
+  "zero": 8,
+  "rounding": "torch.round ties to even",
+  "group_size": 128,
+  "block_size": 128,
+  "damp_percent": 0.1,
+  "desc_act": false,
+  "static_groups": false,
+  "true_sequential": true,
+  "D": "alpha=1.0 native dynamic GPTQ",
+  "C": "search-output-MSE-selected shared-alpha dynamic GPTQ",
+  "alpha_grid": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "input_semantics": "FP model projection inputs; no quantized prefix",
+  "dataset": "Salesforce/wikitext:wikitext-2-raw-v1:train",
+  "v9_manifest_sha256": "34a24ef8602b8ce1e38e7a284f112acf7f766962d87d737f69148b78bcfaba78",
+  "split_ids": [
+    "S00",
+    "S01",
+    "S02"
+  ],
+  "articles_per_split": {
+    "search": 4,
+    "heldout": 4
+  },
+  "tokens_per_article": 128,
+  "row_manifest_sha256": "c56eeaa1d1af6e4ed8dd78f811c811c66758b215659a98bf8550052c786e6106",
+  "nominal_candidate_evaluations": 2880,
+  "reusable_candidate_evaluations": 30,
+  "new_candidate_evaluations": 2850,
+  "reused_row_split_records": [
+    {
+      "layer": 12,
+      "projection": "q_proj",
+      "row_index": 448,
+      "split_id": "S00",
+      "source": "existing_v10"
+    },
+    {
+      "layer": 12,
+      "projection": "q_proj",
+      "row_index": 448,
+      "split_id": "S01",
+      "source": "existing_v10"
+    },
+    {
+      "layer": 12,
+      "projection": "q_proj",
+      "row_index": 448,
+      "split_id": "S02",
+      "source": "existing_v10"
+    }
+  ],
+  "stage1_labeling_thresholds": {
+    "candidate_positive": "at least 2/3 held_gain > +2%, median held_gain > +5%, worst >= -10%",
+    "mixed_risk": "not candidate-positive and has positive/negative split mixture, worst < -10%, alpha span >= 0.3 or three distinct selected alphas, or abs(median) < 2%",
+    "neutral_negative": "remaining rows with no reliable positive three-split result"
+  },
+  "preflight_cost_gate": {
+    "max_estimated_formal_seconds": 14400,
+    "max_process_reserved_ratio_of_total_gpu": 0.8,
+    "projected_candidate_and_hessian_cost_multiplier": 1.5
+  },
+  "candidate_evaluation_estimates_by_projection": {
+    "q_proj": {
+      "new_candidate_evaluations": 690,
+      "candidate_seconds_raw": 260.73570500033384,
+      "remaining_hessian_builds": 8,
+      "hessian_seconds_raw": 1.809015199978603,
+      "estimated_formal_seconds_with_1_5x_safety_factor": 393.81708030046866
+    },
+    "o_proj": {
+      "new_candidate_evaluations": 720,
+      "candidate_seconds_raw": 279.31156799983,
+      "remaining_hessian_builds": 8,
+      "hessian_seconds_raw": 0.07354080001823604,
+      "estimated_formal_seconds_with_1_5x_safety_factor": 419.07766319977236
+    },
+    "up_proj": {
+      "new_candidate_evaluations": 720,
+      "candidate_seconds_raw": 271.6000560001703,
+      "remaining_hessian_builds": 8,
+      "hessian_seconds_raw": 0.05159120002645068,
+      "estimated_formal_seconds_with_1_5x_safety_factor": 407.4774708002951
+    },
+    "down_proj": {
+      "new_candidate_evaluations": 720,
+      "candidate_seconds_raw": 1475.1161519993911,
+      "remaining_hessian_builds": 8,
+      "hessian_seconds_raw": 2.2011559999955352,
+      "estimated_formal_seconds_with_1_5x_safety_factor": 2215.97596199908
+    }
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "status": "COMPLETE",
+  "verdict": "DENSE46_CROSS_SPLIT_GATE_FAIL_STOP",
+  "correctness": "PASS_ARTIFACT_AUDIT",
+  "migration_gate_pass": false,
+  "core": [
+    {
+      "scope": "ALL",
+      "units": 48,
+      "scalar10_held_sse": 3844.5742344896985,
+      "dense46_held_sse": 3791.344925231284,
+      "delta_sse": 53.22930925841456,
+      "pooled_gain_fraction": 0.013845306661240692,
+      "epsilon_sse": 0.0049924812727273025,
+      "improved_beyond_epsilon": true,
+      "wins": 20,
+      "ties": 12,
+      "losses": 16,
+      "median_unit_gain_fraction": 0.0,
+      "mean_unit_gain_fraction": 0.013064468268765077,
+      "worst_unit": "L23_up_proj_R224_S1",
+      "worst_gain_fraction": -0.12446746419453356,
+      "scalar10_oracle_sse": 3791.7446030007836,
+      "dense46_oracle_sse": 3647.189964740685,
+      "scalar10_selection_regret_sse": 52.829631488914856,
+      "dense46_selection_regret_sse": 144.15496049059902,
+      "scalar10_selection_regret_fraction": 0.013932803239729155,
+      "dense46_selection_regret_fraction": 0.03952493889383917,
+      "oracle_capacity_gain_fraction": 0.038123516585399315,
+      "search_scalar10_sse": 2820.278190611305,
+      "search_dense46_sse": 2746.9135593525057,
+      "changed_alpha_units": 36
+    },
+    {
+      "scope": "S0",
+      "units": 24,
+      "scalar10_held_sse": 2023.6918600544966,
+      "dense46_held_sse": 1962.8582089876456,
+      "delta_sse": 60.83365106685096,
+      "pooled_gain_fraction": 0.030060728250007763,
+      "epsilon_sse": 0.0025159964760392726,
+      "improved_beyond_epsilon": true,
+      "wins": 11,
+      "ties": 6,
+      "losses": 7,
+      "median_unit_gain_fraction": 0.0,
+      "mean_unit_gain_fraction": 0.01366889147079154,
+      "worst_unit": "L0_up_proj_R224_S0",
+      "worst_gain_fraction": -0.09282963198545054,
+      "scalar10_oracle_sse": 1971.0050366701078,
+      "dense46_oracle_sse": 1862.3647593256278,
+      "scalar10_selection_regret_sse": 52.686823384388845,
+      "dense46_selection_regret_sse": 100.49344966201784,
+      "scalar10_selection_regret_fraction": 0.02673094304893305,
+      "dense46_selection_regret_fraction": 0.05396013276067737,
+      "oracle_capacity_gain_fraction": 0.055119228679405635,
+      "search_scalar10_sse": 1408.8628299469492,
+      "search_dense46_sse": 1365.12405879788,
+      "changed_alpha_units": 18
+    },
+    {
+      "scope": "S1",
+      "units": 24,
+      "scalar10_held_sse": 1820.8823744352019,
+      "dense46_held_sse": 1828.486716243638,
+      "delta_sse": -7.604341808436175,
+      "pooled_gain_fraction": -0.004176185082133532,
+      "epsilon_sse": 0.00247648479668803,
+      "improved_beyond_epsilon": false,
+      "wins": 9,
+      "ties": 6,
+      "losses": 9,
+      "median_unit_gain_fraction": 0.0,
+      "mean_unit_gain_fraction": 0.012460045066738614,
+      "worst_unit": "L23_up_proj_R224_S1",
+      "worst_gain_fraction": -0.12446746419453356,
+      "scalar10_oracle_sse": 1820.7395663306759,
+      "dense46_oracle_sse": 1784.8252054150569,
+      "scalar10_selection_regret_sse": 0.14280810452601145,
+      "dense46_selection_regret_sse": 43.661510828581186,
+      "scalar10_selection_regret_fraction": 7.843411939128211e-05,
+      "dense46_selection_regret_fraction": 0.024462625637577663,
+      "oracle_capacity_gain_fraction": 0.019725149922455394,
+      "search_scalar10_sse": 1411.4153606643558,
+      "search_dense46_sse": 1381.7895005546256,
+      "changed_alpha_units": 18
+    }
+  ],
+  "new_pilot": "NOT_RUN_SPLIT_GATE_FAIL",
+  "new_fullmodel": "NOT_RUN_SPLIT_GATE_FAIL",
+  "new_dense46_PPL": null,
+  "new_gptq_executions": 0,
+  "new_model_forwards": 0,
+  "new_held_scores": 0,
+  "new_ppl_evaluations": 0,
+  "new_analysis_wall_seconds": 61.413668199966196,
+  "cost_projection_hours": 2.246435505728255,
+  "recommendation": "stop dense-grid quality expansion; optional frozen10 fullshape profiling next, not executed",
+  "script_sha256": "81ba729d8f3ff49341b41a8b159c73309033fa6f251fe70eb51d909b0dd097bb",
+  "protocol_sha256": "c92eaf84b7348df94f5998e62eccf0213400c0e4aa685f9467644bb9f2e6e906",
+  "actual_new_cost": {
+    "final_successful_cpu_pass_seconds": 61.413668199966196,
+    "initial_successful_cpu_pass_seconds": 21.176530299999285,
+    "failed_cpu_pass_seconds": null,
+    "failed_cpu_pass_note": "token hash encoding assumption failed before candidate scoring; timer not recorded, do not fabricate total audit wall",
+    "new_gpu_calibration_seconds": 0,
+    "new_gpu_evaluation_seconds": 0,
+    "gpu_allocated_peak_bytes": null,
+    "gpu_reserved_peak_bytes": null
+  },
+  "cost_projection": {
+    "status": "HISTORICAL_FULL_SHAPE_COST_AUDIT_ONLY",
+    "candidate_calls": {
+      "scalar10": 1680,
+      "dense46": 7728,
+      "additional": 6048
+    },
+    "row_alpha_scores": {
+      "scalar10": 3041280,
+      "dense46": 13989888,
+      "additional": 10948608
+    },
+    "v18_calibration_wall_seconds": 2115.9353341000096,
+    "v18_measured_stages": {
+      "model_load": {
+        "count": 1,
+        "seconds": 1.3144430999818724
+      },
+      "initial_embedding_capture": {
+        "count": 1,
+        "seconds": 0.5540556999912951
+      },
+      "qkv_shared_input_capture": {
+        "count": 1,
+        "seconds": 0.3428204000520054
+      },
+      "shared_native_hinv_prepare": {
+        "count": 96,
+        "seconds": 4.60744659989723
+      },
+      "unique_group_hessian_build": {
+        "count": 96,
+        "seconds": 85.40371359989513
+      },
+      "full_linear_alpha_candidate_gptq": {
+        "count": 1680,
+        "seconds": 938.4278327001375
+      },
+      "all_row_direct_output_scoring": {
+        "count": 1680,
+        "seconds": 718.7734703004826
+      },
+      "streaming_per_row_argmin_update": {
+        "count": 1680,
+        "seconds": 1.4743876998545602
+      },
+      "alpha1_native_parity_reference": {
+        "count": 35,
+        "seconds": 20.17117960000178
+      },
+      "full_linear_row_stitch": {
+        "count": 168,
+        "seconds": 0.09466799980145879
+      },
+      "whole_linear_commit": {
+        "count": 168,
+        "seconds": 0.013841399981174618
+      },
+      "qkv_commit_to_o_input": {
+        "count": 24,
+        "seconds": 22.52444119961001
+      },
+      "o_commit_to_up_gate_input": {
+        "count": 24,
+        "seconds": 21.885516300040763
+      },
+      "up_gate_commit_to_down_input": {
+        "count": 24,
+        "seconds": 56.934710301458836
+      },
+      "down_commit_to_next_layer_input": {
+        "count": 23,
+        "seconds": 29.640144400153076
+      },
+      "atomic_layer_checkpoint_io": {
+        "count": 24,
+        "seconds": 1.096528500027489
+      },
+      "final_dense_model_save": {
+        "count": 1,
+        "seconds": 0.76384220001637
+      }
+    },
+    "v18_stage_sum_seconds": 1904.0230420013831,
+    "v18_unattributed_overhead_seconds": 211.9122920986265,
+    "fixed_and_overhead_seconds": 457.259643399535,
+    "variable_search_seconds": 1658.6756907004747,
+    "search_gptq_plus_scoring_fraction": 0.783200354138182,
+    "dependency_refresh_fraction": 0.06190397697431319,
+    "historical_dense46_projection_seconds": 8087.1678206217175,
+    "historical_dense46_projection_hours": 2.246435505728255,
+    "historical_1_5x_projection_hours": 3.369653258592382,
+    "mixed_recent_shape_projection_seconds": 8670.276532080456,
+    "mixed_recent_1_5x_hours": 3.61261522170019,
+    "projected_block0_pilot_seconds": 425.1169379575411,
+    "projected_block0_1_5x_seconds": 637.6754069363117,
+    "budget_seconds": 21600,
+    "pilot_budget_seconds": 1800,
+    "cost_gate": "NOT_RUN: historical estimates do not replace fresh pilot measurement",
+    "caveats": [
+      "All168 historical full shapes; not row-time extrapolation.",
+      "Recent v24 matching up/down GPTQ replaces only measured shapes in mixed model; scoring uses formal v18 ALL rows and128 docs.",
+      "Different own-prefix H/inputs and timing variability need fresh pilot if consistency passes.",
+      "Failed cross-split gate prevents optimization/profiling now."
+    ],
+    "v24_grid_cost": {
+      "original10": {
+        "full_linear_executions": 120,
+        "row_scores": 480,
+        "gptq_seconds": 162.80666840000777,
+        "search_score_seconds": 13.660356299835257,
+        "held_score_seconds": 14.900925399881089,
+        "checkpoint_io_seconds": 0.30453539942391217,
+        "scope": "measured shared bank stages, not independent total method wall"
+      },
+      "additional36": {
+        "full_linear_executions": 432,
+        "row_scores": 1728,
+        "gptq_seconds": 574.3411913998716,
+        "search_score_seconds": 45.40601029977552,
+        "held_score_seconds": 45.092218200385105,
+        "checkpoint_io_seconds": 1.1157318004406989,
+        "scope": "measured shared bank stages, not independent total method wall"
+      },
+      "dense46": {
+        "full_linear_executions": 552,
+        "row_scores": 2208,
+        "gptq_seconds": 737.1478597998794,
+        "search_score_seconds": 59.066366599610774,
+        "held_score_seconds": 59.993143600266194,
+        "checkpoint_io_seconds": 1.420267199864611,
+        "scope": "measured shared bank stages, not independent total method wall"
+      }
+    },
+    "peaks": {
+      "v18_torch_allocated_bytes": 2347887104,
+      "v18_torch_reserved_bytes": 2684354560,
+      "new_cuda_peak_bytes": null,
+      "v24_torch_allocated_bytes": 2336302592,
+      "v24_torch_reserved_bytes": 2556428288
+    },
+    "dependency_boundaries": {
+      "shared_groups_per_block": 4,
+      "H_preparations": 96,
+      "full_linear_commits": 168,
+      "initial_embedding_captures": 1,
+      "initial_qkv_norm_capture": 1,
+      "qkv_o_refreshes": 24,
+      "o_upgate_refreshes": 24,
+      "upgate_down_refreshes": 24,
+      "down_next_refreshes": 23,
+      "total_calibration_block_forwards": 12160,
+      "extra_row_batch_refreshes": 0,
+      "note": "next qkv norm fused with down->next pass; L23 no next calibration input needed"
+    },
+    "actual_repetition": {
+      "one_fullshape_candidate_all_rows": true,
+      "shared_X_H_inverse_middle": true,
+      "inverse_upper_factor_fully_cached": false,
+      "repeated_cholesky": "Native initial damped-H Cholesky and final upper Cholesky each candidate; middle inverse cached",
+      "separate_factorization_profile_seconds": null,
+      "repair_applied": false,
+      "unused_forward_suffix": "run_block_capture executes full block although qkv->o and o->up-gate need only prefix to captured input; unused suffix exists but no row/sibling input recapture",
+      "decision": "No repeated per-row calls/sibling refresh found. Real factorization repetition unprofiled; failed quality gate prevents new optimization."
+    },
+    "cost_components": [
+      {
+        "component": "candidate_search",
+        "historical_M2_seconds": 1658.6756907004747,
+        "projected_dense46_seconds": 7629.9081772221825,
+        "measurement": "historical synchronized complete stages"
+      },
+      {
+        "component": "H_Hinv_preparation",
+        "historical_M2_seconds": 90.01116019979236,
+        "projected_dense46_seconds": 90.01116019979236,
+        "measurement": "historical synchronized complete stages"
+      },
+      {
+        "component": "initial_prefix_capture",
+        "historical_M2_seconds": 0.8968761000433005,
+        "projected_dense46_seconds": 0.8968761000433005,
+        "measurement": "historical synchronized complete stages"
+      },
+      {
+        "component": "dependency_capture_refresh",
+        "historical_M2_seconds": 130.98481220126268,
+        "projected_dense46_seconds": 130.98481220126268,
+        "measurement": "historical synchronized complete stages"
+      },
+      {
+        "component": "stitch_commit",
+        "historical_M2_seconds": 0.10850939978263341,
+        "projected_dense46_seconds": 0.10850939978263341,
+        "measurement": "historical synchronized complete stages"
+      },
+      {
+        "component": "checkpoint_IO",
+        "historical_M2_seconds": 1.860370700043859,
+        "projected_dense46_seconds": 1.860370700043859,
+        "measurement": "historical synchronized complete stages"
+      },
+      {
+        "component": "parity_references",
+        "historical_M2_seconds": 20.17117960000178,
+        "projected_dense46_seconds": 20.17117960000178,
+        "measurement": "historical synchronized complete stages"
+      },
+      {
+        "component": "model_load",
+        "historical_M2_seconds": 1.3144430999818724,
+        "projected_dense46_seconds": 1.3144430999818724,
+        "measurement": "historical synchronized complete stages"
+      },
+      {
+        "component": "unattributed_overhead",
+        "historical_M2_seconds": 211.9122920986265,
+        "projected_dense46_seconds": 211.9122920986265,
+        "measurement": "wall minus measured stages; hash/validation/CPU overhead, not assigned to GPTQ"
+      }
+    ],
+    "v24_entire_E2_wall_seconds": 2692.44065199999,
+    "v24_entire_E2_wall_scope": "includes structured search, preparation, correctness and six failed recovery attempts; not scalar-only",
+    "runner_optimization": "NONE; historical algorithm unchanged"
+  },
+  "historical_results_preserved": true,
+  "distinction": "artifact correctness PASS; cross-split benefit FAIL; new runtime/PPL NOT_RUN"
+}

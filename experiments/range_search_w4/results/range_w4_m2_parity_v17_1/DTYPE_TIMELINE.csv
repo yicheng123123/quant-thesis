@@ -1,0 +1,26 @@
+path,stage,dtype,device,shape,stride,contiguous,sha256,cast_timing,autocast
+native,original_model_W,torch.float16,cuda:0,"[128, 896]","[896, 1]",True,a960832a9e0e83e4d95402e5d1a01cc74300fcca0c381237162126330e1a7af8,checkpoint converted to FP16 before GPTQ,False
+native,working_W,torch.float32,cuda:0,"[128, 896]","[896, 1]",True,e2ab8f0953680997f00f6f89fb081d1fe0eb79ac19e92932a68a8630bdaa9ead,.float() before any range/GPTQ operation,False
+native,H,torch.float32,cuda:0,"[896, 896]","[896, 1]",True,da0b2311d8b6829e851c05a40c1ca00e07b19031f9fd4c5b4360ac97350c14d7,process_batch casts calibration input .float() before Gram accumulation,False
+native,Hinv,torch.float32,cuda:0,"[896, 896]","[1, 896]",False,d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1,native lower Cholesky -> native inverse helper -> upper Cholesky; FP32,False
+native,final_returned_weight,torch.float16,cuda:0,"[128, 896]","[896, 1]",True,604d3c2297164f2f3af5a6c6ab8fc26716ac7bffef29a40a51cd695e3ca04b5c,native type_as(original FP16) after full GPTQ; legacy returns FP32,False
+native,group_entry/value,torch.float32,cuda:0,"[128, 128]","[896, 1]",False,01fccd417ea67c610ff033f80e1cd4721e1000afba59f8fc87b83708ae1fffce,no dtype cast in this operation,False
+native,group_entry/scale,torch.float32,cuda:0,"[128, 1]","[1, 1]",True,38941dc569482b15e4687a9e52c821ba0356ae199f2d307bd44620473d899c23,no dtype cast in this operation,False
+native,group_entry/zero,torch.float32,cuda:0,"[128, 1]","[1, 1]",True,cce5252667fb8a8e046970544d91e1134b59b0446474e8d9d8d62eb71d9890a7,no dtype cast in this operation,False
+native,dequantized_q/value,torch.float32,cuda:0,[128],[1],True,66b89e341d58f0ff9206e3727d055dcefcaf61a8777e7af606f865d3a6776f3b,no dtype cast in this operation,False
+native,error_vector/value,torch.float32,cuda:0,[128],[1],True,7200ece69eaef471a96eb3eb224a5a7cb8549993198285cd3194211351d551a8,no dtype cast in this operation,False
+native,compensation_product/value,torch.float32,cuda:0,"[128, 128]","[128, 1]",True,3d5e67929ce1a3ba21654cb4402f9ac97eae2ee311ce20aa086964585883fc3e,no dtype cast in this operation,False
+native,updated_remaining_W/value,torch.float32,cuda:0,"[128, 128]","[128, 1]",True,d3189f6277a26487c757656695b693cc6fc93ced15d25d69efbd3137e207f0a6,no dtype cast in this operation,False
+legacy_custom,original_model_W,torch.float16,cuda:0,"[128, 896]","[896, 1]",True,a960832a9e0e83e4d95402e5d1a01cc74300fcca0c381237162126330e1a7af8,checkpoint converted to FP16 before GPTQ,False
+legacy_custom,working_W,torch.float32,cuda:0,"[128, 896]","[896, 1]",True,e2ab8f0953680997f00f6f89fb081d1fe0eb79ac19e92932a68a8630bdaa9ead,.float() before any range/GPTQ operation,False
+legacy_custom,H,torch.float32,cuda:0,"[896, 896]","[896, 1]",True,da0b2311d8b6829e851c05a40c1ca00e07b19031f9fd4c5b4360ac97350c14d7,process_batch casts calibration input .float() before Gram accumulation,False
+legacy_custom,Hinv,torch.float32,cuda:0,"[896, 896]","[1, 896]",False,d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1,native lower Cholesky -> native inverse helper -> upper Cholesky; FP32,False
+legacy_custom,final_returned_weight,torch.float32,cuda:0,"[128, 896]","[896, 1]",True,be37ae7dd2cdba5e4d1fa4b85dea21add8b1cfa39c19ad7dd53867497d9a8d13,native type_as(original FP16) after full GPTQ; legacy returns FP32,False
+legacy_custom,group_entry/value,torch.float32,cuda:0,"[128, 128]","[896, 1]",False,01fccd417ea67c610ff033f80e1cd4721e1000afba59f8fc87b83708ae1fffce,no dtype cast in this operation,False
+legacy_custom,group_entry/scale,torch.float32,cuda:0,"[128, 1]","[1, 1]",True,38941dc569482b15e4687a9e52c821ba0356ae199f2d307bd44620473d899c23,no dtype cast in this operation,False
+legacy_custom,group_entry/zero,torch.float32,cuda:0,"[128, 1]","[1, 1]",True,cce5252667fb8a8e046970544d91e1134b59b0446474e8d9d8d62eb71d9890a7,no dtype cast in this operation,False
+legacy_custom,dequantized_q/value,torch.float32,cuda:0,[128],[1],True,66b89e341d58f0ff9206e3727d055dcefcaf61a8777e7af606f865d3a6776f3b,no dtype cast in this operation,False
+legacy_custom,error_vector/value,torch.float32,cuda:0,[128],[1],True,7200ece69eaef471a96eb3eb224a5a7cb8549993198285cd3194211351d551a8,no dtype cast in this operation,False
+legacy_custom,compensation_product/value,torch.float32,cuda:0,"[128, 128]","[128, 1]",True,3d5e67929ce1a3ba21654cb4402f9ac97eae2ee311ce20aa086964585883fc3e,no dtype cast in this operation,False
+legacy_custom,updated_remaining_W/value,torch.float32,cuda:0,"[128, 128]","[128, 1]",True,d3189f6277a26487c757656695b693cc6fc93ced15d25d69efbd3137e207f0a6,no dtype cast in this operation,False
+legacy_custom,final_stored_weight,torch.float16,cuda:0,"[128, 896]","[896, 1]",True,604d3c2297164f2f3af5a6c6ab8fc26716ac7bffef29a40a51cd695e3ca04b5c,".half() AFTER GPTQ, BEFORE output loss",False

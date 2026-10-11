@@ -1,0 +1,318 @@
+{
+  "name": "v28 complete M2 dual-score validation and conditional quadratic-only run",
+  "status": "FROZEN_BEFORE_FULLMODEL_GPU_RUN",
+  "v18_protocol": {
+    "name": "v18 Formal M2 Full-Model Quantization and Model-Level Evaluation",
+    "status": "PRECHECK_PENDING",
+    "source_protocol": {
+      "v16_protocol_draft_sha256": "64dacbba12ef0d4625111d201e48a43c63fd8347dd85f2aeb82a1c86703bc0a4",
+      "v16_ppl_eval_protocol_sha256": "eec9b7d01c0191809e63282cac82cb8fa85f266a3b5016c8ab91eb22e8c1c7d0",
+      "v16_baseline_matrix_sha256": "68b5f09dfb3ce3009e5d1b7b2f4339710329036e1f538e4658d3b18e3d6c483b",
+      "v16_calibration_manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+      "v16_wikitext_manifest_sha256": "acd46b20a6b84b534d5625bfab505d599001679a775d619960a40e8da4f62f46",
+      "v16_c4_manifest_sha256": "0b0d70d70d3c1e0ba62126c81a3f3e97531e58d6701236fb8b3315450b7188d4",
+      "v17_1_native_m2_sha256": "7cd0f8c062b79572b56458b6547b122eaf57b25aadf92fdc33c59fd41a579e0b"
+    },
+    "model": {
+      "id": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "dtype": "FP16",
+      "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "attention": "SDPA",
+      "use_cache": false,
+      "tf32": false
+    },
+    "quantization": {
+      "scope": "all 168 decoder Linear modules; embeddings, tied lm_head, norms, and biases remain FP16",
+      "weight_bits": 4,
+      "activation_bits": 16,
+      "group_size": 128,
+      "block_size": 128,
+      "symmetric": true,
+      "desc_act": false,
+      "static_groups": false,
+      "true_sequential": true,
+      "damp_percent": 0.1,
+      "damp_auto_increment": 0,
+      "mse": 0.0,
+      "math": "FP32 GPTQ statistics and compensation; dense quantized weights stored FP16"
+    },
+    "m2": {
+      "alpha_grid": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+      ],
+      "selection_unit": "independent alpha per output row, shared across all G128 groups of that row",
+      "objective": "direct local calibration output reconstruction MSE, X @ (Q_FP16.float() - W_FP16.float()).T",
+      "tie_break": "exact loss ties prefer the larger alpha",
+      "prefix": "the method's own previously committed dense quantized weights; q/k/v and up/gate use shared group input/H; refresh only at dependency boundaries",
+      "candidate_isolation": "all ten candidates use the same pristine current target W and shared H/Hinv state; candidate-local compensation state is fresh",
+      "candidate_calls": 1680,
+      "row_alpha_score_slots": 3041280
+    },
+    "calibration": {
+      "source": "v16 CALIBRATION_MANIFEST.json, copied byte-for-byte to this run directory",
+      "dataset": "WikiText-2 train",
+      "documents": 128,
+      "tokens_per_document": 2048,
+      "token_budget": 262144,
+      "seed": 20261005,
+      "special_tokens": false,
+      "resampling": false
+    },
+    "evaluation": {
+      "primary_representation": "dense-dequant FP16 weights for M1 and M2; original FP16 for M0",
+      "evaluator": "benchmark.eval.ppl.evaluate_ppl token-weighted sliding windows",
+      "max_length": 2048,
+      "stride": 512,
+      "add_special_tokens": false,
+      "chat_template": false,
+      "wiki_text_test_input_tokens": 299078,
+      "wiki_text_test_scored_tokens": 299077,
+      "c4_validation_fixed_budget_input_tokens": 131072,
+      "c4_validation_fixed_budget_scored_tokens": 131071,
+      "c4_label": "C4 validation fixed token budget PPL; not standard/full C4 PPL",
+      "selection_or_tuning_on_eval": false
+    },
+    "gate": {
+      "conservative_m2_calibration_hours_max": 48,
+      "source": "v16 frozen protocol and v17.3 corrected cost audit",
+      "change_allowed": false
+    },
+    "prohibited": [
+      "OmniQuant",
+      "PrefixQuant",
+      "Gate",
+      "robust objective",
+      "alpha grid tuning",
+      "packed-kernel performance claims"
+    ]
+  },
+  "scope": "same Qwen2.5-0.5B-Instruct revision, FP16 W4A16 symmetric dynamic GPTQ G128, original native compensation, alpha grid, 128x2048 WikiText-2 train documents, own-prefix input propagation and exact direct score selection",
+  "modules": 168,
+  "rows": 304128,
+  "candidate_executions_each_full_run": 1680,
+  "row_alpha_scores_each_full_run": 3041280,
+  "scoring": {
+    "direct": "v18 run_precheck.score_rows unchanged; X@(Q.float-W.float).T; FP32 matmul FP64 square accumulation; equal 262144 tokens",
+    "quadratic": "C=X.T@X/262144 from exact current group X, no mask/weights; all entries kept; e=Q.float-W.float; e@C FP32 then FP64 row dot",
+    "bias": "actual bias state audited module by module; unchanged common bias cancels; reference remains exact v18 weight-only target",
+    "input_sharing": "one C per true v18 dependency/H input group; reuse for qkv siblings and up/gate siblings only after exact shared-input check and equal input hash",
+    "hessian": "never substitute damped H, inverse, GPTQ loss, or compensation accumulation for C",
+    "tie_break": "strict lower score; exact equality chooses larger alpha; no epsilon threshold"
+  },
+  "phase1": "run complete v18 M2 dynamics and prefix propagation; each candidate is generated once, direct and quadratic scores are both computed from that same tensor; commit and propagate the direct score choice; retain both full score vectors and selections per Linear; compare selected W/scale/zero/g_idx and all row-alpha scores",
+  "phase2_gate": "only if every module has identical selected alpha and committed tensors, all phase1 correctness passes, and remaining 90-minute budget supports projected phase2 cost plus 20% reserve, run complete M2 again using quadratic-only selection and own-prefix propagation",
+  "phase2": "same M2 implementation/settings and candidate grid; direct scorer disabled; C-only scorer selects and commits; save independent checkpoint chain; compare each input/H hash and normalized final tensors against v18 M2",
+  "recoverability": "atomic checkpoints after each full dependency group (qkv, o, up_gate, down) and after each full layer; resume only from verified contiguous group checkpoints",
+  "budget": {
+    "gpu_wall_seconds_total_max": 5400,
+    "soft_stop_reserve_seconds": 600,
+    "include": [
+      "source/hash setup",
+      "model loads",
+      "capture/refresh",
+      "H and C builds",
+      "warmups",
+      "candidates",
+      "both scorers",
+      "retry/resume",
+      "stitch/commit",
+      "checkpoint and final IO"
+    ]
+  },
+  "v27_local_results": {
+    "status": "COMPLETE",
+    "gpu_wall_seconds": 105.69290979998186,
+    "targets": {
+      "up_proj": {
+        "rows": 4864,
+        "candidates": 10,
+        "max_absolute_score_error": 3.3381997421866316e-07,
+        "median_absolute_score_error": 1.4493061333302124e-09,
+        "max_relative_score_error": 1.055239017624744e-05,
+        "p95_relative_score_error": 1.3383404102360992e-06,
+        "median_relative_score_error": 5.607826896787394e-07,
+        "selection_difference_rows": 0,
+        "direct_exact_tie_rows": 0,
+        "quadratic_exact_tie_rows": 0,
+        "minimum_direct_best_second_gap": 4.608267050506404e-09,
+        "median_direct_best_second_gap": 4.857356159989804e-05,
+        "margin_certified_rows": 4862,
+        "sensitive_same_selection_rows": [
+          2375,
+          4341
+        ],
+        "direct_selected_alpha_histogram": {
+          "0.1": 0,
+          "0.2": 0,
+          "0.3": 0,
+          "0.4": 0,
+          "0.5": 0,
+          "0.6": 0,
+          "0.7": 4,
+          "0.8": 1060,
+          "0.9": 3451,
+          "1.0": 349
+        },
+        "quadratic_selected_alpha_histogram": {
+          "0.1": 0,
+          "0.2": 0,
+          "0.3": 0,
+          "0.4": 0,
+          "0.5": 0,
+          "0.6": 0,
+          "0.7": 4,
+          "0.8": 1060,
+          "0.9": 3451,
+          "1.0": 349
+        },
+        "selected_weight_scale_zero_g_idx_exact": {
+          "weight_fp16": true,
+          "scales": true,
+          "zeros": true,
+          "g_idx": true
+        },
+        "direct_recheck": {
+          "rows": [],
+          "candidate_indices": [],
+          "wall_seconds": 0.0,
+          "exact_repeat": null
+        },
+        "validation_seconds": {
+          "direct_full10_s": 6.871865900000557,
+          "C_build_s": 0.2380799000384286,
+          "quadratic_full10_s": 0.028580499987583607,
+          "C_bytes": 3211264
+        },
+        "repeat_direct_full10_mean_seconds": 6.863158350024605,
+        "repeat_direct_full10_range_seconds": 0.019855300022754818,
+        "repeat_quadratic_C_plus_full10_mean_seconds": 0.22854114999063313,
+        "repeat_quadratic_C_plus_full10_range_seconds": 0.01214050012640655,
+        "repeat_absolute_score_time_saved_seconds": 6.634617200033972,
+        "repeat_scoring_only_time_ratio": 30.030295858342775,
+        "C_bytes": 3211264,
+        "direct_repeat_incremental_peak_bytes": [
+          844099584,
+          844099584
+        ],
+        "quadratic_repeat_incremental_peak_bytes": [
+          143022080,
+          143022080
+        ]
+      },
+      "down_proj": {
+        "rows": 896,
+        "candidates": 10,
+        "max_absolute_score_error": 1.068799185266478e-07,
+        "median_absolute_score_error": 2.0540853839080917e-10,
+        "max_relative_score_error": 2.1087506594807102e-05,
+        "p95_relative_score_error": 1.2618713890448627e-06,
+        "median_relative_score_error": 6.160305883465468e-07,
+        "selection_difference_rows": 0,
+        "direct_exact_tie_rows": 0,
+        "quadratic_exact_tie_rows": 0,
+        "minimum_direct_best_second_gap": 5.4994251226877676e-09,
+        "median_direct_best_second_gap": 4.53107263501778e-06,
+        "margin_certified_rows": 896,
+        "sensitive_same_selection_rows": [],
+        "direct_selected_alpha_histogram": {
+          "0.1": 0,
+          "0.2": 0,
+          "0.3": 0,
+          "0.4": 0,
+          "0.5": 0,
+          "0.6": 0,
+          "0.7": 0,
+          "0.8": 39,
+          "0.9": 824,
+          "1.0": 33
+        },
+        "quadratic_selected_alpha_histogram": {
+          "0.1": 0,
+          "0.2": 0,
+          "0.3": 0,
+          "0.4": 0,
+          "0.5": 0,
+          "0.6": 0,
+          "0.7": 0,
+          "0.8": 39,
+          "0.9": 824,
+          "1.0": 33
+        },
+        "selected_weight_scale_zero_g_idx_exact": {
+          "weight_fp16": true,
+          "scales": true,
+          "zeros": true,
+          "g_idx": true
+        },
+        "direct_recheck": {
+          "rows": [],
+          "candidate_indices": [],
+          "wall_seconds": 0.0,
+          "exact_repeat": null
+        },
+        "validation_seconds": {
+          "direct_full10_s": 7.899686400021892,
+          "C_build_s": 2.372053600032814,
+          "quadratic_full10_s": 0.09206409996841103,
+          "C_bytes": 94633984
+        },
+        "repeat_direct_full10_mean_seconds": 7.583565100008855,
+        "repeat_direct_full10_range_seconds": 0.0066442000097595155,
+        "repeat_quadratic_C_plus_full10_mean_seconds": 2.487874799990095,
+        "repeat_quadratic_C_plus_full10_range_seconds": 0.006004999973811209,
+        "repeat_absolute_score_time_saved_seconds": 5.0956903000187594,
+        "repeat_scoring_only_time_ratio": 3.048210102871353,
+        "C_bytes": 94633984,
+        "direct_repeat_incremental_peak_bytes": [
+          323688448,
+          323688448
+        ],
+        "quadratic_repeat_incremental_peak_bytes": [
+          333709312,
+          333678592
+        ]
+      }
+    },
+    "full_linear_gptq_candidate_executions": 20,
+    "row_alpha_scores_per_scorer": 57600,
+    "new_heldout_ppl_fullmodel": "NOT_RUN",
+    "full_block_propagation": "NOT_RUN",
+    "verdict": "A_LOCAL_SCORING_SELECTION_MATCH_AND_CLEAR_BUILD_INCLUDED_BENEFIT"
+  },
+  "v26_activation_sha256": {
+    "up_proj": "b164fb179e772e548542ed89b6cf82adee601b545e020ea619799dc66531e856",
+    "down_proj": "9a159128abbd83130edf5a5741be93808c6e05a92840434f386aed9f1e778eb5"
+  },
+  "ppl": "NOT_RUN; reuse v18 PPL interpretation only if final named tensors/config are exactly equal",
+  "source_sha256": {
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\PROTOCOL.json": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\CALIBRATION_MANIFEST.json": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\CALIBRATION_VALIDATION.json": "81077d3553eda9fa56b3336c949e25bbdd6d42ec2786dbeb7c328e88d653c551",
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_formal.py": "b7cef35c7ce7cae4fbf2735227c0cb343bf5beb8df5d6519a984dfa18d6cc59b",
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_precheck.py": "2bf4f624d7ce569cbb72dac9aabeac6c2ef31ebb5b96540df3c6316bf4900cf7",
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\M2\\RUN_REPORT.json": "7557d450ca05fc913a6b71b7e9dbae5fb77b261066bf59a0695957ad2854d980",
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\M2\\checkpoint\\final\\model.safetensors": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+    "experiments\\range_search_w4\\results\\range_w4_quadratic_score_v27\\FORMULA.md": "42127c16a95361ede6c235e36782aee04b954dcba47c52b0a6db1e5cdc7b4dae",
+    "experiments\\range_search_w4\\results\\range_w4_quadratic_score_v27\\run_v27.py": "90309fb6fcd31433695cfc0ccc58b8fb1b28faef07e24df1870e5258bde0b4d5",
+    "experiments\\range_search_w4\\results\\range_w4_quadratic_score_v27\\SUMMARY.json": "975c59192108e890265bd746113e377870fd05298fa50eaf2d569117f9f9772e",
+    "experiments\\range_search_w4\\results\\range_w4_quadratic_score_v27\\RAW_SCORES_up_proj.npz": "5099260d0fc7a4f90c3fa177832b9e7b7b67fb2e2916580ccb4a9218bd4d744c",
+    "experiments\\range_search_w4\\results\\range_w4_quadratic_score_v27\\RAW_SCORES_down_proj.npz": "974d67577a60e3fbc1d62296834758769a43abfa4bdd16c362b45b7ad20c6a84",
+    "experiments\\range_search_w4\\results\\range_w4_factor_cache_v26\\ACTIVATION_CACHE.json": "e9b0eac7652525a425560f1b71891e8c4093e48d46b4d3d51104960a1b7fd083",
+    "experiments\\range_search_w4\\results\\range_w4_factor_cache_v26\\cache\\L0_up_proj_128x2048.f16": "b164fb179e772e548542ed89b6cf82adee601b545e020ea619799dc66531e856",
+    "experiments\\range_search_w4\\results\\range_w4_factor_cache_v26\\cache\\L0_down_proj_128x2048.f16": "9a159128abbd83130edf5a5741be93808c6e05a92840434f386aed9f1e778eb5",
+    "experiments\\range_search_w4\\results\\range_w4_m2_runtime_v17_3\\optimized_native_m2.py": "14fbe7409efd8e8d7ac3df7f0f71c03506cc6b767febda496c9d4d18344ba0f7",
+    ".venv-gptq\\Lib\\site-packages\\gptqmodel\\quantization\\gptq.py": "73f00f7950e611deb45efb157f68c84656a786386e782af04f7afc7b66087bd8"
+  },
+  "historical_read_only": true,
+  "new_artifacts": "v28 directory only"
+}

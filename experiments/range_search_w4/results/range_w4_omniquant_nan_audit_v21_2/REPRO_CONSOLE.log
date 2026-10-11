@@ -1,0 +1,14 @@
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\official_port\utils.py:31: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self._scaler = torch.cuda.amp.GradScaler()
+E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_nan_audit_v21_2\replay_basic.py:62: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(enabled=not is_fp32):
+REPLAY 1 loss=0.15326565504074097 finite=False bad=['native_layer.mlp.gate_proj.weight_quantizer.upbound_factor', 'native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor', 'native_layer.mlp.up_proj.weight_quantizer.upbound_factor', 'native_layer.mlp.up_proj.weight_quantizer.lowbound_factor']
+REPLAY 2 loss=0.15326565504074097 finite=False bad=['native_layer.mlp.gate_proj.weight_quantizer.upbound_factor', 'native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor', 'native_layer.mlp.up_proj.weight_quantizer.upbound_factor', 'native_layer.mlp.up_proj.weight_quantizer.lowbound_factor']
+REPLAY 3 loss=0.15326565504074097 finite=False bad=['native_layer.mlp.gate_proj.weight_quantizer.upbound_factor', 'native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor', 'native_layer.mlp.up_proj.weight_quantizer.upbound_factor', 'native_layer.mlp.up_proj.weight_quantizer.lowbound_factor']
+Traceback (most recent call last):
+  File "E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_nan_audit_v21_2\replay_basic.py", line 176, in <module>
+    main()
+  File "E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_nan_audit_v21_2\replay_basic.py", line 172, in main
+    raise RuntimeError('reproducibility gate failed; stop causal diagnosis')
+RuntimeError: reproducibility gate failed; stop causal diagnosis

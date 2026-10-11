@@ -1,0 +1,126 @@
+{
+  "status": "FROZEN_BEFORE_GPU",
+  "experiment": "v42 formal M2 initialized batched single-coordinate integer repair transfer",
+  "model_setting": "User requested Sol high; current interface cannot confirm or change this setting.",
+  "v18": {
+    "name": "v18 Formal M2 Full-Model Quantization and Model-Level Evaluation",
+    "status": "PRECHECK_PENDING",
+    "source_protocol": {
+      "v16_protocol_draft_sha256": "64dacbba12ef0d4625111d201e48a43c63fd8347dd85f2aeb82a1c86703bc0a4",
+      "v16_ppl_eval_protocol_sha256": "eec9b7d01c0191809e63282cac82cb8fa85f266a3b5016c8ab91eb22e8c1c7d0",
+      "v16_baseline_matrix_sha256": "68b5f09dfb3ce3009e5d1b7b2f4339710329036e1f538e4658d3b18e3d6c483b",
+      "v16_calibration_manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+      "v16_wikitext_manifest_sha256": "acd46b20a6b84b534d5625bfab505d599001679a775d619960a40e8da4f62f46",
+      "v16_c4_manifest_sha256": "0b0d70d70d3c1e0ba62126c81a3f3e97531e58d6701236fb8b3315450b7188d4",
+      "v17_1_native_m2_sha256": "7cd0f8c062b79572b56458b6547b122eaf57b25aadf92fdc33c59fd41a579e0b"
+    },
+    "model": {
+      "id": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "dtype": "FP16",
+      "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "attention": "SDPA",
+      "use_cache": false,
+      "tf32": false
+    },
+    "quantization": {
+      "scope": "all 168 decoder Linear modules; embeddings, tied lm_head, norms, and biases remain FP16",
+      "weight_bits": 4,
+      "activation_bits": 16,
+      "group_size": 128,
+      "block_size": 128,
+      "symmetric": true,
+      "desc_act": false,
+      "static_groups": false,
+      "true_sequential": true,
+      "damp_percent": 0.1,
+      "damp_auto_increment": 0,
+      "mse": 0.0,
+      "math": "FP32 GPTQ statistics and compensation; dense quantized weights stored FP16"
+    },
+    "m2": {
+      "alpha_grid": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+      ],
+      "selection_unit": "independent alpha per output row, shared across all G128 groups of that row",
+      "objective": "direct local calibration output reconstruction MSE, X @ (Q_FP16.float() - W_FP16.float()).T",
+      "tie_break": "exact loss ties prefer the larger alpha",
+      "prefix": "the method's own previously committed dense quantized weights; q/k/v and up/gate use shared group input/H; refresh only at dependency boundaries",
+      "candidate_isolation": "all ten candidates use the same pristine current target W and shared H/Hinv state; candidate-local compensation state is fresh",
+      "candidate_calls": 1680,
+      "row_alpha_score_slots": 3041280
+    },
+    "calibration": {
+      "source": "v16 CALIBRATION_MANIFEST.json, copied byte-for-byte to this run directory",
+      "dataset": "WikiText-2 train",
+      "documents": 128,
+      "tokens_per_document": 2048,
+      "token_budget": 262144,
+      "seed": 20261005,
+      "special_tokens": false,
+      "resampling": false
+    },
+    "evaluation": {
+      "primary_representation": "dense-dequant FP16 weights for M1 and M2; original FP16 for M0",
+      "evaluator": "benchmark.eval.ppl.evaluate_ppl token-weighted sliding windows",
+      "max_length": 2048,
+      "stride": 512,
+      "add_special_tokens": false,
+      "chat_template": false,
+      "wiki_text_test_input_tokens": 299078,
+      "wiki_text_test_scored_tokens": 299077,
+      "c4_validation_fixed_budget_input_tokens": 131072,
+      "c4_validation_fixed_budget_scored_tokens": 131071,
+      "c4_label": "C4 validation fixed token budget PPL; not standard/full C4 PPL",
+      "selection_or_tuning_on_eval": false
+    },
+    "gate": {
+      "conservative_m2_calibration_hours_max": 48,
+      "source": "v16 frozen protocol and v17.3 corrected cost audit",
+      "change_allowed": false
+    },
+    "prohibited": [
+      "OmniQuant",
+      "PrefixQuant",
+      "Gate",
+      "robust objective",
+      "alpha grid tuning",
+      "packed-kernel performance claims"
+    ]
+  },
+  "source_audit_sha256": "77c5204f7a5e84fc5d55c62a59e7e220e64d5f80a961a7394ab12d7369addd73",
+  "v41_protocol_sha256": "efd196ec585a98775e999b2b583ba5e6305f8f6b60c8f930e94bd7ea4dee90a7",
+  "v41_A_source_sha256": "a45f163bd2a4f9f5b85c1539a86bfe19f4346194fdf309eebbb8cf9317189612",
+  "initialization": "Exactly original formal v18 M2 dense FP16 checkpoint. Pilot discarded; formal repair starts fresh from original M2.",
+  "grid": "Immutable trusted original FP32 scale, zero=8, native g_idx=column//128; codes unsigned4 [0,15]. Scored/deployed weight FP16(FP32(scale*(code-8))).",
+  "packing": "Auxiliary row-major low nibble first unsigned4 storage roundtrip. Original v18 has no packed deployment kernel; original dense FP16 deployment structure and SDPA retained.",
+  "code_provenance": "Unique exact bitwise enumeration of all16 known values from original saved native grid metadata, not approximate floating weight division or original GPTQ code-trajectory recovery.",
+  "objective": "L_i=mean((X_R.float() @ (q_FP16.float()-w_pristine_FP16.float()))^2); same current R prefix input, no dual-stream residual target.",
+  "C": "Full undamped FP64 X_R.T@X_R/N accumulated in fixed 4096-token chunks, symmetrized; FP64 E and p, FP32 direct output matmul + FP64 SSE; no damped GPTQ H.",
+  "A": "Each complete neighborhood: all legal coordinate +/-1; first argmin coordinate ascending, -1 then+1. Best prediction below -max(1e-14,1e-8*initial direct MSE); direct selected proposal strictly decreases; discrepancy <=max(2e-6*current MSE,1e-3*abs(prediction)); otherwise stop numerical failure.",
+  "budget_per_row": {
+    "evaluations": "128*input_dim",
+    "accepted_updates": 32
+  },
+  "actual_budget": "All singles evaluated each complete round; legal count recorded. 32 neighborhoods require at most64*dim; common-node pauses do not change A choices and all five historical states must match.",
+  "batching": "Output rows scored in chunks256; one Python neighborhood loop, no row search loops. Full-row matrix p maintained, independent coordinate argmin per row; one coordinate per row committed per round.",
+  "numerical": "Initial/final and every accepted proposal direct recomputation; drift at updates1,8,16,24,32 and final. Original v41 tolerances above; original v18 reload rtol1e-5 atol1e-6. No actual rise accepted. Four small sequential historical reference trajectories; all96 v41 A terminals and common-budget states match.",
+  "dependency_order": "qkv -> o -> up/gate -> down -> next block; siblings frozen common input/C, all siblings commit before downstream capture. Current R prefix only.",
+  "checkpoint": "Atomic per dependency-group code/grid/moves/weight/input-hash/C-hash/eval-budget/committed state; restoring committed groups copies checkpoint weight and skips repair.",
+  "pilot": "All7 block0 Linears, all12672 output rows, input896/4864, true dependency refresh, code packing and commits; no held/PPL parameter selection.",
+  "cost_gate": "Whole measured block0 runtime x24 x1.35+30sec setup; all24 audited shapes must match. Save/reload + WT2/C4 reserve360sec. No formal start if forecast+reserve exceeds remaining hard budget.",
+  "gpu_hard_cap_seconds": 5400,
+  "time_scope": "Wall from first GPU warmup through pilot/failures/diagnostics/formal/save/reload/eval. CPU provenance preparation reported separately.",
+  "evaluation": "One WT2 test and one fixed-budget C4 validation through unchanged benchmark.eval.ppl.evaluate_ppl, frozen token manifests/max2048/stride512/valid targets; only after final checkpoint/hash lock. No P3, no local held gate.",
+  "claims": "Application validation of existing discrete repair ideas, not official ReQuant reproduction or proof of original contribution. Local reconstruction does not imply PPL; one run not cross-seed stability.",
+  "stop": "After this frozen run; no new grids/update limits/model sizes/objectives/next version."
+}

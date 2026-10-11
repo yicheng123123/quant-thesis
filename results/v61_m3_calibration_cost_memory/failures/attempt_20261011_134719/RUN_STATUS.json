@@ -1,0 +1,8 @@
+{
+  "exception_type": "PermissionError",
+  "latest_checkpoint": null,
+  "message": "[WinError 5] 拒绝访问。: 'E:\\\\quant-thesis\\\\results\\\\v61_m3_calibration_cost_memory\\\\timings\\\\CURRENT_STAGE.tmp' -> 'E:\\\\quant-thesis\\\\results\\\\v61_m3_calibration_cost_memory\\\\timings\\\\CURRENT_STAGE.json'",
+  "status": "FAILED_OR_INTERRUPTED",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\M3\\run_formal_m3.py\", line 922, in main\n    summary = run_calibration(config, token_ids, lock)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\M3\\run_formal_m3.py\", line 742, in run_calibration\n    result_model = omni_module.omniquant(lm, args, dataloader, None, None, NullLogger())\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\M3\\official_port\\quantize\\omniquant.py\", line 249, in omniquant\n    phase(\"teacher_capture\", i)\n  File \"E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\M3\\official_port\\quantize\\omniquant.py\", line 53, in phase\n    args.v61_phase_callback(name, block)\n  File \"E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\M3\\measurement.py\", line 29, in switch\n    os.replace(temp,self.statefile)\nPermissionError: [WinError 5] 拒绝访问。: 'E:\\\\quant-thesis\\\\results\\\\v61_m3_calibration_cost_memory\\\\timings\\\\CURRENT_STAGE.tmp' -> 'E:\\\\quant-thesis\\\\results\\\\v61_m3_calibration_cost_memory\\\\timings\\\\CURRENT_STAGE.json'\n",
+  "updated_at": "2026-10-11 13:47:56+0800"
+}

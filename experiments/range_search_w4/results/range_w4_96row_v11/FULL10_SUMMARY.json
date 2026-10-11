@@ -1,0 +1,442 @@
+{
+  "status": "COMPLETE",
+  "correctness_status": "PASS",
+  "scope": "96 frozen rows × S00-S09; within the preregistered layer/projection strata; not model-wide unbiased prevalence",
+  "protocol": {
+    "row_manifest_sha256": "c56eeaa1d1af6e4ed8dd78f811c811c66758b215659a98bf8550052c786e6106",
+    "v9_manifest_sha256": "34a24ef8602b8ce1e38e7a284f112acf7f766962d87d737f69148b78bcfaba78",
+    "model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "model_dtype": "float16",
+    "math_dtype": "float32",
+    "quantization": "symmetric uniform W4A16",
+    "group_size": 128,
+    "block_size": 128,
+    "damp_percent": 0.1,
+    "desc_act": false,
+    "alpha_grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "input_semantics": "FP model projection inputs; no quantized prefix"
+  },
+  "rows": 96,
+  "splits": 10,
+  "row_split_records": 960,
+  "candidate_landscape_rows": 9600,
+  "candidate_evaluations": {
+    "nominal": 9600,
+    "new_v11_total": 9500,
+    "reused_legacy_total": 100,
+    "stage1_new": 2850,
+    "stage1_reused": 30,
+    "stage2_new": 6650,
+    "stage2_reused": 70
+  },
+  "benefit_label_counts": {
+    "Robust-positive": 26,
+    "Mixed-risk": 61,
+    "Neutral": 5,
+    "Unclassified (frozen-rule gap)": 4
+  },
+  "benefit_label_rules": {
+    "robust_positive": "at least 8/10 held_gain>0; median>+5%; worst>=-10%",
+    "mixed_risk": "not robust-positive and mixed positive/negative split signs or worst<-10%",
+    "neutral": "not robust/mixed; abs(median)<=2%; no more than 2/10 gains>+2%",
+    "unclassified": "frozen rule gap; reported without post-hoc reassignment"
+  },
+  "stage1_screening_predictivity": {
+    "Stage1 candidate-positive": {
+      "row_count": 47,
+      "final_robust_positive_count": 25,
+      "final_mixed_risk_count": 19,
+      "final_neutral_count": 0,
+      "final_unclassified_count": 3,
+      "final_robust_positive_fraction": 0.5319148936170213
+    },
+    "Stage1 mixed-risk": {
+      "row_count": 48,
+      "final_robust_positive_count": 1,
+      "final_mixed_risk_count": 41,
+      "final_neutral_count": 5,
+      "final_unclassified_count": 1,
+      "final_robust_positive_fraction": 0.020833333333333332
+    },
+    "Stage1 neutral/negative": {
+      "row_count": 1,
+      "final_robust_positive_count": 0,
+      "final_mixed_risk_count": 1,
+      "final_neutral_count": 0,
+      "final_unclassified_count": 0,
+      "final_robust_positive_fraction": 0.0
+    }
+  },
+  "heldout_gain_tail_counts": {
+    "gain_lt_-5%": 132,
+    "gain_lt_-10%": 97,
+    "gain_lt_-20%": 51,
+    "gain_lt_-40%": 22,
+    "gain_lt_-50%": 10
+  },
+  "worst_heldout_gain": -1.1519045720585401,
+  "pooled_heldout_sse": {
+    "alpha1_D_sse": 2504.9972651691496,
+    "search_selected_C_sse": 2059.804072658181,
+    "net_sse_reduction": 445.1931925109684,
+    "pooled_gain": 0.17772202736552956,
+    "top_row_contribution": {
+      "1": {
+        "top_n_sse_reduction": 157.64552307128906,
+        "share_of_net_reduction": 0.35410587071680144,
+        "share_of_baseline_sse": 0.06293241324582606
+      },
+      "5": {
+        "top_n_sse_reduction": 278.5709958076477,
+        "share_of_net_reduction": 0.6257305827981285,
+        "share_of_baseline_sse": 0.11120610775949778
+      },
+      "10": {
+        "top_n_sse_reduction": 351.44888639450073,
+        "share_of_net_reduction": 0.7894300548763264,
+        "share_of_baseline_sse": 0.14029910981590202
+      },
+      "20": {
+        "top_n_sse_reduction": 420.2299770116806,
+        "share_of_net_reduction": 0.9439272299774153,
+        "share_of_baseline_sse": 0.16775666099711475
+      }
+    },
+    "pooled_gain_after_removing_top_rows": {
+      "top1": {
+        "removed_rows": [
+          "L23_q_proj_R106"
+        ],
+        "remaining_D_sse": 2103.8198531360686,
+        "remaining_C_sse": 1816.2721836963892,
+        "pooled_gain": 0.13667884586745638
+      },
+      "top5": {
+        "removed_rows": [
+          "L23_down_proj_R309",
+          "L23_down_proj_R754",
+          "L23_down_proj_R793",
+          "L23_q_proj_R106",
+          "L23_q_proj_R303"
+        ],
+        "remaining_D_sse": 1733.8361881465971,
+        "remaining_C_sse": 1567.2139914432764,
+        "pooled_gain": 0.09610031088429027
+      }
+    },
+    "contribution_definition": "sum of heldout SSE across 10 splits by each row; rows ranked by D minus search-selected C; negative rows remain included"
+  },
+  "fixed_alpha_descriptive_only": [
+    {
+      "alpha": 0.7,
+      "row_split_count": 960,
+      "positive_gain_count": 287,
+      "regression_count": 673,
+      "zero_gain_count": 0,
+      "median_gain": -0.27394477885124113,
+      "mean_gain": -0.8197025747621031,
+      "pooled_D_sse": 2504.9972651691496,
+      "pooled_fixed_alpha_sse": 4271.647597841937,
+      "pooled_gain": -0.7052504037578238,
+      "worst_regression": -16.448420913969983
+    },
+    {
+      "alpha": 0.8,
+      "row_split_count": 960,
+      "positive_gain_count": 556,
+      "regression_count": 404,
+      "zero_gain_count": 0,
+      "median_gain": 0.06857070741016519,
+      "mean_gain": -0.1860704762121316,
+      "pooled_D_sse": 2504.9972651691496,
+      "pooled_fixed_alpha_sse": 2822.6368926719315,
+      "pooled_gain": -0.1268023849444535,
+      "worst_regression": -9.155000427926216
+    },
+    {
+      "alpha": 0.9,
+      "row_split_count": 960,
+      "positive_gain_count": 669,
+      "regression_count": 291,
+      "zero_gain_count": 0,
+      "median_gain": 0.1249109203409351,
+      "mean_gain": 0.042419513208117626,
+      "pooled_D_sse": 2504.9972651691496,
+      "pooled_fixed_alpha_sse": 2338.9093055971525,
+      "pooled_gain": 0.06630265105729849,
+      "worst_regression": -2.7963042395435047
+    }
+  ],
+  "frozen_rule_gap_rows": [
+    {
+      "row_id": "L0_down_proj_R517",
+      "median_held_gain": 0.18868139392780492,
+      "worst_held_gain": 0.0,
+      "positive_split_count": 6,
+      "negative_split_count": 0
+    },
+    {
+      "row_id": "L12_down_proj_R496",
+      "median_held_gain": 0.0236199257573943,
+      "worst_held_gain": 0.0,
+      "positive_split_count": 5,
+      "negative_split_count": 0
+    },
+    {
+      "row_id": "L12_o_proj_R827",
+      "median_held_gain": 0.09078510992515526,
+      "worst_held_gain": 0.0,
+      "positive_split_count": 7,
+      "negative_split_count": 0
+    },
+    {
+      "row_id": "L23_q_proj_R696",
+      "median_held_gain": 0.07401006643220126,
+      "worst_held_gain": 0.0,
+      "positive_split_count": 7,
+      "negative_split_count": 0
+    }
+  ],
+  "anomalies_and_limits": [
+    "Stage 2 loop measured 10605.8s versus the preregistered planning estimate with margin 6583.1s (1.61x).",
+    "Model input capture emitted the Transformers warning: Sliding Window Attention is enabled but not implemented for sdpa; no alternate attention-backend comparison was run.",
+    "4 rows fall in a gap between the frozen robust-positive, mixed-risk and neutral rules; they are reported separately without post-hoc reassignment.",
+    "Largest selected-C held-out regression: L23_up_proj_R3814 / S00 = -1.151905.",
+    "No full-model quantization, PPL, quantized-prefix or downstream evaluation was run in this stage."
+  ],
+  "projection_strata": [
+    {
+      "projection": "q_proj",
+      "row_count": 24,
+      "robust_positive_count": 10,
+      "mixed_risk_count": 8,
+      "neutral_count": 5,
+      "unclassified_(frozen_rule_gap)_count": 1,
+      "median_row_median_held_gain": 0.08542662425194822,
+      "median_row_mean_held_gain": 0.11013834809723244,
+      "worst_row_regression": -0.5081505764091172,
+      "median_split_held_gain": 0.06933892004712905,
+      "selected_alpha_counts_10_splits": {
+        "0.6": 13,
+        "0.7": 25,
+        "0.8": 37,
+        "0.9": 83,
+        "1.0": 82
+      }
+    },
+    {
+      "projection": "o_proj",
+      "row_count": 24,
+      "robust_positive_count": 2,
+      "mixed_risk_count": 21,
+      "neutral_count": 0,
+      "unclassified_(frozen_rule_gap)_count": 1,
+      "median_row_median_held_gain": 0.192489500066251,
+      "median_row_mean_held_gain": 0.13949179384627625,
+      "worst_row_regression": -0.5991609354862102,
+      "median_split_held_gain": 0.14856198385242642,
+      "selected_alpha_counts_10_splits": {
+        "0.6": 5,
+        "0.7": 48,
+        "0.8": 66,
+        "0.9": 86,
+        "1.0": 35
+      }
+    },
+    {
+      "projection": "up_proj",
+      "row_count": 24,
+      "robust_positive_count": 6,
+      "mixed_risk_count": 18,
+      "neutral_count": 0,
+      "unclassified_(frozen_rule_gap)_count": 0,
+      "median_row_median_held_gain": 0.1011527637518981,
+      "median_row_mean_held_gain": 0.11535735310992037,
+      "worst_row_regression": -1.1519045720585401,
+      "median_split_held_gain": 0.12346727142426978,
+      "selected_alpha_counts_10_splits": {
+        "0.7": 1,
+        "0.8": 80,
+        "0.9": 132,
+        "1.0": 27
+      }
+    },
+    {
+      "projection": "down_proj",
+      "row_count": 24,
+      "robust_positive_count": 8,
+      "mixed_risk_count": 14,
+      "neutral_count": 0,
+      "unclassified_(frozen_rule_gap)_count": 2,
+      "median_row_median_held_gain": 0.09835090920548861,
+      "median_row_mean_held_gain": 0.09420567076286114,
+      "worst_row_regression": -0.9197754481498681,
+      "median_split_held_gain": 0.10885789930729661,
+      "selected_alpha_counts_10_splits": {
+        "0.6": 2,
+        "0.7": 22,
+        "0.8": 82,
+        "0.9": 102,
+        "1.0": 32
+      }
+    }
+  ],
+  "layer_strata": [
+    {
+      "layer": 0,
+      "row_count": 32,
+      "robust_positive_count": 9,
+      "mixed_risk_count": 19,
+      "neutral_count": 3,
+      "unclassified_(frozen_rule_gap)_count": 1,
+      "median_row_median_held_gain": 0.07213000689907764,
+      "median_row_mean_held_gain": 0.11267350005133206,
+      "worst_row_regression": -0.8940081188056683,
+      "median_split_held_gain": 0.043187374237556864,
+      "selected_alpha_counts_10_splits": {
+        "0.7": 2,
+        "0.8": 72,
+        "0.9": 142,
+        "1.0": 104
+      }
+    },
+    {
+      "layer": 12,
+      "row_count": 32,
+      "robust_positive_count": 7,
+      "mixed_risk_count": 21,
+      "neutral_count": 2,
+      "unclassified_(frozen_rule_gap)_count": 2,
+      "median_row_median_held_gain": 0.1066529506599958,
+      "median_row_mean_held_gain": 0.11277897204469584,
+      "worst_row_regression": -0.49759070933835936,
+      "median_split_held_gain": 0.11344513031973996,
+      "selected_alpha_counts_10_splits": {
+        "0.6": 5,
+        "0.7": 18,
+        "0.8": 87,
+        "0.9": 168,
+        "1.0": 42
+      }
+    },
+    {
+      "layer": 23,
+      "row_count": 32,
+      "robust_positive_count": 10,
+      "mixed_risk_count": 21,
+      "neutral_count": 0,
+      "unclassified_(frozen_rule_gap)_count": 1,
+      "median_row_median_held_gain": 0.12217400292269101,
+      "median_row_mean_held_gain": 0.12907436777988035,
+      "worst_row_regression": -1.1519045720585401,
+      "median_split_held_gain": 0.14895825189902945,
+      "selected_alpha_counts_10_splits": {
+        "0.6": 15,
+        "0.7": 76,
+        "0.8": 106,
+        "0.9": 93,
+        "1.0": 30
+      }
+    }
+  ],
+  "runtime": {
+    "stage2_invocation_seconds": 10605.833783399998,
+    "stage2_candidate_seconds_sum": 8700.618508399944,
+    "stage2_unique_hessian_seconds": 6.655494099992211,
+    "stage2_activation_capture_seconds": 8.219942399999127,
+    "stage2_max_candidate_peak_allocated_bytes": 144488960,
+    "stage2_max_candidate_peak_reserved_bytes": 257949696,
+    "stage2_max_cuda_reserved_bytes_in_capture_parity_or_candidates": 1103101952,
+    "stage2_max_cuda_reserved_mib_in_capture_parity_or_candidates": 1052.0,
+    "stage2_preflight_diagnostic_candidate_evaluations": {
+      "custom_alpha1_in_native_parity": 4,
+      "repeat_alpha07_isolation": 2
+    },
+    "stage2_activation_cache_bytes": 649803998,
+    "stage2_gpu_synchronized": true,
+    "stage2_candidate_seconds_by_projection": {
+      "down_proj": 3080.2846649000167,
+      "o_proj": 4301.798147499925,
+      "q_proj": 645.2268383999835,
+      "up_proj": 673.3088576000191
+    },
+    "stage2_preflight_estimated_loop_seconds_with_margin": 6583.128041700419,
+    "stage2_observed_loop_over_estimate_ratio": 1.6110629652374975,
+    "stage1_invocation_seconds": 2311.6223777999985,
+    "stage1_candidate_seconds_sum": 1880.89372620012,
+    "combined_stage1_stage2_invocation_seconds": 12917.456161199996,
+    "stage2_elapsed_hours": 2.9460649398333327
+  },
+  "diagnostics": {
+    "stage1_vs_full10_confusion": {
+      "Stage1 candidate-positive": {
+        "row_count": 47,
+        "final_robust_positive_count": 25,
+        "final_mixed_risk_count": 19,
+        "final_neutral_count": 0,
+        "final_unclassified_count": 3,
+        "final_robust_positive_fraction": 0.5319148936170213
+      },
+      "Stage1 mixed-risk": {
+        "row_count": 48,
+        "final_robust_positive_count": 1,
+        "final_mixed_risk_count": 41,
+        "final_neutral_count": 5,
+        "final_unclassified_count": 1,
+        "final_robust_positive_fraction": 0.020833333333333332
+      },
+      "Stage1 neutral/negative": {
+        "row_count": 1,
+        "final_robust_positive_count": 0,
+        "final_mixed_risk_count": 1,
+        "final_neutral_count": 0,
+        "final_unclassified_count": 0,
+        "final_robust_positive_fraction": 0.0
+      }
+    },
+    "tail_case_count": 30,
+    "alpha_band_stability_is_separate_from_benefit_label": true
+  },
+  "checks": {
+    "row_manifest_sha256_frozen": true,
+    "v9_manifest_sha256_frozen_and_all_splits_match": true,
+    "96_rows_by_10_splits_complete": true,
+    "9600_alpha_candidates_complete": true,
+    "S00_S02_and_stage1_outputs_unchanged": true,
+    "all_frozen_search_heldout_splits_disjoint": true,
+    "pristine_weight_hashes_match_manifest": true,
+    "all_search_and_heldout_activation_hashes_match": true,
+    "candidate_state_isolation_and_saved_weight_hashes": true,
+    "search_only_argmin_selection_and_raw_losses_match": true,
+    "stage2_alpha1_native_parity_four_projections": true,
+    "v10_legacy_candidates_exactly_reused": true,
+    "raw_to_csv_independent_recomputation": true,
+    "v8_v9_v10_historical_trees_unchanged": true,
+    "stage1_preservation_fingerprint_pass": true,
+    "status": "PASS"
+  },
+  "artifacts": {
+    "row_split_csv": "full10_per_row_split_results.csv",
+    "alpha_landscape_csv": "full10_alpha_landscapes.csv",
+    "row_summary_csv": "full10_row_summary.csv",
+    "projection_summary_csv": "full10_projection_summary.csv",
+    "layer_summary_csv": "full10_layer_summary.csv",
+    "confusion_csv": "stage1_vs_full10_confusion.csv",
+    "regressions_csv": "full10_regression_cases.csv",
+    "pooled_contribution_csv": "full10_pooled_contribution.csv",
+    "fixed_alpha_csv": "full10_fixed_alpha_summary.csv",
+    "row_features_csv": "row_feature_outcome_table.csv"
+  }
+}

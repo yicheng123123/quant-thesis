@@ -1,0 +1,16 @@
+{
+  "verdict": "M3_NUMERICAL_ROOT_CAUSE_IDENTIFIED",
+  "root_cause_category": "OFFICIAL_NUMERICAL_INSTABILITY_REPRODUCED",
+  "primary_category": "C: AMP/loss-scaled FP16 weight-gradient output overflow under the audited official LWC/AMP semantics",
+  "scope": "Qwen2.5-0.5B-Instruct native architecture port, frozen sample/state and RTX4060 Laptop; not a general claim about every official OmniQuant model",
+  "first_operation": "native_layer.mlp.up_proj F.linear / MmBackward0 weight-gradient output",
+  "reproducibility": "3/3 exact loss; same four nonfinite LWC tensors and masks",
+  "implementation_bug_confirmed": false,
+  "port_bug_confirmed": false,
+  "T4_executed": false,
+  "device_specificity_established": false,
+  "formal_training_continued": false,
+  "formal_export_or_evaluation_executed": false,
+  "correctness": "PASS",
+  "next_action": "STOP; a later human-reviewed numerical protocol decision is needed before any baseline restart"
+}

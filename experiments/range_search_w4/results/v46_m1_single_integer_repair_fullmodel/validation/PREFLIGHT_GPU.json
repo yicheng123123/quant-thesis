@@ -1,0 +1,25 @@
+{
+  "pass": true,
+  "scope": "M1 source integration and one uncommitted fixed 128-row search block",
+  "M1_zero_pack_roundtrip_and_sample_output": true,
+  "sample_logits_bitwise_equal": true,
+  "all168_M1_weights_rebuilt_from_unique_codes_and_native_grid": true,
+  "fixed_block": {
+    "layer": 0,
+    "module": "self_attn.q_proj",
+    "rows": "0:128",
+    "input_dim": 896,
+    "N": 262144,
+    "C_dtype": "torch.float64",
+    "C_undamped": true,
+    "accepted_updates": 4096,
+    "candidate_evaluations": 7303748,
+    "initial_search_mse_sum": 0.07133728732345365,
+    "final_search_mse_sum": 0.06122334798908675,
+    "source_codes_unchanged": true,
+    "model_weights_unchanged": true
+  },
+  "peak_gpu_allocated_bytes": 1070197760,
+  "peak_gpu_reserved_bytes": 1153433600,
+  "completed_unix": 1791203423.763602
+}

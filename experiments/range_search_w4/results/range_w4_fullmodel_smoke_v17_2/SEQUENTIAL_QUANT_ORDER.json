@@ -1,0 +1,33 @@
+{
+  "source": "gptqmodel.models.definitions.qwen2.Qwen2GPTQ.layer_modules",
+  "source_sha256": "ed5afe754d16a982b6899320f47bfa30c4bc19be5bb6924fd0e4942940075fdd",
+  "groups": [
+    [
+      "self_attn.k_proj",
+      "self_attn.v_proj",
+      "self_attn.q_proj"
+    ],
+    [
+      "self_attn.o_proj"
+    ],
+    [
+      "mlp.up_proj",
+      "mlp.gate_proj"
+    ],
+    [
+      "mlp.down_proj"
+    ]
+  ],
+  "true_sequential": true,
+  "semantics": "GPTQ captures each group member input at group entry, quantizes the listed modules, then forwards the updated group before capturing the next group.",
+  "actual_forward_hook_calls": {
+    "self_attn.k_proj": "self_attn.k_proj",
+    "self_attn.v_proj": "self_attn.v_proj",
+    "self_attn.q_proj": "self_attn.q_proj",
+    "self_attn.o_proj": "self_attn.o_proj",
+    "mlp.up_proj": "mlp.up_proj",
+    "mlp.gate_proj": "mlp.gate_proj",
+    "mlp.down_proj": "mlp.down_proj"
+  },
+  "forward_dependencies_separate_file": "FORWARD_DEPENDENCY.json"
+}

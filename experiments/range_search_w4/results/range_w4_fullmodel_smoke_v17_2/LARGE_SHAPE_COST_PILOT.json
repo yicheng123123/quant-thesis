@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "scope": "L0 up/down actual FP input; one full-geometry alpha1 candidate each",
+  "shapes": [
+    {
+      "module": "mlp.up_proj",
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "input_width": 896,
+      "output_rows": 4864,
+      "H_setup_seconds": 0.00041089998558163643,
+      "certified_native_candidate_seconds": 0.4564533999946434,
+      "peak_allocated_bytes": 265629696,
+      "peak_reserved_bytes": 283115520,
+      "pilot_runs": 1,
+      "alpha": 1.0,
+      "note": "single cold representative run; not a stable quantile"
+    },
+    {
+      "module": "mlp.down_proj",
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "input_width": 4864,
+      "output_rows": 896,
+      "H_setup_seconds": 0.014113600016571581,
+      "certified_native_candidate_seconds": 2.0788676999800373,
+      "peak_allocated_bytes": 715709952,
+      "peak_reserved_bytes": 769654784,
+      "pilot_runs": 1,
+      "alpha": 1.0,
+      "note": "single cold representative run; not a stable quantile"
+    }
+  ],
+  "small_target_candidate_seconds": [
+    0.38944689999334514,
+    0.35401040001306683,
+    0.33547180000459775,
+    0.33369300002232194,
+    0.32878450001589954,
+    0.3414679999987129,
+    0.3336241999932099,
+    0.32255179999629036,
+    0.33764690000680275,
+    0.3327751999895554
+  ],
+  "candidate_cost_includes_native_Hinv_rebuild": true
+}

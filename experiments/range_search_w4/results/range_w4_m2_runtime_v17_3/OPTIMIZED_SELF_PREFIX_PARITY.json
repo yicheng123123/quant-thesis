@@ -1,0 +1,33 @@
+{
+  "selected_row": 0,
+  "selected_alpha": 0.9,
+  "input_before_sha256": "50958e327a08f56c3fd865fb91820a8699a6389b2132e284624b90bfd2569b65",
+  "input_after_sha256": "62c4a94139c6983cc7f7fbc585a3257dd4746251a4846822543f72af2734dc1c",
+  "reference_input_before_sha256": "50958e327a08f56c3fd865fb91820a8699a6389b2132e284624b90bfd2569b65",
+  "reference_input_after_sha256": "62c4a94139c6983cc7f7fbc585a3257dd4746251a4846822543f72af2734dc1c",
+  "forward_activations_exact": true,
+  "reference_relative_l2_drift": 0.00015363708371296525,
+  "optimized_relative_l2_drift": 0.00015363708371296525,
+  "reference_hessian_sha256": "2a19dfdb9e190b071e21fde3ec2c032ec6409a0fbaf1e54d9e7318b9cf699ba7",
+  "optimized_hessian_sha256": "2a19dfdb9e190b071e21fde3ec2c032ec6409a0fbaf1e54d9e7318b9cf699ba7",
+  "hessian_exact": true,
+  "hessian_dependency_replay": "searched k rows 0:32 plus native alpha=1 v_proj/q_proj, then one qkv-to-o_proj refresh",
+  "sibling_commits": {
+    "self_attn.v_proj": {
+      "input_hash": "644ec5f4c73d990250419ad0ec2e32e1aa0c240c54ff99f2120aee5384ae7c4a",
+      "hessian_hash": "7cca8440a903c6706b9e5ff6fbdfde6c1682a9f0e859eebbe93b74f6c81e4319",
+      "nsamples": 2,
+      "weight_hash": "efcdf66604fac3c037f840d918a72cb2e0599ae5af10a31cf74e7143f70f6070"
+    },
+    "self_attn.q_proj": {
+      "input_hash": "644ec5f4c73d990250419ad0ec2e32e1aa0c240c54ff99f2120aee5384ae7c4a",
+      "hessian_hash": "7cca8440a903c6706b9e5ff6fbdfde6c1682a9f0e859eebbe93b74f6c81e4319",
+      "nsamples": 2,
+      "weight_hash": "915e52da8033c6e1f7627aac5377732b340341378cf2295daa27db2f17c44473"
+    }
+  },
+  "nsamples": 2,
+  "forward_refresh_seconds": 0.00304169999435544,
+  "next_hessian_build_seconds": 0.00034810000215657055,
+  "pass": true
+}

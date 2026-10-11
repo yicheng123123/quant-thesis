@@ -1,0 +1,207 @@
+{
+  "category": "A",
+  "verdict": "两语料PPL均改善，本次完整模型质量迁移得到支持",
+  "status": {
+    "status": "COMPLETE",
+    "complete_model": true,
+    "PPL_run": true,
+    "modules": 168,
+    "rows": 304128,
+    "elapsed_seconds": 5372.704310894012,
+    "hard_cap_seconds": 10800,
+    "gpu_name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "torch": "2.6.0+cu124"
+  },
+  "coverage": {
+    "modules": 168,
+    "rows": 304128,
+    "accepted_updates": 9580535,
+    "modified_coordinates": 9414341,
+    "candidate_evaluations": 22387027695,
+    "rejected_candidates": 7
+  },
+  "new_v45": {
+    "modules": 141,
+    "rows": 254336,
+    "accepted_updates": 8020313,
+    "modified_coordinates": 7895874,
+    "candidate_evaluations": 18942379555,
+    "rejected_candidates": 0
+  },
+  "inherited_v44": {
+    "modules": 27,
+    "rows": 49792,
+    "accepted_updates": 1560222,
+    "modified_coordinates": 1518467,
+    "candidate_evaluations": 3444648140,
+    "rejected_candidates": 7
+  },
+  "local_search_MSE_sum_gain_percent": 12.472020755085664,
+  "PPL_comparison": [
+    {
+      "dataset": "wikitext",
+      "M1_ppl": 13.884369572857866,
+      "M2_ppl": 13.760556051038424,
+      "R_ppl": 13.553100465077515,
+      "R_minus_M1": -0.3312691077803507,
+      "R_vs_M1_relative_percent": -2.3859139303518573,
+      "R_minus_M2": -0.20745558596090952,
+      "R_vs_M2_relative_percent": -1.5076104860257789,
+      "improved_vs_M2": true,
+      "scored_tokens": 299077,
+      "windows": 582,
+      "raw_window_NLL_reaggregation_pass": true
+    },
+    {
+      "dataset": "c4_fixed_budget",
+      "M1_ppl": 22.23392445006841,
+      "M2_ppl": 22.032883164065005,
+      "R_ppl": 21.941980716618833,
+      "R_minus_M1": -0.29194373344957825,
+      "R_vs_M1_relative_percent": -1.3130553452459948,
+      "R_minus_M2": -0.09090244744617237,
+      "R_vs_M2_relative_percent": -0.41257626961155314,
+      "improved_vs_M2": true,
+      "scored_tokens": 131071,
+      "windows": 253,
+      "raw_window_NLL_reaggregation_pass": true
+    }
+  ],
+  "numerical_rechecks": {
+    "formal_recheck_candidates": 6,
+    "formal_recheck_batches": 5,
+    "formal_recheck_accepts": 6,
+    "formal_recheck_rejects": 0,
+    "formal_recheck_actual_synchronized_seconds": 15.061857600005169,
+    "new_v45_candidate_rejects": 0,
+    "inherited_rejects": 7,
+    "all_committed_reject_reasons": {
+      "FP32_NON_DESCENT": 7
+    },
+    "genuine_correctness_failure_count": 0,
+    "stopped_process_count": 0,
+    "maximum_same_precision_error_over_allowed": 3.9093219560527545e-08,
+    "maximum_FP32_difference_minus_predict_magnitude": 4.448150130929141e-09,
+    "criterion_frozen_before_formal": {
+      "frozen_before_formal_resume_unix": 1791195904.5970001,
+      "protocol_sha256": "674f93cf3fc84e6e1b912dcfefa937bc281d6478546a1e67e317e26b916ffac5",
+      "precision_sha256": "ff743bdaa2f862ea87e6605d6f788404418c7e6bf933d78edd6fa7449d83b0cd",
+      "empirical_not_strict_theorem": true,
+      "no_later_threshold_changes": true
+    },
+    "criterion_empirical_not_strict_theorem": true,
+    "FP32_strict_decline_never_overridden": true,
+    "stop_counts_committed_rows": {
+      "NO_REMAINING_PREDICTED_DESCENT": 23195,
+      "EVALUATION_CAP": 0,
+      "UPDATE_CAP": 280933
+    },
+    "initial_failure_diagnosis": {
+      "pass": true,
+      "checked_candidates": 896,
+      "original_failed_rows": [
+        211
+      ],
+      "N": 262144,
+      "input_shape": [
+        262144,
+        4864
+      ],
+      "input_sha256": "187e9d6716138ba2169399d1479f2abb8d51e8bc32026fcddc31a74245fa57ea",
+      "C_sha256": "04822a903a351327df1bfdf9f24f38fbaa68951926647d4f689c86e390ca86d1",
+      "e_actual_grid_and_pristine_W_exact": true,
+      "delta_exact_proposal_minus_current_E": true,
+      "FP32_fullbatch_reproduced_bitwise": true,
+      "independent_FP64_expression": "a=rawX@e;d=rawX@dense_actual_delta;mean(2*a*d+d*d); no C/p dependency in reference",
+      "all_same_precision_checks_pass": true,
+      "cache_max_error": 3.552713678800501e-15,
+      "cache_max_error_over_tolerance": 4.704098073692994e-07,
+      "dtype": {
+        "stored_X": "float16",
+        "scoring_X": "float32",
+        "verification_X": "float64",
+        "current_code": "torch.int64",
+        "grid_scales": "torch.float32",
+        "zero": "torch.float32",
+        "g_idx": "torch.int32",
+        "pristine_checkpoint_W": "torch.bfloat16",
+        "pristine_target_W": "torch.float16",
+        "q_dequant_storage": "float16",
+        "q_analysis": "torch.float32",
+        "e": "torch.float64",
+        "C": "torch.float64",
+        "cached_p": "torch.float64",
+        "actual_delta": "torch.float64",
+        "verification_outputs_a_d": "float64",
+        "FP32_outputs": "float32",
+        "loss_SSE_accumulation": "float64"
+      },
+      "failed_rows": [
+        {
+          "row": 211,
+          "coordinate": 144,
+          "offset": -1,
+          "actual_delta_weight": -0.00616455078125,
+          "predict64": -9.852102460456653e-07,
+          "direct64_from_raw_X": -9.852102460456627e-07,
+          "FP32_loss_difference": -9.84100198216819e-07,
+          "FP32_difference_minus_predict64": 1.1100478288463026e-09,
+          "old_cross_precision_check_pass": false,
+          "same_precision_absolute_error": 2.541098841762901e-21,
+          "same_precision_allowed_error": 5.603866644322943e-13,
+          "same_precision_check_pass": true,
+          "FP64_increment_descends": true
+        }
+      ],
+      "global_elapsed_seconds": 124.36792850494385
+    },
+    "CPU_test_count": 15
+  },
+  "deployment": {
+    "pass": true,
+    "repaired_Linear_parameters": 168,
+    "untouched_model_parameters_verified": 122,
+    "dense_FP16_weight_grid_bitwise": true,
+    "configuration_unchanged": true,
+    "reload_output_regression": {
+      "mode": "deployment",
+      "layer": 23,
+      "module": "final_model",
+      "kind": "final_reload",
+      "pass_all": true,
+      "max_abs_logit_difference": 0.0,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "all168_code_grid_checks": true
+    },
+    "final_model_sha256": "619da69d7df7e5d39d3f0b954ef930c402a813fc9fe5bc46f0f9c16d2aabd475",
+    "locked_before_PPL": true
+  },
+  "actual_v45_GPU_budget_wall_seconds": 5372.704310894012,
+  "actual_v45_synchronized_stage_seconds_by_mode": {
+    "preflight": 123.76593650000723,
+    "deployment": 11.165601400003652,
+    "evaluation": 130.7822665000058,
+    "formal": 4669.730259199961
+  },
+  "actual_formal_blocks_new_groups_seconds": 4717.0275438999815,
+  "actual_formal_increment_recheck_seconds": 15.061857600005169,
+  "actual_stage_sum_seconds": 4935.444063599978,
+  "raw_inclusive_stage_sum_seconds_contains_nested_verification": 4950.505921199983,
+  "nested_verification_seconds_removed_from_parent": 15.061857600005169,
+  "unitemized_wall_seconds": 437.26024729403434,
+  "historical_v42_GPU_budget_wall_seconds": 252.25650310516357,
+  "historical_v43_GPU_budget_wall_seconds": 964.5525724887848,
+  "historical_v44_GPU_budget_wall_seconds": 475.2909038066864,
+  "historical_v42_pilot_block_seconds_subset_of_v42_wall": 226.10666029999993,
+  "v42_to_v45_cumulative_GPU_budget_wall_seconds": 7064.804290294647,
+  "historical_M2_creation_seconds_separate": 2115.9353341000096,
+  "M2_plus_validation_chain_wall_seconds": 9180.739624394657,
+  "pre_run_projection_seconds_prediction_only": 8180.123819504998,
+  "peak_GPU_allocated_bytes": 4745229312,
+  "peak_GPU_reserved_bytes": 6482296832,
+  "failed_attempts": 0,
+  "formal_recoveries": 0,
+  "no_automatic_followup": true,
+  "model_setting": "Sol high request retained; interface cannot confirm or switch."
+}

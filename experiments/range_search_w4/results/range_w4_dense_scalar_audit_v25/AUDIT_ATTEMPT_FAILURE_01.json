@@ -1,0 +1,8 @@
+{
+  "scope": "CPU artifact check, no GPTQ/model/evaluation run",
+  "error": "AssertionError: token_sequence_hashes",
+  "cause": "audit incorrectly assumed individual token_sha256 used int64 bytes; historical manifests use JSON token lists. ordered aggregate hash uses int64 bytes.",
+  "resolution": "apply exact v18 JSON encoding and v24 documented compact/spaced compatibility; validate ordered i64le separately",
+  "data_or_method_changed": false,
+  "failed_pass_seconds": null
+}

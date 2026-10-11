@@ -1,0 +1,119 @@
+{
+  "status": "FORMAL_COMPLETE",
+  "units": 48,
+  "grid": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "dense_grid_additional": [
+    0.12432432432432433,
+    0.14864864864864866,
+    0.17297297297297298,
+    0.1972972972972973,
+    0.22162162162162163,
+    0.24594594594594596,
+    0.2702702702702703,
+    0.2945945945945946,
+    0.3189189189189189,
+    0.3432432432432433,
+    0.3675675675675676,
+    0.3918918918918919,
+    0.4162162162162163,
+    0.4405405405405405,
+    0.4648648648648649,
+    0.4891891891891892,
+    0.5135135135135135,
+    0.5378378378378378,
+    0.5621621621621622,
+    0.5864864864864865,
+    0.6108108108108109,
+    0.6351351351351351,
+    0.6594594594594594,
+    0.6837837837837838,
+    0.7081081081081081,
+    0.7324324324324325,
+    0.7567567567567568,
+    0.781081081081081,
+    0.8054054054054054,
+    0.8297297297297297,
+    0.8540540540540541,
+    0.8783783783783784,
+    0.9027027027027027,
+    0.927027027027027,
+    0.9513513513513513,
+    0.9756756756756756
+  ],
+  "dense_grid_unique_total": 46,
+  "search_score_positions": {
+    "M1_native_alpha1": 48,
+    "M2_original_scalar_10": 480,
+    "dense_scalar_46": 2208,
+    "structured_2region_max_46": 2208,
+    "structured_incremental_beyond_shared_10": 1728
+  },
+  "candidate_gptq_executions": {
+    "full_linear_shared_alpha_base_10": 120,
+    "full_linear_dense_additional_36": 432,
+    "full_linear_unique_total_for_scalar_bank": 552,
+    "per_row_structured_additional_max": 1728,
+    "full_model_gptq_executions": 0
+  },
+  "held_scoring_plan": {
+    "selected_method_candidates": "M1/M2/dense/structured search selections only",
+    "retrospective_oracle": "all unique dense scalar alpha candidates and all unique structured tuples actually evaluated; no held values are read before selection lock",
+    "held_score_positions_upper_bound": 3936
+  },
+  "structured_scheduled_slots": 1728,
+  "structured_unique_tuple_executions_after_cache": "at most 1728; actual count recorded from cache and event log",
+  "notes": [
+    "A score position is one selected row by one candidate loss. It is not a GPTQ call.",
+    "Full-Linear candidate runs produce outputs for all rows, but only the four preregistered rows are scored/stored.",
+    "Structured updates are row-specific GPTQ executions with fresh compensation state; no full-Linear shared-candidate shortcut is used for unequal alpha_A/alpha_B.",
+    "Exact repeated structured tuples are cacheable; scheduled and unique tuples are both recorded."
+  ],
+  "preflight_measured_counts": {
+    "full_linear_gptq_candidate_calls": 552,
+    "per_row_structured_gptq_candidate_calls_max": 1728,
+    "search_full_candidate_row_scores": 2208,
+    "search_structured_row_candidate_scores_max": 1728,
+    "held_full_candidate_row_scores": 2208,
+    "held_structured_row_candidate_scores_max": 1728,
+    "formal_block_forward_or_ppl_calls": 0
+  },
+  "preflight_cost": {
+    "central_hours": 1.0024248637052564,
+    "conservative_hours": 1.5036372955578847
+  },
+  "actual_counts": {
+    "m1_selected_native_row_scores": 48,
+    "m2_original_scalar_search_score_positions": 480,
+    "dense_scalar_search_score_positions": 2208,
+    "structured_search_unique_score_positions": 1409,
+    "structured_coordinate_schedule_slots": 1728,
+    "structured_exact_tuple_reuses": 799,
+    "full_linear_candidate_gptq_executions": 552,
+    "structured_per_row_candidate_gptq_executions": 929,
+    "unique_full_candidate_states": 552,
+    "unique_structured_offdiagonal_candidate_states": 929,
+    "held_full_linear_score_batches": 552,
+    "held_full_linear_score_positions": 2208,
+    "held_structured_row_score_positions": 929,
+    "held_selection_lock_sha256": "40b25a4ad04fc960759580a3bad7ff44761ad03f69ecd3827f83a0a0df5c24d9",
+    "full_model_gptq_executions": 0,
+    "ppl_or_external_evaluations": 0
+  },
+  "actual_candidate_sets": {
+    "scalar_bank_alpha_count": 46,
+    "dense_grid_unique_alpha_count": 46,
+    "structured_unique_tuple_positions": 1409,
+    "structured_unique_offdiagonal_per_row_max": 26
+  }
+}

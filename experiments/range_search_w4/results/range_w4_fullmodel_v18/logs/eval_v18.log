@@ -1,0 +1,21 @@
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+[eval:done] M0 wikitext: PPL=12.46340950 NLL=2.522797111 tokens=299077 windows=582 seconds=88.6
+[eval:done] M1 wikitext: PPL=13.88436957 NLL=2.630763716 tokens=299077 windows=582 seconds=90.4
+[eval:done] M2 wikitext: PPL=13.76055605 NLL=2.621806242 tokens=299077 windows=582 seconds=90.9
+[eval:done] M0 c4_fixed_budget: PPL=19.24855582 NLL=2.957436035 tokens=131071 windows=253 seconds=39.6
+[eval:done] M1 c4_fixed_budget: PPL=22.23392445 NLL=3.101619251 tokens=131071 windows=253 seconds=39.7
+[eval:done] M2 c4_fixed_budget: PPL=22.03288316 NLL=3.092536027 tokens=131071 windows=253 seconds=39.6
+{
+  "status": "PASS",
+  "verdict": "FULLMODEL_M2_QUALITY_IMPROVED",
+  "WT2": {
+    "M0": 12.463409495878363,
+    "M1": 13.884369572857866,
+    "M2": 13.760556051038424
+  },
+  "C4_fixed_budget": {
+    "M0": 19.248555817997712,
+    "M1": 22.23392445006841,
+    "M2": 22.032883164065005
+  }
+}

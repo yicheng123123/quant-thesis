@@ -1,0 +1,107 @@
+{
+  "version": "v62",
+  "status": "FROZEN_BEFORE_FIRST_MODEL_LOAD",
+  "requested_model_setting": "Luna Max requested; actual service selection is not exposed to process API",
+  "objective": "Same-process full WT2 test and fixed-budget C4 validation comparison of new v61 repository M3/LWC checkpoint and locked v55 M2+integer-repair checkpoint",
+  "prohibited": [
+    "training",
+    "quantization",
+    "integer repair",
+    "candidate search",
+    "new calibration",
+    "P3",
+    "PPL-based selection"
+  ],
+  "model_order": [
+    "v61_M3",
+    "v55_M2_plus_repair"
+  ],
+  "dataset_order_per_model": [
+    "wikitext",
+    "c4_fixed_budget"
+  ],
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "tokenizer_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "model_method_boundary": "M3 is the repository M3/LWC implementation, not a demonstrated official OmniQuant reproduction. M3 asymmetric affine grid and M2+repair symmetric grid differ; outcome compares full solutions and cannot be attributed solely to LWC or integer repair.",
+  "quantization_sources": {
+    "v61_M3": "v61 frozen protocol: W4A16 asymmetric affine [0,15], G128, per-row/per-group learnable lowbound_factor/upbound_factor (LWC), LET off; exported as dense dequant FP16 weights.",
+    "v55_M2_plus_repair": "v55 frozen protocol: formal M2 scalar10 initialization, W4A16 symmetric G128, zero=8 fixed scale/zero/g_idx with legal integer-code repair; checkpoint stored as dense FP16 dequantized model."
+  },
+  "loader": {
+    "dtype": "FP16",
+    "device": "CUDA",
+    "attn_implementation": "sdpa",
+    "local_files_only": true,
+    "low_cpu_mem_usage": true,
+    "eval": true,
+    "use_cache": false,
+    "tf32": false
+  },
+  "runtime_signature_sha256": "c80d3cddd513d140d83897ee204bab76d71262c087fe43c20cbcc0c31a227500",
+  "evaluator_core_sha256": "5062225fc58d6d1272ba7c828f697ff9540407db5409340d2a94662ff32841a1",
+  "evaluator_wrapper_source": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v58_m2_repaired_unified_eval\\run_v58_eval.py",
+  "evaluator_wrapper_sha256": "c27fb3a5dbf2f940a7ed0fd465ac02a07da8de94c9dc2a060adea962a63ed2df",
+  "reused_evaluation_journal_source": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v59_same_process_four_checkpoint_eval\\run_v59_eval.py",
+  "reused_v59_runner_sha256": "0580bc165209aeddaf451e11941861078e114641bd121c07ba5bd4392b30a0d3",
+  "v62_runner_source_sha256": "f23571feca44f2445c493b4cd45f447bd31f67a3c9739fb470c3181fe0ea52e5",
+  "v62_cpu_preflight_source_sha256": "002d5349425015f3b32458e8d0fbc7ef76e686f7410320674d8ae510ecbe5f57",
+  "manifest_records": {
+    "wikitext": {
+      "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\evaluation\\manifests\\WIKITEXT_TEST_MANIFEST.json",
+      "manifest_sha256": "acd46b20a6b84b534d5625bfab505d599001679a775d619960a40e8da4f62f46",
+      "token_ids_sha256_i64le": "8ffcee84dd4b684ec631cb52845e18c9c181ce6fdb8b26d65a4ffdc3d35fbda3",
+      "input_tokens": 299078,
+      "valid_tokens": 299077,
+      "windows": 582,
+      "max_length": 2048,
+      "stride": 512,
+      "add_special_tokens": false,
+      "chat_template": false
+    },
+    "c4_fixed_budget": {
+      "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\evaluation\\manifests\\C4_EVAL_MANIFEST.json",
+      "manifest_sha256": "0b0d70d70d3c1e0ba62126c81a3f3e97531e58d6701236fb8b3315450b7188d4",
+      "token_ids_sha256_i64le": "bc9a7575527abbc41352352a0439c6bee062ea265b7bd03120704e83f4af7053",
+      "input_tokens": 131072,
+      "valid_tokens": 131071,
+      "windows": 253,
+      "max_length": 2048,
+      "stride": 512,
+      "add_special_tokens": false,
+      "chat_template": false
+    }
+  },
+  "input_window_archives": {
+    "wikitext": {
+      "path": "E:\\quant-thesis\\results\\v62_m3_vs_repaired_quality_cost\\evaluation\\input_windows\\wikitext.npz",
+      "sha256": "16978afaf2415782d74d6f1da71d8389f5376a2e0d9f64dda3e2adff57938c1f",
+      "windows": 582,
+      "stored_input_token_slots": 1191936,
+      "stored_mask_token_slots": 1191936,
+      "all_slices_and_labels_are_unpadded_in_length_metadata": true
+    },
+    "c4_fixed_budget": {
+      "path": "E:\\quant-thesis\\results\\v62_m3_vs_repaired_quality_cost\\evaluation\\input_windows\\c4_fixed_budget.npz",
+      "sha256": "8b26c19304f6b754690c35f8f3d403755685e4d1a859361141e44eb6df3df4a5",
+      "windows": 253,
+      "stored_input_token_slots": 518144,
+      "stored_mask_token_slots": 518144,
+      "all_slices_and_labels_are_unpadded_in_length_metadata": true
+    }
+  },
+  "windows_per_dataset": {
+    "wikitext": 582,
+    "c4_fixed_budget": 253
+  },
+  "score": "sum(window_loss * valid_tokens)/sum(valid_tokens); PPL=exp(weighted NLL)",
+  "C4_label": "fixed-budget validation stream; not standard full C4",
+  "same_process": true,
+  "resume_policy": "Each attempt has an immutable run lock with unique process nonce; if interrupted, partial windows are not mixed into a later process. A restarted attempt must complete all windows for both checkpoints within that attempt or mark the interrupted item incomplete.",
+  "budget_seconds": 5400.0,
+  "cpu_precheck_charge_seconds": 180.0,
+  "historical_calibration_propagation_unknown": [
+    "v45",
+    "v46",
+    "v49"
+  ]
+}

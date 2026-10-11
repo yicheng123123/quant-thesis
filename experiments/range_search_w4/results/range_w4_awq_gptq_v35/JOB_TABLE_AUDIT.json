@@ -1,0 +1,32 @@
+{
+  "status": "PASS_COUNT_RECONCILIATION; EXECUTION_NOT_RUN",
+  "main_full_linear_gptq_per_split": 62,
+  "main_full_linear_gptq_total": 124,
+  "score_slots_per_split": 214272,
+  "score_slots_total": 428544,
+  "correctness_gptq_calls": {
+    "alpha1_parity": 16,
+    "down_isolation_replays": 4,
+    "total": 20
+  },
+  "full_linear_gptq_including_correctness": 144,
+  "AWQ_RTN_D_ratio_candidates": 40,
+  "AWQ_proxy_quantized_linear_ops": 80,
+  "AWQ_full_MLP_candidate_forwards": 40,
+  "reference_full_MLP_forwards": 2,
+  "unique_H_per_split": 6,
+  "unique_H_total": 12,
+  "independent_recalculation": {
+    "gate_up": "4 shared banks/split x 10 full-Linear alpha candidates = 40 calls/split; 4 x 10 x 4864 row-alpha slots",
+    "down": "A1+B10+C1+D10 = 22 calls/split; 22 x 896 row-alpha slots",
+    "main": "2 x (40+22) = 124 full-Linear GPTQ executions",
+    "scores": "2 x ((4x10x4864)+(22x896)) = 428544 row-alpha score slots",
+    "correctness": "16 independent alpha1 parity + 4 candidate-isolation down replays = 20; 144 GPTQ executions total if all run"
+  },
+  "job_table_reconciliation": {
+    "main_candidate_calls": 124,
+    "main_score_slots": 428544,
+    "extra_correctness_calls": 20
+  },
+  "status_reason": "Counts agree with v34; formal work is not authorized until new-article gate passes."
+}

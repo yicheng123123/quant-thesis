@@ -1,0 +1,1271 @@
+{
+  "events": [
+    {
+      "event_index": 0,
+      "tensor": "reconstruction_loss",
+      "gradient": {
+        "present": true,
+        "shape": [],
+        "dtype": "torch.float32",
+        "numel": 1,
+        "all_finite": true,
+        "finite_count": 1,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 65536.0
+      }
+    },
+    {
+      "event_index": 1,
+      "tensor": "native_layer.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "all_finite": true,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 20.71875
+      }
+    },
+    {
+      "event_index": 2,
+      "tensor": "student_block_output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "all_finite": true,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 20.71875
+      }
+    },
+    {
+      "event_index": 3,
+      "tensor": "native_layer.mlp.down_proj.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "all_finite": true,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 20.71875
+      }
+    },
+    {
+      "event_index": 4,
+      "tensor": "native_layer.mlp.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "all_finite": true,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 20.71875
+      }
+    },
+    {
+      "event_index": 5,
+      "tensor": "swiglu_product",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          4864
+        ],
+        "dtype": "torch.float16",
+        "numel": 9961472,
+        "all_finite": true,
+        "finite_count": 9961472,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 12.609375
+      }
+    },
+    {
+      "event_index": 6,
+      "tensor": "native_layer.mlp.up_proj.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          4864
+        ],
+        "dtype": "torch.float16",
+        "numel": 9961472,
+        "all_finite": true,
+        "finite_count": 9961472,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 478.75
+      }
+    },
+    {
+      "event_index": 7,
+      "tensor": "native_layer.mlp.act_fn.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          4864
+        ],
+        "dtype": "torch.float16",
+        "numel": 9961472,
+        "all_finite": true,
+        "finite_count": 9961472,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 458.5
+      }
+    },
+    {
+      "event_index": 8,
+      "tensor": "native_layer.mlp.gate_proj.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          4864
+        ],
+        "dtype": "torch.float16",
+        "numel": 9961472,
+        "all_finite": true,
+        "finite_count": 9961472,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 458.5
+      }
+    },
+    {
+      "event_index": 9,
+      "tensor": "native_layer.post_attention_layernorm.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 1835008,
+        "all_finite": true,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 580.25
+      }
+    },
+    {
+      "event_index": 10,
+      "tensor": "residual_after_attention",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "all_finite": true,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 42.65625
+      }
+    },
+    {
+      "event_index": 11,
+      "tensor": "native_layer.self_attn.o_proj.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "all_finite": true,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 42.65625
+      }
+    },
+    {
+      "event_index": 12,
+      "tensor": "native_layer.self_attn.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "all_finite": true,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 42.65625
+      }
+    },
+    {
+      "event_index": 13,
+      "tensor": "native_layer.self_attn.v_proj.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          128
+        ],
+        "dtype": "torch.float16",
+        "numel": 262144,
+        "all_finite": true,
+        "finite_count": 262144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 54.0625
+      }
+    },
+    {
+      "event_index": 14,
+      "tensor": "native_layer.self_attn.k_proj.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          128
+        ],
+        "dtype": "torch.float16",
+        "numel": 262144,
+        "all_finite": true,
+        "finite_count": 262144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 82.625
+      }
+    },
+    {
+      "event_index": 15,
+      "tensor": "native_layer.self_attn.q_proj.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "all_finite": true,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 2.05859375
+      }
+    },
+    {
+      "event_index": 16,
+      "tensor": "native_layer.input_layernorm.output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 1835008,
+        "all_finite": true,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 27.1484375
+      }
+    },
+    {
+      "event_index": 17,
+      "tensor": "native_layer.mlp.down_proj.dequantized_weight",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          4864
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "all_finite": true,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 29216.0
+      }
+    },
+    {
+      "event_index": 18,
+      "tensor": "native_layer.mlp.down_proj.round_ste_output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "all_finite": true,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 423.34283447265625
+      }
+    },
+    {
+      "event_index": 19,
+      "tensor": "native_layer.mlp.down_proj.normalized_weight_round_input",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "all_finite": true,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 423.34283447265625
+      }
+    },
+    {
+      "event_index": 20,
+      "tensor": "native_layer.mlp.down_proj.rounded_zero",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "all_finite": true,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 1339.264404296875
+      }
+    },
+    {
+      "event_index": 21,
+      "tensor": "native_layer.mlp.down_proj.scale",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "all_finite": true,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 379803.6875
+      }
+    },
+    {
+      "event_index": 22,
+      "tensor": "native_layer.mlp.down_proj.weight_quantizer.lowbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "all_finite": true,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 33.629207611083984
+      }
+    },
+    {
+      "event_index": 23,
+      "tensor": "native_layer.mlp.down_proj.weight_quantizer.upbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "all_finite": true,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 279.5155029296875
+      }
+    },
+    {
+      "event_index": 24,
+      "tensor": "native_layer.mlp.up_proj.dequantized_weight",
+      "gradient": {
+        "present": true,
+        "shape": [
+          4864,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "all_finite": false,
+        "finite_count": 4358142,
+        "nan_count": 0,
+        "posinf_count": 2,
+        "neginf_count": 0,
+        "max_finite_abs": 59008.0
+      }
+    },
+    {
+      "event_index": 25,
+      "tensor": "native_layer.mlp.up_proj.round_ste_output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "all_finite": false,
+        "finite_count": 4358142,
+        "nan_count": 0,
+        "posinf_count": 2,
+        "neginf_count": 0,
+        "max_finite_abs": 531.9323120117188
+      }
+    },
+    {
+      "event_index": 26,
+      "tensor": "native_layer.mlp.up_proj.normalized_weight_round_input",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "all_finite": false,
+        "finite_count": 4358142,
+        "nan_count": 0,
+        "posinf_count": 2,
+        "neginf_count": 0,
+        "max_finite_abs": 531.9323120117188
+      }
+    },
+    {
+      "event_index": 27,
+      "tensor": "native_layer.mlp.up_proj.rounded_zero",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "all_finite": false,
+        "finite_count": 34046,
+        "nan_count": 2,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 3.2196249961853027
+      }
+    },
+    {
+      "event_index": 28,
+      "tensor": "native_layer.mlp.up_proj.scale",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "all_finite": false,
+        "finite_count": 34046,
+        "nan_count": 2,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 23260.46875
+      }
+    },
+    {
+      "event_index": 29,
+      "tensor": "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "all_finite": false,
+        "finite_count": 34046,
+        "nan_count": 2,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 2.0729408264160156
+      }
+    },
+    {
+      "event_index": 30,
+      "tensor": "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "all_finite": false,
+        "finite_count": 34046,
+        "nan_count": 2,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 1.6984739303588867
+      }
+    },
+    {
+      "event_index": 31,
+      "tensor": "native_layer.mlp.gate_proj.dequantized_weight",
+      "gradient": {
+        "present": true,
+        "shape": [
+          4864,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "all_finite": false,
+        "finite_count": 4358142,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 2,
+        "max_finite_abs": 60864.0
+      }
+    },
+    {
+      "event_index": 32,
+      "tensor": "native_layer.mlp.gate_proj.round_ste_output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "all_finite": false,
+        "finite_count": 4358143,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 1,
+        "max_finite_abs": 535.0440673828125
+      }
+    },
+    {
+      "event_index": 33,
+      "tensor": "native_layer.mlp.gate_proj.normalized_weight_round_input",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "all_finite": false,
+        "finite_count": 4358143,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 1,
+        "max_finite_abs": 535.0440673828125
+      }
+    },
+    {
+      "event_index": 34,
+      "tensor": "native_layer.mlp.gate_proj.rounded_zero",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "all_finite": false,
+        "finite_count": 34046,
+        "nan_count": 1,
+        "posinf_count": 1,
+        "neginf_count": 0,
+        "max_finite_abs": 1.3378849029541016
+      }
+    },
+    {
+      "event_index": 35,
+      "tensor": "native_layer.mlp.gate_proj.scale",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "all_finite": false,
+        "finite_count": 34046,
+        "nan_count": 1,
+        "posinf_count": 0,
+        "neginf_count": 1,
+        "max_finite_abs": 27299.5
+      }
+    },
+    {
+      "event_index": 36,
+      "tensor": "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "all_finite": false,
+        "finite_count": 34046,
+        "nan_count": 1,
+        "posinf_count": 0,
+        "neginf_count": 1,
+        "max_finite_abs": 1.9306188821792603
+      }
+    },
+    {
+      "event_index": 37,
+      "tensor": "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "all_finite": false,
+        "finite_count": 34046,
+        "nan_count": 1,
+        "posinf_count": 0,
+        "neginf_count": 1,
+        "max_finite_abs": 2.385805130004883
+      }
+    },
+    {
+      "event_index": 38,
+      "tensor": "native_layer.self_attn.o_proj.dequantized_weight",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "all_finite": true,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 569.0
+      }
+    },
+    {
+      "event_index": 39,
+      "tensor": "native_layer.self_attn.o_proj.round_ste_output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "all_finite": true,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 5.670994281768799
+      }
+    },
+    {
+      "event_index": 40,
+      "tensor": "native_layer.self_attn.o_proj.normalized_weight_round_input",
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "all_finite": true,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 5.670994281768799
+      }
+    },
+    {
+      "event_index": 41,
+      "tensor": "native_layer.self_attn.o_proj.rounded_zero",
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "all_finite": true,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 0.41580307483673096
+      }
+    },
+    {
+      "event_index": 42,
+      "tensor": "native_layer.self_attn.o_proj.scale",
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "all_finite": true,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 372.04986572265625
+      }
+    },
+    {
+      "event_index": 43,
+      "tensor": "native_layer.self_attn.o_proj.weight_quantizer.lowbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "all_finite": true,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 0.04834441468119621
+      }
+    },
+    {
+      "event_index": 44,
+      "tensor": "native_layer.self_attn.o_proj.weight_quantizer.upbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "all_finite": true,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 0.04143296927213669
+      }
+    },
+    {
+      "event_index": 45,
+      "tensor": "native_layer.self_attn.v_proj.dequantized_weight",
+      "gradient": {
+        "present": true,
+        "shape": [
+          128,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "all_finite": true,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 2160.0
+      }
+    },
+    {
+      "event_index": 46,
+      "tensor": "native_layer.self_attn.v_proj.round_ste_output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "all_finite": true,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 37.62398147583008
+      }
+    },
+    {
+      "event_index": 47,
+      "tensor": "native_layer.self_attn.v_proj.normalized_weight_round_input",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "all_finite": true,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 37.62398147583008
+      }
+    },
+    {
+      "event_index": 48,
+      "tensor": "native_layer.self_attn.v_proj.rounded_zero",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "all_finite": true,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 0.7729523181915283
+      }
+    },
+    {
+      "event_index": 49,
+      "tensor": "native_layer.self_attn.v_proj.scale",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "all_finite": true,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 795.370849609375
+      }
+    },
+    {
+      "event_index": 50,
+      "tensor": "native_layer.self_attn.v_proj.weight_quantizer.lowbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "all_finite": true,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 0.12366405129432678
+      }
+    },
+    {
+      "event_index": 51,
+      "tensor": "native_layer.self_attn.v_proj.weight_quantizer.upbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "all_finite": true,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 0.12072864919900894
+      }
+    },
+    {
+      "event_index": 52,
+      "tensor": "native_layer.self_attn.k_proj.dequantized_weight",
+      "gradient": {
+        "present": true,
+        "shape": [
+          128,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "all_finite": true,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 3308.0
+      }
+    },
+    {
+      "event_index": 53,
+      "tensor": "native_layer.self_attn.k_proj.round_ste_output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "all_finite": true,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 22.682409286499023
+      }
+    },
+    {
+      "event_index": 54,
+      "tensor": "native_layer.self_attn.k_proj.normalized_weight_round_input",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "all_finite": true,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 22.682409286499023
+      }
+    },
+    {
+      "event_index": 55,
+      "tensor": "native_layer.self_attn.k_proj.rounded_zero",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "all_finite": true,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 5.22297477722168
+      }
+    },
+    {
+      "event_index": 56,
+      "tensor": "native_layer.self_attn.k_proj.scale",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "all_finite": true,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 8099.90478515625
+      }
+    },
+    {
+      "event_index": 57,
+      "tensor": "native_layer.self_attn.k_proj.weight_quantizer.lowbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "all_finite": true,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 0.9314222931861877
+      }
+    },
+    {
+      "event_index": 58,
+      "tensor": "native_layer.self_attn.k_proj.weight_quantizer.upbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "all_finite": true,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 0.20258435606956482
+      }
+    },
+    {
+      "event_index": 59,
+      "tensor": "native_layer.self_attn.q_proj.dequantized_weight",
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "all_finite": true,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 440.75
+      }
+    },
+    {
+      "event_index": 60,
+      "tensor": "native_layer.self_attn.q_proj.round_ste_output",
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "all_finite": true,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 4.635372161865234
+      }
+    },
+    {
+      "event_index": 61,
+      "tensor": "native_layer.self_attn.q_proj.normalized_weight_round_input",
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "all_finite": true,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 4.635372161865234
+      }
+    },
+    {
+      "event_index": 62,
+      "tensor": "native_layer.self_attn.q_proj.rounded_zero",
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "all_finite": true,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 0.6271727085113525
+      }
+    },
+    {
+      "event_index": 63,
+      "tensor": "native_layer.self_attn.q_proj.scale",
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "all_finite": true,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 689.9429321289062
+      }
+    },
+    {
+      "event_index": 64,
+      "tensor": "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "all_finite": true,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 0.039073843508958817
+      }
+    },
+    {
+      "event_index": 65,
+      "tensor": "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "all_finite": true,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 0.05057781562209129
+      }
+    }
+  ]
+}

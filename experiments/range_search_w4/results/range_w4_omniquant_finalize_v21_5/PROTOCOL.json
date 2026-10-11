@@ -1,0 +1,49 @@
+{
+  "name": "v21.5 M3 evaluation resume and baseline finalization",
+  "status": "PASS",
+  "scope": [
+    "read-only audit of v21.4 final M3 artifacts",
+    "independent WT2/C4 window aggregation",
+    "frozen M0/M1/M2/M3 comparison",
+    "formal cost and AMP accounting"
+  ],
+  "training_or_quantization_rerun": false,
+  "evaluation_rerun": false,
+  "optimizer_steps_this_round": 0,
+  "algorithm_or_hyperparameter_changes": [],
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dtype": "FP16",
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "M3": {
+    "quantization": "W4A16 asymmetric affine G128",
+    "LWC": true,
+    "LET": false,
+    "method_interpretation": "OmniQuant LWC gradient optimization with block reconstruction"
+  },
+  "evaluation": {
+    "evaluator_sha256": "5062225fc58d6d1272ba7c828f697ff9540407db5409340d2a94662ff32841a1",
+    "tokenizer_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dtype": "FP16",
+    "attention": "SDPA",
+    "tf32": false,
+    "max_length": 2048,
+    "stride": 512,
+    "WT2_scored_targets": 299077,
+    "C4_fixed_budget_scored_targets": 131071,
+    "C4_label": "fixed-budget validation, not standard/full C4 PPL",
+    "selection_or_tuning_on_final_evaluation": false
+  },
+  "baseline_sources": {
+    "v18_comparison_csv_sha256": "c521700fea42b18bb57aca005252ce502e684b0fb3bb1aad2c01f3682255f7bb",
+    "v19_evaluator_audit_sha256": "76c69562767ca30ac5e881bd3a4e60e64eaf5d1c2d7d18cdc96b4f2ffa322a84",
+    "v19_checkpoint_audit_sha256": "5ccffd4387bf26be1f79462121e5ff97a1b3f6733baaf5cba1439fba358df205",
+    "v21_3_historical_amp_update_audit_sha256": "3503f501b025a03504637da8b3e5a0eb827445e3b18b60878b7bbf6428e08e57"
+  },
+  "source_lineage": {
+    "v21_4_root": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4",
+    "finalization_output": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_finalize_v21_5"
+  }
+}

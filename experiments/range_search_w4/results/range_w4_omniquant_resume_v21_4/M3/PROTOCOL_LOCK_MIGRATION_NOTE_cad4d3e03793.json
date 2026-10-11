@@ -1,0 +1,20 @@
+{
+  "algorithm_semantics_changed": false,
+  "formal_training_started": false,
+  "latest_checkpoint_pointer_present": true,
+  "new_protocol_id": "range_w4_omniquant_resume_v21_4_M3",
+  "preserved_lock": "FORMAL_PROTOCOL_LOCK_PRE_FORMAL_cad4d3e03793.json",
+  "preserved_lock_sha256": "cad4d3e03793c50b6c06c4913086568ac00e9a4ca0d942b2bb09b7556947144e",
+  "pretraining_bootstrap_failure": {
+    "exception_type": "ModuleNotFoundError",
+    "latest_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4\\M3\\checkpoints\\LATEST.json",
+    "message": "No module named 'run_local_preflight'",
+    "status": "FAILED_OR_INTERRUPTED",
+    "traceback": "Traceback (most recent call last):\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4\\M3\\run_formal_m3.py\", line 898, in main\n    summary = run_calibration(config, token_ids, lock)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4\\M3\\run_formal_m3.py\", line 709, in run_calibration\n    from run_local_preflight import load_exact_model\nModuleNotFoundError: No module named 'run_local_preflight'\n",
+    "updated_at": "2026-10-01 23:38:57+0800"
+  },
+  "prior_protocol_id": "range_w4_omniquant_resume_v21_4_M3",
+  "reason": "A correctness metadata fix was made before formal training; only the untouched imported block_20 prefix is present and was retained for validation.",
+  "status": "SAFE_PRE_RUN_PROTOCOL_LOCK_MIGRATION",
+  "training_logs_present": false
+}

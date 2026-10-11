@@ -1,0 +1,109 @@
+{
+  "overall_status": "CORRECTNESS_FAIL_STOPPED",
+  "S0": {
+    "status": "PASS through local gates and held evaluation",
+    "passed": [
+      "D=I regression",
+      "gate/up alpha1 native parity",
+      "down alpha1 parameter/group parity",
+      "candidate isolation replays (G01/G11)",
+      "row stitch and actual module commit",
+      "selection lock before P1 held read",
+      "complete L12 held MLP forward and L13 boundary capture"
+    ],
+    "gap": "G00 down alpha1 parity fields do not include direct-row-output-score comparison; other S0 down arms do."
+  },
+  "S1": {
+    "status": "FAIL at D=I before AWQ selector or GPTQ candidates",
+    "failure": "D=I norm output differs from frozen prefix capture",
+    "held_group_P3_opened": false,
+    "cuda_failure_diagnostic_saved_by_runner": false,
+    "CPU_capture_pair_diagnostic": [
+      {
+        "doc_index_in_group": 0,
+        "max_abs": 7.859375,
+        "mean_abs": 0.19638943672180176,
+        "exact_equal_elements": 154,
+        "elements": 1835008,
+        "pre_sha256": "6e84e41294646a6d6450d8db38f7880750ea462bd6d9df7cd20dd5204ff0c040",
+        "post_sha256": "e32856e15d2270f2a4db1761b970fe99abd7bdd7e7848de8c0155d3a15f86a6c"
+      },
+      {
+        "doc_index_in_group": 1,
+        "max_abs": 7.5703125,
+        "mean_abs": 0.1973182111978531,
+        "exact_equal_elements": 153,
+        "elements": 1835008,
+        "pre_sha256": "c55c451422b6636ae4271788124712051b229b3eab4d4eba47fc56ec681576a4",
+        "post_sha256": "3903db8cf242a16bd0f4ab196a145de4aadbdd74f68c96842aa1480819db0c02"
+      },
+      {
+        "doc_index_in_group": 2,
+        "max_abs": 8.1875,
+        "mean_abs": 0.19754256308078766,
+        "exact_equal_elements": 190,
+        "elements": 1835008,
+        "pre_sha256": "f112b876aaa2665ac50eb49da3996c5051bd40f274991ba4175500abbbf82ce0",
+        "post_sha256": "bdd48209c9727c6ef58858d71e6e7f097e762de7e293768d05a1c936edf44052"
+      },
+      {
+        "doc_index_in_group": 3,
+        "max_abs": 8.25,
+        "mean_abs": 0.19376660883426666,
+        "exact_equal_elements": 161,
+        "elements": 1835008,
+        "pre_sha256": "d37f3c3f2dd5e7256939ccf3d26ea09c37f7373d19f6b4109b65e347b6fb4cc1",
+        "post_sha256": "e0c7b6c3c0c569e5b6aedc86eb79a3b64de940bc19fe1c3208c2d54421e7b0e5"
+      },
+      {
+        "doc_index_in_group": 4,
+        "max_abs": 8.0390625,
+        "mean_abs": 0.1948343962430954,
+        "exact_equal_elements": 158,
+        "elements": 1835008,
+        "pre_sha256": "f52570a0969aa1f2cc6c191b76ca5233649e20b83694ddb23510b8ba7af479f2",
+        "post_sha256": "60328f03f40996029e7e16fca1678551c76cc775c4e24dc4eb0987ba44fd0470"
+      },
+      {
+        "doc_index_in_group": 5,
+        "max_abs": 8.296875,
+        "mean_abs": 0.19480396807193756,
+        "exact_equal_elements": 138,
+        "elements": 1835008,
+        "pre_sha256": "8b00f3d42514221aaee37a82da1ac41fdafd3dc92ed2206e854dc45e937ceb3e",
+        "post_sha256": "6ac7900e7147cdcf8945797971015caaae970cbc5642dea513abd9b3ee211fd4"
+      },
+      {
+        "doc_index_in_group": 6,
+        "max_abs": 8.0390625,
+        "mean_abs": 0.19769075512886047,
+        "exact_equal_elements": 178,
+        "elements": 1835008,
+        "pre_sha256": "2148609a5c6977fa5c46f96e53ded104334860024d1df26c7c07449be3fdc008",
+        "post_sha256": "a71c7d449144baff3408748ec9b71ddf79d4b41de0a38d1f630ff35b69d625e9"
+      },
+      {
+        "doc_index_in_group": 7,
+        "max_abs": 7.859375,
+        "mean_abs": 0.19897940754890442,
+        "exact_equal_elements": 179,
+        "elements": 1835008,
+        "pre_sha256": "70e090a4791fb5c6bbbca5d1dba4ab864bb78e6b2abae310c5c8e4f884a512c0",
+        "post_sha256": "1e0c8bfdaf8f30395d542dc6c2629901762de221ad304f7ee41d04b90b10eda1"
+      }
+    ],
+    "base_and_prefix_norm_weights_equal": true,
+    "cause": "Not localized. CPU replay of saved pre/post capture pairs shows large P2 discrepancies despite equal base/prefix norm weights; no tolerance was changed and no GPU retry was run."
+  },
+  "static_correctness_issue_found_after_stop": {
+    "issue": "Both selected_fold_correctness and eval_held fold-error reference divide the norm weight by D but do not multiply pristine gate/up weights by D before the MLP forward.",
+    "locations": [
+      "run_v36.py:1045-1054",
+      "run_v36.py:1117-1136"
+    ],
+    "consequence": "Stored fold-error MSE is not the FP16 W'=WD, X'=XD^-1 fold error required by the protocol; the fold-error quality gate is invalid for this run.",
+    "rerun_after_discovery": false
+  },
+  "quality_or_threshold_adjustments": false,
+  "GPU_rerun_after_S1_failure": false
+}

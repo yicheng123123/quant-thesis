@@ -1,0 +1,38 @@
+{
+  "status": "COMPLETE_ARTIFACT_ONLY_DIAGNOSTIC",
+  "scope": "original v24 scalar10 only; L0/L12/L23 up/down; fixed rows [0,224,448,672]; S0/S1",
+  "new_held_forwards": 0,
+  "new_search_forwards": 0,
+  "cuda_tasks": 0,
+  "ppl_runs": 0,
+  "quantization_runs": 0,
+  "candidate_row_count": 480,
+  "row_split_units": 48,
+  "alpha_values_per_unit": 10,
+  "full_linear_candidate_tensor_states": 120,
+  "held_read_order": "all rho paths and tau selections were generated and written from search data and ||Q-W||^2 before HELD_RESULTS.csv or held score sidecars were opened",
+  "output_mse_definition": "mean squared local projection output residual per input token for one selected row",
+  "output_sse_definition": "output MSE multiplied by number of search/held tokens (16*2048 per row)",
+  "weight_mse_definition": "||Q_FP16-W_FP16||_2^2 divided by input dimension; FP32 difference and square accumulation",
+  "regularizer_definition": "search output MSE + rho * weight squared norm; no mean/sum substitution",
+  "hessian_C_normalization": "GPTQ raw H=2/n_documents sum_doc X_doc^T X_doc; H already averages over documents, and C_search per token is H/(2*SEQ), so kappa=trace(H)/(2*SEQ*input_dim), independently recomputed from source FP16 search inputs",
+  "mechanism_class_counts": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 48
+  },
+  "pareto_counts": {
+    "candidate_count": 480,
+    "dominated": 415,
+    "nondominated": 65
+  },
+  "conclusion_class": "C",
+  "conclusion": "所有预固定正tau pooled held相对原search选择均无正收益，权重误差下降不能支持所检验机制，或伴随明显search/held损失。",
+  "next_step": "不进入新文章验证；先停止该正则化方向。",
+  "cross_split_pairing": "24 same layer/projection/row pairs recur in S0 and S1; descriptive paired observations, no independence or inferential testing claimed",
+  "checks_passed": 6254,
+  "checks_total": 6254,
+  "cpu_seconds": 19.859375,
+  "wall_seconds": 18.237179499992635
+}

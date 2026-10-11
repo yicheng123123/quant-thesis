@@ -1,0 +1,726 @@
+继续 E:\quant-thesis 的量化毕设项目。
+
+当前已经完成：
+
+v7-v14:
+dynamic GPTQ shared-alpha range-search 的局部实验、
+96-row full10、
+Gate 独立验证、
+failure mechanism、
+calibration coverage scaling。
+
+v15:
+Quantized-Prefix Transfer Audit 已完成。
+
+v15 correctness PASS，
+预注册 verdict：
+
+TRANSFER_SIGNAL_PRESERVED
+
+关键结果：
+
+FP_INPUT pooled local gain:
++13.87%
+
+QPREFIX_INPUT pooled local gain:
++15.81%
+
+median row gain:
+FP +12.13%
+QPREFIX +12.92%
+
+alpha exact agreement:
+33/48
+
+within one grid step:
+47/48
+
+37 个 FP-positive rows 中：
+35 个在 QPREFIX 仍 positive
+
+QPREFIX 无 gain < -5% row。
+
+因此当前最重要的问题已经不是：
+“local range-search signal 存不存在？”
+
+而是：
+
+1.
+它能否转化为 full-model PPL improvement？
+
+2.
+和现有 range/clipping baseline，
+特别是 OmniQuant / LWC，
+相比处于什么位置？
+
+==================================================
+本轮名称
+==================================================
+
+v16 — Full-Model & OmniQuant Baseline Protocol Audit
+
+本轮只做：
+
+- scientific protocol design
+- codebase audit
+- OmniQuant compatibility audit
+- Qwen2.5 port design
+- full-model pure-search integration design
+- frozen execution plan
+
+不要进行大规模正式量化。
+
+允许极小 smoke test，
+但不要跑最终 PPL 表。
+
+==================================================
+一、首先审计已有结果
+==================================================
+
+读取：
+
+experiments/range_search_w4/results/
+range_w4_quantized_prefix_v15/
+
+至少：
+
+REPORT.md
+SUMMARY.json
+correctness_checks.json
+RUN_REPORT.md
+
+同时读取：
+
+v14 REPORT
+v13 REPORT
+v12 validation report
+
+确认：
+
+- Gate v1 validation FAIL
+- coverage hypothesis NOT SUPPORTED
+- quantized-prefix transfer PRESERVED
+
+因此：
+
+full-model 主方法暂时不要使用 Gate。
+
+主比较方法应该是：
+
+FP16
+Native GPTQ
+GPTQ + Uniform Pure Range Search
+
+不要把已经失败的 Gate
+重新塞进主方法。
+
+==================================================
+二、审计官方 OmniQuant
+==================================================
+
+使用官方仓库：
+
+OpenGVLab/OmniQuant
+
+不要使用来源不明的 fork 作为正式 baseline。
+
+记录：
+
+repository URL
+commit SHA
+dependency versions
+license
+official CLI semantics
+
+重点确认：
+
+- W4A16
+- group_size=128
+- LWC
+- LET
+- weight-only quantization
+- calibration data flow
+- block reconstruction objective
+- fake quant vs packed real quant
+- PPL evaluation path
+
+明确区分：
+
+A.
+Official OmniQuant method
+
+B.
+LWC-only mechanism comparison
+
+不能把修改后的 LWC-only
+直接命名成“OmniQuant”。
+
+==================================================
+三、Qwen2.5 compatibility audit
+==================================================
+
+目标 checkpoint：
+
+Qwen/Qwen2.5-0.5B-Instruct
+
+revision：
+
+7ae557604adf67be50417f59c2c2f167def9a775
+
+审计官方 OmniQuant 是否原生支持：
+
+Qwen2.5 architecture
+
+包括：
+
+- decoder layer discovery
+- q_proj
+- k_proj
+- v_proj
+- o_proj
+- gate_proj
+- up_proj
+- down_proj
+- RMSNorm
+- rotary embedding
+- GQA
+- model forward signatures
+- cache semantics
+
+如果官方代码不能直接支持 Qwen2.5：
+
+不要换模型。
+
+设计：
+
+minimal Qwen2.5 adapter
+
+原则：
+
+只做 architecture plumbing，
+不修改 OmniQuant 算法本身。
+
+记录所有 patch。
+
+==================================================
+四、定义“官方方法”与“适配方法”的命名
+==================================================
+
+如果只是为了让官方 OmniQuant
+识别 Qwen2.5 module structure：
+
+可以称：
+
+OmniQuant-Qwen2.5 port
+
+但必须注明：
+
+algorithm semantics unchanged,
+architecture adapter added.
+
+如果必须修改：
+
+LWC objective
+optimization
+quantizer
+training epochs
+parameterization
+
+则不能叫完整官方 OmniQuant baseline。
+
+必须另命名。
+
+==================================================
+五、冻结模型级比较方法
+==================================================
+
+设计至少四个 model-level methods：
+
+M0:
+FP16 original model
+
+M1:
+Native GPTQ W4A16 G128
+
+M2:
+GPTQ + Pure Range Search
+
+M3:
+OmniQuant W4A16 G128
+or
+OmniQuant-Qwen2.5 architecture port
+
+如果能公平实现：
+
+可加：
+
+M4:
+LWC-only controlled mechanism baseline
+
+但 M4 不是必须。
+
+==================================================
+六、Native GPTQ protocol
+==================================================
+
+沿用当前冻结协议：
+
+W4A16
+symmetric
+G128
+block=128
+damp=0.1
+desc_act=False
+
+model FP16
+GPTQ math FP32
+
+不要因为 OmniQuant 的默认参数
+修改 Native GPTQ 基线。
+
+==================================================
+七、Pure Range Search full-model semantics
+==================================================
+
+这是本轮最重要的设计问题。
+
+当前 local method：
+
+alpha ∈ {0.1,...,1.0}
+
+每个 candidate：
+完整 dynamic GPTQ semantics
+
+search objective：
+local output reconstruction MSE
+
+需要设计 full-model sequential integration。
+
+要求：
+
+按真实 GPTQ sequential order：
+
+对于每个 quantized Linear / row：
+
+1.
+接收当前 quantized-prefix calibration input
+
+2.
+对 alpha grid 做 pure search
+
+3.
+只使用 calibration/search loss
+选择 alpha*
+
+4.
+使用该 alpha 对当前 row/group
+完成最终 GPTQ quantization
+
+5.
+更新当前量化模型状态
+
+6.
+继续后续 module
+
+即：
+
+本轮 full-model method
+必须使用真实 self-propagated quantized prefix，
+不能重新退回 FP-input。
+
+==================================================
+八、先判断搜索粒度
+==================================================
+
+当前研究的主单位主要是 row。
+
+审计 full-model 实现是否能合理执行：
+
+per-row shared alpha
+
+而不破坏：
+
+G128
+packing
+scale/zero layout
+GPTQ compensation
+
+明确输出：
+
+- alpha 是 per-row 还是其他粒度
+- 每个 G128 group 如何应用 shared alpha
+- scale/zero 如何保存
+- packed checkpoint 是否兼容标准 GPTQ format
+
+不要偷偷改变方法为：
+
+per-layer alpha
+per-group independent alpha
+
+==================================================
+九、full-model 计算量审计
+==================================================
+
+Qwen2.5-0.5B-Instruct
+如果每个 output row 都运行：
+
+10 alpha candidates
+
+full-model 搜索成本可能很高。
+
+精确计算：
+
+- 总 Linear 数
+- 总 output rows
+- theoretical candidate count
+- estimated GPTQ candidate runtime
+- activation capture cost
+- Hessian reuse possibilities
+- peak VRAM
+- disk footprint
+
+使用 v14/v15 实测 timing
+进行预算。
+
+不要凭感觉估。
+
+==================================================
+十、允许优化实现，但不能改变算法
+==================================================
+
+可以设计：
+
+- reuse H
+- reuse activation cache
+- batch multiple rows
+- candidate vectorization
+- cached alpha=1
+- checkpoint/resume
+
+但不能为了省时间：
+
+- 减少 alpha grid
+- top-k proxy
+- 改 objective
+- 只搜索“看起来重要”的 row
+
+第一版正式 full-model experiment
+必须保持算法定义一致。
+
+如果全量 10-alpha 成本不可接受，
+先明确报告，
+不要自行近似。
+
+==================================================
+十一、Calibration protocol 必须公平
+==================================================
+
+为模型级比较冻结一个共同 calibration set。
+
+要求：
+
+Native GPTQ
+Pure Search
+OmniQuant
+
+尽可能使用相同：
+
+corpus
+article/sample pool
+token budget
+sequence length
+seed
+
+优先使用：
+
+WikiText-2 train
+
+但不要直接复用：
+用于开发 v8-v15 方法的 held-out data
+作为最终 evaluation。
+
+明确区分：
+
+CALIBRATION SET
+
+与：
+
+PPL EVALUATION SET
+
+==================================================
+十二、PPL evaluation
+==================================================
+
+至少设计：
+
+E1:
+WikiText-2 test PPL
+
+E2:
+C4 independent evaluation / smoke PPL
+
+如果完整 C4 PPL 成本合理，
+给正式 protocol。
+
+否则先定义固定 token-budget C4 evaluation，
+并明确它不是标准完整 C4 PPL。
+
+所有方法：
+
+- same tokenizer
+- same sequence length
+- same token count
+- same stride / chunk semantics
+- same model revision
+
+==================================================
+十三、为什么必须有 C4
+==================================================
+
+此前实验已经观察过：
+
+calibration distribution dependence。
+
+所以只测 WikiText-2：
+
+不足以判断方法是否只是
+对 calibration corpus 特别适配。
+
+因此至少必须有一个
+independent-corpus quality check。
+
+==================================================
+十四、OmniQuant 公平性问题
+==================================================
+
+明确回答：
+
+OmniQuant 和 GPTQ+Search
+是否具有完全相同算法基础？
+
+如果不是：
+
+不要强行声称 apples-to-apples。
+
+拆成：
+
+Method-level comparison:
+完整 OmniQuant vs 完整 GPTQ/Search
+
+Mechanism comparison:
+range/clipping optimization differences
+
+报告：
+
+calibration compute
+epochs/steps
+trainable parameters
+GPU memory
+wall time
+
+因为 OmniQuant 是 optimization-based，
+pure search 是 enumeration-based。
+
+不能只比较 PPL，
+不比较 calibration cost。
+
+==================================================
+十五、PrefixQuant 暂不执行
+==================================================
+
+老师要求 PrefixQuant baseline，
+但本轮先不要运行。
+
+只在 protocol 文档中说明：
+
+PrefixQuant 主要涉及
+activation/token-wise outlier handling，
+与当前 W4A16 weight-only
+不是完全同一主设置。
+
+后续单独设计扩展实验。
+
+不要拿：
+W4A16 pure search
+
+直接和：
+W4A4KV4 PrefixQuant
+
+做主排名。
+
+==================================================
+十六、先做 compatibility smoke plan
+==================================================
+
+设计最小 smoke：
+
+1.
+OmniQuant-Qwen2.5 forward succeeds
+
+2.
+one decoder block calibration succeeds
+
+3.
+W4A16 G128 LWC path succeeds
+
+4.
+reload quantized/fake-quant model succeeds
+
+5.
+tiny PPL batch succeeds
+
+6.
+no NaN/Inf
+
+7.
+module count correct
+
+8.
+Qwen GQA / RoPE forward unchanged
+
+但本轮不要跑正式完整模型表。
+
+==================================================
+十七、输出目录
+==================================================
+
+建立：
+
+experiments/range_search_w4/results/
+range_w4_fullmodel_baseline_v16/
+
+输出至少：
+
+PROTOCOL_DRAFT.md
+
+OMNIQUANT_AUDIT.md
+
+QWEN25_PORT_PLAN.md
+
+FULLMODEL_SEARCH_PLAN.md
+
+COMPUTE_BUDGET.md
+
+PPL_EVAL_PROTOCOL.md
+
+BASELINE_MATRIX.csv
+
+SMOKE_TEST_PLAN.md
+
+如执行极小 smoke：
+
+SMOKE_RESULTS.md
+
+不要修改：
+
+v8-v15
+raw data
+historical manifests
+
+==================================================
+十八、PROTOCOL_DRAFT 必须回答
+==================================================
+
+1.
+下一步主实验是不是：
+
+FP16
+vs
+Native GPTQ
+vs
+GPTQ+Pure Search
+vs
+OmniQuant
+
+2.
+OmniQuant 官方代码是否原生支持 Qwen2.5？
+
+3.
+如果不支持，
+最小 adapter 要改哪些文件/类？
+
+4.
+这些改动是否保持 OmniQuant
+算法语义不变？
+
+5.
+Pure Search full-model
+如何处理 sequential quantized prefix？
+
+6.
+full-model candidate 总数是多少？
+
+7.
+预计 calibration wall time？
+
+8.
+预计显存？
+
+9.
+是否需要单独环境？
+
+10.
+公平 calibration protocol 是什么？
+
+11.
+WikiText-2 PPL protocol 是什么？
+
+12.
+C4 independent evaluation protocol 是什么？
+
+13.
+OmniQuant 与 pure search
+哪些指标可公平比较？
+
+14.
+哪些比较只能作为 mechanism study？
+
+15.
+Luna Max 下一步具体应该执行什么？
+
+==================================================
+十九、模型级 GO / NO-GO
+==================================================
+
+最后只给一个：
+
+FULLMODEL_BASELINE_PROTOCOL_READY
+
+或
+
+FULLMODEL_BASELINE_PROTOCOL_NOT_READY
+
+READY 条件：
+
+- Qwen2.5 architecture mapping 明确
+- OmniQuant port 范围明确
+- Pure Search full-model semantics 明确
+- candidate compute 可预算
+- calibration protocol 冻结
+- PPL protocol 冻结
+- 无明显数据泄漏
+
+不要因为想推进项目
+强行判 READY。
+
+==================================================
+二十、本轮禁止
+==================================================
+
+禁止：
+
+正式 full-model PPL 大跑
+正式 OmniQuant 大跑
+PrefixQuant
+Gate v2
+coverage scaling
+robust objective
+新模型
+新 bitwidth
+改变 alpha grid
+
+本轮是：
+
+protocol + compatibility + compute audit
+
+完成后 STOP。

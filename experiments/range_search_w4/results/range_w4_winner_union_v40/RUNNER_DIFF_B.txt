@@ -1,0 +1,223 @@
+--- v18/run_formal.py
++++ v40/B/run_formal.py
+@@ -24,6 +24,11 @@
+ 
+ OUT = Path(__file__).resolve().parent
+-ROOT = OUT.parents[3]
++ROOT = OUT.parents[4]
+ RESULTS = ROOT / "experiments/range_search_w4/results"
++V40_ROOT = OUT.parent
++RUN_CONFIG_PATH = OUT / "V40_RUN_CONFIG.json"
++CANDIDATE_MANIFEST_PATH = V40_ROOT / "CANDIDATE_MANIFEST.json"
++RUN_CONFIG = json.loads(RUN_CONFIG_PATH.read_text(encoding="utf-8"))
++CANDIDATE_MANIFEST = json.loads(CANDIDATE_MANIFEST_PATH.read_text(encoding="utf-8"))
+ V171 = RESULTS / "range_w4_m2_parity_v17_1"
+ V173 = RESULTS / "range_w4_m2_runtime_v17_3"
+@@ -34,4 +39,19 @@
+ PROTOCOL = json.loads(PROTOCOL_PATH.read_text(encoding="utf-8"))
+ GRID = [float(x) for x in PROTOCOL["m2"]["alpha_grid"]]
++EXPECTED_CANDIDATE_EXECUTIONS = int(RUN_CONFIG["expected_candidate_executions"])
++EXPECTED_ROW_ALPHA_SCORE_SLOTS = int(RUN_CONFIG["expected_row_alpha_score_slots"])
++
++def candidate_grid(full_name: str) -> list[float]:
++    if RUN_CONFIG["candidate_mode"] == "full_grid":
++        return list(GRID)
++    item = CANDIDATE_MANIFEST["modules"].get(full_name)
++    if item is None:
++        raise RuntimeError(f"frozen candidate set missing {full_name}")
++    values = [float(x) for x in item["candidate_alphas"]]
++    if not values or values != [x for x in GRID if x in set(values)]:
++        raise RuntimeError(f"candidate order differs from original scalar10 grid: {full_name}")
++    if 1.0 not in values:
++        raise RuntimeError(f"frozen candidate set omits alpha=1: {full_name}")
++    return values
+ N_DOCS = int(PROTOCOL["calibration"]["documents"])
+ SEQ = int(PROTOCOL["calibration"]["tokens_per_document"])
+@@ -61,5 +81,6 @@
+ CHECKS_PATH = OUT / "correctness_checks.json"
+ MANIFEST_PATH = OUT / "FORMAL_RUN_MANIFEST.json"
+-CODE_BUNDLE = [Path(__file__), OUT / "run_precheck.py", V171 / "native_m2.py", V173 / "optimized_native_m2.py"]
++CODE_BUNDLE = [Path(__file__), OUT / "run_precheck.py", V171 / "native_m2.py",
++               V173 / "optimized_native_m2.py", RUN_CONFIG_PATH, CANDIDATE_MANIFEST_PATH]
+ 
+ 
+@@ -507,5 +528,6 @@
+     row_update_seconds = []
+ 
+-    for alpha in GRID:
++    module_grid = candidate_grid(name)
++    for alpha in module_grid:
+         peak_reset(); start = time.perf_counter()
+         result = optimized_dynamic_gptq(pristine, prepared, alpha=alpha, check_cholesky=(alpha == 1.0))
+@@ -587,5 +609,6 @@
+             })
+             print(f"[{method}] L{layer_index:02d} {name} alpha={alpha:.1f} "
+-                  f"candidates={formal_counts['full_linear_alpha_candidate_executions']}/1680", flush=True)
++                  f"candidates={formal_counts['full_linear_alpha_candidate_executions']}/"
++                  f"{EXPECTED_CANDIDATE_EXECUTIONS}", flush=True)
+ 
+     if alpha1_loss is None or alpha1_weight_mse is None:
+@@ -705,7 +728,8 @@
+             if alpha.shape != (rows,):
+                 raise RuntimeError(f"{method} L{layer_index} {name} selected alpha shape mismatch")
+-            if method == "M2" and not np.isin(alpha, np.asarray(GRID, dtype=np.float64)).all():
++            module_grid = candidate_grid(f"model.layers.{layer_index}.{name}") if method == "M2" else [1.0]
++            if method == "M2" and not np.isin(alpha, np.asarray(module_grid, dtype=np.float64)).all():
+                 raise RuntimeError(f"{method} L{layer_index} {name} selected alpha outside frozen grid")
+-            expected_candidates = len(GRID) if method == "M2" else 1
++            expected_candidates = len(module_grid)
+             if state["candidate_losses"].shape != (expected_candidates, rows):
+                 raise RuntimeError(f"{method} L{layer_index} {name} candidate loss shape mismatch")
+@@ -723,5 +747,7 @@
+     result = {"pass": True, "method": method, "layers": completed,
+               "linear_modules": module_count, "output_rows": total_rows,
+-              "selected_alpha_grid": GRID if method == "M2" else [1.0],
++              "selected_alpha_grid": (GRID if RUN_CONFIG["candidate_mode"] == "full_grid" else
++                  sorted({float(a) for item in CANDIDATE_MANIFEST["modules"].values()
++                          for a in item["candidate_alphas"]})) if method == "M2" else [1.0],
+               "finite_weights_scales_zeros_losses": True,
+               "scale_zero_shapes_correct": True, "g_idx_native": True,
+@@ -771,10 +797,16 @@
+         old_report_path = OUT / method / "RUN_REPORT.json"
+         old_report = json.loads(old_report_path.read_text(encoding="utf-8")) if old_report_path.exists() else {}
+-        formal_counts = old_report.get("formal_counts") or {
+-            "full_linear_alpha_candidate_executions": 1680 if method == "M2" else 0,
+-            "row_alpha_score_slots": 3041280 if method == "M2" else 0,
+-            "alpha1_native_parity_reference_executions": 35 if method == "M2" else 0,
+-            "layers_completed_before_this_process": LAYERS,
+-        }
++        formal_counts = old_report.get("formal_counts")
++        if not formal_counts:
++            formal_counts = {"full_linear_alpha_candidate_executions": 0, "row_alpha_score_slots": 0,
++                             "alpha1_native_parity_reference_executions": 0,
++                             "layers_completed_before_this_process": LAYERS}
++            for layer_i, payload in enumerate(payloads):
++                for submodule, saved in payload["modules"].items():
++                    n_candidates = len(saved["candidate_seconds"])
++                    formal_counts["full_linear_alpha_candidate_executions"] += n_candidates
++                    formal_counts["row_alpha_score_slots"] += int(saved["weight"].shape[0]) * n_candidates
++                    if layer_i in SPOT_LAYERS and 1.0 in candidate_grid(f"model.layers.{layer_i}.{submodule}"):
++                        formal_counts["alpha1_native_parity_reference_executions"] += 1
+         state = {
+             **old_report, "method": method, "status": "COMPLETE", "layers": LAYERS,
+@@ -811,5 +843,7 @@
+ 
+     modules_seen = 0
+-    for layer_index in range(completed, LAYERS):
++    max_layers = min(LAYERS, int(RUN_CONFIG.get("max_layers", LAYERS)))
++    last_completed_layer = completed - 1
++    for layer_index in range(completed, max_layers):
+         layer = model.model.layers[layer_index]
+         layer_started = time.perf_counter()
+@@ -923,4 +957,5 @@
+         }
+         checkpoint_path, checkpoint_seconds = save_layer_checkpoint(method, layer_index, layer_payload)
++        last_completed_layer = layer_index
+         recorder.record(method, "atomic_layer_checkpoint_io", layer_index, checkpoint_path.name,
+                         checkpoint_seconds, detail=json.dumps({"layer_state_sha256": current_layer_hash,
+@@ -951,6 +986,20 @@
+         close_mm(hidden)
+ 
+-    if modules_seen not in (0, 168):
+-        raise RuntimeError(f"unexpected modules processed during this process: {modules_seen}")
++    expected_new_modules = max(0, max_layers - completed) * sum(len(x) for x in MODULE_ORDERS.values())
++    if modules_seen != expected_new_modules:
++        raise RuntimeError(f"unexpected modules processed during this process: {modules_seen}/{expected_new_modules}")
++    if max_layers < LAYERS:
++        n_complete = last_completed_layer + 1
++        if n_complete != max_layers:
++            raise RuntimeError(f"pilot stopped before frozen layer boundary: {n_complete}/{max_layers}")
++        state = {"method": method, "status": "PILOT_COMPLETE", "layers_completed": n_complete,
++                 "formal_counts": formal_counts, "code_bundle_sha256": code_hash,
++                 "candidate_mode": RUN_CONFIG["candidate_mode"],
++                 "last_completed_layer": last_completed_layer,
++                 "completed_utc": datetime.now(timezone.utc).isoformat()}
++        write_json_atomic(OUT / method / "PILOT_RUN_REPORT.json", state)
++        del model
++        gc.collect(); torch.cuda.empty_cache()
++        return state
+     quant_check = validate_layer_checkpoints(method, code_hash, cal_hash, protocol_hash)
+     quant_meta = {
+@@ -958,4 +1007,7 @@
+         "model_revision": PROTOCOL["model"]["revision"],
+         "format": PROTOCOL["quantization"],
++        "v40_arm": RUN_CONFIG["arm"],
++        "candidate_mode": RUN_CONFIG["candidate_mode"],
++        "candidate_manifest_sha256": sha_file(CANDIDATE_MANIFEST_PATH),
+         "calibration_manifest_sha256": cal_hash,
+         "protocol_sha256": protocol_hash,
+@@ -987,5 +1039,5 @@
+ 
+ def finalize_row_artifacts():
+-    for method in ("M1", "M2"):
++    for method in ("M2",):
+         row_path = OUT / f"{method}_ROW_RESULTS.csv"
+         module_path = OUT / f"{method}_MODULE_SUMMARY.csv"
+@@ -1061,4 +1113,8 @@
+ 
+ def main():
++    if sha_file(CANDIDATE_MANIFEST_PATH) != RUN_CONFIG["candidate_manifest_sha256"]:
++        raise RuntimeError("frozen candidate manifest hash mismatch")
++    if sha_file(PROTOCOL_PATH) != RUN_CONFIG["protocol_sha256"]:
++        raise RuntimeError("frozen v18 protocol hash mismatch")
+     if not torch.cuda.is_available() or torch.cuda.get_device_name(0) != "NVIDIA GeForce RTX 4060 Laptop GPU":
+         raise RuntimeError("Frozen v18 CUDA device is unavailable")
+@@ -1090,9 +1146,16 @@
+                     formal_started_utc=datetime.now(timezone.utc).isoformat())
+     try:
+-        m1_state = run_method("M1", token_samples, rec, code_hash, cal_hash, protocol_hash)
+-        update_manifest(status="M1_COMPLETE_M2_RUNNING", results={
+-            "matched_shape_precheck": "PASS", "cost_gate": "M2_COST_GO", "m1": "COMPLETE",
+-            "m2": "RUNNING", "wikitext_evaluation": "NOT_STARTED", "c4_evaluation": "NOT_STARTED"})
+         m2_state = run_method("M2", token_samples, rec, code_hash, cal_hash, protocol_hash)
++        if RUN_CONFIG.get("pilot_only", False):
++            runtime = {"status": "PILOT_COMPLETE", "arm": RUN_CONFIG["arm"],
++                       "m2": m2_state, "gpu_peak_allocated_bytes": rec.peak_allocated,
++                       "gpu_peak_reserved_bytes": rec.peak_reserved,
++                       "timing_csv": "FORMAL_TIMING.csv",
++                       "completed_utc": datetime.now(timezone.utc).isoformat()}
++            write_json_atomic(FORMAL_RUNTIME, runtime)
++            update_manifest(status="PILOT_COMPLETE", results={"m2": "PILOT_COMPLETE",
++                "full_model": "NOT_RUN", "held_or_ppl": "NOT_RUN"})
++            print(json.dumps(runtime, indent=2))
++            return
+         artifacts = finalize_row_artifacts()
+         precheck = json.loads((OUT / "MATCHED_SHAPE_PRECHECK.json").read_text(encoding="utf-8"))
+@@ -1103,10 +1166,8 @@
+             "kv_full_shape_precheck": kv_precheck["status"] == "PASS",
+             "formal_runner_smoke": smoke["status"] == "PASS",
+-            "m1_168_linears_304128_rows": m1_state["quantization_correctness"]["linear_modules"] == 168 and m1_state["quantization_correctness"]["output_rows"] == 304128,
+             "m2_168_linears_304128_rows": m2_state["quantization_correctness"]["linear_modules"] == 168 and m2_state["quantization_correctness"]["output_rows"] == 304128,
+-            "m2_1680_full_linear_alpha_candidates": m2_state["formal_counts"]["full_linear_alpha_candidate_executions"] == 1680,
+-            "m2_3041280_row_alpha_score_slots": m2_state["formal_counts"]["row_alpha_score_slots"] == 3041280,
++            "m2_candidate_execution_count": m2_state["formal_counts"]["full_linear_alpha_candidate_executions"] == EXPECTED_CANDIDATE_EXECUTIONS,
++            "m2_row_alpha_score_slots": m2_state["formal_counts"]["row_alpha_score_slots"] == EXPECTED_ROW_ALPHA_SCORE_SLOTS,
+             "m2_35_alpha1_native_spot_references": m2_state["formal_counts"]["alpha1_native_parity_reference_executions"] == 35,
+-            "m1_reload_output_match": m1_state["reload_correctness"]["pass"],
+             "m2_reload_output_match": m2_state["reload_correctness"]["pass"],
+         }
+@@ -1120,9 +1181,8 @@
+             "status": "QUANTIZATION_COMPLETE",
+             "started_utc": overall_start_utc,
+-            "m1": m1_state, "m2": m2_state,
+-            "formal_work_units": {"m2_full_linear_alpha_candidate_executions": 1680,
+-                "m2_row_alpha_score_slots": 3041280,
++            "arm": RUN_CONFIG["arm"], "candidate_manifest_sha256": sha_file(CANDIDATE_MANIFEST_PATH),
++            "m2": m2_state, "formal_work_units": {"m2_full_linear_alpha_candidate_executions": EXPECTED_CANDIDATE_EXECUTIONS,
++                "m2_row_alpha_score_slots": EXPECTED_ROW_ALPHA_SCORE_SLOTS,
+                 "m2_auxiliary_alpha1_native_parity_references": 35,
+-                "m1_native_full_linear_gptq_executions": 168,
+                 "m2_output_rows": 304128},
+             "overall_quantization_wall_seconds": time.perf_counter() - overall_start,
+@@ -1142,8 +1202,9 @@
+             "matched_shape_precheck": "PASS", "cost_gate": "M2_COST_GO", "m1": "COMPLETE_RELOAD_PASS",
+             "m2": "COMPLETE_RELOAD_PASS", "wikitext_evaluation": "READY", "c4_evaluation": "READY"})
+-        print(json.dumps({"status": runtime["status"], "m1_seconds": m1_state["wall_seconds_including_load_replay_save"],
++        print(json.dumps({"status": runtime["status"], "arm": RUN_CONFIG["arm"],
+                           "m2_seconds": m2_state["wall_seconds_including_load_replay_save"],
+                           "total_seconds": runtime["overall_quantization_wall_seconds"],
+-                          "candidate_executions": 1680, "row_alpha_scores": 3041280,
++                          "candidate_executions": EXPECTED_CANDIDATE_EXECUTIONS,
++                          "row_alpha_scores": EXPECTED_ROW_ALPHA_SCORE_SLOTS,
+                           "peak_allocated_bytes": rec.peak_allocated,
+                           "peak_reserved_bytes": rec.peak_reserved}, indent=2))

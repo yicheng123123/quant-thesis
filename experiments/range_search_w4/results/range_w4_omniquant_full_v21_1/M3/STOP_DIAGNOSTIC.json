@@ -1,0 +1,72 @@
+{
+  "status": "STOP",
+  "protocol_id": "range_w4_omniquant_full_v21_1_M3",
+  "attempt_id": "20261001_183359_6c00bf87",
+  "stop_condition": "Non-finite LWC gradient detected by the frozen formal runner.",
+  "failed_sample": {
+    "decoder_layer_zero_based": 21,
+    "epoch_zero_based": 0,
+    "sample_zero_based": 0,
+    "loss": 0.15326565504074097,
+    "loss_finite": true,
+    "lwc_gradient_parameter_count": 14,
+    "lwc_gradients_finite": false,
+    "runner_lwc_nonzero_predicate": true,
+    "nonzero_predicate_note": "The runner computes torch.any(flat != 0); NaN and Inf compare unequal to zero, so this flag is not evidence of a valid finite update."
+  },
+  "last_valid_committed_state": {
+    "checkpoint": "checkpoints/block_20",
+    "completed_block_id": 20,
+    "completed_layer_count": 21,
+    "next_block_id": 21,
+    "effective_optimizer_updates": 53760,
+    "required_optimizer_updates": 61440,
+    "fraction_complete": 0.875,
+    "state_file_sha256": "62c98139583c389483cd5e124fa261544ed84b615ef323683d8ae57d2567fd16",
+    "rng_file_sha256": "996b6941bc86572042f55107a255991029c416c11fdc6144659b5328aaceb2a2"
+  },
+  "attempt_history": [
+    {
+      "attempt_id": "20261001_182852_6bbe770a",
+      "steps_logged": 2560,
+      "committed_updates": 0,
+      "failure": "Bad file descriptor during checkpoint fsync before first block commit.",
+      "disposition": "Preserved as failure evidence; training restarted from pristine frozen weights after the checkpoint I/O repair."
+    },
+    {
+      "attempt_id": "20261001_183359_6c00bf87",
+      "step_rows_including_failing_sample": 53761,
+      "committed_updates": 53760,
+      "failure": "Non-finite LWC gradient at layer 21, epoch 0, sample 0.",
+      "disposition": "Stopped; latest complete block checkpoint retained."
+    }
+  ],
+  "state_semantics": {
+    "failing_row_is_counted_as_committed_update": false,
+    "whether_grad_scaler_skipped_or_applied_the_failing_optimizer_update": "Not claimed; the frozen callback observed a non-finite gradient after the scaler call and the failed layer was not committed.",
+    "completed_block_20_checks": {
+      "all_float_tensors_finite": true,
+      "scales_and_zeros_finite": true,
+      "quantlinear_modules": 7
+    }
+  },
+  "runtime_observations": {
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "formal_log_max_memory_allocated_readout_mib": 2122.84130859375,
+    "formal_peak_reserved_gib": null,
+    "note": "The formal run stopped before producing the runner's final peak-memory summary. The logged allocated value is the upstream logger's MiB readout and is not a measured peak-reserved value. Representative preflight peak reserved memory was 1.5625 GiB."
+  },
+  "evaluation": {
+    "dense_export": "NOT_RUN",
+    "reload_check": "NOT_RUN",
+    "wikitext2": "NOT_RUN",
+    "c4_fixed_budget": "NOT_RUN"
+  },
+  "evidence": {
+    "step_log": "logs/training_steps.csv",
+    "block_log": "logs/block_health.csv",
+    "console_log": "logs/formal_attempt_02_console.log",
+    "run_status": "RUN_STATUS.json",
+    "checkpoint_manifest": "checkpoints/block_20/CHECKPOINT_MANIFEST.json"
+  }
+}

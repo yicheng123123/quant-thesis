@@ -1,0 +1,31 @@
+{
+ "name":"v25 Dense scalar benefit, cost and conditional migration audit",
+ "status":"FROZEN_BEFORE_DIRECT_REANALYSIS",
+ "evidence_status":"v24 held outcomes already exist; retrospective audit, not fresh confirmation",
+ "model_source":"../range_w4_fullmodel_v18/PROTOCOL.json",
+ "grid_source":"../range_w4_structured_group_e2_v24/PROTOCOL.json",
+ "dense_grid":"original10 union {.1+.9*j/37: j=1..36}; 46 sorted unique",
+ "selection":"raw search output MSE; exact ties prefer larger alpha",
+ "pooled_metric":"sum row held SSE; each v24 unit has32768 output elements",
+ "numeric_tie":"reuse v24 frozen per-unit epsilon, no threshold tuning",
+ "migration_gate":"dense46 must reduce pooled held SSE beyond summed frozen epsilon separately in BOTH S0 and S1; otherwise STOP new pilot/full-model recomputation",
+ "conditional_pilot":{
+  "targets":"complete block0 seven Linears; primary up [4864,896], down [896,4864]; dependencies q/o [896,896], k/v [128,896], gate [4864,896]",
+  "selection_calibration":"exact v18 128-document manifest, no resampling",
+  "prefix":"each grid own committed weights, shared qkv/up-gate X/H; pristine target candidates; dependency boundary refresh only",
+  "held":"v24 complete articles excluded from formal calibration; S0/S1 held positions only after selection lock",
+  "baseline_reuse":"v18 block0 scalar10 only after same pristine W, X/H and calibration proven; downstream dense46 cannot reuse scalar10 states after divergent upstream commits",
+  "candidate_executions":"322 dense46; zero scalar10 reruns if exact baseline verified, otherwise70 within budget",
+  "correctness":["native alpha1","candidate order","pristine W/H","all-row W/scale/zero stitch and shared g_idx","commit","downstream capture vs direct forward"],
+  "runtime_limit_seconds":1800,
+  "timing":"synchronized full-matrix GPTQ/all-row scoring, prep/commit/propagation/IO included, allocated/reserved peaks separately",
+  "resume":"hash-keyed candidate/whole-Linear selection/boundary checkpoints; never reuse mutable compensation state",
+  "captures":"initial qkv input, qkv->o, o->up-gate, up-gate->down, block0->next; zero row-batch refresh"
+ },
+ "full_model_quantization_limit_seconds":21600,
+ "full_model_gate":"cross-split consistency + fresh pilot correctness + conservative measured cost<=6h; only grid changes",
+ "cost_formula":"SUM actual Linear shapes: input/H prep + K fullshape GPTQ + K allrow scoring + select/stitch/commit + dependency refresh + IO",
+ "oracle":"diagnostic only; never used for selection-rule/grid/target design",
+ "new_outputs":"this directory only",
+ "prohibited":["E1/E2 extension","Gate","AWQ","gradients","rotation","mixed precision","eval-set tuning","history overwrite"]
+}

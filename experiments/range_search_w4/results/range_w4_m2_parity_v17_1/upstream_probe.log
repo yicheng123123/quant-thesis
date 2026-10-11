@@ -1,0 +1,271 @@
+
+[32mINFO[0m  ENV: Auto setting PYTORCH_CUDA_ALLOC_CONF='expandable_segments:True' for memory saving.
+[32mINFO[0m  ENV: Auto setting CUDA_DEVICE_ORDER=PCI_BUS_ID for correctness.          
+{
+  "W": {
+    "dtype": "torch.float16",
+    "device": "cuda:0",
+    "shape": [
+      128,
+      896
+    ],
+    "stride": [
+      896,
+      1
+    ],
+    "contiguous": true,
+    "hash": "a960832a9e0e83e4d95402e5d1a01cc74300fcca0c381237162126330e1a7af8"
+  },
+  "H": {
+    "dtype": "torch.float32",
+    "device": "cuda:0",
+    "shape": [
+      896,
+      896
+    ],
+    "stride": [
+      896,
+      1
+    ],
+    "contiguous": true,
+    "hash": "da0b2311d8b6829e851c05a40c1ca00e07b19031f9fd4c5b4360ac97350c14d7"
+  },
+  "input_docs": [
+    {
+      "dtype": "torch.float16",
+      "device": "cuda:0",
+      "shape": [
+        1,
+        64,
+        896
+      ],
+      "stride": [
+        57344,
+        896,
+        1
+      ],
+      "contiguous": true,
+      "hash": "37164638eeb364e6b37d0ba15b7f865195bb0102d2f36a488f2cd8b679074d01"
+    },
+    {
+      "dtype": "torch.float16",
+      "device": "cuda:0",
+      "shape": [
+        1,
+        64,
+        896
+      ],
+      "stride": [
+        57344,
+        896,
+        1
+      ],
+      "contiguous": true,
+      "hash": "044d57d1114dc837f75dabbb1e609d9d499b20931d08bfe509a64bb65273409d"
+    }
+  ],
+  "mean_diag_contiguous": 0.028906324878335,
+  "mean_diagonal_view": 0.02890632301568985,
+  "means": {
+    "exact": false,
+    "max_abs_diff": 1.862645149230957e-09,
+    "mean_abs_diff": 1.862645149230957e-09,
+    "num_diff": 1,
+    "first_index": [],
+    "native": {
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "shape": [],
+      "stride": [],
+      "contiguous": true,
+      "hash": "1013264200dc2585bd9d9bce7d62659889843801ba69ceaa09043b38e2be4baa"
+    },
+    "custom": {
+      "dtype": "torch.float32",
+      "device": "cpu",
+      "shape": [],
+      "stride": [],
+      "contiguous": true,
+      "hash": "f872b99cf2b51fe0c6fddfbfa2fcd79cdecdd19b9bc3c93e32e4427ec1ffa8a9"
+    }
+  },
+  "stages": {
+    "damp": {
+      "exact": false,
+      "max_abs_diff": 2.3283064365386963e-10,
+      "mean_abs_diff": 2.3283064365386963e-10,
+      "num_diff": 1,
+      "first_index": [],
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cpu",
+        "shape": [],
+        "stride": [],
+        "contiguous": true,
+        "hash": "fc8cd130377361cff3982e8a78d0ffccc619fd217b18e84bb531506bef233d54"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cpu",
+        "shape": [],
+        "stride": [],
+        "contiguous": true,
+        "hash": "4433d96f5583e77bd40f480c8a80077079524ca911831c7f6b38bb7c63af47cd"
+      }
+    },
+    "damped_H": {
+      "exact": false,
+      "max_abs_diff": 1.862645149230957e-09,
+      "mean_abs_diff": 3.1553897816611796e-13,
+      "num_diff": 136,
+      "first_index": [
+        1,
+        1
+      ],
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cpu",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          896,
+          1
+        ],
+        "contiguous": true,
+        "hash": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cpu",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          896,
+          1
+        ],
+        "contiguous": true,
+        "hash": "99104de7588a6d0eab88d386c4d3edee374f2d0e202cce969b04e6651691ab4f"
+      }
+    },
+    "chol": {
+      "exact": false,
+      "max_abs_diff": 1.3052776921540499e-06,
+      "mean_abs_diff": 1.5778542765727957e-08,
+      "num_diff": 392648,
+      "first_index": [
+        1,
+        1
+      ],
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cpu",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "hash": "47f008fff51a301a0ab54df142b1f68cffabdace13b586a728461080b0d76920"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cpu",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "hash": "2b8ae8bca4c57d02ad8b1d20d32a09636588dd9b66c206989d17e674ddb787a5"
+      }
+    },
+    "inverse": {
+      "exact": false,
+      "max_abs_diff": 0.008392333984375,
+      "mean_abs_diff": 0.00019366622371228955,
+      "num_diff": 802320,
+      "first_index": [
+        0,
+        1
+      ],
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cpu",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "hash": "bbfac81632c92295b27bce40504dde1efcc4b778b52fce8b1f909f26696f9545"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cpu",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "hash": "6eef3cad9ff8c4a0a2c7bdc0a3c564890d2c73607bf4c5a1e5d9b1ec289c1fa8"
+      }
+    },
+    "Hinv": {
+      "exact": false,
+      "max_abs_diff": 0.00044183433055877686,
+      "mean_abs_diff": 5.5159537241491825e-06,
+      "num_diff": 401548,
+      "first_index": [
+        0,
+        1
+      ],
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cpu",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "hash": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cpu",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "hash": "26171c3a97741883b151b69cfd4563197e8047900f3b7dd37ef4248fdca682fe"
+      }
+    }
+  },
+  "v17_manual_hinv_hash_expected": "26171c3a97741883b151b69cfd4563197e8047900f3b7dd37ef4248fdca682fe",
+  "v17_input_reproduced": true
+}

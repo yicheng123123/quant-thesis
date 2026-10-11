@@ -1,0 +1,80 @@
+{
+  "protocol_id": "range_w4_gate_v12_independent_validation",
+  "status": "FROZEN_BEFORE_PREFLIGHT_AND_CANDIDATE_RUNS",
+  "created_at_utc": "2026-09-29T17:17:57Z",
+  "gate_v1_sha256": "7943b8f26e5f94456b7b00144f6d47fc775d0224ccca4a6a1eff38e5740999c9",
+  "tau_gain": 0.1,
+  "tau_margin": 0.06,
+  "gate_decision": "row ACCEPT iff search_gain_median >= 0.10 AND search_margin_median >= 0.06; otherwise FALLBACK alpha=1.0",
+  "search_gain_per_split": "1 - min candidate search_SSE / alpha1 search_SSE",
+  "search_margin_per_split": "(second-smallest search_SSE - smallest search_SSE) / second-smallest search_SSE; rank candidate entries by search_SSE then alpha ascending",
+  "gate_aggregation": "median across all ten validation search splits per row; accepted row uses each split's own search-best alpha; fallback row uses alpha=1 for every split",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "checkpoint_sha256": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+  "model_dtype": "float16",
+  "math_dtype": "float32",
+  "quantization": "symmetric uniform W4A16",
+  "integer_range": [
+    0,
+    15
+  ],
+  "zero_point": 8,
+  "rounding": "round to nearest, ties to even",
+  "group_size": 128,
+  "block_size": 128,
+  "damp_percent": 0.1,
+  "desc_act": false,
+  "static_groups": false,
+  "true_sequential": true,
+  "alpha_grid": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "input_semantics": "FP model projection inputs; no quantized prefix",
+  "candidate_evaluation": "every candidate starts from pristine W and fresh GPTQ compensation state; native dynamic MinMax is estimated at each group boundary from currently compensated W, then shared alpha scales the range",
+  "layers": [
+    4,
+    8,
+    20
+  ],
+  "projections": [
+    "q_proj",
+    "o_proj",
+    "up_proj",
+    "down_proj"
+  ],
+  "rows": 48,
+  "splits": 10,
+  "nominal_candidate_slots": 4800,
+  "reusable_candidate_slots": 0,
+  "row_manifest_sha256": "0e26c120f805772ea7619a4891979272afa0db43e619e46a35acfb133efcd91d",
+  "split_manifest_sha256": "8aa736fc321667f086f20c05f998f70d246bbee52fda96fe96e6a58265eb4274",
+  "pass_criteria": {
+    "A": "2 * count(G held_gain < -0.10) <= count(C held_gain < -0.10)",
+    "B": "Gate pooled SSE gain versus D > 0",
+    "C": "when C pooled gain > 0, Gate pooled gain / C pooled gain >= 0.50",
+    "final": "GATE_V1_VALIDATION_PASS iff all applicable A/B/C pass, else GATE_V1_VALIDATION_FAIL"
+  },
+  "article_protocol": {
+    "dataset": "Salesforce/wikitext:wikitext-2-raw-v1:train",
+    "manifest_sha256": "8aa736fc321667f086f20c05f998f70d246bbee52fda96fe96e6a58265eb4274",
+    "independent_documents": 80,
+    "tokens_per_article": 128,
+    "test_split_used": false
+  },
+  "source_manifest_sha256s": {
+    "v8_manifest": "b6bf38e299dc3828d0d9bc8a1349c19af4a25c9b65b1b78bc2684b35be481bfc",
+    "v9_split_manifest": "34a24ef8602b8ce1e38e7a284f112acf7f766962d87d737f69148b78bcfaba78",
+    "v10_manifest_reference": "26b16f7996bf1db7a49a85e5417249e483cefa7ae09341cb8503840aef00c463",
+    "v11_manifest_reference": "e59f5ecd0b84ef507807507d9d8102dfe20a766c9129c0ff1b8b08f8b3ba56df"
+  }
+}

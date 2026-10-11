@@ -1,0 +1,28 @@
+{
+  "official_commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+  "checkpoint_unique_elements": 494032768,
+  "checkpoint_fp16_mib": 942.292724609375,
+  "shape_count_verified_from_safetensors": 168,
+  "module_count": 168,
+  "output_rows": 304128,
+  "row_alpha_candidates": 3041280,
+  "b32_batches_per_layer_small_width": 368,
+  "b32_batches_per_layer_large_width": 28,
+  "b32_scalar_alpha_calls": 95040,
+  "b32_core_projection_seconds": 29114.249184555374,
+  "b32_core_projection_hours": 8.08729144015427,
+  "v15_b3_projection_hours": 74.09913458404365,
+  "historical_mean_full10_3row_seconds": {
+    "down_proj": 10.614516537494637,
+    "o_proj": 1.999198349989456,
+    "q_proj": 2.102402462509417,
+    "up_proj": 2.0141629125100735
+  },
+  "important": "B32 is single alpha cold micro timing with historical H, excludes full calibration search loss, capture/H/load/save; projection not measured runtime",
+  "packed_layout_payload_estimate_mib": 438.020263671875,
+  "lwc_total_parameters": 5591040,
+  "lwc_parameters_active_per_block": 232960,
+  "omni_steps_per_block": 2560,
+  "omni_total_optimizer_steps": 61440,
+  "native_prefix_peak_from_v15_invalid_for_quantization": true
+}

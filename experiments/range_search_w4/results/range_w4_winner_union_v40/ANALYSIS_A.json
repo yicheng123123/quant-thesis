@@ -1,0 +1,220 @@
+{
+  "status": "PASS",
+  "run_result": {
+    "status": "PASS",
+    "arm": "A",
+    "reference": "v18 M2 full-grid direct scorer",
+    "pilot_only": false,
+    "modules_compared": 168,
+    "layers_compared": 24,
+    "boundary_hashes_compared": 119,
+    "layer_state_hashes_compared": 24,
+    "counts": {
+      "full_linear_alpha_candidate_executions": 1680,
+      "row_alpha_score_slots": 3041280,
+      "alpha1_native_parity_reference_executions": 35,
+      "layers_completed_before_this_process": 0
+    },
+    "expected_counts": {
+      "candidate_gptq_executions": 1680,
+      "row_alpha_score_slots": 3041280,
+      "alpha1_native_parity_gptq_executions": 35
+    },
+    "candidate_count_pass": true,
+    "score_slot_count_pass": true,
+    "native_parity_call_count_pass": true,
+    "selected_alpha_scores_W_scale_zero_g_idx_input_H_and_boundary_hashes_exact": true,
+    "p3_read": false,
+    "held_run": false,
+    "ppl_run": false,
+    "full_run_status": "COMPLETE",
+    "final_reload_correctness": {
+      "pass": true,
+      "input_tokens": 64,
+      "rtol": 1e-05,
+      "atol": 1e-06,
+      "max_abs_logit_difference": 0.0,
+      "mean_abs_logit_difference": 0.0
+    }
+  },
+  "final_tensor_hashes": {
+    "status": "PASS",
+    "model_inference_quality_reusable_from_v18": true,
+    "tensor_hash_method": "v28 named_tensor_hashes: name, dtype, JSON shape and contiguous tensor bytes; sorted-name aggregate",
+    "runs": {
+      "v18_M2": {
+        "status": "COMPLETE",
+        "model_file_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+        "named_tensor_count": 290,
+        "normalized_named_tensor_sha256": "dd4803a72696d25593547d4d34429ccc24d37dd28bcd1420863609126611340d",
+        "quantization_metadata_sha256": "0b6d4333a61810937b1a0be4c9c73141d64ec0d5cec06ae17172da87698dc3da"
+      },
+      "A": {
+        "status": "COMPLETE",
+        "model_file_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+        "named_tensor_count": 290,
+        "normalized_named_tensor_sha256": "dd4803a72696d25593547d4d34429ccc24d37dd28bcd1420863609126611340d",
+        "quantization_metadata_sha256": "299030e41b3b72b080c3e4327f07796f354b17e90d8a131b9403abf1be6c58a9",
+        "inference_configuration_equal_to_v18": true,
+        "named_tensors_equal_to_v18": true
+      },
+      "B": {
+        "status": "COMPLETE",
+        "model_file_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+        "named_tensor_count": 290,
+        "normalized_named_tensor_sha256": "dd4803a72696d25593547d4d34429ccc24d37dd28bcd1420863609126611340d",
+        "quantization_metadata_sha256": "0fad7da0afb9bc898f66d9463e9f826c5e37d3e1ca1e5951d73ff74f0ad430cb",
+        "inference_configuration_equal_to_v18": true,
+        "named_tensors_equal_to_v18": true
+      }
+    },
+    "configuration_comparisons": {
+      "A": {
+        "config_files": {
+          "config.json": {
+            "equal": true,
+            "base_sha256": "dd9cec52d3cdb33e45dd91c2cc06722cd31ada297a44febda75c1deb9fd80a10",
+            "target_sha256": "dd9cec52d3cdb33e45dd91c2cc06722cd31ada297a44febda75c1deb9fd80a10"
+          },
+          "generation_config.json": {
+            "equal": true,
+            "base_sha256": "da551a385d575c1fc05c4a19fc3dc779ba5b5550faaac95265aecd8d9bf95a32",
+            "target_sha256": "da551a385d575c1fc05c4a19fc3dc779ba5b5550faaac95265aecd8d9bf95a32"
+          }
+        },
+        "quantization_metadata_semantics": {
+          "representation": {
+            "equal": true,
+            "base": "dense-dequant FP16",
+            "target": "dense-dequant FP16"
+          },
+          "model_revision": {
+            "equal": true,
+            "base": "7ae557604adf67be50417f59c2c2f167def9a775",
+            "target": "7ae557604adf67be50417f59c2c2f167def9a775"
+          },
+          "format": {
+            "equal": true,
+            "base": {
+              "scope": "all 168 decoder Linear modules; embeddings, tied lm_head, norms, and biases remain FP16",
+              "weight_bits": 4,
+              "activation_bits": 16,
+              "group_size": 128,
+              "block_size": 128,
+              "symmetric": true,
+              "desc_act": false,
+              "static_groups": false,
+              "true_sequential": true,
+              "damp_percent": 0.1,
+              "damp_auto_increment": 0,
+              "mse": 0.0,
+              "math": "FP32 GPTQ statistics and compensation; dense quantized weights stored FP16"
+            },
+            "target": {
+              "scope": "all 168 decoder Linear modules; embeddings, tied lm_head, norms, and biases remain FP16",
+              "weight_bits": 4,
+              "activation_bits": 16,
+              "group_size": 128,
+              "block_size": 128,
+              "symmetric": true,
+              "desc_act": false,
+              "static_groups": false,
+              "true_sequential": true,
+              "damp_percent": 0.1,
+              "damp_auto_increment": 0,
+              "mse": 0.0,
+              "math": "FP32 GPTQ statistics and compensation; dense quantized weights stored FP16"
+            }
+          },
+          "calibration_manifest_sha256": {
+            "equal": true,
+            "base": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+            "target": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3"
+          },
+          "protocol_sha256": {
+            "equal": true,
+            "base": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+            "target": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2"
+          }
+        },
+        "equal": true
+      },
+      "B": {
+        "config_files": {
+          "config.json": {
+            "equal": true,
+            "base_sha256": "dd9cec52d3cdb33e45dd91c2cc06722cd31ada297a44febda75c1deb9fd80a10",
+            "target_sha256": "dd9cec52d3cdb33e45dd91c2cc06722cd31ada297a44febda75c1deb9fd80a10"
+          },
+          "generation_config.json": {
+            "equal": true,
+            "base_sha256": "da551a385d575c1fc05c4a19fc3dc779ba5b5550faaac95265aecd8d9bf95a32",
+            "target_sha256": "da551a385d575c1fc05c4a19fc3dc779ba5b5550faaac95265aecd8d9bf95a32"
+          }
+        },
+        "quantization_metadata_semantics": {
+          "representation": {
+            "equal": true,
+            "base": "dense-dequant FP16",
+            "target": "dense-dequant FP16"
+          },
+          "model_revision": {
+            "equal": true,
+            "base": "7ae557604adf67be50417f59c2c2f167def9a775",
+            "target": "7ae557604adf67be50417f59c2c2f167def9a775"
+          },
+          "format": {
+            "equal": true,
+            "base": {
+              "scope": "all 168 decoder Linear modules; embeddings, tied lm_head, norms, and biases remain FP16",
+              "weight_bits": 4,
+              "activation_bits": 16,
+              "group_size": 128,
+              "block_size": 128,
+              "symmetric": true,
+              "desc_act": false,
+              "static_groups": false,
+              "true_sequential": true,
+              "damp_percent": 0.1,
+              "damp_auto_increment": 0,
+              "mse": 0.0,
+              "math": "FP32 GPTQ statistics and compensation; dense quantized weights stored FP16"
+            },
+            "target": {
+              "scope": "all 168 decoder Linear modules; embeddings, tied lm_head, norms, and biases remain FP16",
+              "weight_bits": 4,
+              "activation_bits": 16,
+              "group_size": 128,
+              "block_size": 128,
+              "symmetric": true,
+              "desc_act": false,
+              "static_groups": false,
+              "true_sequential": true,
+              "damp_percent": 0.1,
+              "damp_auto_increment": 0,
+              "mse": 0.0,
+              "math": "FP32 GPTQ statistics and compensation; dense quantized weights stored FP16"
+            }
+          },
+          "calibration_manifest_sha256": {
+            "equal": true,
+            "base": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+            "target": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3"
+          },
+          "protocol_sha256": {
+            "equal": true,
+            "base": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+            "target": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2"
+          }
+        },
+        "equal": true
+      }
+    },
+    "ppl_run": false,
+    "p3_read": false,
+    "held_run": false
+  },
+  "budget_elapsed_seconds": 3513.455438999999,
+  "budget_status": "ALL_RUNS_AND_AUDITS_COMPLETE",
+  "stages": "STAGE_TIMING.csv"
+}

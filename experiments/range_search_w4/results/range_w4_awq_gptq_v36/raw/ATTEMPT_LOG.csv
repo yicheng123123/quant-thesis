@@ -1,0 +1,9 @@
+launch,failure_or_stop_point,outcome,new_main_GPTQ_calls,native_parity_GPTQ_calls,down_replay_GPTQ_calls,detail
+1,protocol_id guard,FAIL before model/GPTQ,0,0,0,preflight launch; conservative 14s charged
+2,down coordinate spot input shape,FAIL after S0 D selector,0,0,0,shape bug; no GPTQ candidate started
+3,temporary arm construction,FAIL after S0 gate/up banks,40,4,0,KeyError G00; banks persisted
+4,norm set_weight call,FAIL before down G00,0,0,0,Parameter passed where module was expected
+5,down G00 alpha1 parity comparison,FAIL after GPTQ call,1,1,0,native GPTQ ran; CPU/CUDA compare raised before parity score; extra call
+6,down parity return,FAIL after G00 parity and bank persisted,0,0,0,NameError cmp; no repeated GPTQ on recovery
+7,row-stitch g_idx device comparison,FAIL after all S0 candidate banks/replays,0,0,2,CPU g_idx compared with CUDA expected; no held opened
+8,S1 D=I norm-output regression,CORRECTNESS_FAIL; STOP,0,0,2,S0 replays repeated on recovery; S0 held evaluated; S1 stopped before selector/held

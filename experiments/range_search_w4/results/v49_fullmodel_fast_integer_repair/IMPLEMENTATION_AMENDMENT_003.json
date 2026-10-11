@@ -1,0 +1,17 @@
+{
+  "amendment_id": "003",
+  "scope": "block0 audit arithmetic only",
+  "reason": "The initial block0 guard expected 14,720 output rows, but the seven trusted M1 Linear shapes and committed module records sum to 12,672 rows per block; 304,128 total / 24 blocks also confirms 12,672.",
+  "change": "Correct block0 audit expected row count to 12,672; derive gate cost from measured block0 repair rows with new groups; count unique blocks with new groups in final status.",
+  "algorithm_changed": false,
+  "candidate_selection_changed": false,
+  "accepted_updates_or_budget_changed": false,
+  "group_checkpoints_repaired_again": false,
+  "evidence_module_rows_sum": 12672,
+  "total_source_rows": 304128,
+  "block0_group_commit_count": 4,
+  "previous_runner_sha256": "42a34f2dc07ff0625711189c36d600863cfc07945ffb870cefe7f6ab0f0e8697",
+  "current_runner_sha256": "3dccc6306c3e35f1a4babed4266d8fa2af0261e7a345a5596daf4709dc560979",
+  "GPU_START_runner_sha256": "2d6c6114c6fd7533a4c35bf06f978a8b5c1eee639f74d241e29b913969317db8",
+  "protocol_sha256": "6c44516cb14921873903c3c3185442460bdef423c0ee272479bc44a5192b3512"
+}

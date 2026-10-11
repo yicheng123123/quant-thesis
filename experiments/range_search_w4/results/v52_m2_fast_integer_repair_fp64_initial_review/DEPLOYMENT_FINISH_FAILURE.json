@@ -1,0 +1,6 @@
+{
+  "error": "StopIteration()",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v52_m2_fast_integer_repair_fp64_initial_review\\finish_v52.py\", line 70, in main\n    rt.evaluate(model)\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v46_m1_single_integer_repair_fullmodel\\runtime_v46.py\", line 271, in evaluate\n    with timer('PPL_evaluation'):ppl,nll,n=evaluate_ppl(wrapped,ids,max_length=2048,stride=512,progress_every=25)\n                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\.venv\\Lib\\site-packages\\torch\\utils\\_contextlib.py\", line 116, in decorate_context\n    return func(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\benchmark\\eval\\ppl.py\", line 61, in evaluate_ppl\n    device = next(model.parameters()).device\n             ^^^^^^^^^^^^^^^^^^^^^^^^\nStopIteration\n",
+  "cumulative_seconds": 5123.44256108284,
+  "no_repair_rerun": true
+}

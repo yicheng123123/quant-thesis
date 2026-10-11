@@ -1,0 +1,27 @@
+{
+  "historical_candidates": 13,
+  "shadow_steps": 512,
+  "shadow_max_absolute_increment_error": 8.724439356719293e-20,
+  "shadow_max_error_over_allowed": 2.8106971309699104e-08,
+  "shadow_largest_increment": -8.379628405382151e-08,
+  "full_terminal_rows_per_path": 5760,
+  "terminal_max_absolute_loss_error": 6.071532165918825e-18,
+  "confirmed_math_ascent": 0,
+  "true_correctness_failures": 0,
+  "complete_matrix_fast_rechecks": 0,
+  "additional_CPU_branch_validation": {
+    "pass_all": true,
+    "checks": [
+      "uncertain negative independent raw-X acceptance",
+      "uncertain negative within reference uncertainty rejects with exact state restore",
+      "rejected coordinate blacklist cleared only after accepted state change; budget unchanged"
+    ],
+    "seconds": 0.013405300007434562,
+    "device": "CPU only",
+    "scope": "deterministic settlement tests, not candidate-search acceptance or model quality; thresholds/rules unchanged",
+    "fixed_X_cross_terms": [
+      -1e-13,
+      -1e-16
+    ]
+  }
+}

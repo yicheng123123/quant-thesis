@@ -1,0 +1,25 @@
+--- read-only v48/fast_accept.py
++++ v52/fast_accept_v52.py
+@@ -4,6 +4,7 @@
+ import run_v42 as rt
+ import repair_control as old
+ from precision_check import gamma, cache_check, verify
++import initialization_review
+ 
+ def envelope(st,C,rr,col,dv,N):
+     T=2*dv.abs()*st['B'][rr,col]+dv.square()*C.diag()[col].abs()
+@@ -51,7 +52,7 @@
+         z=torch.zeros(rows,device=device,dtype=torch.long)
+         st=dict(code=code,Q=Q,E=E,p=p,B=E.abs()@C.abs(),updates=z.clone(),evaluations=z.clone(),status=z.clone(),rejections=z.clone(),blocked=torch.zeros((rows,d,2),device=device,dtype=torch.bool))
+         initial_quad=(E*p).sum(1);st['loss']=initial_quad.clone()
+-    initial=rt.direct(X,E);assert bool(torch.isclose(initial,initial_quad,rtol=2e-5,atol=1e-12).all())
++    initial=rt.direct(X,E);initialization_check=initialization_review.review(st,SC,W,X,C,initial,initial_quad,target)
+     threshold=torch.maximum(initial*1e-8,torch.full_like(initial,1e-14));moves=[];rechecks=[];attempt=0;max_drift=0
+     while bool((st['status']==0).any()):
+         rt.deadline();attempt+=1;assert attempt<=cap+1
+@@ -75,4 +76,4 @@
+         c=st['code'].byte().cpu();q=st['Q'].half().cpu();packed=rt.pack(c)
+         assert bool(((st['code']>=0)&(st['code']<=15)).all()) and torch.equal(rt.unpack(packed),c)
+         assert torch.equal((scales[:,gidx.long()]*(rt.unpack(packed).float()-8)).half().view(torch.int16),q.view(torch.int16))
+-    return dict(codes=c,weight=q,scales=scales.clone(),g_idx=gidx.clone(),zeros=torch.full_like(scales,8),updates=st['updates'].cpu(),evaluations=st['evaluations'].cpu(),status=st['status'].cpu(),rejections=st['rejections'].cpu(),initial_mse=initial.cpu(),final_mse=st['loss'].cpu(),moves=moves,recheck_events=rechecks,max_p_drift=max_drift,acceptance_revision='v48 empirical FP64 envelope and independent raw-X recheck')
++    return dict(codes=c,weight=q,scales=scales.clone(),g_idx=gidx.clone(),zeros=torch.full_like(scales,8),updates=st['updates'].cpu(),evaluations=st['evaluations'].cpu(),status=st['status'].cpu(),rejections=st['rejections'].cpu(),initial_mse=initial.cpu(),final_mse=st['loss'].cpu(),moves=moves,recheck_events=rechecks,max_p_drift=max_drift,acceptance_revision='v48 empirical FP64 envelope and independent raw-X recheck',initialization_check=initialization_check)

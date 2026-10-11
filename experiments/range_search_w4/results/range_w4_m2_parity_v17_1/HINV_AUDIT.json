@@ -1,0 +1,731 @@
+{
+  "raw_H_rebuilt": {
+    "exact": true,
+    "max_abs_diff": 0.0,
+    "mean_abs_diff": 0.0,
+    "num_diff": 0,
+    "first_differing_index": null,
+    "native": {
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "shape": [
+        896,
+        896
+      ],
+      "stride": [
+        896,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "da0b2311d8b6829e851c05a40c1ca00e07b19031f9fd4c5b4360ac97350c14d7"
+    },
+    "custom": {
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "shape": [
+        896,
+        896
+      ],
+      "stride": [
+        896,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "da0b2311d8b6829e851c05a40c1ca00e07b19031f9fd4c5b4360ac97350c14d7"
+    }
+  },
+  "old_stages": {
+    "damp": {
+      "exact": false,
+      "max_abs_diff": 2.3283064365386963e-10,
+      "mean_abs_diff": 2.3283064365386963e-10,
+      "num_diff": 1,
+      "first_differing_index": [],
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [],
+        "stride": [],
+        "contiguous": true,
+        "sha256": "fc8cd130377361cff3982e8a78d0ffccc619fd217b18e84bb531506bef233d54"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [],
+        "stride": [],
+        "contiguous": true,
+        "sha256": "4433d96f5583e77bd40f480c8a80077079524ca911831c7f6b38bb7c63af47cd"
+      },
+      "native_value": 0.0028906324878335,
+      "custom_value": 0.0028906322550028563,
+      "native_bits_hex": "0x3b3d70c4",
+      "custom_bits_hex": "0x3b3d70c3"
+    },
+    "damped_H": {
+      "exact": false,
+      "max_abs_diff": 1.862645149230957e-09,
+      "mean_abs_diff": 3.1553897816611796e-13,
+      "num_diff": 136,
+      "first_differing_index": [
+        1,
+        1
+      ],
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          896,
+          1
+        ],
+        "contiguous": true,
+        "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          896,
+          1
+        ],
+        "contiguous": true,
+        "sha256": "99104de7588a6d0eab88d386c4d3edee374f2d0e202cce969b04e6651691ab4f"
+      },
+      "native_value": 0.02990250289440155,
+      "custom_value": 0.0299025010317564,
+      "native_bits_hex": "0x3cf4f618",
+      "custom_bits_hex": "0x3cf4f617"
+    },
+    "chol": {
+      "exact": false,
+      "max_abs_diff": 1.3052776921540499e-06,
+      "mean_abs_diff": 1.5778542765727957e-08,
+      "num_diff": 392648,
+      "first_differing_index": [
+        1,
+        1
+      ],
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "sha256": "47f008fff51a301a0ab54df142b1f68cffabdace13b586a728461080b0d76920"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "sha256": "2b8ae8bca4c57d02ad8b1d20d32a09636588dd9b66c206989d17e674ddb787a5"
+      },
+      "native_value": 0.1725565791130066,
+      "custom_value": 0.1725565642118454,
+      "native_bits_hex": "0x3e30b2ac",
+      "custom_bits_hex": "0x3e30b2ab"
+    },
+    "inverse": {
+      "exact": false,
+      "max_abs_diff": 0.008392333984375,
+      "mean_abs_diff": 0.00019366622371228955,
+      "num_diff": 802320,
+      "first_differing_index": [
+        0,
+        1
+      ],
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "sha256": "bbfac81632c92295b27bce40504dde1efcc4b778b52fce8b1f909f26696f9545"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "sha256": "6eef3cad9ff8c4a0a2c7bdc0a3c564890d2c73607bf4c5a1e5d9b1ec289c1fa8"
+      },
+      "native_value": 3.179694414138794,
+      "custom_value": 3.179692506790161,
+      "native_bits_hex": "0x404b801d",
+      "custom_bits_hex": "0x404b8015"
+    },
+    "Hinv": {
+      "exact": false,
+      "max_abs_diff": 0.00044183433055877686,
+      "mean_abs_diff": 5.5159537241491825e-06,
+      "num_diff": 401548,
+      "first_differing_index": [
+        0,
+        1
+      ],
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "sha256": "26171c3a97741883b151b69cfd4563197e8047900f3b7dd37ef4248fdca682fe"
+      },
+      "native_value": 0.1774436980485916,
+      "custom_value": 0.17744359374046326,
+      "native_bits_hex": "0x3e35b3cd",
+      "custom_bits_hex": "0x3e35b3c6"
+    }
+  },
+  "corrected_stages": {
+    "damp": {
+      "exact": true,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "num_diff": 0,
+      "first_differing_index": null,
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [],
+        "stride": [],
+        "contiguous": true,
+        "sha256": "fc8cd130377361cff3982e8a78d0ffccc619fd217b18e84bb531506bef233d54"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [],
+        "stride": [],
+        "contiguous": true,
+        "sha256": "fc8cd130377361cff3982e8a78d0ffccc619fd217b18e84bb531506bef233d54"
+      }
+    },
+    "damped_H": {
+      "exact": true,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "num_diff": 0,
+      "first_differing_index": null,
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          896,
+          1
+        ],
+        "contiguous": true,
+        "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          896,
+          1
+        ],
+        "contiguous": true,
+        "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+      }
+    },
+    "chol": {
+      "exact": true,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "num_diff": 0,
+      "first_differing_index": null,
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "sha256": "47f008fff51a301a0ab54df142b1f68cffabdace13b586a728461080b0d76920"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "sha256": "47f008fff51a301a0ab54df142b1f68cffabdace13b586a728461080b0d76920"
+      }
+    },
+    "inverse": {
+      "exact": true,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "num_diff": 0,
+      "first_differing_index": null,
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "sha256": "bbfac81632c92295b27bce40504dde1efcc4b778b52fce8b1f909f26696f9545"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "sha256": "bbfac81632c92295b27bce40504dde1efcc4b778b52fce8b1f909f26696f9545"
+      }
+    },
+    "Hinv": {
+      "exact": true,
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "num_diff": 0,
+      "first_differing_index": null,
+      "native": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+      },
+      "custom": {
+        "dtype": "torch.float32",
+        "device": "cuda:0",
+        "shape": [
+          896,
+          896
+        ],
+        "stride": [
+          1,
+          896
+        ],
+        "contiguous": false,
+        "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+      }
+    }
+  },
+  "controlled_variants": [
+    {
+      "name": "native_expression",
+      "mean": 0.028906324878335,
+      "mean_exact_native": true,
+      "damped_H": {
+        "exact": true,
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "num_diff": 0,
+        "first_differing_index": null,
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+        }
+      },
+      "Hinv": {
+        "exact": true,
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "num_diff": 0,
+        "first_differing_index": null,
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+        }
+      }
+    },
+    {
+      "name": "native_mean_view_write",
+      "mean": 0.028906324878335,
+      "mean_exact_native": true,
+      "damped_H": {
+        "exact": true,
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "num_diff": 0,
+        "first_differing_index": null,
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+        }
+      },
+      "Hinv": {
+        "exact": true,
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "num_diff": 0,
+        "first_differing_index": null,
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+        }
+      }
+    },
+    {
+      "name": "view_mean_index_write",
+      "mean": 0.02890632301568985,
+      "mean_exact_native": false,
+      "damped_H": {
+        "exact": false,
+        "max_abs_diff": 1.862645149230957e-09,
+        "mean_abs_diff": 3.1553897816611796e-13,
+        "num_diff": 136,
+        "first_differing_index": [
+          1,
+          1
+        ],
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "99104de7588a6d0eab88d386c4d3edee374f2d0e202cce969b04e6651691ab4f"
+        },
+        "native_value": 0.02990250289440155,
+        "custom_value": 0.0299025010317564,
+        "native_bits_hex": "0x3cf4f618",
+        "custom_bits_hex": "0x3cf4f617"
+      },
+      "Hinv": {
+        "exact": false,
+        "max_abs_diff": 0.00044183433055877686,
+        "mean_abs_diff": 5.5159537241491825e-06,
+        "num_diff": 401548,
+        "first_differing_index": [
+          0,
+          1
+        ],
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "26171c3a97741883b151b69cfd4563197e8047900f3b7dd37ef4248fdca682fe"
+        },
+        "native_value": 0.1774436980485916,
+        "custom_value": 0.17744359374046326,
+        "native_bits_hex": "0x3e35b3cd",
+        "custom_bits_hex": "0x3e35b3c6"
+      }
+    },
+    {
+      "name": "v17_expression",
+      "mean": 0.02890632301568985,
+      "mean_exact_native": false,
+      "damped_H": {
+        "exact": false,
+        "max_abs_diff": 1.862645149230957e-09,
+        "mean_abs_diff": 3.1553897816611796e-13,
+        "num_diff": 136,
+        "first_differing_index": [
+          1,
+          1
+        ],
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "99104de7588a6d0eab88d386c4d3edee374f2d0e202cce969b04e6651691ab4f"
+        },
+        "native_value": 0.02990250289440155,
+        "custom_value": 0.0299025010317564,
+        "native_bits_hex": "0x3cf4f618",
+        "custom_bits_hex": "0x3cf4f617"
+      },
+      "Hinv": {
+        "exact": false,
+        "max_abs_diff": 0.00044183433055877686,
+        "mean_abs_diff": 5.5159537241491825e-06,
+        "num_diff": 401548,
+        "first_differing_index": [
+          0,
+          1
+        ],
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "26171c3a97741883b151b69cfd4563197e8047900f3b7dd37ef4248fdca682fe"
+        },
+        "native_value": 0.1774436980485916,
+        "custom_value": 0.17744359374046326,
+        "native_bits_hex": "0x3e35b3cd",
+        "custom_bits_hex": "0x3e35b3c6"
+      }
+    }
+  ],
+  "v17_external_hinv_hash_reproduced": true,
+  "old_group0_operator_comparison": "STOPPED: Hinv already unequal; cannot attribute original failure to compensation or range estimation"
+}

@@ -1,0 +1,31 @@
+{
+  "budget_cap_seconds": 1800.0,
+  "scope": "v57 only; includes audits, loading, diagnostics and all eight evaluations",
+  "cpu_preflight_script_seconds": 19.231356500000402,
+  "gpu_seconds": 0.0,
+  "full_model_load_seconds": 0.0,
+  "formal_evaluation_seconds": 0.0,
+  "completed_evaluations": "0/8",
+  "known_recorded_cpu_seconds_lower_bound": 69.3936927,
+  "other_cpu_source_inspection": "occurred but not cumulatively timed; see CPU_DIAGNOSTIC_LEDGER.csv",
+  "v56_measured_reference": {
+    "wikitext_stage_seconds": 2146.6955116999998,
+    "c4_stage_seconds": 132.2868527999999,
+    "synchronized_stage_sum_seconds": 2278.9823644999997,
+    "successful_eval_only_process_wall_seconds": 2283.5758481025696
+  },
+  "estimate": {
+    "one_pair_seconds": 2283.5758481025696,
+    "four_pairs_seconds": 9134.303392410278,
+    "four_pair_estimate_over_cap_seconds": 7334.303392410278,
+    "multiple_of_cap": 5.074612995783488,
+    "single_wikitext_stage_exceeds_cap": true,
+    "decision": "DO_NOT_START_FORMAL_EVALUATION"
+  },
+  "cpu_preflight_success_runs_seconds": [
+    19.206932,
+    18.2554042,
+    19.2313565
+  ],
+  "failed_raw_config_check_command_wall_seconds": 12.7
+}

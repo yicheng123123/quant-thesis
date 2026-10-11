@@ -1,0 +1,148 @@
+{
+  "status": "COMPLETE_ARTIFACT_ONLY_CANDIDATE_BUDGET_PRECHECK",
+  "analysis_cpu_seconds": 3.515000000001237,
+  "cpu_limit_seconds": 300,
+  "gpu_initializations": 0,
+  "model_forwards": 0,
+  "gptq_runs": 0,
+  "new_held_scoring": 0,
+  "ppl_runs": 0,
+  "p3_read": false,
+  "v39_modified": false,
+  "m2_full_model": {
+    "linears": 168,
+    "rows": 304128,
+    "tokens_per_row": 262144,
+    "selected_alpha_counts": {
+      "0.1": 0,
+      "0.2": 0,
+      "0.3": 0,
+      "0.4": 1,
+      "0.5": 30,
+      "0.6": 554,
+      "0.7": 3044,
+      "0.8": 54155,
+      "0.9": 226034,
+      "1.0": 20310
+    },
+    "global_winner_union_plus_alpha1": "0.4;0.5;0.6;0.7;0.8;0.9;1.0",
+    "global_winner_union_size": 7,
+    "module_specific_winner_union_candidate_executions": 675,
+    "module_winner_union_size_histogram": {
+      "2": 3,
+      "3": 40,
+      "4": 85,
+      "5": 32,
+      "6": 7,
+      "7": 1
+    },
+    "module_winner_union_sizes_le_budget": {
+      "3": 43,
+      "4": 128,
+      "5": 160
+    },
+    "budgets": {
+      "3": {
+        "candidate_execs": 501,
+        "full_winner_union_preserved_modules": 43,
+        "module_subset_retention_rows": 300790,
+        "module_subset_retention_pct": 98.90243581649831,
+        "module_subset_changed_rows": 3338,
+        "module_subset_loss_upper_mse": 5.949335197018987,
+        "module_subset_loss_upper_pct": 0.802585481785032,
+        "module_subset_worst_upper_pct": 659.5502550433655,
+        "global_subset_retention_rows": 300499,
+        "global_subset_retention_pct": 98.80675242003367,
+        "global_subset_changed_rows": 3629,
+        "global_subset_loss_upper_pct": 1.107935792076071,
+        "global_subset_candidate_execs": 504,
+        "global_subset_alpha_set": "0.8;0.9;1.0"
+      },
+      "4": {
+        "candidate_execs": 626,
+        "full_winner_union_preserved_modules": 128,
+        "module_subset_retention_rows": 303570,
+        "module_subset_retention_pct": 99.81652462121212,
+        "module_subset_changed_rows": 558,
+        "module_subset_loss_upper_mse": 1.893298489800913,
+        "module_subset_loss_upper_pct": 0.25541238311149905,
+        "module_subset_worst_upper_pct": 391.8233819098075,
+        "global_subset_retention_rows": 303543,
+        "global_subset_retention_pct": 99.80764678030303,
+        "global_subset_changed_rows": 585,
+        "global_subset_loss_upper_pct": 0.2618447614070943,
+        "global_subset_candidate_execs": 672,
+        "global_subset_alpha_set": "0.7;0.8;0.9;1.0"
+      },
+      "5": {
+        "candidate_execs": 666,
+        "full_winner_union_preserved_modules": 160,
+        "module_subset_retention_rows": 304097,
+        "module_subset_retention_pct": 99.98980692340068,
+        "module_subset_changed_rows": 31,
+        "module_subset_loss_upper_mse": 0.039869287467398,
+        "module_subset_loss_upper_pct": 0.005378502005817549,
+        "module_subset_worst_upper_pct": 210.88498362309812,
+        "global_subset_retention_rows": 304097,
+        "global_subset_retention_pct": 99.98980692340068,
+        "global_subset_changed_rows": 31,
+        "global_subset_loss_upper_pct": 0.005378502005817549,
+        "global_subset_candidate_execs": 840,
+        "global_subset_alpha_set": "0.6;0.7;0.8;0.9;1.0"
+      }
+    },
+    "global_budget_summary": {
+      "3": {
+        "subset_alpha_set": "0.8;0.9;1.0",
+        "candidate_execs": 504,
+        "retained_rows": 300499,
+        "retention_pct": 98.80675242003367,
+        "changed_rows": 3629,
+        "loss_upper_pct": 1.107935792076071,
+        "worst_upper_pct": 659.5502550433655
+      },
+      "4": {
+        "subset_alpha_set": "0.7;0.8;0.9;1.0",
+        "candidate_execs": 672,
+        "retained_rows": 303543,
+        "retention_pct": 99.80764678030303,
+        "changed_rows": 585,
+        "loss_upper_pct": 0.2618447614070943,
+        "worst_upper_pct": 521.3170640691701
+      },
+      "5": {
+        "subset_alpha_set": "0.6;0.7;0.8;0.9;1.0",
+        "candidate_execs": 840,
+        "retained_rows": 304097,
+        "retention_pct": 99.98980692340068,
+        "changed_rows": 31,
+        "loss_upper_pct": 0.005378502005817549,
+        "worst_upper_pct": 210.88498362309812
+      }
+    },
+    "m2_candidate_execution_baseline": 1680
+  },
+  "v24_v30_direct_search_scope": {
+    "row_alpha_scores": 480,
+    "row_split_units": 12,
+    "complete_grid_per_row": true,
+    "target_bank_full_linears": 12,
+    "representative_output_rows_per_target_bank": 4,
+    "search_tokens_per_bank": 32768,
+    "full_linear_candidate_tensor_states_historical": 120,
+    "input_cohort_matches_formal_m2": false
+  },
+  "scope_limits": [
+    "v18 stores full-model chosen alpha, chosen direct loss, and alpha1 direct loss, but no all-ten direct score matrix per row.",
+    "Exact best-to-second-best gaps and exact k=3/4/5 restricted-grid loss are unavailable for full M2 rows when a selected alpha is removed; only alpha1-fallback upper bounds are computed.",
+    "v24/v30 full-grid direct score analysis covers four fixed representative rows per target-bank Linear, not every output row, and uses a different search cohort/Hessian than formal v18 M2.",
+    "All subset design results are retrospective search-data analysis, not new-data validation and do not save the already incurred scalar10 search cost."
+  ],
+  "output_files": [
+    "SOURCE_AUDIT.csv",
+    "ALPHA_USAGE.csv",
+    "SUBSET_RESULTS.csv",
+    "COST_PROJECTION.csv",
+    "DECISION.md"
+  ]
+}

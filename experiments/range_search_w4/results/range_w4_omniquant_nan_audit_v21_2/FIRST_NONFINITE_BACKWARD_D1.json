@@ -1,0 +1,144 @@
+{
+  "mode": "D1",
+  "node_count": 298,
+  "backward_events": 298,
+  "first_finite_to_nonfinite_node": {
+    "execution_index": 10,
+    "graph_node_id": 37,
+    "operation": "MmBackward0",
+    "tags": [
+      "native_layer.mlp.up_proj.linear_operation"
+    ],
+    "grad_outputs": [
+      {
+        "present": true,
+        "shape": [
+          2048,
+          4864
+        ],
+        "dtype": "torch.float16",
+        "numel": 9961472,
+        "all_finite": true,
+        "finite_count": 9961472,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 478.75
+      }
+    ],
+    "grad_inputs": [
+      {
+        "present": true,
+        "shape": [
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "all_finite": true,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 372.0
+      },
+      {
+        "present": true,
+        "shape": [
+          896,
+          4864
+        ],
+        "dtype": "torch.float16",
+        "numel": 4358144,
+        "all_finite": false,
+        "finite_count": 4358142,
+        "nan_count": 0,
+        "posinf_count": 2,
+        "neginf_count": 0,
+        "max_finite_abs": 59008.0
+      }
+    ],
+    "finite_to_nonfinite_transition": true,
+    "saved_forward_operands": {
+      "_saved_mat2": {
+        "present": true,
+        "shape": [
+          896,
+          4864
+        ],
+        "dtype": "torch.float16",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.7587890625,
+        "max": 0.7158203125,
+        "mean": -1.1328001212524739e-05,
+        "std": 0.02086446308047725,
+        "max_finite_abs": 0.7587890625,
+        "mean_finite_abs": 0.016116093607843482
+      },
+      "_saved_mat2_sym_sizes": [
+        896,
+        4864
+      ],
+      "_saved_mat2_sym_strides": [
+        1,
+        896
+      ],
+      "_saved_self": {
+        "present": true,
+        "shape": [
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -17.109375,
+        "max": 256.5,
+        "mean": 0.0176542594620709,
+        "std": 1.5168988324758814,
+        "max_finite_abs": 256.5,
+        "mean_finite_abs": 0.9957688583202915
+      },
+      "_saved_self_sym_sizes": [
+        2048,
+        896
+      ],
+      "_saved_self_sym_strides": [
+        896,
+        1
+      ]
+    }
+  },
+  "first_nonfinite_key_tensor": {
+    "event_index": 24,
+    "tensor": "native_layer.mlp.up_proj.dequantized_weight",
+    "gradient": {
+      "present": true,
+      "shape": [
+        4864,
+        896
+      ],
+      "dtype": "torch.float32",
+      "numel": 4358144,
+      "all_finite": false,
+      "finite_count": 4358142,
+      "nan_count": 0,
+      "posinf_count": 2,
+      "neginf_count": 0,
+      "max_finite_abs": 59008.0
+    }
+  },
+  "forward_all_observed_finite": true,
+  "loss": 0.15326565504074097,
+  "scale_factor": 65536.0,
+  "interpretation_scope": "first observed native autograd-node gradient boundary; an opaque GEMM/SDPA kernel internal arithmetic is not separately instrumented"
+}

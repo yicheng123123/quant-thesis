@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "checkpoint_attempt_id": "20261001_183359_6c00bf87",
+  "committed_prefix_iterations": 53760,
+  "inferred_successful_optimizer_steps": 53760,
+  "inference_basis": "all 14 optimizer-owned LWC gradients finite AFTER native scaler on every prefix row; optimizer has only LWC (LET off), native scaler steps when found_inf is zero",
+  "historical_optimizer_step_hooks_or_found_inf_saved": false,
+  "ordering_unique_complete": true,
+  "prefix_nonfinite_LWC_gradient_rows": 0,
+  "finite_epoch_norm_rows": 420,
+  "all_attempt_rows": {
+    "20261001_182852_6bbe770a": 2560,
+    "20261001_183359_6c00bf87": 53761
+  },
+  "excluded_failed_attempt_iterations": 2560,
+  "excluded_failed_L21_iterations": 1,
+  "manifest_count_formula": "completed_layers * epochs * samples, not an actual step counter",
+  "61440_definition": "24*20*128 scheduled iterations; equal successful steps only when no skips",
+  "no_missing_sample_retries_added": true
+}

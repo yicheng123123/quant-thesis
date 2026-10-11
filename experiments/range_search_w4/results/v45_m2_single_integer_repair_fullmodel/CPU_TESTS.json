@@ -1,0 +1,32 @@
+{
+  "pass": true,
+  "checks": [
+    "normal accept plus independent FP32 rejection restores exact row state",
+    "state blacklist and repeated-neighborhood evaluation ledger",
+    "FP32 rise always rejects, including large cross-precision discrepancy; all candidates rejected stops",
+    "budget exhaustion consumes exact remaining evaluations, no partial-best accept",
+    "acceptance clears blacklist but never resets budget",
+    "32-update cap",
+    "code boundaries",
+    "nonfinite hard error leaves current state unchanged",
+    "FP32 decrease plus old-check failure invokes independent FP64 verification and accepts",
+    "injected real cache error stops, not rejected or accepted",
+    "fixed Decimal80 raw-X reference including cancellation and near-zero changes",
+    "injected formula scalar error stops",
+    "row-batched independent FP64 verification matches row reference within frozen precision criterion",
+    "batched candidate argmin, boundaries, blacklist and exact tie order match per-row reference",
+    "complete small batched repair terminal codes, accepted/evaluated/rejected counts match sequential row reference with same full FP32 scoring shape"
+  ],
+  "fixed_reference": {
+    "N": 17,
+    "d": 5,
+    "rows": 2,
+    "precision": "Decimal80",
+    "maximum_rawX_FP64_minus_Decimal": 0.0,
+    "same_precision_allowed_errors": [
+      1.0161086956010577e-15,
+      2.7442101716535594e-13
+    ]
+  },
+  "scope": "controlled FP32 scores only for branch transactions; actual independent raw-X math checked against Decimal and full small repair vs reference; no model quality evidence"
+}

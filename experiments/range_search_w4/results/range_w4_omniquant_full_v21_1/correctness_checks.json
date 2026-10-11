@@ -1,0 +1,35 @@
+{
+  "overall_status": "STOP",
+  "stop_gate": "FORMAL_LWC_GRADIENT_FINITE_CHECK",
+  "checks": {
+    "exact_model_revision_and_local_snapshot": "PASS",
+    "tokenizer_and_frozen_calibration_hashes": "PASS",
+    "native_vs_port_quant_off_parity": "PASS",
+    "2048_token_representative_layer_runs": "PASS",
+    "2048_token_memory_gate": "PASS",
+    "conservative_cost_le_24h_gate": "PASS",
+    "block_resume_smoke": "PASS",
+    "atomic_checkpoint_save_recovery_smoke": "PASS",
+    "committed_blocks_0_through_20_finite_state_and_quantizer_parameters": "PASS",
+    "formal_training_lwc_gradient_finite_at_layer_21_sample_0": "FAIL",
+    "full_24_block_m3_training": "NOT_COMPLETED",
+    "dense_export_and_reload": "NOT_RUN",
+    "frozen_wikitext2_evaluation": "NOT_RUN",
+    "frozen_c4_fixed_budget_evaluation": "NOT_RUN"
+  },
+  "failure_evidence": {
+    "attempt_id": "20261001_183359_6c00bf87",
+    "step_log": "M3/logs/training_steps.csv",
+    "console_log": "M3/logs/formal_attempt_02_console.log",
+    "run_status": "M3/RUN_STATUS.json",
+    "stop_diagnostic": "M3/STOP_DIAGNOSTIC.json"
+  },
+  "artifact_validation": {
+    "status": "PASS",
+    "record": "ARTIFACT_VALIDATION.json",
+    "checkpoint_state_and_rng_hashes": "PASS",
+    "attempt_row_accounting": "PASS",
+    "m3_evaluation_metric_cells_blank": "PASS"
+  },
+  "interpretation": "Local model repair, identity, parity, memory, and projected runtime gates succeeded. The formal M3 run stopped on a non-finite LWC gradient. This is a failed run under the frozen protocol, not a completed baseline or an evaluation result."
+}

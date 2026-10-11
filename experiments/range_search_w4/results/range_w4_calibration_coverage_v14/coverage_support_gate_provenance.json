@@ -1,0 +1,13 @@
+{
+  "record_type": "post_run_provenance_annotation",
+  "source": "user-provided v14 instruction attachment received before manifest preparation and candidate execution",
+  "source_attachment_name": "已粘贴的文本.txt",
+  "source_attachment_sha256": "EB3FE621BE642B775D2E11B404626A419F115963E574B80562CCDE01DB3165AF",
+  "protocol_json_note": "The frozen PROTOCOL.json omitted serialization of the coverage support gate. This annotation records the exact pre-run user-specified conditions and does not add or alter any threshold after observing results.",
+  "criteria": {
+    "A": "if K4 severe count > 0: K32 severe count <= 50% of K4 severe count; if K4 severe count == 0, compare catastrophic count and worst gain instead of dividing by zero",
+    "B": "K32 pooled C32 vs D32 gain > 0",
+    "C": "K32 median row gain >= 0",
+    "D": "K16 and K32 severe regression counts are both below K4"
+  }
+}

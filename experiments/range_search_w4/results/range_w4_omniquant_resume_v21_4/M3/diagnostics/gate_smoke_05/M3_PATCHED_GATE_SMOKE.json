@@ -1,0 +1,96 @@
+{
+  "dynamic_scaler_initial_scale_left_to_default": true,
+  "fixture": "results\\range_w4_omniquant_nan_audit_v21_2\\fixtures\\actual_l21.pt",
+  "fixture_provenance": "v21.2 actual L21 block_20-prefix optimizer-init capture, reused byte-identically; no prefix recapture",
+  "fixture_sha256": "75188a9ff2804651e6d1a7e2e348f97324410f549914afaddbc2568b97acbaa8",
+  "formal_checkpoint_committed": false,
+  "formal_committed_updates": 0,
+  "nonfinite_forward_or_loss_fatal_gate_exercised_on_finite_outputs": true,
+  "optimizer_and_scaler_calls_per_sample": "exact native wrapper; no retries; each scheduled sample executed once",
+  "runtime_seconds": "2026-10-01 23:33:38+0800",
+  "sample0_loss_finite": true,
+  "sample0_native_skip_and_backoff": true,
+  "sample_count": 4,
+  "samples": [
+    {
+      "epoch": 0,
+      "formal_checkpoint_committed": false,
+      "found_inf": 1.0,
+      "layer": 21,
+      "loss": 0.15326565504074097,
+      "lwc_finite": true,
+      "norm_finite": false,
+      "optimizer_state_finite": true,
+      "optimizer_state_unchanged_on_skip": true,
+      "sample": 0,
+      "scale_after": 32768.0,
+      "scale_before": 65536.0,
+      "step_hook_counts": {
+        "post": 0,
+        "pre": 0
+      },
+      "step_skipped": true
+    },
+    {
+      "epoch": 0,
+      "formal_checkpoint_committed": false,
+      "found_inf": 0.0,
+      "layer": 21,
+      "loss": 0.17120549082756042,
+      "lwc_finite": true,
+      "norm_finite": true,
+      "optimizer_state_finite": true,
+      "optimizer_state_unchanged_on_skip": false,
+      "sample": 1,
+      "scale_after": 32768.0,
+      "scale_before": 32768.0,
+      "step_hook_counts": {
+        "post": 1,
+        "pre": 1
+      },
+      "step_skipped": false
+    },
+    {
+      "epoch": 0,
+      "formal_checkpoint_committed": false,
+      "found_inf": 0.0,
+      "layer": 21,
+      "loss": 0.16788706183433533,
+      "lwc_finite": true,
+      "norm_finite": true,
+      "optimizer_state_finite": true,
+      "optimizer_state_unchanged_on_skip": false,
+      "sample": 2,
+      "scale_after": 32768.0,
+      "scale_before": 32768.0,
+      "step_hook_counts": {
+        "post": 1,
+        "pre": 1
+      },
+      "step_skipped": false
+    },
+    {
+      "epoch": 0,
+      "formal_checkpoint_committed": false,
+      "found_inf": 0.0,
+      "layer": 21,
+      "loss": 0.16902445256710052,
+      "lwc_finite": true,
+      "norm_finite": true,
+      "optimizer_state_finite": true,
+      "optimizer_state_unchanged_on_skip": false,
+      "sample": 3,
+      "scale_after": 32768.0,
+      "scale_before": 32768.0,
+      "step_hook_counts": {
+        "post": 1,
+        "pre": 1
+      },
+      "step_skipped": false
+    }
+  ],
+  "samples1_to3_successful_updates": 3,
+  "status": "PASS",
+  "v21_4_native_scaler_source_sha256": "127f73283141b12baca8be510ed9369eca9c0ad5f9fa2b36585db535b8b330c6",
+  "v21_4_runner_sha256": "54f9b61a0f5c70c067eab50a627d095a92c43ebcf5ec05452c0fd9fd8d5822ce"
+}

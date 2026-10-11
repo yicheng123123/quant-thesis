@@ -1,0 +1,12 @@
+item,seconds,status,scope
+v46 valid formal repair: 24 run_layer blocks,5485.675196500008,MEASURED_SUCCESS,"168 Linear, 304128 rows; includes valid capture/C/repair/commit/prefix work; excludes the 14 wrong-dispatch groups"
+v46 first wrong-dispatch attempt,785.9530649185181,MEASURED_FAILURE,14 invalid groups archived and excluded from formal workload; time remains inside original process wall
+v46 preflight interval from original start,21.379425048828125,MEASURED_OVERLAPPING_INTERVAL,Overlaps process wall and failed attempt; do not add
+v46 save/grid/reload/output regression,11.039314699999522,MEASURED_SUCCESS,After formal blocks
+v46 continuation model reload,1.2471799000049941,MEASURED_SUCCESS,Separate PPL continuation after evaluator wrapper failure
+v46 WT2 plus C4 evaluation,131.31646400000318,MEASURED_SUCCESS,One evaluation each; after R1 lock
+v46 original GPU_START to final status process wall,6842.921544551849,MEASURED_END_TO_END,"Contains preflight, failed attempt, diagnosis/restart gaps, valid repair, save/reload, continuation and PPL; not a pure repair stage"
+v47 two-matrix synchronized instrumentation replay,149.93755669999518,MEASURED_SUCCESS,"Independent local replay, includes warmup/model load/input reconstruction/C/repair/diagnostics; 149.94s of 600s cap; no submit/checkpoint/PPL"
+v42-v45 R2 validation chain,7064.804290294647,HISTORICAL_CUMULATIVE,"Contains pilots, failures, diagnostics, inherited/recovered groups, save/reload and PPL; not comparable to one clean full repair"
+v45 new 141 Linear stage wall,4717.0275438999815,HISTORICAL_PARTIAL_SUCCESS,Excludes 27 inherited modules; not full R2 repair cost
+R2 unique clean full repair-only cost,NOT_RECONSTRUCTABLE,MISSING,Do not infer from v45 new-group stage or total recovery-chain wall

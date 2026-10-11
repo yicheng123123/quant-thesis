@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "python_version": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "python_executable": "E:\\quant-thesis\\.venv-gptq\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "torch_version": "2.6.0+cu124",
+  "transformers_version": "4.49.0",
+  "tokenizers_version": "0.21.4",
+  "cuda_runtime": "12.4",
+  "gpu_count": 1,
+  "gpus": [
+    {
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "total_vram_bytes": 8585216000,
+      "total_vram_gib": 7.99560546875,
+      "capability": [
+        8,
+        9
+      ]
+    }
+  ],
+  "selected_device": "cuda:0",
+  "cuda0_free_vram": {
+    "free_bytes": 7443841024,
+    "total_bytes": 8585216000
+  },
+  "tf32": {
+    "matmul": false,
+    "cudnn": true
+  },
+  "deterministic": {
+    "algorithms": false,
+    "cudnn": false
+  },
+  "disk": {
+    "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21\\LOCAL_PREFLIGHT",
+    "total_bytes": 1000186310656,
+    "free_bytes": 509619200000
+  },
+  "cpu_ram": {
+    "total_bytes": 16342155264,
+    "available_bytes": 499974144,
+    "process_rss_bytes": 425426944
+  },
+  "checks": {
+    "cuda_available": true,
+    "cuda0_available": true,
+    "transformers_pin": true,
+    "tokenizers_pin": true
+  },
+  "device_policy": "Only cuda:0 is selected. Additional visible GPUs are recorded and not used.",
+  "nvidia_smi_query": [
+    "555.97, NVIDIA GeForce RTX 4060 Laptop GPU, 8188, 360, 7598"
+  ],
+  "nvidia_smi_query_error": null,
+  "relevant_environment_variables": {
+    "HF_HOME": null,
+    "HF_HUB_CACHE": null,
+    "TRANSFORMERS_CACHE": null,
+    "CUDA_VISIBLE_DEVICES": null,
+    "PYTORCH_CUDA_ALLOC_CONF": null,
+    "OMP_NUM_THREADS": null,
+    "TOKENIZERS_PARALLELISM": null
+  },
+  "matmul_precision": "highest",
+  "autocast": {
+    "cuda_enabled_at_capture": false,
+    "formal_training_policy": "frozen OmniQuant CUDA AMP autocast in the official loop"
+  },
+  "local_execution": "native Windows PowerShell; no WSL"
+}

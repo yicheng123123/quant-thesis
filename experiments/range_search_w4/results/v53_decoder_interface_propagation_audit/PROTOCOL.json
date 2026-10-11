@@ -1,0 +1,35 @@
+{
+  "version": "v53",
+  "purpose": "decoder interface correction and independent propagation audit only",
+  "requested_model_setting": "Sol high requested; API cannot verify or switch",
+  "algorithm_changes": false,
+  "supported_returns": [
+    "Tensor[batch,tokens,hidden]",
+    "plain one-element tuple(Tensor[batch,tokens,hidden],) under frozen cache/attention flags"
+  ],
+  "unknown_returns": "hard TypeError",
+  "cache_policy": "strict rank/shape/dtype equality before np.copyto; no broadcasting/casting",
+  "fixed_articles": [
+    0,
+    64,
+    127
+  ],
+  "article_tokens": 2048,
+  "corpus": "formal128x2048 v18 calibration, no P3/held/PPL",
+  "reference": "native complete causal-LM forward, independent prehooks, logits_to_keep=1 only skips unnecessary lm_head positions; all24Transformer blocks execute",
+  "reference_does_not_call_decoder_interface": true,
+  "comparison": "bitwise first; fixed original output tolerance rtol1e-5 atol1e-6; no later relaxation",
+  "block0_sources": "original formal M2 plus v51 four committed block0 groups; verify v52 inherited tensors; no layer1+ repaired parameters used",
+  "group_states": [
+    "original M2 qkv input",
+    "qkv committed -> o input",
+    "qkv+o committed -> up_gate input",
+    "qkv+o+up_gate committed -> down input",
+    "allblock0 committed -> true layer1 boundary"
+  ],
+  "new_gpu_cap_seconds": 600,
+  "shared_cap_seconds": 10800,
+  "prior_shared_charged_seconds": 5278.45302646637,
+  "no_new_fullmodel_repair_or_PPL": true,
+  "freeze_unix": 1791518450.5938525
+}

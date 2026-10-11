@@ -1,0 +1,48 @@
+{
+  "version": "v50",
+  "requested_model": "Sol high; interface cannot verify/switch",
+  "frozen_before_GPU": true,
+  "paths": [
+    "baseline_v49_FP64_Gram",
+    "mixed_FP32_block_FP64_accumulation"
+  ],
+  "token_chunk": 4096,
+  "N": 262144,
+  "targets": [
+    {
+      "module": "mlp.up_proj",
+      "rows": 4864,
+      "d": 896
+    },
+    {
+      "module": "mlp.down_proj",
+      "rows": 896,
+      "d": 4864
+    }
+  ],
+  "shadow_rows": [
+    0,
+    224,
+    448,
+    672
+  ],
+  "initialization": "original trusted formal M1 codes/scales/zero/g_idx",
+  "input_prefix": "locked v49 final model; recapture block0 group inputs and match saved group hashes",
+  "search_implementation": "unchanged v48 batch_repair plus v45 candidate helpers",
+  "max_accepts": 32,
+  "candidate_cap": "128*d",
+  "TF32": false,
+  "autocast": false,
+  "rules_sha256": "35f769a55b3ad150d39fb4b0e80171c192530f6e08b208d79ffe67b9dcb3aa97",
+  "new_path_sha256": "3979e7119e45e95d41eeaef8282fbda0f30d5207a3363c714ec6aaae8af67ef0",
+  "runner_sha256": "9aa95b6936b17ec498a9ef918eda4b20cc5ae5e991cd459b0bd6cd1602d2c8b8",
+  "baseline_sha256": "c3a760c0f48723b3784774263af71bc9e469115c2ab5d0c35ba3145671e079a2",
+  "source_audit_sha256": "9fc08ec76f12ff198bada448a23a75590ff44b64ee24c9f4a30577dc62ccef32",
+  "GPU_cap_seconds": 1200,
+  "planning_estimate_seconds": 910,
+  "estimate_is_not_measurement": true,
+  "no_whole_model_repair": true,
+  "no_held_or_PPL": true,
+  "no_model_checkpoint": true,
+  "freeze_unix": 1791400752.8587177
+}

@@ -1,0 +1,4 @@
+dataset,method,representation,calibration,calibration_wall_seconds,calibration_peak_gpu_allocated_bytes,evaluation_model_load_seconds,evaluation_wall_seconds,evaluation_peak_gpu_allocated_bytes,evaluation_peak_gpu_reserved_bytes,evaluated_tokens,window_count,average_nll,perplexity
+WikiText-2 test,M0,FP16,none,,,0.899977,88.565154,4745163264,5507121152,299077,582,2.522797111231,12.463409495878
+WikiText-2 test,M1,dense-dequant FP16,WikiText-2 train: 128 documents x 2048 tokens,648.876101,1869838336,0.752216,90.392541,4745359872,5507121152,299077,582,2.630763716261,13.884369572858
+WikiText-2 test,M2,dense-dequant FP16,WikiText-2 train: 128 documents x 2048 tokens,2115.935334,2347887104,0.763024,90.946788,4745359872,5507121152,299077,582,2.621806242375,13.760556051038

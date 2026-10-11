@@ -1,0 +1,8 @@
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\official_port\utils.py:31: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self._scaler = torch.cuda.amp.GradScaler()
+E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_nan_audit_v21_2\replay_basic.py:62: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(enabled=not is_fp32):
+E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_nan_audit_v21_2\audit_gemm_boundary.py:31: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.no_grad(), torch.cuda.amp.autocast(enabled=False):
+[{'transpose_input_channel': 62, 'output_channel': 567, 'weight_row': 567, 'weight_column': 62, 'fp32_dot': 122799.375, 'fp64_dot_same_fp16_operands': 122799.37525627553, 'fp16_finite_limit': 65504.0, 'exceeds_fp16_limit': True, 'unscaled_equivalent_fp64_dot': 1.8737697640422901, 'native_gradient_class': '+Inf'}, {'transpose_input_channel': 62, 'output_channel': 3486, 'weight_row': 3486, 'weight_column': 62, 'fp32_dot': 69136.6328125, 'fp64_dot_same_fp16_operands': 69136.64730513132, 'fp16_finite_limit': 65504.0, 'exceeds_fp16_limit': True, 'unscaled_equivalent_fp64_dot': 1.054941517717458, 'native_gradient_class': '+Inf'}]

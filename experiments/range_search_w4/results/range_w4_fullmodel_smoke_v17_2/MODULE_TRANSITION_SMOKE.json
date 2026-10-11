@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "quantization_order_groups": [
+    [
+      "self_attn.k_proj",
+      "self_attn.v_proj",
+      "self_attn.q_proj"
+    ],
+    [
+      "self_attn.o_proj"
+    ],
+    [
+      "mlp.up_proj",
+      "mlp.gate_proj"
+    ],
+    [
+      "mlp.down_proj"
+    ]
+  ],
+  "committed": {
+    "k_proj": "selected rowwise alpha for rows0-31; other rows left FP16",
+    "v_proj": "full target native alpha1",
+    "q_proj": "full target native alpha1",
+    "o_proj": "full target native alpha1"
+  },
+  "v_q_native_audits": {
+    "self_attn.v_proj": {
+      "actual_input_sha256": "644ec5f4c73d990250419ad0ec2e32e1aa0c240c54ff99f2120aee5384ae7c4a",
+      "H_sha256": "7cca8440a903c6706b9e5ff6fbdfde6c1682a9f0e859eebbe93b74f6c81e4319",
+      "nsamples": 2,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "alpha1_native_exact": true,
+      "H_setup_seconds": 0.0007176000217441469,
+      "GPTQ_seconds": 0.4015509999881033
+    },
+    "self_attn.q_proj": {
+      "actual_input_sha256": "644ec5f4c73d990250419ad0ec2e32e1aa0c240c54ff99f2120aee5384ae7c4a",
+      "H_sha256": "7cca8440a903c6706b9e5ff6fbdfde6c1682a9f0e859eebbe93b74f6c81e4319",
+      "nsamples": 2,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "alpha1_native_exact": true,
+      "H_setup_seconds": 0.00039090000791475177,
+      "GPTQ_seconds": 0.36401250000926666
+    }
+  },
+  "qkv_shared_input_exact": true,
+  "o_proj_input_refreshed_after_qkv": true,
+  "o_proj_current_input_hash": "0307ef1c6a3d361e14aadecd0eca21770abb5c6f0dfa95c11f83b58f9dfafa6a",
+  "o_proj_H_derived_from_current_input": "2a19dfdb9e190b071e21fde3ec2c032ec6409a0fbaf1e54d9e7318b9cf699ba7",
+  "o_proj_H_from_FP_stale_input": "cc673d21b4e1b45806d6ae59efc87d9acdf8ddfda0720dcdc9c01fbc78f11d0f",
+  "alpha1_o_proj_direct_native_parity": true,
+  "next_group_captured_inputs": {
+    "up_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "hash": "642ce7ee85436369fb0e61892c14fc82e2ba65fafbfa8fada8d77a1a07af1fe4"
+    },
+    "gate_proj": {
+      "shape": [
+        128,
+        896
+      ],
+      "hash": "642ce7ee85436369fb0e61892c14fc82e2ba65fafbfa8fada8d77a1a07af1fe4",
+      "equal_up": true
+    },
+    "down_proj": {
+      "shape": [
+        128,
+        4864
+      ],
+      "hash": "ab9d5a2ba8016a5ca67c60738f6aa86e766aed44189c99e7a1fd1e5e6c98e099"
+    }
+  },
+  "mlp_inputs_refreshed_from_quantized_attention_path": true,
+  "pass": true
+}

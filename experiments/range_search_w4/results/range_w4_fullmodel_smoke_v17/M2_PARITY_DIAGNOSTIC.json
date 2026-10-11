@@ -1,0 +1,85 @@
+{
+  "status": "DIAGNOSTIC_ONLY",
+  "rows": 128,
+  "columns": 896,
+  "native_nsamples": 2,
+  "docs_shapes": [
+    [
+      1,
+      64,
+      896
+    ],
+    [
+      1,
+      64,
+      896
+    ]
+  ],
+  "native_weight_dtype": "torch.float16",
+  "native_scale_shape": [
+    128,
+    7
+  ],
+  "custom_scale_shape": [
+    128,
+    7
+  ],
+  "weight_exact_after_native_dtype_cast": false,
+  "weight_max_abs": 0.09531648457050323,
+  "weight_diff_count_fp32": 96109,
+  "weight_diff_count_fp16": 317,
+  "scale_exact": false,
+  "scale_max_abs": 7.554516196250916e-05,
+  "scale_diff_count": 692,
+  "zero_exact": true,
+  "zero_max_abs": 0.0,
+  "zero_diff_count": 0,
+  "g_idx_expected": true,
+  "first_scale_native": [
+    0.02291666716337204,
+    0.02143050916492939,
+    0.021433372050523758,
+    0.027200909331440926,
+    0.035819243639707565,
+    0.025784112513065338,
+    0.022793244570493698
+  ],
+  "first_scale_custom": [
+    0.02291666716337204,
+    0.02143050543963909,
+    0.02143337018787861,
+    0.02720092050731182,
+    0.03581923618912697,
+    0.02578410878777504,
+    0.022793199867010117
+  ],
+  "first_zero_native": [
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0
+  ],
+  "first_zero_custom": [
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0,
+    8.0
+  ],
+  "pristine_hash": "a960832a9e0e83e4d95402e5d1a01cc74300fcca0c381237162126330e1a7af8",
+  "hinv_hash": "26171c3a97741883b151b69cfd4563197e8047900f3b7dd37ef4248fdca682fe",
+  "first_weight_mismatch": {
+    "row": 17,
+    "column": 513,
+    "native": -0.07940673828125,
+    "custom": -0.0794677734375,
+    "group": 4
+  },
+  "local_output_mse_native_rows0_32": 3.129817969238502e-07,
+  "local_output_mse_custom_rows0_32": 3.1299597935685597e-07
+}

@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "metric": "PPL degradation recovery fraction",
+  "formula": "(PPL_M1 - PPL_method) / (PPL_M1 - PPL_M0)",
+  "datasets": {
+    "wikitext": {
+      "native_gptq_degradation_M1_minus_M0_ppl": 1.4209600769795028,
+      "M2_recovered_ppl": 0.12381352181944116,
+      "M2_recovery_fraction": 0.08713370897979646,
+      "M2_recovery_percent": 8.713370897979646,
+      "M3_recovered_ppl": 0.3391125979140508,
+      "M3_recovery_fraction": 0.23865033466309163,
+      "M3_recovery_percent": 23.865033466309164
+    },
+    "c4_fixed_budget": {
+      "native_gptq_degradation_M1_minus_M0_ppl": 2.985368632070699,
+      "M2_recovered_ppl": 0.20104128600340587,
+      "M2_recovery_fraction": 0.0673421981606206,
+      "M2_recovery_percent": 6.734219816062061,
+      "M3_recovered_ppl": 0.7884964877674214,
+      "M3_recovery_fraction": 0.2641203097322382,
+      "M3_recovery_percent": 26.41203097322382
+    }
+  }
+}

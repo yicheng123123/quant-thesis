@@ -1,0 +1,5 @@
+Method,Algorithm,Quant,GPU,Calibration samples,Calibration tokens,Calibration wall,Calibration wall core,Peak allocated,Peak reserved,WT2 NLL,WT2 PPL,C4 NLL,C4 PPL,Representation,Status
+M0,FP16,FP16,NVIDIA GeForce RTX 4060 Laptop GPU,0,0,,,,,2.522797111231,12.463409495878,2.957436035478,19.248555817998,FP16,FROZEN_V18_COMPLETE
+M1,Native sequential GPTQ,W4A16 GPTQ G128,NVIDIA GeForce RTX 4060 Laptop GPU,128,262144,648.876101,,1869838336,2684354560,2.630763716261,13.884369572858,3.101619250860,22.233924450068,dense-dequant FP16,FROZEN_V18_COMPLETE
+M2,Per-row shared-alpha discrete range search + GPTQ,W4A16 GPTQ G128 + per-row shared-alpha search,NVIDIA GeForce RTX 4060 Laptop GPU,128,262144,2115.935334,,2347887104,2684354560,2.621806242375,13.760556051038,3.092536026698,22.032883164065,dense-dequant FP16,FROZEN_V18_COMPLETE
+M3,"Official OmniQuant W4A16 G128, LWC on, LET off, 20 epochs",W4A16 asymmetric affine G128,NVIDIA GeForce RTX 4060 Laptop GPU (target; not measured),128,262144,,,,,,,,,dense-dequant FP16 (planned),NOT_RUN_LOCAL_PREFLIGHT_NO_GO

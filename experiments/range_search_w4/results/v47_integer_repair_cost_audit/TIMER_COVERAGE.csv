@@ -1,0 +1,11 @@
+requested_component,observed_timer,coverage,limit
+Input capture and dependency refresh,dependency_input_capture; down_commit_prefix_refresh; input_hash,separate synchronized timers; hash is a distinct CPU stage,capture timer includes full prefix execution/hooks and host/device copies
+FP64 C,C_construction,separate full C build timer,"includes X chunk copies, GEMMs, normalization/symmetrization, finite check"
+Initial e/p/loss,repair_initialization + first direct_recompute per Linear,e/p init separate; initial loss attributed by fixed call order,Q/E/p init remains one merged timer
+Candidate score and min selection,candidate_scoring,combined timer,"delta scoring, eligible mask, budget, min reduction/status not individually timed"
+Code and p update,accepted_update_and_rejection_restore,combined timer,"cannot isolate p vector update; timer also includes code/Q update, reject restore, mask updates and checks"
+Direct output scoring,direct_recompute,"per-call synchronized timer, call-order split",FP32 matmul + FP64 square/sum and X host-to-device chunk copies remain merged
+Reject handling and FP64 recheck,accepted_update_and_rejection_restore + independent_FP64_increment_recheck,outer reject/update timer plus nested FP64 timer,no standalone reject-only time; FP64 timer nested and not additive
+Checkpoint and IO,packing_checkpoint_IO; whole_group_commit,separate group write/commit timers,final model save/reload and PPL occur outside the 24 block repair-wall sum
+Minimum selection only,candidate_scoring,NOT_MEASURED separately,no safe measured split from candidate scoring aggregate
+p update only,V46 accepted_update_and_rejection_restore; V47 profile_p_vector_update,V46 full-model timer is merged; v47 adds isolated synchronized p-update timer on both complete L0 matrices,profile scope is only L0 up_proj/down_proj; child timer includes synchronization overhead and is nested in outer update timer

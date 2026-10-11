@@ -1,0 +1,36 @@
+{
+  "status": "VALID_REPAIRED_HELD_REFERENCE_BUT_QUALITY_GATE_FAIL",
+  "candidate_selection_and_held_path_valid_after_v37_repair": true,
+  "v36_original_P1_held_reference_valid": false,
+  "v36_original_S0_metrics_valid": false,
+  "v37_repaired_S0_metrics_valid": true,
+  "checks": {
+    "P0_postnorm_is_pristine_norm_replay_exact": true,
+    "P1_old_postnorm_is_S0_D_scaled_norm_replay_exact": true,
+    "P2_old_postnorm_is_S0_D_scaled_norm_replay_exact": true,
+    "clean_P2_capture_self_replay_exact": true,
+    "G00_down_alpha1_direct_score_parity": "PASS",
+    "saved_S0_selection_argmins_replayed_with_recorded_dtype": "PASS",
+    "saved_four_arm_full_block_outputs_replayed_exact": true,
+    "selected_tensor_hashes_match_selection_lock": true,
+    "held_reference_rebuilt_from_pristine_norm_and_frozen_prenorm": true,
+    "held_reference_sha256": "bf5f0b09fb47e9a64fc0aaacc18ccbd6d9c5aaab943056416b088db67380e0f4",
+    "four_arm_outputs_sha256_match_v36_saved_outputs": {
+      "G00": true,
+      "G01": true,
+      "G10": true,
+      "G11": true
+    },
+    "S1_P3_read": false
+  },
+  "quality_gates": {
+    "primary_G11_vs_G01_ge_1pct": false,
+    "corrected_fold_signal_floor": true,
+    "per_projection_no_regression_over_5pct": false,
+    "projection_row_tail_at_most_5pct_over_10pct_and_none_over_50pct": false
+  },
+  "quality_gate_passes": false,
+  "primary_G11_vs_G01_held_improvement": -0.03496148191330195,
+  "decision": "B: correctness/reference repair completed; S0 held evaluation is valid; frozen quality gates fail; no S1 candidates or P3 evaluation.",
+  "classification_boundary": "S0 is retrospective repair/re-evaluation on already viewed P1 data, not a new blind test."
+}

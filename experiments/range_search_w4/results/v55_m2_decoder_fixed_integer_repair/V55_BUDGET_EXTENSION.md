@@ -1,0 +1,3 @@
+# v55 shared-budget extension
+
+The frozen v54 search protocol is copied byte-for-byte so all eight committed group checkpoints retain their protocol hash. The user explicitly extends the shared cumulative cap from 10,800 to 12,600 seconds (+1,800 seconds). The inherited charged baseline is 5,980.039842538834 seconds; this is an extension, not a reset. The historical 4,851.937226799946-second online estimate already includes a 360-second save/reload/evaluation reserve. Fresh-process restore and replay is added separately from measured v54 stage timings. The new cap and CPU-only preparation charges are recorded in BUDGET_EXTENSION.json and ACTIVE_JOB_LEDGER.json. Search, numerical rules, inputs, grid, and evaluator remain frozen.

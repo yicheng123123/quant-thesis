@@ -1,0 +1,23 @@
+item,seconds,basis
+historical M2 construction,2115.9353341000096,v18 actual; outside shared repair GPU cap
+historical v51 charged job,657.305,original measured657.304609 rounded up; contains failure/recovery/diagnosis
+v52 regression/source-validation active job,31.45849919319153,"active segment wall, includes GPU and supporting IO"
+v52 formal active job,4406.961046695709,active segment wall including restoration/repair/save/reload/quality and failures if any
+v52 total added active-job wall,4621.14802646637,sum active job segments; app idle excluded
+v51+v52 shared charged wall,5278.45302646637,cap10800; CPU environment diagnosis separate
+executed24block local repair stages under invalid prefix after block0,4541.045295299962,execution wall only; cannot be interpreted as successful formal repair
+v52 new block repair stages,4353.960454899992,actual block wall; excludes inherited block0
+v52 block0 restore-only run_layer wall,3.026124899974093,no repair; prefix-validation outer timer is separate
+formal Gram construction timers,1573.1456840998726,unchanged FP64 builder; synchronized measured timers
+initialization fallback timers including checks/hash,197.490683199896,required fallback cost; separate diagnostic-mode costs in STAGE_COSTS
+provenance wrapper timers,122.9375489995582,actual synchronized source/hash costs; may lie within restore outer timer
+flushed original save/grid/reload timers,10.169786000042222,comparison was only buffered and not flushed before stops; exclusive tensor-comparison time NOT_MEASURED
+flushed empty failed-evaluator timer only,0.0005799000500701368,stopped before first forward on adapter attempt2; interrupted real PPL timer NOT_MEASURED
+historical M2 build + complete validation chain spent,7394.38836056638,includes all historical v51 failures and new active jobs; not original R2 net repair speed estimate
+deployment continuation jobs including failures and interrupted PPL,173.97803401947021,all3 active segments; forced end conservatively bounded; no completed PPL result
+actual block0 prefix compatibility diagnostic,8.750446557998657,bounded GPU source diagnosis only; no repair or PPL
+CPU current source re-verification,3.911870900017675,CPU-only evidence audit; not additional GPU time; may overlap active-job wall
+CPU environment/tool diagnosis,,NOT_MEASURED independent total; separate from GPU jobs
+interrupted PPL stage exclusive time,,"NOT_MEASURED: forced stop before outer timer flushed; included within continuation wall, preserve partial log"
+named tensor comparison exclusive time,,NOT_MEASURED as standalone timer; all CPU comparison work included in charged continuation jobs
+named tensor comparison exclusive time,,NOT_MEASURED as standalone timer; all CPU comparison work included in charged continuation jobs

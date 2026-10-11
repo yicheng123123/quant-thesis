@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "WT2": {
+    "status": "PASS",
+    "dataset": "wikitext",
+    "scope": "frozen WT2 test",
+    "targets": 299077,
+    "windows": 582,
+    "input_tokens": 299078,
+    "total_nll": 779405.5625486374,
+    "mean_nll_per_token": 2.6060364472983126,
+    "ppl": 13.545256974943815,
+    "evaluator_mean_nll": 2.6060364472983126,
+    "evaluator_ppl": 13.545256974943815,
+    "mean_nll_recompute_diff": 0.0,
+    "ppl_recompute_diff": 0.0,
+    "recompute_tolerance_absolute": 1e-10,
+    "window_csv_sha256": "16d9fef1a103c56cbcf238bfc609028935ef31a745609a919afe9314c8d5bcb0",
+    "raw_json_sha256": "d77b0b9a8cb8aea21776ca55034fe951a95dd01a1c3511fa6debbf6fbf783a18",
+    "evaluation_token_ids_sha256_i64le": "8ffcee84dd4b684ec631cb52845e18c9c181ce6fdb8b26d65a4ffdc3d35fbda3",
+    "model_weights_sha256": "bd9c11ba5c3d1c8d427a053ee185b2c3258489c91b4e8f73abd76e229f473da5",
+    "model_weight_files": [
+      {
+        "name": "model.safetensors",
+        "bytes": 988097536,
+        "sha256": "168ddbfb526cd87d458af7648d12768f1bba099d270e41ed9aa2bd68d143fbf6"
+      }
+    ],
+    "window_indices_complete": true,
+    "window_losses_finite": true,
+    "failed_or_missing_windows": 0,
+    "first_window": [
+      0,
+      2048,
+      2048,
+      2047
+    ],
+    "tail_window": [
+      297472,
+      299078,
+      70,
+      70
+    ],
+    "source_log": "evaluation\\logs\\M3_wikitext.log",
+    "source_log_sha256": "def2ab615a63755faef92985ffe30f8e8f04a1ffd18e0b473c19a5b6fbbbb794",
+    "raw_source": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4\\M3\\evaluation\\raw\\M3_wikitext.json",
+    "window_source": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4\\M3\\evaluation\\windows\\M3_wikitext.csv"
+  },
+  "C4_fixed_budget": {
+    "status": "PASS",
+    "dataset": "c4_fixed_budget",
+    "scope": "C4 fixed-budget validation; not standard/full C4 PPL",
+    "targets": 131071,
+    "windows": 253,
+    "input_tokens": 131072,
+    "total_nll": 401799.65441441536,
+    "mean_nll_per_token": 3.065511474043956,
+    "ppl": 21.44542796230099,
+    "evaluator_mean_nll": 3.065511474043956,
+    "evaluator_ppl": 21.44542796230099,
+    "mean_nll_recompute_diff": 0.0,
+    "ppl_recompute_diff": 0.0,
+    "recompute_tolerance_absolute": 1e-10,
+    "window_csv_sha256": "ee736a9b5b0a357c10b3b98ea56c15bbe58f4ec228049bbca8b7d9edfb994f4f",
+    "raw_json_sha256": "91eb21bfa4cbbe6cac2df4fd8b3ad4643f3ccaf3c39529fd26af09fd7790948a",
+    "evaluation_token_ids_sha256_i64le": "bc9a7575527abbc41352352a0439c6bee062ea265b7bd03120704e83f4af7053",
+    "model_weights_sha256": "bd9c11ba5c3d1c8d427a053ee185b2c3258489c91b4e8f73abd76e229f473da5",
+    "model_weight_files": [
+      {
+        "name": "model.safetensors",
+        "bytes": 988097536,
+        "sha256": "168ddbfb526cd87d458af7648d12768f1bba099d270e41ed9aa2bd68d143fbf6"
+      }
+    ],
+    "window_indices_complete": true,
+    "window_losses_finite": true,
+    "failed_or_missing_windows": 0,
+    "first_window": [
+      0,
+      2048,
+      2048,
+      2047
+    ],
+    "tail_window": [
+      129024,
+      131072,
+      512,
+      512
+    ],
+    "source_log": "evaluation\\logs\\M3_c4_fixed_budget.log",
+    "source_log_sha256": "3373650f675d8c573feae2882c4fb53a41c16beb85dac00c02fe9498fafe5106",
+    "raw_source": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4\\M3\\evaluation\\raw\\M3_c4_fixed_budget.json",
+    "window_source": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4\\M3\\evaluation\\windows\\M3_c4_fixed_budget.csv"
+  },
+  "dense_model_reload_status": "PASS",
+  "all_frozen_required_windows_present": true,
+  "all_window_losses_finite": true,
+  "all_targets_match_frozen_protocol": true,
+  "independent_total_and_mean_nll_ppl_recomputed_from_window_csv": true,
+  "aggregate_absolute_tolerance": 1e-10,
+  "evaluator_final_status": "PASS",
+  "evaluator_correctness_sha256": "89e5b9978fb853dbd1f160a28e11d31826aa9e81295d7befb6c81e042e429f6e"
+}

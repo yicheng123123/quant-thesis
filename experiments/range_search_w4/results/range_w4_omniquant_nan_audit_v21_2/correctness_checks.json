@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scope": "root-cause audit correctness only; v21.1 formal M3 remains stopped",
+  "checks": {
+    "three_replicas_exact_historical_loss": true,
+    "three_replicas_same_nonfinite_tensors_and_masks": true,
+    "RNG_restoration": true,
+    "first_finite_to_nonfinite_node_identified": true,
+    "same_operand_fp64_overflow_verification": true,
+    "instrumentation_preserves_loss_and_failure_masks": true,
+    "all_observed_forward_stages_finite": true,
+    "FP32_diagnostic_all_LWC_gradients_finite": true,
+    "full_FP32_diagnostic_all_observed_backward_gradients_finite": true,
+    "full_FP32_diagnostic_has_only_FP32_leaves": true,
+    "autocast_unit_scale_diagnostic_all_LWC_gradients_finite": true,
+    "native_math_sources_match_official": true,
+    "no_actual_optimizer_step_or_commit": true,
+    "historical_sources_checkpoints_logs_reports_unchanged": true
+  },
+  "limitations": [
+    "all-gradient bitwise equality fails only for finite q_proj gradient values",
+    "historical per-parameter gradients were not saved",
+    "SDPA internal scores not separately observed",
+    "L22/L23 controls use native FP prefixes, not unavailable actual formal prefixes",
+    "original D2 has unused FP16 leaf cast overflow; separate D2_FULL_FP32 is finite",
+    "samples 0..3 share first token284; broader data specificity remains untested",
+    "T4 not tested"
+  ]
+}

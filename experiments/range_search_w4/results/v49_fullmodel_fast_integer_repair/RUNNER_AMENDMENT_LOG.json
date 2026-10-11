@@ -1,0 +1,58 @@
+{
+  "gpu_start_runner_sha256": "2d6c6114c6fd7533a4c35bf06f978a8b5c1eee639f74d241e29b913969317db8",
+  "current_runner_sha256": "3dccc6306c3e35f1a4babed4266d8fa2af0261e7a345a5596daf4709dc560979",
+  "amendments": [
+    {
+      "amendment_id": "001",
+      "scope": "v49 launcher import wiring only",
+      "reason": "First launch failed before GPU_START because fast_accept.py imports repair_control; v49 had not loaded that alias.",
+      "evidence": "Frozen v48 run_v48.py explicitly loads V46 repair_v45.py as repair_control immediately before loading fast_accept.py.",
+      "change": "Add the same explicit load in v49.",
+      "algorithm_changed": false,
+      "v48_files_modified": false,
+      "protocol_changed": false,
+      "old_v49_runner_sha256": "87383fa95ea8a5aa33471091a31d6894db973f374c0c51b1a1507094fd4b8f3c",
+      "new_v49_runner_sha256": "2d6c6114c6fd7533a4c35bf06f978a8b5c1eee639f74d241e29b913969317db8",
+      "fast_accept_sha256": "c3a760c0f48723b3784774263af71bc9e469115c2ab5d0c35ba3145671e079a2",
+      "rules_sha256": "7c6dd06068f46b0b9efdead69055c711356588f4700d751cfc744018505631d6",
+      "protocol_sha256": "6c44516cb14921873903c3c3185442460bdef423c0ee272479bc44a5192b3512"
+    },
+    {
+      "amendment_id": "002",
+      "scope": "v49 result schema/recovery wiring only",
+      "reason": "Post-block0 verification found the frozen fast function did not expose packed_u4 although v49 group validation needs exact packed codes.",
+      "change": "v49 wrapper now stores rt.pack(result.codes) as packed_u4; four already committed block0 checkpoints were migrated by adding this exact packed representation.",
+      "algorithm_changed": false,
+      "acceptance_rule_changed": false,
+      "candidate_order_or_budget_changed": false,
+      "v48_files_modified": false,
+      "protocol_changed": false,
+      "block0_groups_repaired_again": false,
+      "block0_checkpoint_schema_migration_sha256": "0baaa182ab3edae6a8ea27186a650c19d9bb5d913ebf261b133d9e4fbeac50c7",
+      "previous_runner_sha256": "2d6c6114c6fd7533a4c35bf06f978a8b5c1eee639f74d241e29b913969317db8",
+      "current_runner_sha256": "42a34f2dc07ff0625711189c36d600863cfc07945ffb870cefe7f6ab0f0e8697",
+      "gpu_start_epoch_unchanged": 1791391007.328674,
+      "cumulative_gpu_elapsed_before_resume": 289.9730577468872,
+      "protocol_sha256": "6c44516cb14921873903c3c3185442460bdef423c0ee272479bc44a5192b3512",
+      "fast_accept_sha256": "c3a760c0f48723b3784774263af71bc9e469115c2ab5d0c35ba3145671e079a2"
+    },
+    {
+      "amendment_id": "003",
+      "scope": "block0 audit arithmetic only",
+      "reason": "The initial block0 guard expected 14,720 output rows, but the seven trusted M1 Linear shapes and committed module records sum to 12,672 rows per block; 304,128 total / 24 blocks also confirms 12,672.",
+      "change": "Correct block0 audit expected row count to 12,672; derive gate cost from measured block0 repair rows with new groups; count unique blocks with new groups in final status.",
+      "algorithm_changed": false,
+      "candidate_selection_changed": false,
+      "accepted_updates_or_budget_changed": false,
+      "group_checkpoints_repaired_again": false,
+      "evidence_module_rows_sum": 12672,
+      "total_source_rows": 304128,
+      "block0_group_commit_count": 4,
+      "previous_runner_sha256": "42a34f2dc07ff0625711189c36d600863cfc07945ffb870cefe7f6ab0f0e8697",
+      "current_runner_sha256": "3dccc6306c3e35f1a4babed4266d8fa2af0261e7a345a5596daf4709dc560979",
+      "GPU_START_runner_sha256": "2d6c6114c6fd7533a4c35bf06f978a8b5c1eee639f74d241e29b913969317db8",
+      "protocol_sha256": "6c44516cb14921873903c3c3185442460bdef423c0ee272479bc44a5192b3512"
+    }
+  ],
+  "algorithm_sources_unchanged": true
+}

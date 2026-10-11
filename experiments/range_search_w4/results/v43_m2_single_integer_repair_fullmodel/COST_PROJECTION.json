@@ -1,0 +1,69 @@
+{
+  "type": "projection, not measurement",
+  "v42_measured_block0_seconds": 226.10666029999993,
+  "v42_block_stage_seconds": {
+    "C_construction": 71.16703029999917,
+    "accepted_update": 0.30690399996819906,
+    "candidate_scoring": 2.3526817000165465,
+    "dependency_input_capture": 4.399763800000073,
+    "direct_recompute": 133.57805610001378,
+    "down_commit_prefix_refresh": 1.061146899999585,
+    "final_correctness": 0.5679463999913423,
+    "input_hash": 4.618178000004264,
+    "p_drift_check": 2.078373999996984,
+    "packing_checkpoint_IO": 0.6383433000082732,
+    "repair_initialization": 0.36193830000411253,
+    "whole_group_commit": 0.08145509998576017
+  },
+  "v42_block_stage_sum_seconds": 221.2118178999881,
+  "v42_unitemized_block_wall_seconds": 4.894842400011839,
+  "actual_shapes_rows_by_inputs": [
+    [
+      "mlp.down_proj",
+      896,
+      4864
+    ],
+    [
+      "mlp.gate_proj",
+      4864,
+      896
+    ],
+    [
+      "mlp.up_proj",
+      4864,
+      896
+    ],
+    [
+      "self_attn.k_proj",
+      128,
+      896
+    ],
+    [
+      "self_attn.o_proj",
+      896,
+      896
+    ],
+    [
+      "self_attn.q_proj",
+      896,
+      896
+    ],
+    [
+      "self_attn.v_proj",
+      128,
+      896
+    ]
+  ],
+  "identical_blocks": 24,
+  "unmargined_24_block_projection_seconds": 5426.559847199998,
+  "unchanged_safety_multiplier": 1.35,
+  "fixed_setup_projection_seconds": 30,
+  "formal_repair_conservative_projection_seconds": 7355.8557937199985,
+  "historical_M2_two_corpora_evaluation_seconds": 130.5802815000061,
+  "save_reload_eval_reserved_seconds": 360,
+  "new_hard_cap_seconds": 10800,
+  "conservative_total_projection_seconds": 7715.8557937199985,
+  "go": true,
+  "v42_prior_pilot_block_seconds": 226.10666029999993,
+  "v42_prior_total_GPU_budget_wall_seconds": 252.25650310516357
+}

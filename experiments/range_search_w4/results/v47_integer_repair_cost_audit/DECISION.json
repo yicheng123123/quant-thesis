@@ -1,0 +1,26 @@
+{
+  "decision": "NO_OPTIMIZATION_RECOMMENDED_YET",
+  "reason": "Measured bottlenecks are direct FP32 proposal scoring (54.03% of valid full-model block wall) and FP64 C construction (34.80%). Candidate scoring/minimum is 1.45%; p update is only isolated on two L0 matrices and is nested in a small combined full-run stage. A selected-row direct path may save only 2.16% of whole-run proposal output rows by count, while changing GEMM shape can alter FP32 decisions. No safe implementation saving has been demonstrated.",
+  "priority_direction": "evidence_insufficient_hold_optimization",
+  "answers": {
+    "A_candidate_scoring_is_major": false,
+    "B_acceptance_still_needs_full_p_update": true,
+    "C_direct_recompute_is_major": true,
+    "D_C_or_capture_limit": "C construction is the second largest block cost; input capture/hash/refresh is small",
+    "E_observed_repeated_work": true
+  },
+  "next_test_if_reopened": "Keep this as a future bounded implementation test only: on complete L0 up_proj and down_proj, compare any selected-row or cached-output direct scorer with the frozen v45 scorer at every proposal; require identical accept/reject decisions and terminal code/evaluation counts, then compare synchronized runtime. Do not treat row-count ratios as time savings.",
+  "gpu_profiling": {
+    "completed": true,
+    "seconds": 149.93755669999518,
+    "cap_seconds": 600.0,
+    "input_C_hashes_match_v46": true,
+    "terminal_codes_updates_evaluations_and_losses_match_v46": true,
+    "checkpoint_written": false,
+    "committed_to_model": false,
+    "PPL_or_held_scored": false
+  },
+  "model_setting": "Requested Luna Max; interface cannot verify or change model setting.",
+  "no_new_search_algorithm": true,
+  "v46_and_older_artifacts_read_only": true
+}

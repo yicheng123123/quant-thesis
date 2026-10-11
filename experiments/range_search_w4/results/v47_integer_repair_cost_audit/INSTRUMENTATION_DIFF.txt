@@ -1,0 +1,7 @@
+--- v46/repair_v45.py
++++ v47/instrumented_repair_v45.py
+@@ p update in settle() @@
+-        st['p'][ar]+=C[ac,:]*dv[accepted,None];st['loss'][ar]=newloss[ar];st['updates'][ar]+=1
++        with rt.timer('profile_p_vector_update'):
++            st['p'][ar]+=C[ac,:]*dv[accepted,None]
++        st['loss'][ar]=newloss[ar];st['updates'][ar]+=1

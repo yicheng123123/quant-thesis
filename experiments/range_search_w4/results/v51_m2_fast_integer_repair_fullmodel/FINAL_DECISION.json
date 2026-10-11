@@ -1,0 +1,69 @@
+{
+  "status": "D",
+  "complete_model": false,
+  "quality_verified": false,
+  "PPL_evaluations_v51": 0,
+  "stop_reason": "The unchanged v48 fast_accept.batch_repair initialization consistency guard failed on layer1 self_attn.k_proj before candidate search. No permitted frozen path remained; no tolerance change or bypass was applied.",
+  "fixed_guard": {
+    "rtol": 2e-05,
+    "atol": 1e-12,
+    "failing_rows": 1,
+    "total_rows": 128,
+    "row": 122,
+    "fp32_direct": 9.85896058680602e-08,
+    "quadratic": 9.858473035628205e-08,
+    "independent_rawX_fp64": 9.858473035628542e-08,
+    "fp32_minus_quadratic": 4.875511778155983e-12,
+    "frozen_tolerance": 2.9716946071256412e-12,
+    "raw64_minus_quadratic": 3.374896899216353e-21,
+    "fp32_relative_error": 4.945503994925015e-05,
+    "independent_raw64_relative_error": 3.4233464827865165e-14,
+    "interpretation": "FP32 direct rounding failed the fixed check for a near-zero row; independent raw-X FP64 matches the full FP64 Gram quadratic. This rules against a detected code/grid/C/p state divergence in the deterministic replay, but the frozen v48 entry gate still fails."
+  },
+  "coverage": {
+    "full_model_blocks": "1/24 committed",
+    "linear_modules": "7/168",
+    "output_rows": "12672/304128",
+    "committed_groups": 4,
+    "layer1_uncommitted_groups": 0,
+    "all_stage_l1_failure_before_search": true,
+    "full_checkpoint": false,
+    "reload": false,
+    "PPL": false
+  },
+  "run_hashes": {
+    "protocol_sha256": "478171ef4807d646162c6ee4e45ce2915dba68169bd766607d8f15443ae6620b",
+    "M2_checkpoint_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+    "fast_accept_sha256": "c3a760c0f48723b3784774263af71bc9e469115c2ab5d0c35ba3145671e079a2",
+    "rules_sha256": "7c6dd06068f46b0b9efdead69055c711356588f4700d751cfc744018505631d6",
+    "runner_sha256": "6d3f8c1cfd7d999eec3ac50ed0b6ab4440e1dea363d348c3357a1e1ddeb3157c",
+    "M1_PPL_result_hashes": [
+      "1f60d47a6a6201f281ebea45263f2a12a22f1237093a13af5af75225df7f47dc",
+      "6d75bfceaa41b89124bb571580739a2115d67910348a22233f4217b92b246ded"
+    ],
+    "M2_PPL_result_hashes": [
+      "9d98808426b4d7460c1d8fdf46a25852b83837dc84bd5e470af1de994a50b3d2",
+      "05659ba59279de51ff7a2eba6724bfa740595c413d77b54af3e6b03e64420bfa"
+    ],
+    "original_R2_PPL_result_hashes": [
+      "5e0c961ec7db21c79c0854d3042494879f282090fc149d53969944a9375a0ede",
+      "0d7bd3aec565a896e25c748ce49fd00cb82261755cf2ad3bd1f47fe5519302a5"
+    ],
+    "v49_R1_PPL_result_hashes": [
+      "a8c5daf10675dfb090561666eceaf4e0578e2d2612789e1821812f93715de470",
+      "efb8d1be235ada81c8c1161669d9550a55c2eb1a3b02e68f212f7814724a438f"
+    ]
+  },
+  "P3_read": false,
+  "v50_mixed_gram_path_used": false,
+  "algorithm_or_tolerance_changed": false,
+  "gpu_cap_seconds": 10800,
+  "cumulative_elapsed_through_final_diagnostic_seconds": 657.3046090602875,
+  "synchronized_stage_timer_totals_by_mode_seconds": {
+    "preflight": 0.3805953999981284,
+    "formal": 227.62591649935348,
+    "diagnostic": 36.6128523000516
+  },
+  "all_synchronized_stage_timer_seconds": 264.6193641994032,
+  "created_unix": 1791475863.9046593
+}

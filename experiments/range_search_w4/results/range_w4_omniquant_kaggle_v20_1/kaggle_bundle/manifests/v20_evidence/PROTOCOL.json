@@ -1,0 +1,19 @@
+{
+  "name": "v20 OmniQuant Qwen2.5 architecture port and compatibility smoke",
+  "verdict_scope": "Smoke and conservative readiness gate only; not formal M3 training or model-quality evaluation",
+  "upstream": {"repository": "https://github.com/OpenGVLab/OmniQuant", "commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14"},
+  "model": {"id": "Qwen/Qwen2.5-0.5B-Instruct", "revision": "7ae557604adf67be50417f59c2c2f167def9a775", "dtype": "FP16", "device": "NVIDIA GeForce RTX 4060 Laptop GPU"},
+  "formal_m3_config": {"weight_bits": 4, "activation_bits": 16, "group_size": 128, "lwc": true, "let": false, "symmetric": false, "epochs": 20, "calibration_samples": 128, "tokens_per_sample": 2048, "batch_size": 1, "learning_rate_lwc": 0.01, "weight_decay": 0.0},
+  "smoke_budget": {"calibration_samples": 2, "tokens_per_sample": 64, "optimization_steps_on_smoke_layer": 2, "smoke_layers": 1, "timing_profile": {"warmup_steps": 1, "measured_steps": 5, "adapter": "disposable fresh adapter, LWC reset to 4.0 and AdamW state cleared before each timed update", "separate_from_two_functional_smoke_updates": true}, "formal_epoch_config_recorded": 20, "final_ppl_or_formal_quality_claim": false},
+  "calibration": {"manifest": "../range_w4_fullmodel_v18/CALIBRATION_MANIFEST.json", "manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3", "source_split": "WikiText-2 train", "sample_order": "first two frozen manifest entries", "no_resampling": true},
+  "evaluation_smoke": {"source": "frozen v18 WikiText-2 test token IDs", "input_tokens": 128, "expected_scored_targets": 127, "max_length": 128, "stride": 128, "purpose": "evaluator wiring only; tiny PPL is not a quality result"},
+  "quantizer": {"name": "official OmniQuant UniformAffineQuantizer", "symmetric": false, "integer_range": "[0,15]", "group_axis": "per output row, consecutive groups on input dimension", "let": false},
+  "hard_stop": ["official commit/hash mismatch", "algorithm-semantic patch", "native/port parity fail", "module inventory mismatch", "attention kwargs mismatch", "calibration identity mismatch", "nonfinite LWC gradients or no LWC update", "reconstruction NaN/Inf", "dense reload mismatch", "tiny evaluator wiring fail", "conservative M3 runtime > 24 hours", "formal 2048-token VRAM feasibility not demonstrated under 8 GiB"],
+  "formal_training_executed": false,
+  "formal_ppl_executed": false,
+  "formal_epochs": 20,
+  "formal_cost_gate_hours": 24,
+  "hardware_vram_gate_gib": 8,
+  "formal_vram_feasibility": "not demonstrated; only 64-token smoke VRAM is measured",
+  "reproduce": ".\\.venv-gptq\\Scripts\\python.exe experiments\\range_search_w4\\results\\range_w4_omniquant_smoke_v20\\run_smoke.py"
+}

@@ -1,0 +1,74 @@
+{
+  "status": "TIMING_LIMITATION",
+  "calibration_wall_exactly_recovered": false,
+  "reason": "v21.1/v21.4 runner perf_counter calibration_wall values were not persisted with the final artifacts. attempt_id-to-checkpoint timestamps recover useful intervals but do not equal the runner's internal timer boundary or the full invocation start.",
+  "post_training_runner_summary_assembly_failure": {
+    "exception_type": "KeyError",
+    "message": "'manifest'",
+    "source_artifact": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4\\M3\\RUN_STATUS_TRAINING_FINALIZATION_FAILURE.json",
+    "source_sha256": "814061e364632220adf1ecdfb741a024922b4b702d30b434dfd92267a6f9c58e",
+    "failure_boundary": "after block23 checkpoint commit; training state remained committed",
+    "recovery": "training summary reconstructed from final checkpoint and logs; dense model reconstructed for export/reload with zero optimizer steps"
+  },
+  "accepted_formal_attempt_timestamp_intervals": [
+    {
+      "phase": "v21.1 formal prefix blocks0-20 checkpoint commit",
+      "completed_blocks": 21,
+      "effective_optimizer_updates": 53760,
+      "attempt_id": "20261001_183359_6c00bf87",
+      "attempt_id_timestamp_local": "2026-10-01T18:33:59+08:00",
+      "checkpoint_commit_local": "2026-10-01T19:08:48+08:00",
+      "elapsed_seconds": 2089.0,
+      "measurement_type": "timestamp-derived interval; not the runner's perf_counter calibration timer",
+      "source_checkpoint_manifest_sha256": "950421d4b4954fc8512300cbb5683665e7455afedc457fbf89f937fc42847411"
+    },
+    {
+      "phase": "v21.4 final continuation blocks21-23, including required prefix replay",
+      "completed_blocks": 3,
+      "scheduled_iterations": 7680,
+      "successful_optimizer_steps": 7678,
+      "gradscaler_skipped_steps": 2,
+      "attempt_id": "20261001_234305_7e9e2ddd",
+      "attempt_id_timestamp_local": "2026-10-01T23:43:05+08:00",
+      "checkpoint_commit_local": "2026-10-01T23:59:08+08:00",
+      "elapsed_seconds": 963.0,
+      "measurement_type": "timestamp-derived interval; not the runner's perf_counter calibration timer",
+      "source_training_summary_sha256": "3b4d1639b0da80b7e89fd56ce4c714077603aeb02f90dab446389d0695873b24",
+      "source_checkpoint_manifest_sha256": "3641627bf11979d159b769123eeaf5dabdea2ff35475fb77f30b66900fcf9366"
+    }
+  ],
+  "sum_of_timestamp_derived_intervals_seconds": 3052.0,
+  "sum_of_timestamp_derived_intervals_hours": 0.8477777777777777,
+  "interpretation": "An auditable timestamp-derived interval total, not exact calibrated wall time and not used for cost ratios. It includes the v21.4 prefix replay and model/tokenizer load between attempt ID creation and checkpoint commit; some pre-attempt setup is outside the interval.",
+  "persisted_measured_components": {
+    "v21_4_post_checkpoint_reconstruction_seconds": 59.07049569999799,
+    "v21_4_dense_export_and_reload_seconds": 12.604448400001274,
+    "v21_4_training_peak_allocated_bytes": 1842344960,
+    "v21_4_training_peak_reserved_bytes": null,
+    "v21_4_prefix_reconstruction_peak_allocated_bytes": 1842344960,
+    "v21_4_prefix_reconstruction_peak_reserved_bytes": 1927282688
+  },
+  "cost_scope": {
+    "included": [
+      "v21.1 committed prefix blocks0-20",
+      "v21.4 committed continuation blocks21-23",
+      "legitimate skips within canonical schedule",
+      "v21.4 dependency prefix replay actually executed"
+    ],
+    "separately_reported_not_added_to_calibration": [
+      "post-checkpoint investigative model reconstruction",
+      "dense export/reload"
+    ],
+    "excluded_nonfinal_work": [
+      "v21.1 discarded checkpoint-fsync attempt (2560 attempted updates, 0 committed)",
+      "v21.2/v21.3 diagnostics",
+      "smokes",
+      "code/setup debugging"
+    ],
+    "excluded_work_timing_recoverable": false
+  },
+  "M1_measured_calibration_wall_seconds": 648.876101,
+  "M2_measured_calibration_wall_seconds": 2115.935334,
+  "M3_to_M1_or_M2_cost_ratios": null,
+  "cost_ratio_reason": "M3 exact runner timer is unavailable; timestamp spans are a different, non-equivalent boundary."
+}

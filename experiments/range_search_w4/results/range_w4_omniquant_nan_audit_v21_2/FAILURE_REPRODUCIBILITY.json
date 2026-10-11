@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "repeats": 3,
+  "reference_loss": 0.15326565504074097,
+  "replayed_losses": [
+    0.15326565504074097,
+    0.15326565504074097,
+    0.15326565504074097
+  ],
+  "loss_bitwise_equal_to_historical_scalar": true,
+  "all_replays_nonfinite": true,
+  "replay_gradients_bitwise_equal": false,
+  "nonfinite_masks_bitwise_equal": true,
+  "nonfinite_parameter_gradient_tensors_bitwise_equal": true,
+  "finite_parameter_gradient_hash_differences": [
+    "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+    "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor"
+  ],
+  "reproducibility_scope": "exact loss and stable named nonfinite tensors/counts/positions; finite gradient bitwise equality is separately reported and is not the failure-identity requirement",
+  "prior_strict_hash_check": "FAILURE_REPRODUCIBILITY_STRICT_GRAD_HASH_CHECK.json preserves the extra all-gradient byte-equality check; only finite q_proj gradient bytes differed, while every nonfinite tensor matched bitwise",
+  "same_named_nonfinite_parameters_across_repeats": true,
+  "nonfinite_parameter_names": [
+    "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+    "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+    "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+    "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor"
+  ],
+  "historical_per_parameter_comparison": "not available: v21.1 saved only aggregate gradient flags, not named gradient tensors",
+  "optimizer_and_scaler_restoration": "fresh per-block AdamW (empty state) and fresh native GradScaler, following official loop; checkpoint RNG restored",
+  "committed_updates": 0
+}

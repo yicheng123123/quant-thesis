@@ -1,0 +1,186 @@
+{
+  "status": "SOURCE_AND_ARTIFACT_AUDIT",
+  "format": "W4A16 symmetric G128; code [0,15],zero8; FP32 PyTorch round/clamp -> FP16 W",
+  "range_semantics": "Native current compensated W group range; only dynamic group scale multiplied by alpha. alpha1 no hook",
+  "candidate_semantics": "Pristine W and fresh GPTQ state; full Linear all output rows per candidate; formal allrow scoring and row stitch; shared g_idx required identical",
+  "v24_scope": "full candidate generation but only four diagnostic rows retained/scored",
+  "grouping": "qkv and up/gate shared X/H; no sibling forward dependency",
+  "newly_optimized": false,
+  "anchors": [
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_formal.py",
+      "anchor": "for alpha in GRID:",
+      "lines": [
+        509
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_formal.py",
+      "anchor": "rp.score_rows",
+      "lines": [
+        447,
+        537
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_formal.py",
+      "anchor": "best_q[better]",
+      "lines": [
+        573
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_formal.py",
+      "anchor": "best_scale[better]",
+      "lines": [
+        574
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_formal.py",
+      "anchor": "best_zero[better]",
+      "lines": [
+        575
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_formal.py",
+      "anchor": "module.weight.copy_(stitched_q)",
+      "lines": [
+        613
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_formal.py",
+      "anchor": "for group in (",
+      "lines": [
+        824
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_m2_runtime_v17_3\\optimized_native_m2.py",
+      "anchor": "def prepare_native_state",
+      "lines": [
+        59
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_m2_runtime_v17_3\\optimized_native_m2.py",
+      "anchor": "inverse_before_final_cholesky",
+      "lines": [
+        23,
+        76,
+        85,
+        121,
+        124
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_m2_runtime_v17_3\\optimized_native_m2.py",
+      "anchor": "core.H = prepared.hessian.clone()",
+      "lines": [
+        114
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_m2_runtime_v17_3\\optimized_native_m2.py",
+      "anchor": "if calls > 0:",
+      "lines": [
+        136
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_m2_runtime_v17_3\\optimized_native_m2.py",
+      "anchor": "core.quantizer.scale = core.quantizer.scale * alpha",
+      "lines": [
+        137
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_m2_runtime_v17_3\\optimized_native_m2.py",
+      "anchor": "core.quantize(blocksize=128)",
+      "lines": [
+        142
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_structured_group_e2_v24\\run_e2_v24.py",
+      "anchor": "def get_full_candidate",
+      "lines": [
+        918
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_structured_group_e2_v24\\run_e2_v24.py",
+      "anchor": "def score_selected_rows",
+      "lines": [
+        425
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_structured_group_e2_v24\\run_e2_v24.py",
+      "anchor": "for alpha in DENSE_GRID:",
+      "lines": [
+        1149,
+        1162,
+        1363
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_structured_group_e2_v24\\run_e2_v24.py",
+      "anchor": "scalar_scores =",
+      "lines": [
+        1156
+      ]
+    },
+    {
+      "file": "experiments\\range_search_w4\\results\\range_w4_structured_group_e2_v24\\run_e2_v24.py",
+      "anchor": "dense_scores =",
+      "lines": [
+        1157
+      ]
+    },
+    {
+      "file": ".venv-gptq\\Lib\\site-packages\\gptqmodel\\quantization\\gptq.py",
+      "anchor": "self.quantizer.find_params(W[:,",
+      "lines": [
+        393
+      ]
+    },
+    {
+      "file": ".venv-gptq\\Lib\\site-packages\\gptqmodel\\quantization\\gptq.py",
+      "anchor": "W1[:, i:] -=",
+      "lines": [
+        411
+      ]
+    },
+    {
+      "file": ".venv-gptq\\Lib\\site-packages\\gptqmodel\\quantization\\gptq.py",
+      "anchor": "W[:, i2:] -=",
+      "lines": [
+        417
+      ]
+    },
+    {
+      "file": ".venv-gptq\\Lib\\site-packages\\gptqmodel\\quantization\\gptq.py",
+      "anchor": "torch.linalg.cholesky(H, upper=True)",
+      "lines": [
+        362
+      ]
+    },
+    {
+      "file": ".venv-gptq\\Lib\\site-packages\\gptqmodel\\quantization\\quantizer.py",
+      "anchor": "torch.round(x / scale) + zero",
+      "lines": [
+        36
+      ]
+    },
+    {
+      "file": ".venv-gptq\\Lib\\site-packages\\gptqmodel\\quantization\\quantizer.py",
+      "anchor": "torch.full_like(self.scale, (self.maxq + 1) / 2)",
+      "lines": [
+        121
+      ]
+    }
+  ]
+}

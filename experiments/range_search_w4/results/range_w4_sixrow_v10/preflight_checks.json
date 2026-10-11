@@ -1,0 +1,87 @@
+{
+  "status": "PASS",
+  "checks": {
+    "v9_manifest_hash": true,
+    "ten_splits_article_token_hashes_reused": true,
+    "split_search_heldout_disjoint": true,
+    "all_v8_row_weight_hashes_match_captured_model": true,
+    "spot_native_dynamic_parity": true,
+    "l23r448_import_exact": true,
+    "planned_candidate_count_is_500": true,
+    "v8_v9_initial_fingerprints_recorded": true,
+    "activation_capture_has_80_docs_each_layer": true
+  },
+  "row_weight_hash_checks": {
+    "L0R0": true,
+    "L0R448": true,
+    "L12R0": true,
+    "L12R448": true,
+    "L23R0": true,
+    "L23R448": true
+  },
+  "l23r448_import_checks": {
+    "S00": true,
+    "S01": true,
+    "S02": true,
+    "S03": true,
+    "S04": true,
+    "S05": true,
+    "S06": true,
+    "S07": true,
+    "S08": true,
+    "S09": true
+  },
+  "spot_parity": {
+    "status": "PASS",
+    "row": "L0R0",
+    "split_id": "S00",
+    "configuration": {
+      "gptqmodel": "2.2.0",
+      "alpha": 1.0,
+      "bits": 4,
+      "symmetric": true,
+      "group_size": 128,
+      "block_size": 128,
+      "damp_percent": 0.1,
+      "desc_act": false
+    },
+    "checks": {
+      "no_dead_columns": true,
+      "fp16_weight_equal": true,
+      "scale_equal": true,
+      "zero_equal": true,
+      "search_output_mse_equal": true,
+      "heldout_output_mse_equal": true
+    },
+    "differences": {
+      "weight_max_abs": 0.0,
+      "weight_mismatched_elements": 0,
+      "scale_max_abs": 0.0,
+      "zero_max_abs": 0.0
+    },
+    "native_search_sse": 0.0017886412097141147,
+    "custom_search_sse": 0.0017886412097141147,
+    "native_heldout_sse": 0.008871007710695267,
+    "custom_heldout_sse": 0.008871007710695267
+  },
+  "capture": {
+    "capture_seconds": 5.896621099996992,
+    "peak_allocated_bytes": 1044917760,
+    "peak_reserved_bytes": 1103101952,
+    "document_count": 80,
+    "weight_row_hashes": {
+      "0": {
+        "0": "5f67c918b9f065354edbc3879a37c18c8d16969f9ce2474fb794f88953099a80",
+        "448": "63a05d62c2e8292826bdbba31a50ab616f09625241b7f6c8e205a195f2ef46a1"
+      },
+      "12": {
+        "0": "81cba28757572aad0ae82154300051562306e877517eb278e31d77c97bcc9b92",
+        "448": "36b82725f394f0a44c10e047acb867fabbfe08ede08ea36b84bc1ce84bac432e"
+      },
+      "23": {
+        "0": "e306fe8bce9382688dfa345c81eba149c533d6da58ec930874724c52f8194054",
+        "448": "737b83ee89708af516eef2678e4caf9f099d91b4487964ddb836a2cde7422159"
+      }
+    }
+  }
+}

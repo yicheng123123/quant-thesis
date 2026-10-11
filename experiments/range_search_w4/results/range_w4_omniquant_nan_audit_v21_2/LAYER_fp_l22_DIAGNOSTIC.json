@@ -1,0 +1,2302 @@
+{
+  "layer": 22,
+  "sample": 0,
+  "mode": "D1",
+  "dependency": "native FP16 prefix; fresh LWC=4; diagnostic only",
+  "loss": 0.021916182711720467,
+  "loss_finite": true,
+  "forward_output": {
+    "present": true,
+    "shape": [
+      1,
+      2048,
+      896
+    ],
+    "dtype": "torch.float16",
+    "numel": 1835008,
+    "finite_count": 1835008,
+    "nan_count": 0,
+    "posinf_count": 0,
+    "neginf_count": 0,
+    "all_finite": true,
+    "min": -18.625,
+    "max": 68.375,
+    "mean": 0.04851557240285079,
+    "std": 2.434040501897094,
+    "max_finite_abs": 68.375,
+    "mean_finite_abs": 1.3964577147053205
+  },
+  "input": {
+    "present": true,
+    "shape": [
+      1,
+      2048,
+      896
+    ],
+    "dtype": "torch.float16",
+    "numel": 1835008,
+    "finite_count": 1835008,
+    "nan_count": 0,
+    "posinf_count": 0,
+    "neginf_count": 0,
+    "all_finite": true,
+    "min": -17.0,
+    "max": 67.75,
+    "mean": 0.048401747121066103,
+    "std": 2.2490071719927576,
+    "max_finite_abs": 67.75,
+    "mean_finite_abs": 1.1847383815072263
+  },
+  "teacher_target": {
+    "present": true,
+    "shape": [
+      1,
+      2048,
+      896
+    ],
+    "dtype": "torch.float16",
+    "numel": 1835008,
+    "finite_count": 1835008,
+    "nan_count": 0,
+    "posinf_count": 0,
+    "neginf_count": 0,
+    "all_finite": true,
+    "min": -18.875,
+    "max": 68.4375,
+    "mean": 0.04801776880880684,
+    "std": 2.4341055928574757,
+    "max_finite_abs": 68.4375,
+    "mean_finite_abs": 1.3943693930112724
+  },
+  "gradients": [
+    {
+      "module_name": "native_layer.self_attn.q_proj.weight_quantizer",
+      "projection": "q_proj",
+      "parameter_name": "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+      "parameter_shape": [
+        6272,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 3.9999999999999996,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 3.9999999999999996
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -2.8111719529988477e-07,
+        "max": 4.222347342874855e-07,
+        "mean": 2.5872766111718554e-09,
+        "std": 2.1198185605426406e-08,
+        "max_finite_abs": 4.222347342874855e-07,
+        "mean_finite_abs": 8.935548473398088e-09
+      },
+      "gradient_sha256": "7c4f2d21057d42d350a686ec637e493d164685c31edeed5ff5215eec3e6da431",
+      "nonfinite_mask_sha256": "27e252c16d2f3c861b57f34cb9d769a3e4ff93a1adf73af6970fda1294d88d0f"
+    },
+    {
+      "module_name": "native_layer.self_attn.q_proj.weight_quantizer",
+      "projection": "q_proj",
+      "parameter_name": "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor",
+      "parameter_shape": [
+        6272,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 3.9999999999999996,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 3.9999999999999996
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -3.8823063164272753e-07,
+        "max": 3.407141662137292e-07,
+        "mean": 2.5912715355838706e-09,
+        "std": 2.209686635026259e-08,
+        "max_finite_abs": 3.8823063164272753e-07,
+        "mean_finite_abs": 9.115280067296555e-09
+      },
+      "gradient_sha256": "3afd89632e343ef17c548fb628d5a2c0a77016101c16b121aa82ae261f3d716b",
+      "nonfinite_mask_sha256": "27e252c16d2f3c861b57f34cb9d769a3e4ff93a1adf73af6970fda1294d88d0f"
+    },
+    {
+      "module_name": "native_layer.self_attn.k_proj.weight_quantizer",
+      "projection": "k_proj",
+      "parameter_name": "native_layer.self_attn.k_proj.weight_quantizer.upbound_factor",
+      "parameter_shape": [
+        896,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -5.870619133929722e-06,
+        "max": 4.250965957908193e-06,
+        "mean": 1.5987242791719e-08,
+        "std": 3.383527369612539e-07,
+        "max_finite_abs": 5.870619133929722e-06,
+        "mean_finite_abs": 7.80603028121359e-08
+      },
+      "gradient_sha256": "215fac8ea6ec95713e78c6ff175a5918f768d2bd2cc3ba402a253db13e0cc407",
+      "nonfinite_mask_sha256": "d54f02b97ed5bc2a642756268b41d4b8f7a077e73224e1580d22436834a14db5"
+    },
+    {
+      "module_name": "native_layer.self_attn.k_proj.weight_quantizer",
+      "projection": "k_proj",
+      "parameter_name": "native_layer.self_attn.k_proj.weight_quantizer.lowbound_factor",
+      "parameter_shape": [
+        896,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -3.532917389748036e-06,
+        "max": 3.2848372484295396e-06,
+        "mean": 1.6744665599759732e-08,
+        "std": 2.7715777145363865e-07,
+        "max_finite_abs": 3.532917389748036e-06,
+        "mean_finite_abs": 7.473299386124196e-08
+      },
+      "gradient_sha256": "ad16573ddbf53e399ae43a61be93007e265d0679827d9d34a82ecbcb205c4c2e",
+      "nonfinite_mask_sha256": "d54f02b97ed5bc2a642756268b41d4b8f7a077e73224e1580d22436834a14db5"
+    },
+    {
+      "module_name": "native_layer.self_attn.v_proj.weight_quantizer",
+      "projection": "v_proj",
+      "parameter_name": "native_layer.self_attn.v_proj.weight_quantizer.upbound_factor",
+      "parameter_shape": [
+        896,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -1.6875864048415679e-06,
+        "max": 1.185106953016657e-06,
+        "mean": 2.9513787482509986e-08,
+        "std": 1.5691907472755501e-07,
+        "max_finite_abs": 1.6875864048415679e-06,
+        "mean_finite_abs": 9.411233071548449e-08
+      },
+      "gradient_sha256": "0c9d5d4198eb174feacf55477ac2c6d8b23cc31e8594675d182bf5f612153798",
+      "nonfinite_mask_sha256": "d54f02b97ed5bc2a642756268b41d4b8f7a077e73224e1580d22436834a14db5"
+    },
+    {
+      "module_name": "native_layer.self_attn.v_proj.weight_quantizer",
+      "projection": "v_proj",
+      "parameter_name": "native_layer.self_attn.v_proj.weight_quantizer.lowbound_factor",
+      "parameter_shape": [
+        896,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -9.276633363697329e-07,
+        "max": 1.1053184607590083e-06,
+        "mean": 3.230121292722169e-08,
+        "std": 1.5875176838714186e-07,
+        "max_finite_abs": 1.1053184607590083e-06,
+        "mean_finite_abs": 9.544951184338481e-08
+      },
+      "gradient_sha256": "451dabe57f62ad7375ea7d05b8058e3c4ef13cac5ecd7a771aaba3e450c3f373",
+      "nonfinite_mask_sha256": "d54f02b97ed5bc2a642756268b41d4b8f7a077e73224e1580d22436834a14db5"
+    },
+    {
+      "module_name": "native_layer.self_attn.o_proj.weight_quantizer",
+      "projection": "o_proj",
+      "parameter_name": "native_layer.self_attn.o_proj.weight_quantizer.upbound_factor",
+      "parameter_shape": [
+        6272,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 3.9999999999999996,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 3.9999999999999996
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -7.737816645203566e-07,
+        "max": 3.22833869859096e-07,
+        "mean": 3.882685973853988e-09,
+        "std": 2.66686849433706e-08,
+        "max_finite_abs": 7.737816645203566e-07,
+        "mean_finite_abs": 1.3043234498885452e-08
+      },
+      "gradient_sha256": "f16c146641e2ef733081075bc72601dcb9353ee701d6cbdd8e1d1604a28ce44f",
+      "nonfinite_mask_sha256": "27e252c16d2f3c861b57f34cb9d769a3e4ff93a1adf73af6970fda1294d88d0f"
+    },
+    {
+      "module_name": "native_layer.self_attn.o_proj.weight_quantizer",
+      "projection": "o_proj",
+      "parameter_name": "native_layer.self_attn.o_proj.weight_quantizer.lowbound_factor",
+      "parameter_shape": [
+        6272,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 3.9999999999999996,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 3.9999999999999996
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -1.003365355245478e-06,
+        "max": 3.300046955700964e-07,
+        "mean": 3.90318837968406e-09,
+        "std": 2.7607241870789264e-08,
+        "max_finite_abs": 1.003365355245478e-06,
+        "mean_finite_abs": 1.3072105415189576e-08
+      },
+      "gradient_sha256": "f85300b2b1db9199aa23d85e42d12f51b39cf983316433447b3aee2ce6c7c7c0",
+      "nonfinite_mask_sha256": "27e252c16d2f3c861b57f34cb9d769a3e4ff93a1adf73af6970fda1294d88d0f"
+    },
+    {
+      "module_name": "native_layer.mlp.gate_proj.weight_quantizer",
+      "projection": "gate_proj",
+      "parameter_name": "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+      "parameter_shape": [
+        34048,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -1.598636345079285e-06,
+        "max": 6.92517687639338e-07,
+        "mean": 1.4989457888619076e-09,
+        "std": 1.6920318655618573e-08,
+        "max_finite_abs": 1.598636345079285e-06,
+        "mean_finite_abs": 3.8202275517501895e-09
+      },
+      "gradient_sha256": "28fef717ffcd1828b0c037c3727e08496dde00a3dd848edff330c5b1235bcd26",
+      "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+    },
+    {
+      "module_name": "native_layer.mlp.gate_proj.weight_quantizer",
+      "projection": "gate_proj",
+      "parameter_name": "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+      "parameter_shape": [
+        34048,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -7.06294031260768e-07,
+        "max": 4.0098311160363664e-07,
+        "mean": 1.4540122568102176e-09,
+        "std": 1.2591510782089378e-08,
+        "max_finite_abs": 7.06294031260768e-07,
+        "mean_finite_abs": 3.6818040293632407e-09
+      },
+      "gradient_sha256": "aac022d93617c7dc505b6b98058de56d68ec9ff6417cf69bed9765bfb6df6122",
+      "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+    },
+    {
+      "module_name": "native_layer.mlp.up_proj.weight_quantizer",
+      "projection": "up_proj",
+      "parameter_name": "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+      "parameter_shape": [
+        34048,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -6.182317520142533e-06,
+        "max": 2.3787304144207155e-06,
+        "mean": 2.9187397830758935e-09,
+        "std": 5.400749475281823e-08,
+        "max_finite_abs": 6.182317520142533e-06,
+        "mean_finite_abs": 6.80446966589128e-09
+      },
+      "gradient_sha256": "366b483b793e32a63ebbc5c5e8866ac6c29bff1757c557afed866b5e32a820a7",
+      "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+    },
+    {
+      "module_name": "native_layer.mlp.up_proj.weight_quantizer",
+      "projection": "up_proj",
+      "parameter_name": "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+      "parameter_shape": [
+        34048,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -3.7140041513339384e-06,
+        "max": 1.9735805381060345e-06,
+        "mean": 3.018389570573212e-09,
+        "std": 4.5100755920051296e-08,
+        "max_finite_abs": 3.7140041513339384e-06,
+        "mean_finite_abs": 6.697191406894187e-09
+      },
+      "gradient_sha256": "84d75bf8c210b1849c72827da3fe1e5cc3005e570ed3f06acfa97d61735a53d7",
+      "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+    },
+    {
+      "module_name": "native_layer.mlp.down_proj.weight_quantizer",
+      "projection": "down_proj",
+      "parameter_name": "native_layer.mlp.down_proj.weight_quantizer.upbound_factor",
+      "parameter_shape": [
+        34048,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -7.04718149791006e-06,
+        "max": 3.6235655898053665e-06,
+        "mean": 3.376001208327848e-09,
+        "std": 5.1771345169867066e-08,
+        "max_finite_abs": 7.04718149791006e-06,
+        "mean_finite_abs": 8.639978553987529e-09
+      },
+      "gradient_sha256": "1a7b06135de719d975ca4fb48cf671a606fe554d7fa6df5fcad29d7f1a28b3bf",
+      "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+    },
+    {
+      "module_name": "native_layer.mlp.down_proj.weight_quantizer",
+      "projection": "down_proj",
+      "parameter_name": "native_layer.mlp.down_proj.weight_quantizer.lowbound_factor",
+      "parameter_shape": [
+        34048,
+        1
+      ],
+      "parameter_dtype": "torch.float32",
+      "parameter_value": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -2.0287561710574664e-06,
+        "max": 4.157322564424248e-06,
+        "mean": 3.549995384344171e-09,
+        "std": 3.4115746111077635e-08,
+        "max_finite_abs": 4.157322564424248e-06,
+        "mean_finite_abs": 8.428919902851727e-09
+      },
+      "gradient_sha256": "3546eea1b7913f49c23fc05802ed631f8d9501ac786fc0cb24c8a18b3eb69591",
+      "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+    }
+  ],
+  "all_lwc_gradients_finite": true,
+  "nonfinite_parameter_names": [],
+  "optimizer": {
+    "initial_state_entries": 0,
+    "step_call_count": 0,
+    "state_entries_after": 0,
+    "changed_lwc_parameter_names": [],
+    "updates_committed": 0,
+    "state_tensor_audit": {}
+  },
+  "amp": {
+    "autocast_enabled": true,
+    "autocast_dtype": "torch.float16",
+    "parameter_dtype": "torch.float32",
+    "grad_scaler_used": true,
+    "state_before": {
+      "scale": 65536.0,
+      "growth_factor": 2.0,
+      "backoff_factor": 0.5,
+      "growth_interval": 2000,
+      "_growth_tracker": 0
+    },
+    "state_after": {
+      "scale": 65536.0,
+      "growth_factor": 2.0,
+      "backoff_factor": 0.5,
+      "growth_interval": 2000,
+      "_growth_tracker": 0
+    },
+    "scale_factor": 65536.0,
+    "scaled_loss": 1436.2989501953125,
+    "native_scaler_call_with_step_and_update": false
+  },
+  "gradient_phases": {
+    "scaled_before_unscale": [
+      {
+        "module_name": "native_layer.self_attn.q_proj.weight_quantizer",
+        "projection": "q_proj",
+        "parameter_name": "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          6272,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 3.9999999999999996,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 3.9999999999999996
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.01842329651117325,
+          "max": 0.02767157554626465,
+          "mean": 0.00016955975998975871,
+          "std": 0.001389244291837225,
+          "max_finite_abs": 0.02767157554626465,
+          "mean_finite_abs": 0.0005856001047526171
+        },
+        "gradient_sha256": "dab8ce3ae94fb3ac95cc9fd5600bd59b98c07985018299aab0314e0b1b7b4540",
+        "nonfinite_mask_sha256": "27e252c16d2f3c861b57f34cb9d769a3e4ff93a1adf73af6970fda1294d88d0f"
+      },
+      {
+        "module_name": "native_layer.self_attn.q_proj.weight_quantizer",
+        "projection": "q_proj",
+        "parameter_name": "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          6272,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 3.9999999999999996,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 3.9999999999999996
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.02544308267533779,
+          "max": 0.022329043596982956,
+          "mean": 0.00016982157135602454,
+          "std": 0.001448140233130809,
+          "max_finite_abs": 0.02544308267533779,
+          "mean_finite_abs": 0.000597378994490347
+        },
+        "gradient_sha256": "babc7a7966c7754b71f64b61ed243f2fba24688e8aeadedb63958b990534471f",
+        "nonfinite_mask_sha256": "27e252c16d2f3c861b57f34cb9d769a3e4ff93a1adf73af6970fda1294d88d0f"
+      },
+      {
+        "module_name": "native_layer.self_attn.k_proj.weight_quantizer",
+        "projection": "k_proj",
+        "parameter_name": "native_layer.self_attn.k_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          896,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.38473689556121826,
+          "max": 0.2785913050174713,
+          "mean": 0.0010477399435980964,
+          "std": 0.022174284969492735,
+          "max_finite_abs": 0.38473689556121826,
+          "mean_finite_abs": 0.005115760005096138
+        },
+        "gradient_sha256": "0c079ffcee083a1b8b3b81954a62c10e8a4b277e94096b9915920620feae20c3",
+        "nonfinite_mask_sha256": "d54f02b97ed5bc2a642756268b41d4b8f7a077e73224e1580d22436834a14db5"
+      },
+      {
+        "module_name": "native_layer.self_attn.k_proj.weight_quantizer",
+        "projection": "k_proj",
+        "parameter_name": "native_layer.self_attn.k_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          896,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.23153327405452728,
+          "max": 0.2152750939130783,
+          "mean": 0.0010973784047458538,
+          "std": 0.018163811709985662,
+          "max_finite_abs": 0.23153327405452728,
+          "mean_finite_abs": 0.004897701485690353
+        },
+        "gradient_sha256": "6e346e2124aff818faf7e9f867ff2637213f18f15d5542fbaee2a2b688dc1317",
+        "nonfinite_mask_sha256": "d54f02b97ed5bc2a642756268b41d4b8f7a077e73224e1580d22436834a14db5"
+      },
+      {
+        "module_name": "native_layer.self_attn.v_proj.weight_quantizer",
+        "projection": "v_proj",
+        "parameter_name": "native_layer.self_attn.v_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          896,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.11059766262769699,
+          "max": 0.07766716927289963,
+          "mean": 0.0019342155764537745,
+          "std": 0.010283848481345045,
+          "max_finite_abs": 0.11059766262769699,
+          "mean_finite_abs": 0.006167745705769992
+        },
+        "gradient_sha256": "6d626570d1c67e7470f164555bb3014dfdad4fd1090c764b343e75c65d500d14",
+        "nonfinite_mask_sha256": "d54f02b97ed5bc2a642756268b41d4b8f7a077e73224e1580d22436834a14db5"
+      },
+      {
+        "module_name": "native_layer.self_attn.v_proj.weight_quantizer",
+        "projection": "v_proj",
+        "parameter_name": "native_layer.self_attn.v_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          896,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.06079534441232681,
+          "max": 0.07243815064430237,
+          "mean": 0.0021168922903984006,
+          "std": 0.010403955893019729,
+          "max_finite_abs": 0.07243815064430237,
+          "mean_finite_abs": 0.006255379208168067
+        },
+        "gradient_sha256": "2b660db81816858e5fdd7a386d5eb3f22d65ed6a46cb225e931afa43fd15de51",
+        "nonfinite_mask_sha256": "d54f02b97ed5bc2a642756268b41d4b8f7a077e73224e1580d22436834a14db5"
+      },
+      {
+        "module_name": "native_layer.self_attn.o_proj.weight_quantizer",
+        "projection": "o_proj",
+        "parameter_name": "native_layer.self_attn.o_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          6272,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 3.9999999999999996,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 3.9999999999999996
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.05071055516600609,
+          "max": 0.021157240495085716,
+          "mean": 0.00025445570798249495,
+          "std": 0.0017477589364487357,
+          "max_finite_abs": 0.05071055516600609,
+          "mean_finite_abs": 0.000854801416118957
+        },
+        "gradient_sha256": "803ff56c5ac5c6f3a48ca9e14b3000856afd47acad2da1ca1e4134b397235213",
+        "nonfinite_mask_sha256": "27e252c16d2f3c861b57f34cb9d769a3e4ff93a1adf73af6970fda1294d88d0f"
+      },
+      {
+        "module_name": "native_layer.self_attn.o_proj.weight_quantizer",
+        "projection": "o_proj",
+        "parameter_name": "native_layer.self_attn.o_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          6272,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 3.9999999999999996,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 3.9999999999999996
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.06575655192136765,
+          "max": 0.021627187728881836,
+          "mean": 0.0002557993536509746,
+          "std": 0.0018092682032440452,
+          "max_finite_abs": 0.06575655192136765,
+          "mean_finite_abs": 0.000856693500489864
+        },
+        "gradient_sha256": "bc34a23e4359571a38956e00c96b3ac1c65a5ab87ea60a3e1b0558c8d5666ad0",
+        "nonfinite_mask_sha256": "27e252c16d2f3c861b57f34cb9d769a3e4ff93a1adf73af6970fda1294d88d0f"
+      },
+      {
+        "module_name": "native_layer.mlp.gate_proj.weight_quantizer",
+        "projection": "gate_proj",
+        "parameter_name": "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          34048,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.10476823151111603,
+          "max": 0.04538483917713165,
+          "mean": 9.823491121885397e-05,
+          "std": 0.0011088900034146188,
+          "max_finite_abs": 0.10476823151111603,
+          "mean_finite_abs": 0.0002503624328315004
+        },
+        "gradient_sha256": "5cb63a59ef5a3c4cf31053de2c266e546521177617fae8fc12ac3c2f193a6227",
+        "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+      },
+      {
+        "module_name": "native_layer.mlp.gate_proj.weight_quantizer",
+        "projection": "gate_proj",
+        "parameter_name": "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          34048,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.04628768563270569,
+          "max": 0.02627882920205593,
+          "mean": 9.529014726231442e-05,
+          "std": 0.0008251972506150095,
+          "max_finite_abs": 0.04628768563270569,
+          "mean_finite_abs": 0.00024129070886834934
+        },
+        "gradient_sha256": "598dccf63e5b52f281a957ab3bd193e8a4453ef16157001055a8c44728607691",
+        "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+      },
+      {
+        "module_name": "native_layer.mlp.up_proj.weight_quantizer",
+        "projection": "up_proj",
+        "parameter_name": "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          34048,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.40516436100006104,
+          "max": 0.155892476439476,
+          "mean": 0.00019128253042366176,
+          "std": 0.0035394351761206953,
+          "max_finite_abs": 0.40516436100006104,
+          "mean_finite_abs": 0.00044593772402385095
+        },
+        "gradient_sha256": "105fefe034d7a8dbad53faba416de014dd102244c042a6b7e9758acc9b95a7f3",
+        "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+      },
+      {
+        "module_name": "native_layer.mlp.up_proj.weight_quantizer",
+        "projection": "up_proj",
+        "parameter_name": "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          34048,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.24340097606182098,
+          "max": 0.12934057414531708,
+          "mean": 0.00019781317889708603,
+          "std": 0.0029557231399764817,
+          "max_finite_abs": 0.24340097606182098,
+          "mean_finite_abs": 0.0004389071360422174
+        },
+        "gradient_sha256": "2b464fd9e0844f32a8db1001a2a003ee1283f15e58743a223cebf90346f128c0",
+        "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+      },
+      {
+        "module_name": "native_layer.mlp.down_proj.weight_quantizer",
+        "projection": "down_proj",
+        "parameter_name": "native_layer.mlp.down_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          34048,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.4618440866470337,
+          "max": 0.2374739944934845,
+          "mean": 0.00022124961518897384,
+          "std": 0.003392886877052408,
+          "max_finite_abs": 0.4618440866470337,
+          "mean_finite_abs": 0.0005662296345141267
+        },
+        "gradient_sha256": "a5bf52d51bac59f7c975d1ad76c4d4534e8163ad4dfe424ac4fdc9e2fb056fc2",
+        "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+      },
+      {
+        "module_name": "native_layer.mlp.down_proj.weight_quantizer",
+        "projection": "down_proj",
+        "parameter_name": "native_layer.mlp.down_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          34048,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -0.13295656442642212,
+          "max": 0.27245429158210754,
+          "mean": 0.0002326524975083796,
+          "std": 0.002235809537135584,
+          "max_finite_abs": 0.27245429158210754,
+          "mean_finite_abs": 0.0005523976947532907
+        },
+        "gradient_sha256": "0abf279358f6ad1c09cec370c96a36cde853312d1f5e27b33cd24aa87eaae29c",
+        "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+      }
+    ],
+    "unscaled_before_optimizer": [
+      {
+        "module_name": "native_layer.self_attn.q_proj.weight_quantizer",
+        "projection": "q_proj",
+        "parameter_name": "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          6272,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 3.9999999999999996,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 3.9999999999999996
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -2.8111719529988477e-07,
+          "max": 4.222347342874855e-07,
+          "mean": 2.5872766111718554e-09,
+          "std": 2.1198185605426406e-08,
+          "max_finite_abs": 4.222347342874855e-07,
+          "mean_finite_abs": 8.935548473398088e-09
+        },
+        "gradient_sha256": "7c4f2d21057d42d350a686ec637e493d164685c31edeed5ff5215eec3e6da431",
+        "nonfinite_mask_sha256": "27e252c16d2f3c861b57f34cb9d769a3e4ff93a1adf73af6970fda1294d88d0f"
+      },
+      {
+        "module_name": "native_layer.self_attn.q_proj.weight_quantizer",
+        "projection": "q_proj",
+        "parameter_name": "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          6272,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 3.9999999999999996,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 3.9999999999999996
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -3.8823063164272753e-07,
+          "max": 3.407141662137292e-07,
+          "mean": 2.5912715355838706e-09,
+          "std": 2.209686635026259e-08,
+          "max_finite_abs": 3.8823063164272753e-07,
+          "mean_finite_abs": 9.115280067296555e-09
+        },
+        "gradient_sha256": "3afd89632e343ef17c548fb628d5a2c0a77016101c16b121aa82ae261f3d716b",
+        "nonfinite_mask_sha256": "27e252c16d2f3c861b57f34cb9d769a3e4ff93a1adf73af6970fda1294d88d0f"
+      },
+      {
+        "module_name": "native_layer.self_attn.k_proj.weight_quantizer",
+        "projection": "k_proj",
+        "parameter_name": "native_layer.self_attn.k_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          896,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -5.870619133929722e-06,
+          "max": 4.250965957908193e-06,
+          "mean": 1.5987242791719e-08,
+          "std": 3.383527369612539e-07,
+          "max_finite_abs": 5.870619133929722e-06,
+          "mean_finite_abs": 7.80603028121359e-08
+        },
+        "gradient_sha256": "215fac8ea6ec95713e78c6ff175a5918f768d2bd2cc3ba402a253db13e0cc407",
+        "nonfinite_mask_sha256": "d54f02b97ed5bc2a642756268b41d4b8f7a077e73224e1580d22436834a14db5"
+      },
+      {
+        "module_name": "native_layer.self_attn.k_proj.weight_quantizer",
+        "projection": "k_proj",
+        "parameter_name": "native_layer.self_attn.k_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          896,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -3.532917389748036e-06,
+          "max": 3.2848372484295396e-06,
+          "mean": 1.6744665599759732e-08,
+          "std": 2.7715777145363865e-07,
+          "max_finite_abs": 3.532917389748036e-06,
+          "mean_finite_abs": 7.473299386124196e-08
+        },
+        "gradient_sha256": "ad16573ddbf53e399ae43a61be93007e265d0679827d9d34a82ecbcb205c4c2e",
+        "nonfinite_mask_sha256": "d54f02b97ed5bc2a642756268b41d4b8f7a077e73224e1580d22436834a14db5"
+      },
+      {
+        "module_name": "native_layer.self_attn.v_proj.weight_quantizer",
+        "projection": "v_proj",
+        "parameter_name": "native_layer.self_attn.v_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          896,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -1.6875864048415679e-06,
+          "max": 1.185106953016657e-06,
+          "mean": 2.9513787482509986e-08,
+          "std": 1.5691907472755501e-07,
+          "max_finite_abs": 1.6875864048415679e-06,
+          "mean_finite_abs": 9.411233071548449e-08
+        },
+        "gradient_sha256": "0c9d5d4198eb174feacf55477ac2c6d8b23cc31e8594675d182bf5f612153798",
+        "nonfinite_mask_sha256": "d54f02b97ed5bc2a642756268b41d4b8f7a077e73224e1580d22436834a14db5"
+      },
+      {
+        "module_name": "native_layer.self_attn.v_proj.weight_quantizer",
+        "projection": "v_proj",
+        "parameter_name": "native_layer.self_attn.v_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          896,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            896,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 896,
+          "finite_count": 896,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -9.276633363697329e-07,
+          "max": 1.1053184607590083e-06,
+          "mean": 3.230121292722169e-08,
+          "std": 1.5875176838714186e-07,
+          "max_finite_abs": 1.1053184607590083e-06,
+          "mean_finite_abs": 9.544951184338481e-08
+        },
+        "gradient_sha256": "451dabe57f62ad7375ea7d05b8058e3c4ef13cac5ecd7a771aaba3e450c3f373",
+        "nonfinite_mask_sha256": "d54f02b97ed5bc2a642756268b41d4b8f7a077e73224e1580d22436834a14db5"
+      },
+      {
+        "module_name": "native_layer.self_attn.o_proj.weight_quantizer",
+        "projection": "o_proj",
+        "parameter_name": "native_layer.self_attn.o_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          6272,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 3.9999999999999996,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 3.9999999999999996
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -7.737816645203566e-07,
+          "max": 3.22833869859096e-07,
+          "mean": 3.882685973853988e-09,
+          "std": 2.66686849433706e-08,
+          "max_finite_abs": 7.737816645203566e-07,
+          "mean_finite_abs": 1.3043234498885452e-08
+        },
+        "gradient_sha256": "f16c146641e2ef733081075bc72601dcb9353ee701d6cbdd8e1d1604a28ce44f",
+        "nonfinite_mask_sha256": "27e252c16d2f3c861b57f34cb9d769a3e4ff93a1adf73af6970fda1294d88d0f"
+      },
+      {
+        "module_name": "native_layer.self_attn.o_proj.weight_quantizer",
+        "projection": "o_proj",
+        "parameter_name": "native_layer.self_attn.o_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          6272,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 3.9999999999999996,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 3.9999999999999996
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            6272,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 6272,
+          "finite_count": 6272,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -1.003365355245478e-06,
+          "max": 3.300046955700964e-07,
+          "mean": 3.90318837968406e-09,
+          "std": 2.7607241870789264e-08,
+          "max_finite_abs": 1.003365355245478e-06,
+          "mean_finite_abs": 1.3072105415189576e-08
+        },
+        "gradient_sha256": "f85300b2b1db9199aa23d85e42d12f51b39cf983316433447b3aee2ce6c7c7c0",
+        "nonfinite_mask_sha256": "27e252c16d2f3c861b57f34cb9d769a3e4ff93a1adf73af6970fda1294d88d0f"
+      },
+      {
+        "module_name": "native_layer.mlp.gate_proj.weight_quantizer",
+        "projection": "gate_proj",
+        "parameter_name": "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          34048,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -1.598636345079285e-06,
+          "max": 6.92517687639338e-07,
+          "mean": 1.4989457888619076e-09,
+          "std": 1.6920318655618573e-08,
+          "max_finite_abs": 1.598636345079285e-06,
+          "mean_finite_abs": 3.8202275517501895e-09
+        },
+        "gradient_sha256": "28fef717ffcd1828b0c037c3727e08496dde00a3dd848edff330c5b1235bcd26",
+        "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+      },
+      {
+        "module_name": "native_layer.mlp.gate_proj.weight_quantizer",
+        "projection": "gate_proj",
+        "parameter_name": "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          34048,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -7.06294031260768e-07,
+          "max": 4.0098311160363664e-07,
+          "mean": 1.4540122568102176e-09,
+          "std": 1.2591510782089378e-08,
+          "max_finite_abs": 7.06294031260768e-07,
+          "mean_finite_abs": 3.6818040293632407e-09
+        },
+        "gradient_sha256": "aac022d93617c7dc505b6b98058de56d68ec9ff6417cf69bed9765bfb6df6122",
+        "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+      },
+      {
+        "module_name": "native_layer.mlp.up_proj.weight_quantizer",
+        "projection": "up_proj",
+        "parameter_name": "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          34048,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -6.182317520142533e-06,
+          "max": 2.3787304144207155e-06,
+          "mean": 2.9187397830758935e-09,
+          "std": 5.400749475281823e-08,
+          "max_finite_abs": 6.182317520142533e-06,
+          "mean_finite_abs": 6.80446966589128e-09
+        },
+        "gradient_sha256": "366b483b793e32a63ebbc5c5e8866ac6c29bff1757c557afed866b5e32a820a7",
+        "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+      },
+      {
+        "module_name": "native_layer.mlp.up_proj.weight_quantizer",
+        "projection": "up_proj",
+        "parameter_name": "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          34048,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -3.7140041513339384e-06,
+          "max": 1.9735805381060345e-06,
+          "mean": 3.018389570573212e-09,
+          "std": 4.5100755920051296e-08,
+          "max_finite_abs": 3.7140041513339384e-06,
+          "mean_finite_abs": 6.697191406894187e-09
+        },
+        "gradient_sha256": "84d75bf8c210b1849c72827da3fe1e5cc3005e570ed3f06acfa97d61735a53d7",
+        "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+      },
+      {
+        "module_name": "native_layer.mlp.down_proj.weight_quantizer",
+        "projection": "down_proj",
+        "parameter_name": "native_layer.mlp.down_proj.weight_quantizer.upbound_factor",
+        "parameter_shape": [
+          34048,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -7.04718149791006e-06,
+          "max": 3.6235655898053665e-06,
+          "mean": 3.376001208327848e-09,
+          "std": 5.1771345169867066e-08,
+          "max_finite_abs": 7.04718149791006e-06,
+          "mean_finite_abs": 8.639978553987529e-09
+        },
+        "gradient_sha256": "1a7b06135de719d975ca4fb48cf671a606fe554d7fa6df5fcad29d7f1a28b3bf",
+        "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+      },
+      {
+        "module_name": "native_layer.mlp.down_proj.weight_quantizer",
+        "projection": "down_proj",
+        "parameter_name": "native_layer.mlp.down_proj.weight_quantizer.lowbound_factor",
+        "parameter_shape": [
+          34048,
+          1
+        ],
+        "parameter_dtype": "torch.float32",
+        "parameter_value": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 4.0,
+          "max": 4.0,
+          "mean": 4.0,
+          "std": 0.0,
+          "max_finite_abs": 4.0,
+          "mean_finite_abs": 4.0
+        },
+        "gradient": {
+          "present": true,
+          "shape": [
+            34048,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 34048,
+          "finite_count": 34048,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": -2.0287561710574664e-06,
+          "max": 4.157322564424248e-06,
+          "mean": 3.549995384344171e-09,
+          "std": 3.4115746111077635e-08,
+          "max_finite_abs": 4.157322564424248e-06,
+          "mean_finite_abs": 8.428919902851727e-09
+        },
+        "gradient_sha256": "3546eea1b7913f49c23fc05802ed631f8d9501ac786fc0cb24c8a18b3eb69591",
+        "nonfinite_mask_sha256": "c1227871b66d8d572921c753f542bc89a7aa7df3532e3382b61e5ad1e1bfbb51"
+      }
+    ]
+  },
+  "gradient_norm": 2.3447921194019727e-05,
+  "gradient_norm_nonfinite": false,
+  "timing_instrumented_seconds": 0.1327729000186082,
+  "peak_allocated_bytes": 498108416,
+  "peak_reserved_bytes": 591396864,
+  "formal_quality_result": false
+}

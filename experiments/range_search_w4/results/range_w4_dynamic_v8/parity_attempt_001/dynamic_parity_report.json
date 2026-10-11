@@ -1,0 +1,90 @@
+{
+  "status": "STOP_PARITY_MISMATCH",
+  "checks": {
+    "seven_group_boundaries": true,
+    "group_entry_weights": false,
+    "scale": false,
+    "zero": true,
+    "final_fp16_weight": false,
+    "search_output_mse": false,
+    "heldout_output_mse": false,
+    "no_dead_columns": true,
+    "source_inverse_helper": false,
+    "historical_v7_unchanged": true
+  },
+  "configuration": {
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "layer": 0,
+    "projection": "self_attn.q_proj",
+    "bits": 4,
+    "sym": true,
+    "group_size": 128,
+    "block_size": 128,
+    "damp_percent": 0.1,
+    "desc_act": false,
+    "static_groups": false,
+    "true_sequential": true,
+    "alpha": 1.0,
+    "gptqmodel_version": "2.2.0"
+  },
+  "tensor_shapes": {
+    "weight": [
+      896,
+      896
+    ],
+    "search_x": [
+      512,
+      896
+    ],
+    "heldout_x": [
+      512,
+      896
+    ],
+    "h": [
+      896,
+      896
+    ]
+  },
+  "differences": {
+    "group_entry_max_abs_by_group": [
+      0.0,
+      5.960464477539063e-08,
+      0.011061564087867737,
+      0.011360377073287964,
+      0.018962111324071884,
+      0.020584143698215485,
+      0.029085874557495117
+    ],
+    "scale_max_abs": 0.003605913370847702,
+    "zero_max_abs": 0.0,
+    "final_weight_max_abs": 0.070068359375,
+    "final_weight_mean_abs": 8.58989187690895e-06,
+    "final_weight_mismatched_elements": 925,
+    "native_trace_scale_max_abs": 0.0,
+    "native_trace_zero_max_abs": 0.0,
+    "h_native_vs_helper_max_abs": 0.3423500061035156,
+    "hinv_native_vs_helper_max_abs": 0.0,
+    "hinv_native_vs_v7_max_abs": 4.050135612487793e-05
+  },
+  "metrics": {
+    "native_search_sse": 41.25889205932617,
+    "custom_search_sse": 41.24546432495117,
+    "native_heldout_sse": 147.55291748046875,
+    "custom_heldout_sse": 147.59112548828125,
+    "native_search_output_mse": 8.993724726938776e-05,
+    "custom_search_output_mse": 8.990797713132841e-05,
+    "native_heldout_output_mse": 0.0003216398347701345,
+    "custom_heldout_output_mse": 0.00032172312161752155,
+    "native_weight_mse": 0.0001212371644214727,
+    "custom_weight_mse": 0.0001212317292811349
+  },
+  "timing_seconds": {
+    "capture": 3.9365634999994654,
+    "native_quantize": 0.602315300000555,
+    "custom_quantize": 0.22337849999894388
+  },
+  "files": {
+    "group_entry_weights": "parity_group_entries.pt",
+    "final_weights": "parity_weights.pt"
+  }
+}

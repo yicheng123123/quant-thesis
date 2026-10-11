@@ -1,0 +1,738 @@
+[{"stream_name":"stderr","time":6.777686617,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.777764236,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":7.659696197,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.659730644,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.659738556,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.659741329,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.288046675,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.288079965,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.28808516,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.288089375,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":10.031089488,"data":"bundle: /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle\n"}
+,{"stream_name":"stdout","time":10.031139276,"data":"output: /kaggle/working/range_w4_omniquant_kaggle_v20_1\n"}
+,{"stream_name":"stdout","time":10.031143268,"data":"GPU selected by runner: cuda:0 only\n"}
+,{"stream_name":"stdout","time":10.231474152,"data":"Installing frozen non-torch package pins: [('transformers', '5.0.0', '4.49.0'), ('tokenizers', '0.22.2', '0.21.4'), ('accelerate', '1.13.0', '1.14.0'), ('safetensors', '0.7.0', '0.8.0'), ('psutil', '5.9.5', '7.2.2')]\n"}
+,{"stream_name":"stdout","time":12.584542435,"data":"Collecting transformers==4.49.0 (from -r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3))\n"}
+,{"stream_name":"stdout","time":12.639475062,"data":"  Downloading transformers-4.49.0-py3-none-any.whl.metadata (44 kB)\n"}
+,{"stream_name":"stdout","time":12.667538455999999,"data":"     ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 44.0/44.0 kB 1.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":12.786934702,"data":"Collecting transformers==4.49.0 (from -r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3))\n"}
+,{"stream_name":"stdout","time":12.786983035,"data":"  Downloading transformers-4.49.0-py3-none-any.whl.metadata (44 kB)\n"}
+,{"stream_name":"stdout","time":12.786990481,"data":"     ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 44.0/44.0 kB 1.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":13.140423709,"data":"Collecting tokenizers==0.21.4 (from -r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 4))\n"}
+,{"stream_name":"stdout","time":13.153927316,"data":"  Downloading tokenizers-0.21.4-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)\n"}
+,{"stream_name":"stdout","time":13.244238566,"data":"Collecting accelerate==1.14.0 (from -r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5))\n"}
+,{"stream_name":"stdout","time":13.258932075,"data":"  Downloading accelerate-1.14.0-py3-none-any.whl.metadata (19 kB)\n"}
+,{"stream_name":"stdout","time":13.342934118,"data":"Collecting tokenizers==0.21.4 (from -r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 4))\n"}
+,{"stream_name":"stdout","time":13.342959388,"data":"  Downloading tokenizers-0.21.4-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)\n"}
+,{"stream_name":"stdout","time":13.34297583,"data":"Collecting accelerate==1.14.0 (from -r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5))\n"}
+,{"stream_name":"stdout","time":13.342981207,"data":"  Downloading accelerate-1.14.0-py3-none-any.whl.metadata (19 kB)\n"}
+,{"stream_name":"stdout","time":13.582226177,"data":"Collecting safetensors==0.8.0 (from -r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 6))\n"}
+,{"stream_name":"stdout","time":13.59606276,"data":"  Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)\n"}
+,{"stream_name":"stdout","time":13.784810045,"data":"Collecting safetensors==0.8.0 (from -r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 6))\n"}
+,{"stream_name":"stdout","time":13.784838935,"data":"  Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)\n"}
+,{"stream_name":"stdout","time":13.818319734,"data":"Collecting psutil==7.2.2 (from -r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 7))\n"}
+,{"stream_name":"stdout","time":13.832093176,"data":"  Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)\n"}
+,{"stream_name":"stdout","time":13.892855347,"data":"Requirement already satisfied: filelock in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (3.29.0)\n"}
+,{"stream_name":"stdout","time":14.020704526,"data":"Collecting psutil==7.2.2 (from -r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 7))\n"}
+,{"stream_name":"stdout","time":14.020730471,"data":"  Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)\n"}
+,{"stream_name":"stdout","time":14.02073574,"data":"Requirement already satisfied: filelock in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (3.29.0)\n"}
+,{"stream_name":"stdout","time":14.072591884,"data":"Collecting huggingface-hub\u003c1.0,\u003e=0.26.0 (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3))\n"}
+,{"stream_name":"stdout","time":14.086920743,"data":"  Downloading huggingface_hub-0.36.2-py3-none-any.whl.metadata (15 kB)\n"}
+,{"stream_name":"stdout","time":14.140128602,"data":"Requirement already satisfied: numpy\u003e=1.17 in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (2.0.2)\n"}
+,{"stream_name":"stdout","time":14.141359628,"data":"Requirement already satisfied: packaging\u003e=20.0 in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (26.1)\n"}
+,{"stream_name":"stdout","time":14.142574487,"data":"Requirement already satisfied: pyyaml\u003e=5.1 in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (6.0.3)\n"}
+,{"stream_name":"stdout","time":14.144919518,"data":"Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (2025.11.3)\n"}
+,{"stream_name":"stdout","time":14.146087569,"data":"Requirement already satisfied: requests in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (2.32.4)\n"}
+,{"stream_name":"stdout","time":14.155601886,"data":"Requirement already satisfied: tqdm\u003e=4.27 in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (4.67.3)\n"}
+,{"stream_name":"stdout","time":14.189105651,"data":"Requirement already satisfied: torch\u003e=2.0.0 in /usr/local/lib/python3.12/dist-packages (from accelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (2.10.0+cu128)\n"}
+,{"stream_name":"stdout","time":14.239602073,"data":"Requirement already satisfied: fsspec\u003e=2023.5.0 in /usr/local/lib/python3.12/dist-packages (from huggingface-hub\u003c1.0,\u003e=0.26.0-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (2025.3.0)\n"}
+,{"stream_name":"stdout","time":14.241075887,"data":"Requirement already satisfied: hf-xet\u003c2.0.0,\u003e=1.1.3 in /usr/local/lib/python3.12/dist-packages (from huggingface-hub\u003c1.0,\u003e=0.26.0-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (1.4.3)\n"}
+,{"stream_name":"stdout","time":14.245141538,"data":"Requirement already satisfied: typing-extensions\u003e=3.7.4.3 in /usr/local/lib/python3.12/dist-packages (from huggingface-hub\u003c1.0,\u003e=0.26.0-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (4.15.0)\n"}
+,{"stream_name":"stdout","time":14.264052702,"data":"Requirement already satisfied: setuptools in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (81.0.0)\n"}
+,{"stream_name":"stdout","time":14.265822446,"data":"Requirement already satisfied: sympy\u003e=1.13.3 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (1.14.0)\n"}
+,{"stream_name":"stdout","time":14.267425013,"data":"Requirement already satisfied: networkx\u003e=2.5.1 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (3.6.1)\n"}
+,{"stream_name":"stdout","time":14.268586636,"data":"Requirement already satisfied: jinja2 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (3.1.6)\n"}
+,{"stream_name":"stdout","time":14.270922928,"data":"Requirement already satisfied: cuda-bindings==12.9.4 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.9.4)\n"}
+,{"stream_name":"stdout","time":14.272230116,"data":"Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.8.93 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.8.93)\n"}
+,{"stream_name":"stdout","time":14.27386679,"data":"Requirement already satisfied: nvidia-cuda-runtime-cu12==12.8.90 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.8.90)\n"}
+,{"stream_name":"stdout","time":14.275404916,"data":"Collecting huggingface-hub\u003c1.0,\u003e=0.26.0 (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3))\n"}
+,{"stream_name":"stdout","time":14.275422742,"data":"  Downloading huggingface_hub-0.36.2-py3-none-any.whl.metadata (15 kB)\n"}
+,{"stream_name":"stdout","time":14.27542984,"data":"Requirement already satisfied: numpy\u003e=1.17 in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (2.0.2)\n"}
+,{"stream_name":"stdout","time":14.275434976,"data":"Requirement already satisfied: packaging\u003e=20.0 in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (26.1)\n"}
+,{"stream_name":"stdout","time":14.275445848,"data":"Requirement already satisfied: pyyaml\u003e=5.1 in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (6.0.3)\n"}
+,{"stream_name":"stdout","time":14.275464044,"data":"Requirement already satisfied: regex!=2019.12.17 in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (2025.11.3)\n"}
+,{"stream_name":"stdout","time":14.275470037,"data":"Requirement already satisfied: requests in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (2.32.4)\n"}
+,{"stream_name":"stdout","time":14.275475073,"data":"Requirement already satisfied: tqdm\u003e=4.27 in /usr/local/lib/python3.12/dist-packages (from transformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (4.67.3)\n"}
+,{"stream_name":"stdout","time":14.275480586,"data":"Requirement already satisfied: torch\u003e=2.0.0 in /usr/local/lib/python3.12/dist-packages (from accelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (2.10.0+cu128)\n"}
+,{"stream_name":"stdout","time":14.275486761,"data":"Requirement already satisfied: fsspec\u003e=2023.5.0 in /usr/local/lib/python3.12/dist-packages (from huggingface-hub\u003c1.0,\u003e=0.26.0-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (2025.3.0)\n"}
+,{"stream_name":"stdout","time":14.275501837,"data":"Requirement already satisfied: hf-xet\u003c2.0.0,\u003e=1.1.3 in /usr/local/lib/python3.12/dist-packages (from huggingface-hub\u003c1.0,\u003e=0.26.0-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (1.4.3)\n"}
+,{"stream_name":"stdout","time":14.27550712,"data":"Requirement already satisfied: typing-extensions\u003e=3.7.4.3 in /usr/local/lib/python3.12/dist-packages (from huggingface-hub\u003c1.0,\u003e=0.26.0-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (4.15.0)\n"}
+,{"stream_name":"stdout","time":14.275517295,"data":"Requirement already satisfied: setuptools in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (81.0.0)\n"}
+,{"stream_name":"stdout","time":14.275520743,"data":"Requirement already satisfied: sympy\u003e=1.13.3 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (1.14.0)\n"}
+,{"stream_name":"stdout","time":14.275523857,"data":"Requirement already satisfied: networkx\u003e=2.5.1 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (3.6.1)\n"}
+,{"stream_name":"stdout","time":14.275526914,"data":"Requirement already satisfied: jinja2 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (3.1.6)\n"}
+,{"stream_name":"stdout","time":14.275530334,"data":"Requirement already satisfied: cuda-bindings==12.9.4 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.9.4)\n"}
+,{"stream_name":"stdout","time":14.275533374,"data":"Requirement already satisfied: nvidia-cuda-nvrtc-cu12==12.8.93 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.8.93)\n"}
+,{"stream_name":"stdout","time":14.275710419,"data":"Requirement already satisfied: nvidia-cuda-cupti-cu12==12.8.90 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.8.90)\n"}
+,{"stream_name":"stdout","time":14.277158786,"data":"Requirement already satisfied: nvidia-cudnn-cu12==9.10.2.21 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (9.10.2.21)\n"}
+,{"stream_name":"stdout","time":14.278527838,"data":"Requirement already satisfied: nvidia-cublas-cu12==12.8.4.1 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.8.4.1)\n"}
+,{"stream_name":"stdout","time":14.279919766999999,"data":"Requirement already satisfied: nvidia-cufft-cu12==11.3.3.83 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (11.3.3.83)\n"}
+,{"stream_name":"stdout","time":14.281288983,"data":"Requirement already satisfied: nvidia-curand-cu12==10.3.9.90 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (10.3.9.90)\n"}
+,{"stream_name":"stdout","time":14.282840574,"data":"Requirement already satisfied: nvidia-cusolver-cu12==11.7.3.90 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (11.7.3.90)\n"}
+,{"stream_name":"stdout","time":14.284192147,"data":"Requirement already satisfied: nvidia-cusparse-cu12==12.5.8.93 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.5.8.93)\n"}
+,{"stream_name":"stdout","time":14.285577523,"data":"Requirement already satisfied: nvidia-cusparselt-cu12==0.7.1 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (0.7.1)\n"}
+,{"stream_name":"stdout","time":14.286937137,"data":"Requirement already satisfied: nvidia-nccl-cu12==2.27.5 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (2.27.5)\n"}
+,{"stream_name":"stdout","time":14.288242256,"data":"Requirement already satisfied: nvidia-nvshmem-cu12==3.4.5 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (3.4.5)\n"}
+,{"stream_name":"stdout","time":14.289638945,"data":"Requirement already satisfied: nvidia-nvtx-cu12==12.8.90 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.8.90)\n"}
+,{"stream_name":"stdout","time":14.29097169,"data":"Requirement already satisfied: nvidia-nvjitlink-cu12==12.8.93 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.8.93)\n"}
+,{"stream_name":"stdout","time":14.292273701,"data":"Requirement already satisfied: nvidia-cufile-cu12==1.13.1.3 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (1.13.1.3)\n"}
+,{"stream_name":"stdout","time":14.293504866,"data":"Requirement already satisfied: triton==3.6.0 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (3.6.0)\n"}
+,{"stream_name":"stdout","time":14.297570198,"data":"Requirement already satisfied: cuda-pathfinder~=1.1 in /usr/local/lib/python3.12/dist-packages (from cuda-bindings==12.9.4-\u003etorch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (1.5.3)\n"}
+,{"stream_name":"stdout","time":14.33191204,"data":"Requirement already satisfied: charset_normalizer\u003c4,\u003e=2 in /usr/local/lib/python3.12/dist-packages (from requests-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (3.4.7)\n"}
+,{"stream_name":"stdout","time":14.333231985,"data":"Requirement already satisfied: idna\u003c4,\u003e=2.5 in /usr/local/lib/python3.12/dist-packages (from requests-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (3.13)\n"}
+,{"stream_name":"stdout","time":14.334610617,"data":"Requirement already satisfied: urllib3\u003c3,\u003e=1.21.1 in /usr/local/lib/python3.12/dist-packages (from requests-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (2.5.0)\n"}
+,{"stream_name":"stdout","time":14.335862849,"data":"Requirement already satisfied: certifi\u003e=2017.4.17 in /usr/local/lib/python3.12/dist-packages (from requests-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (2026.4.22)\n"}
+,{"stream_name":"stdout","time":14.394298912,"data":"Requirement already satisfied: mpmath\u003c1.4,\u003e=1.1.0 in /usr/local/lib/python3.12/dist-packages (from sympy\u003e=1.13.3-\u003etorch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (1.3.0)\n"}
+,{"stream_name":"stdout","time":14.401233843,"data":"Requirement already satisfied: MarkupSafe\u003e=2.0 in /usr/local/lib/python3.12/dist-packages (from jinja2-\u003etorch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (3.0.3)\n"}
+,{"stream_name":"stdout","time":14.433917207,"data":"Downloading transformers-4.49.0-py3-none-any.whl (10.0 MB)\n"}
+,{"stream_name":"stdout","time":14.476281014,"data":"Requirement already satisfied: nvidia-cuda-runtime-cu12==12.8.90 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.8.90)\n"}
+,{"stream_name":"stdout","time":14.476312776,"data":"Requirement already satisfied: nvidia-cuda-cupti-cu12==12.8.90 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.8.90)\n"}
+,{"stream_name":"stdout","time":14.47631984,"data":"Requirement already satisfied: nvidia-cudnn-cu12==9.10.2.21 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (9.10.2.21)\n"}
+,{"stream_name":"stdout","time":14.476325014,"data":"Requirement already satisfied: nvidia-cublas-cu12==12.8.4.1 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.8.4.1)\n"}
+,{"stream_name":"stdout","time":14.476330033,"data":"Requirement already satisfied: nvidia-cufft-cu12==11.3.3.83 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (11.3.3.83)\n"}
+,{"stream_name":"stdout","time":14.476351714,"data":"Requirement already satisfied: nvidia-curand-cu12==10.3.9.90 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (10.3.9.90)\n"}
+,{"stream_name":"stdout","time":14.476355855,"data":"Requirement already satisfied: nvidia-cusolver-cu12==11.7.3.90 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (11.7.3.90)\n"}
+,{"stream_name":"stdout","time":14.476360028,"data":"Requirement already satisfied: nvidia-cusparse-cu12==12.5.8.93 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.5.8.93)\n"}
+,{"stream_name":"stdout","time":14.476363209,"data":"Requirement already satisfied: nvidia-cusparselt-cu12==0.7.1 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (0.7.1)\n"}
+,{"stream_name":"stdout","time":14.476366317,"data":"Requirement already satisfied: nvidia-nccl-cu12==2.27.5 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (2.27.5)\n"}
+,{"stream_name":"stdout","time":14.476369436,"data":"Requirement already satisfied: nvidia-nvshmem-cu12==3.4.5 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (3.4.5)\n"}
+,{"stream_name":"stdout","time":14.476372453,"data":"Requirement already satisfied: nvidia-nvtx-cu12==12.8.90 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.8.90)\n"}
+,{"stream_name":"stdout","time":14.476375501,"data":"Requirement already satisfied: nvidia-nvjitlink-cu12==12.8.93 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (12.8.93)\n"}
+,{"stream_name":"stdout","time":14.476378541,"data":"Requirement already satisfied: nvidia-cufile-cu12==1.13.1.3 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (1.13.1.3)\n"}
+,{"stream_name":"stdout","time":14.476381706,"data":"Requirement already satisfied: triton==3.6.0 in /usr/local/lib/python3.12/dist-packages (from torch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (3.6.0)\n"}
+,{"stream_name":"stdout","time":14.476385139,"data":"Requirement already satisfied: cuda-pathfinder~=1.1 in /usr/local/lib/python3.12/dist-packages (from cuda-bindings==12.9.4-\u003etorch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (1.5.3)\n"}
+,{"stream_name":"stdout","time":14.476391158,"data":"Requirement already satisfied: charset_normalizer\u003c4,\u003e=2 in /usr/local/lib/python3.12/dist-packages (from requests-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (3.4.7)\n"}
+,{"stream_name":"stdout","time":14.476394538,"data":"Requirement already satisfied: idna\u003c4,\u003e=2.5 in /usr/local/lib/python3.12/dist-packages (from requests-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (3.13)\n"}
+,{"stream_name":"stdout","time":14.476397738,"data":"Requirement already satisfied: urllib3\u003c3,\u003e=1.21.1 in /usr/local/lib/python3.12/dist-packages (from requests-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (2.5.0)\n"}
+,{"stream_name":"stdout","time":14.476400841,"data":"Requirement already satisfied: certifi\u003e=2017.4.17 in /usr/local/lib/python3.12/dist-packages (from requests-\u003etransformers==4.49.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 3)) (2026.4.22)\n"}
+,{"stream_name":"stdout","time":14.476403891,"data":"Requirement already satisfied: mpmath\u003c1.4,\u003e=1.1.0 in /usr/local/lib/python3.12/dist-packages (from sympy\u003e=1.13.3-\u003etorch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (1.3.0)\n"}
+,{"stream_name":"stdout","time":14.47640717,"data":"Requirement already satisfied: MarkupSafe\u003e=2.0 in /usr/local/lib/python3.12/dist-packages (from jinja2-\u003etorch\u003e=2.0.0-\u003eaccelerate==1.14.0-\u003e-r /kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/requirements_kaggle.txt (line 5)) (3.0.3)\n"}
+,{"stream_name":"stdout","time":14.476410418,"data":"Downloading transformers-4.49.0-py3-none-any.whl (10.0 MB)\n"}
+,{"stream_name":"stdout","time":14.574910164,"data":"   ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 10.0/10.0 MB 72.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":14.594583133,"data":"Downloading tokenizers-0.21.4-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)\n"}
+,{"stream_name":"stdout","time":14.643459611,"data":"   ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 3.1/3.1 MB 67.0 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":14.659372395,"data":"Downloading accelerate-1.14.0-py3-none-any.whl (389 kB)\n"}
+,{"stream_name":"stdout","time":14.682175726,"data":"   ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 389.2/389.2 kB 18.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":14.695903377,"data":"Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (516 kB)\n"}
+,{"stream_name":"stdout","time":14.723159358,"data":"   ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 516.0/516.0 kB 20.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":14.737098855,"data":"Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)\n"}
+,{"stream_name":"stdout","time":14.761403383,"data":"   ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 155.6/155.6 kB 6.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":14.774928051,"data":"Downloading huggingface_hub-0.36.2-py3-none-any.whl (566 kB)\n"}
+,{"stream_name":"stdout","time":14.777044526,"data":"   ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 10.0/10.0 MB 72.1 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":14.777062436,"data":"Downloading tokenizers-0.21.4-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)\n"}
+,{"stream_name":"stdout","time":14.777067473,"data":"   ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 3.1/3.1 MB 67.0 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":14.777072207,"data":"Downloading accelerate-1.14.0-py3-none-any.whl (389 kB)\n"}
+,{"stream_name":"stdout","time":14.777076796,"data":"   ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 389.2/389.2 kB 18.9 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":14.777082217,"data":"Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (516 kB)\n"}
+,{"stream_name":"stdout","time":14.777087393,"data":"   ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 516.0/516.0 kB 20.5 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":14.777092523,"data":"Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)\n"}
+,{"stream_name":"stdout","time":14.777097177,"data":"   ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 155.6/155.6 kB 6.7 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":14.777103002,"data":"Downloading huggingface_hub-0.36.2-py3-none-any.whl (566 kB)\n"}
+,{"stream_name":"stdout","time":14.799022895,"data":"   ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 566.4/566.4 kB 26.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":15.001105143,"data":"   ©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥©¥ 566.4/566.4 kB 26.4 MB/s eta 0:00:00\n"}
+,{"stream_name":"stdout","time":17.037296121,"data":"Installing collected packages: safetensors, psutil, huggingface-hub, tokenizers, transformers, accelerate\n"}
+,{"stream_name":"stdout","time":17.037575993,"data":"  Attempting uninstall: safetensors\n"}
+,{"stream_name":"stdout","time":17.239584874,"data":"Installing collected packages: safetensors, psutil, huggingface-hub, tokenizers, transformers, accelerate\n"}
+,{"stream_name":"stdout","time":17.239617863,"data":"  Attempting uninstall: safetensors\n"}
+,{"stream_name":"stdout","time":17.293003499,"data":"    Found existing installation: safetensors 0.7.0\n"}
+,{"stream_name":"stdout","time":17.298764754,"data":"    Uninstalling safetensors-0.7.0:\n"}
+,{"stream_name":"stdout","time":17.315257521,"data":"      Successfully uninstalled safetensors-0.7.0\n"}
+,{"stream_name":"stdout","time":17.358228358,"data":"  Attempting uninstall: psutil\n"}
+,{"stream_name":"stdout","time":17.467885463000002,"data":"    Found existing installation: psutil 5.9.5\n"}
+,{"stream_name":"stdout","time":17.474428824,"data":"    Uninstalling psutil-5.9.5:\n"}
+,{"stream_name":"stdout","time":17.49558327,"data":"    Found existing installation: safetensors 0.7.0\n"}
+,{"stream_name":"stdout","time":17.49561348,"data":"    Uninstalling safetensors-0.7.0:\n"}
+,{"stream_name":"stdout","time":17.495618083,"data":"      Successfully uninstalled safetensors-0.7.0\n"}
+,{"stream_name":"stdout","time":17.495630643,"data":"  Attempting uninstall: psutil\n"}
+,{"stream_name":"stdout","time":17.4956336,"data":"    Found existing installation: psutil 5.9.5\n"}
+,{"stream_name":"stdout","time":17.495636197,"data":"    Uninstalling psutil-5.9.5:\n"}
+,{"stream_name":"stdout","time":17.51070338,"data":"      Successfully uninstalled psutil-5.9.5\n"}
+,{"stream_name":"stdout","time":17.594865402,"data":"  Attempting uninstall: huggingface-hub\n"}
+,{"stream_name":"stdout","time":17.713430434,"data":"      Successfully uninstalled psutil-5.9.5\n"}
+,{"stream_name":"stdout","time":17.713466002,"data":"  Attempting uninstall: huggingface-hub\n"}
+,{"stream_name":"stdout","time":17.792151162,"data":"    Found existing installation: huggingface_hub 1.11.0\n"}
+,{"stream_name":"stdout","time":17.817113522,"data":"    Uninstalling huggingface_hub-1.11.0:\n"}
+,{"stream_name":"stdout","time":17.97259507,"data":"      Successfully uninstalled huggingface_hub-1.11.0\n"}
+,{"stream_name":"stdout","time":17.994984193,"data":"    Found existing installation: huggingface_hub 1.11.0\n"}
+,{"stream_name":"stdout","time":17.99500974,"data":"    Uninstalling huggingface_hub-1.11.0:\n"}
+,{"stream_name":"stdout","time":17.995016612,"data":"      Successfully uninstalled huggingface_hub-1.11.0\n"}
+,{"stream_name":"stdout","time":18.3676417,"data":"  Attempting uninstall: tokenizers\n"}
+,{"stream_name":"stdout","time":18.569898828,"data":"  Attempting uninstall: tokenizers\n"}
+,{"stream_name":"stdout","time":18.633156989,"data":"    Found existing installation: tokenizers 0.22.2\n"}
+,{"stream_name":"stdout","time":18.644056896,"data":"    Uninstalling tokenizers-0.22.2:\n"}
+,{"stream_name":"stdout","time":18.708930912,"data":"      Successfully uninstalled tokenizers-0.22.2\n"}
+,{"stream_name":"stdout","time":18.811438703,"data":"  Attempting uninstall: transformers\n"}
+,{"stream_name":"stdout","time":18.835653783,"data":"    Found existing installation: tokenizers 0.22.2\n"}
+,{"stream_name":"stdout","time":18.835678224,"data":"    Uninstalling tokenizers-0.22.2:\n"}
+,{"stream_name":"stdout","time":18.835684341,"data":"      Successfully uninstalled tokenizers-0.22.2\n"}
+,{"stream_name":"stdout","time":18.835689025,"data":"  Attempting uninstall: transformers\n"}
+,{"stream_name":"stdout","time":19.122505139,"data":"    Found existing installation: transformers 5.0.0\n"}
+,{"stream_name":"stdout","time":19.325202866,"data":"    Found existing installation: transformers 5.0.0\n"}
+,{"stream_name":"stdout","time":19.524428775,"data":"    Uninstalling transformers-5.0.0:\n"}
+,{"stream_name":"stdout","time":19.726918376,"data":"    Uninstalling transformers-5.0.0:\n"}
+,{"stream_name":"stdout","time":21.407695837,"data":"      Successfully uninstalled transformers-5.0.0\n"}
+,{"stream_name":"stdout","time":21.610246711,"data":"      Successfully uninstalled transformers-5.0.0\n"}
+,{"stream_name":"stdout","time":28.261016629,"data":"  Attempting uninstall: accelerate\n"}
+,{"stream_name":"stdout","time":28.414521761,"data":"    Found existing installation: accelerate 1.13.0\n"}
+,{"stream_name":"stdout","time":28.431272015,"data":"    Uninstalling accelerate-1.13.0:\n"}
+,{"stream_name":"stdout","time":28.46360425,"data":"  Attempting uninstall: accelerate\n"}
+,{"stream_name":"stdout","time":28.463630368,"data":"    Found existing installation: accelerate 1.13.0\n"}
+,{"stream_name":"stdout","time":28.463636287,"data":"    Uninstalling accelerate-1.13.0:\n"}
+,{"stream_name":"stdout","time":28.551556456,"data":"      Successfully uninstalled accelerate-1.13.0\n"}
+,{"stream_name":"stdout","time":28.753737066,"data":"      Successfully uninstalled accelerate-1.13.0\n"}
+,{"stream_name":"stdout","time":28.865850741,"data":"Successfully installed accelerate-1.14.0 huggingface-hub-0.36.2 psutil-7.2.2 safetensors-0.8.0 tokenizers-0.21.4 transformers-4.49.0\n"}
+,{"stream_name":"stdout","time":29.067929578,"data":"Successfully installed accelerate-1.14.0 huggingface-hub-0.36.2 psutil-7.2.2 safetensors-0.8.0 tokenizers-0.21.4 transformers-4.49.0\n"}
+,{"stream_name":"stdout","time":35.387642551,"data":"{\n"}
+,{"stream_name":"stdout","time":35.387674489,"data":"  \"status\": \"PASS\",\n"}
+,{"stream_name":"stdout","time":35.387680503,"data":"  \"python_version\": \"3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]\",\n"}
+,{"stream_name":"stdout","time":35.387686074,"data":"  \"python_executable\": \"/usr/bin/python3\",\n"}
+,{"stream_name":"stdout","time":35.387691103,"data":"  \"platform\": \"Linux-6.12.90+-x86_64-with-glibc2.35\",\n"}
+,{"stream_name":"stdout","time":35.387696663,"data":"  \"torch_version\": \"2.10.0+cu128\",\n"}
+,{"stream_name":"stdout","time":35.387701634,"data":"  \"transformers_version\": \"4.49.0\",\n"}
+,{"stream_name":"stdout","time":35.387706761,"data":"  \"tokenizers_version\": \"0.21.4\",\n"}
+,{"stream_name":"stdout","time":35.38771182,"data":"  \"cuda_runtime\": \"12.8\",\n"}
+,{"stream_name":"stdout","time":35.387716725,"data":"  \"gpu_count\": 2,\n"}
+,{"stream_name":"stdout","time":35.387721549,"data":"  \"gpus\": [\n"}
+,{"stream_name":"stdout","time":35.387726737,"data":"    {\n"}
+,{"stream_name":"stdout","time":35.387731556,"data":"      \"index\": 0,\n"}
+,{"stream_name":"stdout","time":35.38773661,"data":"      \"name\": \"Tesla T4\",\n"}
+,{"stream_name":"stdout","time":35.387741634,"data":"      \"total_vram_bytes\": 15636037632,\n"}
+,{"stream_name":"stdout","time":35.387746425,"data":"      \"total_vram_gib\": 14.56219482421875,\n"}
+,{"stream_name":"stdout","time":35.387751291,"data":"      \"capability\": [\n"}
+,{"stream_name":"stdout","time":35.387756041,"data":"        7,\n"}
+,{"stream_name":"stdout","time":35.387760947,"data":"        5\n"}
+,{"stream_name":"stdout","time":35.387765856,"data":"      ]\n"}
+,{"stream_name":"stdout","time":35.387770661,"data":"    },\n"}
+,{"stream_name":"stdout","time":35.387775455,"data":"    {\n"}
+,{"stream_name":"stdout","time":35.387780098,"data":"      \"index\": 1,\n"}
+,{"stream_name":"stdout","time":35.38778514,"data":"      \"name\": \"Tesla T4\",\n"}
+,{"stream_name":"stdout","time":35.387819897,"data":"      \"total_vram_bytes\": 15636037632,\n"}
+,{"stream_name":"stdout","time":35.387824945,"data":"      \"total_vram_gib\": 14.56219482421875,\n"}
+,{"stream_name":"stdout","time":35.387830138,"data":"      \"capability\": [\n"}
+,{"stream_name":"stdout","time":35.387834987,"data":"        7,\n"}
+,{"stream_name":"stdout","time":35.387839589,"data":"        5\n"}
+,{"stream_name":"stdout","time":35.387844376,"data":"      ]\n"}
+,{"stream_name":"stdout","time":35.387849029,"data":"    }\n"}
+,{"stream_name":"stdout","time":35.387853656,"data":"  ],\n"}
+,{"stream_name":"stdout","time":35.387858268,"data":"  \"selected_device\": \"cuda:0\",\n"}
+,{"stream_name":"stdout","time":35.387863619,"data":"  \"cuda0_free_vram\": {\n"}
+,{"stream_name":"stdout","time":35.387868169,"data":"    \"free_bytes\": 15526068224,\n"}
+,{"stream_name":"stdout","time":35.387873269,"data":"    \"total_bytes\": 15636037632\n"}
+,{"stream_name":"stdout","time":35.387877958,"data":"  },\n"}
+,{"stream_name":"stdout","time":35.387893157,"data":"  \"tf32\": {\n"}
+,{"stream_name":"stdout","time":35.387897233,"data":"    \"matmul\": false,\n"}
+,{"stream_name":"stdout","time":35.38790098,"data":"    \"cudnn\": true\n"}
+,{"stream_name":"stdout","time":35.387904713,"data":"  },\n"}
+,{"stream_name":"stdout","time":35.387908383,"data":"  \"deterministic\": {\n"}
+,{"stream_name":"stdout","time":35.387911886,"data":"    \"algorithms\": false,\n"}
+,{"stream_name":"stdout","time":35.387916053,"data":"    \"cudnn\": false\n"}
+,{"stream_name":"stdout","time":35.387919842,"data":"  },\n"}
+,{"stream_name":"stdout","time":35.387923655,"data":"  \"disk\": {\n"}
+,{"stream_name":"stdout","time":35.387927463,"data":"    \"path\": \"/kaggle/working/range_w4_omniquant_kaggle_v20_1\",\n"}
+,{"stream_name":"stdout","time":35.387931891,"data":"    \"total_bytes\": 20957446144,\n"}
+,{"stream_name":"stdout","time":35.387935501,"data":"    \"free_bytes\": 20940537856\n"}
+,{"stream_name":"stdout","time":35.387939576,"data":"  },\n"}
+,{"stream_name":"stdout","time":35.387943065,"data":"  \"cpu_ram\": {\n"}
+,{"stream_name":"stdout","time":35.387946766,"data":"    \"total_bytes\": 33659383808,\n"}
+,{"stream_name":"stdout","time":35.387950376,"data":"    \"available_bytes\": 32057843712,\n"}
+,{"stream_name":"stdout","time":35.387954309,"data":"    \"process_rss_bytes\": 560766976\n"}
+,{"stream_name":"stdout","time":35.387957957,"data":"  },\n"}
+,{"stream_name":"stdout","time":35.387961458,"data":"  \"checks\": {\n"}
+,{"stream_name":"stdout","time":35.387964915,"data":"    \"cuda_available\": true,\n"}
+,{"stream_name":"stdout","time":35.387968357,"data":"    \"cuda0_available\": true,\n"}
+,{"stream_name":"stdout","time":35.387971828,"data":"    \"transformers_pin\": true,\n"}
+,{"stream_name":"stdout","time":35.387975434,"data":"    \"tokenizers_pin\": true\n"}
+,{"stream_name":"stdout","time":35.387978926,"data":"  },\n"}
+,{"stream_name":"stdout","time":35.38798252,"data":"  \"device_policy\": \"Only cuda:0 is selected. Additional visible GPUs are recorded and not used.\"\n"}
+,{"stream_name":"stdout","time":35.387986443,"data":"}\n"}
+,{"stream_name":"stdout","time":35.590141115,"data":"{\n"}
+,{"stream_name":"stdout","time":35.590175148,"data":"  \"status\": \"PASS\",\n"}
+,{"stream_name":"stdout","time":35.590180651,"data":"  \"python_version\": \"3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]\",\n"}
+,{"stream_name":"stdout","time":35.590185449,"data":"  \"python_executable\": \"/usr/bin/python3\",\n"}
+,{"stream_name":"stdout","time":35.590189838,"data":"  \"platform\": \"Linux-6.12.90+-x86_64-with-glibc2.35\",\n"}
+,{"stream_name":"stdout","time":35.59019384,"data":"  \"torch_version\": \"2.10.0+cu128\",\n"}
+,{"stream_name":"stdout","time":35.590197463,"data":"  \"transformers_version\": \"4.49.0\",\n"}
+,{"stream_name":"stdout","time":35.590201328,"data":"  \"tokenizers_version\": \"0.21.4\",\n"}
+,{"stream_name":"stdout","time":35.590205181,"data":"  \"cuda_runtime\": \"12.8\",\n"}
+,{"stream_name":"stdout","time":35.590208898,"data":"  \"gpu_count\": 2,\n"}
+,{"stream_name":"stdout","time":35.590212648,"data":"  \"gpus\": [\n"}
+,{"stream_name":"stdout","time":35.590216626,"data":"    {\n"}
+,{"stream_name":"stdout","time":35.590220248,"data":"      \"index\": 0,\n"}
+,{"stream_name":"stdout","time":35.590223951,"data":"      \"name\": \"Tesla T4\",\n"}
+,{"stream_name":"stdout","time":35.590227723,"data":"      \"total_vram_bytes\": 15636037632,\n"}
+,{"stream_name":"stdout","time":35.590231338,"data":"      \"total_vram_gib\": 14.56219482421875,\n"}
+,{"stream_name":"stdout","time":35.590248924,"data":"      \"capability\": [\n"}
+,{"stream_name":"stdout","time":35.590252781,"data":"        7,\n"}
+,{"stream_name":"stdout","time":35.590256329,"data":"        5\n"}
+,{"stream_name":"stdout","time":35.590259766,"data":"      ]\n"}
+,{"stream_name":"stdout","time":35.590263562,"data":"    },\n"}
+,{"stream_name":"stdout","time":35.590266931,"data":"    {\n"}
+,{"stream_name":"stdout","time":35.590270628,"data":"      \"index\": 1,\n"}
+,{"stream_name":"stdout","time":35.590274275,"data":"      \"name\": \"Tesla T4\",\n"}
+,{"stream_name":"stdout","time":35.590277963,"data":"      \"total_vram_bytes\": 15636037632,\n"}
+,{"stream_name":"stdout","time":35.590281709,"data":"      \"total_vram_gib\": 14.56219482421875,\n"}
+,{"stream_name":"stdout","time":35.590285306,"data":"      \"capability\": [\n"}
+,{"stream_name":"stdout","time":35.590289025,"data":"        7,\n"}
+,{"stream_name":"stdout","time":35.590292542,"data":"        5\n"}
+,{"stream_name":"stdout","time":35.590296037,"data":"      ]\n"}
+,{"stream_name":"stdout","time":35.590299582,"data":"    }\n"}
+,{"stream_name":"stdout","time":35.590303232,"data":"  ],\n"}
+,{"stream_name":"stdout","time":35.590306835,"data":"  \"selected_device\": \"cuda:0\",\n"}
+,{"stream_name":"stdout","time":35.590310868,"data":"  \"cuda0_free_vram\": {\n"}
+,{"stream_name":"stdout","time":35.590314409,"data":"    \"free_bytes\": 15526068224,\n"}
+,{"stream_name":"stdout","time":35.590318221,"data":"    \"total_bytes\": 15636037632\n"}
+,{"stream_name":"stdout","time":35.590321763,"data":"  },\n"}
+,{"stream_name":"stdout","time":35.590325271,"data":"  \"tf32\": {\n"}
+,{"stream_name":"stdout","time":35.590328895,"data":"    \"matmul\": false,\n"}
+,{"stream_name":"stdout","time":35.590332803,"data":"    \"cudnn\": true\n"}
+,{"stream_name":"stdout","time":35.590336611,"data":"  },\n"}
+,{"stream_name":"stdout","time":35.590340033,"data":"  \"deterministic\": {\n"}
+,{"stream_name":"stdout","time":35.590343719,"data":"    \"algorithms\": false,\n"}
+,{"stream_name":"stdout","time":35.590347313,"data":"    \"cudnn\": false\n"}
+,{"stream_name":"stdout","time":35.590350943,"data":"  },\n"}
+,{"stream_name":"stdout","time":35.590354413,"data":"  \"disk\": {\n"}
+,{"stream_name":"stdout","time":35.590358248,"data":"    \"path\": \"/kaggle/working/range_w4_omniquant_kaggle_v20_1\",\n"}
+,{"stream_name":"stdout","time":35.590362366,"data":"    \"total_bytes\": 20957446144,\n"}
+,{"stream_name":"stdout","time":35.590366321,"data":"    \"free_bytes\": 20940537856\n"}
+,{"stream_name":"stdout","time":35.59036984,"data":"  },\n"}
+,{"stream_name":"stdout","time":35.590373488,"data":"  \"cpu_ram\": {\n"}
+,{"stream_name":"stdout","time":35.590377059,"data":"    \"total_bytes\": 33659383808,\n"}
+,{"stream_name":"stdout","time":35.590380691,"data":"    \"available_bytes\": 32057843712,\n"}
+,{"stream_name":"stdout","time":35.590384453,"data":"    \"process_rss_bytes\": 560766976\n"}
+,{"stream_name":"stdout","time":35.590388255,"data":"  },\n"}
+,{"stream_name":"stdout","time":35.590391796,"data":"  \"checks\": {\n"}
+,{"stream_name":"stdout","time":35.59039541,"data":"    \"cuda_available\": true,\n"}
+,{"stream_name":"stdout","time":35.59039903,"data":"    \"cuda0_available\": true,\n"}
+,{"stream_name":"stdout","time":35.590402637,"data":"    \"transformers_pin\": true,\n"}
+,{"stream_name":"stdout","time":35.590406361,"data":"    \"tokenizers_pin\": true\n"}
+,{"stream_name":"stdout","time":35.590410247,"data":"  },\n"}
+,{"stream_name":"stdout","time":35.590418257,"data":"  \"device_policy\": \"Only cuda:0 is selected. Additional visible GPUs are recorded and not used.\"\n"}
+,{"stream_name":"stdout","time":35.590422548,"data":"}\n"}
+,{"stream_name":"stdout","time":39.479276889,"data":"{\n"}
+,{"stream_name":"stdout","time":39.479311786,"data":"  \"status\": \"PASS\",\n"}
+,{"stream_name":"stdout","time":39.479316587,"data":"  \"bundle_root\": \"/kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle\",\n"}
+,{"stream_name":"stdout","time":39.479321341,"data":"  \"checks\": {\n"}
+,{"stream_name":"stdout","time":39.479325414,"data":"    \"required_files\": {\n"}
+,{"stream_name":"stdout","time":39.479329703,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.479333676,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.479337423,"data":"        \"missing\": [],\n"}
+,{"stream_name":"stdout","time":39.479341372,"data":"        \"count\": 25\n"}
+,{"stream_name":"stdout","time":39.479345166,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.479349054,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.479352666,"data":"    \"upstream_commit\": {\n"}
+,{"stream_name":"stdout","time":39.479356357,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.479360272,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.479364144,"data":"        \"config\": \"feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14\",\n"}
+,{"stream_name":"stdout","time":39.479368216,"data":"        \"v20\": \"feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14\"\n"}
+,{"stream_name":"stdout","time":39.479372281,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.479376051,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.479379724,"data":"    \"model_revision\": {\n"}
+,{"stream_name":"stdout","time":39.479383521,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.479386884,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.479390956,"data":"        \"model_id\": \"Qwen/Qwen2.5-0.5B-Instruct\",\n"}
+,{"stream_name":"stdout","time":39.479395087,"data":"        \"revision\": \"7ae557604adf67be50417f59c2c2f167def9a775\"\n"}
+,{"stream_name":"stdout","time":39.479399404,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.479402896,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.479406608,"data":"    \"model_file_lock\": {\n"}
+,{"stream_name":"stdout","time":39.479411088,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.479415074,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.479419055,"data":"        \"model_id\": \"Qwen/Qwen2.5-0.5B-Instruct\",\n"}
+,{"stream_name":"stdout","time":39.479423009,"data":"        \"revision\": \"7ae557604adf67be50417f59c2c2f167def9a775\",\n"}
+,{"stream_name":"stdout","time":39.479427029,"data":"        \"locked_files\": 7\n"}
+,{"stream_name":"stdout","time":39.479430738,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.479434276,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.479437742,"data":"    \"calibration_manifest\": {\n"}
+,{"stream_name":"stdout","time":39.479441546,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.479445386,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.479449204,"data":"        \"sha256\": \"664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3\",\n"}
+,{"stream_name":"stdout","time":39.479453644,"data":"        \"samples\": 128,\n"}
+,{"stream_name":"stdout","time":39.479457224,"data":"        \"seqlen\": 2048,\n"}
+,{"stream_name":"stdout","time":39.479486119,"data":"        \"seed\": 20261005\n"}
+,{"stream_name":"stdout","time":39.479490339,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.479494066,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.479498216,"data":"    \"official_upstream_files\": {\n"}
+,{"stream_name":"stdout","time":39.479502098,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.479505728,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.479509611,"data":"        \"files\": 257,\n"}
+,{"stream_name":"stdout","time":39.479513293,"data":"        \"mismatches\": [],\n"}
+,{"stream_name":"stdout","time":39.479517048,"data":"        \"tree_sha256\": \"a622961257aece95960e85f7e1c10f6af76c8e23e7b224bb4ce585e3c251ab4b\",\n"}
+,{"stream_name":"stdout","time":39.47952117,"data":"        \"expected_tree_sha256\": \"a622961257aece95960e85f7e1c10f6af76c8e23e7b224bb4ce585e3c251ab4b\",\n"}
+,{"stream_name":"stdout","time":39.47952524,"data":"        \"manifest_sha256\": \"ddf8c4bf69a458cdc80d59a1016a266b2e2c9f2fd17dc1de4b41189d89ffc1bb\",\n"}
+,{"stream_name":"stdout","time":39.479529595,"data":"        \"manifest_expected_sha256\": \"ddf8c4bf69a458cdc80d59a1016a266b2e2c9f2fd17dc1de4b41189d89ffc1bb\"\n"}
+,{"stream_name":"stdout","time":39.479533758,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.479544938,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.479548499,"data":"    \"v20_patch_hashes\": {\n"}
+,{"stream_name":"stdout","time":39.479552278,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.479555903,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.47955961,"data":"        \"omniquant_port/upstream/quantize/omniquant.py\": {\n"}
+,{"stream_name":"stdout","time":39.479563693,"data":"          \"actual_sha256\": \"dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00\",\n"}
+,{"stream_name":"stdout","time":39.47956768,"data":"          \"expected_sha256\": \"dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00\",\n"}
+,{"stream_name":"stdout","time":39.479571707,"data":"          \"pass\": true\n"}
+,{"stream_name":"stdout","time":39.479575601,"data":"        },\n"}
+,{"stream_name":"stdout","time":39.479734488,"data":"        \"omniquant_port/upstream/models/int_qwen2_layer.py\": {\n"}
+,{"stream_name":"stdout","time":39.4797435,"data":"          \"actual_sha256\": \"0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9\",\n"}
+,{"stream_name":"stdout","time":39.479748096,"data":"          \"expected_sha256\": \"0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9\",\n"}
+,{"stream_name":"stdout","time":39.479752294,"data":"          \"pass\": true\n"}
+,{"stream_name":"stdout","time":39.479756329,"data":"        }\n"}
+,{"stream_name":"stdout","time":39.479759588,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.479763541,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.479767481,"data":"    \"protected_algorithm_sources\": {\n"}
+,{"stream_name":"stdout","time":39.479771514,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.479775188,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.479778975,"data":"        \"quantize/quantizer.py\": {\n"}
+,{"stream_name":"stdout","time":39.479782696,"data":"          \"actual_sha256\": \"a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140\",\n"}
+,{"stream_name":"stdout","time":39.480958779,"data":"          \"expected_sha256\": \"a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140\",\n"}
+,{"stream_name":"stdout","time":39.48099104,"data":"          \"pass\": true\n"}
+,{"stream_name":"stdout","time":39.480995175,"data":"        },\n"}
+,{"stream_name":"stdout","time":39.480997863,"data":"        \"quantize/int_linear.py\": {\n"}
+,{"stream_name":"stdout","time":39.481000596,"data":"          \"actual_sha256\": \"9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409\",\n"}
+,{"stream_name":"stdout","time":39.481003497,"data":"          \"expected_sha256\": \"9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409\",\n"}
+,{"stream_name":"stdout","time":39.481006302,"data":"          \"pass\": true\n"}
+,{"stream_name":"stdout","time":39.481008876,"data":"        },\n"}
+,{"stream_name":"stdout","time":39.481011494,"data":"        \"quantize/utils.py\": {\n"}
+,{"stream_name":"stdout","time":39.481030425,"data":"          \"actual_sha256\": \"905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5\",\n"}
+,{"stream_name":"stdout","time":39.48103555,"data":"          \"expected_sha256\": \"905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5\",\n"}
+,{"stream_name":"stdout","time":39.481040462,"data":"          \"pass\": true\n"}
+,{"stream_name":"stdout","time":39.481044586,"data":"        },\n"}
+,{"stream_name":"stdout","time":39.481048902,"data":"        \"utils.py\": {\n"}
+,{"stream_name":"stdout","time":39.48105344,"data":"          \"actual_sha256\": \"b209ca43c737e583eb4e23c8bdcd9292c592e7378c6f5c5aac87a8700600b868\",\n"}
+,{"stream_name":"stdout","time":39.48105758,"data":"          \"expected_sha256\": \"b209ca43c737e583eb4e23c8bdcd9292c592e7378c6f5c5aac87a8700600b868\",\n"}
+,{"stream_name":"stdout","time":39.481061745,"data":"          \"pass\": true\n"}
+,{"stream_name":"stdout","time":39.48106557,"data":"        }\n"}
+,{"stream_name":"stdout","time":39.481069244,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.481072841,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.481076552,"data":"    \"no_algorithm_semantic_patch\": {\n"}
+,{"stream_name":"stdout","time":39.48108041,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.481084267,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.481088071,"data":"        \"rows\": 6,\n"}
+,{"stream_name":"stdout","time":39.481091868,"data":"        \"semantic_changes\": []\n"}
+,{"stream_name":"stdout","time":39.481095948,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.481101605,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.48110909,"data":"    \"bundle_file_hashes\": {\n"}
+,{"stream_name":"stdout","time":39.481117612,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.48113403,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.481138566,"data":"        \"file_count\": 291,\n"}
+,{"stream_name":"stdout","time":39.481143229,"data":"        \"mismatches\": [],\n"}
+,{"stream_name":"stdout","time":39.481148029,"data":"        \"bundle_tree_sha256\": \"467465a5fe2de26eb7c5b22a265fa502de906292e441e61cce495335504a25cf\"\n"}
+,{"stream_name":"stdout","time":39.481152727,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.48115642,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.48116004,"data":"    \"no_unfrozen_bundle_members\": {\n"}
+,{"stream_name":"stdout","time":39.48116382,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.481167608,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.481171389,"data":"        \"unexpected_files\": []\n"}
+,{"stream_name":"stdout","time":39.481175215,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.481183538,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.481187351,"data":"    \"evaluator_hashes_recorded\": {\n"}
+,{"stream_name":"stdout","time":39.48119121,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.481194949,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.481200885,"data":"        \"evaluator/ppl.py\": \"5062225fc58d6d1272ba7c828f697ff9540407db5409340d2a94662ff32841a1\",\n"}
+,{"stream_name":"stdout","time":39.481205202,"data":"        \"evaluator/ppl_datasets.py\": \"80f3cfe956fdd25fd54906bcdec26325cf2e2d7b65eab9a18aef5ea538bcf7eb\"\n"}
+,{"stream_name":"stdout","time":39.481215288,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.481232561,"data":"    }\n"}
+,{"stream_name":"stdout","time":39.481237316,"data":"  },\n"}
+,{"stream_name":"stdout","time":39.481241609,"data":"  \"failures\": []\n"}
+,{"stream_name":"stdout","time":39.481246475,"data":"}\n"}
+,{"stream_name":"stdout","time":39.598743226,"data":"{\n"}
+,{"stream_name":"stdout","time":39.598774603,"data":"  \"status\": \"PASS\",\n"}
+,{"stream_name":"stdout","time":39.59877986,"data":"  \"source_path\": \"omniquant_port/upstream/quantize/omniquant.py\",\n"}
+,{"stream_name":"stdout","time":39.598785874,"data":"  \"source_sha256\": \"dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00\",\n"}
+,{"stream_name":"stdout","time":39.59878999,"data":"  \"module_map_path\": \"manifests/v20_evidence/QWEN25_MODULE_MAP.json\",\n"}
+,{"stream_name":"stdout","time":39.59882315,"data":"  \"module_map_sha256\": \"aac788d7dd8a5f7c46d9562591f37a82a2e69bc108fb9cb5759e328bfbafaedd\",\n"}
+,{"stream_name":"stdout","time":39.598830925,"data":"  \"decoder_layers\": 24,\n"}
+,{"stream_name":"stdout","time":39.598834696,"data":"  \"target_projections\": 168,\n"}
+,{"stream_name":"stdout","time":39.598838304,"data":"  \"samples_per_epoch\": 128,\n"}
+,{"stream_name":"stdout","time":39.598841899,"data":"  \"batch_size\": 1,\n"}
+,{"stream_name":"stdout","time":39.598845422,"data":"  \"epochs\": 20,\n"}
+,{"stream_name":"stdout","time":39.598849184,"data":"  \"steps_per_sample_per_epoch\": 1,\n"}
+,{"stream_name":"stdout","time":39.59885793,"data":"  \"optimizer_updates_per_block_per_epoch\": 128,\n"}
+,{"stream_name":"stdout","time":39.598861084,"data":"  \"optimizer_updates_per_block\": 2560,\n"}
+,{"stream_name":"stdout","time":39.598863494,"data":"  \"optimizer_updates_per_epoch_all_blocks\": 3072,\n"}
+,{"stream_name":"stdout","time":39.598865924,"data":"  \"total_optimizer_updates\": 61440,\n"}
+,{"stream_name":"stdout","time":39.598868456,"data":"  \"formula\": \"24 decoder blocks ¡Á 20 epochs ¡Á (128 calibration samples / batch size 1) = 61,440 optimizer updates\",\n"}
+,{"stream_name":"stdout","time":39.598871928,"data":"  \"source_locations\": {\n"}
+,{"stream_name":"stdout","time":39.598874376,"data":"    \"layer_bound\": {\n"}
+,{"stream_name":"stdout","time":39.598876762,"data":"      \"line\": 217,\n"}
+,{"stream_name":"stdout","time":39.59887915,"data":"      \"snippet\": \"smoke_layer_limit = getattr(args, \\\"smoke_layer_limit\\\", len(layers))\"\n"}
+,{"stream_name":"stdout","time":39.598881986,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.598884265,"data":"    \"layer_loop\": {\n"}
+,{"stream_name":"stdout","time":39.598886603,"data":"      \"line\": 220,\n"}
+,{"stream_name":"stdout","time":39.598888958,"data":"      \"snippet\": \"for i in range(smoke_layer_limit):\"\n"}
+,{"stream_name":"stdout","time":39.598891561,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.598893821,"data":"    \"epoch_loop\": {\n"}
+,{"stream_name":"stdout","time":39.59890567,"data":"      \"line\": 312,\n"}
+,{"stream_name":"stdout","time":39.598908208,"data":"      \"snippet\": \"for epochs in range(args.epochs):\"\n"}
+,{"stream_name":"stdout","time":39.598910636,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.598912864,"data":"    \"sample_loop\": {\n"}
+,{"stream_name":"stdout","time":39.598915197,"data":"      \"line\": 315,\n"}
+,{"stream_name":"stdout","time":39.598917636,"data":"      \"snippet\": \"for j in range(args.nsamples//args.batch_size):\"\n"}
+,{"stream_name":"stdout","time":39.598920114,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.598922354,"data":"    \"optimizer_update\": {\n"}
+,{"stream_name":"stdout","time":39.598924696,"data":"      \"line\": 369,\n"}
+,{"stream_name":"stdout","time":39.598927059,"data":"      \"snippet\": \"norm = loss_scaler(loss, optimizer,parameters= get_omni_parameters(qlayer, use_shift)).cpu()\"\n"}
+,{"stream_name":"stdout","time":39.598929813,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.598932044,"data":"    \"batch_guard\": {\n"}
+,{"stream_name":"stdout","time":39.598934362,"data":"      \"line\": 188,\n"}
+,{"stream_name":"stdout","time":39.598937016,"data":"      \"snippet\": \"if args.batch_size != 1:\"\n"}
+,{"stream_name":"stdout","time":39.598939532,"data":"    }\n"}
+,{"stream_name":"stdout","time":39.598941785,"data":"  },\n"}
+,{"stream_name":"stdout","time":39.598944062,"data":"  \"formal_epochs_unchanged\": true,\n"}
+,{"stream_name":"stdout","time":39.598946474,"data":"  \"preflight_smoke_limits_excluded\": true\n"}
+,{"stream_name":"stdout","time":39.598948986,"data":"}\n"}
+,{"stream_name":"stdout","time":39.681989124,"data":"{\n"}
+,{"stream_name":"stdout","time":39.682021218,"data":"  \"status\": \"PASS\",\n"}
+,{"stream_name":"stdout","time":39.682028,"data":"  \"bundle_root\": \"/kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle\",\n"}
+,{"stream_name":"stdout","time":39.68203298,"data":"  \"checks\": {\n"}
+,{"stream_name":"stdout","time":39.68203694,"data":"    \"required_files\": {\n"}
+,{"stream_name":"stdout","time":39.682041631,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.682046946,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.682051453,"data":"        \"missing\": [],\n"}
+,{"stream_name":"stdout","time":39.682055597,"data":"        \"count\": 25\n"}
+,{"stream_name":"stdout","time":39.682059972,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.682064288,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.6820683,"data":"    \"upstream_commit\": {\n"}
+,{"stream_name":"stdout","time":39.68207239,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.682076173,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.68207984,"data":"        \"config\": \"feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14\",\n"}
+,{"stream_name":"stdout","time":39.682083824,"data":"        \"v20\": \"feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14\"\n"}
+,{"stream_name":"stdout","time":39.682087844,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.682091896,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.68209603,"data":"    \"model_revision\": {\n"}
+,{"stream_name":"stdout","time":39.682100577,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.682104094,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.682107736,"data":"        \"model_id\": \"Qwen/Qwen2.5-0.5B-Instruct\",\n"}
+,{"stream_name":"stdout","time":39.682111718,"data":"        \"revision\": \"7ae557604adf67be50417f59c2c2f167def9a775\"\n"}
+,{"stream_name":"stdout","time":39.682126521,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.68213013,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682133634,"data":"    \"model_file_lock\": {\n"}
+,{"stream_name":"stdout","time":39.682155295,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.682159203,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.68216305,"data":"        \"model_id\": \"Qwen/Qwen2.5-0.5B-Instruct\",\n"}
+,{"stream_name":"stdout","time":39.682167135,"data":"        \"revision\": \"7ae557604adf67be50417f59c2c2f167def9a775\",\n"}
+,{"stream_name":"stdout","time":39.682172468,"data":"        \"locked_files\": 7\n"}
+,{"stream_name":"stdout","time":39.682176498,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.68218037,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682184077,"data":"    \"calibration_manifest\": {\n"}
+,{"stream_name":"stdout","time":39.682188018,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.682192258,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.682196183,"data":"        \"sha256\": \"664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3\",\n"}
+,{"stream_name":"stdout","time":39.682200383,"data":"        \"samples\": 128,\n"}
+,{"stream_name":"stdout","time":39.682204408,"data":"        \"seqlen\": 2048,\n"}
+,{"stream_name":"stdout","time":39.682208326,"data":"        \"seed\": 20261005\n"}
+,{"stream_name":"stdout","time":39.682212375,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.682216168,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.68222042,"data":"    \"official_upstream_files\": {\n"}
+,{"stream_name":"stdout","time":39.682224423,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.682228299,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.682232142,"data":"        \"files\": 257,\n"}
+,{"stream_name":"stdout","time":39.68223619,"data":"        \"mismatches\": [],\n"}
+,{"stream_name":"stdout","time":39.682240472,"data":"        \"tree_sha256\": \"a622961257aece95960e85f7e1c10f6af76c8e23e7b224bb4ce585e3c251ab4b\",\n"}
+,{"stream_name":"stdout","time":39.682244849,"data":"        \"expected_tree_sha256\": \"a622961257aece95960e85f7e1c10f6af76c8e23e7b224bb4ce585e3c251ab4b\",\n"}
+,{"stream_name":"stdout","time":39.682249185,"data":"        \"manifest_sha256\": \"ddf8c4bf69a458cdc80d59a1016a266b2e2c9f2fd17dc1de4b41189d89ffc1bb\",\n"}
+,{"stream_name":"stdout","time":39.682253529,"data":"        \"manifest_expected_sha256\": \"ddf8c4bf69a458cdc80d59a1016a266b2e2c9f2fd17dc1de4b41189d89ffc1bb\"\n"}
+,{"stream_name":"stdout","time":39.682258558,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.682262285,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682271077,"data":"    \"v20_patch_hashes\": {\n"}
+,{"stream_name":"stdout","time":39.682275278,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.68227945,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.682283344,"data":"        \"omniquant_port/upstream/quantize/omniquant.py\": {\n"}
+,{"stream_name":"stdout","time":39.682287434,"data":"          \"actual_sha256\": \"dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00\",\n"}
+,{"stream_name":"stdout","time":39.68229226,"data":"          \"expected_sha256\": \"dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00\",\n"}
+,{"stream_name":"stdout","time":39.682297194,"data":"          \"pass\": true\n"}
+,{"stream_name":"stdout","time":39.682305413,"data":"        },\n"}
+,{"stream_name":"stdout","time":39.68231123,"data":"        \"omniquant_port/upstream/models/int_qwen2_layer.py\": {\n"}
+,{"stream_name":"stdout","time":39.682316105,"data":"          \"actual_sha256\": \"0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9\",\n"}
+,{"stream_name":"stdout","time":39.682320416,"data":"          \"expected_sha256\": \"0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9\",\n"}
+,{"stream_name":"stdout","time":39.68232461,"data":"          \"pass\": true\n"}
+,{"stream_name":"stdout","time":39.682328453,"data":"        }\n"}
+,{"stream_name":"stdout","time":39.682332682,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.682337176,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682341277,"data":"    \"protected_algorithm_sources\": {\n"}
+,{"stream_name":"stdout","time":39.682345158,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.682349614,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.68235365,"data":"        \"quantize/quantizer.py\": {\n"}
+,{"stream_name":"stdout","time":39.682357519,"data":"          \"actual_sha256\": \"a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140\",\n"}
+,{"stream_name":"stdout","time":39.682361812,"data":"          \"expected_sha256\": \"a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140\",\n"}
+,{"stream_name":"stdout","time":39.682366057,"data":"          \"pass\": true\n"}
+,{"stream_name":"stdout","time":39.682370473,"data":"        },\n"}
+,{"stream_name":"stdout","time":39.682374681,"data":"        \"quantize/int_linear.py\": {\n"}
+,{"stream_name":"stdout","time":39.682378683,"data":"          \"actual_sha256\": \"9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409\",\n"}
+,{"stream_name":"stdout","time":39.682383055,"data":"          \"expected_sha256\": \"9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409\",\n"}
+,{"stream_name":"stdout","time":39.682387671,"data":"          \"pass\": true\n"}
+,{"stream_name":"stdout","time":39.682391413,"data":"        },\n"}
+,{"stream_name":"stdout","time":39.682395274,"data":"        \"quantize/utils.py\": {\n"}
+,{"stream_name":"stdout","time":39.68239925,"data":"          \"actual_sha256\": \"905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5\",\n"}
+,{"stream_name":"stdout","time":39.682404218,"data":"          \"expected_sha256\": \"905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5\",\n"}
+,{"stream_name":"stdout","time":39.682408258,"data":"          \"pass\": true\n"}
+,{"stream_name":"stdout","time":39.682412196,"data":"        },\n"}
+,{"stream_name":"stdout","time":39.682416205,"data":"        \"utils.py\": {\n"}
+,{"stream_name":"stdout","time":39.68242023,"data":"          \"actual_sha256\": \"b209ca43c737e583eb4e23c8bdcd9292c592e7378c6f5c5aac87a8700600b868\",\n"}
+,{"stream_name":"stdout","time":39.682424554,"data":"          \"expected_sha256\": \"b209ca43c737e583eb4e23c8bdcd9292c592e7378c6f5c5aac87a8700600b868\",\n"}
+,{"stream_name":"stdout","time":39.682429218,"data":"          \"pass\": true\n"}
+,{"stream_name":"stdout","time":39.682433081,"data":"        }\n"}
+,{"stream_name":"stdout","time":39.682436868,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.682441173,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682445053,"data":"    \"no_algorithm_semantic_patch\": {\n"}
+,{"stream_name":"stdout","time":39.682449014,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.682452818,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.682460116,"data":"        \"rows\": 6,\n"}
+,{"stream_name":"stdout","time":39.682464122,"data":"        \"semantic_changes\": []\n"}
+,{"stream_name":"stdout","time":39.682468667,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.682472901,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682476976,"data":"    \"bundle_file_hashes\": {\n"}
+,{"stream_name":"stdout","time":39.682481613,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.682485559,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.682489503,"data":"        \"file_count\": 291,\n"}
+,{"stream_name":"stdout","time":39.682493535,"data":"        \"mismatches\": [],\n"}
+,{"stream_name":"stdout","time":39.68249781,"data":"        \"bundle_tree_sha256\": \"467465a5fe2de26eb7c5b22a265fa502de906292e441e61cce495335504a25cf\"\n"}
+,{"stream_name":"stdout","time":39.682502025,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.682505794,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682510036,"data":"    \"no_unfrozen_bundle_members\": {\n"}
+,{"stream_name":"stdout","time":39.682514023,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.682517887,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.682522373,"data":"        \"unexpected_files\": []\n"}
+,{"stream_name":"stdout","time":39.682526315,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.682530055,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682533864,"data":"    \"evaluator_hashes_recorded\": {\n"}
+,{"stream_name":"stdout","time":39.682537918,"data":"      \"pass\": true,\n"}
+,{"stream_name":"stdout","time":39.682542188,"data":"      \"details\": {\n"}
+,{"stream_name":"stdout","time":39.68254594,"data":"        \"evaluator/ppl.py\": \"5062225fc58d6d1272ba7c828f697ff9540407db5409340d2a94662ff32841a1\",\n"}
+,{"stream_name":"stdout","time":39.682550808,"data":"        \"evaluator/ppl_datasets.py\": \"80f3cfe956fdd25fd54906bcdec26325cf2e2d7b65eab9a18aef5ea538bcf7eb\"\n"}
+,{"stream_name":"stdout","time":39.682555321,"data":"      }\n"}
+,{"stream_name":"stdout","time":39.682559018,"data":"    }\n"}
+,{"stream_name":"stdout","time":39.682562914,"data":"  },\n"}
+,{"stream_name":"stdout","time":39.682566776,"data":"  \"failures\": []\n"}
+,{"stream_name":"stdout","time":39.682570605,"data":"}\n"}
+,{"stream_name":"stdout","time":39.682575145,"data":"{\n"}
+,{"stream_name":"stdout","time":39.682579328,"data":"  \"status\": \"PASS\",\n"}
+,{"stream_name":"stdout","time":39.682583563,"data":"  \"source_path\": \"omniquant_port/upstream/quantize/omniquant.py\",\n"}
+,{"stream_name":"stdout","time":39.682587787,"data":"  \"source_sha256\": \"dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00\",\n"}
+,{"stream_name":"stdout","time":39.682591896,"data":"  \"module_map_path\": \"manifests/v20_evidence/QWEN25_MODULE_MAP.json\",\n"}
+,{"stream_name":"stdout","time":39.682596085,"data":"  \"module_map_sha256\": \"aac788d7dd8a5f7c46d9562591f37a82a2e69bc108fb9cb5759e328bfbafaedd\",\n"}
+,{"stream_name":"stdout","time":39.682600302,"data":"  \"decoder_layers\": 24,\n"}
+,{"stream_name":"stdout","time":39.6826046,"data":"  \"target_projections\": 168,\n"}
+,{"stream_name":"stdout","time":39.682609061,"data":"  \"samples_per_epoch\": 128,\n"}
+,{"stream_name":"stdout","time":39.68261297,"data":"  \"batch_size\": 1,\n"}
+,{"stream_name":"stdout","time":39.682616885,"data":"  \"epochs\": 20,\n"}
+,{"stream_name":"stdout","time":39.682620753,"data":"  \"steps_per_sample_per_epoch\": 1,\n"}
+,{"stream_name":"stdout","time":39.682629101,"data":"  \"optimizer_updates_per_block_per_epoch\": 128,\n"}
+,{"stream_name":"stdout","time":39.682633286,"data":"  \"optimizer_updates_per_block\": 2560,\n"}
+,{"stream_name":"stdout","time":39.682637581,"data":"  \"optimizer_updates_per_epoch_all_blocks\": 3072,\n"}
+,{"stream_name":"stdout","time":39.682641975,"data":"  \"total_optimizer_updates\": 61440,\n"}
+,{"stream_name":"stdout","time":39.682645959,"data":"  \"formula\": \"24 decoder blocks ¡Á 20 epochs ¡Á (128 calibration samples / batch size 1) = 61,440 optimizer updates\",\n"}
+,{"stream_name":"stdout","time":39.682650918,"data":"  \"source_locations\": {\n"}
+,{"stream_name":"stdout","time":39.68265557,"data":"    \"layer_bound\": {\n"}
+,{"stream_name":"stdout","time":39.68265962,"data":"      \"line\": 217,\n"}
+,{"stream_name":"stdout","time":39.682663493,"data":"      \"snippet\": \"smoke_layer_limit = getattr(args, \\\"smoke_layer_limit\\\", len(layers))\"\n"}
+,{"stream_name":"stdout","time":39.68266848,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682672144,"data":"    \"layer_loop\": {\n"}
+,{"stream_name":"stdout","time":39.682676013,"data":"      \"line\": 220,\n"}
+,{"stream_name":"stdout","time":39.682680329,"data":"      \"snippet\": \"for i in range(smoke_layer_limit):\"\n"}
+,{"stream_name":"stdout","time":39.682684837,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682689222,"data":"    \"epoch_loop\": {\n"}
+,{"stream_name":"stdout","time":39.682693555,"data":"      \"line\": 312,\n"}
+,{"stream_name":"stdout","time":39.682698025,"data":"      \"snippet\": \"for epochs in range(args.epochs):\"\n"}
+,{"stream_name":"stdout","time":39.68270214,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682705845,"data":"    \"sample_loop\": {\n"}
+,{"stream_name":"stdout","time":39.682709739,"data":"      \"line\": 315,\n"}
+,{"stream_name":"stdout","time":39.68271363,"data":"      \"snippet\": \"for j in range(args.nsamples//args.batch_size):\"\n"}
+,{"stream_name":"stdout","time":39.682717737,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682721514,"data":"    \"optimizer_update\": {\n"}
+,{"stream_name":"stdout","time":39.68272537,"data":"      \"line\": 369,\n"}
+,{"stream_name":"stdout","time":39.682729185,"data":"      \"snippet\": \"norm = loss_scaler(loss, optimizer,parameters= get_omni_parameters(qlayer, use_shift)).cpu()\"\n"}
+,{"stream_name":"stdout","time":39.682734085999996,"data":"    },\n"}
+,{"stream_name":"stdout","time":39.682738418,"data":"    \"batch_guard\": {\n"}
+,{"stream_name":"stdout","time":39.682742294,"data":"      \"line\": 188,\n"}
+,{"stream_name":"stdout","time":39.682746112,"data":"      \"snippet\": \"if args.batch_size != 1:\"\n"}
+,{"stream_name":"stdout","time":39.6827502,"data":"    }\n"}
+,{"stream_name":"stdout","time":39.682754086,"data":"  },\n"}
+,{"stream_name":"stdout","time":39.68275787,"data":"  \"formal_epochs_unchanged\": true,\n"}
+,{"stream_name":"stdout","time":39.682761912,"data":"  \"preflight_smoke_limits_excluded\": true\n"}
+,{"stream_name":"stdout","time":39.682765969,"data":"}\n"}
+,{"stream_name":"stdout","time":39.801944938,"data":"{\n"}
+,{"stream_name":"stdout","time":39.801973163,"data":"  \"status\": \"PASS\",\n"}
+,{"stream_name":"stdout","time":39.801976922,"data":"  \"manifest_sha256\": \"664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3\",\n"}
+,{"stream_name":"stdout","time":39.801980171,"data":"  \"sample_count\": 128,\n"}
+,{"stream_name":"stdout","time":39.801982842,"data":"  \"tokens_per_sample\": [\n"}
+,{"stream_name":"stdout","time":39.801985714,"data":"    2048\n"}
+,{"stream_name":"stdout","time":39.80202103,"data":"  ],\n"}
+,{"stream_name":"stdout","time":39.802026559,"data":"  \"seed\": 20261005,\n"}
+,{"stream_name":"stdout","time":39.802031011,"data":"  \"split\": \"train\",\n"}
+,{"stream_name":"stdout","time":39.802035794,"data":"  \"ordered_sample_metadata_sha256\": \"d87dcd08151b6df71ed8f916d6d022ca09de151166400d28c8ffccde4d5d7751\",\n"}
+,{"stream_name":"stdout","time":39.8020403,"data":"  \"per_sample_hashes_valid\": true,\n"}
+,{"stream_name":"stdout","time":39.802044742,"data":"  \"errors\": [],\n"}
+,{"stream_name":"stdout","time":39.802049219,"data":"  \"runtime_context\": \"Kaggle\",\n"}
+,{"stream_name":"stdout","time":39.80205382,"data":"  \"resampling\": false\n"}
+,{"stream_name":"stdout","time":39.80205809,"data":"}\n"}
+,{"stream_name":"stdout","time":39.821724066,"data":"{\n"}
+,{"stream_name":"stdout","time":39.821756225,"data":"  \"status\": \"PASS\",\n"}
+,{"stream_name":"stdout","time":39.821769366,"data":"  \"manifest_sha256\": \"664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3\",\n"}
+,{"stream_name":"stdout","time":39.821777521,"data":"  \"sample_count\": 128,\n"}
+,{"stream_name":"stdout","time":39.821780316,"data":"  \"tokens_per_sample\": [\n"}
+,{"stream_name":"stdout","time":39.82178304,"data":"    2048\n"}
+,{"stream_name":"stdout","time":39.821818943,"data":"  ],\n"}
+,{"stream_name":"stdout","time":39.821824077,"data":"  \"seed\": 20261005,\n"}
+,{"stream_name":"stdout","time":39.821828524,"data":"  \"split\": \"train\",\n"}
+,{"stream_name":"stdout","time":39.821832598,"data":"  \"ordered_sample_metadata_sha256\": \"d87dcd08151b6df71ed8f916d6d022ca09de151166400d28c8ffccde4d5d7751\",\n"}
+,{"stream_name":"stdout","time":39.821837118,"data":"  \"per_sample_hashes_valid\": true,\n"}
+,{"stream_name":"stdout","time":39.821841312,"data":"  \"errors\": [],\n"}
+,{"stream_name":"stdout","time":39.821845088,"data":"  \"runtime_context\": \"Kaggle\",\n"}
+,{"stream_name":"stdout","time":39.821849041,"data":"  \"resampling\": false\n"}
+,{"stream_name":"stdout","time":39.821854882,"data":"}\n"}
+,{"stream_name":"stderr","time":54.274929470000004,"data":"\rFetching 10 files:   0%|          | 0/10 [00:00\u003c?, ?it/s]\rFetching 10 files:   0%|          | 0/10 [00:00\u003c?, ?it/s]\n"}
+,{"stream_name":"stderr","time":54.478772216,"data":"\rFetching 10 files:   0%|          | 0/10 [00:00\u003c?, ?it/s]\rFetching 10 files:  10%|¨€         | 1/10 [00:00\u003c00:01,  4.91it/s]\rFetching 10 files:  10%|¨€         | 1/10 [00:00\u003c00:01,  4.91it/s]\n"}
+,{"stream_name":"stderr","time":62.538955677,"data":"\rFetching 10 files:  10%|¨€         | 1/10 [00:00\u003c00:01,  4.91it/s]\rFetching 10 files:  70%|¨€¨€¨€¨€¨€¨€¨€   | 7/10 [00:08\u003c00:03,  1.25s/it]\rFetching 10 files: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 10/10 [00:08\u003c00:00,  1.18it/s]\n"}
+,{"stream_name":"stderr","time":62.742279961,"data":"\rFetching 10 files:  70%|¨€¨€¨€¨€¨€¨€¨€   | 7/10 [00:08\u003c00:03,  1.25s/it]\rFetching 10 files: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 10/10 [00:08\u003c00:00,  1.18it/s]\n"}
+,{"stream_name":"stderr","time":62.742344504,"data":"\n"}
+,{"stream_name":"stderr","time":62.742352318,"data":"\rFetching 10 files:  70%|¨€¨€¨€¨€¨€¨€¨€   | 7/10 [00:08\u003c00:03,  1.25s/it]\rFetching 10 files: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 10/10 [00:08\u003c00:00,  1.18it/s]\n"}
+,{"stream_name":"stderr","time":85.655751754,"data":"Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.\n"}
+,{"stream_name":"stderr","time":85.864625712,"data":"Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.\n"}
+,{"stream_name":"stderr","time":85.864707416,"data":"\n"}
+,{"stream_name":"stderr","time":85.864714313,"data":"Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.\n"}
+,{"stream_name":"stderr","time":95.676277831,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":95.6763307,"data":"  File \"/kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/run_preflight.py\", line 841, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":95.679181386,"data":"    raise SystemExit(main())\n"}
+,{"stream_name":"stderr","time":95.679206302,"data":"                     ^^^^^^\n"}
+,{"stream_name":"stderr","time":95.679213979,"data":"  File \"/kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/run_preflight.py\", line 681, in main\n"}
+,{"stream_name":"stderr","time":95.680034306,"data":"    if importlib.util.find_spec(\"termcolor\") is None:\n"}
+,{"stream_name":"stderr","time":95.680052284,"data":"       ^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":95.680058354,"data":"UnboundLocalError: cannot access local variable 'importlib' where it is not associated with a value\n"}
+,{"stream_name":"stderr","time":95.878656881,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":95.878693904,"data":"  File \"/kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/run_preflight.py\", line 841, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":95.87870055,"data":"    raise SystemExit(main())\n"}
+,{"stream_name":"stderr","time":95.878705309,"data":"                     ^^^^^^\n"}
+,{"stream_name":"stderr","time":95.878709951,"data":"  File \"/kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/run_preflight.py\", line 681, in main\n"}
+,{"stream_name":"stderr","time":95.878714803,"data":"    if importlib.util.find_spec(\"termcolor\") is None:\n"}
+,{"stream_name":"stderr","time":95.878719698,"data":"       ^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":95.878724122,"data":"UnboundLocalError: cannot access local variable 'importlib' where it is not associated with a value\n"}
+,{"stream_name":"stderr","time":95.8787285,"data":"\n"}
+,{"stream_name":"stderr","time":95.8787327,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":95.878737288,"data":"  File \"/kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/run_preflight.py\", line 841, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":95.878742036,"data":"    raise SystemExit(main())\n"}
+,{"stream_name":"stderr","time":95.878746443,"data":"                     ^^^^^^\n"}
+,{"stream_name":"stderr","time":95.878750784,"data":"  File \"/kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle/run_preflight.py\", line 681, in main\n"}
+,{"stream_name":"stderr","time":95.878755618,"data":"    if importlib.util.find_spec(\"termcolor\") is None:\n"}
+,{"stream_name":"stderr","time":95.87876043,"data":"       ^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":95.878764944,"data":"UnboundLocalError: cannot access local variable 'importlib' where it is not associated with a value\n"}
+,{"stream_name":"stdout","time":97.921726774,"data":"preflight process exit: 1\n"}
+,{"stream_name":"stdout","time":97.921763187,"data":"{'verdict': 'M3_KAGGLE_FORMAL_EXECUTION_NOT_READY', 'failure': \"UnboundLocalError: cannot access local variable 'importlib' where it is not associated with a value\", 'formal_training_executed': False, 'formal_ppl_executed': False}\n"}
+,{"stream_name":"stdout","time":97.939240844,"data":"result archive: /kaggle/working/range_w4_omniquant_kaggle_v20_1.zip\n"}
+,{"stream_name":"stdout","time":97.939267287,"data":"artifacts: ['BUNDLE_VERIFY.json', 'CALIBRATION_CAPTURE_TIMING.csv', 'DENSE_EXPORT_IO_PROXY.json', 'FORMAL_STEP_COUNT.json', 'KAGGLE_CALIBRATION_CHECK.json', 'KAGGLE_COMMANDS.md', 'KAGGLE_ENVIRONMENT.json', 'M3_RESUME_PLAN.md', 'MODEL_IDENTITY.json', 'PREFLIGHT_VERDICT.json', 'PROTOCOL.json']\n"}
+,{"stream_name":"stderr","time":100.47988113,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":100.479916183,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":100.654522995,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":100.654563845,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":101.399094818,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":101.729673437,"data":"[NbConvertApp] Writing 37486 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":104.334018919,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":105.238641309,"data":"[NbConvertApp] Writing 321775 bytes to __results__.html\n"}
+]

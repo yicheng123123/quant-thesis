@@ -1,0 +1,28 @@
+{
+  "status": "SOURCE_SPLIT_EXCLUDED; NO_V35_EVALUATION_USED",
+  "wikitext_test": {
+    "dataset": "Salesforce/wikitext",
+    "revision": "b08601e04326c79dfdd32d625aee71d232d685c3",
+    "split": "test",
+    "source_sha256": "2b8a3efac7b468cbe6432edba5f55c21e435d93873acc6727431f08d5ed328ea",
+    "tokenizer_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "add_special_tokens": false,
+    "exclusion": "v35 reads only the WT2 train parquet; the official test split is not an eligible source",
+    "article_level_hashes_in_v18_manifest": false
+  },
+  "c4_evaluation": {
+    "dataset": "allenai/c4",
+    "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+    "split": "validation",
+    "source_url": "https://huggingface.co/datasets/allenai/c4/resolve/1588ec454efa1a09f29cd18ddd04fe05fc8653a2/en/c4-validation.00000-of-00008.json.gz",
+    "shard": "en/c4-validation.00000-of-00008.json.gz",
+    "document_start": 32,
+    "document_limit": 1024,
+    "joined_text_sha256": "0fd732d8973ee456eba91ef3c9674fee32b1774059b1b8ad2573f69200808ea2",
+    "tokenizer_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "add_special_tokens": false,
+    "exclusion": "different dataset source; v35 reads only WT2 train",
+    "article_level_hashes_in_v18_manifest": false
+  },
+  "limitation": "The frozen v18 evaluation manifests contain stream-level identity, not per-document full-text hashes. Eligibility is therefore enforced by train-only source partition; no claim of cross-corpus full-article hash comparison is made."
+}

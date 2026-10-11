@@ -1,0 +1,156 @@
+{
+  "status": "PASS",
+  "protocol_sha256": "fa6b61785cd2ce633f402b0b93be7761389ffc9e48e4bdb10f151ecd62e1b12e",
+  "scope": "preselected L0 up/down S0, all 16 held documents, all four fixed rows; alpha1 and search-selected scalar",
+  "meaning": "decomposed v32 score exactly reproduces saved values; explicit Yprime - original Y differs only in FP32 arithmetic order",
+  "records": [
+    {
+      "stem": "L0_up_proj_S0",
+      "held_doc_indices": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "rows": [
+        0,
+        224,
+        448,
+        672
+      ],
+      "alpha1": {
+        "decomposed_mse_by_row": {
+          "0": 0.0010916744626473863,
+          "224": 0.0008980909408768828,
+          "448": 0.0007712184564296138,
+          "672": 0.0009076718926120783
+        },
+        "direct_original_reference_mse_by_row": {
+          "0": 0.0010916744768827123,
+          "224": 0.000898090916662943,
+          "448": 0.0007712184114181995,
+          "672": 0.0009076718452977481
+        },
+        "decomposed_equals_saved_held_exact_by_row": {
+          "0": true,
+          "224": true,
+          "448": true,
+          "672": true
+        },
+        "max_abs_output_error_difference_FP32": 1.434236764907837e-06,
+        "max_abs_score_mse_difference": 4.7314330188161224e-11,
+        "max_relative_score_mse_difference": 5.836402633443566e-08
+      },
+      "selected_scalar": {
+        "decomposed_mse_by_row": {
+          "0": 0.0008113444109098562,
+          "224": 0.0007732378305885347,
+          "448": 0.0006777841020055155,
+          "672": 0.0008212807678811432
+        },
+        "direct_original_reference_mse_by_row": {
+          "0": 0.0008113444043505022,
+          "224": 0.0007732378507000778,
+          "448": 0.0006777840957191409,
+          "672": 0.0008212807247400194
+        },
+        "decomposed_equals_saved_held_exact_by_row": {
+          "0": true,
+          "224": true,
+          "448": true,
+          "672": true
+        },
+        "max_abs_output_error_difference_FP32": 1.4230608940124512e-06,
+        "max_abs_score_mse_difference": 4.3141123811339666e-11,
+        "max_relative_score_mse_difference": 5.252908079491654e-08
+      }
+    },
+    {
+      "stem": "L0_down_proj_S0",
+      "held_doc_indices": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "rows": [
+        0,
+        224,
+        448,
+        672
+      ],
+      "alpha1": {
+        "decomposed_mse_by_row": {
+          "0": 0.0004911212272277178,
+          "224": 0.00019265169060812105,
+          "448": 7.891041163944805e-05,
+          "672": 0.00011564250919822246
+        },
+        "direct_original_reference_mse_by_row": {
+          "0": 0.0004911212617653161,
+          "224": 0.00019265170622991654,
+          "448": 7.891042722762181e-05,
+          "672": 0.00011564248386944926
+        },
+        "decomposed_equals_saved_held_exact_by_row": {
+          "0": true,
+          "224": true,
+          "448": true,
+          "672": true
+        },
+        "max_abs_output_error_difference_FP32": 3.1832605600357056e-06,
+        "max_abs_score_mse_difference": 3.4537598258763125e-11,
+        "max_relative_score_mse_difference": 2.1902649276524377e-07
+      },
+      "selected_scalar": {
+        "decomposed_mse_by_row": {
+          "0": 0.0004079080575307843,
+          "224": 0.00017662914153558412,
+          "448": 7.100145886813502e-05,
+          "672": 0.0001065848673824271
+        },
+        "direct_original_reference_mse_by_row": {
+          "0": 0.0004079080316106132,
+          "224": 0.00017662918197956844,
+          "448": 7.100147493310346e-05,
+          "672": 0.00010658485876184344
+        },
+        "decomposed_equals_saved_held_exact_by_row": {
+          "0": true,
+          "224": true,
+          "448": true,
+          "672": true
+        },
+        "max_abs_output_error_difference_FP32": 2.891290932893753e-06,
+        "max_abs_score_mse_difference": 4.044398431608809e-11,
+        "max_relative_score_mse_difference": 2.2897684925870597e-07
+      }
+    }
+  ],
+  "wall_seconds": 1.4636953999870457,
+  "max_relative_direct_vs_decomposed_score_difference": 2.2897684925870597e-07
+}

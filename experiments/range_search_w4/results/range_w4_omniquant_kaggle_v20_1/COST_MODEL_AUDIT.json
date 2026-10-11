@@ -1,0 +1,88 @@
+{
+  "audit_status": "PASS_WITH_COST_MODEL_SENSITIVITY",
+  "audited_formal_readiness_verdict": "M3_KAGGLE_FORMAL_EXECUTION_READY",
+  "correctness_checks": {
+    "bundle_pass": true,
+    "calibration_hash_and_shape_pass": true,
+    "eight_step_growth_gate_pass": true,
+    "formal_step_formula_matches_source_audit": true,
+    "lwc_2048_check_pass": true,
+    "memory_gate_pass": true,
+    "model_identity_pass": true,
+    "official_commit_exact": true,
+    "quant_off_parity_pass": true,
+    "remote_verdict_matches_checks": true,
+    "representative_run_correctness": true,
+    "representative_timing_counts": true
+  },
+  "cost_model_audit": {
+    "block_overhead_scenarios": {
+      "all_residual_as_per_update_stress": {
+        "assumption": "Treats every second of measured non-step residual as if it recurred at every formal update. This deliberately over-allocates call/epoch setup and is a stress bound, not an expected runtime.",
+        "block_overhead_seconds": 6074.576487175027,
+        "central_total_hours": 2.2895668764971076,
+        "conservative_total_hours": 2.502254285563892
+      },
+      "fixed_call_residual_floor": {
+        "assumption": "The measured non-step residual is paid once per formal decoder-block call; this is a lower scenario, not a measured decomposition.",
+        "block_overhead_seconds": 10.76974817493168,
+        "central_total_hours": 0.6051761156637477,
+        "conservative_total_hours": 0.817863524730532
+      },
+      "remote_report_scaling": {
+        "assumption": "Preserves the remote report's residual scaling by samples divided by observed smoke updates.",
+        "block_overhead_seconds": 303.72882435875135,
+        "central_total_hours": 0.68655363682592,
+        "conservative_total_hours": 0.8992410458927043
+      }
+    },
+    "conservative_stress_total_hours": 2.502254285563892,
+    "interpretation": "The single-call residual is not separated into per-call, per-epoch, and per-update components. The remote central estimate's 0.687 h is reproduced, but its residual extrapolation is not uniquely identified by these smoke calls. The conservative stress case assigns the full observed residual to every formal update; even then the 24 h gate passes.",
+    "non_block_extras_seconds": 59.678217654933476,
+    "runtime_gate_hours": 24.0,
+    "runtime_gate_pass_under_stress_case": true
+  },
+  "environment": {
+    "gpu": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "gpu_count": 2,
+    "selected_device": "cuda:0",
+    "single_gpu_peak_reserved_gib": 1.564453125
+  },
+  "formal_ppl_executed": false,
+  "formal_training_executed": false,
+  "formal_updates": {
+    "batch_size": 1,
+    "epochs": 20,
+    "formula": "24 * 20 * (128 / 1) = 61440",
+    "layers": 24,
+    "samples_per_epoch": 128,
+    "total_updates": 61440,
+    "updates_per_block": 2560
+  },
+  "limitations": [
+    "L12 and L23 use native FP16 full-model prefix activations; sequentially quantized-prefix equivalence is not tested.",
+    "Dense export timing is an FP16 state copy/serialization/reload proxy; W4 dequantization and its peak memory were not measured.",
+    "Three representative layers and 11 measured steps support a preflight estimate, not a formal 20-epoch run or a quality/PPL conclusion.",
+    "The Kaggle session wall-time budget was unavailable; block-level checkpoint/resume remains required for the formal run."
+  ],
+  "measured_timing": {
+    "central_training_hours": 0.5856072362665631,
+    "conservative_training_hours_with_safety_margin": 0.7982946453333474,
+    "mean_step_seconds_by_layer": {
+      "0": 0.03393141599999581,
+      "12": 0.03556908366668191,
+      "23": 0.03343827233330406
+    },
+    "measured_update_counts": {
+      "0": 5,
+      "12": 3,
+      "23": 3
+    },
+    "pooled_p95_step_seconds": 0.037420061500000656
+  },
+  "remote_preflight_verdict": "M3_KAGGLE_FORMAL_EXECUTION_READY",
+  "single_session_status": "KAGGLE_SINGLE_SESSION_REQUIRES_RESUME"
+}

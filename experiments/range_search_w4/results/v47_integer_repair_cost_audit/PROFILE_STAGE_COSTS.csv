@@ -1,0 +1,27 @@
+target_group,target_module,stage,calls,seconds,coverage
+,mlp.down_proj,direct_final_loss,1,1.4269156999944244,measured synchronized wall
+,mlp.down_proj,direct_initial_loss,1,1.3125124999933178,measured synchronized wall
+,mlp.down_proj,direct_proposal_checks,32,43.720293199963635,measured synchronized wall
+,mlp.up_proj,direct_final_loss,1,0.7013602000079118,measured synchronized wall
+,mlp.up_proj,direct_initial_loss,1,0.6690815000038128,measured synchronized wall
+,mlp.up_proj,direct_proposal_checks,32,22.1393984000606,measured synchronized wall
+down,mlp.down_proj,C_construction,1,61.1084528999927,measured synchronized wall
+down,mlp.down_proj,accepted_update_and_rejection_restore,32,0.17845560002024285,measured synchronized wall
+down,mlp.down_proj,candidate_scoring,32,0.6022724999493221,measured synchronized wall
+down,mlp.down_proj,dependency_input_capture,1,1.639885399999912,measured synchronized wall
+down,mlp.down_proj,direct_recompute,34,46.45972139995138,measured synchronized wall
+down,mlp.down_proj,final_correctness,1,0.307991800000309,measured synchronized wall
+down,mlp.down_proj,p_drift_check,5,1.1041320000076666,measured synchronized wall
+down,mlp.down_proj,profile_input_hash,1,NOT_MEASURED,"hash bytes were verified; wrapper timed a no-op, full process wall includes the actual CPU hash"
+down,mlp.down_proj,profile_p_vector_update,32,0.057504799944581464,measured synchronized wall; p timer nested in accepted_update timer
+down,mlp.down_proj,repair_initialization,1,0.22060509999573696,measured synchronized wall
+up_gate,mlp.up_proj,C_construction,1,2.3920055000053253,measured synchronized wall
+up_gate,mlp.up_proj,accepted_update_and_rejection_restore,32,0.16299750001053326,measured synchronized wall
+up_gate,mlp.up_proj,candidate_scoring,32,0.9198943999945186,measured synchronized wall
+up_gate,mlp.up_proj,dependency_input_capture,1,1.2697111000015866,measured synchronized wall
+up_gate,mlp.up_proj,direct_recompute,34,23.509840100072324,measured synchronized wall
+up_gate,mlp.up_proj,final_correctness,1,0.09433449999778531,measured synchronized wall
+up_gate,mlp.up_proj,p_drift_check,5,0.26811209999141283,measured synchronized wall
+up_gate,mlp.up_proj,profile_input_hash,1,NOT_MEASURED,"hash bytes were verified; wrapper timed a no-op, full process wall includes the actual CPU hash"
+up_gate,mlp.up_proj,profile_p_vector_update,32,0.050707900067209266,measured synchronized wall; p timer nested in accepted_update timer
+up_gate,mlp.up_proj,repair_initialization,1,0.07837920000019949,measured synchronized wall

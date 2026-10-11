@@ -1,0 +1,99 @@
+--- v20_1/quantize/omniquant.py
++++ v21_1/M3/official_port/quantize/omniquant.py
+@@ -217,7 +217,12 @@
+     smoke_layer_limit = getattr(args, "smoke_layer_limit", len(layers))
+     if not 1 <= smoke_layer_limit <= len(layers):
+         raise ValueError(f"invalid smoke_layer_limit={smoke_layer_limit}")
++    v21_resume_completed_layers = int(getattr(args, "v21_resume_completed_layers", 0))
++    if not 0 <= v21_resume_completed_layers <= smoke_layer_limit:
++        raise ValueError(f"invalid v21_resume_completed_layers={v21_resume_completed_layers}")
+     for i in range(smoke_layer_limit):
++        if args.resume and i == v21_resume_completed_layers and hasattr(args, "v21_restore_rng"):
++            args.v21_restore_rng()
+         logger.info(f"=== Start quantize layer {i} ===")
+         layer = layers[i].to(dev)
+         if "mixtral" in args.net.lower():  
+@@ -269,8 +274,32 @@
+                             qlayer.register_parameter(f"{pairs[key]}_smooth_shift",torch.nn.Parameter(shift))
+                             qlayer.register_parameter(f"{pairs[key]}_smooth_scale",torch.nn.Parameter(scale))
+                                 
+-        if args.resume:
++        if args.resume and i in omni_parameters:
+             qlayer.load_state_dict(omni_parameters[i], strict=False)
++
++        # Resume only at a completed-block boundary. Reconstruct each saved
++        # quantized prefix block with the official path so quant_inps and
++        # fp_inps have the same dependency semantics as an uninterrupted run.
++        if args.resume and i < v21_resume_completed_layers:
++            if i not in omni_parameters:
++                raise RuntimeError(f"resume checkpoint lacks completed block {i}")
++            qlayer.half()
++            smooth_and_quant_inplace(qlayer, args, is_llama)
++            if args.epochs > 0:
++                with torch.no_grad():
++                    with traincast():
++                        for j in range(args.nsamples):
++                            quant_inps[j] = block_forward(qlayer, quant_inps[j].unsqueeze(0), j)
++                register_scales_and_zeros(qlayer)
++                layers[i] = qlayer.to("cpu")
++            else:
++                register_scales_and_zeros(qlayer)
++                layers[i] = qlayer.to("cpu")
++            if hasattr(args, "v21_layer_callback"):
++                args.v21_layer_callback("replayed_prefix", i, qlayer)
++            del layer
++            torch.cuda.empty_cache()
++            continue
+         
+ 
+         if args.epochs > 0:
+@@ -279,6 +308,8 @@
+             # create optimizer
+             optimizer = torch.optim.AdamW(
+                 [{"params":let_parameters(qlayer, use_shift),"lr":args.let_lr}, {"params":lwc_parameters(qlayer),"lr":args.lwc_lr}],weight_decay=args.wd)
++            if hasattr(args, "v21_layer_callback"):
++                args.v21_layer_callback("optimizer_init", i, qlayer)
+             loss_scaler = utils.NativeScalerWithGradNormCount()
+             optimizer_step_times = []
+             if hasattr(optimizer, "register_step_pre_hook"):
+@@ -340,8 +371,7 @@
+                         if observe_step:
+                             loss_end.record()
+                     if not math.isfinite(loss.item()):
+-                        logger.info("Loss is NAN, stopping training")
+-                        pdb.set_trace()
++                        raise FloatingPointError(f"nonfinite reconstruction loss at layer={i}, epoch={epochs}, sample={j}")
+                         
+                     loss_list.append(loss.detach().cpu())
+                     if torch.cuda.is_available():
+@@ -367,6 +397,8 @@
+                     optimizer_step_times.clear()
+                     backward_optimizer_started = __import__("time").perf_counter()
+                     norm = loss_scaler(loss, optimizer,parameters= get_omni_parameters(qlayer, use_shift)).cpu()
++                    if hasattr(args, "v21_step_check_callback"):
++                        args.v21_step_check_callback(qlayer, i, epochs, j, loss)
+                     norm_list.append(norm.data)
+                     completed_steps += 1
+                     if torch.cuda.is_available():
+@@ -425,8 +457,12 @@
+                 loss_mean = torch.stack(loss_list).mean()
+                 norm_mean = torch.stack(norm_list).mean()
+                 logger.info(f"layer {i} iter {epochs} loss:{loss_mean} norm:{norm_mean} max memory_allocated {torch.cuda.max_memory_allocated(lm._device) / 1024**2} ")
++                if hasattr(args, "v21_epoch_callback"):
++                    args.v21_epoch_callback(i, epochs, loss_mean, norm_mean, qlayer)
+                 if smoke_step_limit is not None and completed_steps >= smoke_step_limit:
+                     break
++            if hasattr(args, "v21_layer_callback"):
++                args.v21_layer_callback("optimizer_complete", i, qlayer)
+             clear_temp_variable(qlayer)
+             del optimizer
+         qlayer.half() 
+@@ -442,6 +478,8 @@
+             register_scales_and_zeros(qlayer)
+             layers[i] = qlayer.to("cpu")
+             omni_parameters[i] = omni_state_dict(qlayer)
++            if hasattr(args, "v21_layer_callback"):
++                args.v21_layer_callback("quantized_block", i, qlayer)
+             torch.save(omni_parameters, os.path.join(args.output_dir, f"omni_parameters.pth"))
+         else:
+             register_scales_and_zeros(qlayer)

@@ -1,0 +1,9 @@
+{
+  "status": "FAILED_STOP",
+  "category": "D",
+  "error": "ArithmeticError('material numerical inconsistency beyond original delta tolerance')",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v44_m2_single_integer_repair_fullmodel\\run_v44.py\", line 113, in <module>\n    try:main()\n        ^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v44_m2_single_integer_repair_fullmodel\\run_v44.py\", line 98, in main\n    t=time.perf_counter();hidden=rt.run_layer(model,li,hidden);sec=time.perf_counter()-t\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v44_m2_single_integer_repair_fullmodel\\run_v42.py\", line 244, in run_layer\n    result=batch_repair(s['codes'],s['scales'],s['g_idx'],W,X,C,name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v44_m2_single_integer_repair_fullmodel\\rejection_repair.py\", line 96, in batch_repair\n    accepted,rejected,actual,error,tol,before_updates=settle(st,proposal,newloss,C,SC)\n                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v44_m2_single_integer_repair_fullmodel\\rejection_repair.py\", line 53, in settle\n    if not bool((error<=tol).all()):raise ArithmeticError('material numerical inconsistency beyond original delta tolerance')\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nArithmeticError: material numerical inconsistency beyond original delta tolerance\n",
+  "elapsed_seconds": 145.2112946510315,
+  "complete_model": false,
+  "PPL_run": false
+}

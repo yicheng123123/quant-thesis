@@ -1,0 +1,10 @@
+{
+  "status": "DIAGNOSED_AND_FIXED_BEFORE_GPU_WORK",
+  "stage": "module import before model load",
+  "error": "KeyError: v28 protocol wraps original v18 definition under v18_protocol",
+  "cause": "copied v18 runner expected an unwrapped top-level m2 section",
+  "fix": "runner now reads V28_PROTOCOL['v18_protocol']; v28 file hash is still used for checkpoint provenance",
+  "model_loads": 0,
+  "candidate_executions": 0,
+  "gpu_wall_seconds": 0
+}

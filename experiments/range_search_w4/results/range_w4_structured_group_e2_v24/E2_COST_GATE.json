@@ -1,0 +1,62 @@
+{
+  "status": "E2_COST_GATE_PASS",
+  "single_experiment_limit_seconds": 21600,
+  "total_e2_limit_seconds": 86400,
+  "formal_central_seconds": 3608.7295093389234,
+  "formal_central_hours": 1.0024248637052564,
+  "projected_total_e2_central_seconds_including_preflight": 3756.552437738906,
+  "projected_total_e2_central_hours_including_preflight": 1.0434867882608072,
+  "projected_total_e2_conservative_seconds_including_preflight": 5560.917192408368,
+  "projected_total_e2_conservative_hours_including_preflight": 1.5446992201134355,
+  "six_hour_formal_gate_pass": true,
+  "twenty_four_hour_total_gate_pass": true,
+  "central_seconds": 3608.7295093389234,
+  "central_hours": 1.0024248637052564,
+  "conservative_seconds": 5413.094264008385,
+  "conservative_hours": 1.5036372955578847,
+  "conservative_multiplier": 1.5,
+  "measured_components_seconds": {
+    "model_load": 2.420523000007961,
+    "formal_model_load": 2.420523000007961,
+    "formal_prefix_cache_validation": 2.1451616999984253,
+    "formal_down_input_cache_validation": 3.280122800002573,
+    "preflight_down_input_replay_capture_already_elapsed": 6.911360400001286,
+    "hessian_and_hinv_estimate": 5.021358899917686,
+    "full_linear_candidate_gptq": 747.6826200022479,
+    "structured_per_row_candidate_gptq": 2352.8152944082394,
+    "search_and_held_local_scoring_upper_bound": 455.82149794511497,
+    "candidate_and_score_checkpoint_io": 9.542450583394384,
+    "stitch_commit_restore": 0.00048000000000000007,
+    "report_and_validation": 30.0
+  },
+  "execution_counts": {
+    "full_linear_gptq_candidate_calls": 552,
+    "per_row_structured_gptq_candidate_calls_max": 1728,
+    "search_full_candidate_row_scores": 2208,
+    "search_structured_row_candidate_scores_max": 1728,
+    "held_full_candidate_row_scores": 2208,
+    "held_structured_row_candidate_scores_max": 1728,
+    "formal_block_forward_or_ppl_calls": 0
+  },
+  "timing_basis": "GPU synchronized; measured two representative shapes (L0/up d=896, L23/down d=4864), target/split H probes and exact down-input cache preparation; conservative uses max observed candidate time or 1.5x total, whichever is larger",
+  "preflight_wall_seconds": 147.82292839998263,
+  "formal_startup_estimate_seconds": 7.845807500008959,
+  "down_input_cache_validation_seconds": 3.280122800002573,
+  "peak_cuda": {
+    "allocated_bytes": 2336302592,
+    "reserved_bytes": 2556428288
+  },
+  "input_and_method_cache_bytes": 3825205248,
+  "gate_pass": true,
+  "formal_status": "COMPLETE",
+  "observed_formal_wall_seconds": 2544.6177236000076,
+  "observed_preflight_plus_formal_wall_seconds": 2692.44065199999,
+  "observed_total_hours": 0.7479001811111083,
+  "observed_peak_cuda": {
+    "allocated_bytes": 2336302592,
+    "reserved_bytes": 2556428288
+  },
+  "observed_final_recovery_process_wall_seconds": 31.602024500025436,
+  "observed_prior_failed_formal_attempt_seconds": 2513.015699099982,
+  "observed_total_formal_attempt_wall_seconds": 2544.6177236000076
+}

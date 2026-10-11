@@ -1,0 +1,361 @@
+{
+  "comparisons": {
+    "M2_original_scalar10_vs_M1_native_alpha1": {
+      "win_tie_loss": {
+        "win": 46,
+        "tie": 2,
+        "loss": 0
+      },
+      "mean_relative_improvement": 0.1700358547205105,
+      "median_relative_improvement": 0.15785199122514904,
+      "pooled_sse_baseline": 0.15235843727805487,
+      "pooled_sse_candidate": 0.11732709455840144,
+      "pooled_improvement_fraction": 0.2299271595685972,
+      "mean_delta_mse": -0.00072981963999278,
+      "median_delta_mse": -0.00015689201293112584,
+      "worst_case_delta_mse": 0.0,
+      "worst_case_regression_gain": 0.0
+    },
+    "dense_scalar46_vs_M1_native_alpha1": {
+      "win_tie_loss": {
+        "win": 47,
+        "tie": 1,
+        "loss": 0
+      },
+      "mean_relative_improvement": 0.18086563779780757,
+      "median_relative_improvement": 0.15076845789387508,
+      "pooled_sse_baseline": 0.15235843727805487,
+      "pooled_sse_candidate": 0.11570266495456799,
+      "pooled_improvement_fraction": 0.24058905419586263,
+      "mean_delta_mse": -0.000763661923405977,
+      "median_delta_mse": -0.0001789363432242409,
+      "worst_case_delta_mse": 0.0,
+      "worst_case_regression_gain": 0.0
+    },
+    "structured_2region_vs_M1_native_alpha1": {
+      "win_tie_loss": {
+        "win": 46,
+        "tie": 1,
+        "loss": 1
+      },
+      "mean_relative_improvement": 0.1748263774476125,
+      "median_relative_improvement": 0.16034700592238332,
+      "pooled_sse_baseline": 0.15235843727805487,
+      "pooled_sse_candidate": 0.11717615183174034,
+      "pooled_improvement_fraction": 0.23091786759473448,
+      "mean_delta_mse": -0.0007329642801315531,
+      "median_delta_mse": -0.0001379978087613978,
+      "worst_case_delta_mse": 4.3070453872957534e-05,
+      "worst_case_regression_gain": -0.004541369604636338
+    },
+    "structured_2region_vs_M2_original_scalar10": {
+      "win_tie_loss": {
+        "win": 15,
+        "tie": 23,
+        "loss": 10
+      },
+      "mean_relative_improvement": 0.005283497405779512,
+      "median_relative_improvement": 0.0,
+      "pooled_sse_baseline": 0.11732709455840144,
+      "pooled_sse_candidate": 0.11717615183174034,
+      "pooled_improvement_fraction": 0.0012865120987545912,
+      "mean_delta_mse": -3.1446401387730858e-06,
+      "median_delta_mse": 0.0,
+      "worst_case_delta_mse": 0.0012096109938639302,
+      "worst_case_regression_gain": -0.14542994190404943
+    },
+    "structured_2region_vs_dense_scalar46": {
+      "win_tie_loss": {
+        "win": 17,
+        "tie": 11,
+        "loss": 20
+      },
+      "mean_relative_improvement": -0.01012115406218038,
+      "median_relative_improvement": 0.0,
+      "pooled_sse_baseline": 0.11570266495456799,
+      "pooled_sse_candidate": 0.11717615183174034,
+      "pooled_improvement_fraction": -0.0127351161509627,
+      "mean_delta_mse": 3.0697643274423936e-05,
+      "median_delta_mse": 0.0,
+      "worst_case_delta_mse": 0.0008356878167522031,
+      "worst_case_regression_gain": -0.15837015999874304
+    }
+  },
+  "split_breakdown": {
+    "S0": {
+      "structured_vs_M2_original_scalar10": {
+        "baseline_sse": 0.06175817444013967,
+        "structured_sse": 0.0613235051770607,
+        "improvement_fraction": 0.007038246629201755,
+        "sse_delta_structured_minus_baseline": -0.00043466926307896697,
+        "epsilon_sse": 7.678211901975319e-08,
+        "improved_beyond_epsilon": true
+      },
+      "structured_vs_dense_scalar46": {
+        "baseline_sse": 0.05990167874107805,
+        "structured_sse": 0.0613235051770607,
+        "improvement_fraction": -0.023736003161587825,
+        "sse_delta_structured_minus_baseline": 0.0014218264359826469,
+        "epsilon_sse": 7.678211901975319e-08,
+        "improved_beyond_epsilon": false
+      }
+    },
+    "S1": {
+      "structured_vs_M2_original_scalar10": {
+        "baseline_sse": 0.055568920118261776,
+        "structured_sse": 0.055852646654679636,
+        "improvement_fraction": -0.0051058493815253694,
+        "sse_delta_structured_minus_baseline": 0.00028372653641785955,
+        "epsilon_sse": 7.55763182583017e-08,
+        "improved_beyond_epsilon": false
+      },
+      "structured_vs_dense_scalar46": {
+        "baseline_sse": 0.05580098621348993,
+        "structured_sse": 0.055852646654679636,
+        "improvement_fraction": -0.0009257979956134872,
+        "sse_delta_structured_minus_baseline": 5.166044118970481e-05,
+        "epsilon_sse": 7.55763182583017e-08,
+        "improved_beyond_epsilon": false
+      }
+    }
+  },
+  "target_breakdown": [
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "units": 8,
+      "improvement_vs_M2_original_scalar10": 0.032292451510511876,
+      "improved_vs_M2_original_scalar10_beyond_epsilon": true,
+      "improvement_vs_dense_scalar46": -0.007357638466763094,
+      "improved_vs_dense_scalar46_beyond_epsilon": false
+    },
+    {
+      "layer": 0,
+      "projection": "down_proj",
+      "units": 8,
+      "improvement_vs_M2_original_scalar10": 0.00403067266641835,
+      "improved_vs_M2_original_scalar10_beyond_epsilon": true,
+      "improvement_vs_dense_scalar46": 0.00664185513336307,
+      "improved_vs_dense_scalar46_beyond_epsilon": true
+    },
+    {
+      "layer": 12,
+      "projection": "up_proj",
+      "units": 8,
+      "improvement_vs_M2_original_scalar10": -0.0035973414896757414,
+      "improved_vs_M2_original_scalar10_beyond_epsilon": false,
+      "improvement_vs_dense_scalar46": -0.008012908703016953,
+      "improved_vs_dense_scalar46_beyond_epsilon": false
+    },
+    {
+      "layer": 12,
+      "projection": "down_proj",
+      "units": 8,
+      "improvement_vs_M2_original_scalar10": -0.0030936706891383386,
+      "improved_vs_M2_original_scalar10_beyond_epsilon": false,
+      "improvement_vs_dense_scalar46": -0.013942073779708,
+      "improved_vs_dense_scalar46_beyond_epsilon": false
+    },
+    {
+      "layer": 23,
+      "projection": "up_proj",
+      "units": 8,
+      "improvement_vs_M2_original_scalar10": -0.018574445709842333,
+      "improved_vs_M2_original_scalar10_beyond_epsilon": false,
+      "improvement_vs_dense_scalar46": -0.013634599290814635,
+      "improved_vs_dense_scalar46_beyond_epsilon": false
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "units": 8,
+      "improvement_vs_M2_original_scalar10": 0.01678490712870969,
+      "improved_vs_M2_original_scalar10_beyond_epsilon": true,
+      "improvement_vs_dense_scalar46": -0.013743733619595213,
+      "improved_vs_dense_scalar46_beyond_epsilon": false
+    }
+  ],
+  "tail_vs_native": {
+    "M2_original_scalar10": {
+      "below_minus_10pct_count": 0,
+      "below_minus_20pct_count": 0,
+      "worst_relative_gain": 0.0,
+      "p05_relative_gain": 0.026549959524037003,
+      "median_relative_gain": 0.15785199122514904
+    },
+    "dense_scalar46": {
+      "below_minus_10pct_count": 0,
+      "below_minus_20pct_count": 0,
+      "worst_relative_gain": 0.0,
+      "p05_relative_gain": 0.04388944772752872,
+      "median_relative_gain": 0.15076845789387508
+    },
+    "structured_2region": {
+      "below_minus_10pct_count": 0,
+      "below_minus_20pct_count": 0,
+      "worst_relative_gain": -0.004541369604636338,
+      "p05_relative_gain": 0.047149646911045846,
+      "median_relative_gain": 0.16034700592238332
+    }
+  },
+  "positive_targets_vs_original": 3,
+  "positive_targets_vs_dense": 1,
+  "status": "COMPLETE",
+  "verdict": "E2_STRUCTURED_CAPACITY_SIGNAL_NOT_SUPPORTED",
+  "protocol_id": "range_w4_structured_group_e2_v24",
+  "units": 48,
+  "candidate_alpha_grid": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "dense_scalar_extra_grid": [
+    0.12432432432432433,
+    0.14864864864864866,
+    0.17297297297297298,
+    0.1972972972972973,
+    0.22162162162162163,
+    0.24594594594594596,
+    0.2702702702702703,
+    0.2945945945945946,
+    0.3189189189189189,
+    0.3432432432432433,
+    0.3675675675675676,
+    0.3918918918918919,
+    0.4162162162162163,
+    0.4405405405405405,
+    0.4648648648648649,
+    0.4891891891891892,
+    0.5135135135135135,
+    0.5378378378378378,
+    0.5621621621621622,
+    0.5864864864864865,
+    0.6108108108108109,
+    0.6351351351351351,
+    0.6594594594594594,
+    0.6837837837837838,
+    0.7081081081081081,
+    0.7324324324324325,
+    0.7567567567567568,
+    0.781081081081081,
+    0.8054054054054054,
+    0.8297297297297297,
+    0.8540540540540541,
+    0.8783783783783784,
+    0.9027027027027027,
+    0.927027027027027,
+    0.9513513513513513,
+    0.9756756756756756
+  ],
+  "alpha_statistics": {
+    "units": 48,
+    "different_count": 25,
+    "different_fraction": 0.5208333333333334,
+    "same_count": 23,
+    "same_fraction": 0.47916666666666663,
+    "mean_abs_difference": 0.05208333333333333,
+    "region_A_more_aggressive_count": 11,
+    "region_B_more_aggressive_count": 14,
+    "alpha_A_frequency": {
+      "0.1": 0,
+      "0.2": 0,
+      "0.3": 0,
+      "0.4": 0,
+      "0.5": 0,
+      "0.6": 0,
+      "0.7": 0,
+      "0.8": 17,
+      "0.9": 27,
+      "1": 4
+    },
+    "alpha_B_frequency": {
+      "0.1": 0,
+      "0.2": 0,
+      "0.3": 0,
+      "0.4": 0,
+      "0.5": 0,
+      "0.6": 0,
+      "0.7": 2,
+      "0.8": 13,
+      "0.9": 32,
+      "1": 1
+    }
+  },
+  "promotion_gate": {
+    "both_splits_improve_vs_both_scalar_baselines": false,
+    "positive_targets_vs_both_scalar_baselines": 1,
+    "at_least_four_targets_improve_vs_both": false,
+    "no_new_severe_native_regression": true,
+    "new_severe_regression_units": [],
+    "oracle_capacity_advantage_both_splits": false,
+    "alpha_regions_differ_majority": true,
+    "structured_not_driven_by_single_extreme_row": false,
+    "pass": false,
+    "interpretation": "The frozen two-region search did not establish a stable capacity signal beyond the dense scalar control and the held-oracle comparison. Stop the structured-capacity line here; do not add more regions or tune the assignment."
+  },
+  "held_oracle_summary": {
+    "S0": {
+      "structured_explored_oracle_vs_scalar10": {
+        "baseline_oracle_sse": 0.0601503001913485,
+        "structured_explored_oracle_sse": 0.05820180666218701,
+        "improvement_fraction": 0.032393745716363845,
+        "epsilon_sse": 7.678211901975319e-08,
+        "improved_beyond_epsilon": true,
+        "scope": "oracle over each method's actually evaluated finite candidate set; structured is not a 100-tuple exhaustive oracle"
+      },
+      "structured_explored_oracle_vs_dense46": {
+        "baseline_oracle_sse": 0.05683486203996667,
+        "structured_explored_oracle_sse": 0.05820180666218701,
+        "improvement_fraction": -0.024051164604905608,
+        "epsilon_sse": 7.678211901975319e-08,
+        "improved_beyond_epsilon": false,
+        "scope": "oracle over each method's actually evaluated finite candidate set; structured is not a 100-tuple exhaustive oracle"
+      }
+    },
+    "S1": {
+      "structured_explored_oracle_vs_scalar10": {
+        "baseline_oracle_sse": 0.05556456196077502,
+        "structured_explored_oracle_sse": 0.05501418302053691,
+        "improvement_fraction": 0.009905215137422402,
+        "epsilon_sse": 7.55763182583017e-08,
+        "improved_beyond_epsilon": true,
+        "scope": "oracle over each method's actually evaluated finite candidate set; structured is not a 100-tuple exhaustive oracle"
+      },
+      "structured_explored_oracle_vs_dense46": {
+        "baseline_oracle_sse": 0.05446854264572317,
+        "structured_explored_oracle_sse": 0.05501418302053691,
+        "improvement_fraction": -0.010017532107710595,
+        "epsilon_sse": 7.55763182583017e-08,
+        "improved_beyond_epsilon": false,
+        "scope": "oracle over each method's actually evaluated finite candidate set; structured is not a 100-tuple exhaustive oracle"
+      }
+    }
+  },
+  "held_selection_sha256": "40b25a4ad04fc960759580a3bad7ff44761ad03f69ecd3827f83a0a0df5c24d9",
+  "preflight_status": "PASS",
+  "cost_gate_status": "E2_COST_GATE_PASS",
+  "held_selection_leakage_audit": "PASS",
+  "limits": [
+    "48 row-split units on one model",
+    "held oracle only covers evaluated finite candidate sets",
+    "local projection reconstruction only; no full-model method or PPL result"
+  ],
+  "counts": {
+    "m2_search_score_positions": 480,
+    "dense_search_score_positions": 2208,
+    "structured_unique_search_score_positions": 1409,
+    "structured_scheduled_slots": 1728,
+    "structured_duplicate_tuple_reuses": 799,
+    "full_linear_candidate_executions": 552,
+    "structured_per_row_candidate_executions": 929,
+    "held_full_linear_score_positions": 2208,
+    "held_structured_unique_score_positions": 1409
+  }
+}

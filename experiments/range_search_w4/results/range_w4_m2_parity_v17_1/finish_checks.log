@@ -1,0 +1,23 @@
+
+[32mINFO[0m  ENV: Auto setting PYTORCH_CUDA_ALLOC_CONF='expandable_segments:True' for memory saving.
+[32mINFO[0m  ENV: Auto setting CUDA_DEVICE_ORDER=PCI_BUS_ID for correctness.          
+{
+  "verdict": "M2_NATIVE_PARITY_RESTORED",
+  "checks": {
+    "corrected_start": true,
+    "trace_coverage_complete": true,
+    "trace_exact": true,
+    "instrumentation_exact": true,
+    "native_repeat5": true,
+    "custom_repeat5": true,
+    "native_vs_custom": true,
+    "ladder": true,
+    "g_idx": true,
+    "old_failure_reproduced": true,
+    "history_integrity": true
+  },
+  "original_reproduction": {
+    "native": -0.07940673828125,
+    "custom": -0.0794677734375
+  }
+}

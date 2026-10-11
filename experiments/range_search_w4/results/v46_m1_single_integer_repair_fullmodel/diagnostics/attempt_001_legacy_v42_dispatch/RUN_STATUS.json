@@ -1,0 +1,9 @@
+{
+  "status": "FAILED_STOP",
+  "category": "D",
+  "error": "ArithmeticError('direct loss descent/discrepancy failure; no tolerance change')",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v46_m1_single_integer_repair_fullmodel\\run_v46.py\", line 96, in <module>\n    try:main()\n        ^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v46_m1_single_integer_repair_fullmodel\\run_v46.py\", line 73, in main\n    start=time.perf_counter();hidden=rt.run_layer(model,li,hidden);sec=time.perf_counter()-start\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v46_m1_single_integer_repair_fullmodel\\runtime_v46.py\", line 244, in run_layer\n    result=batch_repair(s['codes'],s['scales'],s['g_idx'],W,X,C,name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v46_m1_single_integer_repair_fullmodel\\runtime_v46.py\", line 94, in batch_repair\n    raise ArithmeticError('direct loss descent/discrepancy failure; no tolerance change')\nArithmeticError: direct loss descent/discrepancy failure; no tolerance change\n",
+  "elapsed_seconds": 785.9530649185181,
+  "complete_model": false,
+  "PPL_run": false
+}

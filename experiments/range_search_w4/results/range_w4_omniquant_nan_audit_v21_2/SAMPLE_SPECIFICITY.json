@@ -1,0 +1,317 @@
+{
+  "diagnostic_only": true,
+  "fresh_state_for_each_sample": true,
+  "sample_order": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "committed_updates": 0,
+  "runs": [
+    {
+      "sample": 0,
+      "loss": 0.15326565504074097,
+      "all_lwc_gradients_finite": false,
+      "nonfinite_parameter_names": [
+        "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor"
+      ],
+      "input": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -105.9375,
+        "max": 1696.0,
+        "mean": 0.0418405541165287,
+        "std": 2.1534567737175734,
+        "max_finite_abs": 1696.0,
+        "mean_finite_abs": 0.9947101214942708
+      },
+      "forward_output": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -20.3125,
+        "max": 346.0,
+        "mean": 0.04407128175106274,
+        "std": 2.236420294692829,
+        "max_finite_abs": 346.0,
+        "mean_finite_abs": 1.1646106672235743
+      },
+      "amp": {
+        "autocast_enabled": true,
+        "autocast_dtype": "torch.float16",
+        "parameter_dtype": "torch.float32",
+        "grad_scaler_used": true,
+        "state_before": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "state_after": {
+          "scale": 32768.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "scale_factor": 65536.0,
+        "scaled_loss": 10044.41796875,
+        "native_scaler_call_with_step_and_update": true
+      }
+    },
+    {
+      "sample": 1,
+      "loss": 0.17120549082756042,
+      "all_lwc_gradients_finite": false,
+      "nonfinite_parameter_names": [
+        "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor"
+      ],
+      "input": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -105.9375,
+        "max": 1696.0,
+        "mean": 0.02801475079214859,
+        "std": 2.134225773632368,
+        "max_finite_abs": 1696.0,
+        "mean_finite_abs": 0.9989239188325232
+      },
+      "forward_output": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -20.3125,
+        "max": 346.0,
+        "mean": 0.031064943983957552,
+        "std": 2.175488206107683,
+        "max_finite_abs": 346.0,
+        "mean_finite_abs": 1.1606844918338277
+      },
+      "amp": {
+        "autocast_enabled": true,
+        "autocast_dtype": "torch.float16",
+        "parameter_dtype": "torch.float32",
+        "grad_scaler_used": true,
+        "state_before": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "state_after": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "scale_factor": 65536.0,
+        "scaled_loss": 11220.123046875,
+        "native_scaler_call_with_step_and_update": false
+      }
+    },
+    {
+      "sample": 2,
+      "loss": 0.16791699826717377,
+      "all_lwc_gradients_finite": false,
+      "nonfinite_parameter_names": [
+        "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor"
+      ],
+      "input": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -105.9375,
+        "max": 1696.0,
+        "mean": 0.057487085006869165,
+        "std": 2.133548095756306,
+        "max_finite_abs": 1696.0,
+        "mean_finite_abs": 1.0114601603958622
+      },
+      "forward_output": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -20.3125,
+        "max": 346.0,
+        "mean": 0.07338399428226694,
+        "std": 2.2002416527328292,
+        "max_finite_abs": 346.0,
+        "mean_finite_abs": 1.1949913850307243
+      },
+      "amp": {
+        "autocast_enabled": true,
+        "autocast_dtype": "torch.float16",
+        "parameter_dtype": "torch.float32",
+        "grad_scaler_used": true,
+        "state_before": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "state_after": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "scale_factor": 65536.0,
+        "scaled_loss": 11004.6083984375,
+        "native_scaler_call_with_step_and_update": false
+      }
+    },
+    {
+      "sample": 3,
+      "loss": 0.16904057562351227,
+      "all_lwc_gradients_finite": false,
+      "nonfinite_parameter_names": [
+        "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor"
+      ],
+      "input": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -105.9375,
+        "max": 1696.0,
+        "mean": 0.030319243020390525,
+        "std": 2.1505239752839267,
+        "max_finite_abs": 1696.0,
+        "mean_finite_abs": 1.032737430374774
+      },
+      "forward_output": {
+        "present": true,
+        "shape": [
+          1,
+          2048,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 1835008,
+        "finite_count": 1835008,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -20.3125,
+        "max": 346.0,
+        "mean": 0.04615496234721052,
+        "std": 2.2127342291222853,
+        "max_finite_abs": 346.0,
+        "mean_finite_abs": 1.2202804041519357
+      },
+      "amp": {
+        "autocast_enabled": true,
+        "autocast_dtype": "torch.float16",
+        "parameter_dtype": "torch.float32",
+        "grad_scaler_used": true,
+        "state_before": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "state_after": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "scale_factor": 65536.0,
+        "scaled_loss": 11078.2431640625,
+        "native_scaler_call_with_step_and_update": false
+      }
+    }
+  ]
+}

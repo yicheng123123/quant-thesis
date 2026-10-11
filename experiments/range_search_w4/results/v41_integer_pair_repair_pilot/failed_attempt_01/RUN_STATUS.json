@@ -1,0 +1,7 @@
+{
+  "status": "FAILED",
+  "elapsed_seconds": 55.48894350000046,
+  "error": "RuntimeError('size mismatch, got input (8971), mat (8971x2), vec (4864)')",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v41_integer_pair_repair_pilot\\run_pilot.py\", line 236, in <module>\n    try:main()\n        ^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v41_integer_pair_repair_pilot\\run_pilot.py\", line 184, in main\n    try:advance(st,u,X,C,G,edges,node_mult*info['dim'],target,alg)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v41_integer_pair_repair_pilot\\run_pilot.py\", line 77, in advance\n    p=st['p'].to('cuda') if st['p'] is not None else C@e\n                                                     ~^~\nRuntimeError: size mismatch, got input (8971), mat (8971x2), vec (4864)\n",
+  "states": 288
+}

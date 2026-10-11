@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "source_path": "omniquant_port/upstream/quantize/omniquant.py",
+  "source_sha256": "dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00",
+  "module_map_path": "manifests/v20_evidence/QWEN25_MODULE_MAP.json",
+  "module_map_sha256": "aac788d7dd8a5f7c46d9562591f37a82a2e69bc108fb9cb5759e328bfbafaedd",
+  "decoder_layers": 24,
+  "target_projections": 168,
+  "samples_per_epoch": 128,
+  "batch_size": 1,
+  "epochs": 20,
+  "steps_per_sample_per_epoch": 1,
+  "optimizer_updates_per_block_per_epoch": 128,
+  "optimizer_updates_per_block": 2560,
+  "optimizer_updates_per_epoch_all_blocks": 3072,
+  "total_optimizer_updates": 61440,
+  "formula": "24 decoder blocks × 20 epochs × (128 calibration samples / batch size 1) = 61,440 optimizer updates",
+  "source_locations": {
+    "layer_bound": {
+      "line": 217,
+      "snippet": "smoke_layer_limit = getattr(args, \"smoke_layer_limit\", len(layers))"
+    },
+    "layer_loop": {
+      "line": 220,
+      "snippet": "for i in range(smoke_layer_limit):"
+    },
+    "epoch_loop": {
+      "line": 312,
+      "snippet": "for epochs in range(args.epochs):"
+    },
+    "sample_loop": {
+      "line": 315,
+      "snippet": "for j in range(args.nsamples//args.batch_size):"
+    },
+    "optimizer_update": {
+      "line": 369,
+      "snippet": "norm = loss_scaler(loss, optimizer,parameters= get_omni_parameters(qlayer, use_shift)).cpu()"
+    },
+    "batch_guard": {
+      "line": 188,
+      "snippet": "if args.batch_size != 1:"
+    }
+  },
+  "formal_epochs_unchanged": true,
+  "preflight_smoke_limits_excluded": true
+}

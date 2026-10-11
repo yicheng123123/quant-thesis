@@ -1,0 +1,436 @@
+
+--- phase B start 2026-10-04T20:06:03.112352+00:00 ---
+
+[32mINFO[0m  ENV: Auto setting PYTORCH_CUDA_ALLOC_CONF='expandable_segments:True' for memory saving.
+[32mINFO[0m  ENV: Auto setting CUDA_DEVICE_ORDER=PCI_BUS_ID for correctness.          
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+E:\quant-thesis\.venv-gptq\Lib\site-packages\torch\nn\modules\module.py:1329: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  return t.to(
+[hessian:start] M2 L0 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L0 qkv shared input seconds=0.381 nsamples=128
+[M2] L00 committed self_attn.k_proj; rows=128 input=09475d472790 H=e755c47d966a
+[M2] L00 committed self_attn.v_proj; rows=128 input=09475d472790 H=e755c47d966a
+[M2] L00 committed self_attn.q_proj; rows=896 input=09475d472790 H=e755c47d966a
+[hessian:start] M2 L0 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L0 o shared input seconds=0.189 nsamples=128
+[M2] L00 committed self_attn.o_proj; rows=896 input=705b197f1681 H=97d04cdccd7b
+[hessian:start] M2 L0 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L0 up_gate shared input seconds=0.191 nsamples=128
+[M2] L00 model.layers.0.mlp.up_proj alpha=1.0 candidates=20/675
+[M2] L00 committed mlp.up_proj; rows=4864 input=b164fb179e77 H=6ad4179539cf
+[M2] L00 committed mlp.gate_proj; rows=4864 input=b164fb179e77 H=6ad4179539cf
+[hessian:start] M2 L0 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L0 down shared input seconds=2.958 nsamples=128
+[M2] L00 committed mlp.down_proj; rows=896 input=9a159128abbd H=b06453c2fe62
+[M2] checkpointed complete layer 00/23 elapsed=49.3s
+[hessian:start] M2 L1 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L1 qkv shared input seconds=0.212 nsamples=128
+[M2] L01 committed self_attn.k_proj; rows=128 input=13d412759240 H=61dd12460344
+[M2] L01 committed self_attn.v_proj; rows=128 input=13d412759240 H=61dd12460344
+[M2] L01 committed self_attn.q_proj; rows=896 input=13d412759240 H=61dd12460344
+[hessian:start] M2 L1 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L1 o shared input seconds=0.192 nsamples=128
+[M2] L01 model.layers.1.self_attn.o_proj alpha=0.9 candidates=40/675
+[M2] L01 committed self_attn.o_proj; rows=896 input=f0c50485350d H=2b2776c60126
+[hessian:start] M2 L1 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L1 up_gate shared input seconds=0.175 nsamples=128
+[M2] L01 committed mlp.up_proj; rows=4864 input=8ecbd8d8630d H=fac55573b846
+[M2] L01 committed mlp.gate_proj; rows=4864 input=8ecbd8d8630d H=fac55573b846
+[hessian:start] M2 L1 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L1 down shared input seconds=2.896 nsamples=128
+[M2] L01 committed mlp.down_proj; rows=896 input=dd82bd876f2e H=13a9bdf8c09e
+[M2] checkpointed complete layer 01/23 elapsed=42.4s
+[hessian:start] M2 L2 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L2 qkv shared input seconds=0.224 nsamples=128
+[M2] L02 committed self_attn.k_proj; rows=128 input=82825ccd421a H=4bed1f7793c0
+[M2] L02 committed self_attn.v_proj; rows=128 input=82825ccd421a H=4bed1f7793c0
+[M2] L02 model.layers.2.self_attn.q_proj alpha=0.8 candidates=60/675
+[M2] L02 committed self_attn.q_proj; rows=896 input=82825ccd421a H=4bed1f7793c0
+[hessian:start] M2 L2 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L2 o shared input seconds=0.210 nsamples=128
+[M2] L02 committed self_attn.o_proj; rows=896 input=5f1e6ba86667 H=37fd32dfa811
+[hessian:start] M2 L2 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L2 up_gate shared input seconds=0.183 nsamples=128
+[M2] L02 committed mlp.up_proj; rows=4864 input=5955790f4702 H=90dbf98d3a04
+[M2] L02 committed mlp.gate_proj; rows=4864 input=5955790f4702 H=90dbf98d3a04
+[hessian:start] M2 L2 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L2 down shared input seconds=2.858 nsamples=128
+[M2] L02 committed mlp.down_proj; rows=896 input=7d8de8fae352 H=c88831d3b56d
+[M2] checkpointed complete layer 02/23 elapsed=45.5s
+[hessian:start] M2 L3 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L3 qkv shared input seconds=0.208 nsamples=128
+[M2] L03 model.layers.3.self_attn.k_proj alpha=0.9 candidates=80/675
+[M2] L03 committed self_attn.k_proj; rows=128 input=9c30a89734e1 H=23f8042f0f71
+[M2] L03 committed self_attn.v_proj; rows=128 input=9c30a89734e1 H=23f8042f0f71
+[M2] L03 committed self_attn.q_proj; rows=896 input=9c30a89734e1 H=23f8042f0f71
+[hessian:start] M2 L3 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L3 o shared input seconds=0.184 nsamples=128
+[M2] L03 committed self_attn.o_proj; rows=896 input=6761bbfa252a H=ff62bded84bf
+[hessian:start] M2 L3 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L3 up_gate shared input seconds=0.218 nsamples=128
+[M2] L03 committed mlp.up_proj; rows=4864 input=2a9cfaafd177 H=e398c2614dcd
+[M2] L03 model.layers.3.mlp.gate_proj alpha=0.8 candidates=100/675
+[M2] L03 committed mlp.gate_proj; rows=4864 input=2a9cfaafd177 H=e398c2614dcd
+[hessian:start] M2 L3 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L3 down shared input seconds=2.844 nsamples=128
+[M2] L03 committed mlp.down_proj; rows=896 input=ff12530eba46 H=27e0378e3340
+[M2] checkpointed complete layer 03/23 elapsed=57.7s
+[hessian:start] M2 L4 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L4 qkv shared input seconds=0.217 nsamples=128
+[M2] L04 committed self_attn.k_proj; rows=128 input=ec4c67d236ff H=f8685d4a13ca
+[M2] L04 committed self_attn.v_proj; rows=128 input=ec4c67d236ff H=f8685d4a13ca
+[M2] L04 committed self_attn.q_proj; rows=896 input=ec4c67d236ff H=f8685d4a13ca
+[hessian:start] M2 L4 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L4 o shared input seconds=0.178 nsamples=128
+[M2] L04 model.layers.4.self_attn.o_proj alpha=0.6 candidates=120/675
+[M2] L04 committed self_attn.o_proj; rows=896 input=8d2472e87045 H=3cabc5e7562b
+[hessian:start] M2 L4 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L4 up_gate shared input seconds=0.185 nsamples=128
+[M2] L04 committed mlp.up_proj; rows=4864 input=a137a4b318ad H=56538c84203a
+[M2] L04 committed mlp.gate_proj; rows=4864 input=a137a4b318ad H=56538c84203a
+[hessian:start] M2 L4 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L4 down shared input seconds=2.919 nsamples=128
+[M2] L04 committed mlp.down_proj; rows=896 input=6f1bf52d9d68 H=a943ede01a15
+[M2] checkpointed complete layer 04/23 elapsed=43.6s
+[hessian:start] M2 L5 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L5 qkv shared input seconds=0.214 nsamples=128
+[M2] L05 committed self_attn.k_proj; rows=128 input=40eed2ab4863 H=a399e66969d6
+[M2] L05 model.layers.5.self_attn.v_proj alpha=0.9 candidates=140/675
+[M2] L05 committed self_attn.v_proj; rows=128 input=40eed2ab4863 H=a399e66969d6
+[M2] L05 committed self_attn.q_proj; rows=896 input=40eed2ab4863 H=a399e66969d6
+[hessian:start] M2 L5 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L5 o shared input seconds=0.185 nsamples=128
+[M2] L05 committed self_attn.o_proj; rows=896 input=c5f56bb2e60f H=e92d921eeaf1
+[hessian:start] M2 L5 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L5 up_gate shared input seconds=0.188 nsamples=128
+[M2] L05 committed mlp.up_proj; rows=4864 input=215ce7efdc3d H=63090a8e269d
+[M2] L05 committed mlp.gate_proj; rows=4864 input=215ce7efdc3d H=63090a8e269d
+[hessian:start] M2 L5 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L5 down shared input seconds=2.917 nsamples=128
+[M2] L05 model.layers.5.mlp.down_proj alpha=1.0 candidates=160/675
+[M2] L05 committed mlp.down_proj; rows=896 input=a8a97c2a6436 H=659dca178c62
+[M2] checkpointed complete layer 05/23 elapsed=43.9s
+[hessian:start] M2 L6 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L6 qkv shared input seconds=0.223 nsamples=128
+[M2] L06 committed self_attn.k_proj; rows=128 input=ec1603f0e8d2 H=e92388fc91c6
+[M2] L06 committed self_attn.v_proj; rows=128 input=ec1603f0e8d2 H=e92388fc91c6
+[M2] L06 committed self_attn.q_proj; rows=896 input=ec1603f0e8d2 H=e92388fc91c6
+[hessian:start] M2 L6 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L6 o shared input seconds=0.182 nsamples=128
+[M2] L06 committed self_attn.o_proj; rows=896 input=6db60a10db98 H=a20df0965145
+[hessian:start] M2 L6 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L6 up_gate shared input seconds=0.189 nsamples=128
+[M2] L06 committed mlp.up_proj; rows=4864 input=fb3c1f2fef4b H=5477dddb6f8c
+[M2] L06 model.layers.6.mlp.gate_proj alpha=0.8 candidates=180/675
+[M2] L06 committed mlp.gate_proj; rows=4864 input=fb3c1f2fef4b H=5477dddb6f8c
+[hessian:start] M2 L6 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L6 down shared input seconds=2.849 nsamples=128
+[M2] L06 committed mlp.down_proj; rows=896 input=5cd26a3b9229 H=7f0a1cdbdca1
+[M2] checkpointed complete layer 06/23 elapsed=47.4s
+[hessian:start] M2 L7 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L7 qkv shared input seconds=0.237 nsamples=128
+[M2] L07 committed self_attn.k_proj; rows=128 input=7d221bf314c2 H=69bb12ceeb4f
+[M2] L07 committed self_attn.v_proj; rows=128 input=7d221bf314c2 H=69bb12ceeb4f
+[M2] L07 committed self_attn.q_proj; rows=896 input=7d221bf314c2 H=69bb12ceeb4f
+[hessian:start] M2 L7 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L7 o shared input seconds=0.186 nsamples=128
+[M2] L07 model.layers.7.self_attn.o_proj alpha=1.0 candidates=200/675
+[M2] L07 committed self_attn.o_proj; rows=896 input=1cf7532c2538 H=35d7e6323c37
+[hessian:start] M2 L7 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L7 up_gate shared input seconds=0.211 nsamples=128
+[M2] L07 committed mlp.up_proj; rows=4864 input=51632de75a5d H=6ad30c079e65
+[M2] L07 committed mlp.gate_proj; rows=4864 input=51632de75a5d H=6ad30c079e65
+[hessian:start] M2 L7 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L7 down shared input seconds=2.929 nsamples=128
+[M2] L07 committed mlp.down_proj; rows=896 input=311b3cdede22 H=ee34ca29d336
+[M2] checkpointed complete layer 07/23 elapsed=43.8s
+[hessian:start] M2 L8 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L8 qkv shared input seconds=0.214 nsamples=128
+[M2] L08 committed self_attn.k_proj; rows=128 input=0853952c1c84 H=59546a3e17a8
+[M2] L08 committed self_attn.v_proj; rows=128 input=0853952c1c84 H=59546a3e17a8
+[M2] L08 model.layers.8.self_attn.q_proj alpha=0.8 candidates=220/675
+[M2] L08 committed self_attn.q_proj; rows=896 input=0853952c1c84 H=59546a3e17a8
+[hessian:start] M2 L8 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L8 o shared input seconds=0.185 nsamples=128
+[M2] L08 committed self_attn.o_proj; rows=896 input=227db6cbbbd6 H=168c4ec9f5ae
+[hessian:start] M2 L8 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L8 up_gate shared input seconds=0.186 nsamples=128
+[M2] L08 committed mlp.up_proj; rows=4864 input=60a6f7de26ea H=53236a9224fe
+[M2] L08 committed mlp.gate_proj; rows=4864 input=60a6f7de26ea H=53236a9224fe
+[hessian:start] M2 L8 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L8 down shared input seconds=2.892 nsamples=128
+[M2] L08 committed mlp.down_proj; rows=896 input=dfe0a7b77067 H=b97e180fae92
+[M2] checkpointed complete layer 08/23 elapsed=43.9s
+[hessian:start] M2 L9 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L9 qkv shared input seconds=0.214 nsamples=128
+[M2] L09 model.layers.9.self_attn.k_proj alpha=0.7 candidates=240/675
+[M2] L09 committed self_attn.k_proj; rows=128 input=efe240a23350 H=208c4bfca699
+[M2] L09 committed self_attn.v_proj; rows=128 input=efe240a23350 H=208c4bfca699
+[M2] L09 committed self_attn.q_proj; rows=896 input=efe240a23350 H=208c4bfca699
+[hessian:start] M2 L9 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L9 o shared input seconds=0.198 nsamples=128
+[M2] L09 committed self_attn.o_proj; rows=896 input=bab34e06f31b H=131e0cdf1109
+[hessian:start] M2 L9 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L9 up_gate shared input seconds=0.186 nsamples=128
+[M2] L09 model.layers.9.mlp.up_proj alpha=0.9 candidates=260/675
+[M2] L09 committed mlp.up_proj; rows=4864 input=c21e910c09c0 H=852fa6d9d139
+[M2] L09 committed mlp.gate_proj; rows=4864 input=c21e910c09c0 H=852fa6d9d139
+[hessian:start] M2 L9 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L9 down shared input seconds=2.889 nsamples=128
+[M2] L09 committed mlp.down_proj; rows=896 input=5b3bcf3695a6 H=d7626214bea6
+[M2] checkpointed complete layer 09/23 elapsed=47.8s
+[hessian:start] M2 L10 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L10 qkv shared input seconds=0.212 nsamples=128
+[M2] L10 committed self_attn.k_proj; rows=128 input=b6a79c9e414d H=4dc527c5739e
+[M2] L10 committed self_attn.v_proj; rows=128 input=b6a79c9e414d H=4dc527c5739e
+[M2] L10 model.layers.10.self_attn.q_proj alpha=0.8 candidates=280/675
+[M2] L10 committed self_attn.q_proj; rows=896 input=b6a79c9e414d H=4dc527c5739e
+[hessian:start] M2 L10 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L10 o shared input seconds=0.180 nsamples=128
+[M2] L10 committed self_attn.o_proj; rows=896 input=c5415b277867 H=7ab67d68e4ae
+[hessian:start] M2 L10 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L10 up_gate shared input seconds=0.188 nsamples=128
+[M2] L10 committed mlp.up_proj; rows=4864 input=6958824d2645 H=5597cf7cdb8e
+[M2] L10 committed mlp.gate_proj; rows=4864 input=6958824d2645 H=5597cf7cdb8e
+[hessian:start] M2 L10 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L10 down shared input seconds=2.899 nsamples=128
+[M2] L10 committed mlp.down_proj; rows=896 input=89ac2da1e291 H=db01d54df8eb
+[M2] checkpointed complete layer 10/23 elapsed=47.6s
+[hessian:start] M2 L11 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L11 qkv shared input seconds=0.226 nsamples=128
+[M2] L11 model.layers.11.self_attn.k_proj alpha=0.6 candidates=300/675
+[M2] L11 committed self_attn.k_proj; rows=128 input=b8228fb19060 H=9915c6d61482
+[M2] L11 committed self_attn.v_proj; rows=128 input=b8228fb19060 H=9915c6d61482
+[M2] L11 committed self_attn.q_proj; rows=896 input=b8228fb19060 H=9915c6d61482
+[hessian:start] M2 L11 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L11 o shared input seconds=0.181 nsamples=128
+[M2] L11 committed self_attn.o_proj; rows=896 input=ac114244c4a4 H=d231418d3910
+[hessian:start] M2 L11 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L11 up_gate shared input seconds=0.179 nsamples=128
+[M2] L11 model.layers.11.mlp.up_proj alpha=0.6 candidates=320/675
+[M2] L11 committed mlp.up_proj; rows=4864 input=577bec488d49 H=82b9e2d9205d
+[M2] L11 committed mlp.gate_proj; rows=4864 input=577bec488d49 H=82b9e2d9205d
+[hessian:start] M2 L11 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L11 down shared input seconds=2.898 nsamples=128
+[M2] L11 committed mlp.down_proj; rows=896 input=fcf44e99d156 H=587a8b359210
+[M2] checkpointed complete layer 11/23 elapsed=50.8s
+[hessian:start] M2 L12 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L12 qkv shared input seconds=0.217 nsamples=128
+[M2] L12 committed self_attn.k_proj; rows=128 input=334a17f3dfeb H=5046002c580e
+[M2] L12 model.layers.12.self_attn.v_proj alpha=0.9 candidates=340/675
+[M2] L12 committed self_attn.v_proj; rows=128 input=334a17f3dfeb H=5046002c580e
+[M2] L12 committed self_attn.q_proj; rows=896 input=334a17f3dfeb H=5046002c580e
+[hessian:start] M2 L12 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L12 o shared input seconds=0.197 nsamples=128
+[M2] L12 committed self_attn.o_proj; rows=896 input=2423ac33fdc0 H=067ca6060a15
+[hessian:start] M2 L12 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L12 up_gate shared input seconds=0.190 nsamples=128
+[M2] L12 committed mlp.up_proj; rows=4864 input=3550c357cd7f H=0b0896966de5
+[M2] L12 model.layers.12.mlp.gate_proj alpha=0.9 candidates=360/675
+[M2] L12 committed mlp.gate_proj; rows=4864 input=3550c357cd7f H=0b0896966de5
+[hessian:start] M2 L12 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L12 down shared input seconds=2.900 nsamples=128
+[M2] L12 committed mlp.down_proj; rows=896 input=0f006f8b3cae H=ecdda8670e84
+[M2] checkpointed complete layer 12/23 elapsed=51.7s
+[hessian:start] M2 L13 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L13 qkv shared input seconds=0.212 nsamples=128
+[M2] L13 committed self_attn.k_proj; rows=128 input=b19e16d61ecc H=9eed3cc8f24d
+[M2] L13 committed self_attn.v_proj; rows=128 input=b19e16d61ecc H=9eed3cc8f24d
+[M2] L13 committed self_attn.q_proj; rows=896 input=b19e16d61ecc H=9eed3cc8f24d
+[hessian:start] M2 L13 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L13 o shared input seconds=0.185 nsamples=128
+[M2] L13 model.layers.13.self_attn.o_proj alpha=0.8 candidates=380/675
+[M2] L13 committed self_attn.o_proj; rows=896 input=8ba28e7f5bf5 H=728519ec8bc9
+[hessian:start] M2 L13 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L13 up_gate shared input seconds=0.203 nsamples=128
+[M2] L13 committed mlp.up_proj; rows=4864 input=c51d7ea13fcf H=85628890f2f0
+[M2] L13 committed mlp.gate_proj; rows=4864 input=c51d7ea13fcf H=85628890f2f0
+[hessian:start] M2 L13 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L13 down shared input seconds=2.892 nsamples=128
+[M2] L13 committed mlp.down_proj; rows=896 input=2270d4f2a681 H=7c7899470a9b
+[M2] checkpointed complete layer 13/23 elapsed=46.8s
+[hessian:start] M2 L14 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L14 qkv shared input seconds=0.216 nsamples=128
+[M2] L14 committed self_attn.k_proj; rows=128 input=76fc8847865f H=8643b5d60449
+[M2] L14 model.layers.14.self_attn.v_proj alpha=0.9 candidates=400/675
+[M2] L14 committed self_attn.v_proj; rows=128 input=76fc8847865f H=8643b5d60449
+[M2] L14 committed self_attn.q_proj; rows=896 input=76fc8847865f H=8643b5d60449
+[hessian:start] M2 L14 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L14 o shared input seconds=0.182 nsamples=128
+[M2] L14 committed self_attn.o_proj; rows=896 input=add2e6235245 H=5d1e6397c713
+[hessian:start] M2 L14 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L14 up_gate shared input seconds=0.191 nsamples=128
+[M2] L14 committed mlp.up_proj; rows=4864 input=5574a56bcbba H=6d384652e713
+[M2] L14 model.layers.14.mlp.gate_proj alpha=1.0 candidates=420/675
+[M2] L14 committed mlp.gate_proj; rows=4864 input=5574a56bcbba H=6d384652e713
+[hessian:start] M2 L14 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L14 down shared input seconds=2.896 nsamples=128
+[M2] L14 committed mlp.down_proj; rows=896 input=3d37b8672abf H=a8737a50176d
+[M2] checkpointed complete layer 14/23 elapsed=45.8s
+[hessian:start] M2 L15 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L15 qkv shared input seconds=0.238 nsamples=128
+[M2] L15 committed self_attn.k_proj; rows=128 input=0e72ca40bb49 H=d39c3370b90c
+[M2] L15 committed self_attn.v_proj; rows=128 input=0e72ca40bb49 H=d39c3370b90c
+[M2] L15 committed self_attn.q_proj; rows=896 input=0e72ca40bb49 H=d39c3370b90c
+[hessian:start] M2 L15 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L15 o shared input seconds=0.195 nsamples=128
+[M2] L15 model.layers.15.self_attn.o_proj alpha=0.9 candidates=440/675
+[M2] L15 committed self_attn.o_proj; rows=896 input=7e3a5191a798 H=dee3865fc37b
+[hessian:start] M2 L15 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L15 up_gate shared input seconds=0.185 nsamples=128
+[M2] L15 committed mlp.up_proj; rows=4864 input=5cb0eaa96980 H=5e6c8d6943ef
+[M2] L15 committed mlp.gate_proj; rows=4864 input=5cb0eaa96980 H=5e6c8d6943ef
+[hessian:start] M2 L15 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L15 down shared input seconds=2.869 nsamples=128
+[M2] L15 committed mlp.down_proj; rows=896 input=f7f119f9e361 H=0fe61828b64d
+[M2] checkpointed complete layer 15/23 elapsed=46.6s
+[hessian:start] M2 L16 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L16 qkv shared input seconds=0.259 nsamples=128
+[M2] L16 committed self_attn.k_proj; rows=128 input=57ef20913d5a H=3916ea74725d
+[M2] L16 model.layers.16.self_attn.v_proj alpha=0.8 candidates=460/675
+[M2] L16 committed self_attn.v_proj; rows=128 input=57ef20913d5a H=3916ea74725d
+[M2] L16 committed self_attn.q_proj; rows=896 input=57ef20913d5a H=3916ea74725d
+[hessian:start] M2 L16 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L16 o shared input seconds=0.189 nsamples=128
+[M2] L16 committed self_attn.o_proj; rows=896 input=6f8ab3d20ad0 H=8379e2524e60
+[hessian:start] M2 L16 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L16 up_gate shared input seconds=0.184 nsamples=128
+[M2] L16 committed mlp.up_proj; rows=4864 input=e9717d122f2f H=2940564141b7
+[M2] L16 committed mlp.gate_proj; rows=4864 input=e9717d122f2f H=2940564141b7
+[hessian:start] M2 L16 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L16 down shared input seconds=2.885 nsamples=128
+[M2] L16 model.layers.16.mlp.down_proj alpha=0.8 candidates=480/675
+[M2] L16 committed mlp.down_proj; rows=896 input=997d7f903557 H=9ff5cd50c2f3
+[M2] checkpointed complete layer 16/23 elapsed=45.4s
+[hessian:start] M2 L17 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L17 qkv shared input seconds=0.231 nsamples=128
+[M2] L17 committed self_attn.k_proj; rows=128 input=47952d5c56c9 H=4daaa3591211
+[M2] L17 committed self_attn.v_proj; rows=128 input=47952d5c56c9 H=4daaa3591211
+[M2] L17 committed self_attn.q_proj; rows=896 input=47952d5c56c9 H=4daaa3591211
+[hessian:start] M2 L17 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L17 o shared input seconds=0.204 nsamples=128
+[M2] L17 committed self_attn.o_proj; rows=896 input=344476e66d32 H=2370f762e25d
+[hessian:start] M2 L17 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L17 up_gate shared input seconds=0.184 nsamples=128
+[M2] L17 model.layers.17.mlp.up_proj alpha=0.9 candidates=500/675
+[M2] L17 committed mlp.up_proj; rows=4864 input=a7edd4d8dd00 H=6587f7e00b2a
+[M2] L17 committed mlp.gate_proj; rows=4864 input=a7edd4d8dd00 H=6587f7e00b2a
+[hessian:start] M2 L17 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L17 down shared input seconds=2.980 nsamples=128
+[M2] L17 committed mlp.down_proj; rows=896 input=0a74b6ab3e38 H=1b8cf2b065b2
+[M2] checkpointed complete layer 17/23 elapsed=44.6s
+[hessian:start] M2 L18 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L18 qkv shared input seconds=0.223 nsamples=128
+[M2] L18 committed self_attn.k_proj; rows=128 input=250670d09905 H=c84e93f75d8f
+[M2] L18 committed self_attn.v_proj; rows=128 input=250670d09905 H=c84e93f75d8f
+[M2] L18 model.layers.18.self_attn.q_proj alpha=1.0 candidates=520/675
+[M2] L18 committed self_attn.q_proj; rows=896 input=250670d09905 H=c84e93f75d8f
+[hessian:start] M2 L18 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L18 o shared input seconds=0.198 nsamples=128
+[M2] L18 committed self_attn.o_proj; rows=896 input=a978c6c0d645 H=e99c8311653f
+[hessian:start] M2 L18 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L18 up_gate shared input seconds=0.183 nsamples=128
+[M2] L18 committed mlp.up_proj; rows=4864 input=969e79564dd4 H=8043886476d7
+[M2] L18 committed mlp.gate_proj; rows=4864 input=969e79564dd4 H=8043886476d7
+[hessian:start] M2 L18 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L18 down shared input seconds=2.903 nsamples=128
+[M2] L18 committed mlp.down_proj; rows=896 input=1dacdfd67b6c H=8e7643392cb5
+[M2] checkpointed complete layer 18/23 elapsed=49.1s
+[hessian:start] M2 L19 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L19 qkv shared input seconds=0.216 nsamples=128
+[M2] L19 committed self_attn.k_proj; rows=128 input=6a4316a744cc H=94cda4ef1527
+[M2] L19 model.layers.19.self_attn.v_proj alpha=0.7 candidates=540/675
+[M2] L19 committed self_attn.v_proj; rows=128 input=6a4316a744cc H=94cda4ef1527
+[M2] L19 committed self_attn.q_proj; rows=896 input=6a4316a744cc H=94cda4ef1527
+[hessian:start] M2 L19 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L19 o shared input seconds=0.185 nsamples=128
+[M2] L19 committed self_attn.o_proj; rows=896 input=f9df1278368a H=969b8f71d004
+[hessian:start] M2 L19 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L19 up_gate shared input seconds=0.186 nsamples=128
+[M2] L19 committed mlp.up_proj; rows=4864 input=d80dcd43cfff H=2a7d977deb86
+[M2] L19 committed mlp.gate_proj; rows=4864 input=d80dcd43cfff H=2a7d977deb86
+[hessian:start] M2 L19 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L19 down shared input seconds=2.880 nsamples=128
+[M2] L19 model.layers.19.mlp.down_proj alpha=0.8 candidates=560/675
+[M2] L19 committed mlp.down_proj; rows=896 input=5faa3b9354b9 H=70a4d19db21a
+[M2] checkpointed complete layer 19/23 elapsed=44.4s
+[hessian:start] M2 L20 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L20 qkv shared input seconds=0.213 nsamples=128
+[M2] L20 committed self_attn.k_proj; rows=128 input=d0a3ae6543ad H=df79c2c193fa
+[M2] L20 committed self_attn.v_proj; rows=128 input=d0a3ae6543ad H=df79c2c193fa
+[M2] L20 committed self_attn.q_proj; rows=896 input=d0a3ae6543ad H=df79c2c193fa
+[hessian:start] M2 L20 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L20 o shared input seconds=0.193 nsamples=128
+[M2] L20 committed self_attn.o_proj; rows=896 input=1febf8d38a74 H=4f9fcbb741b5
+[hessian:start] M2 L20 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L20 up_gate shared input seconds=0.188 nsamples=128
+[M2] L20 model.layers.20.mlp.up_proj alpha=0.8 candidates=580/675
+[M2] L20 committed mlp.up_proj; rows=4864 input=f32ef0d953e4 H=28a85e5b16d8
+[M2] L20 committed mlp.gate_proj; rows=4864 input=f32ef0d953e4 H=28a85e5b16d8
+[hessian:start] M2 L20 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L20 down shared input seconds=2.884 nsamples=128
+[M2] L20 committed mlp.down_proj; rows=896 input=03f4c4dfa6e5 H=abb7e0976ecb
+[M2] checkpointed complete layer 20/23 elapsed=44.4s
+[hessian:start] M2 L21 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L21 qkv shared input seconds=0.221 nsamples=128
+[M2] L21 committed self_attn.k_proj; rows=128 input=d34512fa927a H=c0a63c333aa8
+[M2] L21 committed self_attn.v_proj; rows=128 input=d34512fa927a H=c0a63c333aa8
+[M2] L21 model.layers.21.self_attn.q_proj alpha=0.9 candidates=600/675
+[M2] L21 committed self_attn.q_proj; rows=896 input=d34512fa927a H=c0a63c333aa8
+[hessian:start] M2 L21 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L21 o shared input seconds=0.212 nsamples=128
+[M2] L21 committed self_attn.o_proj; rows=896 input=0cbbec323740 H=e98058b5589c
+[hessian:start] M2 L21 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L21 up_gate shared input seconds=0.192 nsamples=128
+[M2] L21 committed mlp.up_proj; rows=4864 input=60e818900504 H=96662cc30b11
+[M2] L21 committed mlp.gate_proj; rows=4864 input=60e818900504 H=96662cc30b11
+[hessian:start] M2 L21 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L21 down shared input seconds=2.925 nsamples=128
+[M2] L21 committed mlp.down_proj; rows=896 input=bc9de0c81fa3 H=d6130b613e6b
+[M2] checkpointed complete layer 21/23 elapsed=48.3s
+[hessian:start] M2 L22 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L22 qkv shared input seconds=0.221 nsamples=128
+[M2] L22 model.layers.22.self_attn.k_proj alpha=0.7 candidates=620/675
+[M2] L22 committed self_attn.k_proj; rows=128 input=3f30c3306963 H=d3e9ca909cea
+[M2] L22 committed self_attn.v_proj; rows=128 input=3f30c3306963 H=d3e9ca909cea
+[M2] L22 committed self_attn.q_proj; rows=896 input=3f30c3306963 H=d3e9ca909cea
+[hessian:start] M2 L22 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L22 o shared input seconds=0.191 nsamples=128
+[M2] L22 committed self_attn.o_proj; rows=896 input=a2d5b59f8051 H=f459e1a88644
+[hessian:start] M2 L22 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L22 up_gate shared input seconds=0.197 nsamples=128
+[M2] L22 committed mlp.up_proj; rows=4864 input=4e9a876d500b H=b24ea5061b01
+[M2] L22 model.layers.22.mlp.gate_proj alpha=0.8 candidates=640/675
+[M2] L22 committed mlp.gate_proj; rows=4864 input=4e9a876d500b H=b24ea5061b01
+[hessian:start] M2 L22 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L22 down shared input seconds=2.883 nsamples=128
+[M2] L22 committed mlp.down_proj; rows=896 input=860d993dd400 H=894f8ac5f52b
+[M2] checkpointed complete layer 22/23 elapsed=44.3s
+[hessian:start] M2 L23 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L23 qkv shared input seconds=0.214 nsamples=128
+[M2] L23 committed self_attn.k_proj; rows=128 input=a7464382274b H=19e082d7e25f
+[M2] L23 committed self_attn.v_proj; rows=128 input=a7464382274b H=19e082d7e25f
+[M2] L23 committed self_attn.q_proj; rows=896 input=a7464382274b H=19e082d7e25f
+[hessian:start] M2 L23 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L23 o shared input seconds=0.187 nsamples=128
+[M2] L23 model.layers.23.self_attn.o_proj alpha=0.7 candidates=660/675
+[M2] L23 committed self_attn.o_proj; rows=896 input=c580683eccd7 H=d849200b5f9a
+[hessian:start] M2 L23 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L23 up_gate shared input seconds=0.188 nsamples=128
+[M2] L23 committed mlp.up_proj; rows=4864 input=1daef1324ed8 H=00853e54bfab
+[M2] L23 committed mlp.gate_proj; rows=4864 input=1daef1324ed8 H=00853e54bfab
+[hessian:start] M2 L23 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L23 down shared input seconds=2.902 nsamples=128
+[M2] L23 committed mlp.down_proj; rows=896 input=3a6aba26a398 H=3a7036e75572
+[M2] checkpointed complete layer 23/23 elapsed=51.3s
+{
+  "status": "QUANTIZATION_COMPLETE",
+  "arm": "B_WINNER_UNION_FULL",
+  "m2_seconds": 1134.9869007000016,
+  "total_seconds": 1138.3540410999994,
+  "candidate_executions": 675,
+  "row_alpha_scores": 1287040,
+  "peak_allocated_bytes": 2318696960,
+  "peak_reserved_bytes": 2906652672
+}
+--- phase B end 2026-10-04T20:25:11.490620+00:00 wall=1148.390s code=0 ---

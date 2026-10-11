@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "role": "fresh M1 block0 repaired exactly once by v56; no historical group reused",
+  "linear_modules": 7,
+  "output_rows": 12672,
+  "groups": [
+    "qkv",
+    "o",
+    "up_gate",
+    "down"
+  ],
+  "group_code_grid_terminal_checks_pass": true,
+  "no_historical_activation_cache_substituted": true,
+  "metrics": [
+    {
+      "layer": 0,
+      "group": "qkv",
+      "module": "self_attn.k_proj",
+      "rows": 128,
+      "accepted": 4096,
+      "evaluations": 7297811,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96",
+      "C_sha256": "a68678662541a95ab201b445aa114891b730efebeb4a29acf8adbc2cc0bc35f6",
+      "committed": true
+    },
+    {
+      "layer": 0,
+      "group": "qkv",
+      "module": "self_attn.v_proj",
+      "rows": 128,
+      "accepted": 4096,
+      "evaluations": 7302226,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96",
+      "C_sha256": "a68678662541a95ab201b445aa114891b730efebeb4a29acf8adbc2cc0bc35f6",
+      "committed": true
+    },
+    {
+      "layer": 0,
+      "group": "qkv",
+      "module": "self_attn.q_proj",
+      "rows": 896,
+      "accepted": 28672,
+      "evaluations": 51117316,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96",
+      "C_sha256": "a68678662541a95ab201b445aa114891b730efebeb4a29acf8adbc2cc0bc35f6",
+      "committed": true
+    },
+    {
+      "layer": 0,
+      "group": "o",
+      "module": "self_attn.o_proj",
+      "rows": 896,
+      "accepted": 28615,
+      "evaluations": 51013586,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "21a47a63e6dc985cbd3c74a7c2708a0d8fc8783db128f3c3659f0eb637a5d40e",
+      "C_sha256": "7005b32c7a590a1c61e71e7bd96353231ab5fbd3f5a0b1db414eac11ea2ee93e",
+      "committed": true
+    },
+    {
+      "layer": 0,
+      "group": "up_gate",
+      "module": "mlp.up_proj",
+      "rows": 4864,
+      "accepted": 140514,
+      "evaluations": 253790217,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "76a31c383afdccb267e5e6cfc1d3a10357f7b3fad8b260d79c868e1bfe3b6113",
+      "C_sha256": "9fdfb8f50bb4523df2e568461d3e6a7e5cfe046cec6266193e7e677f869cca56",
+      "committed": true
+    },
+    {
+      "layer": 0,
+      "group": "up_gate",
+      "module": "mlp.gate_proj",
+      "rows": 4864,
+      "accepted": 140390,
+      "evaluations": 253626753,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "76a31c383afdccb267e5e6cfc1d3a10357f7b3fad8b260d79c868e1bfe3b6113",
+      "C_sha256": "9fdfb8f50bb4523df2e568461d3e6a7e5cfe046cec6266193e7e677f869cca56",
+      "committed": true
+    },
+    {
+      "layer": 0,
+      "group": "down",
+      "module": "mlp.down_proj",
+      "rows": 896,
+      "accepted": 28672,
+      "evaluations": 277387028,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "a8776abdafa83ea92ff4fab36a1d9b310f73102c6dbb79e1cd4ec99aa495f298",
+      "C_sha256": "7c5d39b3fa2787728b806cc09df032a0aa56794a274d22ebd0df54ef43e931ec",
+      "committed": true
+    }
+  ],
+  "timestamp_unix": 1791555000.8289495
+}

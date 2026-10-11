@@ -1,0 +1,60 @@
+{
+  "decision": "ALLOW_BLOCK0_ONLY_WITH_CORRECTED_OWN_PREFIX_REPLAY",
+  "base_model": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\M2\\checkpoint\\final",
+  "base_model_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+  "block0_groups_to_restore_without_repair": [
+    {
+      "group": "qkv",
+      "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\formal\\groups\\layer_00_qkv.pt",
+      "sha256": "a0b5f0fcf07f09a11800370b7528f86ad1850eeeaf7ae253adb6bf61abbdc33f"
+    },
+    {
+      "group": "o",
+      "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\formal\\groups\\layer_00_o.pt",
+      "sha256": "c912dc33c89790a9f21e90aff9f3531d6bbe266403d44f9a177703605bfd7a36"
+    },
+    {
+      "group": "up_gate",
+      "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\formal\\groups\\layer_00_up_gate.pt",
+      "sha256": "35a6e16b5e94ab2524b7d856b0d5e6494999a1ecc50faf2525ecd37192181491"
+    },
+    {
+      "group": "down",
+      "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\formal\\groups\\layer_00_down.pt",
+      "sha256": "cc37962839ffccee49f3ea87137bd384e9eb4fd693db6d11df2ab852a289bf91"
+    }
+  ],
+  "source_v52_containers_verified_tensors_equal_v51": true,
+  "independent_full128_group_input_validation_pass": true,
+  "frozen_grid_code_pack_and_terminal_source_checks_pass": true,
+  "first_unrepaired_dependency_group": "layer1/qkv",
+  "layer1_and_all_later_parameters": "original formal M2, not v52 repaired parameters",
+  "forbidden_sources": [
+    "v52/formal/groups/layer_01_* through layer_23_*",
+    "v52/R1/checkpoint/final diagnostic model",
+    "v51/v52 old broadcast hidden boundary and layer1 failure X",
+    "all incomplete tentative state"
+  ],
+  "next_run_must_replay_prefix_with": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v53_decoder_interface_propagation_audit\\runtime_v53.py",
+  "expected_boundary": {
+    "run_context": "originalM2 + exactly listed committedblock0 groups",
+    "block": 0,
+    "dependency_group": "down->layer1/qkv",
+    "hidden_shape": [
+      128,
+      2048,
+      896
+    ],
+    "hidden_dtype": "float16",
+    "hidden_raw_content_sha256": "9488e56e397608a5d19291595f43645135ad6b6ed477cd6d97eeba7398bfeed6",
+    "layer1_qkv_X_shape": [
+      262144,
+      896
+    ],
+    "layer1_qkv_X_dtype": "float16",
+    "layer1_qkv_X_raw_content_sha256": "70cd41104db3769a3d434c27d4612a41becf4be98439c6328c6010e5b6eae7ac"
+  },
+  "v53_validation_cache_not_auto_production_activation_cache": true,
+  "unknown_grid_parameters_or_any_source_mismatch": "stop; do not reuse block0; next authorized formal run must start all groups from originalM2",
+  "no_next_model_or_PPL_authorized_by_this_manifest": true
+}

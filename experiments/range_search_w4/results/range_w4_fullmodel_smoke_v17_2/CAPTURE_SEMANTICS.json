@@ -1,0 +1,252 @@
+{
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "calibration_manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+  "samples": [
+    0,
+    1
+  ],
+  "tokens_per_sample": 64,
+  "modules": [
+    {
+      "target_module": "self_attn.k_proj",
+      "actual_forward_input_tensor_source": "decoder layer input_layernorm output",
+      "preceding_computation": "RMSNorm(hidden_states); k projection then rotary embedding",
+      "sibling_projection_input_relation": "shares pre-projection tensor with q_proj and v_proj",
+      "capture_hook_location": "forward_pre_hook on exact target Linear; args[0]",
+      "expected_concatenated_shape": [
+        128,
+        896
+      ],
+      "actual_shape": [
+        128,
+        896
+      ],
+      "per_sample_shapes": [
+        [
+          1,
+          64,
+          896
+        ],
+        [
+          1,
+          64,
+          896
+        ]
+      ],
+      "input_dtype": "torch.float16",
+      "input_hashes": [
+        "def90af61f9969522efbb7d6d34741fb4ddb360c9a01b287965fad973fa66195",
+        "d42abbac09300ecd83bd1a02fd6c03f93832d803e76b4a52cae9519b48406189"
+      ],
+      "concatenated_hash": "a7010e64d4c801e62a58ef4d66f0e2700322409cbf4c23d4fbcc10509e613a2e",
+      "finite": true
+    },
+    {
+      "target_module": "self_attn.v_proj",
+      "actual_forward_input_tensor_source": "decoder layer input_layernorm output",
+      "preceding_computation": "RMSNorm(hidden_states); value projection",
+      "sibling_projection_input_relation": "shares pre-projection tensor with q_proj and k_proj",
+      "capture_hook_location": "forward_pre_hook on exact target Linear; args[0]",
+      "expected_concatenated_shape": [
+        128,
+        896
+      ],
+      "actual_shape": [
+        128,
+        896
+      ],
+      "per_sample_shapes": [
+        [
+          1,
+          64,
+          896
+        ],
+        [
+          1,
+          64,
+          896
+        ]
+      ],
+      "input_dtype": "torch.float16",
+      "input_hashes": [
+        "def90af61f9969522efbb7d6d34741fb4ddb360c9a01b287965fad973fa66195",
+        "d42abbac09300ecd83bd1a02fd6c03f93832d803e76b4a52cae9519b48406189"
+      ],
+      "concatenated_hash": "a7010e64d4c801e62a58ef4d66f0e2700322409cbf4c23d4fbcc10509e613a2e",
+      "finite": true
+    },
+    {
+      "target_module": "self_attn.q_proj",
+      "actual_forward_input_tensor_source": "decoder layer input_layernorm output",
+      "preceding_computation": "RMSNorm(hidden_states); q projection then rotary embedding",
+      "sibling_projection_input_relation": "shares pre-projection tensor with k_proj and v_proj",
+      "capture_hook_location": "forward_pre_hook on exact target Linear; args[0]",
+      "expected_concatenated_shape": [
+        128,
+        896
+      ],
+      "actual_shape": [
+        128,
+        896
+      ],
+      "per_sample_shapes": [
+        [
+          1,
+          64,
+          896
+        ],
+        [
+          1,
+          64,
+          896
+        ]
+      ],
+      "input_dtype": "torch.float16",
+      "input_hashes": [
+        "def90af61f9969522efbb7d6d34741fb4ddb360c9a01b287965fad973fa66195",
+        "d42abbac09300ecd83bd1a02fd6c03f93832d803e76b4a52cae9519b48406189"
+      ],
+      "concatenated_hash": "a7010e64d4c801e62a58ef4d66f0e2700322409cbf4c23d4fbcc10509e613a2e",
+      "finite": true
+    },
+    {
+      "target_module": "self_attn.o_proj",
+      "actual_forward_input_tensor_source": "self-attention context after Q/K/V, RoPE, causal attention and head reshape",
+      "preceding_computation": "attention weighted values are merged across heads",
+      "sibling_projection_input_relation": "not a Q/K/V sibling",
+      "capture_hook_location": "forward_pre_hook on exact target Linear; args[0]",
+      "expected_concatenated_shape": [
+        128,
+        896
+      ],
+      "actual_shape": [
+        128,
+        896
+      ],
+      "per_sample_shapes": [
+        [
+          1,
+          64,
+          896
+        ],
+        [
+          1,
+          64,
+          896
+        ]
+      ],
+      "input_dtype": "torch.float16",
+      "input_hashes": [
+        "591f94f6eeefe2f79f94cd24300fdda09ddd99b7af529e26cd8829687b7836a4",
+        "4d2130235e77b40c0e504c515307364bf4839bb8260245beeaefbce6686caf52"
+      ],
+      "concatenated_hash": "3768d523ebba18e6e0985ac35d603537262823a6a015fee64a17d64c42d94620",
+      "finite": true
+    },
+    {
+      "target_module": "mlp.up_proj",
+      "actual_forward_input_tensor_source": "post-attention residual after post_attention_layernorm",
+      "preceding_computation": "downstream of self_attn.o_proj and residual addition; MLP pre_feedforward norm",
+      "sibling_projection_input_relation": "shares normalized MLP input with gate_proj",
+      "capture_hook_location": "forward_pre_hook on exact target Linear; args[0]",
+      "expected_concatenated_shape": [
+        128,
+        896
+      ],
+      "actual_shape": [
+        128,
+        896
+      ],
+      "per_sample_shapes": [
+        [
+          1,
+          64,
+          896
+        ],
+        [
+          1,
+          64,
+          896
+        ]
+      ],
+      "input_dtype": "torch.float16",
+      "input_hashes": [
+        "49cad94ac6559e2309c87140597e2ea3af5ab515d128e58a652fd8441638e992",
+        "86b703247c4c9059f08c4ae77e620eaa9fac10ca85065c41ce0cb96869584cb6"
+      ],
+      "concatenated_hash": "5e158909f5df7afd8c2b420a02f616da5ae1187cc9910bbd57ba702d3b83508a",
+      "finite": true
+    },
+    {
+      "target_module": "mlp.gate_proj",
+      "actual_forward_input_tensor_source": "post-attention residual after post_attention_layernorm",
+      "preceding_computation": "same MLP input; gate branch before SiLU and multiplication",
+      "sibling_projection_input_relation": "shares normalized MLP input with up_proj",
+      "capture_hook_location": "forward_pre_hook on exact target Linear; args[0]",
+      "expected_concatenated_shape": [
+        128,
+        896
+      ],
+      "actual_shape": [
+        128,
+        896
+      ],
+      "per_sample_shapes": [
+        [
+          1,
+          64,
+          896
+        ],
+        [
+          1,
+          64,
+          896
+        ]
+      ],
+      "input_dtype": "torch.float16",
+      "input_hashes": [
+        "49cad94ac6559e2309c87140597e2ea3af5ab515d128e58a652fd8441638e992",
+        "86b703247c4c9059f08c4ae77e620eaa9fac10ca85065c41ce0cb96869584cb6"
+      ],
+      "concatenated_hash": "5e158909f5df7afd8c2b420a02f616da5ae1187cc9910bbd57ba702d3b83508a",
+      "finite": true
+    },
+    {
+      "target_module": "mlp.down_proj",
+      "actual_forward_input_tensor_source": "Silu(gate_proj(x)) * up_proj(x)",
+      "preceding_computation": "MLP down projection after gated activation product",
+      "sibling_projection_input_relation": "no sibling projection input",
+      "capture_hook_location": "forward_pre_hook on exact target Linear; args[0]",
+      "expected_concatenated_shape": [
+        128,
+        4864
+      ],
+      "actual_shape": [
+        128,
+        4864
+      ],
+      "per_sample_shapes": [
+        [
+          1,
+          64,
+          4864
+        ],
+        [
+          1,
+          64,
+          4864
+        ]
+      ],
+      "input_dtype": "torch.float16",
+      "input_hashes": [
+        "1548251718d1247cfebdc90d2c2ba487afd892beef6ecb1b1e06fb3c1f5dc404",
+        "1c26633846dacbf1b65d63ce04d3dba740a19daac7134561ec6f1ea4a106c04c"
+      ],
+      "concatenated_hash": "8c46d0bc3c3641e758fc76d81bebbaab62fda4a9a0135ebb842c90945b6f63ce",
+      "finite": true
+    }
+  ],
+  "qkv_sibling_inputs_exact": true,
+  "up_gate_sibling_inputs_exact": true,
+  "pass": true
+}

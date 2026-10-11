@@ -1,0 +1,31 @@
+{
+  "status": "STOPPED_D_BUDGET_GATE_AFTER_BLOCK1",
+  "cap_seconds": 10800.0,
+  "pre_v54_exact_ledger_seconds": 5677.428213768006,
+  "v54_gpu_or_active_runner_seconds": 288.1692998409271,
+  "v54_cpu_only_failure_wall_seconds_charged_conservatively": 14.442328929901123,
+  "v54_total_increment_including_cpu_failure": 302.61162877082825,
+  "common_cumulative_seconds": 5980.039842538834,
+  "common_remaining_seconds": 4819.960157461166,
+  "user_rounded_start_seconds": 5677.428,
+  "user_rounded_remaining_before_v54_seconds": 5122.572,
+  "v54_startup_attempt_2_seconds_already_in_active_ledger": 0.028126001358032227,
+  "main_formal_runner_active_seconds": 288.1411738395691,
+  "first_failure_seconds_source": "FAILED_ATTEMPTS.jsonl elapsed_since_process_start; CPU-only, no model load/GPU call",
+  "process_startup_import_wall_before_main_budget_hook": "not separately measured; excluded from GPU active time",
+  "idle_or_UI_wait_seconds": 0,
+  "block1_gate_snapshot": {
+    "after_completed_block": 1,
+    "elapsed_shared_seconds": 5965.592180900574,
+    "remaining_shared_seconds": 4834.406817026138,
+    "historical_same_initializer_v52_remaining_block_seconds": 4168.525226799946,
+    "history_prefix_warning": "those timings used erroneous later prefix; prediction only, not validity evidence",
+    "v53_or_observed_per_block_native_comparison_seconds": 9.246,
+    "remaining_three_article_block_validation_seconds": 203.412,
+    "uncertainty_reserve_seconds": 120,
+    "finish_and_evaluation_reserve_seconds": 360,
+    "predicted_required_seconds": 4851.937226799946,
+    "go": false
+  },
+  "budget_note": "RUN_STATUS and ONLINE_BUDGET_STATUS retain raw in-run counters; this file additionally books the documented CPU-only failed launcher into the shared cap because v54 requested all failures be counted. CPU seconds are not represented as GPU compute."
+}

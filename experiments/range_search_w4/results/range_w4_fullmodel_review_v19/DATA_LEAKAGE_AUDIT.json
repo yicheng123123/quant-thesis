@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "v16_to_v18_frozen_manifest_hashes": [
+    {
+      "v16": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_baseline_v16\\CALIBRATION_MANIFEST.json",
+      "v18": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\CALIBRATION_MANIFEST.json",
+      "sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+      "byte_equal": true
+    },
+    {
+      "v16": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_baseline_v16\\WIKITEXT_TEST_MANIFEST.json",
+      "v18": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\evaluation\\manifests\\WIKITEXT_TEST_MANIFEST.json",
+      "sha256": "acd46b20a6b84b534d5625bfab505d599001679a775d619960a40e8da4f62f46",
+      "byte_equal": true
+    },
+    {
+      "v16": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_baseline_v16\\C4_EVAL_MANIFEST.json",
+      "v18": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\evaluation\\manifests\\C4_EVAL_MANIFEST.json",
+      "sha256": "0b0d70d70d3c1e0ba62126c81a3f3e97531e58d6701236fb8b3315450b7188d4",
+      "byte_equal": true
+    }
+  ],
+  "calibration": {
+    "dataset": "Salesforce/wikitext",
+    "split": "train",
+    "n_documents": 128,
+    "unique_source_article_ids": 128,
+    "unique_full_article_hashes": 128,
+    "tokens_each": [
+      2048
+    ],
+    "per_sample_token_hashes_valid": true,
+    "source_order_first_last_ids": [
+      606,
+      344
+    ]
+  },
+  "evaluation": {
+    "wikitext_split": "test",
+    "c4_split": "validation",
+    "wikitext_input_tokens": 299078,
+    "c4_input_tokens": 131072,
+    "both_token_order_hashes_valid": true,
+    "c4_manifest_documents": 1024,
+    "c4_unique_document_indices_and_text_hashes": true,
+    "wikitext_test_per_document_ids_available_in_manifest": false
+  },
+  "v16_pre_result_disjointness_audit": {
+    "status": "PASS",
+    "checks": {
+      "calibration128_unique_whole_articles": true,
+      "calibration_disjoint_all_v8_v15_articles": true,
+      "source_arrow_hashes_fixed": true,
+      "E1_exact_test_tokens_rebuilt": true,
+      "E2_exact_bounded_tokens_rebuilt": true,
+      "cal_full_article_hashes_disjoint_final_eval_documents": true
+    }
+  },
+  "scope_limit": "Exact frozen artifacts and declared source split/disjointness are checked; semantic duplicates or pretraining overlap are not established."
+}

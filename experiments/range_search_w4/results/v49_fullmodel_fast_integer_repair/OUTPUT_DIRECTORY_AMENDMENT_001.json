@@ -1,0 +1,13 @@
+{
+  "status": "PASS_AFTER_CORRECTION",
+  "timestamp_unix": 1791391094.442921,
+  "issue": "formal/rows was omitted from directory precreation although record_module writes per-row CSVs there.",
+  "correction": "Created formal/rows and verified write/read/delete probe.",
+  "failed_attempt_gpu_elapsed_seconds": 13.851576805114746,
+  "failed_group_checkpoint_created": false,
+  "existing_group_checkpoint_count": 0,
+  "runner_sha256_unchanged": "2d6c6114c6fd7533a4c35bf06f978a8b5c1eee639f74d241e29b913969317db8",
+  "v48_fast_accept_sha256": "c3a760c0f48723b3784774263af71bc9e469115c2ab5d0c35ba3145671e079a2",
+  "protocol_sha256": "6c44516cb14921873903c3c3185442460bdef423c0ee272479bc44a5192b3512",
+  "recovery": "Resume original GPU_START; replay M1 and rerun uncommitted qkv group from original M1 codes; no partial checkpoint to restore."
+}

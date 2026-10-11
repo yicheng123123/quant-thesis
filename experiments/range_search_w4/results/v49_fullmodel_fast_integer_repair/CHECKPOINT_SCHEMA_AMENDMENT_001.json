@@ -1,0 +1,107 @@
+{
+  "status": "PASS",
+  "amendment_id": "001",
+  "created_unix": 1791391400.502829,
+  "reason": "The frozen v48 batch_repair retains its packed tensor locally but omits packed_u4 from the result dictionary; v49 group reload checks require that field.",
+  "change": "Added packed_u4=the frozen runtime pack(codes) representation to each already committed block0 group checkpoint.",
+  "algorithm_or_selection_changed": false,
+  "codes_scales_zeros_g_idx_or_weights_changed": false,
+  "groups_repaired_again": false,
+  "protocol_sha256": "6c44516cb14921873903c3c3185442460bdef423c0ee272479bc44a5192b3512",
+  "updated_commit_status_sha256": "10f63133c7662fedc3841b748b81f02cf194c49d76af4d38cd2a4a6da0bdd60f",
+  "groups": [
+    {
+      "group": "qkv",
+      "checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v49_fullmodel_fast_integer_repair\\formal\\groups\\layer_00_qkv.pt",
+      "old_sha256": "7ecff579a47f365082e337b2e68161d056fa7f4ebb0de6b3c09575eefb8f8835",
+      "new_sha256": "573901c26f483295369cac2eaa9dffa9b2e089f5fe97fd2ac15bb3d368aecfb6",
+      "input_sha256": "09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96",
+      "C_sha256": "a68678662541a95ab201b445aa114891b730efebeb4a29acf8adbc2cc0bc35f6",
+      "modules": [
+        {
+          "module": "self_attn.k_proj",
+          "rows": 128,
+          "input_dim": 896,
+          "codes_sha256": "351cedc7be3dd6e8ca19fc869385d9df31e8f563d389bbb21ef007851d55be69",
+          "packed_bytes": 57344
+        },
+        {
+          "module": "self_attn.v_proj",
+          "rows": 128,
+          "input_dim": 896,
+          "codes_sha256": "9e307d2322550ea26c05796970a8bc754d22634c6c21e15fced3bdfb52d4917f",
+          "packed_bytes": 57344
+        },
+        {
+          "module": "self_attn.q_proj",
+          "rows": 896,
+          "input_dim": 896,
+          "codes_sha256": "aec02e4e49f98de75d6b7b34d362396e3c89852cf1043444dcd97f8b5214451f",
+          "packed_bytes": 401408
+        }
+      ],
+      "code_grid_and_dequantized_weight_unchanged": true
+    },
+    {
+      "group": "o",
+      "checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v49_fullmodel_fast_integer_repair\\formal\\groups\\layer_00_o.pt",
+      "old_sha256": "7ed0f21d7dbe8dc3cacdab7c727f20e1e058350066b5679068483f74b027c64b",
+      "new_sha256": "fe4552174d5f936cf139a76d1c5087315afb2982321fda1ed72e63f505fa6d22",
+      "input_sha256": "a33823fa9169fb02c66ac5f4a969f18c7558c20b13d7a6855d67a864cb9c97a8",
+      "C_sha256": "6cc6911f9d89edeeeaaa68f57d411627dc6262092f85dce7661a94eace68f1e0",
+      "modules": [
+        {
+          "module": "self_attn.o_proj",
+          "rows": 896,
+          "input_dim": 896,
+          "codes_sha256": "45796289652d9b5613662f6fd88897dea387c508e4d05f4ce891eb48b0e80e60",
+          "packed_bytes": 401408
+        }
+      ],
+      "code_grid_and_dequantized_weight_unchanged": true
+    },
+    {
+      "group": "up_gate",
+      "checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v49_fullmodel_fast_integer_repair\\formal\\groups\\layer_00_up_gate.pt",
+      "old_sha256": "97194176a735ecd211df0ed0a0216070f2168782a35ab5537e7154d22b1f987c",
+      "new_sha256": "66dd3516a136fd537a8bc9cdfceffffe318bc12788c29dcbb4d381e1ed36fcac",
+      "input_sha256": "c1a2ac37ca6dec81885228eac867e7edeb10bbcff047611474fda7dc908f7371",
+      "C_sha256": "887179c2cf53592acae50b35937cef5f969a14d59276058dc9b2d33f8c19b0d6",
+      "modules": [
+        {
+          "module": "mlp.up_proj",
+          "rows": 4864,
+          "input_dim": 896,
+          "codes_sha256": "532f3912c1d7c4ede3e733efc388caabe01c69cbca6e07aa27a81d03253518e9",
+          "packed_bytes": 2179072
+        },
+        {
+          "module": "mlp.gate_proj",
+          "rows": 4864,
+          "input_dim": 896,
+          "codes_sha256": "329d93d8fee790ee1f25358f8a6f14765c9ada98fda4bff6208014775e0bed12",
+          "packed_bytes": 2179072
+        }
+      ],
+      "code_grid_and_dequantized_weight_unchanged": true
+    },
+    {
+      "group": "down",
+      "checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v49_fullmodel_fast_integer_repair\\formal\\groups\\layer_00_down.pt",
+      "old_sha256": "f93aa2cb2f01aff0afbbddfb241a6ec337d3cb71515ca1dfb15c56ec15b3e9aa",
+      "new_sha256": "8fff1a051d1d0df3c285e6d5be3a9caa6eff0e8ba567ebb4d17e98c4bff6044d",
+      "input_sha256": "d70e66d98a16a394278ce2fa16cdb32e123854596f898164dff4b34a8086fd14",
+      "C_sha256": "4516e56921b8612a47bcb7509383e7920d6a9217c283b729b0d25c77b28e3714",
+      "modules": [
+        {
+          "module": "mlp.down_proj",
+          "rows": 896,
+          "input_dim": 4864,
+          "codes_sha256": "34c9b73c5b428866c1d1a4b3cc7acc960918ea0b5afb35c9a4baaba0e5fcbb63",
+          "packed_bytes": 2179072
+        }
+      ],
+      "code_grid_and_dequantized_weight_unchanged": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+scope,stage,seconds,measurement,gpu_active
+shared,inherited_before_v54,5677.428213768,ledger sum; includes v51/v52/v53,historical mixed lineage
+v54,first_runner_failure_cpu_wall,14.442328930,measured process wall from FAILED_ATTEMPTS,no; conservatively charged to shared cap
+v54,second_runner_failure,0.028126001,active ledger segment,no model load; included in active ledger
+v54,main_formal_runner_active,288.141173840,closed active ledger segment,"includes model load, restore, block1, propagation, stop"
+v54,block0_restore_and_replay,4.76831219997257,BLOCK_TIMINGS.csv,synchronized block wall; no repair
+v54,layer1_full_block_wall,238.9341399000259,BLOCK_TIMINGS.csv,synchronized complete matrix block wall
+v54,layer1_three_article_native_full_forward,2.292733100010082,PROPAGATION_NATIVE_TIMINGS.csv,included in block1 wall; not additive
+v54,layer1_C_construction_timer_sum,86.723755900,STAGE_TIMINGS.csv,nested per-matrix timer sum; not additive
+v54,layer1_independent_terminal_FP64_timer_sum,103.306122000,STAGE_TIMINGS.csv,nested per-matrix timer sum; not additive
+v54,layer1_candidate_scoring_timer_sum,5.427018500,STAGE_TIMINGS.csv,nested timer sum; not additive
+v54,save_reload_full_checkpoint_and_PPL,,NOT_RUN,no complete model
+v54,historical_M2_construction,2115.935,historical reported measurement,reported separately; not v54

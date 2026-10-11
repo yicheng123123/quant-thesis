@@ -1,0 +1,77 @@
+{
+  "name": "v18 Formal M2 Full-Model Quantization and Model-Level Evaluation",
+  "status": "PRECHECK_PENDING",
+  "source_protocol": {
+    "v16_protocol_draft_sha256": "64dacbba12ef0d4625111d201e48a43c63fd8347dd85f2aeb82a1c86703bc0a4",
+    "v16_ppl_eval_protocol_sha256": "eec9b7d01c0191809e63282cac82cb8fa85f266a3b5016c8ab91eb22e8c1c7d0",
+    "v16_baseline_matrix_sha256": "68b5f09dfb3ce3009e5d1b7b2f4339710329036e1f538e4658d3b18e3d6c483b",
+    "v16_calibration_manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+    "v16_wikitext_manifest_sha256": "acd46b20a6b84b534d5625bfab505d599001679a775d619960a40e8da4f62f46",
+    "v16_c4_manifest_sha256": "0b0d70d70d3c1e0ba62126c81a3f3e97531e58d6701236fb8b3315450b7188d4",
+    "v17_1_native_m2_sha256": "7cd0f8c062b79572b56458b6547b122eaf57b25aadf92fdc33c59fd41a579e0b"
+  },
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dtype": "FP16",
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "attention": "SDPA",
+    "use_cache": false,
+    "tf32": false
+  },
+  "quantization": {
+    "scope": "all 168 decoder Linear modules; embeddings, tied lm_head, norms, and biases remain FP16",
+    "weight_bits": 4,
+    "activation_bits": 16,
+    "group_size": 128,
+    "block_size": 128,
+    "symmetric": true,
+    "desc_act": false,
+    "static_groups": false,
+    "true_sequential": true,
+    "damp_percent": 0.1,
+    "damp_auto_increment": 0,
+    "mse": 0.0,
+    "math": "FP32 GPTQ statistics and compensation; dense quantized weights stored FP16"
+  },
+  "m2": {
+    "alpha_grid": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+    "selection_unit": "independent alpha per output row, shared across all G128 groups of that row",
+    "objective": "direct local calibration output reconstruction MSE, X @ (Q_FP16.float() - W_FP16.float()).T",
+    "tie_break": "exact loss ties prefer the larger alpha",
+    "prefix": "the method's own previously committed dense quantized weights; q/k/v and up/gate use shared group input/H; refresh only at dependency boundaries",
+    "candidate_isolation": "all ten candidates use the same pristine current target W and shared H/Hinv state; candidate-local compensation state is fresh",
+    "candidate_calls": 1680,
+    "row_alpha_score_slots": 3041280
+  },
+  "calibration": {
+    "source": "v16 CALIBRATION_MANIFEST.json, copied byte-for-byte to this run directory",
+    "dataset": "WikiText-2 train",
+    "documents": 128,
+    "tokens_per_document": 2048,
+    "token_budget": 262144,
+    "seed": 20261005,
+    "special_tokens": false,
+    "resampling": false
+  },
+  "evaluation": {
+    "primary_representation": "dense-dequant FP16 weights for M1 and M2; original FP16 for M0",
+    "evaluator": "benchmark.eval.ppl.evaluate_ppl token-weighted sliding windows",
+    "max_length": 2048,
+    "stride": 512,
+    "add_special_tokens": false,
+    "chat_template": false,
+    "wiki_text_test_input_tokens": 299078,
+    "wiki_text_test_scored_tokens": 299077,
+    "c4_validation_fixed_budget_input_tokens": 131072,
+    "c4_validation_fixed_budget_scored_tokens": 131071,
+    "c4_label": "C4 validation fixed token budget PPL; not standard/full C4 PPL",
+    "selection_or_tuning_on_eval": false
+  },
+  "gate": {
+    "conservative_m2_calibration_hours_max": 48,
+    "source": "v16 frozen protocol and v17.3 corrected cost audit",
+    "change_allowed": false
+  },
+  "prohibited": ["OmniQuant", "PrefixQuant", "Gate", "robust objective", "alpha grid tuning", "packed-kernel performance claims"]
+}

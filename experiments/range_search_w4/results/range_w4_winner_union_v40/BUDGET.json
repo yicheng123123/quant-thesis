@@ -1,0 +1,102 @@
+{
+  "status": "ALL_RUNS_AND_AUDITS_COMPLETE",
+  "hard_cap_seconds": 5400.0,
+  "execution_cutoff_seconds": 4700.0,
+  "wrap_up_reserve_seconds": 700.0,
+  "gpu_experiment_elapsed_seconds": 3525.555438999999,
+  "completed_phases": [
+    "PILOT",
+    "A",
+    "B"
+  ],
+  "failed_attempts": [],
+  "phase_ledger": [
+    {
+      "phase": "PILOT",
+      "started_utc": "2026-10-04T19:25:28.683096+00:00",
+      "finished_utc": "2026-10-04T19:26:32.774366+00:00",
+      "wall_seconds": 64.06300000000192,
+      "return_code": 0,
+      "budget_stopped": false,
+      "log": "logs\\PILOT.log"
+    },
+    {
+      "phase": "A",
+      "started_utc": "2026-10-04T19:26:52.730008+00:00",
+      "finished_utc": "2026-10-04T20:04:41.567563+00:00",
+      "wall_seconds": 2268.8279999999977,
+      "return_code": 0,
+      "budget_stopped": false,
+      "log": "logs\\A.log"
+    },
+    {
+      "phase": "B",
+      "started_utc": "2026-10-04T20:06:03.112352+00:00",
+      "finished_utc": "2026-10-04T20:25:11.490620+00:00",
+      "wall_seconds": 1148.3899999999994,
+      "return_code": 0,
+      "budget_stopped": false,
+      "log": "logs\\B.log"
+    }
+  ],
+  "started_utc": "2026-10-04T19:25:28.683096+00:00",
+  "cutoff_utc": "2026-10-04T20:43:48.683096+00:00",
+  "reference": {
+    "v18_m2_wall_seconds": 2115.9353341000096,
+    "v18_m2_candidate_gptq_seconds": 938.4278327001375,
+    "v18_m2_direct_scoring_seconds": 718.7734703004826,
+    "projected_B_candidate_and_score_seconds_from_per_module_v18_timing": 636.2415681801939,
+    "projected_B_total_seconds_with_v18_non_candidate_residual": 1094.9755992795835,
+    "projection_is_estimate_not_benchmark": true,
+    "pilot_projected_seconds": 72.84292999525643
+  },
+  "launch_estimates": {
+    "pilot": 72.84292999525643,
+    "A": 2539.1224009200114,
+    "B": 1368.7194990994794,
+    "margin_factors": {
+      "A": 1.2,
+      "B": 1.25
+    }
+  },
+  "active_phase": null,
+  "active_phase_started_utc": "2026-10-04T20:06:03.112352+00:00",
+  "active_phase_wall_seconds": 0.0,
+  "phase_ledger_elapsed_seconds": 3481.280999999999,
+  "cpu_correctness_audit_ledger": [
+    {
+      "phase": "PILOT_PARITY",
+      "wall_seconds": 5.355,
+      "measurement": "functions.exec wall time from analyzer call"
+    },
+    {
+      "phase": "A_FULL_PARITY_AND_TENSOR_HASHES",
+      "wall_seconds": 12.245244,
+      "measurement": "PowerShell Measure-Command around analyze_v40.py A"
+    },
+    {
+      "phase": "B_FULL_PARITY_AND_TENSOR_HASHES",
+      "wall_seconds": 14.574195,
+      "measurement": "PowerShell Measure-Command around analyze_v40.py B"
+    },
+    {
+      "phase": "A_FINAL_AUDIT_REFRESH",
+      "wall_seconds": 12.1,
+      "measurement": "functions.exec command wall rounded to 0.1s around CPU-only analyze_v40.py A refresh after B completed"
+    }
+  ],
+  "cpu_correctness_audit_seconds": 44.274439,
+  "gpu_runner_wall_seconds": 3481.280999999999,
+  "total_budget_accounted_seconds": 3525.555438999999,
+  "total_budget_accounting_definition": "Conservative sum of phase-supervisor wall for PILOT/A/B plus all measured CPU parity/hash audit walls; it is budget accounting, not active GPU kernel time.",
+  "final_audit_utc": "2026-10-04T20:32:58.009021+00:00",
+  "final_audit": {
+    "pilot_parity": "PASS",
+    "A_run_validity": "PASS",
+    "B_run_validity": "PASS",
+    "all_286_boundary_hash_comparisons": "PASS",
+    "normalized_final_tensor_hashes_v18_A_B": "PASS",
+    "held_or_P3_read": false,
+    "PPL_run": false
+  }
+}

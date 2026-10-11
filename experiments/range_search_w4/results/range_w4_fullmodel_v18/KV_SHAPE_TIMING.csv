@@ -1,0 +1,66 @@
+module,weight_shape,stage,replicate,alpha,wall_seconds,gpu_peak_allocated_bytes,gpu_peak_reserved_bytes,detail
+L0 kv_shared_input,128x896,hessian_build_128x2048,1,,0.4147389999998268,1027189248,1082130432,native GPTQ.process_batch over 128 documents; nsamples=128; input_sha256=09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96
+L0 self_attn.k_proj,128x896,optimized_full_linear_candidate,1,0.1,0.44507139999768697,1031468032,1084227584,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.k_proj,128x896,all_row_direct_scoring,1,0.1,0.23302139999577776,1082430464,1130364928,"all 128 output rows, 128x2048 X"
+L0 self_attn.k_proj,128x896,streaming_argmin_best_row_update,1,0.1,0.0030101000156719238,1023482368,1130364928,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.k_proj,128x896,optimized_full_linear_candidate,2,0.2,0.4302064999938011,1031477248,1130364928,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.k_proj,128x896,all_row_direct_scoring,2,0.2,0.28189949999796227,1082432000,1130364928,"all 128 output rows, 128x2048 X"
+L0 self_attn.k_proj,128x896,streaming_argmin_best_row_update,2,0.2,0.0007168000156525522,1023482368,1130364928,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.k_proj,128x896,optimized_full_linear_candidate,3,0.3,0.4911623000225518,1031477248,1130364928,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.k_proj,128x896,all_row_direct_scoring,3,0.3,0.1729819000174757,1082432000,1130364928,"all 128 output rows, 128x2048 X"
+L0 self_attn.k_proj,128x896,streaming_argmin_best_row_update,3,0.3,0.0007059000199660659,1023483904,1130364928,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.k_proj,128x896,optimized_full_linear_candidate,4,0.4,0.46616030001314357,1031478784,1130364928,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.k_proj,128x896,all_row_direct_scoring,4,0.4,0.17659400001866743,1082433536,1130364928,"all 128 output rows, 128x2048 X"
+L0 self_attn.k_proj,128x896,streaming_argmin_best_row_update,4,0.4,0.0008677000005263835,1023482368,1130364928,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.k_proj,128x896,optimized_full_linear_candidate,5,0.5,0.40695569998933934,1031477248,1130364928,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.k_proj,128x896,all_row_direct_scoring,5,0.5,0.17443169999751262,1082432000,1130364928,"all 128 output rows, 128x2048 X"
+L0 self_attn.k_proj,128x896,streaming_argmin_best_row_update,5,0.5,0.0007270000060088933,1023483904,1130364928,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.k_proj,128x896,optimized_full_linear_candidate,6,0.6,0.4770550999965053,1031478784,1130364928,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.k_proj,128x896,all_row_direct_scoring,6,0.6,0.16680490001454018,1082433536,1130364928,"all 128 output rows, 128x2048 X"
+L0 self_attn.k_proj,128x896,streaming_argmin_best_row_update,6,0.6,0.0007645000005140901,1023485440,1130364928,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.k_proj,128x896,optimized_full_linear_candidate,7,0.7,0.4580289999721572,1031477248,1130364928,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.k_proj,128x896,all_row_direct_scoring,7,0.7,0.16814809999777935,1082432000,1130364928,"all 128 output rows, 128x2048 X"
+L0 self_attn.k_proj,128x896,streaming_argmin_best_row_update,7,0.7,0.0007200000109151006,1023483904,1130364928,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.k_proj,128x896,optimized_full_linear_candidate,8,0.8,0.4849208999949042,1031478784,1130364928,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.k_proj,128x896,all_row_direct_scoring,8,0.8,0.16740659999777563,1082433536,1130364928,"all 128 output rows, 128x2048 X"
+L0 self_attn.k_proj,128x896,streaming_argmin_best_row_update,8,0.8,0.0009979000024031848,1023476736,1130364928,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.k_proj,128x896,optimized_full_linear_candidate,9,0.9,0.5151394999993499,1031480320,1130364928,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.k_proj,128x896,all_row_direct_scoring,9,0.9,0.1758869000186678,1082435072,1130364928,"all 128 output rows, 128x2048 X"
+L0 self_attn.k_proj,128x896,streaming_argmin_best_row_update,9,0.9,0.0007847000088077039,1023442432,1130364928,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.k_proj,128x896,optimized_full_linear_candidate,10,1.0,0.45638710001367144,1031478784,1130364928,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.k_proj,128x896,all_row_direct_scoring,10,1.0,0.16256769999745302,1082433536,1130364928,"all 128 output rows, 128x2048 X"
+L0 self_attn.k_proj,128x896,streaming_argmin_best_row_update,10,1.0,0.0006387000030372292,1023304192,1130364928,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.k_proj,128x896,streaming_final_row_stitch,1,,8.6199986981228e-05,1023248384,1130364928,all selected output rows; scale/zero stitched by output row
+L0 self_attn.k_proj,128x896,full_linear_commit,1,,6.600000779144466e-05,1023248384,1130364928,one whole Linear commit after all output rows selected
+L0 self_attn.v_proj,128x896,optimized_full_linear_candidate,1,0.1,0.3910348000063095,1031700480,1065353216,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.v_proj,128x896,all_row_direct_scoring,1,0.1,0.16713289998006076,1082665984,1147142144,"all 128 output rows, 128x2048 X"
+L0 self_attn.v_proj,128x896,streaming_argmin_best_row_update,1,0.1,0.0008437999931629747,1023717888,1147142144,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.v_proj,128x896,optimized_full_linear_candidate,2,0.2,0.372596600005636,1031712768,1147142144,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.v_proj,128x896,all_row_direct_scoring,2,0.2,0.16873219999251887,1082667520,1147142144,"all 128 output rows, 128x2048 X"
+L0 self_attn.v_proj,128x896,streaming_argmin_best_row_update,2,0.2,0.0013254999939817935,1023719424,1147142144,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.v_proj,128x896,optimized_full_linear_candidate,3,0.3,0.4219024000049103,1031709696,1147142144,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.v_proj,128x896,all_row_direct_scoring,3,0.3,0.1702833000163082,1082664448,1147142144,"all 128 output rows, 128x2048 X"
+L0 self_attn.v_proj,128x896,streaming_argmin_best_row_update,3,0.3,0.0007605999999213964,1023716352,1147142144,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.v_proj,128x896,optimized_full_linear_candidate,4,0.4,0.3955145000072662,1031711232,1147142144,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.v_proj,128x896,all_row_direct_scoring,4,0.4,0.1663445000012871,1082665984,1147142144,"all 128 output rows, 128x2048 X"
+L0 self_attn.v_proj,128x896,streaming_argmin_best_row_update,4,0.4,0.0007177999941632152,1023717888,1147142144,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.v_proj,128x896,optimized_full_linear_candidate,5,0.5,0.3899612999812234,1031712768,1147142144,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.v_proj,128x896,all_row_direct_scoring,5,0.5,0.1611350999737624,1082667520,1147142144,"all 128 output rows, 128x2048 X"
+L0 self_attn.v_proj,128x896,streaming_argmin_best_row_update,5,0.5,0.0007330999942496419,1023719424,1147142144,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.v_proj,128x896,optimized_full_linear_candidate,6,0.6,0.3814972000254784,1031709696,1147142144,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.v_proj,128x896,all_row_direct_scoring,6,0.6,0.17246450000675395,1082664448,1147142144,"all 128 output rows, 128x2048 X"
+L0 self_attn.v_proj,128x896,streaming_argmin_best_row_update,6,0.6,0.0007746000192128122,1023716352,1147142144,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.v_proj,128x896,optimized_full_linear_candidate,7,0.7,0.5386469999793917,1031711232,1147142144,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.v_proj,128x896,all_row_direct_scoring,7,0.7,0.16558729999815114,1082665984,1147142144,"all 128 output rows, 128x2048 X"
+L0 self_attn.v_proj,128x896,streaming_argmin_best_row_update,7,0.7,0.0005429000011645257,1023717888,1147142144,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.v_proj,128x896,optimized_full_linear_candidate,8,0.8,0.509540900005959,1031712768,1147142144,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.v_proj,128x896,all_row_direct_scoring,8,0.8,0.16351680000661872,1082667520,1147142144,"all 128 output rows, 128x2048 X"
+L0 self_attn.v_proj,128x896,streaming_argmin_best_row_update,8,0.8,0.0005901000113226473,1023690752,1147142144,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.v_proj,128x896,optimized_full_linear_candidate,9,0.9,0.40131169999949634,1031714304,1147142144,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.v_proj,128x896,all_row_direct_scoring,9,0.9,0.1651066000049468,1082664448,1147142144,"all 128 output rows, 128x2048 X"
+L0 self_attn.v_proj,128x896,streaming_argmin_best_row_update,9,0.9,0.0006447999912779778,1023583232,1147142144,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.v_proj,128x896,optimized_full_linear_candidate,10,1.0,0.3915729000000283,1031711232,1147142144,"full [128,896] native Linear output rows; shared qkv Hinv"
+L0 self_attn.v_proj,128x896,all_row_direct_scoring,10,1.0,0.16198269999586046,1082665984,1147142144,"all 128 output rows, 128x2048 X"
+L0 self_attn.v_proj,128x896,streaming_argmin_best_row_update,10,1.0,0.002148399973521009,1023509504,1147142144,per-row exact-loss tie rule prefers larger alpha
+L0 self_attn.v_proj,128x896,streaming_final_row_stitch,1,,5.629999213851988e-05,1023480832,1147142144,all selected output rows; scale/zero stitched by output row
+L0 self_attn.v_proj,128x896,full_linear_commit,1,,4.6200002543628216e-05,1023480832,1147142144,one whole Linear commit after all output rows selected

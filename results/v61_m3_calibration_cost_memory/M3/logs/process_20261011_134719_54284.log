@@ -1,0 +1,24 @@
+auto_gptq is required for real quantization
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+Starting ...
+No attention mask caught from the first layer. Seems that model's attention works without a mask.
+=== Start quantize layer 0 ===
+E:\quant-thesis\results\v61_m3_calibration_cost_memory\M3\official_port\quantize\omniquant.py:248: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast():
+Traceback (most recent call last):
+  File "E:\quant-thesis\results\v61_m3_calibration_cost_memory\M3\run_formal_m3.py", line 956, in <module>
+    result = main()
+             ^^^^^^
+  File "E:\quant-thesis\results\v61_m3_calibration_cost_memory\M3\run_formal_m3.py", line 922, in main
+    summary = run_calibration(config, token_ids, lock)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\quant-thesis\results\v61_m3_calibration_cost_memory\M3\run_formal_m3.py", line 742, in run_calibration
+    result_model = omni_module.omniquant(lm, args, dataloader, None, None, NullLogger())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\quant-thesis\results\v61_m3_calibration_cost_memory\M3\official_port\quantize\omniquant.py", line 249, in omniquant
+    phase("teacher_capture", i)
+  File "E:\quant-thesis\results\v61_m3_calibration_cost_memory\M3\official_port\quantize\omniquant.py", line 53, in phase
+    args.v61_phase_callback(name, block)
+  File "E:\quant-thesis\results\v61_m3_calibration_cost_memory\M3\measurement.py", line 29, in switch
+    os.replace(temp,self.statefile)
+PermissionError: [WinError 5] ¾Ü¾ø·ÃÎÊ¡£: 'E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\timings\\CURRENT_STAGE.tmp' -> 'E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\timings\\CURRENT_STAGE.json'

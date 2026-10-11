@@ -1,0 +1,17 @@
+{
+  "status": "NUMERICAL_STOP_FROZEN_RULE",
+  "category": "D",
+  "error": "ArithmeticError('direct loss descent/discrepancy failure; no tolerance change')",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v43_m2_single_integer_repair_fullmodel\\run_v43.py\", line 69, in <module>\n    try:main()\n        ^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v43_m2_single_integer_repair_fullmodel\\run_v43.py\", line 46, in main\n    t=time.perf_counter();hidden=rt.run_layer(model,li,hidden);seconds=time.perf_counter()-t;measured_blocks.append(seconds)\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v43_m2_single_integer_repair_fullmodel\\run_v42.py\", line 244, in run_layer\n    result=batch_repair(s['codes'],s['scales'],s['g_idx'],W,X,C,name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v43_m2_single_integer_repair_fullmodel\\run_v42.py\", line 94, in batch_repair\n    raise ArithmeticError('direct loss descent/discrepancy failure; no tolerance change')\nArithmeticError: direct loss descent/discrepancy failure; no tolerance change\n",
+  "elapsed_seconds": 964.5525724887848,
+  "complete_model": false,
+  "PPL_run": false,
+  "pid": 18368,
+  "repair_attempt_elapsed_seconds": 741.2125687599182,
+  "stop_reason": "near-zero FP32 batched direct scoring rises while exact FP64 objective decreases; frozen strict acceptance preserved",
+  "committed_groups": 14,
+  "committed_modules": 25,
+  "committed_rows": 40064,
+  "diagnostic_no_commits": true,
+  "quality_not_evaluated": true
+}

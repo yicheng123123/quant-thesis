@@ -1,0 +1,12 @@
+item,seconds,basis
+v51+v52 carried shared charge,5278.45302646637,exact original ledger; user display5278.453 preserved
+v53 added GPU validation active-job wall,398.97518730163574,"includes modelload, warmup, source IO, comparisons and all validation; cap600"
+new shared cumulative charge,5677.428213768006,prior+v53; cap10800
+shared remaining,5122.571786231994,not reset
+CPU initial broad static scan wall to stop request,220.54700016975403,"stopped own CPU audit task, not a helper; request timing only, original log retained"
+CPU initial static scan process CPU time,145.921875,process cumulative CPU seconds; not wall and not GPU
+CPU completed narrowed history audit wall,147.35411529999692,sourceinventory+checkpoint/window hashing; zero GPU calls; overlaps GPU job wall
+CPU deterministic tests,0.0434188999934122,21cases; zero GPU calls
+CPU preparation,0.8174965999787673,sourcecopy/ASTdiff/protocol/snapshot
+CPU environment/tool diagnosis independent total,,"NOT_MEASURED; used authorized entry, no environment repair"
+CPU supplementary inventory/report/package audit,,partial per-tool wall exists; not claimed as independent exclusive total

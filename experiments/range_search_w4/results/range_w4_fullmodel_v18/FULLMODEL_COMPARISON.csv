@@ -1,0 +1,4 @@
+Method,Precision/Quant,Calibration,Calibration wall seconds,Calibration peak GPU allocated bytes,WT2 NLL,WT2 PPL,C4 fixed-budget NLL,C4 fixed-budget PPL,Evaluation peak GPU allocated bytes,Evaluation peak GPU reserved bytes,Representation
+M0,FP16,none,,,2.522797111231,12.463409495878,2.957436035478,19.248555817998,4745359872,5507121152,FP16
+M1,W4A16 GPTQ G128,WikiText-2 train: 128 documents x 2048 tokens,648.876101,1869838336,2.630763716261,13.884369572858,3.101619250860,22.233924450068,4745359872,5507121152,dense-dequant FP16
+M2,W4A16 GPTQ G128 + per-row shared-alpha search,WikiText-2 train: 128 documents x 2048 tokens,2115.935334,2347887104,2.621806242375,13.760556051038,3.092536026698,22.032883164065,4745359872,5507121152,dense-dequant FP16

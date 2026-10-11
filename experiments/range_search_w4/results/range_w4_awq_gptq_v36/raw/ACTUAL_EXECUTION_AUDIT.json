@@ -1,0 +1,41 @@
+{
+  "planned_counts": {
+    "planned_full_Linear_GPTQ": 144,
+    "planned_main_candidate_GPTQ": 124,
+    "planned_alpha1_parity_GPTQ": 16,
+    "planned_down_isolation_replay_GPTQ": 4
+  },
+  "actual_counts": {
+    "planned_full_Linear_GPTQ": 144,
+    "planned_main_candidate_GPTQ": 124,
+    "planned_alpha1_parity_GPTQ": 16,
+    "planned_down_isolation_replay_GPTQ": 4,
+    "actual_main_candidate_GPTQ_completed": 62,
+    "actual_alpha1_parity_GPTQ_logged_pass": 8,
+    "actual_alpha1_parity_GPTQ_failed_after_call": 1,
+    "actual_down_isolation_replay_GPTQ": 4,
+    "actual_full_Linear_GPTQ_executions_including_failed_parity": 75
+  },
+  "actual_full_GPTQ_by_split": {
+    "S0": {
+      "main_candidates": 62,
+      "alpha1_parity_calls_including_failed_compare": 9,
+      "down_replays": 4,
+      "total": 75
+    },
+    "S1": {
+      "main_candidates": 0,
+      "alpha1_parity_calls": 0,
+      "down_replays": 0,
+      "total": 0
+    }
+  },
+  "main_row_alpha_slots_completed": {
+    "S0": 214272,
+    "S1": 0
+  },
+  "independent_parity_direct_score_row_slots_completed": 22144,
+  "replay_score_row_slots_completed": 3584,
+  "failed_parity_call_note": "One S0/G00 down native alpha1 GPTQ call completed but the first cross-device comparison raised; a retry then passed. The failed call added one actual execution beyond the 144-call frozen plan.",
+  "replay_allocation_note": "The frozen plan allocates two replays per split; resume caused all four replay executions to land in S0 (two repeated), with zero in S1."
+}

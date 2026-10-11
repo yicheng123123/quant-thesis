@@ -1,0 +1,10 @@
+{
+  "observed": "Transformers emitted: Sliding Window Attention is enabled but not implemented for sdpa.",
+  "checkpoint_config": {
+    "sliding_window": 32768,
+    "use_sliding_window": false,
+    "max_position_embeddings": 32768
+  },
+  "protocol": "v16 mandates SDPA and use_cache=False. Checkpoint has use_sliding_window=false; the smoke sequences have 64 tokens.",
+  "classification": "nonblocking environment warning; recorded for reproducibility"
+}

@@ -1,0 +1,138 @@
+{
+  "status": "PASS",
+  "artifact": "L0_DENSE_EXPORT.pt",
+  "artifact_sha256": "aa95184d6cdc9b400b97b3ce79c009d01614e4ef84dfda4e031e91ae3dc8b80d",
+  "scope": "L0 seven projection weights only; all other L0 decoder modules unchanged FP16",
+  "quantlinears_after_export": 0,
+  "native_linears_after_export": 7,
+  "strict_reload_missing_keys": [],
+  "strict_reload_unexpected_keys": [],
+  "block_output_before_vs_after_reload": {
+    "shape": [
+      1,
+      64,
+      896
+    ],
+    "dtype_a": "torch.float16",
+    "dtype_b": "torch.float16",
+    "max_abs_diff": 0.0,
+    "mean_abs_diff": 0.0,
+    "finite": true,
+    "allclose_rtol_1e-5_atol_1e-6": true,
+    "bitwise_equal": true
+  },
+  "quantizer_auxiliary": {
+    "self_attn.q_proj": {
+      "scales": {
+        "shape": [
+          6272,
+          1
+        ],
+        "sha256": "68a3861861cb5fff85c9210d1ea2cbe370928ab59863cee25d0ec6e92f05b567"
+      },
+      "zeros": {
+        "shape": [
+          6272,
+          1
+        ],
+        "sha256": "975548b54d96bf3bbd5d459138711d0ef02085c9006a1917963cca753015c98e"
+      }
+    },
+    "self_attn.k_proj": {
+      "scales": {
+        "shape": [
+          896,
+          1
+        ],
+        "sha256": "59c1796684dc142f42759504642611930ba8ae47eab270dbe7fda88a923bb34a"
+      },
+      "zeros": {
+        "shape": [
+          896,
+          1
+        ],
+        "sha256": "9aa142d6f6fc1ae959bb7daea961464b1681595d78fa7022c2080a8882b71a8e"
+      }
+    },
+    "self_attn.v_proj": {
+      "scales": {
+        "shape": [
+          896,
+          1
+        ],
+        "sha256": "45c3324e11cf6361f47f284ece3438f108e8d29d8851315ce71da78d77ebe079"
+      },
+      "zeros": {
+        "shape": [
+          896,
+          1
+        ],
+        "sha256": "e2eb35eb2774c98ea6fb001a557de5dc136450d0fcfedeae00784c6954182e70"
+      }
+    },
+    "self_attn.o_proj": {
+      "scales": {
+        "shape": [
+          6272,
+          1
+        ],
+        "sha256": "890dac3fcd6bde9d985dd0e9d52a58417258eb7a2caef1a84d30f53d977aa70f"
+      },
+      "zeros": {
+        "shape": [
+          6272,
+          1
+        ],
+        "sha256": "3c6095c18a4dfc8d3de96af6ac20d9eeaa1cd004d8ddffb3efb58afb7147f2e8"
+      }
+    },
+    "mlp.gate_proj": {
+      "scales": {
+        "shape": [
+          34048,
+          1
+        ],
+        "sha256": "2a02f1c8ba42235657126f44ca28bce7f058a5025b3d0c0dff9bc729b14e21da"
+      },
+      "zeros": {
+        "shape": [
+          34048,
+          1
+        ],
+        "sha256": "e789314e59d0ff9ef6db011dedcd897376bdda8e7b926a1402aee9daf38015ee"
+      }
+    },
+    "mlp.up_proj": {
+      "scales": {
+        "shape": [
+          34048,
+          1
+        ],
+        "sha256": "8ef2b482ca47b761be68ae77acd308f528e561943bf1bcd322c6a7ab607f2281"
+      },
+      "zeros": {
+        "shape": [
+          34048,
+          1
+        ],
+        "sha256": "33a8d3e9b87119f48845a157ad1e79469fb2f91d5fbb51625356bf239823f7e3"
+      }
+    },
+    "mlp.down_proj": {
+      "scales": {
+        "shape": [
+          34048,
+          1
+        ],
+        "sha256": "a329e3d07c7fe03633b2bc7eed8bb05c9a82c183accdc228266125a99444be33"
+      },
+      "zeros": {
+        "shape": [
+          34048,
+          1
+        ],
+        "sha256": "116918a9eab97979b349f5de32f2c95df61105d0d76de22105b5bd4068adfb3e"
+      }
+    }
+  }
+}

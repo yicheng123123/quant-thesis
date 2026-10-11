@@ -1,0 +1,51 @@
+{
+  "id": "range_w4_l23r448_v9",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "model_dtype": "float16",
+  "math_dtype": "float32",
+  "device": "cuda",
+  "layer": 23,
+  "projection": "self_attn.q_proj",
+  "row": 448,
+  "bits": 4,
+  "activation_bits": 16,
+  "symmetric": true,
+  "integer_range": [
+    0,
+    15
+  ],
+  "zero": 8,
+  "rounding": "torch.round ties to even",
+  "group_size": 128,
+  "block_size": 128,
+  "damp_percent": 0.1,
+  "desc_act": false,
+  "static_groups": false,
+  "true_sequential": true,
+  "alpha_grid": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "D": "alpha=1 with native dynamic G128 find_params timing",
+  "C": "search-output-MSE-selected shared alpha, each candidate full pristine-W dynamic GPTQ rerun",
+  "loss": "FP32 output SSE divided by token-output element count; FP16 dequantized weight",
+  "input_semantics": "FP model q_proj inputs, no quantized prefix",
+  "dataset": "Salesforce/wikitext:wikitext-2-raw-v1:train",
+  "n_splits": 10,
+  "articles_per_split": {
+    "search": 4,
+    "heldout": 4
+  },
+  "tokens_per_article": 128,
+  "seed": 42,
+  "regression_tolerance_relative": 0.0001
+}

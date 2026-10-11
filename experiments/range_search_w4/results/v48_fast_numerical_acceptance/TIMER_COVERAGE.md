@@ -1,0 +1,7 @@
+# Timer coverage
+
+Complete path wall (MATRIX_TIMINGS.csv) starts before initialization and ends after independent full raw-X FP64 terminal validation. It includes shared-search CPU loop, clones, transfers, actual-grid delta, scoring/argmin, settle/p update, refresh/checks, packing. Shadow and evidence serialization are outside this interval. C/capture/hash are shared preparation, separately listed.
+
+Raw MODE is a mutable logging label: down capture/C retained `fast` from the completed up path. They occur before down control and are common preparation; normalize by layer=0, stage=C_construction and module, irrespective of MODE. No raw record is edited.
+
+PATH_COST_BREAKDOWN.csv contains nested descriptive subrows for initial/proposal/final FP32 scoring; do not sum them again with direct_recompute. fast_uncertain_refresh_and_rawX is inside fast_propose_and_settle. Candidate scoring and argmin are combined, not independently measured. Direct output matmul/transfer/SSE are combined, not independently measured. p update and envelope/state updates are combined; their separate cost is NOT_MEASURED. No allocation by operation count. Timer-outside wall is arithmetic residual, not GPU kernel measurement. Local evidence IO, GC and general process overhead have no separate timer; part of cumulative process wall. Timer synchronization overhead is included, not independently quantified. No profiler was added.

@@ -1,0 +1,13 @@
+status,component,estimated_wall_h,evidence_source,confidence
+ESTIMATED,initial_model_load,0.00029393155556236807,"Kaggle v20.1 measured component, extrapolated only where noted",low
+ESTIMATED,calibration_capture,0.0016821520000747923,"Kaggle v20.1 measured component, extrapolated only where noted",low
+ESTIMATED,teacher_cache_prep,0.00354508325940481,"Kaggle v20.1 measured component, extrapolated only where noted",medium
+ESTIMATED,optimizer_training,0.5802224070827167,"Kaggle v20.1 measured component, extrapolated only where noted",medium
+ESTIMATED,layer_transition,0.0035860761119701243,"Kaggle v20.1 measured component, extrapolated only where noted",medium
+ESTIMATED,final_quantization,3.1104000000697046e-05,"Kaggle v20.1 measured component, extrapolated only where noted",low
+ESTIMATED,scale_registration,9.433333373938998e-07,"Kaggle v20.1 measured component, extrapolated only where noted",low
+ESTIMATED,checkpoint_io,0.00017296666677187508,"Kaggle v20.1 measured component, extrapolated only where noted",low
+ESTIMATED,block_overhead,0.05086795647912556,"Kaggle v20.1 measured component, extrapolated only where noted",low
+ESTIMATED,dense_export,0.0005290453611168131,measured full FP16 state CPU copy and serialization proxy; W4-to-dense conversion itself not run,low; actual dequantization is covered by the safety margin
+ESTIMATED,dense_export_reload_proxy,0.00016771955555466573,measured CPU reload of the FP16 export proxy,low; IO proxy
+MEASURED_DIAGNOSTIC,diagnostic_full_native_capture_not_charged,0.0003553386111161672,measured 8 frozen samples through native full FP16 model to create diagnostic L12/L23 inputs,"measured, diagnostic only; excluded from formal totals"

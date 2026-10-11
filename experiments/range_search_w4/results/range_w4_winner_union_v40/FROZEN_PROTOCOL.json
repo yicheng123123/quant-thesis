@@ -1,0 +1,157 @@
+{
+  "experiment": "v40 independent per-Linear winner-union candidate execution",
+  "frozen_utc": "2026-10-04T19:16:35.139702+00:00",
+  "base_protocol": "v18 formal M2, copied unchanged to PROTOCOL.json",
+  "base_protocol_sha256": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+  "only_method_difference": "candidate alpha set per Linear: full scalar10 in A; previous M2 row-winner union plus alpha=1 in B",
+  "model_and_quantization": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dtype": "FP16",
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "attention": "SDPA",
+    "use_cache": false,
+    "tf32": false
+  },
+  "quantization": {
+    "scope": "all 168 decoder Linear modules; embeddings, tied lm_head, norms, and biases remain FP16",
+    "weight_bits": 4,
+    "activation_bits": 16,
+    "group_size": 128,
+    "block_size": 128,
+    "symmetric": true,
+    "desc_act": false,
+    "static_groups": false,
+    "true_sequential": true,
+    "damp_percent": 0.1,
+    "damp_auto_increment": 0,
+    "mse": 0.0,
+    "math": "FP32 GPTQ statistics and compensation; dense quantized weights stored FP16"
+  },
+  "m2": {
+    "alpha_grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "selection_unit": "independent alpha per output row, shared across all G128 groups of that row",
+    "objective": "direct local calibration output reconstruction MSE, X @ (Q_FP16.float() - W_FP16.float()).T",
+    "tie_break": "exact loss ties prefer the larger alpha",
+    "prefix": "the method's own previously committed dense quantized weights; q/k/v and up/gate use shared group input/H; refresh only at dependency boundaries",
+    "candidate_isolation": "all ten candidates use the same pristine current target W and shared H/Hinv state; candidate-local compensation state is fresh",
+    "candidate_calls": 1680,
+    "row_alpha_score_slots": 3041280
+  },
+  "calibration": {
+    "manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+    "source": "v16 CALIBRATION_MANIFEST.json, copied byte-for-byte to this run directory",
+    "dataset": "WikiText-2 train",
+    "documents": 128,
+    "tokens_per_document": 2048,
+    "token_budget": 262144,
+    "seed": 20261005,
+    "special_tokens": false,
+    "resampling": false
+  },
+  "candidate_manifest_sha256": "d8fc9e078fd965346bcc5caf1729a2a831e1236496bd86ffdd9de454eb2e82e3",
+  "candidate_population": {
+    "linears": 168,
+    "rows": 304128,
+    "A_candidate_executions": 1680,
+    "B_candidate_executions": 675,
+    "B_row_alpha_score_slots": 1287040,
+    "candidate_execution_reduction_fraction": 0.5982142857142857
+  },
+  "counts_exclude": [
+    "complete-block0 pilot",
+    "native alpha=1 parity references",
+    "preheat/model load",
+    "any failed attempts"
+  ],
+  "execution_design": {
+    "order": [
+      "PILOT_B_BLOCK0",
+      "A_SCALAR10_FULL",
+      "B_WINNER_UNION_FULL"
+    ],
+    "fresh_model_each_run": true,
+    "candidate_activation_or_H_cache_shared_between_A_B": false,
+    "resume": "atomic completed decoder-layer checkpoints; an interrupted current layer is replayed from prior complete layer"
+  },
+  "evaluation_boundary": "No held, P3, or PPL is read or executed in v40.",
+  "source_hashes": {
+    "v18_protocol": {
+      "relative_path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\PROTOCOL.json",
+      "sha256": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+      "bytes": 3570
+    },
+    "v18_runner": {
+      "relative_path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_formal.py",
+      "sha256": "b7cef35c7ce7cae4fbf2735227c0cb343bf5beb8df5d6519a984dfa18d6cc59b",
+      "bytes": 61178
+    },
+    "v18_precheck_runner": {
+      "relative_path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\run_precheck.py",
+      "sha256": "2bf4f624d7ce569cbb72dac9aabeac6c2ef31ebb5b96540df3c6316bf4900cf7",
+      "bytes": 42871
+    },
+    "v18_calibration_manifest": {
+      "relative_path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\CALIBRATION_MANIFEST.json",
+      "sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+      "bytes": 3883242
+    },
+    "v18_calibration_validation": {
+      "relative_path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\CALIBRATION_VALIDATION.json",
+      "sha256": "81077d3553eda9fa56b3336c949e25bbdd6d42ec2786dbeb7c328e88d653c551",
+      "bytes": 1934
+    },
+    "v18_row_results": {
+      "relative_path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\M2_ROW_RESULTS.csv",
+      "sha256": "577881567379539eb4b00771788609ff066e5cf0cbe81d185fc3d89ae8e9c0b9",
+      "bytes": 37441932
+    },
+    "v18_module_summary": {
+      "relative_path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\M2_MODULE_SUMMARY.csv",
+      "sha256": "8113cd7bb632b9cd8891bf0bbee1c670de9808348ca808dead4403ef6c886771",
+      "bytes": 79502
+    },
+    "candidate_precheck_summary": {
+      "relative_path": "experiments\\range_search_w4\\results\\range_w4_candidate_budget_precheck\\RUN_SUMMARY.json",
+      "sha256": "0ec9ec0bd72b42ba057ab8d402f11f60838f29bb604342c7ad827012377ea978",
+      "bytes": 5587
+    },
+    "candidate_precheck_alpha_usage": {
+      "relative_path": "experiments\\range_search_w4\\results\\range_w4_candidate_budget_precheck\\ALPHA_USAGE.csv",
+      "sha256": "d3a67d49e79f9d1e41d98461adc0f622dd23510b0726418b895be6f0330e8667",
+      "bytes": 1646546
+    },
+    "candidate_precheck_source_audit": {
+      "relative_path": "experiments\\range_search_w4\\results\\range_w4_candidate_budget_precheck\\SOURCE_AUDIT.csv",
+      "sha256": "b1271dc303cb6d1fd2aaaf458276136e90197ef675d4c7af028049dd3eb234ea",
+      "bytes": 3690
+    },
+    "native_m2": {
+      "relative_path": "experiments\\range_search_w4\\results\\range_w4_m2_parity_v17_1\\native_m2.py",
+      "sha256": "7cd0f8c062b79572b56458b6547b122eaf57b25aadf92fdc33c59fd41a579e0b",
+      "bytes": 2527
+    },
+    "optimized_native_m2": {
+      "relative_path": "experiments\\range_search_w4\\results\\range_w4_m2_runtime_v17_3\\optimized_native_m2.py",
+      "sha256": "14fbe7409efd8e8d7ac3df7f0f71c03506cc6b767febda496c9d4d18344ba0f7",
+      "bytes": 5116
+    }
+  },
+  "cost_budget": {
+    "hard_cap_seconds": 5400,
+    "execution_cutoff_seconds": 4700,
+    "wrap_up_reserve_seconds": 700,
+    "new_gpu_experiment_only": true
+  }
+}

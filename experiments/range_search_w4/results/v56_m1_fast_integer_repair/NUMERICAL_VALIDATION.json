@@ -1,0 +1,87 @@
+{
+  "pass": true,
+  "original_check_still_fails_on_row122": true,
+  "original_failed_rows": [
+    122
+  ],
+  "FP64_check_passes": true,
+  "all_initial_state_bytes_unchanged": true,
+  "X_C_W_unchanged": true,
+  "original_threshold_input_unchanged": true,
+  "groups_replayed_without_repair": [
+    {
+      "group": "qkv",
+      "input_sha256": "09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96",
+      "source_sha256": "a0b5f0fcf07f09a11800370b7528f86ad1850eeeaf7ae253adb6bf61abbdc33f",
+      "pass_": true
+    },
+    {
+      "group": "o",
+      "input_sha256": "2937cc4e2524f9164ad01b71cdd60c8d409a0c39c801d59fadc389fa0b90cb25",
+      "source_sha256": "c912dc33c89790a9f21e90aff9f3531d6bbe266403d44f9a177703605bfd7a36",
+      "pass_": true
+    },
+    {
+      "group": "up_gate",
+      "input_sha256": "0f071b6a8fb1b0800bb7080cf13949b5602bcedc698d5ab10f76c7edf97efa40",
+      "source_sha256": "35a6e16b5e94ab2524b7d856b0d5e6494999a1ecc50faf2525ecd37192181491",
+      "pass_": true
+    },
+    {
+      "group": "down",
+      "input_sha256": "c43c4d7ed3fb968e7f89d132dd1f8a334556cbebfc2e866643659144ee926450",
+      "source_sha256": "cc37962839ffccee49f3ea87137bd384e9eb4fd693db6d11df2ab852a289bf91",
+      "pass_": true
+    }
+  ],
+  "v51_failure_X_C_E_p_hashes_reproduced": true,
+  "review": {
+    "target": "self_attn.k_proj",
+    "original_failed_rows": 1,
+    "original_check_pass": false,
+    "fallback": true,
+    "state_unchanged": true,
+    "events": [
+      {
+        "row": 122,
+        "fp32_loss": 9.85896058680602e-08,
+        "quadratic_loss": 9.858473035628205e-08,
+        "rawX_fp64_loss": 9.858473035628542e-08,
+        "original_abs_error": 4.875511778155983e-12,
+        "FP64_abs_error": 3.374896899216353e-21,
+        "allowed_error": 2.9716946071256412e-12,
+        "state_unchanged": true
+      }
+    ],
+    "source": {
+      "pass_": true,
+      "run_id": "v52-a93c9eb753dacc95",
+      "phase": "validation",
+      "block": 1,
+      "dependency_group": "qkv",
+      "input_sha256": "8564a0fb02f4b6fcb7ea82e184e13ec788cea964666974cdeddf5014ef1798cd",
+      "input_shape": [
+        262144,
+        896
+      ],
+      "input_dtype": "float16",
+      "C_sha256": "254de526f031f56f6a0aeff59548b054ef60de3d501124e94ebd75456001eb77",
+      "C_shape": [
+        896,
+        896
+      ],
+      "C_dtype": "torch.float64",
+      "builder": "unchanged v49 FP64 complete Gram; no C reuse",
+      "pristine_weight_sha256": "835c7c7cc95b3cb2e55bd9cac585aa0760a033896621d3e06421f3378c540f7d",
+      "codes_sha256": "cbf4ea472fd5923fcfd710e2f2527d56f26e88dbf2ba2dd5bde9d6577a8857d9",
+      "scales_sha256": "758a1f3ad2b3343cb04bae58bd9ae52e690fa9c851c0c7935ab15a2b32844932",
+      "g_idx_sha256": "10f4026984d8381cfbf9fe513fb54596c6413fdd45c0b8366211aaa455d52712",
+      "pass": true
+    }
+  },
+  "CPU_tests_sha256": "47ab9c86257d067081ae508b00cfcb66c85d07c81843c57b0f5f813dbaf4e160",
+  "protocol_sha256": "a93c9eb753dacc9528d276d0d89875d2f9e0e85ccc2bfc383a9241f2ff08e07b",
+  "core_sha256": "f155a1f26dd65b67d16e531f438f85b720b6df05910e1dda84082f6b1201ef7a",
+  "review_sha256": "4f6972f70c3babe055d3e686a70fb7c765f809f3a3391c57625caf0a322bc4e5",
+  "elapsed_cumulative_seconds": 688.7325374412536
+}

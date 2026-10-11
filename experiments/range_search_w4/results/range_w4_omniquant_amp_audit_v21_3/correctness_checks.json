@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scope": "bounded AMP semantics audit; not formal M3 completion",
+  "checks": {
+    "exact_upstream_and_runtime_source_hashes": true,
+    "parent_and_v21_2_artifacts_unchanged": true,
+    "torch_micro_skip_and_backoff": true,
+    "torch_micro_next_finite_update": true,
+    "single_exact_historical_loss": true,
+    "single_found_inf_skip_backoff": true,
+    "single_no_parameter_or_optimizer_mutation": true,
+    "single_sample1_not_entered": true,
+    "same_four_nonfinite_parameter_names_and_counts": true,
+    "continuous_sequence_exactly_four_ordered_samples": true,
+    "sequence_scaler_state_continuity": true,
+    "sequence_optimizer_state_continuity": true,
+    "sequence_three_recovered_finite_updates": true,
+    "sequence_parameters_and_optimizer_finite": true,
+    "historical_complete_ordered_53760_finite_owned_gradients": true,
+    "formal_commits_zero": true,
+    "frozen_baseline_not_changed": true,
+    "CSV_matches_raw_sequence": true
+  },
+  "limitations": [
+    "historical successful steps inferred from finite optimizer-owned gradients and exact native control flow, not directly hooked",
+    "four-sample recovery does not prove whole epoch or remaining layers stable",
+    "v21.1 STOP was post-scaler, not pre-scaler"
+  ]
+}

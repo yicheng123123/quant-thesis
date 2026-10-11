@@ -1,0 +1,218 @@
+{
+  "version": "v56",
+  "cap_seconds": 9000.0,
+  "preflight_charged_seconds": 120.0,
+  "preflight_charge_basis": "Conservative CPU-only allowance for source, protocol, checkpoint, runtime and GPU-idle audits performed before ledger initialization; no model/GPU calls.",
+  "segments": [
+    {
+      "version": "v56",
+      "label": "v56 CPU-only source dtype preflight failure",
+      "charged_seconds": 12.493,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "detail": "Stopped before any model load or GPU call; native M1 zero dtype differed from a provisional assertion."
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only baseline metadata schema preflight failure",
+      "charged_seconds": 60.313,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "detail": "All M1 grids recovered uniquely; stopped after audit because v55 result uses scored_tokens rather than valid_tokens. No model/GPU calls."
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only protocol/source audit and exact M1 code recovery",
+      "charged_seconds": 63.673645199975,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "modules": 168,
+      "rows": 304128
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only runner-adaptation patch failure",
+      "charged_seconds": 0.606,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "detail": "Source pattern mismatch while preparing runner; no model/GPU calls and no adapted runner was written."
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only runner adaptation pattern failure",
+      "charged_seconds": 0.609,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "detail": "Frozen source timing-block locator did not match; no runner output written and no model/GPU call."
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only finalization locator failure",
+      "charged_seconds": 0.329,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "detail": "No matching source line at finalization replacement; no model/GPU calls and no runner emitted."
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only runner adaptation accounting failure",
+      "charged_seconds": 0.358,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "detail": "Adapted runner was generated; ledger call duplicated a fixed GPU_calls field, no model/GPU calls."
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only frozen runner source adaptation",
+      "charged_seconds": 0.03951899998355657,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "algorithm_core_changed": false
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only frozen runner source adaptation",
+      "charged_seconds": 0.03555239998968318,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "algorithm_core_changed": false
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only frozen runner source adaptation",
+      "charged_seconds": 0.039818899997044355,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "algorithm_core_changed": false
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only cost projection and source freeze preflight",
+      "charged_seconds": 0.028598900011274964,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "modules": 168,
+      "rows": 304128
+    },
+    {
+      "version": "v56",
+      "label": "v56 first runner import failure and frozen-helper dependency audit",
+      "charged_seconds": 22.419,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "detail": "Includes 12.519s process wall before any model/GPU call, then source inspection proving search helpers are imported by v55 fast repair but do not load saved parameters."
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only frozen runner source adaptation",
+      "charged_seconds": 0.04134509997675195,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "algorithm_core_changed": false
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only cost projection and source freeze preflight",
+      "charged_seconds": 0.002312899974640459,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "modules": 168,
+      "rows": 304128
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only local helper import failure",
+      "charged_seconds": 10.014,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "detail": "Static module import stopped before model/GPU calls because the frozen helper depends on precision_check, which v55 resolved from its v46 code path."
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only frozen runner source adaptation",
+      "charged_seconds": 0.04969310003798455,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "algorithm_core_changed": false
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only frozen numeric-helper dependency source review",
+      "charged_seconds": 5.0,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "detail": "Read and hashed code-only precision_check dependency; no checkpoint/parameter reads, no model/GPU calls."
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only static runner/helper binding preflight",
+      "charged_seconds": 8.983596800011583,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "modules": 168,
+      "rows": 304128
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only cost projection and source freeze preflight",
+      "charged_seconds": 0.011773000005632639,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "modules": 168,
+      "rows": 304128
+    },
+    {
+      "version": "v56",
+      "label": "v56 WDDM GPU process classification and corrected launch guard",
+      "charged_seconds": 5.3,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "detail": "PID 2712 identified as dwm.exe; nvidia-smi reports WDDM C+G desktop processes, 0% GPU utilization; no CUDA compute job observed."
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only cost projection and source freeze preflight",
+      "charged_seconds": 0.0024929000064730644,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "modules": 168,
+      "rows": 304128
+    },
+    {
+      "version": "v56",
+      "label": "v56 full M1 repair, propagation, save/reload and evaluation",
+      "pid": 62864,
+      "start_epoch": 1791554796.2566295,
+      "end_epoch": 1791560490.035,
+      "charged_seconds": 5693.77837061882,
+      "close_basis": "Closed at last recorded flushed runner output after v56 PID 62864 was confirmed absent; later application-idle interval excluded. The final output shows partial WT2 progress through window index 200 only."
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only interrupted-evaluation recovery audit",
+      "charged_seconds": 30.0,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "detail": "Conservative CPU-only charge for checking the stopped process, final model lock, incomplete evaluation output, frozen evaluator, and calculating recovery boundary; no model load or GPU call."
+    },
+    {
+      "version": "v56",
+      "label": "v56 CPU-only evaluation-continuation source check",
+      "charged_seconds": 10.0,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "detail": "Syntax-compiled the eval-only continuation and checked required lock/manifest entrypoints; no model load or GPU call."
+    },
+    {
+      "version": "v56",
+      "label": "v56 evaluation-only continuation after interrupted WT2",
+      "pid": 33184,
+      "start_epoch": 1791564926.623257,
+      "end_epoch": 1791567210.2011085,
+      "charged_seconds": 2283.5778515338898
+    }
+  ],
+  "historical_shared_v55_seconds_separate": 11037.312983,
+  "historical_shared_v55_not_in_v56_cap": true,
+  "idle_intervals_excluded": true
+}

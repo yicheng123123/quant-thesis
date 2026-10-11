@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "provenance": {
+    "saved_input_hash_matches_downbank": true,
+    "saved_pristine_weight_hash_matches_downbank": true,
+    "saved_H_hash_matches_state": true,
+    "saved_nsamples_matches_state": true,
+    "saved_alpha1_score_equals_record": true,
+    "candidate_vs_native_weight_exact": true,
+    "direct_score_candidate_vs_saved_exact": true,
+    "direct_score_native_equivalent_by_exact_weight_parity": true,
+    "max_abs_score_difference": 0.0,
+    "mismatched_rows": 0,
+    "rows": 896,
+    "input_tokens": 16384,
+    "old_parity_record_missing_direct_score": true,
+    "native_score_inference_basis": "v36 saved alpha1 native parity has exact quantized W; direct score is deterministic in saved X, pristine W, and W_hat; v37 recomputed the same direct score on that saved W_hat."
+  },
+  "parity_fields": {
+    "weight": true,
+    "scale": true,
+    "zero": true,
+    "g_idx": true,
+    "group_entry_count": true,
+    "group_entries": true,
+    "saved_search_score_matches_candidate_direct_score": true,
+    "direct_row_output_scores": true
+  },
+  "native_weight_sha256_from_exact_v36_parity": "1584b704460c41a2b5946ed1027c150d393c6dc6b2876bc9585100668effbd06",
+  "candidate_weight_sha256": "1584b704460c41a2b5946ed1027c150d393c6dc6b2876bc9585100668effbd06",
+  "native_scale_sha256_from_exact_v36_parity": "09e03978dbe4db6e6f628e8495a578fe45f2b95ceef7eab306d2b6c2599f427f",
+  "candidate_scale_sha256": "09e03978dbe4db6e6f628e8495a578fe45f2b95ceef7eab306d2b6c2599f427f",
+  "native_zero_sha256_from_exact_v36_parity": "3da752adee8102797e514f334e1a9d557b7e31d45ffe5676a7311acd66666382",
+  "candidate_zero_sha256": "3da752adee8102797e514f334e1a9d557b7e31d45ffe5676a7311acd66666382",
+  "native_g_idx_sha256_from_exact_v36_parity": "b0947a84932f9fd6010ac30d1fb8f0d012bbf7e809eb1a05b1cebe5fb2bf5d04",
+  "candidate_g_idx_sha256": "b0947a84932f9fd6010ac30d1fb8f0d012bbf7e809eb1a05b1cebe5fb2bf5d04",
+  "native_group_entry_count_from_exact_v36_parity": 38,
+  "score_max_abs_diff": 0.0,
+  "score_mismatch_rows": 0,
+  "additional_native_gptq_execution_v37": false
+}

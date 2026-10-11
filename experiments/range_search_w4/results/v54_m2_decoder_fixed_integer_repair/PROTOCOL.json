@@ -1,0 +1,457 @@
+{
+  "version": "v54",
+  "status": "FROZEN_BEFORE_GPU",
+  "requested_model_setting": "Luna Max requested; API cannot verify or switch",
+  "objective": "Complete M2 fixed-grid repair from layer1 using v53 decoder interface and frozen v52 initialization review/v49 fast repair.",
+  "initialization": {
+    "method": "M2 scalar10",
+    "checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\M2\\checkpoint\\final",
+    "model_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+    "config_sha256": "dd9cec52d3cdb33e45dd91c2cc06722cd31ada297a44febda75c1deb9fd80a10",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "quantization_metadata_sha256": "0b6d4333a61810937b1a0be4c9c73141d64ec0d5cec06ae17172da87698dc3da",
+    "quantization_correctness_sha256": "2584a0fc4ccbd81dec32a32c4cbea03f3d244f5cec5f494e139f86c5a3facc7a",
+    "formal_runtime_sha256": "073b1aa7ddd1b2b4ab8bb0179697244a70766c53af99ddf71a23d2680b77092b",
+    "build_wall_seconds_historical": 2115.9353341000096,
+    "alpha_grid": [
+      0.1,
+      0.2,
+      0.30000000000000004,
+      0.4,
+      0.5,
+      0.6000000000000001,
+      0.7000000000000001,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "alpha_selection_source": "already completed formal v18 M2; no v51 alpha search or regeneration"
+  },
+  "calibration": {
+    "manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+    "ordered_token_ids_sha256": "0446661da0f0d99b09803d1c352fcd9c8e516d038cef8348c557b22972634d22",
+    "documents": 128,
+    "tokens_each": 2048,
+    "evaluation_separated": true
+  },
+  "quantization": {
+    "weight_bits": 4,
+    "activation_bits": 16,
+    "group_size": 128,
+    "symmetric": true,
+    "zero": 8,
+    "codes": [
+      0,
+      15
+    ],
+    "scale_zero_g_idx_fixed": true,
+    "dequant_grid": "FP16 round(scales[row,g_idx[col]] * (code-8))",
+    "full_model_linear_modules": 168,
+    "output_rows": 304128
+  },
+  "integer_code_provenance": {
+    "source": "v18 M2 trusted dense FP16 layer state plus its exact saved scales/zeros/g_idx; codes reused from the v42/v45 all-16-value bitwise enumeration audit",
+    "no_approximate_weight_rounding": true,
+    "all16_mapping_unique_revalidated": true,
+    "M2_file_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+    "staged_layer_files": [
+      {
+        "layer": 0,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_00.pt",
+        "native_checkpoint_sha256": "a2d39607464cddf1df737de20acd7e94ab95efa3778ce9fc42a39bf7f94be2d8",
+        "v42_exact_code_file_sha256": "70135a0ec590a45f24af319f07dd5b52fa0cfa48c36fb37ace61218508979016",
+        "v45_staged_source_sha256": "70135a0ec590a45f24af319f07dd5b52fa0cfa48c36fb37ace61218508979016",
+        "v51_staged_sha256": "70135a0ec590a45f24af319f07dd5b52fa0cfa48c36fb37ace61218508979016",
+        "modules": 7
+      },
+      {
+        "layer": 1,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_01.pt",
+        "native_checkpoint_sha256": "10b05b0d715d70ff295a599b408776a5077ec6f04f69908d295a1ca97cc237fa",
+        "v42_exact_code_file_sha256": "fc84a7fb64fe5c08262ddd0eb92b7e695de988dd93eb4445237752bf7c631aeb",
+        "v45_staged_source_sha256": "fc84a7fb64fe5c08262ddd0eb92b7e695de988dd93eb4445237752bf7c631aeb",
+        "v51_staged_sha256": "fc84a7fb64fe5c08262ddd0eb92b7e695de988dd93eb4445237752bf7c631aeb",
+        "modules": 7
+      },
+      {
+        "layer": 2,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_02.pt",
+        "native_checkpoint_sha256": "128b73966788a314b8405d8ccaa27e9101119605427791989764c317cfe2e277",
+        "v42_exact_code_file_sha256": "7f3d8947c724cdcd35f334ba187615c9127cb33de9989e06ebe514863cf59935",
+        "v45_staged_source_sha256": "7f3d8947c724cdcd35f334ba187615c9127cb33de9989e06ebe514863cf59935",
+        "v51_staged_sha256": "7f3d8947c724cdcd35f334ba187615c9127cb33de9989e06ebe514863cf59935",
+        "modules": 7
+      },
+      {
+        "layer": 3,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_03.pt",
+        "native_checkpoint_sha256": "6ca0d60a800e7a74f61f3bfeb58808dcaf07e4c09aad3fc62dd06457dfa79e6d",
+        "v42_exact_code_file_sha256": "a6d5753daf9cb792586c072e170119954374704d6b0166a01def898b2bb73141",
+        "v45_staged_source_sha256": "a6d5753daf9cb792586c072e170119954374704d6b0166a01def898b2bb73141",
+        "v51_staged_sha256": "a6d5753daf9cb792586c072e170119954374704d6b0166a01def898b2bb73141",
+        "modules": 7
+      },
+      {
+        "layer": 4,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_04.pt",
+        "native_checkpoint_sha256": "5dbf290ae753be2f297a9a79b07bba0870dac4c457b792a577736c71fb2b5d1d",
+        "v42_exact_code_file_sha256": "ce489e304c3aa171eafe1bb9f32f3f74b1448fde05a4da2766f08fec3e11d5e5",
+        "v45_staged_source_sha256": "ce489e304c3aa171eafe1bb9f32f3f74b1448fde05a4da2766f08fec3e11d5e5",
+        "v51_staged_sha256": "ce489e304c3aa171eafe1bb9f32f3f74b1448fde05a4da2766f08fec3e11d5e5",
+        "modules": 7
+      },
+      {
+        "layer": 5,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_05.pt",
+        "native_checkpoint_sha256": "0f10bd8a5098e4cc6791c85a8437481cc72fccb615654de7d74e62d42afe9240",
+        "v42_exact_code_file_sha256": "243cf64d8baba4b884a220b3b674a78e95eb13f06e59bf92b7f24f2b633b9414",
+        "v45_staged_source_sha256": "243cf64d8baba4b884a220b3b674a78e95eb13f06e59bf92b7f24f2b633b9414",
+        "v51_staged_sha256": "243cf64d8baba4b884a220b3b674a78e95eb13f06e59bf92b7f24f2b633b9414",
+        "modules": 7
+      },
+      {
+        "layer": 6,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_06.pt",
+        "native_checkpoint_sha256": "952612735cce5c9f1ae7da373b388fd7a24763b8a8ab9de9169797a2e5c7b163",
+        "v42_exact_code_file_sha256": "63fde77ea47f8a131aada0959ce8715d46cfe6b56d220b7872d9a5249f9446b7",
+        "v45_staged_source_sha256": "63fde77ea47f8a131aada0959ce8715d46cfe6b56d220b7872d9a5249f9446b7",
+        "v51_staged_sha256": "63fde77ea47f8a131aada0959ce8715d46cfe6b56d220b7872d9a5249f9446b7",
+        "modules": 7
+      },
+      {
+        "layer": 7,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_07.pt",
+        "native_checkpoint_sha256": "5efd8630979cab93ec03dc9d423ca102efbfd4f5ab44e3bbf1f101a6aeb8fd83",
+        "v42_exact_code_file_sha256": "0568234b9a4f8966d4a5f121bd290fc0c94e029ae0f654b60f15791046efdbe3",
+        "v45_staged_source_sha256": "0568234b9a4f8966d4a5f121bd290fc0c94e029ae0f654b60f15791046efdbe3",
+        "v51_staged_sha256": "0568234b9a4f8966d4a5f121bd290fc0c94e029ae0f654b60f15791046efdbe3",
+        "modules": 7
+      },
+      {
+        "layer": 8,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_08.pt",
+        "native_checkpoint_sha256": "b0015d5c656dfee7320abc82f9b655fb91d273d091e807795c10f3727d5ae78e",
+        "v42_exact_code_file_sha256": "922f9ae6e2007ae589858163a5a2e94b1e26ac491ac4a6dec5fee5b19116171d",
+        "v45_staged_source_sha256": "922f9ae6e2007ae589858163a5a2e94b1e26ac491ac4a6dec5fee5b19116171d",
+        "v51_staged_sha256": "922f9ae6e2007ae589858163a5a2e94b1e26ac491ac4a6dec5fee5b19116171d",
+        "modules": 7
+      },
+      {
+        "layer": 9,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_09.pt",
+        "native_checkpoint_sha256": "deccaeb8d06599ac50d8285f8c78ed8846b23e9358e88fa9a3e3f097a6db9afb",
+        "v42_exact_code_file_sha256": "9344b3f20ead13a1aaea3600509aef5709d86b358608b5eff389dc0bac39e848",
+        "v45_staged_source_sha256": "9344b3f20ead13a1aaea3600509aef5709d86b358608b5eff389dc0bac39e848",
+        "v51_staged_sha256": "9344b3f20ead13a1aaea3600509aef5709d86b358608b5eff389dc0bac39e848",
+        "modules": 7
+      },
+      {
+        "layer": 10,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_10.pt",
+        "native_checkpoint_sha256": "f08ae6a75e02f4f849832dae3ec29b20282a5ad648624fc206f9fe70973648c0",
+        "v42_exact_code_file_sha256": "10b04640a83dce2d41f79166c14e6e967dbf04b4feca2986235d61f98b537b6d",
+        "v45_staged_source_sha256": "10b04640a83dce2d41f79166c14e6e967dbf04b4feca2986235d61f98b537b6d",
+        "v51_staged_sha256": "10b04640a83dce2d41f79166c14e6e967dbf04b4feca2986235d61f98b537b6d",
+        "modules": 7
+      },
+      {
+        "layer": 11,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_11.pt",
+        "native_checkpoint_sha256": "5aef155ac3b091a61af35d840cf617eb6ec73d603f4f8a329b2157f85b465fdb",
+        "v42_exact_code_file_sha256": "5c916b1283d6b473b2b7219cb2f47742f8a7431474219917907ee7939f121f4f",
+        "v45_staged_source_sha256": "5c916b1283d6b473b2b7219cb2f47742f8a7431474219917907ee7939f121f4f",
+        "v51_staged_sha256": "5c916b1283d6b473b2b7219cb2f47742f8a7431474219917907ee7939f121f4f",
+        "modules": 7
+      },
+      {
+        "layer": 12,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_12.pt",
+        "native_checkpoint_sha256": "e91aff05a016ee550345f899eb657dfef257184c6c9c47e23cad4e70e7871027",
+        "v42_exact_code_file_sha256": "73e96739f59d830703cf5fd00a3e6940725dc2a2dfbf97ae3de45044f97012e7",
+        "v45_staged_source_sha256": "73e96739f59d830703cf5fd00a3e6940725dc2a2dfbf97ae3de45044f97012e7",
+        "v51_staged_sha256": "73e96739f59d830703cf5fd00a3e6940725dc2a2dfbf97ae3de45044f97012e7",
+        "modules": 7
+      },
+      {
+        "layer": 13,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_13.pt",
+        "native_checkpoint_sha256": "f2b1f3e6ccdae08efc8e40ca1b8d60eec72fcdc22b8251f905e70ea6295b212d",
+        "v42_exact_code_file_sha256": "1b3a3c31a2e8bedd380bdc6f2165ba03c0d68258e28ecbfc696806a67e02b191",
+        "v45_staged_source_sha256": "1b3a3c31a2e8bedd380bdc6f2165ba03c0d68258e28ecbfc696806a67e02b191",
+        "v51_staged_sha256": "1b3a3c31a2e8bedd380bdc6f2165ba03c0d68258e28ecbfc696806a67e02b191",
+        "modules": 7
+      },
+      {
+        "layer": 14,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_14.pt",
+        "native_checkpoint_sha256": "31bd4bcf642aaff5c246086ba8fa12a815d43b1ae186926caaab74757f02c427",
+        "v42_exact_code_file_sha256": "b5b0f8368c4d6cd95ea99341a8cbe821d54d4b6d9cf3ef0e95c26b2aef49a21a",
+        "v45_staged_source_sha256": "b5b0f8368c4d6cd95ea99341a8cbe821d54d4b6d9cf3ef0e95c26b2aef49a21a",
+        "v51_staged_sha256": "b5b0f8368c4d6cd95ea99341a8cbe821d54d4b6d9cf3ef0e95c26b2aef49a21a",
+        "modules": 7
+      },
+      {
+        "layer": 15,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_15.pt",
+        "native_checkpoint_sha256": "8398f1997171914a3b27d6463435eb98c1393f19e50cf5e94244f3a5e5b6670c",
+        "v42_exact_code_file_sha256": "ed397eb75e5530d60db0e2e807691ed3313e1912dc87003cef19c42856695668",
+        "v45_staged_source_sha256": "ed397eb75e5530d60db0e2e807691ed3313e1912dc87003cef19c42856695668",
+        "v51_staged_sha256": "ed397eb75e5530d60db0e2e807691ed3313e1912dc87003cef19c42856695668",
+        "modules": 7
+      },
+      {
+        "layer": 16,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_16.pt",
+        "native_checkpoint_sha256": "c4e3ce575c546c335db3a236d007f8bed53e86e501e1f0f4065d2ad4551aa7cf",
+        "v42_exact_code_file_sha256": "a9a008dbe1e1a2e1c187f95fb29627b82d8e6d7ac2110de16be27ef01f87fbc1",
+        "v45_staged_source_sha256": "a9a008dbe1e1a2e1c187f95fb29627b82d8e6d7ac2110de16be27ef01f87fbc1",
+        "v51_staged_sha256": "a9a008dbe1e1a2e1c187f95fb29627b82d8e6d7ac2110de16be27ef01f87fbc1",
+        "modules": 7
+      },
+      {
+        "layer": 17,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_17.pt",
+        "native_checkpoint_sha256": "58d956a21694e8bc3ef941550ea15cf21b65e29b848e32e1274bc8930370f400",
+        "v42_exact_code_file_sha256": "e8d58b4e8b73b516e36a5c9d652533ed2e01be04d94972e7c08ef6b38b5405fe",
+        "v45_staged_source_sha256": "e8d58b4e8b73b516e36a5c9d652533ed2e01be04d94972e7c08ef6b38b5405fe",
+        "v51_staged_sha256": "e8d58b4e8b73b516e36a5c9d652533ed2e01be04d94972e7c08ef6b38b5405fe",
+        "modules": 7
+      },
+      {
+        "layer": 18,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_18.pt",
+        "native_checkpoint_sha256": "181dfee9f6b077ecba13845181bfd93ee7381c994de43b37230d835df272bd60",
+        "v42_exact_code_file_sha256": "5049162c907029762a931e78ae006b3861591cb8d1ff8f1378cce080d061211b",
+        "v45_staged_source_sha256": "5049162c907029762a931e78ae006b3861591cb8d1ff8f1378cce080d061211b",
+        "v51_staged_sha256": "5049162c907029762a931e78ae006b3861591cb8d1ff8f1378cce080d061211b",
+        "modules": 7
+      },
+      {
+        "layer": 19,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_19.pt",
+        "native_checkpoint_sha256": "6ef07f12203bc1514ba50e1367567a8448319c9df562c6c1eda10ee74d3a4db0",
+        "v42_exact_code_file_sha256": "7a65432acc3378e16ae6ab33ddc37a5939f3dd400f85d39fe65d4a3a538a10ff",
+        "v45_staged_source_sha256": "7a65432acc3378e16ae6ab33ddc37a5939f3dd400f85d39fe65d4a3a538a10ff",
+        "v51_staged_sha256": "7a65432acc3378e16ae6ab33ddc37a5939f3dd400f85d39fe65d4a3a538a10ff",
+        "modules": 7
+      },
+      {
+        "layer": 20,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_20.pt",
+        "native_checkpoint_sha256": "0f3401ff9515c157cfa8f8c1fafd4e15c28b34377a049c2d70c207606f4a744a",
+        "v42_exact_code_file_sha256": "543f20b8e941fa5f36b93cab0ebc2007113d83e1fc9af9ec9b2db83b09792ec2",
+        "v45_staged_source_sha256": "543f20b8e941fa5f36b93cab0ebc2007113d83e1fc9af9ec9b2db83b09792ec2",
+        "v51_staged_sha256": "543f20b8e941fa5f36b93cab0ebc2007113d83e1fc9af9ec9b2db83b09792ec2",
+        "modules": 7
+      },
+      {
+        "layer": 21,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_21.pt",
+        "native_checkpoint_sha256": "14997794b1b150b584162fe0e98636ff205249bf80f99935bd4d80ccee31cf7f",
+        "v42_exact_code_file_sha256": "b4592f5ad6aa2f9f9df661c6ed15592eae8de530a92ac25a6ec8eb1955261733",
+        "v45_staged_source_sha256": "b4592f5ad6aa2f9f9df661c6ed15592eae8de530a92ac25a6ec8eb1955261733",
+        "v51_staged_sha256": "b4592f5ad6aa2f9f9df661c6ed15592eae8de530a92ac25a6ec8eb1955261733",
+        "modules": 7
+      },
+      {
+        "layer": 22,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_22.pt",
+        "native_checkpoint_sha256": "e6b90f42d2e2ee5257cbe445df136dd8840a6cce6e21fdd68b0e2fa1a408fc13",
+        "v42_exact_code_file_sha256": "f672e835e5ccfb9971fe5f16e1d14b8c4020af6693b3e6ef3a2023573ffc4594",
+        "v45_staged_source_sha256": "f672e835e5ccfb9971fe5f16e1d14b8c4020af6693b3e6ef3a2023573ffc4594",
+        "v51_staged_sha256": "f672e835e5ccfb9971fe5f16e1d14b8c4020af6693b3e6ef3a2023573ffc4594",
+        "modules": 7
+      },
+      {
+        "layer": 23,
+        "m2_native_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\checkpoints\\M2\\layer_23.pt",
+        "native_checkpoint_sha256": "ee428009a9e46703f4648c3c146fa3f5afec7829c61423fe6738ae942a9c1edb",
+        "v42_exact_code_file_sha256": "7377cff9582f532b492d772bd438a4769f2d9169ff3434a26c3ebcc18bd9a03a",
+        "v45_staged_source_sha256": "7377cff9582f532b492d772bd438a4769f2d9169ff3434a26c3ebcc18bd9a03a",
+        "v51_staged_sha256": "7377cff9582f532b492d772bd438a4769f2d9169ff3434a26c3ebcc18bd9a03a",
+        "modules": 7
+      }
+    ],
+    "module_grid_audit": "M2_MODULE_GRID_AUDIT.csv"
+  },
+  "algorithm_source": {
+    "v49_runner_template_sha256": "3dccc6306c3e35f1a4babed4266d8fa2af0261e7a345a5596daf4709dc560979",
+    "v48_fast_accept_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v48_fast_numerical_acceptance\\fast_accept.py",
+    "fast_accept_sha256": "c3a760c0f48723b3784774263af71bc9e469115c2ab5d0c35ba3145671e079a2",
+    "acceptance_rules": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v48_fast_numerical_acceptance\\ACCEPTANCE_RULES.md",
+    "acceptance_rules_sha256": "7c6dd06068f46b0b9efdead69055c711356588f4700d751cfc744018505631d6",
+    "v46_runtime_sha256": "96e015a0e4895684cfd2cf7c77f629eec38f8280872bb4bd5d2e8ba9a78a3cd9",
+    "v45_helper_sha256": "ede71ff8abe69927196b01ca5c2d755fff11154c5e918f68d172cf2508dbab37",
+    "v45_precision_sha256": "ff743bdaa2f862ea87e6605d6f788404418c7e6bf933d78edd6fa7449d83b0cd",
+    "acceptance": "exact v49 wrapper dispatches to v48 fast_accept.batch_repair; FP64 quadratic proposal with v48 empirical envelope, fixed raw-X FP64 uncertain-candidate checks, p/B refresh at 1,8,16,24,32; no certificate",
+    "core_algorithm_modified": false,
+    "v50_gram_path_used": false
+  },
+  "fixed_search": {
+    "neighborhood": "legal actual FP16 grid deltas for +/-1 code",
+    "max_accepted_per_row": 32,
+    "candidate_budget": "128 * input dimension per row",
+    "tie_breaking": "v45 deterministic row/coordinate/offset ordering",
+    "C": "full undamped FP64 Gram, original v49 builder",
+    "sibling_inputs_and_C": "shared only for sibling linears with the same current-run input",
+    "propagation": [
+      "qkv",
+      "o",
+      "up_gate",
+      "down",
+      "next block"
+    ],
+    "group_commit": "atomic after all sibling matrices and checks pass",
+    "prefix_cache": "none from v45 or v49; reconstruct and propagate current v51 model"
+  },
+  "restore": {
+    "start": "original formal M2 each process",
+    "committed_group": "restore only a complete atomic checkpoint after protocol/grid/code/packed/dequantized-weight and current-prefix input hash checks",
+    "failed_group": "discard incomplete scratch and rerun that group from original M2 parameters",
+    "group_checkpoints": 96
+  },
+  "output": {
+    "root": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel",
+    "model_dir": "R1/checkpoint/final (generic inherited v46 runtime folder label; represents only v51 M2+v49 model)",
+    "results_are_isolated": true
+  },
+  "evaluation": {
+    "evaluator": "unchanged v46 runtime.evaluate",
+    "max_length": 2048,
+    "stride": 512,
+    "token_weighted_valid_labels": true,
+    "P3_read": false,
+    "reuse_rule": "reuse old R2 PPL only if every named dense model tensor and inference config equal v45 original R2; otherwise one WT2 test and one fixed-budget C4 validation evaluation"
+  },
+  "budget": {
+    "hard_gpu_seconds": 10800,
+    "finish_reserve_seconds": 600.0,
+    "setup_reserve_seconds": 180.0,
+    "projection_only_not_measured": true,
+    "projection_method": "24 blocks * 1.5 * v49 maximum successful block wall (217.949843s) + 600s final save/reload/eval reserve + 180s startup/setup",
+    "projected_seconds": 8626.194340800284,
+    "measured_v49_successful_max_block_seconds": 217.9498428000079,
+    "v49_measured_block_rows": 24,
+    "m2_build_cost_historical_outside_this_job_seconds": 2115.9353341000096
+  },
+  "freeze_epoch": 1791474911.5776625,
+  "execution_runtime": {
+    "python_executable": "E:\\quant-thesis\\.venv\\Scripts\\python.exe",
+    "torch_version_required": "2.6.0+cu124",
+    "cuda_build_required": "12.4",
+    "source": "v49 completed RUN_STATUS.json; exact matching repository venv selected",
+    "device_settings": "TF32 off; FP32 matmul highest; unchanged v49 runtime"
+  },
+  "pristine_fp_weights": [
+    {
+      "path": "E:\\quant-thesis\\.hf_cache\\hub\\models--Qwen--Qwen2.5-0.5B-Instruct\\snapshots\\7ae557604adf67be50417f59c2c2f167def9a775\\model.safetensors",
+      "sha256": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe"
+    }
+  ],
+  "v52_initialization_review": {
+    "original_rtol": 2e-05,
+    "original_atol": 1e-12,
+    "failed_rows_only": true,
+    "independent_reference": "raw X FP64 @ actual FP16-grid error, chunk4096, FP64 SSE/N",
+    "original_fp32_initial_and_quadratic_loss_retained": true,
+    "original_candidate_threshold_and_settle_unchanged": true,
+    "no_theoretical_certificate": true,
+    "source_key": "run_id, phase, block, dependency_group; actual X hash/shape/dtype and C hash; no id(X) key or Gram reuse",
+    "core_sha256": "f155a1f26dd65b67d16e531f438f85b720b6df05910e1dda84082f6b1201ef7a",
+    "review_sha256": "4f6972f70c3babe055d3e686a70fb7c765f809f3a3391c57625caf0a322bc4e5",
+    "budget_sha256": "a2e7f38dccea547b7ff60e304a067662e3ae94c2f2cc69e59e04463a20a01686"
+  },
+  "shared_budget": {
+    "cap_seconds": 10800,
+    "v51_measured_seconds": 657.3046090602875,
+    "v51_conservative_charged_seconds": 657.305,
+    "v52_initial_remaining_seconds": 10142.695,
+    "active_job_segments_only": true,
+    "application_closed_wait_excluded": true,
+    "CPU_environment_diagnostics_separate": true,
+    "finish_reserve_seconds": 600
+  },
+  "inherited_groups": {
+    "source_version": "v51",
+    "block": 0,
+    "groups": [
+      "qkv",
+      "o",
+      "up_gate",
+      "down"
+    ],
+    "must_not_repair_again": true,
+    "uncommitted_layer1_qkv_start": "original formal M2"
+  },
+  "v53_decoder_interface": {
+    "source": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v53_decoder_interface_propagation_audit\\runtime_v53.py",
+    "source_sha256": "360e323e8f868347d7bbfaada2c6cee6daa45c52326d35516b1db537461d16ad",
+    "local_copy": "runtime_v54.py",
+    "local_copy_sha256": "360e323e8f868347d7bbfaada2c6cee6daa45c52326d35516b1db537461d16ad",
+    "interface_source_sha256": "80b796ba6ed85910a36314b7a2d9a8857b50ad56d74e5a6cb5242c84c82c4f2c",
+    "strict_full_shape_and_dtype_before_cache_write": true,
+    "supported_returns": [
+      "Tensor[B,T,H]",
+      "one-element tuple(Tensor[B,T,H])"
+    ],
+    "unknown_type": "hard error"
+  },
+  "restore_boundary": {
+    "base_model_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+    "inherited_block0_groups": [
+      {
+        "group": "qkv",
+        "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\formal\\groups\\layer_00_qkv.pt",
+        "sha256": "a0b5f0fcf07f09a11800370b7528f86ad1850eeeaf7ae253adb6bf61abbdc33f"
+      },
+      {
+        "group": "o",
+        "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\formal\\groups\\layer_00_o.pt",
+        "sha256": "c912dc33c89790a9f21e90aff9f3531d6bbe266403d44f9a177703605bfd7a36"
+      },
+      {
+        "group": "up_gate",
+        "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\formal\\groups\\layer_00_up_gate.pt",
+        "sha256": "35a6e16b5e94ab2524b7d856b0d5e6494999a1ecc50faf2525ecd37192181491"
+      },
+      {
+        "group": "down",
+        "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\formal\\groups\\layer_00_down.pt",
+        "sha256": "cc37962839ffccee49f3ea87137bd384e9eb4fd693db6d11df2ab852a289bf91"
+      }
+    ],
+    "repaired_from_layer": "layer1/qkv",
+    "v52_layer1_plus_parameters_inputs_and_C_forbidden": true,
+    "v53_correct_layer1_qkv_input_sha256": "70cd41104db3769a3d434c27d4612a41becf4be98439c6328c6010e5b6eae7ac"
+  },
+  "propagation_validation": {
+    "articles": [
+      0,
+      64,
+      127
+    ],
+    "tokens_each": 2048,
+    "after_each_block": true,
+    "reference": "native complete model.forward plus independent next-block/qkv prehooks (final block uses final norm prehook)",
+    "reference_uses_v53_extractor": false,
+    "comparison": "same v53 bitwise-first and rtol=1e-5, atol=1e-6 fallback",
+    "no_tolerance_changes": true,
+    "all24_blocks": true
+  },
+  "budget_v54": {
+    "shared_cap_seconds": 10800,
+    "inherited_shared_seconds": 5677.428213768006,
+    "starting_remaining_seconds": 5122.571786231994,
+    "finish_and_evaluation_reserve_seconds": 360,
+    "historical_M2_blocks1_23_seconds": 4353.960454899992,
+    "three_article_per_block_validation_baseline_seconds": 9.246,
+    "uncertainty_reserve_seconds": 120,
+    "projection_is_estimate": true,
+    "parent_ledger_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v53_decoder_interface_propagation_audit\\ACTIVE_JOB_LEDGER.json",
+    "parent_ledger_sha256": "2fda2c273823a39b43314285336d0333d90872e0ba1aab05feaca794c53df720",
+    "finish_reserve_seconds": 360,
+    "same_initializer_layer_timings_source": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v52_m2_fast_integer_repair_fp64_initial_review\\BLOCK_TIMINGS.csv",
+    "block_native_check_overhead_source": "v53 STAGE_TIMINGS fixed_complete_articles_all24_layers; measured synchronized wall 9.246 s",
+    "new_job_hard_stop_seconds": 10800
+  }
+}

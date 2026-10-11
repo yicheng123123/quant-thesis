@@ -1,0 +1,6 @@
+id,name,weight_bits,activation_bits,group_size,format,optimizer,objective,epochs,grid,prefix,representation,required,status
+M0,FP16 original,16,16,,FP16,none,none,0,,original FP,dense FP16,True,protocol only
+M1,Native GPTQ,4,16,128,native symmetric zero8,fixed GPTQ compensation,native GPTQ,0,alpha1,self native,dense dequant FP16 primary; packed secondary,True,new common calibration not run
+M2,GPTQ + Pure Range Search,4,16,128,same as M1,enumeration + fixed GPTQ compensation,local calibration output MSE per row,0,0.1:0.1:1.0,self selected rows,dense dequant FP16 primary; packed secondary,True,integration design; not implemented
+M3,OmniQuant-Qwen2.5 port (official W4A16 config),4,16,128,official asymmetric affine,official LWC AdamW AMP; LET off,official whole-block MSE,20,,FP teacher + self quant student,official fake/dequant FP16 primary,True,port design; not implemented
+M4,LWC-controlled mechanism baseline,4,16,128,must match GPTQ for mechanism isolation,not frozen / excluded,not frozen / excluded,,,must control,not frozen,False,optional future study; not scheduled

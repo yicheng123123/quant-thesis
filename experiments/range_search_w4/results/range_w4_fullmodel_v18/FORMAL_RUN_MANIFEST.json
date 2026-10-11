@@ -1,0 +1,31 @@
+{
+  "run": "v18",
+  "status": "COMPLETE",
+  "directory": "experiments/range_search_w4/results/range_w4_fullmodel_v18",
+  "protocol": "PROTOCOL.json",
+  "upstream_hash_audit": "UPSTREAM_HASH_AUDIT.json",
+  "calibration_manifest": "CALIBRATION_MANIFEST.json",
+  "evaluation_manifests": {
+    "wikitext_test": "evaluation/manifests/WIKITEXT_TEST_MANIFEST.json",
+    "c4_fixed_budget": "evaluation/manifests/C4_EVAL_MANIFEST.json"
+  },
+  "results": {
+    "matched_shape_precheck": "PASS",
+    "cost_gate": "M2_COST_GO",
+    "m1": "COMPLETE_RELOAD_PASS",
+    "m2": "COMPLETE_RELOAD_PASS",
+    "wikitext_evaluation": "PASS",
+    "c4_evaluation": "PASS"
+  },
+  "resume": {
+    "layer_checkpoint_stride": 1,
+    "atomic_layer_checkpoints": true,
+    "candidate_selection_repeated_for_completed_layers": false
+  },
+  "cost_model": "FINAL_COST_MODEL.json",
+  "code_bundle_sha256": "4cda17690e9d0246899320c349abf2a123d70695a6352d7a33e1ee0561651975",
+  "formal_started_utc": "2026-10-01T04:57:56.146484+00:00",
+  "evaluation_started_utc": "2026-10-01T05:49:12.770709+00:00",
+  "verdict": "FULLMODEL_M2_QUALITY_IMPROVED",
+  "completed_utc": "2026-10-01T05:55:53.858175+00:00"
+}

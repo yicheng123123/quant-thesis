@@ -1,0 +1,6 @@
+﻿attempt,task,status,cpu_wall_seconds,source,gpu_seconds
+1,raw config JSON equality precheck,FAILED_PRECHECK_ONLY_ALIAS_DIFFERENCE,12.7,observed command wall: 10.2s initial wait plus 2.5s completion poll,0.0
+2,"normalized AutoConfig, checkpoint/tensor/input/window audit",PASS,19.206932,script perf_counter output,0.0
+3,reproducible rerun after progress guard/report finalization,PASS,18.2554042,script perf_counter output,0.0
+4,final reproducible source/hash/window preflight rerun,PASS,19.2313565,script perf_counter output from final successful run,0.0
+other,read-only source discovery and code inspection,CPU_ONLY_NOT_CUMULATIVELY_METERED,NOT_AGGREGATED,short PowerShell/metadata reads in this v57 turn,0.0

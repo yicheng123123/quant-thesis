@@ -1,0 +1,49 @@
+
+--- phase PILOT start 2026-10-04T19:25:28.683096+00:00 ---
+
+[32mINFO[0m  ENV: Auto setting PYTORCH_CUDA_ALLOC_CONF='expandable_segments:True' for memory saving.
+[32mINFO[0m  ENV: Auto setting CUDA_DEVICE_ORDER=PCI_BUS_ID for correctness.          
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+E:\quant-thesis\.venv-gptq\Lib\site-packages\torch\nn\modules\module.py:1329: UserWarning: expandable_segments not supported on this platform (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\c10/cuda/CUDAAllocatorConfig.h:28.)
+  return t.to(
+[hessian:start] M2 L0 qkv shared input shape=(128, 896) samples=128 seq=2048
+[hessian:done] M2 L0 qkv shared input seconds=0.382 nsamples=128
+[M2] L00 committed self_attn.k_proj; rows=128 input=09475d472790 H=e755c47d966a
+[M2] L00 committed self_attn.v_proj; rows=128 input=09475d472790 H=e755c47d966a
+[M2] L00 committed self_attn.q_proj; rows=896 input=09475d472790 H=e755c47d966a
+[hessian:start] M2 L0 o shared input shape=(896, 896) samples=128 seq=2048
+[hessian:done] M2 L0 o shared input seconds=0.192 nsamples=128
+[M2] L00 committed self_attn.o_proj; rows=896 input=705b197f1681 H=97d04cdccd7b
+[hessian:start] M2 L0 up_gate shared input shape=(4864, 896) samples=128 seq=2048
+[hessian:done] M2 L0 up_gate shared input seconds=0.227 nsamples=128
+[M2] L00 model.layers.0.mlp.up_proj alpha=1.0 candidates=20/27
+[M2] L00 committed mlp.up_proj; rows=4864 input=b164fb179e77 H=6ad4179539cf
+[M2] L00 committed mlp.gate_proj; rows=4864 input=b164fb179e77 H=6ad4179539cf
+[hessian:start] M2 L0 down shared input shape=(896, 4864) samples=128 seq=2048
+[hessian:done] M2 L0 down shared input seconds=2.613 nsamples=128
+[M2] L00 committed mlp.down_proj; rows=896 input=9a159128abbd H=b06453c2fe62
+[M2] checkpointed complete layer 00/23 elapsed=48.5s
+{
+  "status": "PILOT_COMPLETE",
+  "arm": "PILOT_B_BLOCK0",
+  "m2": {
+    "method": "M2",
+    "status": "PILOT_COMPLETE",
+    "layers_completed": 1,
+    "formal_counts": {
+      "full_linear_alpha_candidate_executions": 27,
+      "row_alpha_score_slots": 49792,
+      "alpha1_native_parity_reference_executions": 7,
+      "layers_completed_before_this_process": 0
+    },
+    "code_bundle_sha256": "889a3af178fd92d82b834905c91c18a1497c2ad389522f702cd088e46458b4a4",
+    "candidate_mode": "winner_union",
+    "last_completed_layer": 0,
+    "completed_utc": "2026-10-04T19:26:30.362916+00:00"
+  },
+  "gpu_peak_allocated_bytes": 1944418304,
+  "gpu_peak_reserved_bytes": 2269118464,
+  "timing_csv": "FORMAL_TIMING.csv",
+  "completed_utc": "2026-10-04T19:26:30.537681+00:00"
+}
+--- phase PILOT end 2026-10-04T19:26:32.774366+00:00 wall=64.063s code=0 ---

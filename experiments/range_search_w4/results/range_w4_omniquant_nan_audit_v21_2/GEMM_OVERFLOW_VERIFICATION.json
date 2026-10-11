@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "instrumented_replay_loss_and_nonfinite_masks_match": true,
+  "operation": "MmBackward0",
+  "projection": [
+    "native_layer.mlp.up_proj.linear_operation"
+  ],
+  "gradient_formula": "grad_W_transpose = X_transpose @ incoming_scaled_grad_output",
+  "native_weight_gradient": {
+    "present": true,
+    "shape": [
+      896,
+      4864
+    ],
+    "dtype": "torch.float16",
+    "numel": 4358144,
+    "finite_count": 4358142,
+    "nan_count": 0,
+    "posinf_count": 2,
+    "neginf_count": 0,
+    "all_finite": false,
+    "min": -17552.0,
+    "max": 59008.0,
+    "mean": 0.014937602306968462,
+    "std": 30.542715623679317,
+    "max_finite_abs": 59008.0,
+    "mean_finite_abs": 1.0634595339786677
+  },
+  "fp32_same_operand_gemm": {
+    "present": true,
+    "shape": [
+      896,
+      4864
+    ],
+    "dtype": "torch.float32",
+    "numel": 4358144,
+    "finite_count": 4358144,
+    "nan_count": 0,
+    "posinf_count": 0,
+    "neginf_count": 0,
+    "all_finite": true,
+    "min": -17560.673828125,
+    "max": 122799.375,
+    "mean": 0.058976533422460536,
+    "std": 74.09290496931358,
+    "max_finite_abs": 122799.375,
+    "mean_finite_abs": 1.107504366990571
+  },
+  "fp32_over_fp16_limit_count": 2,
+  "over_limit_positions_equal_native_nonfinite_positions": true,
+  "same_fp16_gemm_recomputed_bad_mask_equal": true,
+  "overflow_coordinates": [
+    {
+      "transpose_input_channel": 62,
+      "output_channel": 567,
+      "weight_row": 567,
+      "weight_column": 62,
+      "fp32_dot": 122799.375,
+      "fp64_dot_same_fp16_operands": 122799.37525627553,
+      "fp16_finite_limit": 65504.0,
+      "exceeds_fp16_limit": true,
+      "unscaled_equivalent_fp64_dot": 1.8737697640422901,
+      "native_gradient_class": "+Inf"
+    },
+    {
+      "transpose_input_channel": 62,
+      "output_channel": 3486,
+      "weight_row": 3486,
+      "weight_column": 62,
+      "fp32_dot": 69136.6328125,
+      "fp64_dot_same_fp16_operands": 69136.64730513132,
+      "fp16_finite_limit": 65504.0,
+      "exceeds_fp16_limit": true,
+      "unscaled_equivalent_fp64_dot": 1.054941517717458,
+      "native_gradient_class": "+Inf"
+    }
+  ],
+  "scope": "numeric backward boundary confirmation only; no changed baseline or optimizer updates"
+}

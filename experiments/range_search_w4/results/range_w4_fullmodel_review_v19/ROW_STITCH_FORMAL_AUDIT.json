@@ -1,0 +1,540 @@
+{
+  "status": "PASS",
+  "metadata_checks": {
+    "per_row_group_scale_zero_shape": 336,
+    "g_idx_G128_mapping": 336,
+    "symmetric_zero_point_8": 336,
+    "final_checkpoint_weight_equals_layer_commit": 336,
+    "selected_alpha_loss_matches_candidate": 168,
+    "sampled_row_integer_lattice_dequant": 75
+  },
+  "preselected_samples": [
+    {
+      "layer": 0,
+      "projection": "self_attn.k_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "self_attn.k_proj",
+      "row": 64,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "self_attn.k_proj",
+      "row": 127,
+      "selected_alpha": 1.0,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "self_attn.q_proj",
+      "row": 0,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "self_attn.q_proj",
+      "row": 448,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "self_attn.q_proj",
+      "row": 895,
+      "selected_alpha": 1.0,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "self_attn.o_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "self_attn.o_proj",
+      "row": 448,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "self_attn.o_proj",
+      "row": 895,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "mlp.up_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "mlp.up_proj",
+      "row": 2432,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "mlp.up_proj",
+      "row": 4863,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "mlp.down_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "mlp.down_proj",
+      "row": 448,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 0,
+      "projection": "mlp.down_proj",
+      "row": 895,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "self_attn.k_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "self_attn.k_proj",
+      "row": 64,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "self_attn.k_proj",
+      "row": 127,
+      "selected_alpha": 1.0,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "self_attn.q_proj",
+      "row": 0,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "self_attn.q_proj",
+      "row": 448,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "self_attn.q_proj",
+      "row": 895,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "self_attn.o_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "self_attn.o_proj",
+      "row": 448,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "self_attn.o_proj",
+      "row": 895,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "mlp.up_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "mlp.up_proj",
+      "row": 2432,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "mlp.up_proj",
+      "row": 4863,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "mlp.down_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "mlp.down_proj",
+      "row": 448,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 6,
+      "projection": "mlp.down_proj",
+      "row": 895,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "self_attn.k_proj",
+      "row": 0,
+      "selected_alpha": 0.7,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "self_attn.k_proj",
+      "row": 64,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "self_attn.k_proj",
+      "row": 127,
+      "selected_alpha": 1.0,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "self_attn.q_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "self_attn.q_proj",
+      "row": 448,
+      "selected_alpha": 1.0,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "self_attn.q_proj",
+      "row": 895,
+      "selected_alpha": 1.0,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "self_attn.o_proj",
+      "row": 0,
+      "selected_alpha": 0.7,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "self_attn.o_proj",
+      "row": 448,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "self_attn.o_proj",
+      "row": 895,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "mlp.up_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "mlp.up_proj",
+      "row": 2432,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "mlp.up_proj",
+      "row": 4863,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "mlp.down_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "mlp.down_proj",
+      "row": 448,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 12,
+      "projection": "mlp.down_proj",
+      "row": 895,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "self_attn.k_proj",
+      "row": 0,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "self_attn.k_proj",
+      "row": 64,
+      "selected_alpha": 1.0,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "self_attn.k_proj",
+      "row": 127,
+      "selected_alpha": 1.0,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "self_attn.q_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "self_attn.q_proj",
+      "row": 448,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "self_attn.q_proj",
+      "row": 895,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "self_attn.o_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "self_attn.o_proj",
+      "row": 448,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "self_attn.o_proj",
+      "row": 895,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "mlp.up_proj",
+      "row": 0,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "mlp.up_proj",
+      "row": 2432,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "mlp.up_proj",
+      "row": 4863,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "mlp.down_proj",
+      "row": 0,
+      "selected_alpha": 1.0,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "mlp.down_proj",
+      "row": 448,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 18,
+      "projection": "mlp.down_proj",
+      "row": 895,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "self_attn.k_proj",
+      "row": 0,
+      "selected_alpha": 0.7,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "self_attn.k_proj",
+      "row": 64,
+      "selected_alpha": 0.6,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "self_attn.k_proj",
+      "row": 127,
+      "selected_alpha": 1.0,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "self_attn.q_proj",
+      "row": 0,
+      "selected_alpha": 0.7,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "self_attn.q_proj",
+      "row": 448,
+      "selected_alpha": 0.7,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "self_attn.q_proj",
+      "row": 895,
+      "selected_alpha": 0.7,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "self_attn.o_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "self_attn.o_proj",
+      "row": 448,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "self_attn.o_proj",
+      "row": 895,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "mlp.up_proj",
+      "row": 0,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "mlp.up_proj",
+      "row": 2432,
+      "selected_alpha": 1.0,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "mlp.up_proj",
+      "row": 4863,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "mlp.down_proj",
+      "row": 0,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "mlp.down_proj",
+      "row": 448,
+      "selected_alpha": 0.9,
+      "lattice_exact": true
+    },
+    {
+      "layer": 23,
+      "projection": "mlp.down_proj",
+      "row": 895,
+      "selected_alpha": 0.8,
+      "lattice_exact": true
+    }
+  ],
+  "formal_semantics": "G128 scale/zero are [output_row, group], g_idx is input-column-only. With desc_act=false/static_groups=false and row-separable GPTQ compensation, selecting independent output rows from full candidates is legal.",
+  "candidate_weight_provenance_limit": "v18 stores all candidate losses but only the stitched selected weight, not all ten full candidate weight tensors. Exact selected-row source tensors therefore cannot be reloaded from v18 alone; v17.3 saved candidate cache and independent selected-row parity provide prior spot evidence. In v17.3 weight/zero/g_idx/local output were exact; a few scale comparisons were allclose (rtol=1e-6, atol=1e-9), not bitwise exact."
+}

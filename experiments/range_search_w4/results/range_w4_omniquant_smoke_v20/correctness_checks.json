@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "status_scope": "functional correctness gates A-L only; runtime and formal-shape VRAM readiness gates are reported separately",
+  "readiness_gates_status": "NOT_READY",
+  "checks": {
+    "official_commit_and_tree": true,
+    "architecture_only_patch": true,
+    "quant_off_parity": true,
+    "seven_projection_discovery": true,
+    "gqa_rope_kwargs": true,
+    "frozen_calibration_loader": true,
+    "lwc_parameters": true,
+    "lwc_gradients": true,
+    "optimizer_updates_lwc": true,
+    "reconstruction_finite": true,
+    "dense_export_reload": true,
+    "shared_evaluator_tiny_smoke": true,
+    "conservative_runtime_le_24h": false,
+    "smoke_reserved_vram_le_8gib": true,
+    "formal_2048_token_vram_feasibility_proven": false
+  },
+  "formal_execution_readiness": "M3_FORMAL_EXECUTION_NOT_READY",
+  "formal_training_executed": false,
+  "formal_ppl_executed": false
+}

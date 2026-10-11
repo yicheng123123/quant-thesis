@@ -1,0 +1,13 @@
+{
+  "artifact": "experiments/range_search_w4/results/range_w4_omniquant_full_v21_1/M3/RESUME_SMOKE/atomic_save_check.pt",
+  "artifact_sha256": "0c613331470de193f22ec4e4c6af1e841acbfca49331b895c3d393642105b2c4",
+  "file_bytes": 1359,
+  "protocol_lock_sha256": "194ba578e61d35efd8008a5c88d95ccd2f8c0f79dbcabdd70a9a342610abf0c9",
+  "readback_values": [
+    1,
+    2,
+    3
+  ],
+  "status": "PASS",
+  "test": "write torch checkpoint to a temporary file, fsync it through a writable rb+ handle, atomically replace destination, and read back tensor values"
+}

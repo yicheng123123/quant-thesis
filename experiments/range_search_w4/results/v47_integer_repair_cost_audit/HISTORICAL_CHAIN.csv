@@ -1,0 +1,5 @@
+version,stage_kind,status,elapsed_seconds_for_status_scope,committed_or_completed_modules,committed_or_completed_rows,complete_model,PPL_run,detail
+v42,pilot,PILOT_COMPLETE_BUDGET_STOP,252.25650310516357,0,0,False,False,"Block0 pilot completed, budget stop; not a complete model"
+v43,formal attempt,NUMERICAL_STOP_FROZEN_RULE,964.5525724887848,25,40064,False,False,NUMERICAL_STOP_FROZEN_RULE; committed groups were later used as v44/v45 recovery inputs; no quality evaluation
+v44,failed numerical attempt and diagnosis,FAILED_STOP,145.2112946510315,27,49792,False,False,Original FP32/precision inconsistency stopped model; coverage is 27 committed modules from v43 plus 2 new; failed tentative down group was not committed
+v45,full resumed completion,COMPLETE,5372.704310894012,168,304128,True,True,Completed all 168; 27 inherited plus 141 new; cumulative v42-v45 wall is listed separately in execution accounting

@@ -1,0 +1,4 @@
+file,change,why,algorithm_semantic_change,historical_source_changed
+native_m2.py,New isolated M2 interface delegates all GPTQ damping/compensation/storage to GPTQModel; range hook only after dynamic find_params and only for alpha !=1,Remove v17 strided diagonal mean substitution and duplicate native loop; retain native full target geometry,NO relative to frozen native plus scale clipping,NO
+operator_instrumentation.py,Observation copies compiled from loaded source AST; record actual intermediate tensors and split product evaluation for capture,Locate/compare operators without altering installed source; instrumented vs plain output checks included,NO (audit instrumentation only),NO
+run_audit.py / upstream_probe.py / finish_checks.py,New bounded reproduction and evidence checks,Preserve historical callers; identify reduction mismatch and verify strict parity,NO (audit only),NO

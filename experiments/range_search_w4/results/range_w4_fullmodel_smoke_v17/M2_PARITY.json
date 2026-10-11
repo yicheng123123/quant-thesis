@@ -1,0 +1,29 @@
+{
+  "status": "FAIL",
+  "gate": "M2 alpha=1 custom dynamic GPTQ vs GPTQModel native dynamic GPTQ",
+  "scope": "Qwen2.5-0.5B-Instruct L0 self_attn.k_proj, first 32 of 128 output rows, G128, symmetric W4, 2 frozen samples x 64 tokens",
+  "original_smoke": {
+    "strict_parity_predicate": "FP16 quantized weights exact AND scale max absolute difference is zero AND zeros exact AND g_idx expected",
+    "result": "FAIL; execution stopped before candidate-grid loop",
+    "candidate_alpha_evaluations_started": 0
+  },
+  "bounded_diagnostic_reproduction": {
+    "group_0_entry_and_scale_exact": true,
+    "group_1_compensated_entry_max_abs": 8.344650268554688e-07,
+    "group_1_scale_max_abs": 5.960464477539063e-08,
+    "group_6_entry_max_abs": 0.01391521468758583,
+    "group_6_scale_max_abs": 7.554516196250916e-05,
+    "first_recorded_fp16_weight_mismatch": {
+      "row": 17,
+      "column": 513,
+      "group": 4,
+      "native": -0.07940673828125,
+      "custom": -0.0794677734375
+    },
+    "direct_output_mse_native_first32": 3.129817969238502e-07,
+    "direct_output_mse_custom_first32": 3.1299597935685597e-07
+  },
+  "interpretation": "Group 0 agrees. The earliest recorded discrepancy is in the compensated state entering group 1, initially at sub-micro FP32 scale; the subsequent range/weight path diverges. This is a parity failure even though the measured local output MSEs are close.",
+  "root_cause_status": "Numerical drift is localized to the post-compensation dynamic group state. The exact operator-level source of the drift is not established; no correction was attempted.",
+  "diagnostics": ["M2_PARITY_DIAGNOSTIC.json", "M2_PARITY_TRACE.json"]
+}

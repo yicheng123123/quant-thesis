@@ -1,0 +1,43 @@
+{
+  "status": "E1_COST_GATE_PASS",
+  "conservative_safety_multiplier": 1.5,
+  "limit_seconds": 21600,
+  "components_seconds": {
+    "prefix_capture_full_m2_forward_actual": 9.78369399998337,
+    "fixed_teacher_block_capture_actual": 1.5691243000037502,
+    "prefix_cache_write_and_hash_actual": 3.9311578999913763,
+    "formal_model_load_patch_estimate": 1.9388599999947473,
+    "prefix_cache_validation_measured": 3.446697300008964,
+    "full_linear_candidate_gptq_estimate": 38.33233199984534,
+    "local_search_all_row_scoring_estimate": 10.556826000683941,
+    "held_selected_local_row_scoring_estimate": 4.047595200128853,
+    "hessian_hinv_preparation_estimate": 2.653098000038881,
+    "search_block_candidate_forwards_estimate": 102.45811186730862,
+    "held_block_all_alpha_landscape_forwards_estimate": 102.45811186730862,
+    "row_wise_stitch_and_commit_estimate": 2.436559199821204,
+    "candidate_checkpoint_read_write_and_reports_estimate": 51.2000332828712,
+    "candidate_tensor_cpu_transfer_and_checkpoint_seconds": 2.0940938458691374,
+    "candidate_checkpoint_readback_seconds": 4.5950294280845,
+    "hessian_checkpoint_read_write_seconds": 0.17023800022434443,
+    "block_score_checkpoint_update_seconds": 14.340672008693218,
+    "event_log_and_final_reports_reserve_seconds": 30.0,
+    "post_candidate_activation_refresh_estimate": 0.0,
+    "candidate_checkpoint_bytes_estimate": 639311520
+  },
+  "central_estimate_seconds": 334.8122009179889,
+  "conservative_estimate_seconds": 502.21830137698333,
+  "candidate_full_linear_gptq_executions": 120,
+  "candidate_block_forwards": 15360,
+  "search_block_forwards": 7680,
+  "held_block_forwards": 7680,
+  "search_all_row_local_score_positions": 345600,
+  "held_local_selected_score_positions": 144,
+  "prefix_decoder_layer_forwards": 1536,
+  "teacher_decoder_layer_forwards": 192,
+  "post_candidate_activation_refresh_forwards": 0,
+  "preflight_calls_excluded_from_formal_counts": {
+    "full_linear_gptq_executions": 23,
+    "single_document_block_forwards": 6
+  },
+  "measurement_note": "GPU timings synchronized; q/up candidate and all-row local score probes are nonzero measured candidates; block cost uses the maximum of four deepest-layer up-projection full-document probes; measured candidate checkpoint serialization/readback and row stitch probes are extrapolated by frozen target counts. Prefix capture (one full M2 forward per document, both q/up hooks share each layer execution), teacher, cache hashing, model load, and cache validation are separately itemized. No post-candidate downstream activation refresh is required by this frozen block-scoring protocol. No formal candidate landscape has run."
+}

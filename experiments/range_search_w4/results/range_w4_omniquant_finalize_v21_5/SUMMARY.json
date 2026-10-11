@@ -1,0 +1,51 @@
+{
+  "status": "M3_FORMAL_BASELINE_COMPLETED",
+  "primary_verdict": "M3_BEATS_M2_ON_FROZEN_WT2",
+  "training": {
+    "completed_blocks": 24,
+    "scheduled_iterations": 61440,
+    "successful_optimizer_steps": 61438,
+    "gradscaler_skips": 2
+  },
+  "dense_export_reload": {
+    "status": "PASS",
+    "bitwise_equal": true,
+    "max_abs_diff": 0.0
+  },
+  "WT2": {
+    "nll": 2.6060364472983126,
+    "ppl": 13.545256974943815,
+    "targets": 299077,
+    "windows": 582
+  },
+  "C4_fixed_budget": {
+    "nll": 3.065511474043956,
+    "ppl": 21.44542796230099,
+    "targets": 131071,
+    "windows": 253
+  },
+  "M3_vs_M1_WT2": {
+    "ppl_delta_m3_minus_baseline": -0.3391125979140508,
+    "ppl_relative_delta_percent": -2.4424054411297993,
+    "ppl_relative_improvement_percent": 2.4424054411297993,
+    "nll_per_token_delta_m3_minus_baseline": -0.024727268962477122
+  },
+  "M3_vs_M2_WT2": {
+    "ppl_delta_m3_minus_baseline": -0.21529907609460963,
+    "ppl_relative_delta_percent": -1.5646102911543485,
+    "ppl_relative_improvement_percent": 1.5646102911543485,
+    "nll_per_token_delta_m3_minus_baseline": -0.015769795076327142
+  },
+  "M3_vs_M2_C4_fixed_budget": {
+    "ppl_delta_m3_minus_baseline": -0.5874552017640156,
+    "ppl_relative_delta_percent": -2.6662656783935477,
+    "ppl_relative_improvement_percent": 2.6662656783935477,
+    "nll_per_token_delta_m3_minus_baseline": -0.02702455265387327
+  },
+  "runtime_exactly_recovered": false,
+  "post_training_summary_assembly_error": "KeyError: 'manifest' after block23 commit; recovered from checkpoint and logs",
+  "timestamp_derived_formal_intervals_seconds": 3052.0,
+  "M3_to_M1_M2_cost_ratios_reported": false,
+  "v21_5_optimizer_steps": 0,
+  "evidence_boundary": "one Qwen2.5-0.5B-Instruct frozen checkpoint; WT2 test and C4 fixed-budget validation only"
+}

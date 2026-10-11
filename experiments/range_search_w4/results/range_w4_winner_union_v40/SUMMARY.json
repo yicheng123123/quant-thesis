@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "experiment": "v40 independent per-Linear historical winner-union candidate execution",
+  "candidate_manifest_sha256": "d8fc9e078fd965346bcc5caf1729a2a831e1236496bd86ffdd9de454eb2e82e3",
+  "counts": {
+    "linears": 168,
+    "rows": 304128,
+    "A_scalar10_full_linear_candidate_gptq_executions": 1680,
+    "B_frozen_winner_union_full_linear_candidate_gptq_executions": 675,
+    "candidate_execution_reduction_fraction": 0.5982142857142857,
+    "A_row_alpha_score_slots": 3041280,
+    "B_row_alpha_score_slots": 1287040,
+    "row_alpha_score_slot_reduction_fraction": 0.5768097643097643,
+    "pilot_primary_candidate_calls": 27,
+    "alpha1_native_parity_calls": {
+      "pilot": 7,
+      "A": 35,
+      "B": 35
+    }
+  },
+  "correctness": {
+    "pilot": "PASS",
+    "A": "PASS",
+    "B": "PASS",
+    "modules_each_full_run": 168,
+    "layers_each_full_run": 24,
+    "boundary_hashes_each_full_run": 119,
+    "layer_state_hashes_each_full_run": 24,
+    "A_all_candidate_scores_and_selected_state_exact_to_v18": true,
+    "B_all_scored_union_candidates_and_selected_state_exact_to_v18": true,
+    "boundary_parity_rows": 286,
+    "boundary_parity_all_equal": true
+  },
+  "final_model": {
+    "named_tensor_count": 290,
+    "v18_A_B_normalized_named_tensor_sha256": "dd4803a72696d25593547d4d34429ccc24d37dd28bcd1420863609126611340d",
+    "v18_A_B_model_file_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+    "same_quantization_inference_configuration": true,
+    "historical_v18_quality_result_applicable_to_identical_model": true,
+    "new_PPL_run": false
+  },
+  "timing": {
+    "A_method_wall_seconds": 2255.6698367999998,
+    "B_method_wall_seconds": 1134.9869007000016,
+    "paired_speedup_A_over_B": 1.987397242566252,
+    "wall_saved_seconds": 1120.6829360999982,
+    "wall_reduction_fraction": 0.49682933105575955,
+    "A_supervisor_wall_seconds": 2268.8279999999977,
+    "B_supervisor_wall_seconds": 1148.3899999999994,
+    "paired_supervisor_speedup_A_over_B": 1.9756598368150182,
+    "A_full_linear_gptq_seconds_instrumented": 1056.9882041000492,
+    "B_full_linear_gptq_seconds_instrumented": 392.4699748000676,
+    "A_direct_scoring_seconds_instrumented": 726.3825771000193,
+    "B_direct_scoring_seconds_instrumented": 281.4771633000164,
+    "stage_sums_are_nonadditive": true,
+    "peak_allocated_gib": {
+      "A": 3.690967559814453,
+      "B": 2.159454822540283
+    },
+    "peak_reserved_gib": {
+      "A": 4.48828125,
+      "B": 2.70703125
+    }
+  },
+  "budget": {
+    "hard_cap_seconds": 5400.0,
+    "phase_wall_seconds": 3481.280999999999,
+    "CPU_correctness_audit_seconds": 44.274439,
+    "total_accounted_seconds": 3525.555438999999,
+    "failed_attempts": []
+  },
+  "not_run": [
+    "new held evaluation",
+    "P3",
+    "new PPL",
+    "other model/revision/data migration"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "optimizer_calls": 0,
+  "prefix_replayed_blocks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "captures": [
+    {
+      "path": "fixtures/actual_l20.pt",
+      "sha256": "1cf68f52715fcd38d6fa11e11e7bcd9a2db978bcf56baafc9b829fee0703ea90"
+    },
+    {
+      "path": "fixtures/actual_l21.pt",
+      "sha256": "75188a9ff2804651e6d1a7e2e348f97324410f549914afaddbc2568b97acbaa8"
+    }
+  ],
+  "target_optimizer_state_entries": 0,
+  "actual_prefix_replay_seconds": 26.29342720002751,
+  "status": "PASS",
+  "target_boundary": "L21 after float conversion and fresh optimizer construction, before native scaler construction",
+  "state_reconstruction": "pristine exact model + block20 saved LWC factors + official half/inplace W4 prefix quantization + full128 sample replay",
+  "optimizer_state_restoration": "fresh per-block state (empty), as required by official source; no prior optimizer state is inherited"
+}

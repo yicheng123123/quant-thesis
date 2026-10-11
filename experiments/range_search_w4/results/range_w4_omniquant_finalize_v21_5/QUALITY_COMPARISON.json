@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "primary_dataset": "frozen WikiText-2 test",
+  "numerical_tie_tolerance_absolute_ppl": 1e-10,
+  "tie_tolerance_source": "same 1e-10 absolute evaluator aggregate consistency check in frozen M3 evaluator; no practical-equivalence band",
+  "datasets": {
+    "wikitext": {
+      "baseline_values": {
+        "M0": {
+          "nll": 2.522797111231235,
+          "ppl": 12.463409495878363
+        },
+        "M1": {
+          "nll": 2.6307637162607898,
+          "ppl": 13.884369572857866
+        },
+        "M2": {
+          "nll": 2.6218062423746398,
+          "ppl": 13.760556051038424
+        }
+      },
+      "M3": {
+        "nll": 2.6060364472983126,
+        "ppl": 13.545256974943815
+      },
+      "M3_vs_M1": {
+        "ppl_delta_m3_minus_baseline": -0.3391125979140508,
+        "ppl_relative_delta_percent": -2.4424054411297993,
+        "ppl_relative_improvement_percent": 2.4424054411297993,
+        "nll_per_token_delta_m3_minus_baseline": -0.024727268962477122
+      },
+      "M3_vs_M2": {
+        "ppl_delta_m3_minus_baseline": -0.21529907609460963,
+        "ppl_relative_delta_percent": -1.5646102911543485,
+        "ppl_relative_improvement_percent": 1.5646102911543485,
+        "nll_per_token_delta_m3_minus_baseline": -0.015769795076327142
+      }
+    },
+    "c4_fixed_budget": {
+      "baseline_values": {
+        "M0": {
+          "nll": 2.9574360354777918,
+          "ppl": 19.248555817997712
+        },
+        "M1": {
+          "nll": 3.10161925085964,
+          "ppl": 22.23392445006841
+        },
+        "M2": {
+          "nll": 3.0925360266978292,
+          "ppl": 22.032883164065005
+        }
+      },
+      "M3": {
+        "nll": 3.065511474043956,
+        "ppl": 21.44542796230099
+      },
+      "M3_vs_M1": {
+        "ppl_delta_m3_minus_baseline": -0.7884964877674214,
+        "ppl_relative_delta_percent": -3.5463666773635873,
+        "ppl_relative_improvement_percent": 3.5463666773635873,
+        "nll_per_token_delta_m3_minus_baseline": -0.03610777681568411
+      },
+      "M3_vs_M2": {
+        "ppl_delta_m3_minus_baseline": -0.5874552017640156,
+        "ppl_relative_delta_percent": -2.6662656783935477,
+        "ppl_relative_improvement_percent": 2.6662656783935477,
+        "nll_per_token_delta_m3_minus_baseline": -0.02702455265387327
+      }
+    }
+  },
+  "primary_verdict": "M3_BEATS_M2_ON_FROZEN_WT2",
+  "cross_corpus_direction": {
+    "WT2_M3_minus_M2_ppl": -0.21529907609460963,
+    "C4_fixed_budget_M3_minus_M2_ppl": -0.5874552017640156,
+    "same_direction": true,
+    "role": "C4 is secondary cross-corpus interpretation and does not change the frozen WT2 primary verdict"
+  }
+}

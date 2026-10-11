@@ -1,0 +1,34 @@
+{
+  "row_manifest_frozen_sha256": true,
+  "v9_split_manifest_sha256": true,
+  "S00_S02_exact_article_and_token_reuse": true,
+  "four_projection_alpha1_native_parity": true,
+  "pristine_weight_hashes_match_manifest": true,
+  "candidate_state_and_weight_hash_isolation": true,
+  "heldout_not_used_for_selection_search_argmin_verified": true,
+  "existing_v10_row_splits_exactly_reused": true,
+  "raw_to_csv_independent_gain_and_selection_recompute": true,
+  "v8_v9_v10_historical_trees_unchanged": true,
+  "status": "PASS",
+  "evidence": {
+    "row_split_records": 288,
+    "candidate_rows_in_alpha_landscapes": 2880,
+    "new_dynamic_gptq_candidates": 2850,
+    "reused_candidate_count": 30,
+    "reused_row_split_ids": [
+      "L12_q_proj_R448/S00",
+      "L12_q_proj_R448/S01",
+      "L12_q_proj_R448/S02"
+    ],
+    "source_record_counts": {
+      "v11_run": 285,
+      "existing_v10": 3
+    },
+    "historical_tree_match": {
+      "v8": true,
+      "v9": true,
+      "v10": true
+    },
+    "scale_parity_tolerance": "torch.allclose(atol=1e-6, rtol=1e-5); FP16 output weights and SSE checked separately"
+  }
+}

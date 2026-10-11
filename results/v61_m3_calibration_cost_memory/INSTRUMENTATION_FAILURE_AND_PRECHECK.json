@@ -1,0 +1,20 @@
+{
+  "failed_attempt": "20261011_134719_54284",
+  "wall_seconds": 38.547,
+  "scheduled_optimizer_iterations": 0,
+  "committed_blocks": 0,
+  "first_error": "PermissionError WinError 5: CURRENT_STAGE.tmp -> CURRENT_STAGE.json while external sampler was reading",
+  "scope": "measurement notification IO, before first teacher capture; no optimizer or quantizer changes",
+  "repair": "append-only phase notification JSONL; independent sampler tolerates partial last line",
+  "restart": "same v61 from pristine FP, no partially trained weights reused",
+  "precheck_runs": [
+    {"source": "failures/attempt_20261011_134719/MEASUREMENT_PREFLIGHT.json", "wall_seconds": 10.125, "cpu_process_seconds": 3.0625},
+    {"source": "second precheck tool output, after append notification fix", "wall_seconds": 6.25, "cpu_process_seconds": 5.265625},
+    {"source": "MEASUREMENT_PREFLIGHT.json including 200 concurrent reader transitions", "wall_seconds": 5.936999999998079, "cpu_process_seconds": 4.984375}
+  ],
+  "total_precheck_internal_wall_seconds": 22.31199999999808,
+  "total_precheck_cpu_process_seconds": 13.3125,
+  "precheck_activity": "CPU/static AST + fake CUDA counters + NVML memory-query sampling only; no model forward or optimization",
+  "ordinary_shell": "available for workspace IO in this task; elevated authorized execution used for process inspection and complete measurement",
+  "global_environment_or_permissions_changed": false
+}

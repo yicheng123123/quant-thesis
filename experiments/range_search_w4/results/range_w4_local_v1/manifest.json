@@ -1,0 +1,134 @@
+{
+  "protocol": {
+    "id": "range_w4_local_v1",
+    "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "weight_dtype": "float16",
+    "device": "cuda",
+    "dataset": "Salesforce/wikitext:wikitext-2-raw-v1:train",
+    "document_rule": "first eight distinct top-level articles with >=128 tokens, in source order",
+    "search_document_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "heldout_document_indices": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "tokens_per_document": 128,
+    "seed": 42,
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "projection": "self_attn.q_proj",
+    "row_indices": [
+      0,
+      448
+    ],
+    "input_semantics": "FP model activations at each projection, no preceding quantized layers",
+    "bits": 4,
+    "activation_bits": 16,
+    "quantizer": "GPTQModel 2.2.0 affine [0,15], round-to-even, symmetric zero=8",
+    "symmetric": true,
+    "group_sizes": [
+      -1,
+      128
+    ],
+    "damp_percent": 0.1,
+    "desc_act": false,
+    "block_size": 128,
+    "static_external_ranges": true,
+    "grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "asymmetric_scope": "separate format-control diagnostic; never compare gains against symmetric baseline",
+    "asymmetric_budget_matched_single_grid": "0.01..1.00 step 0.01"
+  },
+  "documents": [
+    {
+      "source_article_index": 0,
+      "source_row_index": 1,
+      "sha256": "80e4b66bcf07f4f1795583b1bea945c22ebd41ed411282a56882308c1c698e62"
+    },
+    {
+      "source_article_index": 1,
+      "source_row_index": 51,
+      "sha256": "41b77ce386d682f9d0cdb4b2a7abcfc07e328c5bba013908d3da8c0efa0bbef9"
+    },
+    {
+      "source_article_index": 2,
+      "source_row_index": 133,
+      "sha256": "9b7eaeadf487cfeea4ae53d465cb191e5b194057704fd59d8533be9ccc96c470"
+    },
+    {
+      "source_article_index": 3,
+      "source_row_index": 271,
+      "sha256": "6ede3528f489b61ec1dc4abaccd685da9daa03c31123119ca458603b118fa53c"
+    },
+    {
+      "source_article_index": 4,
+      "source_row_index": 287,
+      "sha256": "85b0026c767235c86911699304edea9cf700a622e35507d8c9b464c27cd7c5e1"
+    },
+    {
+      "source_article_index": 5,
+      "source_row_index": 316,
+      "sha256": "85e5ceac8d94ccef25c28c18a6b4c309b987d997e4645ceb9ac0e694e0287be8"
+    },
+    {
+      "source_article_index": 12,
+      "source_row_index": 394,
+      "sha256": "ec6de7e65fbb9a74261baa7ef15ff7c6252b66e9abcfd978ef801abc1d7f681d"
+    },
+    {
+      "source_article_index": 13,
+      "source_row_index": 406,
+      "sha256": "cbde7e57ffc47f0f9817bfcaf5aa843121cbc484dcf7e3d948fd74e7e1065d8e"
+    }
+  ],
+  "capture_seconds": 2.2285800999998173,
+  "torch": "2.6.0+cu124",
+  "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "total_seconds_this_invocation": 16.00887929999999,
+  "completed_rows": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      448
+    ],
+    [
+      12,
+      0
+    ],
+    [
+      12,
+      448
+    ],
+    [
+      23,
+      0
+    ],
+    [
+      23,
+      448
+    ]
+  ]
+}

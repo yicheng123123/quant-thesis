@@ -1,0 +1,61 @@
+{
+  "resolution": "SUMMARY_OMISSION_OF_COMPLETED_CONTINUATION",
+  "early_protocol_id": "range_w4_omniquant_full_v21_1_M3",
+  "early_status": "INCOMPLETE_STOPPED",
+  "early_attempt_id": "20261001_183359_6c00bf87",
+  "completed_protocol_id": "range_w4_omniquant_resume_v21_4_M3",
+  "completed_attempt_id": "20261001_234305_7e9e2ddd",
+  "source_block20": "experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21_1\\M3\\checkpoints\\block_20",
+  "source_block20_manifest_sha256": "950421d4b4954fc8512300cbb5683665e7455afedc457fbf89f937fc42847411",
+  "final_checkpoint_manifest_sha256": "3641627bf11979d159b769123eeaf5dabdea2ff35475fb77f30b66900fcf9366",
+  "completed_blocks": 24,
+  "quantization": {
+    "activation_bits": 16,
+    "group_size": 128,
+    "integer_range": [
+      0,
+      15
+    ],
+    "let": false,
+    "lwc": true,
+    "symmetric": false,
+    "weight_bits": 4,
+    "weight_group_axis": "per output row, consecutive input features",
+    "zero_point": "official OmniQuant UniformAffineQuantizer; asymmetric affine"
+  },
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "training_config_sha256": "c9d40132698c1dda4fcaf8f0502f1eb148bb608c80fb25792dc3fcb0b509d09a",
+  "source_audit_changed": true,
+  "historical_prefix_successful_steps_directly_observed": false,
+  "no_training_or_evaluation_rerun": true,
+  "evaluations": [
+    {
+      "dataset": "wikitext",
+      "targets": 299077,
+      "windows": 582,
+      "mean_nll": 2.6060364472983126,
+      "ppl": 13.545256974943815,
+      "raw_sha256": "d77b0b9a8cb8aea21776ca55034fe951a95dd01a1c3511fa6debbf6fbf783a18",
+      "window_sha256": "16d9fef1a103c56cbcf238bfc609028935ef31a745609a919afe9314c8d5bcb0",
+      "checkpoint_sha256": "168ddbfb526cd87d458af7648d12768f1bba099d270e41ed9aa2bd68d143fbf6",
+      "token_ids_sha256": "8ffcee84dd4b684ec631cb52845e18c9c181ce6fdb8b26d65a4ffdc3d35fbda3",
+      "evaluation_started_utc": "2026-10-01T16:09:23.906638+00:00",
+      "evaluation_completed_utc": "2026-10-01T16:13:05.119049+00:00",
+      "new_evaluation": false
+    },
+    {
+      "dataset": "c4",
+      "targets": 131071,
+      "windows": 253,
+      "mean_nll": 3.065511474043956,
+      "ppl": 21.44542796230099,
+      "raw_sha256": "91eb21bfa4cbbe6cac2df4fd8b3ad4643f3ccaf3c39529fd26af09fd7790948a",
+      "window_sha256": "ee736a9b5b0a357c10b3b98ea56c15bbe58f4ec228049bbca8b7d9edfb994f4f",
+      "checkpoint_sha256": "168ddbfb526cd87d458af7648d12768f1bba099d270e41ed9aa2bd68d143fbf6",
+      "token_ids_sha256": "bc9a7575527abbc41352352a0439c6bee062ea265b7bd03120704e83f4af7053",
+      "evaluation_started_utc": "2026-10-01T16:13:10.401826+00:00",
+      "evaluation_completed_utc": "2026-10-01T16:14:28.377814+00:00",
+      "new_evaluation": false
+    }
+  ]
+}

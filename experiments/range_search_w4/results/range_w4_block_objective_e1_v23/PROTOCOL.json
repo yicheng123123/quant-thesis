@@ -1,0 +1,84 @@
+{
+  "protocol_id": "range_w4_block_objective_e1_v23",
+  "parent_protocol": "range_w4_research_gap_v22/MINIMAL_DISCRIMINATING_EXPERIMENTS.md#E1",
+  "objective": "Compare search-only local-selector and full-block-output-selector alpha choices on identical native GPTQ candidates; held documents evaluate frozen choices and full alpha landscapes only.",
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dtype": "float16",
+    "device": "cuda:0",
+    "attention": "sdpa",
+    "tf32": false,
+    "quantized_prefix_artifact": "range_w4_fullmodel_v18/M2/checkpoint/final",
+    "quantized_prefix_model_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed"
+  },
+  "quantization": {
+    "weight_bits": 4,
+    "activation_bits": 16,
+    "symmetric": true,
+    "integer_range": [0, 15],
+    "zero_point": 8,
+    "group_size": 128,
+    "block_size": 128,
+    "damp_percent": 0.1,
+    "damp_auto_increment": 0,
+    "desc_act": false,
+    "static_groups": false,
+    "true_sequential": true,
+    "alpha_grid": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+    "alpha_1_semantics": "unmodified native dynamic GPTQ; no range hook",
+    "candidate_implementation": "existing v17.3 wrapper invoking installed GPTQModel native GPTQ core with its minimal dynamic range hook; no copied GPTQ implementation"
+  },
+  "targets": {
+    "layers": [0, 12, 23],
+    "projections": ["q_proj", "up_proj"],
+    "row_rule": "[0, floor(n/4), floor(n/2), floor(3n/4)]",
+    "rows_per_projection_layer": 4,
+    "row_ids": {
+      "q_proj": [0, 224, 448, 672],
+      "up_proj": [0, 1216, 2432, 3648]
+    },
+    "target_cells": 6,
+    "row_split_units": 48
+  },
+  "data": {
+    "source": "Salesforce/wikitext:wikitext-2-raw-v1:train",
+    "selection_domain": "v22-next-diagnostic-20261022:",
+    "selection": "eligible complete articles sorted by SHA256(selection_domain + ASCII full_article_sha256); first 64",
+    "parser": "v14/v15 full article parser; top-level article headings; semicolon headings excluded",
+    "tokens_per_document": 2048,
+    "special_tokens": false,
+    "split_A": {"search_positions": [0, 15], "held_positions": [16, 31]},
+    "split_B": {"search_positions": [32, 47], "held_positions": [48, 63]},
+    "search_documents_per_split": 16,
+    "held_documents_per_split": 16,
+    "document_manifest": "E1_DOCUMENT_MANIFEST.json",
+    "no_token_fragment_splitting": true,
+    "test_or_C4_evaluation_used_for_selection": false
+  },
+  "prefix_and_teacher": {
+    "prefix": "the complete frozen v18 M2 dense checkpoint, including all quantized predecessor and sibling modules",
+    "prefix_refresh": "capture one current M2 input per full document at each target block; refresh only by running the actual prior quantized blocks",
+    "capture_dependencies": "one complete 24-layer M2 forward per document captures q_proj input and up_proj input at each frozen target layer; q/k/v share the attention input and up/gate share the MLP input; no per-row-batch prefix recapture",
+    "post_candidate_activation_refresh": "none; each candidate is scored by one full target-block forward from the same cached block input, with no downstream candidate commit or refresh",
+    "teacher": "pristine FP16 target decoder block evaluated on that exact frozen M2-prefix block input",
+    "student": "same target block with the target Linear on the all-row local-M2 stitch; substitute one selected row candidate; every other module retains v18 M2 weights",
+    "downstream": "real full decoder block output; q_proj traverses attention, o_proj, residual, MLP and block output; up_proj traverses gate/SwiGLU, down_proj, residual and block output",
+    "downstream_requantization": false
+  },
+  "selection": {
+    "local": "argmin over search documents of direct Linear row output MSE X @ (Q_alpha-W)^T; exact tie selects larger alpha",
+    "block": "argmin over the same ten candidate row tensors of complete target block output MSE against the fixed teacher; search documents only; exact tie selects larger alpha",
+    "native_reference": "alpha=1 candidate row placed into the same search-selected all-row local-M2 stitched target; diagnostic intervention baseline, not whole-model M1",
+    "held_rule": "freeze local/block selected alpha before reading held losses; evaluate the same ten candidate rows on held block output for ranking/regret, plus native/local/block selected rows; no held choice or retuning",
+    "stitching": "only one preregistered row intervention at a time; never stitch held-selected rows"
+  },
+  "candidate_order": "target cells L0 q, L0 up, L12 q, L12 up, L23 q, L23 up; within each, split A then B; alpha ascending 0.1 to 1.0",
+  "cost_gate": {
+    "conservative_safety_multiplier": 1.5,
+    "per_experiment_limit_hours": 6,
+    "if_exceeded": "E1_COST_GATE_FAIL and STOP before formal candidate landscape execution",
+    "no_budget_reduction": true
+  },
+  "forbidden": ["full-model block-aware quantization", "PPL", "C4 scoring", "structured group alpha", "fine grid", "second model", "gate/fallback selector", "gradient or learnable parameters"]
+}

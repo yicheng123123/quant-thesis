@@ -1,0 +1,47 @@
+{
+  "official_commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+  "upstream_case": "A: dynamic GradScaler",
+  "verified_upstream_manifest_files": 257,
+  "upstream_training_loop": {
+    "file": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_baseline_v16\\official_source\\quantize\\omniquant.py",
+    "function": "omniquant",
+    "lines": [
+      243,
+      274
+    ]
+  },
+  "upstream_wrapper": {
+    "file": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_baseline_v16\\official_source\\utils.py",
+    "class": "NativeScalerWithGradNormCount",
+    "lines": [
+      27,
+      53
+    ]
+  },
+  "runner_callback_placement": {
+    "file": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21_1\\M3\\official_port\\quantize\\omniquant.py",
+    "lines": [
+      397,
+      403
+    ],
+    "STOP_is_after_native_scaler_step_and_update": true
+  },
+  "runner_gradient_gate": {
+    "file": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21_1\\M3\\run_formal_m3.py",
+    "lines": [
+      424,
+      442
+    ]
+  },
+  "other_overstrict_gates": {
+    "epoch_norm_finite": [
+      414,
+      422
+    ],
+    "final_all_finite_grad_count": [
+      573,
+      580
+    ]
+  },
+  "installed_torch_behavior": "local torch.amp.grad_scaler.py source + runtime micro-test; not inferred from tutorials"
+}

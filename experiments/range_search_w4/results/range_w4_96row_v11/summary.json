@@ -1,0 +1,65 @@
+{
+  "status": "COMPLETE",
+  "correctness_status": "PASS",
+  "scope": "v11 Stage 1 only; S00-S02; no Stage 2 or PPL",
+  "row_manifest_sha256": "c56eeaa1d1af6e4ed8dd78f811c811c66758b215659a98bf8550052c786e6106",
+  "v9_manifest_sha256": "34a24ef8602b8ce1e38e7a284f112acf7f766962d87d737f69148b78bcfaba78",
+  "rows": 96,
+  "row_split_records": 288,
+  "nominal_candidate_count": 2880,
+  "reused_candidate_count": 30,
+  "new_candidate_count": 2850,
+  "candidate_label_counts": {
+    "Stage1 mixed-risk": 48,
+    "Stage1 candidate-positive": 47,
+    "Stage1 neutral/negative": 1
+  },
+  "selected_alpha_split_counts": {
+    "0.6": 8,
+    "0.7": 28,
+    "0.8": 73,
+    "0.9": 124,
+    "1.0": 55
+  },
+  "heldout_gain_tail_counts": {
+    "held_gain_lt_neg_5pct": 46,
+    "held_gain_lt_neg_10pct": 33,
+    "held_gain_lt_neg_20pct": 19,
+    "held_gain_lt_neg_40pct": 8
+  },
+  "pooled_heldout_sse": {
+    "D": 756.1731008893576,
+    "selected_C": 629.4179744251223,
+    "net_reduction": 126.75512646423522,
+    "gain": 0.16762712970767513,
+    "top_row_shares_of_net_reduction": {
+      "1": 0.4426153715435689,
+      "5": 0.7593635340953532,
+      "10": 0.9830942032758327
+    },
+    "definition": "Each row contribution sums its three heldout D-SSE minus selected-C-SSE values; top-k sorted by reduction."
+  },
+  "cost": {
+    "measured_stage1_invocation_seconds": 2311.6223777999985,
+    "measured_preflight_capture_plus_stage1_seconds": 2332.6778324000006,
+    "measured_candidate_seconds_sum": 1880.89372620012,
+    "measured_hessian_build_seconds_sum_unique_caches": 3.7195580000006885,
+    "activation_capture_seconds": 2.5330601000023307,
+    "final_preflight_wall_seconds": 18.52239449999979,
+    "candidate_evaluations_this_invocation": 2850,
+    "gpu_synchronized": true,
+    "max_observed_cuda_reserved_bytes": 1103101952,
+    "max_observed_cuda_reserved_mib": 1052.0,
+    "timing_scope_note": "Stage 1 invocation timer starts after cache load and v10 reuse verification; preflight and activation capture are itemized separately."
+  },
+  "preflight_projection_status": {
+    "q_proj": "PASS",
+    "o_proj": "PASS",
+    "up_proj": "PASS",
+    "down_proj": "PASS"
+  },
+  "row_summary_csv": "stage1_row_summary.csv",
+  "projections_csv": "projection_summary.csv",
+  "layers_csv": "layer_summary.csv",
+  "worst_regressions_csv": "regression_cases.csv"
+}

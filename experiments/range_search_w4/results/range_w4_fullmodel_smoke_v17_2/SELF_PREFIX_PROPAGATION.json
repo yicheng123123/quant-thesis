@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "searched_rows_with_selected_nonunit_alpha": [
+    0,
+    2,
+    5,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    19,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    30
+  ],
+  "selection_rule": "first row index meeting selected alpha != 1 and distinct FP16 weight",
+  "selected_row": 0,
+  "selected_alpha": 0.9,
+  "k_weight_changed": true,
+  "input_before": {
+    "hash": "50958e327a08f56c3fd865fb91820a8699a6389b2132e284624b90bfd2569b65",
+    "shape": [
+      128,
+      896
+    ]
+  },
+  "input_after": {
+    "hash": "62c4a94139c6983cc7f7fbc585a3257dd4746251a4846822543f72af2734dc1c",
+    "shape": [
+      128,
+      896
+    ]
+  },
+  "L2_norm": 0.000940225669182837,
+  "relative_L2_drift": 0.00015363708371296525,
+  "max_abs_diff": 0.0001220703125,
+  "candidate_captured_time_seconds": 0.004137299983995035,
+  "forward_dependency": "k_proj changes K; causal attention context then changes o_proj input",
+  "next_target_after_refresh": {
+    "module": "self_attn.o_proj",
+    "input_hash": "0307ef1c6a3d361e14aadecd0eca21770abb5c6f0dfa95c11f83b58f9dfafa6a",
+    "input_shape": [
+      128,
+      896
+    ],
+    "baseline_input_hash": "50958e327a08f56c3fd865fb91820a8699a6389b2132e284624b90bfd2569b65",
+    "input_diff_max_abs_vs_FP_prefix": 0.0043487548828125,
+    "H_built_from_current_committed_prefix": true,
+    "H_input_activation_sha256": "0307ef1c6a3d361e14aadecd0eca21770abb5c6f0dfa95c11f83b58f9dfafa6a",
+    "current_H_sha256": "2a19dfdb9e190b071e21fde3ec2c032ec6409a0fbaf1e54d9e7318b9cf699ba7",
+    "stale_FP_prefix_H_sha256": "cc673d21b4e1b45806d6ae59efc87d9acdf8ddfda0720dcdc9c01fbc78f11d0f",
+    "stale_H_was_not_used": true,
+    "nsamples": 2,
+    "alpha1_native_parity": true,
+    "committed_full_o_proj_weight_hash": "d286becfe85fde4a5f33e8b15cdf6e816cb422abce2a4fa834712b74ef590cb4"
+  }
+}

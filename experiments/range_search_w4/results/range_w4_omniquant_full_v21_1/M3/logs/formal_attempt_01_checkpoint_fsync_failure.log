@@ -1,0 +1,53 @@
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+auto_gptq is required for real quantization
+Starting ...
+No attention mask caught from the first layer. Seems that model's attention works without a mask.
+=== Start quantize layer 0 ===
+E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\official_port\quantize\omniquant.py:244: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast():
+E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\official_port\utils.py:31: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self._scaler = torch.cuda.amp.GradScaler()
+E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\official_port\quantize\omniquant.py:360: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with traincast():
+layer 0 iter 0 loss:0.0005179112777113914 norm:5.269262146612164e-07 max memory_allocated 2122.84130859375 
+layer 0 iter 1 loss:0.0004995749914087355 norm:5.676147338817827e-07 max memory_allocated 2122.84130859375 
+layer 0 iter 2 loss:0.0004808493540622294 norm:6.379495971486904e-07 max memory_allocated 2122.84130859375 
+layer 0 iter 3 loss:0.0004727197519969195 norm:8.111813372124743e-07 max memory_allocated 2122.84130859375 
+layer 0 iter 4 loss:0.00046489681699313223 norm:8.138815701386193e-07 max memory_allocated 2122.84130859375 
+layer 0 iter 5 loss:0.0004592639161273837 norm:7.978557619026105e-07 max memory_allocated 2122.84130859375 
+layer 0 iter 6 loss:0.00045520896674133837 norm:9.029203624777438e-07 max memory_allocated 2122.84130859375 
+layer 0 iter 7 loss:0.00045052581117488444 norm:9.07022467799834e-07 max memory_allocated 2122.84130859375 
+layer 0 iter 8 loss:0.00044746551429852843 norm:9.555526503390865e-07 max memory_allocated 2122.84130859375 
+layer 0 iter 9 loss:0.00044592778431251645 norm:1.231127839673718e-06 max memory_allocated 2122.84130859375 
+layer 0 iter 10 loss:0.0004425942897796631 norm:1.091491981242143e-06 max memory_allocated 2122.84130859375 
+layer 0 iter 11 loss:0.0004405302170198411 norm:1.0673259112081723e-06 max memory_allocated 2122.84130859375 
+layer 0 iter 12 loss:0.00043765438022091985 norm:1.0746024372565444e-06 max memory_allocated 2122.84130859375 
+layer 0 iter 13 loss:0.00043547278619371355 norm:1.2359021184238372e-06 max memory_allocated 2122.84130859375 
+layer 0 iter 14 loss:0.00043408802594058216 norm:1.32161778765294e-06 max memory_allocated 2122.84130859375 
+layer 0 iter 15 loss:0.000430115353083238 norm:1.1797715160355438e-06 max memory_allocated 2122.84130859375 
+layer 0 iter 16 loss:0.00042825681157410145 norm:1.1393527756808908e-06 max memory_allocated 2122.84130859375 
+layer 0 iter 17 loss:0.00042545542237348855 norm:1.1150985983476858e-06 max memory_allocated 2122.84130859375 
+layer 0 iter 18 loss:0.0004246692406013608 norm:1.1894595672856667e-06 max memory_allocated 2122.84130859375 
+layer 0 iter 19 loss:0.0004227015015203506 norm:1.198679456138052e-06 max memory_allocated 2122.84130859375 
+E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\official_port\quantize\omniquant.py:475: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with traincast():
+Traceback (most recent call last):
+  File "E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\run_formal_m3.py", line 707, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\run_formal_m3.py", line 682, in main
+    summary = run_calibration(config, token_ids, lock)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\run_formal_m3.py", line 530, in run_calibration
+    result_model = omni_module.omniquant(lm, args, dataloader, None, None, NullLogger())
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\official_port\quantize\omniquant.py", line 483, in omniquant
+    torch.save(omni_parameters, os.path.join(args.output_dir, f"omni_parameters.pth"))
+  File "E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\run_formal_m3.py", line 504, in checkpointing_torch_save
+    record = save_block_checkpoint(value, lock, original_torch_save)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\run_formal_m3.py", line 270, in save_block_checkpoint
+    atomic_torch_save(to_cpu_state(state), state_path, save_fn)
+  File "E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\run_formal_m3.py", line 75, in atomic_torch_save
+    os.fsync(stream.fileno())
+OSError: [Errno 9] Bad file descriptor

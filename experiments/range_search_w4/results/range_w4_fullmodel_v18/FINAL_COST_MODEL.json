@@ -1,0 +1,265 @@
+{
+  "status": "M2_COST_GO",
+  "v17_3_estimate_hours_superseded": 2.135,
+  "v17_3_estimate_note": "Replaced because matched full-shape candidate, scoring, selection, stitch, commit and 2048-token dependency timings are now available.",
+  "gate_hours_unchanged": 48.0,
+  "work_units": {
+    "layers": 24,
+    "linears": 168,
+    "output_rows": 304128,
+    "alpha_count": 10,
+    "row_alpha_score_slots": 3041280,
+    "full_linear_alpha_gptq_executions": 1680,
+    "unique_input_hessian_groups": 96,
+    "dependency_refresh_transitions_per_method": 95,
+    "dependency_transition_counts": {
+      "qkv_commit_to_o": 24,
+      "o_commit_to_up_gate": 24,
+      "up_gate_commit_to_down": 24,
+      "down_commit_to_next_layer": 23
+    },
+    "linear_shape_counts": {
+      "square_896": 48,
+      "kv_128x896": 48,
+      "up_4864x896": 48,
+      "down_896x4864": 24
+    }
+  },
+  "matched_shape_measurements": {
+    "square_896": {
+      "linear_count": 48,
+      "candidate_seconds_each": {
+        "median": 0.40590209999936633,
+        "p95_nearest_rank": 0.4524475999933202
+      },
+      "score_seconds_each": {
+        "median": 0.20061289999284782,
+        "p95_nearest_rank": 0.23109280000790022
+      },
+      "row_update_seconds_each": {
+        "median": 0.0008031999750528485,
+        "p95_nearest_rank": 0.004814599989913404
+      },
+      "stitch_seconds_each_measured": 0.0003087000222876668,
+      "commit_seconds_each_measured": 0.0005298999894876033,
+      "candidate_execution_count": 480,
+      "output_rows_per_linear": 896,
+      "row_alpha_score_slots": 430080,
+      "candidate_seconds_each_min": 0.3928394000104163,
+      "score_seconds_each_min": 0.1982148000097368,
+      "row_update_seconds_each_min": 0.0006991999980527908
+    },
+    "kv_128x896": {
+      "linear_count": 48,
+      "candidate_seconds_each": {
+        "median": 0.4580289999721572,
+        "p95_nearest_rank": 0.5151394999993499
+      },
+      "score_seconds_each": {
+        "median": 0.1729819000174757,
+        "p95_nearest_rank": 0.28189949999796227
+      },
+      "row_update_seconds_each": {
+        "median": 0.0007270000060088933,
+        "p95_nearest_rank": 0.0030101000156719238
+      },
+      "stitch_seconds_each_measured": 8.6199986981228e-05,
+      "commit_seconds_each_measured": 6.600000779144466e-05,
+      "candidate_execution_count": 480,
+      "output_rows_per_linear": 128,
+      "row_alpha_score_slots": 61440,
+      "candidate_seconds_each_min": 0.40695569998933934,
+      "score_seconds_each_min": 0.16256769999745302,
+      "row_update_seconds_each_min": 0.0006387000030372292
+    },
+    "up_4864x896": {
+      "linear_count": 48,
+      "candidate_seconds_each": {
+        "median": 0.39675240000360645,
+        "p95_nearest_rank": 0.4413967999862507
+      },
+      "score_seconds_each": {
+        "median": 0.6937523999949917,
+        "p95_nearest_rank": 0.712647799984552
+      },
+      "row_update_seconds_each": {
+        "median": 0.0011058000090997666,
+        "p95_nearest_rank": 0.002362600003834814
+      },
+      "stitch_seconds_each_measured": 0.0007240000122692436,
+      "commit_seconds_each_measured": 0.0016185999847948551,
+      "candidate_execution_count": 480,
+      "output_rows_per_linear": 4864,
+      "row_alpha_score_slots": 2334720,
+      "candidate_seconds_each_min": 0.37328279999201186,
+      "score_seconds_each_min": 0.6819539999996778,
+      "row_update_seconds_each_min": 0.0008936000231187791
+    },
+    "down_896x4864": {
+      "linear_count": 24,
+      "candidate_seconds_each": {
+        "median": 2.117114599997876,
+        "p95_nearest_rank": 2.4162164999870583
+      },
+      "score_seconds_each": {
+        "median": 1.0286450000130571,
+        "p95_nearest_rank": 1.2088902999821585
+      },
+      "row_update_seconds_each": {
+        "median": 0.001010699983453378,
+        "p95_nearest_rank": 0.00269210000988096
+      },
+      "stitch_seconds_each_measured": 0.0008176000264938921,
+      "commit_seconds_each_measured": 0.00335139999515377,
+      "candidate_execution_count": 240,
+      "output_rows_per_linear": 896,
+      "row_alpha_score_slots": 215040,
+      "candidate_seconds_each_min": 2.0556170999770984,
+      "score_seconds_each_min": 0.9528647999977693,
+      "row_update_seconds_each_min": 0.0008691999828442931
+    }
+  },
+  "hessian_build_seconds_per_unique_group": {
+    "qkv": 0.2654352999816183,
+    "o": 0.2161506999982521,
+    "up_gate": 0.2406001999916043,
+    "down": 3.0083163999952376
+  },
+  "hinv_prepare_seconds_per_unique_group": {
+    "qkv": 0.13493830000516027,
+    "o": 0.13493830000516027,
+    "up_gate": 0.13493830000516027,
+    "down": 0.17765070000314154
+  },
+  "native_m1_full_linear_seconds_by_projection": {
+    "q": 0.42417750001186505,
+    "k": 0.45732950000092387,
+    "v": 0.4566420999763068,
+    "o": 0.4435187999915797,
+    "up": 0.41080529999453574,
+    "gate": 0.40032800001790747,
+    "down": 2.4341301000094973
+  },
+  "m1_projection_counts": {
+    "q": 24,
+    "k": 24,
+    "v": 24,
+    "o": 24,
+    "up": 24,
+    "gate": 24,
+    "down": 24
+  },
+  "dependency_transition_seconds_each": {
+    "qkv_commit_to_o": 1.098563899693545,
+    "o_commit_to_up_gate": 0.9136536001751665,
+    "up_gate_commit_to_down": 2.4467930999817327,
+    "down_commit_to_next_layer": 1.068878399732057
+  },
+  "io_measurement": {
+    "method": "actual model.safetensors copied on checkpoint volume; destination flushed with os.fsync",
+    "durable_copy_seconds": 0.7022562999918591,
+    "observed_bytes_per_second": 1407033050.4852068,
+    "model_safetensors_bytes": 988097824,
+    "estimated_layer_linear_checkpoint_bytes_per_method": 715653120,
+    "two_final_model_bytes": 1976195648,
+    "two_methods_layer_checkpoint_bytes": 1431306240,
+    "payload_bytes_total": 3407501888,
+    "sustained_rate_divisor": 4,
+    "conservative_io_multiplier": 2,
+    "conservative_seconds_all_methods": 19.374111428725534,
+    "conservative_seconds_per_method": 9.687055714362767,
+    "probe_file_removed": true
+  },
+  "scenario_seconds": {
+    "optimistic": {
+      "M1": 425.1619677462694,
+      "M2": 2054.688927448584,
+      "basis": "minimum observed candidate/score/update timings; all single-observation costs use measured values; no discount factor"
+    },
+    "central": {
+      "M1": {
+        "input_embedding_and_initial_qkv_capture": 1.0118273999833036,
+        "model_load": 1.4208661000011489,
+        "unique_group_hessian_build": 89.5320623992011,
+        "native_alpha1_full_linear_gptq": 120.64635120006278,
+        "native_m1_all_row_output_scoring": 75.9201456005685,
+        "whole_linear_commits": 0.18672959902323782,
+        "dependency_boundary_refresh": 131.60045759024797,
+        "commit_and_resume_checkpoint_io": 4.843527857181384
+      },
+      "M2": {
+        "input_embedding_and_initial_qkv_capture": 1.0118273999833036,
+        "model_load": 1.4208661000011489,
+        "unique_group_hessian_build": 89.5320623992011,
+        "shared_native_hinv_prepare": 13.979174400446936,
+        "full_linear_alpha_candidates": 1113.2355839875527,
+        "all_row_output_scoring": 759.201456005685,
+        "streaming_row_argmin_updates": 1.5078479913063347,
+        "row_stitch_and_single_linear_commit": 0.2600592006929219,
+        "alpha1_native_parity_spot_checks": 25.13465650001308,
+        "dependency_boundary_refresh": 131.60045759024797,
+        "checkpoint_and_final_model_io": 4.843527857181384
+      },
+      "M1_total": 425.1619677462694,
+      "M2_total": 2141.727519432312,
+      "combined_total": 2566.8894871785815
+    },
+    "conservative": {
+      "M1": {
+        "input_embedding_and_initial_qkv_capture": 2.0236547999666072,
+        "model_load": 2.8417322000022978,
+        "unique_group_hessian_build": 179.0641247984022,
+        "native_alpha1_full_linear_gptq": 241.29270240012556,
+        "native_m1_all_row_output_scoring": 151.840291201137,
+        "whole_linear_commits": 0.37345919804647565,
+        "dependency_boundary_refresh": 263.20091518049594,
+        "commit_and_resume_checkpoint_io": 9.687055714362767
+      },
+      "M2": {
+        "input_embedding_and_initial_qkv_capture": 2.0236547999666072,
+        "model_load": 2.8417322000022978,
+        "unique_group_hessian_build": 179.0641247984022,
+        "shared_native_hinv_prepare": 27.958348800893873,
+        "full_linear_alpha_candidates": 2512.408463973552,
+        "all_row_output_scoring": 1756.881839982234,
+        "streaming_row_argmin_updates": 11.072016013786197,
+        "row_stitch_and_single_linear_commit": 0.5201184013858438,
+        "alpha1_native_parity_spot_checks": 50.26931300002616,
+        "dependency_boundary_refresh": 263.20091518049594,
+        "checkpoint_and_final_model_io": 9.687055714362767
+      },
+      "M1_total": 850.3239354925388,
+      "M2_total": 4815.927582865108,
+      "combined_total": 5666.251518357647
+    }
+  },
+  "scenario_hours": {
+    "optimistic_M1": 0.11810054659618595,
+    "optimistic_M2": 0.5707469242912733,
+    "central_M1": 0.11810054659618595,
+    "central_M2": 0.59492431095342,
+    "conservative_M1": 0.2362010931923719,
+    "conservative_M2": 1.3377576619069744,
+    "conservative_M1_plus_M2": 1.5739587550993464
+  },
+  "safety_factors": {
+    "candidate_scoring_selection_cross_layer_factor": 2.0,
+    "single_observation_hessian_hinv_native_gptq_factor": 2.0,
+    "activation_transition_factor": 2.0,
+    "stitch_commit_factor": 2.0,
+    "durable_io_factor": 2.0
+  },
+  "calculation_notes": [
+    "Each of 10 alpha candidate runs is a full Linear GPTQ execution producing all output rows.",
+    "Candidate and direct score timings use measured per-shape P95 from 10 repeats and a 2x cross-layer factor for the conservative scenario.",
+    "Hessian, Hinv, native M1 GPTQ and dependency timings have one layer observation; conservative scenario applies 2x.",
+    "The 128x896 k/v linears were separately measured at full shape; no square-projection proxy is used for them.",
+    "All 128 calibration documents have length 2048; capture refresh timings are already end-to-end over the 128 documents.",
+    "q/k/v and up/gate share inputs/H. Refresh happens only after whole-Linear row stitch and commit.",
+    "The 95 transitions are 24 qkv-to-o, 24 o-to-up/gate, 24 up/gate-to-down, and 23 down-to-next-layer.",
+    "M2 conservative runtime includes 35 full native alpha=1 parity reference executions across layers 0, 6, 12, 18, and 23.",
+    "The 48-hour gate applies to conservative M2 calibration cost; the combined M1+M2 figure is also reported.",
+    "Evaluation time is outside the calibration gate and will be measured in the formal evaluator run.",
+    "This is an extrapolation from matched L0 shapes, not an observed full-model runtime."
+  ]
+}

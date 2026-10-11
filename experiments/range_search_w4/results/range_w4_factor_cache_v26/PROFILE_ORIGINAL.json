@@ -1,0 +1,494 @@
+{
+  "status": "COMPLETE",
+  "targets": {
+    "up_proj": {
+      "shape": [
+        4864,
+        896
+      ],
+      "input_shape": [
+        128,
+        2048,
+        896
+      ],
+      "input_sha256": "b164fb179e772e548542ed89b6cf82adee601b545e020ea619799dc66531e856",
+      "H_sha256": "6ad4179539cfdc583ff60b6183ecfc07d1a4cea67b91fa176a8025c00fd43131",
+      "pristine_weight_sha256": "db64f09987ea59449e90abae5a2ffcc20efd9203f0eebec77a6aacb5809d6cff",
+      "H_build_seconds": 0.4851238999981433,
+      "H_build_peak_bytes": 1061595648,
+      "H_preparation": {
+        "gpu_seconds": {
+          "H_diag": 0.0017233919724822045,
+          "H_mean_or_other": 0.01437388801574707,
+          "lower_cholesky": 0.03585171127319336,
+          "real_inverse": 0.013137375831604004
+        },
+        "counts": {
+          "H_diag": 2,
+          "H_mean_or_other": 1,
+          "lower_cholesky": 1,
+          "real_inverse": 1
+        },
+        "cpu_dispatch_envelopes_seconds": {
+          "H_diag": 0.0016654999926686287,
+          "H_mean_or_other": 0.014270099985878915,
+          "lower_cholesky": 0.03576490003615618,
+          "real_inverse": 0.012966900016181171
+        },
+        "warning": "CPU envelopes and GPU event time are different clocks; do not sum CPU envelopes or nested totals",
+        "wall_seconds": 0.1385020000161603,
+        "gpu_stream_seconds": 0.13839543151855468
+      },
+      "warmup_seconds": 0.7276149000390433,
+      "records": [
+        {
+          "gpu_seconds": {
+            "W_clone_FP32": 0.00013414399325847626,
+            "find_params": 0.00971648007631302,
+            "H_diag": 5.22239999845624e-05,
+            "H_mean_or_other": 6.144000217318535e-06,
+            "lower_cholesky": 0.0009654399752616883,
+            "cached_inverse_hit": 0.002284672021865845,
+            "upper_cholesky": 0.0012743359804153443
+          },
+          "counts": {
+            "W_clone_FP32": 1,
+            "find_params": 8,
+            "H_diag": 2,
+            "H_mean_or_other": 1,
+            "lower_cholesky": 1,
+            "cached_inverse_hit": 1,
+            "upper_cholesky": 1
+          },
+          "cpu_dispatch_envelopes_seconds": {
+            "W_clone_FP32": 7.430004188790917e-05,
+            "find_params": 0.009913599991705269,
+            "H_diag": 4.6900007873773575e-05,
+            "H_mean_or_other": 1.899997005239129e-05,
+            "lower_cholesky": 0.0009459999855607748,
+            "cached_inverse_hit": 0.002220699971076101,
+            "upper_cholesky": 0.0012313000042922795
+          },
+          "warning": "CPU envelopes and GPU event time are different clocks; do not sum CPU envelopes or nested totals",
+          "mode": "original",
+          "alpha": 1.0,
+          "candidate_wall_seconds": 0.388563200016506,
+          "candidate_gpu_stream_elapsed_seconds": 0.3885260925292969,
+          "nonoverlap_profiled_gpu_seconds": 0.014433440047316254,
+          "residual_gpu_seconds": 0.37409265248198065,
+          "cuda_peak_allocated_bytes": 1134023168,
+          "cuda_peak_reserved_bytes": 1159725056,
+          "projection": "up_proj",
+          "replicate": 1,
+          "scoring": {
+            "wall_seconds": 0.6891983000095934,
+            "gpu_stream_elapsed_seconds": 0.6890731811523437,
+            "rows": 4864,
+            "documents": 128,
+            "tokens_per_document": 2048,
+            "peak_allocated_bytes": 1901782528,
+            "peak_reserved_bytes": 1986002944
+          }
+        },
+        {
+          "gpu_seconds": {
+            "W_clone_FP32": 0.00015462400019168853,
+            "find_params": 0.009088992059230805,
+            "H_diag": 5.734400171786547e-05,
+            "H_mean_or_other": 6.144000217318535e-06,
+            "lower_cholesky": 0.0012019519805908203,
+            "cached_inverse_hit": 0.00010396800190210343,
+            "upper_cholesky": 0.0012078720331192016
+          },
+          "counts": {
+            "W_clone_FP32": 1,
+            "find_params": 8,
+            "H_diag": 2,
+            "H_mean_or_other": 1,
+            "lower_cholesky": 1,
+            "cached_inverse_hit": 1,
+            "upper_cholesky": 1
+          },
+          "cpu_dispatch_envelopes_seconds": {
+            "W_clone_FP32": 0.00010720000136643648,
+            "find_params": 0.009036200062837452,
+            "H_diag": 5.5100012104958296e-05,
+            "H_mean_or_other": 2.3100001271814108e-05,
+            "lower_cholesky": 0.0011668999795801938,
+            "cached_inverse_hit": 8.710002293810248e-05,
+            "upper_cholesky": 0.0011778000043705106
+          },
+          "warning": "CPU envelopes and GPU event time are different clocks; do not sum CPU envelopes or nested totals",
+          "mode": "original",
+          "alpha": 1.0,
+          "candidate_wall_seconds": 0.3754913999582641,
+          "candidate_gpu_stream_elapsed_seconds": 0.3753932800292969,
+          "nonoverlap_profiled_gpu_seconds": 0.011820896076969803,
+          "residual_gpu_seconds": 0.3635723839523271,
+          "cuda_peak_allocated_bytes": 1143014912,
+          "cuda_peak_reserved_bytes": 1986002944,
+          "projection": "up_proj",
+          "replicate": 2,
+          "scoring": {
+            "wall_seconds": 0.6922891000285745,
+            "gpu_stream_elapsed_seconds": 0.69218505859375,
+            "rows": 4864,
+            "documents": 128,
+            "tokens_per_document": 2048,
+            "peak_allocated_bytes": 1910774272,
+            "peak_reserved_bytes": 2304770048
+          }
+        },
+        {
+          "gpu_seconds": {
+            "W_clone_FP32": 0.00014099200069904328,
+            "find_params": 0.010664224028587342,
+            "H_diag": 5.6320001371204856e-05,
+            "H_mean_or_other": 2.8672000393271447e-05,
+            "lower_cholesky": 0.0011798080205917359,
+            "cached_inverse_hit": 1.3151999562978745e-05,
+            "upper_cholesky": 0.0013833600282669068
+          },
+          "counts": {
+            "W_clone_FP32": 1,
+            "find_params": 8,
+            "H_diag": 2,
+            "H_mean_or_other": 1,
+            "lower_cholesky": 1,
+            "cached_inverse_hit": 1,
+            "upper_cholesky": 1
+          },
+          "cpu_dispatch_envelopes_seconds": {
+            "W_clone_FP32": 7.199996616691351e-05,
+            "find_params": 0.012025900068692863,
+            "H_diag": 6.779999239370227e-05,
+            "H_mean_or_other": 2.9199989512562752e-05,
+            "lower_cholesky": 0.0011356000322848558,
+            "cached_inverse_hit": 1.9999570213258266e-06,
+            "upper_cholesky": 0.0013433999847620726
+          },
+          "warning": "CPU envelopes and GPU event time are different clocks; do not sum CPU envelopes or nested totals",
+          "mode": "original",
+          "alpha": 0.8,
+          "candidate_wall_seconds": 0.3971342000295408,
+          "candidate_gpu_stream_elapsed_seconds": 0.39708987426757814,
+          "nonoverlap_profiled_gpu_seconds": 0.013466528079472483,
+          "residual_gpu_seconds": 0.3836233461881057,
+          "cuda_peak_allocated_bytes": 1151757824,
+          "cuda_peak_reserved_bytes": 2304770048,
+          "projection": "up_proj",
+          "replicate": 1,
+          "scoring": {
+            "wall_seconds": 0.6703452999936417,
+            "gpu_stream_elapsed_seconds": 0.6702335815429687,
+            "rows": 4864,
+            "documents": 128,
+            "tokens_per_document": 2048,
+            "peak_allocated_bytes": 1910773760,
+            "peak_reserved_bytes": 2304770048
+          }
+        },
+        {
+          "gpu_seconds": {
+            "W_clone_FP32": 0.00017612800002098083,
+            "find_params": 0.008441887974739075,
+            "H_diag": 6.656000111252069e-05,
+            "H_mean_or_other": 4.915200173854828e-05,
+            "lower_cholesky": 0.0014090880155563355,
+            "cached_inverse_hit": 1.9967999309301375e-05,
+            "upper_cholesky": 0.002649183988571167
+          },
+          "counts": {
+            "W_clone_FP32": 1,
+            "find_params": 8,
+            "H_diag": 2,
+            "H_mean_or_other": 1,
+            "lower_cholesky": 1,
+            "cached_inverse_hit": 1,
+            "upper_cholesky": 1
+          },
+          "cpu_dispatch_envelopes_seconds": {
+            "W_clone_FP32": 0.00011999998241662979,
+            "find_params": 0.00842920015566051,
+            "H_diag": 6.279995432123542e-05,
+            "H_mean_or_other": 5.5500015150755644e-05,
+            "lower_cholesky": 0.0012785999570041895,
+            "cached_inverse_hit": 3.400025889277458e-06,
+            "upper_cholesky": 0.0025583000387996435
+          },
+          "warning": "CPU envelopes and GPU event time are different clocks; do not sum CPU envelopes or nested totals",
+          "mode": "original",
+          "alpha": 0.8,
+          "candidate_wall_seconds": 0.3867050999542698,
+          "candidate_gpu_stream_elapsed_seconds": 0.386634765625,
+          "nonoverlap_profiled_gpu_seconds": 0.012811967981047927,
+          "residual_gpu_seconds": 0.37382279764395204,
+          "cuda_peak_allocated_bytes": 1152046080,
+          "cuda_peak_reserved_bytes": 2304770048,
+          "projection": "up_proj",
+          "replicate": 2,
+          "scoring": {
+            "wall_seconds": 0.6801307999994606,
+            "gpu_stream_elapsed_seconds": 0.6798776245117187,
+            "rows": 4864,
+            "documents": 128,
+            "tokens_per_document": 2048,
+            "peak_allocated_bytes": 1919805440,
+            "peak_reserved_bytes": 2304770048
+          }
+        }
+      ],
+      "score_and_two_alpha_stitch_seconds": 0.006320999993477017,
+      "selected_08_rows": 3293,
+      "selected_weight_sha256": "d055d6f74ce279e9e687b90cf8b7e078b2fa4c4ef4ce00152bb3696619168fb6",
+      "selected_scale_sha256": "bb5ec79481a1e9eab93f7a99690f7504c88986856dbe1956da82ef6f7cf4bc81",
+      "selected_zero_sha256": "3da752adee8102797e514f334e1a9d557b7e31d45ffe5676a7311acd66666382",
+      "selected_g_idx_sha256": "10f4026984d8381cfbf9fe513fb54596c6413fdd45c0b8366211aaa455d52712"
+    },
+    "down_proj": {
+      "shape": [
+        896,
+        4864
+      ],
+      "input_shape": [
+        128,
+        2048,
+        4864
+      ],
+      "input_sha256": "9a159128abbd83130edf5a5741be93808c6e05a92840434f386aed9f1e778eb5",
+      "H_sha256": "b06453c2fe6213200d9816f31c79aa433b24ca003fc00ea940314c15b682246b",
+      "pristine_weight_sha256": "18c2aec92db14f21976838a8c35d5575f80d0e4b1e05ccc0d8388d5877e80147",
+      "H_build_seconds": 2.721704400028102,
+      "H_build_peak_bytes": 1351595520,
+      "H_preparation": {
+        "gpu_seconds": {
+          "H_diag": 6.451200135052204e-05,
+          "H_mean_or_other": 5.427199974656105e-05,
+          "lower_cholesky": 0.13753631591796875,
+          "real_inverse": 0.1246203842163086
+        },
+        "counts": {
+          "H_diag": 2,
+          "H_mean_or_other": 1,
+          "lower_cholesky": 1,
+          "real_inverse": 1
+        },
+        "cpu_dispatch_envelopes_seconds": {
+          "H_diag": 7.530004950240254e-05,
+          "H_mean_or_other": 3.579998156055808e-05,
+          "lower_cholesky": 0.1373876000288874,
+          "real_inverse": 0.001177600002847612
+        },
+        "warning": "CPU envelopes and GPU event time are different clocks; do not sum CPU envelopes or nested totals",
+        "wall_seconds": 0.3518675000523217,
+        "gpu_stream_seconds": 0.35171267700195313
+      },
+      "warmup_seconds": 2.1228171999682672,
+      "records": [
+        {
+          "gpu_seconds": {
+            "W_clone_FP32": 0.00016281600296497346,
+            "find_params": 0.044046719789505,
+            "H_diag": 5.836800113320351e-05,
+            "H_mean_or_other": 9.216000325977802e-06,
+            "lower_cholesky": 0.028071327209472655,
+            "cached_inverse_hit": 0.0013029439449310303,
+            "upper_cholesky": 0.02784499168395996
+          },
+          "counts": {
+            "W_clone_FP32": 1,
+            "find_params": 39,
+            "H_diag": 2,
+            "H_mean_or_other": 1,
+            "lower_cholesky": 1,
+            "cached_inverse_hit": 1,
+            "upper_cholesky": 1
+          },
+          "cpu_dispatch_envelopes_seconds": {
+            "W_clone_FP32": 6.280001252889633e-05,
+            "find_params": 0.0466234001214616,
+            "H_diag": 4.9900030717253685e-05,
+            "H_mean_or_other": 2.4200009647756815e-05,
+            "lower_cholesky": 0.02789700002176687,
+            "cached_inverse_hit": 0.0012547000078484416,
+            "upper_cholesky": 0.027678199985530227
+          },
+          "warning": "CPU envelopes and GPU event time are different clocks; do not sum CPU envelopes or nested totals",
+          "mode": "original",
+          "alpha": 1.0,
+          "candidate_wall_seconds": 2.1355029999976978,
+          "candidate_gpu_stream_elapsed_seconds": 2.135349365234375,
+          "nonoverlap_profiled_gpu_seconds": 0.1014963826322928,
+          "residual_gpu_seconds": 2.033852982602082,
+          "cuda_peak_allocated_bytes": 1778434560,
+          "cuda_peak_reserved_bytes": 2308964352,
+          "projection": "down_proj",
+          "replicate": 1,
+          "scoring": {
+            "wall_seconds": 1.1194639000459574,
+            "gpu_stream_elapsed_seconds": 1.1193138427734375,
+            "rows": 896,
+            "documents": 128,
+            "tokens_per_document": 2048,
+            "peak_allocated_bytes": 1846167040,
+            "peak_reserved_bytes": 2308964352
+          }
+        },
+        {
+          "gpu_seconds": {
+            "W_clone_FP32": 0.00015667200088500976,
+            "find_params": 0.050412416100502,
+            "H_diag": 4.812799859791994e-05,
+            "H_mean_or_other": 6.144000217318535e-06,
+            "lower_cholesky": 0.017539648056030272,
+            "cached_inverse_hit": 0.001246880054473877,
+            "upper_cholesky": 0.019517120361328126
+          },
+          "counts": {
+            "W_clone_FP32": 1,
+            "find_params": 39,
+            "H_diag": 2,
+            "H_mean_or_other": 1,
+            "lower_cholesky": 1,
+            "cached_inverse_hit": 1,
+            "upper_cholesky": 1
+          },
+          "cpu_dispatch_envelopes_seconds": {
+            "W_clone_FP32": 0.0001002000062726438,
+            "find_params": 0.04888659989228472,
+            "H_diag": 4.339998122304678e-05,
+            "H_mean_or_other": 1.839996548369527e-05,
+            "lower_cholesky": 0.017439600022044033,
+            "cached_inverse_hit": 0.0012234000023454428,
+            "upper_cholesky": 0.019426100014243275
+          },
+          "warning": "CPU envelopes and GPU event time are different clocks; do not sum CPU envelopes or nested totals",
+          "mode": "original",
+          "alpha": 1.0,
+          "candidate_wall_seconds": 2.1045487000374123,
+          "candidate_gpu_stream_elapsed_seconds": 2.104334228515625,
+          "nonoverlap_profiled_gpu_seconds": 0.08892700857203452,
+          "residual_gpu_seconds": 2.01540721994359,
+          "cuda_peak_allocated_bytes": 1764222464,
+          "cuda_peak_reserved_bytes": 2308964352,
+          "projection": "down_proj",
+          "replicate": 2,
+          "scoring": {
+            "wall_seconds": 1.012584500014782,
+            "gpu_stream_elapsed_seconds": 1.0124574584960937,
+            "rows": 896,
+            "documents": 128,
+            "tokens_per_document": 2048,
+            "peak_allocated_bytes": 1855151104,
+            "peak_reserved_bytes": 2308964352
+          }
+        },
+        {
+          "gpu_seconds": {
+            "W_clone_FP32": 0.0001730239987373352,
+            "find_params": 0.04363404774665832,
+            "H_diag": 6.553599983453751e-05,
+            "H_mean_or_other": 7.168000098317862e-06,
+            "lower_cholesky": 0.019153663635253906,
+            "cached_inverse_hit": 1.6256000846624374e-05,
+            "upper_cholesky": 0.019397823333740235
+          },
+          "counts": {
+            "W_clone_FP32": 1,
+            "find_params": 39,
+            "H_diag": 2,
+            "H_mean_or_other": 1,
+            "lower_cholesky": 1,
+            "cached_inverse_hit": 1,
+            "upper_cholesky": 1
+          },
+          "cpu_dispatch_envelopes_seconds": {
+            "W_clone_FP32": 0.0001268000341951847,
+            "find_params": 0.043895899783819914,
+            "H_diag": 5.839992081746459e-05,
+            "H_mean_or_other": 2.670002868399024e-05,
+            "lower_cholesky": 0.019006899965461344,
+            "cached_inverse_hit": 2.200016751885414e-06,
+            "upper_cholesky": 0.019120500015560538
+          },
+          "warning": "CPU envelopes and GPU event time are different clocks; do not sum CPU envelopes or nested totals",
+          "mode": "original",
+          "alpha": 0.8,
+          "candidate_wall_seconds": 2.120456699980423,
+          "candidate_gpu_stream_elapsed_seconds": 2.120304931640625,
+          "nonoverlap_profiled_gpu_seconds": 0.08244751871516928,
+          "residual_gpu_seconds": 2.037857412925456,
+          "cuda_peak_allocated_bytes": 1773245440,
+          "cuda_peak_reserved_bytes": 2308964352,
+          "projection": "down_proj",
+          "replicate": 1,
+          "scoring": {
+            "wall_seconds": 1.024820999999065,
+            "gpu_stream_elapsed_seconds": 1.024669677734375,
+            "rows": 896,
+            "documents": 128,
+            "tokens_per_document": 2048,
+            "peak_allocated_bytes": 1855150592,
+            "peak_reserved_bytes": 2308964352
+          }
+        },
+        {
+          "gpu_seconds": {
+            "W_clone_FP32": 0.00016896000504493713,
+            "find_params": 0.0489911037683487,
+            "H_diag": 6.348799914121628e-05,
+            "H_mean_or_other": 6.144000217318535e-06,
+            "lower_cholesky": 0.019102336883544922,
+            "cached_inverse_hit": 3.491200134158135e-05,
+            "upper_cholesky": 0.018245536804199217
+          },
+          "counts": {
+            "W_clone_FP32": 1,
+            "find_params": 39,
+            "H_diag": 2,
+            "H_mean_or_other": 1,
+            "lower_cholesky": 1,
+            "cached_inverse_hit": 1,
+            "upper_cholesky": 1
+          },
+          "cpu_dispatch_envelopes_seconds": {
+            "W_clone_FP32": 0.0001010000123642385,
+            "find_params": 0.04712079995078966,
+            "H_diag": 6.390007911249995e-05,
+            "H_mean_or_other": 2.8600043151527643e-05,
+            "lower_cholesky": 0.01897319999989122,
+            "cached_inverse_hit": 2.900022082030773e-06,
+            "upper_cholesky": 0.018134299956727773
+          },
+          "warning": "CPU envelopes and GPU event time are different clocks; do not sum CPU envelopes or nested totals",
+          "mode": "original",
+          "alpha": 0.8,
+          "candidate_wall_seconds": 2.299920600024052,
+          "candidate_gpu_stream_elapsed_seconds": 2.29971240234375,
+          "nonoverlap_profiled_gpu_seconds": 0.08661248146183789,
+          "residual_gpu_seconds": 2.2130999208819118,
+          "cuda_peak_allocated_bytes": 1773237760,
+          "cuda_peak_reserved_bytes": 2308964352,
+          "projection": "down_proj",
+          "replicate": 2,
+          "scoring": {
+            "wall_seconds": 0.7853826000355184,
+            "gpu_stream_elapsed_seconds": 0.785259521484375,
+            "rows": 896,
+            "documents": 128,
+            "tokens_per_document": 2048,
+            "peak_allocated_bytes": 1864166400,
+            "peak_reserved_bytes": 2308964352
+          }
+        }
+      ],
+      "score_and_two_alpha_stitch_seconds": 0.001514500007033348,
+      "selected_08_rows": 673,
+      "selected_weight_sha256": "520fa46bb4260561d0ad3aacb49af69375c13fba9b5c66a18159c15f29920759",
+      "selected_scale_sha256": "fc07b42a0a0648855c390bdec580d17ff143f38297bd891946fda137bf2959df",
+      "selected_zero_sha256": "3da752adee8102797e514f334e1a9d557b7e31d45ffe5676a7311acd66666382",
+      "selected_g_idx_sha256": "b0947a84932f9fd6010ac30d1fb8f0d012bbf7e809eb1a05b1cebe5fb2bf5d04"
+    }
+  },
+  "gpu_wall_seconds": 65.29899280000245
+}

@@ -1,0 +1,57 @@
+{
+  "protocol_id": "range_w4_gate_v12_phase_a_discovery_v1",
+  "frozen_at_utc": "2026-09-29T16:55:14Z",
+  "status": "FROZEN_BEFORE_THRESHOLD_EVALUATION",
+  "scope": "v11 full10 discovery only; no new GPTQ, validation, PPL, or quantized-prefix run",
+  "discovery_source": {
+    "result_directory": "experiments/range_search_w4/results/range_w4_96row_v11",
+    "rows": 96,
+    "splits_per_row": 10,
+    "alpha_grid": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+    "row_manifest_sha256": "c56eeaa1d1af6e4ed8dd78f811c811c66758b215659a98bf8550052c786e6106",
+    "v9_split_manifest_sha256": "34a24ef8602b8ce1e38e7a284f112acf7f766962d87d737f69148b78bcfaba78",
+    "full10_alpha_landscapes_csv_sha256": "c841966026eeb225c84ea71d248201632de600117b0f5e7dbbfdaaf256c58b9d",
+    "full10_per_row_split_results_csv_sha256": "5c9214720b5a825bc329fada24cc932320017e6bf3a73fade92b6aa8ed80d8fc"
+  },
+  "search_features": {
+    "search_gain_per_split": "1 - min_alpha(search_SSE) / search_SSE(alpha=1.0)",
+    "search_gain_median": "median of the 10 per-split search_gain values for a row",
+    "search_margin_per_split": "(second_smallest_search_SSE - smallest_search_SSE) / second_smallest_search_SSE, with distinct candidate entries ranked by search_SSE then alpha ascending",
+    "search_margin_median": "median of the 10 per-split search_margin values for a row"
+  },
+  "decision_rule": "ACCEPT row iff search_gain_median >= tau_gain AND search_margin_median >= tau_margin; otherwise FALLBACK row to alpha=1.0",
+  "decision_granularity": "row; ACCEPT applies each split's own search-best alpha, FALLBACK applies alpha=1.0 in every split",
+  "threshold_grid": {
+    "tau_gain": [0.05, 0.10, 0.15, 0.20, 0.25, 0.30],
+    "tau_margin": [0.02, 0.04, 0.06, 0.08, 0.10, 0.12],
+    "pair_count": 36,
+    "grid_expansion_after_evaluation": "forbidden"
+  },
+  "comparators": {
+    "D": "all rows use native dynamic GPTQ alpha=1.0",
+    "C": "all rows use per-split search-best shared-alpha dynamic GPTQ",
+    "Gate": "accepted rows use C, fallback rows use D"
+  },
+  "heldout_evaluation": {
+    "gain_definition": "1 - method_heldout_SSE / D_heldout_SSE, per row/split",
+    "pooled_gain_definition": "1 - sum(method_heldout_SSE) / sum(D_heldout_SSE)",
+    "retained_gain_definition": "Gate_pooled_gain / C_pooled_gain, only defined when C_pooled_gain > 0",
+    "strict_tail_thresholds": [0.0, -0.05, -0.10, -0.20, -0.40],
+    "breakdowns": ["projection", "layer"],
+    "worst_regression": "minimum per-row/split heldout gain; zero when all decisions fallback"
+  },
+  "discovery_pass": {
+    "A": "2 * Gate_count(gain < -0.10) <= C_count(gain < -0.10)",
+    "B": "Gate_pooled_gain > 0",
+    "C": "C_pooled_gain > 0 AND Gate_pooled_gain / C_pooled_gain >= 0.50",
+    "conjunction": "A AND B AND C"
+  },
+  "selection_among_pass": [
+    "retained_gain descending",
+    "severe_failure_count ascending",
+    "fallback_row_count descending",
+    "threshold numeric simplicity: fewest total nonzero decimal places after stripping trailing zeros; then tau_gain ascending; then tau_margin ascending"
+  ],
+  "no_pass_behavior": "write GATE_V1_DISCOVERY_FAIL in report and stop; do not create GATE_V1.json or validation plan",
+  "forbidden": ["heldout gate feature", "third feature", "classifier", "projection-specific threshold", "layer-specific threshold", "alpha grid change", "post-evaluation grid expansion", "validation execution", "PPL"]
+}

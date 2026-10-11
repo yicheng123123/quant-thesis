@@ -1,0 +1,55 @@
+{
+  "protocol_id": "range_w4_omniquant_full_v21_1",
+  "status": "M3_FORMAL_STOP_NONFINITE_LWC_GRADIENT_LAYER21",
+  "updated_at_local": "2026-10-01 19:08:48+0800",
+  "decision": "STOP",
+  "reason": "The frozen formal-run integrity gate detected a non-finite LWC gradient at decoder layer 21, epoch 0, sample 0. No retry with changed training semantics is authorized by this protocol.",
+  "preflight": {
+    "model_identity": "PASS",
+    "tokenizer_and_calibration_identity": "PASS",
+    "quant_off_parity": "PASS",
+    "representative_2048_memory": "PASS",
+    "conservative_local_cost_hours": 0.8369879114851911,
+    "24_hour_cost_gate": "PASS"
+  },
+  "formal_m3": {
+    "status": "INCOMPLETE_STOPPED",
+    "required_optimizer_updates": 61440,
+    "committed_optimizer_updates": 53760,
+    "committed_fraction": 0.875,
+    "completed_decoder_blocks": 21,
+    "total_decoder_blocks": 24,
+    "latest_checkpoint": "M3/checkpoints/block_20",
+    "failed_location": {
+      "decoder_layer_zero_based": 21,
+      "epoch_zero_based": 0,
+      "sample_zero_based": 0,
+      "loss": 0.15326565504074097,
+      "loss_finite": true,
+      "lwc_gradient_parameter_count": 14,
+      "lwc_gradients_finite": false,
+      "runner_lwc_nonzero_predicate": true,
+      "nonzero_predicate_note": "torch.any(flat != 0) is true for NaN/Inf values and does not establish a valid finite update."
+    },
+    "attempt_accounting": {
+      "attempt_01_id": "20261001_182852_6bbe770a",
+      "attempt_01_steps_logged_then_discarded": 2560,
+      "attempt_01_committed_updates": 0,
+      "attempt_01_failure": "Checkpoint fsync failed before the first block checkpoint commit.",
+      "attempt_02_id": "20261001_183359_6c00bf87",
+      "attempt_02_step_rows_including_failing_sample": 53761,
+      "attempt_02_committed_updates": 53760,
+      "total_step_rows_across_attempts": 56321,
+      "failing_sample_counted_as_committed_update": false
+    }
+  },
+  "post_training_evaluation": {
+    "dense_dequant_export": "NOT_RUN",
+    "export_reload_check": "NOT_RUN",
+    "wikitext2_ppl": "NOT_RUN",
+    "c4_fixed_budget_ppl": "NOT_RUN",
+    "reason": "Formal M3 did not complete; no complete final model was produced."
+  },
+  "historical_outputs_modified": false,
+  "resume_checkpoint_preserved": true
+}

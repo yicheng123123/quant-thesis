@@ -1,0 +1,68 @@
+method,stage,layer,module,alpha,wall_seconds,gpu_peak_allocated_bytes,gpu_peak_reserved_bytes,detail
+M2_spot,model_load,-1,E:\quant-thesis\.hf_cache\hub\models--Qwen--Qwen2.5-0.5B-Instruct\snapshots\7ae557604adf67be50417f59c2c2f167def9a775,,2.5694101999979466,996321792,1040187392,local-only FP16 model load; RTX 4060 Laptop GPU
+M2,initial_embedding_capture,-1,model.embed_tokens,,0.87554189999355,1000008192,1061158912,128 frozen documents x 2048 tokens; ordered input IDs hash verified
+M2,resume_completed_layer_forward,0,decoder_layer,,2.0324947999906726,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,1,decoder_layer,,1.3494838000042364,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,2,decoder_layer,,1.376321599993389,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,3,decoder_layer,,1.3927639999892563,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,4,decoder_layer,,1.3945531000499614,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,5,decoder_layer,,1.4074291000142694,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,6,decoder_layer,,1.4714823000249453,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,qkv_shared_input_capture,7,input_layernorm,,0.40668240061495453,1023224320,1147142144,"{""input_sha256"": ""7d221bf314c2ec8350265c218d50b993fbf0e1779ceb243adbaaca829613f440"", ""per_doc_median"": 0.003127850010059774, ""per_doc_p95"": 0.004290499957278371}"
+M2_spot,spot_qkv_o_commit_to_up_gate_input,7,"mlp.up_proj,mlp.gate_proj",,1.116302099719178,1079306752,1147142144,"{""input_sha256"": ""51632de75a5dfba625632d8bf792f224c090faf0993ac6a876cc940181856e71"", ""sibling_inputs_equal"": true, ""documents"": 128, ""sequence_length"": 2048, ""per_doc_median"": 0.00828294997336343, ""per_doc_p95"": 0.01136410003527999}"
+M2_spot,model_load,-1,E:\quant-thesis\.hf_cache\hub\models--Qwen--Qwen2.5-0.5B-Instruct\snapshots\7ae557604adf67be50417f59c2c2f167def9a775,,1.402556299988646,996321792,1040187392,local-only FP16 model load; RTX 4060 Laptop GPU
+M2,initial_embedding_capture,-1,model.embed_tokens,,0.7621663000318222,1000008192,1061158912,128 frozen documents x 2048 tokens; ordered input IDs hash verified
+M2,resume_completed_layer_forward,0,decoder_layer,,2.053518000000622,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,1,decoder_layer,,1.2665345999994315,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,2,decoder_layer,,1.2612470000167377,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,3,decoder_layer,,1.2833995999535546,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,4,decoder_layer,,1.1885857000015676,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,5,decoder_layer,,1.1652075999882072,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,6,decoder_layer,,1.2405576999881305,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,qkv_shared_input_capture,7,input_layernorm,,0.43659879971528426,1023224320,1147142144,"{""input_sha256"": ""7d221bf314c2ec8350265c218d50b993fbf0e1779ceb243adbaaca829613f440"", ""per_doc_median"": 0.0033220999757759273, ""per_doc_p95"": 0.004349399998318404}"
+M2_spot,spot_qkv_o_commit_to_up_gate_input,7,"mlp.up_proj,mlp.gate_proj",,1.1215184003231116,1079306752,1147142144,"{""input_sha256"": ""51632de75a5dfba625632d8bf792f224c090faf0993ac6a876cc940181856e71"", ""sibling_inputs_equal"": true, ""documents"": 128, ""sequence_length"": 2048, ""per_doc_median"": 0.0081888000422623, ""per_doc_p95"": 0.0132661999668926}"
+M2_spot,full_linear_alpha_candidate_gptq,7,model.layers.7.mlp.gate_proj,0.1,0.7549094999558292,1119879680,1176502272,full output-row candidate; shared v28 H/Hinv; fresh candidate state
+M2_spot,all_row_direct_output_scoring,7,model.layers.7.mlp.gate_proj,0.1,0.6412051999941468,1896634880,1973420032,full Linear; v18 score_rows unchanged
+M2_spot,all_row_quadratic_output_scoring,7,model.layers.7.mlp.gate_proj,0.1,0.0026153000071644783,1192385024,1973420032,same candidate tensor as direct scorer
+M2_spot,model_load,-1,E:\quant-thesis\.hf_cache\hub\models--Qwen--Qwen2.5-0.5B-Instruct\snapshots\7ae557604adf67be50417f59c2c2f167def9a775,,1.3931401000008918,996321792,1040187392,local-only FP16 model load; RTX 4060 Laptop GPU
+M2,initial_embedding_capture,-1,model.embed_tokens,,0.7336550999898463,1000008192,1061158912,128 frozen documents x 2048 tokens; ordered input IDs hash verified
+M2,resume_completed_layer_forward,0,decoder_layer,,1.9311973999720067,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,1,decoder_layer,,1.304472399991937,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,2,decoder_layer,,1.2590205000014976,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,3,decoder_layer,,1.3282103999517858,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,4,decoder_layer,,1.1714471000013873,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,5,decoder_layer,,1.1997900999849662,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,resume_completed_layer_forward,6,decoder_layer,,1.1473683000076562,1079306752,1147142144,reconstructed self-prefix activations; completed quantization layer was not rerun
+M2,qkv_shared_input_capture,7,input_layernorm,,0.44727910024812445,1023224320,1147142144,"{""input_sha256"": ""7d221bf314c2ec8350265c218d50b993fbf0e1779ceb243adbaaca829613f440"", ""per_doc_median"": 0.003537449985742569, ""per_doc_p95"": 0.00443600001744926}"
+M2_spot,spot_qkv_o_commit_to_up_gate_input,7,"mlp.up_proj,mlp.gate_proj",,1.1245045001851395,1079306752,1147142144,"{""input_sha256"": ""51632de75a5dfba625632d8bf792f224c090faf0993ac6a876cc940181856e71"", ""sibling_inputs_equal"": true, ""documents"": 128, ""sequence_length"": 2048, ""per_doc_median"": 0.008093200012808666, ""per_doc_p95"": 0.013442099967505783}"
+M2_spot,full_linear_alpha_candidate_gptq,7,model.layers.7.mlp.gate_proj,0.1,0.6992113000014797,1119879680,1176502272,full output-row candidate; shared v28 H/Hinv; fresh candidate state
+M2_spot,all_row_direct_output_scoring,7,model.layers.7.mlp.gate_proj,0.1,0.6108362000086345,1896634880,1973420032,full Linear; v18 score_rows unchanged
+M2_spot,all_row_quadratic_output_scoring,7,model.layers.7.mlp.gate_proj,0.1,0.002480399969499558,1192385024,1973420032,same candidate tensor as direct scorer
+M2_spot,full_linear_alpha_candidate_gptq,7,model.layers.7.mlp.gate_proj,0.2,0.520674399973359,1128871936,1973420032,full output-row candidate; shared v28 H/Hinv; fresh candidate state
+M2_spot,all_row_direct_output_scoring,7,model.layers.7.mlp.gate_proj,0.2,0.5699734999798238,1905623552,2292187136,full Linear; v18 score_rows unchanged
+M2_spot,all_row_quadratic_output_scoring,7,model.layers.7.mlp.gate_proj,0.2,0.002614600001834333,1201373696,2292187136,same candidate tensor as direct scorer
+M2_spot,full_linear_alpha_candidate_gptq,7,model.layers.7.mlp.gate_proj,0.3,0.46908549999352545,1137900032,2292187136,full output-row candidate; shared v28 H/Hinv; fresh candidate state
+M2_spot,all_row_direct_output_scoring,7,model.layers.7.mlp.gate_proj,0.3,0.5458869999856688,1914651648,2292187136,full Linear; v18 score_rows unchanged
+M2_spot,all_row_quadratic_output_scoring,7,model.layers.7.mlp.gate_proj,0.3,0.0026015000184997916,1210401792,2292187136,same candidate tensor as direct scorer
+M2_spot,full_linear_alpha_candidate_gptq,7,model.layers.7.mlp.gate_proj,0.4,0.5253503000130877,1146928128,2292187136,full output-row candidate; shared v28 H/Hinv; fresh candidate state
+M2_spot,all_row_direct_output_scoring,7,model.layers.7.mlp.gate_proj,0.4,0.5480817999923602,1923600896,2292187136,full Linear; v18 score_rows unchanged
+M2_spot,all_row_quadratic_output_scoring,7,model.layers.7.mlp.gate_proj,0.4,0.0025492000277154148,1219351040,2292187136,same candidate tensor as direct scorer
+M2_spot,full_linear_alpha_candidate_gptq,7,model.layers.7.mlp.gate_proj,0.5,0.5092542999773286,1155877376,2292187136,full output-row candidate; shared v28 H/Hinv; fresh candidate state
+M2_spot,all_row_direct_output_scoring,7,model.layers.7.mlp.gate_proj,0.5,0.5525066999834962,1932628992,2292187136,full Linear; v18 score_rows unchanged
+M2_spot,all_row_quadratic_output_scoring,7,model.layers.7.mlp.gate_proj,0.5,0.002570300013758242,1228379136,2292187136,same candidate tensor as direct scorer
+M2_spot,full_linear_alpha_candidate_gptq,7,model.layers.7.mlp.gate_proj,0.6,0.4497659999760799,1164905472,2292187136,full output-row candidate; shared v28 H/Hinv; fresh candidate state
+M2_spot,all_row_direct_output_scoring,7,model.layers.7.mlp.gate_proj,0.6,0.563977999961935,1941657088,2292187136,full Linear; v18 score_rows unchanged
+M2_spot,all_row_quadratic_output_scoring,7,model.layers.7.mlp.gate_proj,0.6,0.002449599967803806,1237328384,2292187136,same candidate tensor as direct scorer
+M2_spot,full_linear_alpha_candidate_gptq,7,model.layers.7.mlp.gate_proj,0.7,0.44874059996800497,1173854720,2294284288,full output-row candidate; shared v28 H/Hinv; fresh candidate state
+M2_spot,all_row_direct_output_scoring,7,model.layers.7.mlp.gate_proj,0.7,0.5590269999811426,1950606336,2294284288,full Linear; v18 score_rows unchanged
+M2_spot,all_row_quadratic_output_scoring,7,model.layers.7.mlp.gate_proj,0.7,0.002696900046430528,1246356480,2294284288,same candidate tensor as direct scorer
+M2_spot,full_linear_alpha_candidate_gptq,7,model.layers.7.mlp.gate_proj,0.8,0.5163100000354461,1182882816,2294284288,full output-row candidate; shared v28 H/Hinv; fresh candidate state
+M2_spot,all_row_direct_output_scoring,7,model.layers.7.mlp.gate_proj,0.8,0.5527800000272691,1959634432,2294284288,full Linear; v18 score_rows unchanged
+M2_spot,all_row_quadratic_output_scoring,7,model.layers.7.mlp.gate_proj,0.8,0.002495999971870333,1255384576,2294284288,same candidate tensor as direct scorer
+M2_spot,full_linear_alpha_candidate_gptq,7,model.layers.7.mlp.gate_proj,0.9,0.49761279998347163,1191583232,2294284288,full output-row candidate; shared v28 H/Hinv; fresh candidate state
+M2_spot,all_row_direct_output_scoring,7,model.layers.7.mlp.gate_proj,0.9,0.5533155999728478,1968544256,2294284288,full Linear; v18 score_rows unchanged
+M2_spot,all_row_quadratic_output_scoring,7,model.layers.7.mlp.gate_proj,0.9,0.0027288999990560114,1264294400,2294284288,same candidate tensor as direct scorer
+M2_spot,full_linear_alpha_candidate_gptq,7,model.layers.7.mlp.gate_proj,1.0,0.512411699979566,1200820736,2294284288,full output-row candidate; shared v28 H/Hinv; fresh candidate state
+M2_spot,all_row_direct_output_scoring,7,model.layers.7.mlp.gate_proj,1.0,0.5527622000081465,1977572352,2294284288,full Linear; v18 score_rows unchanged
+M2_spot,all_row_quadratic_output_scoring,7,model.layers.7.mlp.gate_proj,1.0,0.0024432999780401587,1273322496,2294284288,same candidate tensor as direct scorer
+M2_spot,sensitive_full_linear_direct_recheck,7,model.layers.7.mlp.gate_proj,,5.8793169999844395,1968576512,2294284288,"{""trigger_rows"": [730, 884, 2224, 2245, 2986, 3220, 3935], ""recheck_rows_per_candidate"": 4864, ""candidate_calls"": 10, ""exact_to_initial_direct"": true}"

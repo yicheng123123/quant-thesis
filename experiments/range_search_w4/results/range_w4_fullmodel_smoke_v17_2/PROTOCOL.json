@@ -1,0 +1,38 @@
+{
+  "name": "v17.2 M2 Full-Model Smoke Resume",
+  "frozen_v16_protocol_sha256": "16c67825ff06aa224e33a5ac25a75109061aa80724cea8bec1d527d899660d56",
+  "calibration_manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+  "calibration_subset": "frozen samples 0,1; first 64 token ids each; no resampling",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "native": {
+    "bits": 4,
+    "activation_bits": 16,
+    "sym": true,
+    "group_size": 128,
+    "block_size": 128,
+    "damp_percent": 0.1,
+    "desc_act": false,
+    "static_groups": false,
+    "true_sequential": true,
+    "mse": 0.0,
+    "math": "FP32",
+    "damp_auto_increment": 0
+  },
+  "alpha_grid": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "search_unit": "one shared alpha per output row over all seven G128 groups",
+  "candidate_implementation": "certified native_m2 native GPTQ core; full target output-row geometry for each alpha; score 32 fixed rows",
+  "primary_target": "L0 self_attn.k_proj first32 output rows",
+  "prohibited": "formal full-model search; formal PPL; full OmniQuant",
+  "expected_row_alpha_scores": 320
+}

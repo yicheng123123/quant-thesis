@@ -1,0 +1,95 @@
+{
+  "pass": true,
+  "CPU_only": true,
+  "cases": [
+    {
+      "name": "normal",
+      "pass_": true,
+      "review": {
+        "target": "normal",
+        "original_failed_rows": 0,
+        "original_check_pass": true,
+        "fallback": false,
+        "state_unchanged": true,
+        "events": []
+      },
+      "all_state_bytes_unchanged": true
+    },
+    {
+      "name": "cross_precision",
+      "pass_": true,
+      "review": {
+        "target": "cross_precision",
+        "original_failed_rows": 2,
+        "original_check_pass": false,
+        "fallback": true,
+        "state_unchanged": true,
+        "events": [
+          {
+            "row": 0,
+            "fp32_loss": 1.0001,
+            "quadratic_loss": 1.0,
+            "rawX_fp64_loss": 1.0,
+            "original_abs_error": 9.999999999998899e-05,
+            "FP64_abs_error": 0.0,
+            "allowed_error": 2.0000001e-05,
+            "state_unchanged": true
+          },
+          {
+            "row": 1,
+            "fp32_loss": 1.0001,
+            "quadratic_loss": 1.0,
+            "rawX_fp64_loss": 1.0,
+            "original_abs_error": 9.999999999998899e-05,
+            "FP64_abs_error": 0.0,
+            "allowed_error": 2.0000001e-05,
+            "state_unchanged": true
+          }
+        ],
+        "source": {
+          "pass": true
+        }
+      },
+      "all_state_bytes_unchanged": true
+    },
+    {
+      "name": "wrong_C_independent_reference",
+      "pass_": true,
+      "detected_error": "independent raw-X FP64 initial loss disagrees with quadratic",
+      "all_state_bytes_unchanged": true
+    },
+    {
+      "name": "wrong_input_source",
+      "pass_": true,
+      "detected_error": "initialization input source mismatch",
+      "all_state_bytes_unchanged": true
+    },
+    {
+      "name": "wrong_C_source",
+      "pass_": true,
+      "detected_error": "initialization Gram source mismatch",
+      "all_state_bytes_unchanged": true
+    },
+    {
+      "name": "nonfinite_loss",
+      "pass_": true,
+      "detected_error": "nonfinite initial loss",
+      "all_state_bytes_unchanged": true
+    },
+    {
+      "name": "nonfinite_raw_input",
+      "pass_": true,
+      "detected_error": "nonfinite raw input",
+      "all_state_bytes_unchanged": true
+    },
+    {
+      "name": "normal_path_exact_candidate_trajectory",
+      "pass_": true,
+      "accepted_updates": 32,
+      "evaluation_count": 272,
+      "all_outputs_and_moves_equal": true
+    }
+  ],
+  "core_sha256": "f155a1f26dd65b67d16e531f438f85b720b6df05910e1dda84082f6b1201ef7a",
+  "review_sha256": "4f6972f70c3babe055d3e686a70fb7c765f809f3a3391c57625caf0a322bc4e5"
+}

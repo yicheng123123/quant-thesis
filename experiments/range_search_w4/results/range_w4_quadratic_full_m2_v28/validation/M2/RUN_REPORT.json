@@ -1,0 +1,50 @@
+{
+  "method": "M2",
+  "status": "COMPLETE",
+  "layers": 24,
+  "linear_modules": 168,
+  "output_rows": 304128,
+  "resume_start_layer": 24,
+  "formal_counts": {
+    "full_linear_alpha_candidate_executions": 1680,
+    "row_alpha_score_slots": 3041280,
+    "alpha1_native_parity_reference_executions": 35,
+    "layers_completed_before_this_process": 24
+  },
+  "final_model_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_quadratic_full_m2_v28\\validation\\M2\\checkpoint\\final",
+  "final_model_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+  "save_seconds": 0.8577999999979511,
+  "reload_correctness": {
+    "pass": true,
+    "input_tokens": 64,
+    "rtol": 1e-05,
+    "atol": 1e-06,
+    "max_abs_logit_difference": 0.0,
+    "mean_abs_logit_difference": 0.0
+  },
+  "quantization_correctness": {
+    "pass": true,
+    "method": "M2",
+    "layers": 24,
+    "linear_modules": 168,
+    "output_rows": 304128,
+    "selected_alpha_grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "finite_weights_scales_zeros_losses": true,
+    "scale_zero_shapes_correct": true,
+    "g_idx_native": true,
+    "per_row_search_not_worse_than_alpha1_on_search": true
+  },
+  "wall_seconds_including_load_replay_save": 10.753679599962197,
+  "completed_utc": "2026-10-02T19:05:11.483788+00:00"
+}

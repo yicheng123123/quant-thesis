@@ -1,0 +1,125 @@
+{
+  "groups": [
+    {
+      "group": "qkv",
+      "source_states_before_capture": [],
+      "reference_model": "originalM2 with preceding block0 groups committed in original order",
+      "all128_fulltokens": true,
+      "reference_and_patched_bitwise_equal": true,
+      "historical_source_input_sha256": "09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96",
+      "native_reference_input_sha256": "09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96",
+      "historical_source_input_matches_native": true
+    },
+    {
+      "group": "o",
+      "source_states_before_capture": [
+        "model.layers.0.self_attn.k_proj.weight",
+        "model.layers.0.self_attn.q_proj.weight",
+        "model.layers.0.self_attn.v_proj.weight"
+      ],
+      "reference_model": "originalM2 with preceding block0 groups committed in original order",
+      "all128_fulltokens": true,
+      "reference_and_patched_bitwise_equal": true,
+      "historical_source_input_sha256": "2937cc4e2524f9164ad01b71cdd60c8d409a0c39c801d59fadc389fa0b90cb25",
+      "native_reference_input_sha256": "2937cc4e2524f9164ad01b71cdd60c8d409a0c39c801d59fadc389fa0b90cb25",
+      "historical_source_input_matches_native": true
+    },
+    {
+      "group": "up_gate",
+      "source_states_before_capture": [
+        "model.layers.0.self_attn.o_proj.weight",
+        "model.layers.0.self_attn.k_proj.weight",
+        "model.layers.0.self_attn.q_proj.weight",
+        "model.layers.0.self_attn.v_proj.weight"
+      ],
+      "reference_model": "originalM2 with preceding block0 groups committed in original order",
+      "all128_fulltokens": true,
+      "reference_and_patched_bitwise_equal": true,
+      "historical_source_input_sha256": "0f071b6a8fb1b0800bb7080cf13949b5602bcedc698d5ab10f76c7edf97efa40",
+      "native_reference_input_sha256": "0f071b6a8fb1b0800bb7080cf13949b5602bcedc698d5ab10f76c7edf97efa40",
+      "historical_source_input_matches_native": true
+    },
+    {
+      "group": "down",
+      "source_states_before_capture": [
+        "model.layers.0.self_attn.o_proj.weight",
+        "model.layers.0.self_attn.v_proj.weight",
+        "model.layers.0.self_attn.k_proj.weight",
+        "model.layers.0.self_attn.q_proj.weight",
+        "model.layers.0.mlp.gate_proj.weight",
+        "model.layers.0.mlp.up_proj.weight"
+      ],
+      "reference_model": "originalM2 with preceding block0 groups committed in original order",
+      "all128_fulltokens": true,
+      "reference_and_patched_bitwise_equal": true,
+      "historical_source_input_sha256": "c43c4d7ed3fb968e7f89d132dd1f8a334556cbebfc2e866643659144ee926450",
+      "native_reference_input_sha256": "c43c4d7ed3fb968e7f89d132dd1f8a334556cbebfc2e866643659144ee926450",
+      "historical_source_input_matches_native": true
+    }
+  ],
+  "modules": [
+    {
+      "group": "qkv",
+      "module": "self_attn.k_proj",
+      "v51_checkpoint_sha256": "a0b5f0fcf07f09a11800370b7528f86ad1850eeeaf7ae253adb6bf61abbdc33f",
+      "v52_container_sha256": "e2eae9346458d12bfd0c7a04ca649279f3813e2686f6b64ed80f6ecd6d6cdff3",
+      "grid_code_weight_equal_inherited": true,
+      "all_rows_terminal_check_in_source": true,
+      "native_current_reference_matches_historical_input_hash": true
+    },
+    {
+      "group": "qkv",
+      "module": "self_attn.v_proj",
+      "v51_checkpoint_sha256": "a0b5f0fcf07f09a11800370b7528f86ad1850eeeaf7ae253adb6bf61abbdc33f",
+      "v52_container_sha256": "e2eae9346458d12bfd0c7a04ca649279f3813e2686f6b64ed80f6ecd6d6cdff3",
+      "grid_code_weight_equal_inherited": true,
+      "all_rows_terminal_check_in_source": true,
+      "native_current_reference_matches_historical_input_hash": true
+    },
+    {
+      "group": "qkv",
+      "module": "self_attn.q_proj",
+      "v51_checkpoint_sha256": "a0b5f0fcf07f09a11800370b7528f86ad1850eeeaf7ae253adb6bf61abbdc33f",
+      "v52_container_sha256": "e2eae9346458d12bfd0c7a04ca649279f3813e2686f6b64ed80f6ecd6d6cdff3",
+      "grid_code_weight_equal_inherited": true,
+      "all_rows_terminal_check_in_source": true,
+      "native_current_reference_matches_historical_input_hash": true
+    },
+    {
+      "group": "o",
+      "module": "self_attn.o_proj",
+      "v51_checkpoint_sha256": "c912dc33c89790a9f21e90aff9f3531d6bbe266403d44f9a177703605bfd7a36",
+      "v52_container_sha256": "0d0bf0743ff69f16f28282e0da8c6eccc70dc5704e7757ee221457a1073c542f",
+      "grid_code_weight_equal_inherited": true,
+      "all_rows_terminal_check_in_source": true,
+      "native_current_reference_matches_historical_input_hash": true
+    },
+    {
+      "group": "up_gate",
+      "module": "mlp.up_proj",
+      "v51_checkpoint_sha256": "35a6e16b5e94ab2524b7d856b0d5e6494999a1ecc50faf2525ecd37192181491",
+      "v52_container_sha256": "3f8c0dec2f85afcc9f817d7f5d1abbbae3a75987660f7bf445d300b030a5554d",
+      "grid_code_weight_equal_inherited": true,
+      "all_rows_terminal_check_in_source": true,
+      "native_current_reference_matches_historical_input_hash": true
+    },
+    {
+      "group": "up_gate",
+      "module": "mlp.gate_proj",
+      "v51_checkpoint_sha256": "35a6e16b5e94ab2524b7d856b0d5e6494999a1ecc50faf2525ecd37192181491",
+      "v52_container_sha256": "3f8c0dec2f85afcc9f817d7f5d1abbbae3a75987660f7bf445d300b030a5554d",
+      "grid_code_weight_equal_inherited": true,
+      "all_rows_terminal_check_in_source": true,
+      "native_current_reference_matches_historical_input_hash": true
+    },
+    {
+      "group": "down",
+      "module": "mlp.down_proj",
+      "v51_checkpoint_sha256": "cc37962839ffccee49f3ea87137bd384e9eb4fd693db6d11df2ab852a289bf91",
+      "v52_container_sha256": "55f85c30abfa83593390b4d8f4f814aef8c272f1c1135d4dd9dc81c1918d60ed",
+      "grid_code_weight_equal_inherited": true,
+      "all_rows_terminal_check_in_source": true,
+      "native_current_reference_matches_historical_input_hash": true
+    }
+  ]
+}

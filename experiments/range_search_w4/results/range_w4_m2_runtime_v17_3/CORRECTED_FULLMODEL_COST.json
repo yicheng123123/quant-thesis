@@ -1,0 +1,61 @@
+{
+  "status": "M2_COST_GO",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "calibration_documents": 128,
+  "sequence_length": 2048,
+  "formal_tokens": 262144,
+  "layers": 24,
+  "linear_modules": 168,
+  "output_rows": 304128,
+  "alpha_count": 10,
+  "row_alpha_scores": 3041280,
+  "full_linear_alpha_executions": 1680,
+  "execution_unit": "one full-shape GPTQ execution per alpha per Linear; all output rows are produced by each call",
+  "unique_activation_and_hessian_groups": 96,
+  "group_layout": "24 x [qkv shared input, o, up/gate shared input, down]",
+  "formula": "sum over 168 Linear: 10 full-Linear candidate GPTQ calls + all-row score/select/stitch/commit; add 96 unique input/H groups; sequential layer execution with dependency-local group activations; one set of checkpoint writes",
+  "conservative_components_seconds": {
+    "candidate_full_linear_gptq": 2106.702864007093,
+    "unique_group_hessian_build": 788.4721535984427,
+    "initial_input_activation_capture": 281.62178133303917,
+    "sequential_m2_full_model_forward": 391.9292266666889,
+    "dependency_group_boundary_replay_proxy": 2331.7870720196515,
+    "all_row_output_scoring_selection_stitch_commit": 1800.0,
+    "model_load": 3.904080400010571,
+    "checkpoint_and_io": 20.93983832465278
+  },
+  "conservative_total_seconds": 7725.357016349579,
+  "conservative_total_hours": 2.1459325045415496,
+  "gate_hours": 48,
+  "assumptions": {
+    "candidate_core": "retains v17.2 per-shape measured full-Linear alpha timings with the existing 2x conservative scenario; no v17.3 speedup credit",
+    "capture": "v15 FP activation capture 2.640204s at 48x128 tokens, scaled by token ratio 42.666667, sequence-shape factor 1.25, and 2x global safety",
+    "sequential_forward": "v15 quantized-prefix full forward 3.674337s at 48x128 tokens, token-scaled, sequence-shape factor 1.25, and 2x global safety",
+    "boundary_replay": "v15 replay of 16 target blocks scaled to 96 unique activation groups and formal token count, sequence-shape factor 1.25, and 2x global safety; deliberately conservative proxy",
+    "hessian": "v15 measured 2.053313s for 32 H builds at 4096 token rows; scaled to 96 shared-input H groups and formal tokens, 2x safety",
+    "scoring_stitch": "retains v17.2 15-minute central assumption, doubled; covers direct all-row score selection, rowwise stitch and commit pending matched-shape measurement",
+    "io": "retains v17.2 two 942.3 MiB checkpoint writes at 180 MiB/s with 2x safety"
+  },
+  "limitations": [
+    "No full-model M2 run was performed.",
+    "Full-sequence capture/replay estimates are extrapolated from v15 128-token runs, not matched 2048-token measurements.",
+    "The 96-group boundary replay proxy is intentionally conservative and may overlap the sequential forward work; it is retained as a separate upper-cost allowance.",
+    "The cost model does not claim measured full-model wall time."
+  ],
+  "supersedes": "v17.2 M2_COST_ESTIMATE.json for the full-model decision only; v17.2 files remain immutable",
+  "v17_2_cost_status": "M2_COST_NO_GO",
+  "v17_2_conservative_hours": 48.790149639536594,
+  "v17_2_invalid_terms": [
+    "133.076 seconds was copied from v15 prefix_native_quantization_seconds_measured, which is native GPTQ quantization time, not activation capture time.",
+    "HISTORICAL_TIMING_EVIDENCE.json contains no native_full_prefix_seconds key, so the v17.2 fallback hard-coded 133.076 seconds.",
+    "The 4x full-prefix refresh term treated four within-layer dependency boundaries as four extra complete full-model forward passes.",
+    "Hessian build scale counted 168 projections separately despite qkv and up/gate sharing their input and H; 96 unique group inputs are required."
+  ],
+  "source_hashes": {
+    "v17_2_M2_COST_ESTIMATE.json": "2da8de4255366a8cd3255e55c984b89318841d0cd7704f3357a7eb3f2a1314b8",
+    "v17_2_run_m2_smoke.py": "4ed35b8be32e13c15c6d63c7eb59fa5f67fd82b1fa3a3fd4a7fe6f1076cd291c",
+    "v15_COST_ESTIMATE.json": "e00641931e9b6e8908ad288a1fb7a12e45f36290b64f12ee3c86fcc59f1bb302",
+    "v16_FULLMODEL_SEARCH_PLAN.md": "304bc286d0b970d3584f6c360c28cd07c4659ec378794130d31f38d12503250d",
+    "row_stitch_audit": "1b7c23af771942cdfc1cb47f0411d4b1b6314a06a1ac185ea119465977a78bb0"
+  }
+}

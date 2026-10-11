@@ -1,0 +1,35 @@
+{
+  "name": "v21.3 Official AMP / GradScaler Semantics Audit",
+  "official_commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21_1\\M3\\checkpoints\\block_20\\omni_parameters.pth",
+  "checkpoint_sha256": "62c98139583c389483cd5e124fa261544ed84b615ef323683d8ae57d2567fd16",
+  "fixture": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_nan_audit_v21_2\\fixtures\\actual_l21.pt",
+  "fixture_sha256": "75188a9ff2804651e6d1a7e2e348f97324410f549914afaddbc2568b97acbaa8",
+  "fixture_provenance": "v21.2 native resume reconstruction from verified block20, captured L21 optimizer-init boundary; reused without redoing completed prefix",
+  "calibration_manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+  "native_scaler_source": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_baseline_v16\\official_source\\utils.py",
+  "default_scale_is_dynamic": true,
+  "single_step_boundary": "L21/epoch0/sample0 through upstream scaler.step/update, then stop",
+  "conditional_sequence_max_samples": 4,
+  "conditional_sequence_samples": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "sequence_preserves_optimizer_scaler_parameters_between_samples": true,
+  "all_updates_disposable": true,
+  "formal_committed_updates": 0,
+  "precision": "formal autocast FP16, FP32 LWC; no forced FP32 or manually fixed scale",
+  "forbidden": [
+    "formal resume",
+    "full epoch",
+    "LR/optimizer/quantizer change",
+    "sample retry",
+    "export",
+    "WT2/C4",
+    "T4"
+  ],
+  "new_writes": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_amp_audit_v21_3"
+}

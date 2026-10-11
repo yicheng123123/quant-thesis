@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "row": "L0R0",
+  "split_id": "S00",
+  "configuration": {
+    "gptqmodel": "2.2.0",
+    "alpha": 1.0,
+    "bits": 4,
+    "symmetric": true,
+    "group_size": 128,
+    "block_size": 128,
+    "damp_percent": 0.1,
+    "desc_act": false
+  },
+  "checks": {
+    "no_dead_columns": true,
+    "fp16_weight_equal": true,
+    "scale_equal": true,
+    "zero_equal": true,
+    "search_output_mse_equal": true,
+    "heldout_output_mse_equal": true
+  },
+  "differences": {
+    "weight_max_abs": 0.0,
+    "weight_mismatched_elements": 0,
+    "scale_max_abs": 0.0,
+    "zero_max_abs": 0.0
+  },
+  "native_search_sse": 0.0017886412097141147,
+  "custom_search_sse": 0.0017886412097141147,
+  "native_heldout_sse": 0.008871007710695267,
+  "custom_heldout_sse": 0.008871007710695267
+}

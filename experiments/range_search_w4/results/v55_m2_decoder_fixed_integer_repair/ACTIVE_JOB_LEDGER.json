@@ -1,0 +1,244 @@
+{
+  "cap_seconds": 12600.0,
+  "v51_charged_seconds": 657.305,
+  "segments": [
+    {
+      "label": "v51 row122 independent FP64 regression and prefix/source validation",
+      "pid": 49896,
+      "start_epoch": 1791484531.8500412,
+      "end_epoch": 1791484563.3085403,
+      "charged_seconds": 31.45849919319153
+    },
+    {
+      "label": "formal complete repair and deployment/evaluation",
+      "pid": 50604,
+      "start_epoch": 1791484652.7103772,
+      "end_epoch": 1791489059.671424,
+      "charged_seconds": 4406.961046695709
+    },
+    {
+      "label": "deployment continuation after config schema diagnosis",
+      "pid": 36316,
+      "start_epoch": 1791489434.0322797,
+      "end_epoch": 1791489446.4240804,
+      "charged_seconds": 12.39180064201355
+    },
+    {
+      "label": "deployment continuation after config schema diagnosis",
+      "pid": 6824,
+      "start_epoch": 1791489476.7490866,
+      "end_epoch": 1791489492.0753012,
+      "charged_seconds": 15.32621455192566
+    },
+    {
+      "label": "deployment continuation after config schema diagnosis",
+      "pid": 66180,
+      "start_epoch": 1791489570.2440891,
+      "end_epoch": 1791489716.504108,
+      "charged_seconds": 146.260018825531,
+      "forced_stop": true,
+      "charged_end_is_conservative_upper_bound": true,
+      "end_basis": "identity file mtime immediately before Stop-Process + total measured stop-command wall0.678968s"
+    },
+    {
+      "label": "bounded actual block0 prefix compatibility diagnosis after correctness stop",
+      "pid": 61068,
+      "start_epoch": 1791489863.0271606,
+      "end_epoch": 1791489871.7776072,
+      "charged_seconds": 8.750446557998657
+    },
+    {
+      "version": "v53",
+      "label": "v53 independent native-forward propagation and block0 source verification",
+      "pid": 67872,
+      "start_epoch": 1791518986.6076293,
+      "end_epoch": 1791519385.5828166,
+      "charged_seconds": 398.97518730163574
+    },
+    {
+      "version": "v54",
+      "label": "formal complete repair and deployment/evaluation",
+      "pid": 71352,
+      "start_epoch": 1791537326.0576966,
+      "end_epoch": 1791537326.0858226,
+      "charged_seconds": 0.028126001358032227
+    },
+    {
+      "version": "v54",
+      "label": "formal complete repair and deployment/evaluation",
+      "pid": 66636,
+      "start_epoch": 1791537502.5599513,
+      "end_epoch": 1791537790.7011251,
+      "charged_seconds": 288.1411738395691
+    },
+    {
+      "version": "v54",
+      "label": "v54 first runner failure before inner handler (CPU process wall; zero model/GPU calls)",
+      "charged_seconds": 14.442328929901123,
+      "cpu_only": true,
+      "model_loads": 0,
+      "GPU_calls": 0,
+      "basis": "FAILED_ATTEMPTS.jsonl elapsed_since_process_start; STARTUP_DIAGNOSTICS.json confirms zero model loads and GPU calls",
+      "conservative_common_cap_charge": true
+    },
+    {
+      "version": "v55",
+      "label": "v55 pre-run read-only source/protocol/checkpoint and GPU process audit",
+      "start_epoch": 1791540592.0367053,
+      "end_epoch": 1791540611.5367053,
+      "charged_seconds": 22.3,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "charge_basis": "CPU-only measured tool wall"
+    },
+    {
+      "version": "v55",
+      "label": "v55 preparation assertion failure before any model/GPU call",
+      "start_epoch": 1791540601.0367053,
+      "end_epoch": 1791540611.5367053,
+      "charged_seconds": 10.5,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "charge_basis": "CPU-only measured failed process wall"
+    },
+    {
+      "version": "v55",
+      "label": "v55 failed first preparation attempt before v55 directory existed",
+      "start_epoch": 1791540581.5367053,
+      "end_epoch": 1791540611.5367053,
+      "charged_seconds": 30.0,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "charge_basis": "CPU-only conservative cap charge; actual elapsed unavailable; no artifacts or GPU calls"
+    },
+    {
+      "version": "v55",
+      "label": "CPU-only isolated v55 preparation and resume-source audit",
+      "start_epoch": 1791540609.4689493,
+      "end_epoch": 1791540611.5407114,
+      "charged_seconds": 10.7,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "measurement": "preparation script perf_counter wall"
+    },
+    {
+      "version": "v55",
+      "label": "v55 static source/ledger audit before preparation",
+      "start_epoch": 1791540746.088887,
+      "end_epoch": 1791540749.388887,
+      "charged_seconds": 3.3,
+      "cpu_only": true,
+      "GPU_calls": 0
+    },
+    {
+      "version": "v55",
+      "label": "v55 frozen diff and environment preflight",
+      "start_epoch": 1791540741.788887,
+      "end_epoch": 1791540749.388887,
+      "charged_seconds": 7.6,
+      "cpu_only": true,
+      "GPU_calls": 0
+    },
+    {
+      "version": "v55",
+      "label": "v55 formal runner startup failure before budget hook",
+      "start_epoch": 1791540735.5478868,
+      "end_epoch": 1791540749.388887,
+      "charged_seconds": 13.841,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "failure_reason": "KeyError from legacy fixed-charge record lacking start_epoch; no model load/GPU compute"
+    },
+    {
+      "version": "v55",
+      "label": "v55 failure log and shared-ledger inspection",
+      "start_epoch": 1791540746.288887,
+      "end_epoch": 1791540749.388887,
+      "charged_seconds": 3.1,
+      "cpu_only": true,
+      "GPU_calls": 0
+    },
+    {
+      "version": "v55",
+      "label": "v55 ledger reader compatibility fix and lock refresh",
+      "start_epoch": 1791540748.3881094,
+      "end_epoch": 1791540749.388887,
+      "charged_seconds": 1.0007774999830872,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "basis": "measured patch script wall plus 1s guard"
+    },
+    {
+      "version": "v55",
+      "label": "v55 final pre-budget launcher and GPU-idle recheck",
+      "start_epoch": 1791540744.388887,
+      "end_epoch": 1791540749.388887,
+      "charged_seconds": 5.0,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "basis": "conservative fixed pre-start allowance"
+    },
+    {
+      "version": "v55",
+      "label": "v55 complete repair and deployment/evaluation",
+      "pid": 69928,
+      "start_epoch": 1791540772.4429002,
+      "end_epoch": 1791545156.0604284,
+      "charged_seconds": 4383.6175282001495
+    },
+    {
+      "version": "v55",
+      "label": "v55 fresh frozen WT2 and C4 evaluation continuation",
+      "pid": 69928,
+      "start_epoch": 1791545727.9216664,
+      "end_epoch": 1791546216.0924325,
+      "charged_seconds": 488.1707661151886
+    },
+    {
+      "version": "v55",
+      "label": "v55 CPU-only diagnostics, prior aggregation failure, and evaluator launcher work outside active budget hook",
+      "charged_seconds": 45.0,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "basis": "Conservative charge for read-only evaluator inspection, failed CPU-only metrics aggregation and patching, and launcher/file-write work outside active budget hooks."
+    },
+    {
+      "version": "v55",
+      "label": "v55 CPU-only final hash, quality, cost, and report aggregation",
+      "charged_seconds": 28.141649961471558,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "measured_script_seconds": 8.141649961471558,
+      "conservative_closeout_pad_seconds": 20.0
+    },
+    {
+      "version": "v55",
+      "label": "v55 final status and report wording correction",
+      "charged_seconds": 5.001418828964233,
+      "cpu_only": true,
+      "GPU_calls": 0,
+      "measured_script_seconds": 0.0014188289642333984,
+      "conservative_closeout_pad_seconds": 5.0,
+      "basis": "CPU-only final metadata correction; model, checkpoint, and PPL outputs unchanged."
+    }
+  ],
+  "idle_intervals_excluded": true,
+  "v53_start_shared_charged_seconds": 5278.45302646637,
+  "v53_new_gpu_cap_seconds": 600,
+  "prior_ledger_read_only_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v52_m2_fast_integer_repair_fp64_initial_review\\ACTIVE_JOB_LEDGER.json",
+  "prior_ledger_sha256": "6bea16d82501dba83248359e3f5c7a6c3c8dace1e597069b090ec6dcdd651ad8",
+  "user_reported_prior_seconds": 5278.453,
+  "v54_accounting_adjustment_note": "The first 14.44232893s CPU-only launcher failure is included in the shared cap total per v54 instruction; it is not GPU execution. The later 0.028126s startup segment and 288.14117384s formal segment are already recorded.",
+  "budget_extension": {
+    "old_cap_seconds": 10800.0,
+    "added_seconds": 1800.0,
+    "new_cap_seconds": 12600.0,
+    "inherited_used_seconds": 5980.039842538834,
+    "inherited_remaining_under_new_cap_seconds": 6619.960157461166,
+    "not_a_reset": true
+  },
+  "v55_pre_run_shared_elapsed_seconds": 6087.381620038817,
+  "v55_cpu_only_preparation_seconds": 2.0717621999792755,
+  "v55_cpu_only_charges_before_formal_start": 102.34177749998344,
+  "finalized_unix": 1791546642.143293
+}

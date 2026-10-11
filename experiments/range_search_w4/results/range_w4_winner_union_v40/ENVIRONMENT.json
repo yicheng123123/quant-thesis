@@ -1,0 +1,129 @@
+{
+  "captured_utc": "2026-10-04T19:16:35.232944+00:00",
+  "python_executable": "E:\\quant-thesis\\.venv-gptq\\Scripts\\python.exe",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "torch": "2.6.0+cu124",
+  "torch_cuda_build": "12.4",
+  "cuda_device_query": "Deferred to pilot; no CUDA context initialized by build_v40.py",
+  "v18_environment_reference": {
+    "status": "QUANTIZATION_COMPLETE",
+    "started_utc": "2026-10-01T04:57:56.146484+00:00",
+    "m1": {
+      "method": "M1",
+      "status": "COMPLETE",
+      "layers": 24,
+      "linear_modules": 168,
+      "output_rows": 304128,
+      "resume_start_layer": 0,
+      "formal_counts": {
+        "full_linear_alpha_candidate_executions": 0,
+        "row_alpha_score_slots": 0,
+        "alpha1_native_parity_reference_executions": 0,
+        "layers_completed_before_this_process": 0
+      },
+      "final_model_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\M1\\checkpoint\\final",
+      "final_model_sha256": "3678f867d064abc9730d392f279516223ef17de16351c577e0f1977e9b7bba33",
+      "save_seconds": 0.7717043000156991,
+      "reload_correctness": {
+        "pass": true,
+        "input_tokens": 64,
+        "rtol": 1e-05,
+        "atol": 1e-06,
+        "max_abs_logit_difference": 0.0,
+        "mean_abs_logit_difference": 0.0
+      },
+      "quantization_correctness": {
+        "pass": true,
+        "method": "M1",
+        "layers": 24,
+        "linear_modules": 168,
+        "output_rows": 304128,
+        "selected_alpha_grid": [
+          1.0
+        ],
+        "finite_weights_scales_zeros_losses": true,
+        "scale_zero_shapes_correct": true,
+        "g_idx_native": true,
+        "per_row_search_not_worse_than_alpha1_on_search": null
+      },
+      "wall_seconds_including_load_replay_save": 648.8761009000009,
+      "completed_utc": "2026-10-01T05:08:45.940897+00:00"
+    },
+    "m2": {
+      "method": "M2",
+      "status": "COMPLETE",
+      "layers": 24,
+      "linear_modules": 168,
+      "output_rows": 304128,
+      "resume_start_layer": 0,
+      "formal_counts": {
+        "full_linear_alpha_candidate_executions": 1680,
+        "row_alpha_score_slots": 3041280,
+        "alpha1_native_parity_reference_executions": 35,
+        "layers_completed_before_this_process": 0
+      },
+      "final_model_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\M2\\checkpoint\\final",
+      "final_model_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+      "save_seconds": 0.76384220001637,
+      "reload_correctness": {
+        "pass": true,
+        "input_tokens": 64,
+        "rtol": 1e-05,
+        "atol": 1e-06,
+        "max_abs_logit_difference": 0.0,
+        "mean_abs_logit_difference": 0.0
+      },
+      "quantization_correctness": {
+        "pass": true,
+        "method": "M2",
+        "layers": 24,
+        "linear_modules": 168,
+        "output_rows": 304128,
+        "selected_alpha_grid": [
+          0.1,
+          0.2,
+          0.3,
+          0.4,
+          0.5,
+          0.6,
+          0.7,
+          0.8,
+          0.9,
+          1.0
+        ],
+        "finite_weights_scales_zeros_losses": true,
+        "scale_zero_shapes_correct": true,
+        "g_idx_native": true,
+        "per_row_search_not_worse_than_alpha1_on_search": true
+      },
+      "wall_seconds_including_load_replay_save": 2115.9353341000096,
+      "completed_utc": "2026-10-01T05:44:02.780004+00:00"
+    },
+    "formal_work_units": {
+      "m2_full_linear_alpha_candidate_executions": 1680,
+      "m2_row_alpha_score_slots": 3041280,
+      "m2_auxiliary_alpha1_native_parity_references": 35,
+      "m1_native_full_linear_gptq_executions": 168,
+      "m2_output_rows": 304128
+    },
+    "overall_quantization_wall_seconds": 2770.9410771999974,
+    "cuda_peak_allocated_bytes": 2347887104,
+    "cuda_peak_reserved_bytes": 2684354560,
+    "timing_csv": "FORMAL_TIMING.csv",
+    "row_and_candidate_artifacts": {
+      "M1_row_results": "M1_ROW_RESULTS.csv",
+      "M2_row_results": "M2_ROW_RESULTS.csv",
+      "M1_module_summary": "M1_MODULE_SUMMARY.csv",
+      "M2_module_summary": "M2_MODULE_SUMMARY.csv",
+      "M2_alpha_distribution": "M2_ALPHA_DISTRIBUTION.csv",
+      "M2_candidate_loss_arrays": "raw/M2_candidate_losses/layer_XX.npz"
+    },
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "torch": "2.6.0+cu124",
+    "transformers": "4.49.0",
+    "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "completed_utc": "2026-10-01T05:44:07.155221+00:00"
+  }
+}

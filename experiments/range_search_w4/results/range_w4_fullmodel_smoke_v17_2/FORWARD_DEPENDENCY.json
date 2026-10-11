@@ -1,0 +1,39 @@
+{
+  "decoder_forward_graph": "input_layernorm -> independent Q/K/V projections -> rotary Q/K -> causal attention/value mix -> o_proj -> residual -> post_attention_layernorm -> independent up/gate projections -> SiLU(gate)*up -> down_proj -> residual",
+  "dependencies": {
+    "q_proj": [
+      "input_layernorm"
+    ],
+    "k_proj": [
+      "input_layernorm"
+    ],
+    "v_proj": [
+      "input_layernorm"
+    ],
+    "o_proj": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "rotary",
+      "causal_attention"
+    ],
+    "up_proj": [
+      "o_proj",
+      "attention_residual",
+      "post_attention_layernorm"
+    ],
+    "gate_proj": [
+      "o_proj",
+      "attention_residual",
+      "post_attention_layernorm"
+    ],
+    "down_proj": [
+      "up_proj",
+      "gate_proj",
+      "silu_gate_product"
+    ]
+  },
+  "qkv_share_input_exact": true,
+  "up_gate_share_input_exact": true,
+  "warning": "Quantizer group ordering [k,v,q] does not serialize the network as k-output -> v-input -> q-input."
+}

@@ -1,0 +1,2282 @@
+{
+  "mode": "D3",
+  "quantizers": {
+    "native_layer.self_attn.q_proj": {
+      "raw_weight": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.2294921875,
+        "max": 0.228515625,
+        "mean": -9.480167619233037e-06,
+        "std": 0.021272374169327257,
+        "max_finite_abs": 0.2294921875,
+        "mean_finite_abs": 0.014529400224852664
+      },
+      "raw_min": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.2294921875,
+        "max": -0.0062255859375,
+        "mean": -0.05704837915848712,
+        "std": 0.029421692195018796,
+        "max_finite_abs": 0.2294921875,
+        "mean_finite_abs": 0.05704837915848712
+      },
+      "raw_max": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.00543212890625,
+        "max": 0.228515625,
+        "mean": 0.05658561842782156,
+        "std": 0.028720619440192437,
+        "max_finite_abs": 0.228515625,
+        "mean_finite_abs": 0.05658561842782156
+      },
+      "lower_clipping_bound": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.22536449134349823,
+        "max": -0.006113611161708832,
+        "mean": -0.056022293548582576,
+        "std": 0.028892506703644898,
+        "max_finite_abs": 0.22536449134349823,
+        "mean_finite_abs": 0.056022293548582576
+      },
+      "upper_clipping_bound": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.005334425251930952,
+        "max": 0.22440548241138458,
+        "mean": 0.05556785607946874,
+        "std": 0.028204043522671026,
+        "max_finite_abs": 0.22440548241138458,
+        "mean_finite_abs": 0.05556785607946874
+      },
+      "lowbound_factor": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 3.9999999999999996,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 3.9999999999999996
+      },
+      "upbound_factor": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 3.9999999999999996,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 3.9999999999999996
+      },
+      "sigmoid_low_factor": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972228,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972228
+      },
+      "sigmoid_up_factor": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972228,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972228
+      },
+      "scale": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0009110479732044041,
+        "max": 0.025765076279640198,
+        "mean": 0.007439343695193888,
+        "std": 0.003511931683160846,
+        "max_finite_abs": 0.025765076279640198,
+        "mean_finite_abs": 0.007439343695193888
+      },
+      "rounded_zero_point": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 2.0,
+        "max": 13.0,
+        "mean": 7.514030612244897,
+        "std": 1.3128804906526563,
+        "max_finite_abs": 13.0,
+        "mean_finite_abs": 7.514030612244897
+      },
+      "scale_at_clipmin_count": 0,
+      "inverse_scale_absmax": 1097.6370849609375,
+      "normalized_weight_and_round_input": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -12.758285522460938,
+        "max": 13.153244018554688,
+        "mean": -0.0027843772220455722,
+        "std": 2.649447607785571,
+        "max_finite_abs": 13.153244018554688,
+        "mean_finite_abs": 1.9866073904280268
+      },
+      "round_output": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -13.0,
+        "max": 13.0,
+        "mean": -0.00299445950255102,
+        "std": 2.6650838815826647,
+        "max_finite_abs": 13.0,
+        "mean_finite_abs": 1.9670609454719385
+      },
+      "clamp_input": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -1.0,
+        "max": 16.0,
+        "mean": 7.511036152742347,
+        "std": 2.935898437597943,
+        "max_finite_abs": 16.0,
+        "mean_finite_abs": 7.513263313137754
+      },
+      "clamp_output": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0,
+        "max": 15.0,
+        "mean": 7.5111196089764025,
+        "std": 2.9300509415830938,
+        "max_finite_abs": 15.0,
+        "mean_finite_abs": 7.5111196089764025
+      },
+      "intermediate_provenance": "bounds/clamp intermediates recomputed for diagnostics with identical no-grad formulas; scale/rounded_zero/dequant are actual native forward tensors",
+      "dequant_output": {
+        "present": true,
+        "shape": [
+          896,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.23188568651676178,
+        "max": 0.2175007164478302,
+        "mean": -1.1828967409651828e-05,
+        "std": 0.0213517182624368,
+        "max_finite_abs": 0.23188568651676178,
+        "mean_finite_abs": 0.014360956471600987
+      }
+    },
+    "native_layer.self_attn.k_proj": {
+      "raw_weight": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.1611328125,
+        "max": 0.185546875,
+        "mean": 2.184530343843757e-05,
+        "std": 0.019000061706492495,
+        "max_finite_abs": 0.185546875,
+        "mean_finite_abs": 0.013778593854242769
+      },
+      "raw_min": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.1611328125,
+        "max": -0.0189208984375,
+        "mean": -0.05471406664167131,
+        "std": 0.022898123830190773,
+        "max_finite_abs": 0.1611328125,
+        "mean_finite_abs": 0.05471406664167131
+      },
+      "raw_max": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.01708984375,
+        "max": 0.185546875,
+        "mean": 0.055594171796526225,
+        "std": 0.025008754710258502,
+        "max_finite_abs": 0.185546875,
+        "mean_finite_abs": 0.055594171796526225
+      },
+      "lower_clipping_bound": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.158234640955925,
+        "max": -0.01858058199286461,
+        "mean": -0.05372996655725208,
+        "std": 0.022486272877312242,
+        "max_finite_abs": 0.158234640955925,
+        "mean_finite_abs": 0.05372996655725208
+      },
+      "upper_clipping_bound": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.01678246259689331,
+        "max": 0.1822095811367035,
+        "mean": 0.054594241762450625,
+        "std": 0.02455894115904903,
+        "max_finite_abs": 0.1822095811367035,
+        "mean_finite_abs": 0.054594241762450625
+      },
+      "lowbound_factor": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "upbound_factor": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "sigmoid_low_factor": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972229,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972229
+      },
+      "sigmoid_up_factor": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972229,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972229
+      },
+      "scale": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0026692107785493135,
+        "max": 0.018348826095461845,
+        "mean": 0.0072216142502189275,
+        "std": 0.002730299859073063,
+        "max_finite_abs": 0.018348826095461845,
+        "mean_finite_abs": 0.0072216142502189275
+      },
+      "rounded_zero_point": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 2.0,
+        "max": 12.0,
+        "mean": 7.4642857142857135,
+        "std": 1.3266066500970182,
+        "max_finite_abs": 12.0,
+        "mean_finite_abs": 7.4642857142857135
+      },
+      "scale_at_clipmin_count": 0,
+      "inverse_scale_absmax": 374.642578125,
+      "normalized_weight_and_round_input": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -12.545982360839844,
+        "max": 13.199316024780273,
+        "mean": 0.0016621525667759635,
+        "std": 2.6464180769414516,
+        "max_finite_abs": 13.199316024780273,
+        "mean_finite_abs": 1.9978462364536411
+      },
+      "round_output": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -13.0,
+        "max": 13.0,
+        "mean": 0.00238037109375,
+        "std": 2.661336958967856,
+        "max_finite_abs": 13.0,
+        "mean_finite_abs": 1.9799368722098214
+      },
+      "clamp_input": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -1.0,
+        "max": 16.0,
+        "mean": 7.4666660853794635,
+        "std": 2.935653990573176,
+        "max_finite_abs": 16.0,
+        "mean_finite_abs": 7.46893310546875
+      },
+      "clamp_output": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0,
+        "max": 15.0,
+        "mean": 7.4668491908482135,
+        "std": 2.929971653814445,
+        "max_finite_abs": 15.0,
+        "mean_finite_abs": 7.4668491908482135
+      },
+      "intermediate_provenance": "bounds/clamp intermediates recomputed for diagnostics with identical no-grad formulas; scale/rounded_zero/dequant are actual native forward tensors",
+      "dequant_output": {
+        "present": true,
+        "shape": [
+          128,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.162070631980896,
+        "max": 0.1827450394630432,
+        "mean": 3.1480640436549425e-05,
+        "std": 0.01907559334106081,
+        "max_finite_abs": 0.1827450394630432,
+        "mean_finite_abs": 0.013622842625855874
+      }
+    },
+    "native_layer.self_attn.v_proj": {
+      "raw_weight": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.298828125,
+        "max": 0.244140625,
+        "mean": -3.0432744616908686e-05,
+        "std": 0.029867976394361916,
+        "max_finite_abs": 0.298828125,
+        "mean_finite_abs": 0.0217752037455544
+      },
+      "raw_min": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.298828125,
+        "max": -0.042724609375,
+        "mean": -0.10173361642020089,
+        "std": 0.03199018951828629,
+        "max_finite_abs": 0.298828125,
+        "mean_finite_abs": 0.10173361642020089
+      },
+      "raw_max": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.047607421875,
+        "max": 0.244140625,
+        "mean": 0.10111972263881137,
+        "std": 0.030949404820458846,
+        "max_finite_abs": 0.244140625,
+        "mean_finite_abs": 0.10111972263881137
+      },
+      "lower_clipping_bound": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.2934533357620239,
+        "max": -0.04195615276694298,
+        "mean": -0.09990381153849219,
+        "std": 0.03141480652340205,
+        "max_finite_abs": 0.2934533357620239,
+        "mean_finite_abs": 0.09990381153849219
+      },
+      "upper_clipping_bound": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.04675114527344704,
+        "max": 0.23974944651126862,
+        "mean": 0.0993009593179782,
+        "std": 0.030392741497964858,
+        "max_finite_abs": 0.23974944651126862,
+        "mean_finite_abs": 0.0993009593179782
+      },
+      "lowbound_factor": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "upbound_factor": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "sigmoid_low_factor": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972229,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972229
+      },
+      "sigmoid_up_factor": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972229,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972229
+      },
+      "scale": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.006489218678325415,
+        "max": 0.030687931925058365,
+        "mean": 0.013280318765152644,
+        "std": 0.0030128022247996626,
+        "max_finite_abs": 0.030687931925058365,
+        "mean_finite_abs": 0.013280318765152644
+      },
+      "rounded_zero_point": {
+        "present": true,
+        "shape": [
+          896,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 896,
+        "finite_count": 896,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 3.0,
+        "max": 12.0,
+        "mean": 7.5,
+        "std": 1.5294723646688468,
+        "max_finite_abs": 12.0,
+        "mean_finite_abs": 7.5
+      },
+      "scale_at_clipmin_count": 0,
+      "inverse_scale_absmax": 154.1017608642578,
+      "normalized_weight_and_round_input": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -11.747040748596191,
+        "max": 11.84876537322998,
+        "mean": -0.0009596063694575456,
+        "std": 2.3345133951009265,
+        "max_finite_abs": 11.84876537322998,
+        "mean_finite_abs": 1.7064592161773753
+      },
+      "round_output": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -12.0,
+        "max": 12.0,
+        "mean": -0.00018310546875,
+        "std": 2.3509765750724427,
+        "max_finite_abs": 12.0,
+        "mean_finite_abs": 1.6833583286830356
+      },
+      "clamp_input": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -1.0,
+        "max": 16.0,
+        "mean": 7.49981689453125,
+        "std": 2.755615835483428,
+        "max_finite_abs": 16.0,
+        "mean_finite_abs": 7.502205984933036
+      },
+      "clamp_output": {
+        "present": true,
+        "shape": [
+          896,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0,
+        "max": 15.0,
+        "mean": 7.499904087611607,
+        "std": 2.748924935307001,
+        "max_finite_abs": 15.0,
+        "mean_finite_abs": 7.499904087611607
+      },
+      "intermediate_provenance": "bounds/clamp intermediates recomputed for diagnostics with identical no-grad formulas; scale/rounded_zero/dequant are actual native forward tensors",
+      "dequant_output": {
+        "present": true,
+        "shape": [
+          128,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 114688,
+        "finite_count": 114688,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.30687931180000305,
+        "max": 0.2487001121044159,
+        "mean": -2.146042213472096e-05,
+        "std": 0.029990995195990886,
+        "max_finite_abs": 0.30687931180000305,
+        "mean_finite_abs": 0.021420888632377455
+      }
+    },
+    "native_layer.self_attn.o_proj": {
+      "raw_weight": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.3359375,
+        "max": 0.3125,
+        "mean": -1.5503649091424077e-06,
+        "std": 0.02197901540108335,
+        "max_finite_abs": 0.3359375,
+        "mean_finite_abs": 0.016547330010715604
+      },
+      "raw_min": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.3359375,
+        "max": -0.01031494140625,
+        "mean": -0.057735394458381495,
+        "std": 0.01832261800030006,
+        "max_finite_abs": 0.3359375,
+        "mean_finite_abs": 0.057735394458381495
+      },
+      "raw_max": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.01055908203125,
+        "max": 0.3125,
+        "mean": 0.05797452342753507,
+        "std": 0.018719954663559007,
+        "max_finite_abs": 0.3125,
+        "mean_finite_abs": 0.05797452342753507
+      },
+      "lower_clipping_bound": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.3298952579498291,
+        "max": -0.010129414498806,
+        "mean": -0.056696952022915005,
+        "std": 0.017993063121927742,
+        "max_finite_abs": 0.3298952579498291,
+        "mean_finite_abs": 0.056696952022915005
+      },
+      "upper_clipping_bound": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.010369163937866688,
+        "max": 0.30687931180000305,
+        "mean": 0.05693177992331899,
+        "std": 0.018383253171848895,
+        "max_finite_abs": 0.30687931180000305,
+        "mean_finite_abs": 0.05693177992331899
+      },
+      "lowbound_factor": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 3.9999999999999996,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 3.9999999999999996
+      },
+      "upbound_factor": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 3.9999999999999996,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 3.9999999999999996
+      },
+      "sigmoid_low_factor": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972228,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972228
+      },
+      "sigmoid_up_factor": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972228,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972228
+      },
+      "scale": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0013665718724951148,
+        "max": 0.0424516387283802,
+        "mean": 0.007575249200420571,
+        "std": 0.002226931049951023,
+        "max_finite_abs": 0.0424516387283802,
+        "mean_finite_abs": 0.007575249200420571
+      },
+      "rounded_zero_point": {
+        "present": true,
+        "shape": [
+          6272,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 6272,
+        "finite_count": 6272,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 11.0,
+        "mean": 7.482940051020408,
+        "std": 0.93423535195083,
+        "max_finite_abs": 11.0,
+        "mean_finite_abs": 7.482940051020408
+      },
+      "scale_at_clipmin_count": 0,
+      "inverse_scale_absmax": 731.758056640625,
+      "normalized_weight_and_round_input": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -10.759560585021973,
+        "max": 11.45134162902832,
+        "mean": -0.0011661072056193176,
+        "std": 2.837834652450818,
+        "max_finite_abs": 11.45134162902832,
+        "mean_finite_abs": 2.2108214563314754
+      },
+      "round_output": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -11.0,
+        "max": 11.0,
+        "mean": -0.0017849669164540815,
+        "std": 2.852273430157471,
+        "max_finite_abs": 11.0,
+        "mean_finite_abs": 2.1971149055325254
+      },
+      "clamp_input": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -1.0,
+        "max": 16.0,
+        "mean": 7.481155084103953,
+        "std": 2.98028164810862,
+        "max_finite_abs": 16.0,
+        "mean_finite_abs": 7.483469437579719
+      },
+      "clamp_output": {
+        "present": true,
+        "shape": [
+          6272,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0,
+        "max": 15.0,
+        "mean": 7.4812759088010194,
+        "std": 2.9743884717463773,
+        "max_finite_abs": 15.0,
+        "mean_finite_abs": 7.4812759088010194
+      },
+      "intermediate_provenance": "bounds/clamp intermediates recomputed for diagnostics with identical no-grad formulas; scale/rounded_zero/dequant are actual native forward tensors",
+      "dequant_output": {
+        "present": true,
+        "shape": [
+          896,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 802816,
+        "finite_count": 802816,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.3396131098270416,
+        "max": 0.2971614599227905,
+        "mean": -4.742126614906524e-06,
+        "std": 0.02205050727178098,
+        "max_finite_abs": 0.3396131098270416,
+        "mean_finite_abs": 0.016424700478751362
+      }
+    },
+    "native_layer.mlp.gate_proj": {
+      "raw_weight": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.46875,
+        "max": 0.58203125,
+        "mean": -1.6609509623236602e-05,
+        "std": 0.02067434146570315,
+        "max_finite_abs": 0.58203125,
+        "mean_finite_abs": 0.016067477701776932
+      },
+      "raw_min": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.46875,
+        "max": -0.0223388671875,
+        "mean": -0.05475843400883495,
+        "std": 0.017020801625927198,
+        "max_finite_abs": 0.46875,
+        "mean_finite_abs": 0.05475843400883495
+      },
+      "raw_max": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.02001953125,
+        "max": 0.58203125,
+        "mean": 0.05469647027496108,
+        "std": 0.01651558870702184,
+        "max_finite_abs": 0.58203125,
+        "mean_finite_abs": 0.05469647027496108
+      },
+      "lower_clipping_bound": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.4603189527988434,
+        "max": -0.02193707413971424,
+        "mean": -0.053773535820959686,
+        "std": 0.016714661542657824,
+        "max_finite_abs": 0.4603189527988434,
+        "mean_finite_abs": 0.053773535820959686
+      },
+      "upper_clipping_bound": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.019659455865621567,
+        "max": 0.5715627074241638,
+        "mean": 0.0537126865863793,
+        "std": 0.01621853543941981,
+        "max_finite_abs": 0.5715627074241638,
+        "mean_finite_abs": 0.0537126865863793
+      },
+      "lowbound_factor": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "upbound_factor": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "sigmoid_low_factor": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972229,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972229
+      },
+      "sigmoid_up_factor": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972229,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972229
+      },
+      "scale": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0034603842068463564,
+        "max": 0.06879211962223053,
+        "mean": 0.007165748537588108,
+        "std": 0.0019192453327158438,
+        "max_finite_abs": 0.06879211962223053,
+        "mean_finite_abs": 0.007165748537588108
+      },
+      "rounded_zero_point": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 2.0,
+        "max": 13.0,
+        "mean": 7.493744125939849,
+        "std": 0.9819007572674798,
+        "max_finite_abs": 13.0,
+        "mean_finite_abs": 7.493744125939849
+      },
+      "scale_at_clipmin_count": 0,
+      "inverse_scale_absmax": 288.9852600097656,
+      "normalized_weight_and_round_input": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -13.268960952758789,
+        "max": 13.231080055236816,
+        "mean": -0.001077443958107741,
+        "std": 2.8988365073215174,
+        "max_finite_abs": 13.268960952758789,
+        "mean_finite_abs": 2.289292965860037
+      },
+      "round_output": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -13.0,
+        "max": 13.0,
+        "mean": -0.0012346999089520676,
+        "std": 2.9130549306400018,
+        "max_finite_abs": 13.0,
+        "mean_finite_abs": 2.2770700096187735
+      },
+      "clamp_input": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -1.0,
+        "max": 16.0,
+        "mean": 7.492509426030897,
+        "std": 3.0486334524019134,
+        "max_finite_abs": 16.0,
+        "mean_finite_abs": 7.494798473845747
+      },
+      "clamp_output": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0,
+        "max": 15.0,
+        "mean": 7.492573444108317,
+        "std": 3.0427892477579044,
+        "max_finite_abs": 15.0,
+        "mean_finite_abs": 7.492573444108317
+      },
+      "intermediate_provenance": "bounds/clamp intermediates recomputed for diagnostics with identical no-grad formulas; scale/rounded_zero/dequant are actual native forward tensors",
+      "dequant_output": {
+        "present": true,
+        "shape": [
+          4864,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.4815448522567749,
+        "max": 0.5503369569778442,
+        "mean": -1.7171582086275622e-05,
+        "std": 0.020738149697719935,
+        "max_finite_abs": 0.5503369569778442,
+        "mean_finite_abs": 0.0159600429630783
+      }
+    },
+    "native_layer.mlp.up_proj": {
+      "raw_weight": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.7578125,
+        "max": 0.72265625,
+        "mean": -1.2468082649888002e-05,
+        "std": 0.020801237184737927,
+        "max_finite_abs": 0.7578125,
+        "mean_finite_abs": 0.016221141170177374
+      },
+      "raw_min": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.7578125,
+        "max": -0.0167236328125,
+        "mean": -0.05493883979051633,
+        "std": 0.014128237393524016,
+        "max_finite_abs": 0.7578125,
+        "mean_finite_abs": 0.05493883979051633
+      },
+      "raw_max": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0146484375,
+        "max": 0.72265625,
+        "mean": 0.05478625548513312,
+        "std": 0.014401242395458985,
+        "max_finite_abs": 0.72265625,
+        "mean_finite_abs": 0.05478625548513312
+      },
+      "lower_clipping_bound": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.744182288646698,
+        "max": -0.01642283797264099,
+        "mean": -0.05395069679092612,
+        "std": 0.013874123502824218,
+        "max_finite_abs": 0.744182288646698,
+        "mean_finite_abs": 0.05395069679092612
+      },
+      "upper_clipping_bound": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.014384967274963856,
+        "max": 0.7096583843231201,
+        "mean": 0.053800856917042894,
+        "std": 0.01414221828703526,
+        "max_finite_abs": 0.7096583843231201,
+        "mean_finite_abs": 0.053800856917042894
+      },
+      "lowbound_factor": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "upbound_factor": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "sigmoid_low_factor": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972229,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972229
+      },
+      "sigmoid_up_factor": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972229,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972229
+      },
+      "scale": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0022936032619327307,
+        "max": 0.09487684816122055,
+        "mean": 0.007183437293895253,
+        "std": 0.0015889629897051106,
+        "max_finite_abs": 0.09487684816122055,
+        "mean_finite_abs": 0.007183437293895253
+      },
+      "rounded_zero_point": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 2.0,
+        "max": 13.0,
+        "mean": 7.5063733552631575,
+        "std": 0.9666158122351353,
+        "max_finite_abs": 13.0,
+        "mean_finite_abs": 7.5063733552631575
+      },
+      "scale_at_clipmin_count": 0,
+      "inverse_scale_absmax": 435.9952087402344,
+      "normalized_weight_and_round_input": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -13.533954620361328,
+        "max": 12.879307746887207,
+        "mean": -0.0019544656254634907,
+        "std": 2.8999096591635998,
+        "max_finite_abs": 13.533954620361328,
+        "mean_finite_abs": 2.2892275151882724
+      },
+      "round_output": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -14.0,
+        "max": 13.0,
+        "mean": -0.001877634148848684,
+        "std": 2.9144733259306985,
+        "max_finite_abs": 14.0,
+        "mean_finite_abs": 2.2771567437881814
+      },
+      "clamp_input": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -1.0,
+        "max": 16.0,
+        "mean": 7.504495721114309,
+        "std": 3.046179217782381,
+        "max_finite_abs": 16.0,
+        "mean_finite_abs": 7.50681459814086
+      },
+      "clamp_output": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0,
+        "max": 15.0,
+        "mean": 7.504562492657424,
+        "std": 3.04025879396531,
+        "max_finite_abs": 15.0,
+        "mean_finite_abs": 7.504562492657424
+      },
+      "intermediate_provenance": "bounds/clamp intermediates recomputed for diagnostics with identical no-grad formulas; scale/rounded_zero/dequant are actual native forward tensors",
+      "dequant_output": {
+        "present": true,
+        "shape": [
+          4864,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.7590147852897644,
+        "max": 0.7157959938049316,
+        "mean": -1.1328651837969656e-05,
+        "std": 0.020864404485588437,
+        "max_finite_abs": 0.7590147852897644,
+        "mean_finite_abs": 0.016116017336977928
+      }
+    },
+    "native_layer.mlp.down_proj": {
+      "raw_weight": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.482421875,
+        "max": 0.625,
+        "mean": -4.94733698483595e-06,
+        "std": 0.019790125219080655,
+        "max_finite_abs": 0.625,
+        "mean_finite_abs": 0.015423954105169552
+      },
+      "raw_min": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.482421875,
+        "max": -0.0106201171875,
+        "mean": -0.05222868740110469,
+        "std": 0.013711969128826199,
+        "max_finite_abs": 0.482421875,
+        "mean_finite_abs": 0.05222868740110469
+      },
+      "raw_max": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0106201171875,
+        "max": 0.625,
+        "mean": 0.052333057374882516,
+        "std": 0.01482268999314028,
+        "max_finite_abs": 0.625,
+        "mean_finite_abs": 0.052333057374882516
+      },
+      "lower_clipping_bound": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.4737449288368225,
+        "max": -0.010429101064801216,
+        "mean": -0.05128928984594037,
+        "std": 0.013465342458045416,
+        "max_finite_abs": 0.4737449288368225,
+        "mean_finite_abs": 0.05128928984594037
+      },
+      "upper_clipping_bound": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.010429101064801216,
+        "max": 0.6137586236000061,
+        "mean": 0.05139178259133429,
+        "std": 0.014556085605897615,
+        "max_finite_abs": 0.6137586236000061,
+        "mean_finite_abs": 0.05139178259133429
+      },
+      "lowbound_factor": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "upbound_factor": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 4.0,
+        "max": 4.0,
+        "mean": 4.0,
+        "std": 0.0,
+        "max_finite_abs": 4.0,
+        "mean_finite_abs": 4.0
+      },
+      "sigmoid_low_factor": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972229,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972229
+      },
+      "sigmoid_up_factor": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.9820137619972229,
+        "max": 0.9820137619972229,
+        "mean": 0.9820137619972229,
+        "std": 0.0,
+        "max_finite_abs": 0.9820137619972229,
+        "mean_finite_abs": 0.9820137619972229
+      },
+      "scale": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0015783506678417325,
+        "max": 0.045840099453926086,
+        "mean": 0.006845405188476133,
+        "std": 0.0015179102287041432,
+        "max_finite_abs": 0.045840099453926086,
+        "mean_finite_abs": 0.006845405188476133
+      },
+      "rounded_zero_point": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34048,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 1.0,
+        "max": 14.0,
+        "mean": 7.495858787593985,
+        "std": 1.0317364153750395,
+        "max_finite_abs": 14.0,
+        "mean_finite_abs": 7.495858787593985
+      },
+      "scale_at_clipmin_count": 0,
+      "inverse_scale_absmax": 633.57275390625,
+      "normalized_weight_and_round_input": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -14.09975528717041,
+        "max": 13.936842918395996,
+        "mean": -0.0003877543449756397,
+        "std": 2.892709597698235,
+        "max_finite_abs": 14.09975528717041,
+        "mean_finite_abs": 2.2822009869131104
+      },
+      "round_output": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -14.0,
+        "max": 14.0,
+        "mean": -0.00016933814027255637,
+        "std": 2.9071113173031127,
+        "max_finite_abs": 14.0,
+        "mean_finite_abs": 2.2699245366835057
+      },
+      "clamp_input": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -1.0,
+        "max": 16.0,
+        "mean": 7.495689449453712,
+        "std": 3.058944092566457,
+        "max_finite_abs": 16.0,
+        "mean_finite_abs": 7.497989511131344
+      },
+      "clamp_output": {
+        "present": true,
+        "shape": [
+          34048,
+          128
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": 0.0,
+        "max": 15.0,
+        "mean": 7.495711018268326,
+        "std": 3.0529794072546035,
+        "max_finite_abs": 15.0,
+        "mean_finite_abs": 7.495711018268326
+      },
+      "intermediate_provenance": "bounds/clamp intermediates recomputed for diagnostics with identical no-grad formulas; scale/rounded_zero/dequant are actual native forward tensors",
+      "dequant_output": {
+        "present": true,
+        "shape": [
+          896,
+          4864
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": true,
+        "min": -0.47067612409591675,
+        "max": 0.600364625453949,
+        "mean": -3.6415338105612595e-06,
+        "std": 0.01985060688771684,
+        "max_finite_abs": 0.600364625453949,
+        "mean_finite_abs": 0.015322586819139651
+      }
+    }
+  },
+  "derivative_formula": "scale=(sigmoid(up)*amax(W)-sigmoid(low)*amin(W))/15, clamp[1e-5,1e4]; STE round(W/scale), affine clamp[0,15], dequant=(q-zero)*scale; zero.round has native zero derivative",
+  "quantizer_source_unchanged": true
+}

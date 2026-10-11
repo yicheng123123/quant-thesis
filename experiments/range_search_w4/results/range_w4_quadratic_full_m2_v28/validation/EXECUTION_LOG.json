@@ -1,0 +1,44 @@
+{
+  "pre_run_source_protocol_freeze": "CPU-only repository/source/hash audit; no GPU work; duration not separately instrumented",
+  "setup_failures": [
+    {
+      "status": "DIAGNOSED_AND_FIXED_BEFORE_GPU_WORK",
+      "stage": "module import before model load",
+      "error": "KeyError: v28 protocol wraps original v18 definition under v18_protocol",
+      "cause": "copied v18 runner expected an unwrapped top-level m2 section",
+      "fix": "runner now reads V28_PROTOCOL['v18_protocol']; v28 file hash is still used for checkpoint provenance",
+      "model_loads": 0,
+      "candidate_executions": 0,
+      "gpu_wall_seconds": 0
+    },
+    {
+      "status": "DIAGNOSED_AND_FIXED_BEFORE_GPU_WORK",
+      "stage": "module import before model load",
+      "error": "ModuleNotFoundError: run_precheck",
+      "cause": "copied runner searched the isolated v28 run folder instead of read-only v18 source directory",
+      "fix": "v18 directory added as the import path for frozen run_precheck.py",
+      "model_loads": 0,
+      "candidate_executions": 0,
+      "gpu_wall_seconds": 0
+    },
+    {
+      "status": "DIAGNOSED_AND_FIXED_BEFORE_MODEL_OR_CANDIDATE_WORK",
+      "stage": "run manifest load",
+      "error": "FileNotFoundError: expected FORMAL_RUN_MANIFEST.json",
+      "cause": "v18 manifest filename was retained while v28 freeze creates RUN_MANIFEST.json",
+      "fix": "v28 runner now uses the v28 RUN_MANIFEST.json",
+      "model_loads": 0,
+      "candidate_executions": 0,
+      "gpu_wall_seconds": 0
+    }
+  ],
+  "standalone_warmup_stage": "NOT_RUN; first model/candidate use is included in the formal wall/stage counters",
+  "native_alpha1_parity_references": 31.31304640014423,
+  "first_full_dual_pass_wall_seconds": 2774.4991111999843,
+  "first_pass_failure": "first complete pass wrote QUANTIZATION_CORRECTNESS.json before creating validation/M2",
+  "checkpoint_recovery_finalization_seconds": 16.15256670000963,
+  "checkpoint_recovery_candidate_reruns": 0,
+  "post_run_numeric_analysis": "CPU-only; outside the GPU execution budget",
+  "cumulative_process_wall_seconds": 2790.651677899994,
+  "hard_budget_seconds": 5400.0
+}

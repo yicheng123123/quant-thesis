@@ -1,0 +1,11 @@
+{
+  "name": "v19 independent read-only full-model result audit",
+  "source": "v18 frozen M0/M1/M2 artifacts and v16-v17.3 frozen evidence",
+  "scope": ["artifact and source audit", "CPU-only checkpoint inspection", "independent weighted-NLL recomputation", "M3 go/no-go protocol decision"],
+  "prohibited": ["modify v18", "rerun M2", "PPL-driven alpha tuning", "formal OmniQuant", "new method experiments"],
+  "preselected_checkpoint_layers": [0, 6, 12, 18, 23],
+  "preselected_row_positions_per_projection": ["first", "middle", "last"],
+  "preselected_projections_for_lattice_spots": ["q_proj", "k_proj", "o_proj", "up_proj", "down_proj"],
+  "decision_rule": "FAIL/NO_GO for any detected leakage, incompatible evaluator, invalid native parity, row metadata/stitch semantics, broken checkpoint provenance, or failed frozen result recomputation; otherwise PASS/GO for an isolated M3 port and gated smoke only",
+  "reproduce": ".\\.venv-gptq\\Scripts\\python.exe experiments\\range_search_w4\\results\\range_w4_fullmodel_review_v19\\audit_v19.py"
+}

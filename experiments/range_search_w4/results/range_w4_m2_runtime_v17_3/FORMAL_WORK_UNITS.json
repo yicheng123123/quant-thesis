@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "model_layers": 24,
+  "linear_modules": 168,
+  "output_rows": 304128,
+  "alpha_grid_size": 10,
+  "row_alpha_score_count": 3041280,
+  "full_linear_alpha_execution_count": 1680,
+  "per_linear_semantics": "one full-shape GPTQ call per alpha evaluates all output rows concurrently; per-row alpha selection and rowwise tensor stitch happen after all ten calls",
+  "smoke_observation": "32 rows x 10 alpha scores came from ten full-shape 128x896 native GPTQ calls",
+  "not_row_calls": true,
+  "row_count_per_linear_average": 1810,
+  "v17_2_cost_formula_audit": {
+    "recorded_native_candidate_calls": 1680,
+    "expected_full_linear_calls": 1680,
+    "recorded_score_slots": 3041280,
+    "score_slots_are_calls": false,
+    "candidate_unit_formula": "10 * sum(full-shape Linear counts) = 10*168 = 1680"
+  }
+}

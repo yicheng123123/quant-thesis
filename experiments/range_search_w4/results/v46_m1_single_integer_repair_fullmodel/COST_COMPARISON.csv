@@ -1,0 +1,17 @@
+item,seconds,source,accounting
+M1_original_GPTQ_construction,648.8761009,v18 formal runtime,historical measured; outside v46 job
+M2_original_scalar10_construction,2115.9353341000096,v45 DECISION.json -> historical v18 creation timing,historical measured; outside v45 validation chain
+M2_minus_M1_initialization_extra,1467.0592332000097,difference of v18 measurements,derived; one-time search/build premium
+R1_v46_all_24_formal_block_wall_sum,5485.675196500008,v46 BLOCK_TIMINGS.csv,measured; complete 168-Linear repair plus group commits/propagation
+R1_independent_FP64_rechecks,11.247239899988926,v46 STAGE_TIMINGS.csv,measured nested subset of block wall; not additive
+R1_save_grid_reload_output_regression,11.039314699999522,v46 STAGE_TIMINGS.csv,measured; after formal blocks
+R1_evaluation_checkpoint_reload,1.2471799000049941,v46 STAGE_TIMINGS.csv,measured; continuation reload from locked R1
+R1_WT2_plus_C4_PPL,131.31646400000318,v46 STAGE_TIMINGS.csv,measured; both once; PPL stages only
+R1_first_wrong_dispatch_attempt,785.9530649185181,EXECUTION_AMENDMENT_001.json,"measured failed attempt, included in original GPU_START cumulative wall"
+R1_preflight_elapsed_from_original_start,21.379425048828125,GPU_START.json and PREFLIGHT_GPU.json timestamps,timestamp interval; overlaps original cumulative wall; do not add to total
+R1_total_original_GPU_START_to_final_status,6842.921544551849,v46 FINAL_STATUS.json,"end-to-end elapsed; includes preflight, failed dispatch, correction, repair, save/reload, continuation, and PPL"
+R2_v42_to_v45_validation_chain,7064.804290294647,v45 DECISION.json; v42 + v43 + v44 + v45,"measured cumulative; contains pilot, failed attempts, diagnostics and resumed work"
+R2_v45_new_group_formal_blocks,4717.0275438999815,v45 DECISION.json,measured for v45's 141 new modules only; excludes 27 inherited modules
+R2_clean_full_repair_unique_stages,,v43/v44/v45 recovered checkpoints and stage records,not reliably reconstructable as one non-overlapping clean repair-only measurement
+R2_M2_creation_plus_v42_v45_chain,9180.739624394657,v45 DECISION.json,derived full lineage; includes historical M2 construction plus all v42-v45 validation-chain wall
+v40_known_winner_union_method_wall,1134.9869007000016,v40 SUMMARY.json,engineering reference for already-known 675-candidate union; excludes discovering the union

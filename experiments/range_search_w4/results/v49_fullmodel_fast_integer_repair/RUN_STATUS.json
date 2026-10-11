@@ -1,0 +1,57 @@
+{
+  "status": "COMPLETE",
+  "category": "COMPLETE_PENDING_AGGREGATION",
+  "complete_model": true,
+  "modules": 168,
+  "rows": 304128,
+  "model_sha256": "8a4e2aed53ed0f72c20780ca80ad7a2f751c8babb1c509d8f532054f150ecaf8",
+  "equivalent_to_R1": false,
+  "PPL_run": true,
+  "PPL_reused": false,
+  "elapsed_seconds_from_gpu_start": 5126.393651485443,
+  "hard_cap_seconds": 10800,
+  "blocks_completed": 24,
+  "failed_or_resumed_groups": [
+    {
+      "resume_unix": 1791391109.9327414,
+      "elapsed_from_original_GPU_START": 102.60406732559204,
+      "previous_status": "FAILED_STOP",
+      "last_committed_group": null,
+      "existing_group_checkpoints": 0
+    },
+    {
+      "resume_unix": 1791391447.9720602,
+      "elapsed_from_original_GPU_START": 440.6433861255646,
+      "previous_status": "FAILED_STOP",
+      "last_committed_group": {
+        "last_committed_layer": 0,
+        "group": "down",
+        "group_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v49_fullmodel_fast_integer_repair\\formal\\groups\\layer_00_down.pt",
+        "sha256": "8fff1a051d1d0df3c285e6d5be3a9caa6eff0e8ba567ebb4d17e98c4bff6044d",
+        "input_sha256": "d70e66d98a16a394278ce2fa16cdb32e123854596f898164dff4b34a8086fd14",
+        "elapsed_seconds": 287.5381007194519,
+        "checkpoint_schema_amendment": "001"
+      },
+      "existing_group_checkpoints": 4
+    },
+    {
+      "resume_unix": 1791391554.0583634,
+      "elapsed_from_original_GPU_START": 546.7296893596649,
+      "previous_status": "FAILED_STOP",
+      "last_committed_group": {
+        "last_committed_layer": 0,
+        "group": "down",
+        "group_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v49_fullmodel_fast_integer_repair\\formal\\groups\\layer_00_down.pt",
+        "sha256": "8fff1a051d1d0df3c285e6d5be3a9caa6eff0e8ba567ebb4d17e98c4bff6044d",
+        "input_sha256": "d70e66d98a16a394278ce2fa16cdb32e123854596f898164dff4b34a8086fd14",
+        "elapsed_seconds": 287.5381007194519,
+        "checkpoint_schema_amendment": "001"
+      },
+      "existing_group_checkpoints": 4
+    }
+  ],
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "torch": "2.6.0+cu124",
+  "peak_allocated_bytes": 4745180160,
+  "peak_reserved_bytes": 6482296832
+}

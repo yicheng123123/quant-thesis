@@ -1,0 +1,124 @@
+{
+  "status": "PASS",
+  "bundle_root": "/kaggle/input/datasets/yichenggaoooo/range-w4-omniquant-v20-1-bundle/kaggle_bundle",
+  "checks": {
+    "required_files": {
+      "pass": true,
+      "details": {
+        "missing": [],
+        "count": 25
+      }
+    },
+    "upstream_commit": {
+      "pass": true,
+      "details": {
+        "config": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+        "v20": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14"
+      }
+    },
+    "model_revision": {
+      "pass": true,
+      "details": {
+        "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+        "revision": "7ae557604adf67be50417f59c2c2f167def9a775"
+      }
+    },
+    "model_file_lock": {
+      "pass": true,
+      "details": {
+        "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+        "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+        "locked_files": 7
+      }
+    },
+    "calibration_manifest": {
+      "pass": true,
+      "details": {
+        "sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+        "samples": 128,
+        "seqlen": 2048,
+        "seed": 20261005
+      }
+    },
+    "official_upstream_files": {
+      "pass": true,
+      "details": {
+        "files": 257,
+        "mismatches": [],
+        "tree_sha256": "a622961257aece95960e85f7e1c10f6af76c8e23e7b224bb4ce585e3c251ab4b",
+        "expected_tree_sha256": "a622961257aece95960e85f7e1c10f6af76c8e23e7b224bb4ce585e3c251ab4b",
+        "manifest_sha256": "ddf8c4bf69a458cdc80d59a1016a266b2e2c9f2fd17dc1de4b41189d89ffc1bb",
+        "manifest_expected_sha256": "ddf8c4bf69a458cdc80d59a1016a266b2e2c9f2fd17dc1de4b41189d89ffc1bb"
+      }
+    },
+    "v20_patch_hashes": {
+      "pass": true,
+      "details": {
+        "omniquant_port/upstream/quantize/omniquant.py": {
+          "actual_sha256": "dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00",
+          "expected_sha256": "dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00",
+          "pass": true
+        },
+        "omniquant_port/upstream/models/int_qwen2_layer.py": {
+          "actual_sha256": "0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9",
+          "expected_sha256": "0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9",
+          "pass": true
+        }
+      }
+    },
+    "protected_algorithm_sources": {
+      "pass": true,
+      "details": {
+        "quantize/quantizer.py": {
+          "actual_sha256": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140",
+          "expected_sha256": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140",
+          "pass": true
+        },
+        "quantize/int_linear.py": {
+          "actual_sha256": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409",
+          "expected_sha256": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409",
+          "pass": true
+        },
+        "quantize/utils.py": {
+          "actual_sha256": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5",
+          "expected_sha256": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5",
+          "pass": true
+        },
+        "utils.py": {
+          "actual_sha256": "b209ca43c737e583eb4e23c8bdcd9292c592e7378c6f5c5aac87a8700600b868",
+          "expected_sha256": "b209ca43c737e583eb4e23c8bdcd9292c592e7378c6f5c5aac87a8700600b868",
+          "pass": true
+        }
+      }
+    },
+    "no_algorithm_semantic_patch": {
+      "pass": true,
+      "details": {
+        "rows": 6,
+        "semantic_changes": []
+      }
+    },
+    "bundle_file_hashes": {
+      "pass": true,
+      "details": {
+        "file_count": 291,
+        "mismatches": [],
+        "bundle_tree_sha256": "467465a5fe2de26eb7c5b22a265fa502de906292e441e61cce495335504a25cf"
+      }
+    },
+    "no_unfrozen_bundle_members": {
+      "pass": true,
+      "details": {
+        "unexpected_files": []
+      }
+    },
+    "evaluator_hashes_recorded": {
+      "pass": true,
+      "details": {
+        "evaluator/ppl.py": "5062225fc58d6d1272ba7c828f697ff9540407db5409340d2a94662ff32841a1",
+        "evaluator/ppl_datasets.py": "80f3cfe956fdd25fd54906bcdec26325cf2e2d7b65eab9a18aef5ea538bcf7eb"
+      }
+    }
+  },
+  "failures": []
+}

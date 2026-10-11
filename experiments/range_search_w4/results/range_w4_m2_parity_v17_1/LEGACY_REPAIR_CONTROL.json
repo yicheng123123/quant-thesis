@@ -1,0 +1,190 @@
+{
+  "correcting_only_damping_all128_rows": {
+    "exact": true,
+    "max_abs_diff": 0.0,
+    "mean_abs_diff": 0.0,
+    "num_diff": 0,
+    "first_differing_index": null,
+    "native": {
+      "dtype": "torch.float16",
+      "device": "cuda:0",
+      "shape": [
+        128,
+        896
+      ],
+      "stride": [
+        896,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "604d3c2297164f2f3af5a6c6ab8fc26716ac7bffef29a40a51cd695e3ca04b5c"
+    },
+    "custom": {
+      "dtype": "torch.float16",
+      "device": "cuda:0",
+      "shape": [
+        128,
+        896
+      ],
+      "stride": [
+        896,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "604d3c2297164f2f3af5a6c6ab8fc26716ac7bffef29a40a51cd695e3ca04b5c"
+    }
+  },
+  "correcting_only_damping_first32_rows": {
+    "exact": true,
+    "max_abs_diff": 0.0,
+    "mean_abs_diff": 0.0,
+    "num_diff": 0,
+    "first_differing_index": null,
+    "native": {
+      "dtype": "torch.float16",
+      "device": "cuda:0",
+      "shape": [
+        32,
+        896
+      ],
+      "stride": [
+        896,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "89fded0a18b8f52433d34f8b52db2d95aa28b1d62834e132e439ef45cc84253b"
+    },
+    "custom": {
+      "dtype": "torch.float16",
+      "device": "cuda:0",
+      "shape": [
+        32,
+        896
+      ],
+      "stride": [
+        896,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "89fded0a18b8f52433d34f8b52db2d95aa28b1d62834e132e439ef45cc84253b"
+    }
+  },
+  "scale_all128": {
+    "exact": true,
+    "max_abs_diff": 0.0,
+    "mean_abs_diff": 0.0,
+    "num_diff": 0,
+    "first_differing_index": null,
+    "native": {
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "shape": [
+        128,
+        7
+      ],
+      "stride": [
+        7,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "d5c3d2be812f97a0501338f0297ae8aae9ae1e74fc026f4e7bf8af627966a36e"
+    },
+    "custom": {
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "shape": [
+        128,
+        7
+      ],
+      "stride": [
+        7,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "d5c3d2be812f97a0501338f0297ae8aae9ae1e74fc026f4e7bf8af627966a36e"
+    }
+  },
+  "scale_first32": {
+    "exact": false,
+    "max_abs_diff": 7.450580596923828e-09,
+    "mean_abs_diff": 1.8293836287089756e-10,
+    "num_diff": 24,
+    "first_differing_index": [
+      0,
+      5
+    ],
+    "native": {
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "shape": [
+        32,
+        7
+      ],
+      "stride": [
+        7,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "22f8d91ca008c82f9585111c118197324ad7d093cf6f6de4fafa92e899932d2d"
+    },
+    "custom": {
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "shape": [
+        32,
+        7
+      ],
+      "stride": [
+        7,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "413e127e10e576538ac118fb1cde31199bbe06d20a984f6cbb81754cf7b2e0ad"
+    },
+    "native_value": 0.025784112513065338,
+    "custom_value": 0.025784114375710487,
+    "native_bits_hex": "0x3cd33934",
+    "custom_bits_hex": "0x3cd33935"
+  },
+  "original_legacy32_vs_native32": {
+    "exact": false,
+    "max_abs_diff": 3.0517578125e-05,
+    "mean_abs_diff": 3.884945596967425e-08,
+    "num_diff": 77,
+    "first_differing_index": [
+      31,
+      769
+    ],
+    "native": {
+      "dtype": "torch.float16",
+      "device": "cuda:0",
+      "shape": [
+        32,
+        896
+      ],
+      "stride": [
+        896,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "89fded0a18b8f52433d34f8b52db2d95aa28b1d62834e132e439ef45cc84253b"
+    },
+    "custom": {
+      "dtype": "torch.float16",
+      "device": "cuda:0",
+      "shape": [
+        32,
+        896
+      ],
+      "stride": [
+        896,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "048eef2b4f0ab9bb8f0cd3118094e1c6e6bccbac2e6e5716d7b7100b247ecdd8"
+    },
+    "native_value": -0.0131988525390625,
+    "custom_value": -0.01320648193359375
+  },
+  "note": "Production interface reuses native core with original target geometry; historical dynamic_core is preserved."
+}

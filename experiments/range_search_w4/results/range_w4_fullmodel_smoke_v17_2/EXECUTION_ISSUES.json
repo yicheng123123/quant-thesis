@@ -1,0 +1,29 @@
+{
+  "issues": [
+    {
+      "stage": "source_preflight",
+      "issue": "decorated GPTQ.quantize initially resolved to PyTorch contextlib wrapper",
+      "resolution": "inspect.unwrap used; actual loaded GPTQ source hash matched frozen v17.1 source map",
+      "effect": "no candidates ran before source gate passed"
+    },
+    {
+      "stage": "capture_preflight",
+      "issue": "first capture shape declaration used projection weight geometry for up/gate/down instead of forward-input geometry",
+      "resolution": "expected activation shapes corrected; actual q/k/v and up/gate sibling inputs verified bitwise equal",
+      "effect": "no candidates ran before capture gate passed"
+    },
+    {
+      "stage": "candidate_runner",
+      "issue": "first smoke invocation stopped on CPU/GPU tensor equality after preflight parity",
+      "resolution": "comparison devices normalized"
+    },
+    {
+      "stage": "candidate_runner",
+      "issue": "second smoke invocation completed all320 scores then stopped on g_idx equality using mismatched devices",
+      "resolution": "g_idx expected vector moved to CPU; resumed from persisted full-alpha candidate cache; subsequent parity gates passed"
+    }
+  ],
+  "scientific_candidate_failure": false,
+  "completed_alpha_grid_rerun": false,
+  "note": "The completed alpha grid is preserved in the local progress cache; the successful resume reused it and re-executed isolation/reference controls."
+}

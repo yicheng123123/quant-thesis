@@ -1,0 +1,74 @@
+{
+  "verdict": "M2_NATIVE_PARITY_RESTORED",
+  "root_cause": "H/Hinv preprocessing implementation mismatch (contiguous diag copy vs strided diagonal view)",
+  "first_operation": "FP32 mean reduction of the Hessian diagonal before damping",
+  "native_repeatable": true,
+  "legacy_custom_repeatable": true,
+  "restored_custom_repeatable": true,
+  "parity_levels_pass": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "group0_common_Hinv_operator_comparisons": 903,
+  "group0_all_exact": true,
+  "search_candidates_executed": 0,
+  "additional_input_capture_issue": "v17 used raw block input for k_proj Hessian; native k_proj actually receives input_layernorm output. Original input retained for reproduction; Level4 uses actual projection hooks.",
+  "final_checks": {
+    "corrected_start": true,
+    "trace_coverage_complete": true,
+    "trace_exact": true,
+    "instrumentation_exact": true,
+    "native_repeat5": true,
+    "custom_repeat5": true,
+    "native_vs_custom": true,
+    "ladder": true,
+    "g_idx": true,
+    "old_failure_reproduced": true,
+    "history_integrity": true
+  },
+  "legacy32_corrected_scale_mismatch": {
+    "exact": false,
+    "max_abs_diff": 7.450580596923828e-09,
+    "mean_abs_diff": 1.8293836287089756e-10,
+    "num_diff": 24,
+    "first_differing_index": [
+      0,
+      5
+    ],
+    "native": {
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "shape": [
+        32,
+        7
+      ],
+      "stride": [
+        7,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "22f8d91ca008c82f9585111c118197324ad7d093cf6f6de4fafa92e899932d2d"
+    },
+    "custom": {
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "shape": [
+        32,
+        7
+      ],
+      "stride": [
+        7,
+        1
+      ],
+      "contiguous": true,
+      "sha256": "413e127e10e576538ac118fb1cde31199bbe06d20a984f6cbb81754cf7b2e0ad"
+    },
+    "native_value": 0.025784112513065338,
+    "custom_value": 0.025784114375710487,
+    "native_bits_hex": "0x3cd33934",
+    "custom_bits_hex": "0x3cd33935"
+  }
+}

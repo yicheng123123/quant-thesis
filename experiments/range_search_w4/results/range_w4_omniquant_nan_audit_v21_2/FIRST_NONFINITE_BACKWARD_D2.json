@@ -1,0 +1,52 @@
+{
+  "mode": "D2",
+  "node_count": 280,
+  "backward_events": 280,
+  "first_finite_to_nonfinite_node": {
+    "execution_index": 262,
+    "graph_node_id": 46,
+    "operation": "ToCopyBackward0",
+    "tags": [],
+    "grad_outputs": [
+      {
+        "present": true,
+        "shape": [
+          4864,
+          896
+        ],
+        "dtype": "torch.float32",
+        "numel": 4358144,
+        "all_finite": true,
+        "finite_count": 4358144,
+        "nan_count": 0,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "max_finite_abs": 122610.5546875
+      }
+    ],
+    "grad_inputs": [
+      {
+        "present": true,
+        "shape": [
+          4864,
+          896
+        ],
+        "dtype": "torch.float16",
+        "numel": 4358144,
+        "all_finite": false,
+        "finite_count": 4358142,
+        "nan_count": 0,
+        "posinf_count": 2,
+        "neginf_count": 0,
+        "max_finite_abs": 57376.0
+      }
+    ],
+    "finite_to_nonfinite_transition": true,
+    "saved_forward_operands": {}
+  },
+  "first_nonfinite_key_tensor": null,
+  "forward_all_observed_finite": true,
+  "loss": 0.15303973853588104,
+  "scale_factor": 65536.0,
+  "interpretation_scope": "first observed native autograd-node gradient boundary; an opaque GEMM/SDPA kernel internal arithmetic is not separately instrumented"
+}

@@ -1,0 +1,19 @@
+stage,wall_seconds,cpu_seconds,cuda_seconds,count,scope
+candidate_reset_and_native_core,2.4635247999976855,2.4626215,2.462481,1,"one instrumented full-shape [128,896] native candidate; profiler attribution, not timing benchmark"
+reference_candidate_total_v17_2_median,0.33458240001345985,,,10,v17.2 synchronized full-shape baseline; detailed operator timing comes from instrumented diagnostic call
+selection_and_row_commit_v17_2,0.026373300002887845,,,1,reuse verified v17.2 selection/commit measured stage
+optimized_prepare_native_state,0.010092999989865348,,,5,median over five optimized full-grid preparation builds; included in optimized grid timing
+serialization_debug_cache,0.007832400006009266,0.007832400006009266,,1,single complete 10-alpha debug tensor cache serialization; 2411870 bytes; not formal efficient mode
+forward_refresh_v17_2,0.004137299983995035,,,1,reuse verified v17.2 L0 selected-row prefix refresh measurement
+activation_capture_L0_k_proj,0.003094899991992861,,,1,two frozen 64-token calibration docs; verified against v17.2 captured input
+reference_candidate_copy_reset,0.0010772999958135188,,0.0010237760543823243,1,isolated v17.2 module weight clone + GPTQ working clone + H clone probe; setup not included in candidate total separately
+native_torch_sync_wall,0.0003555000002961606,0.0003555000002961606,,1,measured torch_sync call(s) inside native GPTQ; does not include outer benchmark boundary sync
+Hessian_construction_L0_k_proj,0.00033110001822933555,,,1,GPTQ.process_batch on frozen inputs; exact H match; local smoke only
+range_estimation,,0.04206720000000001,0.03431,8,"one instrumented full-shape [128,896] native candidate; profiler attribution, not timing benchmark"
+quant_dequant,,0.7707315000000026,0.632856,896,"one instrumented full-shape [128,896] native candidate; profiler attribution, not timing benchmark"
+block_cholesky_inverse,,0.0015555,0.002898,1,"one instrumented full-shape [128,896] native candidate; profiler attribution, not timing benchmark"
+native_source::damping,,0.0,0.0,0,profiler operator events attributed to installed gptq.py source lines; CUDA/CPU metrics are not additive
+native_source::cholesky,,0.0,0.0,0,profiler operator events attributed to installed gptq.py source lines; CUDA/CPU metrics are not additive
+native_source::group_setup,,0.0,0.0,0,profiler operator events attributed to installed gptq.py source lines; CUDA/CPU metrics are not additive
+native_source::compensation,,0.0,0.0,0,profiler operator events attributed to installed gptq.py source lines; CUDA/CPU metrics are not additive
+native_source::sync_and_loss,,0.0,0.0,0,profiler operator events attributed to installed gptq.py source lines; CUDA/CPU metrics are not additive

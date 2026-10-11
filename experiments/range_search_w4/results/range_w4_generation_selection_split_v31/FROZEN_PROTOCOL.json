@@ -1,0 +1,268 @@
+{
+  "name": "v31 Fixed GPTQ Candidate Generation-Selection Data Separation Diagnostic",
+  "status": "FROZEN_BEFORE_CROSS_GROUP_SCORING",
+  "interpretation": "Exploratory retrospective diagnosis; all 64 articles and prior results were already inspected. Not blind, not formal generalization evidence.",
+  "inheritance": {
+    "v24_model": {
+      "id": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "dtype": "FP16",
+      "attention": "SDPA",
+      "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "tf32": false
+    },
+    "v24_quantization": {
+      "weight_bits": 4,
+      "activation_bits": 16,
+      "symmetric": true,
+      "group_size": 128,
+      "dynamic_groups": true,
+      "block_size": 128,
+      "damp_percent": 0.1,
+      "desc_act": false,
+      "static_groups": false,
+      "native_gptq_compensation": true,
+      "alpha_1_is_strict_native_noop": true,
+      "model_dtype": "FP16",
+      "hessian_and_gptq_math": "FP32",
+      "quantizer_or_compensation_modified": false
+    },
+    "v24_targets": {
+      "layers": [
+        0,
+        12,
+        23
+      ],
+      "projections": [
+        "up_proj",
+        "down_proj"
+      ],
+      "rows": {
+        "up_proj": [
+          0,
+          224,
+          448,
+          672
+        ],
+        "down_proj": [
+          0,
+          224,
+          448,
+          672
+        ]
+      },
+      "unit_count": 48
+    },
+    "v24_scalar_grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "v24_fixed_rows": {
+      "up_proj": [
+        0,
+        224,
+        448,
+        672
+      ],
+      "down_proj": [
+        0,
+        224,
+        448,
+        672
+      ]
+    },
+    "v24_candidate_generator": "reuse all saved v24 scalar10 candidate tensors; no candidate GPTQ reruns",
+    "prefix_checkpoint": "v18 frozen M2 dense checkpoint; same as used to capture v23 up inputs and v24 down inputs",
+    "target_weight_source": "pristine base-model FP16 target W from the v24 candidate generation source, independently hash-matched"
+  },
+  "documents": {
+    "manifest": "v24 E2_DOCUMENT_MANIFEST.json; 64 unique complete WikiText-2 train articles, 2048 tokens each",
+    "groups": {
+      "A": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "B": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "C": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47
+      ],
+      "D": [
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63
+      ]
+    },
+    "candidate_generation_and_selection": {
+      "S0_bank": {
+        "candidate_H_articles": "A=0..15",
+        "original_selector": "A=0..15",
+        "independent_selector": "B=16..31",
+        "evaluation": [
+          "C=32..47",
+          "D=48..63"
+        ]
+      },
+      "S1_bank": {
+        "candidate_H_articles": "C=32..47",
+        "original_selector": "C=32..47",
+        "independent_selector": "D=48..63",
+        "evaluation": [
+          "A=0..15",
+          "B=16..31"
+        ]
+      }
+    },
+    "prefix_relationship": {
+      "fixed_prefix": "v18 M2 quantized checkpoint, calibrated on its frozen 128 WikiText-2 train articles",
+      "article_overlap_with_v24_64": 0,
+      "article_hash_intersection": [],
+      "limit": "This only establishes article-level disjointness of v18 prefix calibration versus the 64 v24 articles; prior inspection makes all current v31 comparisons exploratory."
+    }
+  },
+  "scoring": {
+    "method": "original v24 direct output scorer only; no v27/v28 quadratic scoring",
+    "formula": "row_mse = sum over documents/tokens of (X @ (Q_FP16.float()-W_FP16.float())^T)^2 / (16*2048)",
+    "implementation": "same v24 score_selected_rows GEMM over all 4 fixed rows; 2 complete documents per token chunk; FP32 inputs/delta/GEMM and FP64 squared-sum accumulation; division by 32768 tokens",
+    "selection": "row-wise argmin over original scalar10 candidate losses; exact score ties select larger alpha, exactly as v24",
+    "win_tie_loss": "reuse the frozen v24 per-unit repeated-alpha1 epsilon; no threshold adjustment",
+    "oracle": "minimum among the same ten candidate scores on each evaluation group; post-hoc diagnostic only"
+  },
+  "data_reuse": {
+    "saved_scores_reused": "S0 bank A search and B held; S1 bank C search and D held",
+    "new_scoring_only": "S0 bank on C,D; S1 bank on A,B",
+    "new_gpu_score_calls": 240,
+    "new_row_alpha_scores": 960,
+    "candidate_executions": 0,
+    "new_model_forwards": 0,
+    "candidate_cache_read_only": true
+  },
+  "budget": {
+    "new_gpu_wall_seconds_max": 600,
+    "includes": [
+      "CUDA init",
+      "warmup",
+      "candidate loads/transfers",
+      "all new score GEMMs",
+      "checkpoint writes",
+      "retries/resume"
+    ]
+  },
+  "analysis": {
+    "comparison": "independent-selector alpha vs original-selector alpha, paired by same candidate bank/target/row/evaluation article group",
+    "pooled_metric": "sum row MSE * 32768 tokens; report each evaluation group, each target, each bank, and pooled bank/group descriptive totals",
+    "alpha1_reference": "evaluate the saved alpha=1 candidate on the same group",
+    "oracle_regret": "report selector SSE minus per-row finite-bank evaluation oracle SSE; never used for selection",
+    "severity": "report row win/tie/loss using v24 frozen epsilon, median paired relative change, worst paired relative regression, gain concentration, and < -10% vs alpha1 count",
+    "pairing": "the same 24 target-row identities recur in two evaluation groups per bank; group observations are paired and not treated as independent samples"
+  },
+  "prohibitions": [
+    "new GPTQ candidate generation",
+    "PPL",
+    "whole-model quantization",
+    "new held blind-test claim",
+    "AWQ",
+    "gradient optimization",
+    "regularization",
+    "grid expansion",
+    "changing groups based on results"
+  ],
+  "source_sha256": {
+    "v18_protocol": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+    "v18_calibration_manifest": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+    "v18_m2_prefix_weights": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+    "v23_protocol": "1b0330ac680f695b238bf05d73487308314bcfb92f98d8563c68c49266ef26d4",
+    "v23_prefix_cache_manifest": "c0294f19c51997705e4e0bae889b4940b8b48e22696907eb1faff4da039e855c",
+    "v24_protocol": "b9894f84a7d40624ddbf903bf8bda6e8cec0e9d1ea52a9bf33d7529a0a378204",
+    "v24_document_manifest": "7d90447a5733f5832286046064fff6fa5e068c19af7c38768e26f4654f9e3bab",
+    "v24_down_input_manifest": "d8164286ce0f45e7d29cb6a1a52b24ebcd5069698560033d5a4ce32ee2e0f89e",
+    "v24_search_selection_lock": "eba0c9ac54a26ccfca3e4ce5407dc4a7f76f14637364144e4dd05e6db8f03264",
+    "v24_search_results": "209b23bf0d39a7c768ca64b07f4ac9366ea0e6d3a79b318410b5762aa72e6dc1",
+    "v24_held_results": "5dbb361b23a3fa80630ec08e624d373cf627b5ca898b5a882a38d64bd5461ad4",
+    "v24_held_repeat_noise": "d7adbb87e722c863f1ba3a652e20680ab6806a2b4ee6e50b1e1c01f35a08a17b",
+    "v25_protocol": "c92eaf84b7348df94f5998e62eccf0213400c0e4aa685f9467644bb9f2e6e906",
+    "v25_input_provenance": "32ad4ddde4d98d4a7356f23a534b938731b19af70760dcd7d50ec0bc102357ca",
+    "v25_run_report": "48ad8fec8d5add06bfe62cfb5ba39b89f0689caa424dd17e7d8968c6b2e3080f",
+    "v30_readme": "1ca2bce90b95aa98191980e185daa7b5b66f5f3a738356b8b9900c5d63c37cbb",
+    "v30_run_summary": "df015ada67c111ca66e5bf102c3e528cb8d90f5b4a60e38e3a5c612d18f9b916",
+    "v30_audit_checks": "4d07213e6abc19dde27bc80d0826f98fa26fe8422a8384c04f23cf9d92ac226b",
+    "v30_source_manifest": "4ae8d74e6c99e2385772ba694c3c51f17fc69c5d5352a8cfa11defde16ec757b",
+    "v30_candidate_row_table": "f94b05cf53d38f0b05f7113193dc68fdd071d85b65c9d29ee3ee1f249c7f032a",
+    "base_model_weights": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+    "activation_inputs": {
+      "experiments/range_search_w4/results/range_w4_block_objective_e1_v23/cache/input_L0_up_proj.f16": "bf7e176a6e31779222e21051fd08564f6d473b327bca7afb548f088b9b323690",
+      "experiments/range_search_w4/results/range_w4_structured_group_e2_v24/cache/input_L0_down_proj.f16": "b2189b3d784cefeef4db630497f0ebe340815dfb5588d5c1dfc76d075604fe7f",
+      "experiments/range_search_w4/results/range_w4_block_objective_e1_v23/cache/input_L12_up_proj.f16": "a2532b6998761893c5c60bb41f1ebfc89392f1a9d65e96070c22e0c177fdc18b",
+      "experiments/range_search_w4/results/range_w4_structured_group_e2_v24/cache/input_L12_down_proj.f16": "b0a6418675958924a6927444b07c6de110639b332391bcf0d0dc576266268df6",
+      "experiments/range_search_w4/results/range_w4_block_objective_e1_v23/cache/input_L23_up_proj.f16": "a65df1896346921b7eb50e74ff5e7da1a8c6c566e98a1a1b776576905ea70988",
+      "experiments/range_search_w4/results/range_w4_structured_group_e2_v24/cache/input_L23_down_proj.f16": "fdb86793bab5294927519e05d37bed0d8901d0f81957ff24d88890d9f1413cfc"
+    },
+    "candidate_state_sha256_manifest": "9159aa32fbf6c552ec07dfe427b29f63c714dfb4e7bea98ccb0ef5608c42c002"
+  }
+}

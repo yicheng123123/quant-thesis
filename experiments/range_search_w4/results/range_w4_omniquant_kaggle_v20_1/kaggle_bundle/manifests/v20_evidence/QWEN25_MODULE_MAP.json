@@ -1,0 +1,4002 @@
+{
+  "status": "PASS",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "model_type": "qwen2",
+  "layers": 24,
+  "target_projection_count": 168,
+  "safetensors_file": "model.safetensors",
+  "all_projection_shapes_match_checkpoint_and_config": true,
+  "expected_target_projection_count": 168,
+  "hidden_size": 896,
+  "intermediate_size": 4864,
+  "num_attention_heads": 14,
+  "num_key_value_heads": 2,
+  "head_dim": 64,
+  "gqa_repeat_factor": 7,
+  "modules": [
+    {
+      "name": "model.layers.0.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.0.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.0.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.0.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.0.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.0.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.1.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.1.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.1.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.1.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.1.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.1.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.1.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.2.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.2.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.2.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.2.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.2.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.2.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.2.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.3.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.3.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.3.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.3.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.3.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.3.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.3.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.4.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.4.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.4.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.4.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.4.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.4.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.4.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.5.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.5.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.5.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.5.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.5.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.5.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.5.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.6.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.6.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.6.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.6.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.6.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.6.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.6.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.7.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.7.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.7.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.7.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.7.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.7.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.8.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.8.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.8.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.8.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.8.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.8.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.8.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.9.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.9.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.9.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.9.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.9.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.9.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.9.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.10.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.10.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.10.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.10.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.10.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.10.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.10.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.11.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.11.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.11.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.11.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.11.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.11.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.11.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.12.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.12.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.12.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.12.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.12.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.12.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.12.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.13.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.13.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.13.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.13.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.13.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.13.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.13.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.14.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.14.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.14.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.14.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.14.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.14.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.14.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.15.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.15.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.15.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.15.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.15.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.15.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.15.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.16.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.16.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.16.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.16.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.16.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.16.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.16.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.17.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.17.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.17.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.17.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.17.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.17.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.17.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.18.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.18.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.18.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.18.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.18.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.18.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.18.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.19.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.19.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.19.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.19.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.19.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.19.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.19.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.20.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.20.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.20.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.20.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.20.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.20.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.20.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.21.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.21.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.21.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.21.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.21.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.21.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.21.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.22.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.22.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.22.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.22.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.22.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.22.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.22.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.23.self_attn.q_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": [
+        896
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": [
+        896
+      ],
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.23.self_attn.k_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.23.self_attn.v_proj",
+      "in_features": 896,
+      "out_features": 128,
+      "weight_shape": [
+        128,
+        896
+      ],
+      "bias_shape": [
+        128
+      ],
+      "bias_present": true,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        128,
+        896
+      ],
+      "safetensors_bias_shape": [
+        128
+      ],
+      "config_expected_weight_shape": [
+        128,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.23.self_attn.o_proj",
+      "in_features": 896,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.23.mlp.gate_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.23.mlp.up_proj",
+      "in_features": 896,
+      "out_features": 4864,
+      "weight_shape": [
+        4864,
+        896
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        4864,
+        896
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        4864,
+        896
+      ],
+      "checkpoint_and_config_shape_match": true
+    },
+    {
+      "name": "model.layers.23.mlp.down_proj",
+      "in_features": 4864,
+      "out_features": 896,
+      "weight_shape": [
+        896,
+        4864
+      ],
+      "bias_shape": null,
+      "bias_present": false,
+      "weight_dtype": "torch.float16",
+      "safetensors_weight_shape": [
+        896,
+        4864
+      ],
+      "safetensors_bias_shape": null,
+      "config_expected_weight_shape": [
+        896,
+        4864
+      ],
+      "checkpoint_and_config_shape_match": true
+    }
+  ]
+}

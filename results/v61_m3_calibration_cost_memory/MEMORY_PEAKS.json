@@ -1,0 +1,128 @@
+{
+  "status": "COMPLETE",
+  "attempts": [
+    {
+      "attempt": "20261011_134719_54284",
+      "status": "FAILED_OR_INTERRUPTED",
+      "samples": 195,
+      "target_interval_seconds": 0.2,
+      "device_sampled_peak_bytes": 3279249408,
+      "device_sampled_peak_GiB": 3.0540390014648438,
+      "process_gpu_status": "NOT_AVAILABLE: target process memory unavailable on this platform",
+      "process_rss_peaks": [
+        {
+          "pid": 43508,
+          "creation_time": 1791697639.4587998,
+          "role": "MAIN",
+          "name": "python.exe",
+          "peak_rss_bytes": 4882432,
+          "peak_rss_GiB": 0.004547119140625,
+          "last_cpu_user_seconds": 0.015625,
+          "last_cpu_system_seconds": 0.0,
+          "effective_role": "LAUNCHER_OR_CHILD"
+        },
+        {
+          "pid": 41576,
+          "creation_time": 1791697639.473703,
+          "role": "CHILD",
+          "name": "python.exe",
+          "peak_rss_bytes": 2718191616,
+          "peak_rss_GiB": 2.531513214111328,
+          "last_cpu_user_seconds": 10.671875,
+          "last_cpu_system_seconds": 8.34375,
+          "effective_role": "MODEL_MAIN"
+        }
+      ],
+      "aggregate_concurrent_target_tree_rss_peak_bytes": 2721734656,
+      "aggregate_concurrent_target_tree_rss_peak_GiB": 2.5348129272460938,
+      "errors": [],
+      "sampled_peak_is_not_exact_instantaneous_peak": true,
+      "device_total_includes_desktop_and_other_processes": true,
+      "short_lived_children_between_samples_may_be_missed": true,
+      "model_main_pid": 41576,
+      "effective_role_source": "actual meter os.getpid; initial venv launcher/main labels normalize by workload PID, not filename or inferred memory size"
+    },
+    {
+      "attempt": "20261011_135025_50440",
+      "status": "COMPLETE",
+      "samples": 12024,
+      "target_interval_seconds": 0.2,
+      "device_sampled_peak_bytes": 3722502144,
+      "device_sampled_peak_GiB": 3.4668502807617188,
+      "process_gpu_status": "NOT_AVAILABLE: target process memory unavailable on this platform",
+      "process_rss_peaks": [
+        {
+          "pid": 48808,
+          "creation_time": 1791697825.6022766,
+          "role": "MAIN",
+          "name": "python.exe",
+          "peak_rss_bytes": 4976640,
+          "peak_rss_GiB": 0.004634857177734375,
+          "last_cpu_user_seconds": 0.015625,
+          "last_cpu_system_seconds": 0.0,
+          "effective_role": "LAUNCHER_OR_CHILD"
+        },
+        {
+          "pid": 42624,
+          "creation_time": 1791697825.6139257,
+          "role": "CHILD",
+          "name": "python.exe",
+          "peak_rss_bytes": 3736354816,
+          "peak_rss_GiB": 3.4797515869140625,
+          "last_cpu_user_seconds": 2094.15625,
+          "last_cpu_system_seconds": 347.078125,
+          "effective_role": "MODEL_MAIN"
+        }
+      ],
+      "aggregate_concurrent_target_tree_rss_peak_bytes": 3741290496,
+      "aggregate_concurrent_target_tree_rss_peak_GiB": 3.4843482971191406,
+      "errors": [],
+      "sampled_peak_is_not_exact_instantaneous_peak": true,
+      "device_total_includes_desktop_and_other_processes": true,
+      "short_lived_children_between_samples_may_be_missed": true,
+      "model_main_pid": 42624,
+      "effective_role_source": "actual meter os.getpid; initial venv launcher/main labels normalize by workload PID, not filename or inferred memory size",
+      "pre_run_device_baseline_bytes": 1266253824,
+      "pre_run_device_baseline_GiB": 1.179290771484375,
+      "actual_interval_median_seconds": 0.203,
+      "actual_interval_p95_seconds": 0.219,
+      "actual_interval_max_seconds": 0.234
+    }
+  ],
+  "allocator_attempts": [
+    {
+      "status": "FAILED",
+      "error": "PermissionError(13, '拒绝访问。')",
+      "sync_error": null,
+      "attempt": "20261011_134721_41576",
+      "wall_seconds": 35.093,
+      "cpu_process_seconds": 15.28125,
+      "peak_allocated_bytes": 1772090368,
+      "peak_allocated_GiB": 1.6503877639770508,
+      "peak_reserved_bytes": 1820327936,
+      "peak_reserved_GiB": 1.6953125,
+      "peak_accounting": "maximum of saved stage peaks; all reset boundaries covered; failed phase retained",
+      "stages": 7,
+      "stage_csv": "E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\timings\\stages_20261011_134721_41576.csv"
+    },
+    {
+      "status": "COMPLETE",
+      "error": null,
+      "sync_error": null,
+      "attempt": "20261011_135028_42624",
+      "wall_seconds": 2400.703,
+      "cpu_process_seconds": 2437.578125,
+      "peak_allocated_bytes": 2226892288,
+      "peak_allocated_GiB": 2.0739550590515137,
+      "peak_reserved_bytes": 2321547264,
+      "peak_reserved_GiB": 2.162109375,
+      "peak_accounting": "maximum of saved stage peaks; all reset boundaries covered; failed phase retained",
+      "stages": 225,
+      "stage_csv": "E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\timings\\stages_20261011_135028_42624.csv"
+    }
+  ],
+  "overall_peak_allocated_bytes": 2226892288,
+  "overall_peak_reserved_bytes": 2321547264,
+  "device_peak_scope": "device total, including desktop and all other processes; baseline not subtracted",
+  "process_gpu_unavailable_not_zero": true
+}

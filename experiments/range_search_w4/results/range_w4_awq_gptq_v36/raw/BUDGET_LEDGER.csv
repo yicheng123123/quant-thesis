@@ -1,0 +1,228 @@
+split,stage,task,wall_seconds,cumulative_gpu_wall_seconds,peak_allocated_bytes,peak_reserved_bytes,status,detail
+,cuda_device_probe,torch.cuda.is_available/device_count/device_name,5.200000,5.200000,,,PASS,"Conservative process wall charged before runtime; this was only device availability/name probe, not model/GPTQ"
+"","runner_preflight_failure","protocol_id guard before model/GPU execution","14.000000","19.200000","","","FAIL","Charged conservatively: failed launch spent about 13.6s wall; protocol_id still inherited v34 value; no model forward/GPTQ run"
+,model_load,v18_M2_prefix_FP16,1.669893,21.021611,996321792,1040187392,PASS,local-only frozen v18 M2 dense-dequant prefix
+,cuda_kernel_warmup,512x512_fp16_matmul,0.398147,22.332366,1005890048,1061158912,PASS,
+,target_pristine_weight_io,L12_gate_up_down_norm,0.030192,22.375292,1030992384,1082130432,PASS,selective safetensors reads; pristine tensors from frozen base revision
+S0,prefix_activation_capture,P0,0.931851,23.340021,1105539584,1170210816,PASS,8 complete articles x 2048; prefix v18 M2 through L12 attention; held group not read
+S0,D_identity_regression,norm+gate_up,0.000000,23.512225,1134807552,1191182336,PASS,exact FP16 parameter and captured-input identity
+S0,AWQ_RTN_selector_20_ratio_full_MLP,gate_up_shared_D,1.578842,25.123606,1688152576,1887436800,PASS,"20 fixed ratios; 8 search whole articles; 16,384 tokens; no held opened"
+"S0","CORRECTNESS_FAIL","equivalence_spot down input dimension harness bug","0.187713","25.311319","","","FAIL","Wrong 896-wide postnorm activation passed to 4864-wide down projection spot; fixed by deriving pristine gate/up intermediate and explicit identity down-coordinate check; no GPTQ candidate/held evaluation started"
+,model_load,v18_M2_prefix_FP16,1.666986,27.130443,996321792,1040187392,PASS,local-only frozen v18 M2 dense-dequant prefix
+,cuda_kernel_warmup,512x512_fp16_matmul,0.391873,28.468483,1005890048,1061158912,PASS,
+,target_pristine_weight_io,L12_gate_up_down_norm,0.037083,28.515145,1030992384,1082130432,PASS,selective safetensors reads; pristine tensors from frozen base revision
+S0,prefix_capture_resume_cache_hit,P0,0.000000,28.744356,1030992384,1082130432,PASS,
+S0,D_identity_regression,norm+gate_up,0.000000,28.987995,1134807552,1203765248,PASS,exact FP16 parameter and captured-input identity
+S0,correctness_selected_D_unquantized_MLP_fold,gate_up_shared_D,0.000000,29.448157,1623376384,1918894080,PASS,"{""D_sha256"": ""5f2eaa6d65470374e7cfd70beb27e1a2e390b0afd1a84063f890647fb4f6a8bc"", ""finite"": true, ""fold_rule"": ""norm weight / D and gate/up input columns * D in FP16; actual folded norm re-evaluated"", ""input_tokens"": 16384, ""selected_D_unquantized_full_MLP_fold_max_abs"": 5.8447265625, ""selected_D_unquantized_full_MLP_fold_mse"": 0.02460469374669458, ""split"": ""S0"", ""status"": ""PASS""}"
+S0,native_GPTQ_Hessian_build,gate_up_original,0.024129,29.539802,1087814144,1918894080,PASS,"shared sibling input; nsamples=8; shape=[896, 896]"
+S0,native_GPTQ_Hessian_build,gate_up_scaled,0.018101,29.594317,1091353088,1918894080,PASS,"shared sibling input; nsamples=8; shape=[896, 896]"
+S0,GPTQ_damping_factor_preparation,S0_original_gate_proj,0.103758,29.893377,1087365120,1918894080,PASS,H_sha256=9d20b9282b557e89aedbdcccc9a08b31974c18c5e56d7bea8438c061d89f5b0e; nsamples=8; cached across alpha bank
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_gate_proj,0.712549,30.747185,1308517376,1918894080,PASS,"alpha=1.0; shape=[4864, 896]; score_seconds=0.063797; all rows"
+S0,all_row_direct_output_score,S0_original_gate_proj,0.063797,30.760007,1308517376,1918894080,PASS,alpha=1.0; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,alpha1_parity_direct_row_score,S0_original_gate_proj,0.061450,31.413038,1335596544,1918894080,PASS,"all 4864 rows; separate correctness score, not a main candidate slot"
+S0,alpha1_independent_native_parity,S0_original_gate_proj,0.549958,31.426884,1335596544,1918894080,PASS,"{""direct_row_output_scores"": true, ""g_idx"": true, ""group_entries"": true, ""group_entry_count"": true, ""scale"": true, ""weight"": true, ""zero"": true}"
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_gate_proj,0.433827,31.971083,1335611392,1918894080,PASS,"alpha=0.1; shape=[4864, 896]; score_seconds=0.061752; all rows"
+S0,all_row_direct_output_score,S0_original_gate_proj,0.061752,31.985222,1335611392,1918894080,PASS,alpha=0.1; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_gate_proj,0.432094,32.556168,1326855680,1918894080,PASS,"alpha=0.2; shape=[4864, 896]; score_seconds=0.060059; all rows"
+S0,all_row_direct_output_score,S0_original_gate_proj,0.060059,32.567219,1326855680,1918894080,PASS,alpha=0.2; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_gate_proj,0.430060,33.134696,1326895104,1918894080,PASS,"alpha=0.3; shape=[4864, 896]; score_seconds=0.060309; all rows"
+S0,all_row_direct_output_score,S0_original_gate_proj,0.060309,33.146248,1326895104,1918894080,PASS,alpha=0.3; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_gate_proj,0.432306,33.724479,1326934528,1918894080,PASS,"alpha=0.4; shape=[4864, 896]; score_seconds=0.068187; all rows"
+S0,all_row_direct_output_score,S0_original_gate_proj,0.068187,33.736950,1326934528,1918894080,PASS,alpha=0.4; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_gate_proj,0.440714,34.333595,1326855680,1918894080,PASS,"alpha=0.5; shape=[4864, 896]; score_seconds=0.073610; all rows"
+S0,all_row_direct_output_score,S0_original_gate_proj,0.073610,34.345169,1326855680,1918894080,PASS,alpha=0.5; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_gate_proj,0.462270,34.951442,1326895104,1918894080,PASS,"alpha=0.6; shape=[4864, 896]; score_seconds=0.068922; all rows"
+S0,all_row_direct_output_score,S0_original_gate_proj,0.068922,34.961375,1326895104,1918894080,PASS,alpha=0.6; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_gate_proj,0.434136,35.543947,1326934528,1918894080,PASS,"alpha=0.7; shape=[4864, 896]; score_seconds=0.066352; all rows"
+S0,all_row_direct_output_score,S0_original_gate_proj,0.066352,35.555479,1326934528,1918894080,PASS,alpha=0.7; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_gate_proj,0.437602,36.148618,1326855680,1918894080,PASS,"alpha=0.8; shape=[4864, 896]; score_seconds=0.070366; all rows"
+S0,all_row_direct_output_score,S0_original_gate_proj,0.070366,36.158980,1326855680,1918894080,PASS,alpha=0.8; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_gate_proj,0.426787,36.736789,1326895104,1918894080,PASS,"alpha=0.9; shape=[4864, 896]; score_seconds=0.073331; all rows"
+S0,all_row_direct_output_score,S0_original_gate_proj,0.073331,36.749662,1326895104,1918894080,PASS,alpha=0.9; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,GPTQ_damping_factor_preparation,S0_original_up_proj,0.007796,37.083138,1141132288,1918894080,PASS,H_sha256=9d20b9282b557e89aedbdcccc9a08b31974c18c5e56d7bea8438c061d89f5b0e; nsamples=8; cached across alpha bank
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_up_proj,0.493197,37.733190,1363267584,1918894080,PASS,"alpha=1.0; shape=[4864, 896]; score_seconds=0.087072; all rows"
+S0,all_row_direct_output_score,S0_original_up_proj,0.087072,37.743349,1363267584,1918894080,PASS,alpha=1.0; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,alpha1_parity_direct_row_score,S0_original_up_proj,0.079423,38.382290,1376897536,1918894080,PASS,"all 4864 rows; separate correctness score, not a main candidate slot"
+S0,alpha1_independent_native_parity,S0_original_up_proj,0.510187,38.396192,1376897536,1918894080,PASS,"{""direct_row_output_scores"": true, ""g_idx"": true, ""group_entries"": true, ""group_entry_count"": true, ""scale"": true, ""weight"": true, ""zero"": true}"
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_up_proj,0.483250,38.999118,1376912384,1918894080,PASS,"alpha=0.1; shape=[4864, 896]; score_seconds=0.069598; all rows"
+S0,all_row_direct_output_score,S0_original_up_proj,0.069598,39.008964,1376912384,1918894080,PASS,alpha=0.1; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_up_proj,0.436132,39.594933,1376951808,1918894080,PASS,"alpha=0.2; shape=[4864, 896]; score_seconds=0.068317; all rows"
+S0,all_row_direct_output_score,S0_original_up_proj,0.068317,39.605321,1376951808,1918894080,PASS,alpha=0.2; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_up_proj,0.430285,40.190625,1368156672,1918894080,PASS,"alpha=0.3; shape=[4864, 896]; score_seconds=0.064014; all rows"
+S0,all_row_direct_output_score,S0_original_up_proj,0.064014,40.200268,1368156672,1918894080,PASS,alpha=0.3; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_up_proj,0.444406,40.801592,1368196096,1918894080,PASS,"alpha=0.4; shape=[4864, 896]; score_seconds=0.066448; all rows"
+S0,all_row_direct_output_score,S0_original_up_proj,0.066448,40.810792,1368196096,1918894080,PASS,alpha=0.4; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_up_proj,0.438259,41.400249,1368235520,1918894080,PASS,"alpha=0.5; shape=[4864, 896]; score_seconds=0.066257; all rows"
+S0,all_row_direct_output_score,S0_original_up_proj,0.066257,41.411327,1368235520,1918894080,PASS,alpha=0.5; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_up_proj,0.456889,42.015722,1368156672,1918894080,PASS,"alpha=0.6; shape=[4864, 896]; score_seconds=0.069224; all rows"
+S0,all_row_direct_output_score,S0_original_up_proj,0.069224,42.028888,1368156672,1918894080,PASS,alpha=0.6; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_up_proj,0.448087,42.629294,1368196096,1918894080,PASS,"alpha=0.7; shape=[4864, 896]; score_seconds=0.072959; all rows"
+S0,all_row_direct_output_score,S0_original_up_proj,0.072959,42.638178,1368196096,1918894080,PASS,alpha=0.7; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_up_proj,0.463037,43.259717,1368235520,1918894080,PASS,"alpha=0.8; shape=[4864, 896]; score_seconds=0.072838; all rows"
+S0,all_row_direct_output_score,S0_original_up_proj,0.072838,43.270558,1368235520,1918894080,PASS,alpha=0.8; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_original_up_proj,0.474936,43.897691,1368274944,1918894080,PASS,"alpha=0.9; shape=[4864, 896]; score_seconds=0.070327; all rows"
+S0,all_row_direct_output_score,S0_original_up_proj,0.070327,43.906697,1368274944,1918894080,PASS,alpha=0.9; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,GPTQ_damping_factor_preparation,S0_scaled_gate_proj,0.007083,44.224907,1168590848,1918894080,PASS,H_sha256=54f6c7e1579a5503c5916f28c5d5da3427f22f134a9c5f10e8cdc777b10fea23; nsamples=8; cached across alpha bank
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_gate_proj,0.473163,44.902347,1470090240,1918894080,PASS,"alpha=1.0; shape=[4864, 896]; score_seconds=0.137826; all rows"
+S0,all_row_direct_output_score,S0_scaled_gate_proj,0.137826,44.911848,1470090240,1918894080,PASS,alpha=1.0; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,alpha1_parity_direct_row_score,S0_scaled_gate_proj,0.113224,45.523742,1497995264,1918894080,PASS,"all 4864 rows; separate correctness score, not a main candidate slot"
+S0,alpha1_independent_native_parity,S0_scaled_gate_proj,0.455520,45.536878,1497995264,1918894080,PASS,"{""direct_row_output_scores"": true, ""g_idx"": true, ""group_entries"": true, ""group_entry_count"": true, ""scale"": true, ""weight"": true, ""zero"": true}"
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_gate_proj,0.450765,46.163065,1479397376,1918894080,PASS,"alpha=0.1; shape=[4864, 896]; score_seconds=0.114108; all rows"
+S0,all_row_direct_output_score,S0_scaled_gate_proj,0.114108,46.174410,1479397376,1918894080,PASS,alpha=0.1; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_gate_proj,0.468982,46.846513,1479436800,1918894080,PASS,"alpha=0.2; shape=[4864, 896]; score_seconds=0.121296; all rows"
+S0,all_row_direct_output_score,S0_scaled_gate_proj,0.121296,46.854486,1479436800,1918894080,PASS,alpha=0.2; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_gate_proj,0.440602,47.498856,1479476224,1918894080,PASS,"alpha=0.3; shape=[4864, 896]; score_seconds=0.118176; all rows"
+S0,all_row_direct_output_score,S0_scaled_gate_proj,0.118176,47.508301,1479476224,1918894080,PASS,alpha=0.3; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_gate_proj,0.442472,48.134858,1479515648,1918894080,PASS,"alpha=0.4; shape=[4864, 896]; score_seconds=0.107040; all rows"
+S0,all_row_direct_output_score,S0_scaled_gate_proj,0.107040,48.148022,1479515648,1918894080,PASS,alpha=0.4; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_gate_proj,0.435878,48.769430,1470366208,1918894080,PASS,"alpha=0.5; shape=[4864, 896]; score_seconds=0.099763; all rows"
+S0,all_row_direct_output_score,S0_scaled_gate_proj,0.099763,48.777978,1470366208,1918894080,PASS,alpha=0.5; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_gate_proj,0.441163,49.401451,1470405632,1918894080,PASS,"alpha=0.6; shape=[4864, 896]; score_seconds=0.106769; all rows"
+S0,all_row_direct_output_score,S0_scaled_gate_proj,0.106769,49.410725,1470405632,1918894080,PASS,alpha=0.6; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_gate_proj,0.409596,50.001212,1470445056,1918894080,PASS,"alpha=0.7; shape=[4864, 896]; score_seconds=0.114479; all rows"
+S0,all_row_direct_output_score,S0_scaled_gate_proj,0.114479,50.012623,1470445056,1918894080,PASS,alpha=0.7; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_gate_proj,0.442655,50.635518,1470484480,1918894080,PASS,"alpha=0.8; shape=[4864, 896]; score_seconds=0.105398; all rows"
+S0,all_row_direct_output_score,S0_scaled_gate_proj,0.105398,50.645773,1470484480,1918894080,PASS,alpha=0.8; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_gate_proj,0.460967,51.296993,1470366208,1918894080,PASS,"alpha=0.9; shape=[4864, 896]; score_seconds=0.116572; all rows"
+S0,all_row_direct_output_score,S0_scaled_gate_proj,0.116572,51.306343,1470366208,1918894080,PASS,alpha=0.9; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,GPTQ_damping_factor_preparation,S0_scaled_up_proj,0.008934,51.625785,1200193024,1918894080,PASS,H_sha256=54f6c7e1579a5503c5916f28c5d5da3427f22f134a9c5f10e8cdc777b10fea23; nsamples=8; cached across alpha bank
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_up_proj,0.474258,52.273906,1501495808,1918894080,PASS,"alpha=1.0; shape=[4864, 896]; score_seconds=0.118044; all rows"
+S0,all_row_direct_output_score,S0_scaled_up_proj,0.118044,52.283314,1501495808,1918894080,PASS,alpha=1.0; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,alpha1_parity_direct_row_score,S0_scaled_up_proj,0.121208,52.923438,1528614400,1918894080,PASS,"all 4864 rows; separate correctness score, not a main candidate slot"
+S0,alpha1_independent_native_parity,S0_scaled_up_proj,0.470886,52.939367,1528614400,1918894080,PASS,"{""direct_row_output_scores"": true, ""g_idx"": true, ""group_entries"": true, ""group_entry_count"": true, ""scale"": true, ""weight"": true, ""zero"": true}"
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_up_proj,0.453098,53.554419,1497131008,1918894080,PASS,"alpha=0.1; shape=[4864, 896]; score_seconds=0.115689; all rows"
+S0,all_row_direct_output_score,S0_scaled_up_proj,0.115689,53.565822,1497131008,1918894080,PASS,alpha=0.1; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_up_proj,0.431472,54.186848,1497170432,1918894080,PASS,"alpha=0.2; shape=[4864, 896]; score_seconds=0.113563; all rows"
+S0,all_row_direct_output_score,S0_scaled_up_proj,0.113563,54.197634,1497170432,1918894080,PASS,alpha=0.2; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_up_proj,0.463881,54.860374,1497209856,1918894080,PASS,"alpha=0.3; shape=[4864, 896]; score_seconds=0.117648; all rows"
+S0,all_row_direct_output_score,S0_scaled_up_proj,0.117648,54.876024,1497209856,1918894080,PASS,alpha=0.3; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_up_proj,0.445651,55.535014,1497249280,1918894080,PASS,"alpha=0.4; shape=[4864, 896]; score_seconds=0.122226; all rows"
+S0,all_row_direct_output_score,S0_scaled_up_proj,0.122226,55.544949,1497249280,1918894080,PASS,alpha=0.4; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_up_proj,0.455196,56.189619,1497170432,1918894080,PASS,"alpha=0.5; shape=[4864, 896]; score_seconds=0.112587; all rows"
+S0,all_row_direct_output_score,S0_scaled_up_proj,0.112587,56.199029,1497170432,1918894080,PASS,alpha=0.5; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_up_proj,0.421065,56.813206,1497209856,1918894080,PASS,"alpha=0.6; shape=[4864, 896]; score_seconds=0.116572; all rows"
+S0,all_row_direct_output_score,S0_scaled_up_proj,0.116572,56.822695,1497209856,1918894080,PASS,alpha=0.6; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_up_proj,0.446433,57.463895,1497249280,1918894080,PASS,"alpha=0.7; shape=[4864, 896]; score_seconds=0.113284; all rows"
+S0,all_row_direct_output_score,S0_scaled_up_proj,0.113284,57.470863,1497249280,1918894080,PASS,alpha=0.7; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_up_proj,0.438489,58.097587,1497288704,1918894080,PASS,"alpha=0.8; shape=[4864, 896]; score_seconds=0.110725; all rows"
+S0,all_row_direct_output_score,S0_scaled_up_proj,0.110725,58.112016,1497288704,1918894080,PASS,alpha=0.8; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+S0,full_Linear_dynamic_GPTQ_candidate,S0_scaled_up_proj,0.523953,58.843280,1497170432,1918894080,PASS,"alpha=0.9; shape=[4864, 896]; score_seconds=0.117037; all rows"
+S0,all_row_direct_output_score,S0_scaled_up_proj,0.117037,58.853548,1497170432,1918894080,PASS,alpha=0.9; rows=4864; input_tokens=16384; FP32 GEMM/FP64 SSE
+,RUNTIME_ERROR,KeyError('G00'),0.240342,59.103686,1497170432,1918894080,FAIL,failure tail charged to cumulative runtime wall
+,model_load,v18_M2_prefix_FP16,1.630767,60.878856,996321792,1040187392,PASS,local-only frozen v18 M2 dense-dequant prefix
+,cuda_kernel_warmup,512x512_fp16_matmul,0.383291,62.335773,1005890048,1061158912,PASS,
+,target_pristine_weight_io,L12_gate_up_down_norm,0.031010,62.376905,1030992384,1082130432,PASS,selective safetensors reads; pristine tensors from frozen base revision
+S0,prefix_capture_resume_cache_hit,P0,0.000000,62.572521,1030992384,1082130432,PASS,
+S0,D_identity_regression,norm+gate_up,0.000000,62.802428,1134807552,1203765248,PASS,exact FP16 parameter and captured-input identity
+S0,correctness_selected_D_unquantized_MLP_fold,gate_up_shared_D,0.000000,63.228813,1623376384,1918894080,PASS,"{""D_sha256"": ""5f2eaa6d65470374e7cfd70beb27e1a2e390b0afd1a84063f890647fb4f6a8bc"", ""finite"": true, ""fold_rule"": ""norm weight / D and gate/up input columns * D in FP16; actual folded norm re-evaluated"", ""input_tokens"": 16384, ""selected_D_unquantized_full_MLP_fold_max_abs"": 5.8447265625, ""selected_D_unquantized_full_MLP_fold_mse"": 0.02460469374669458, ""split"": ""S0"", ""status"": ""PASS""}"
+,RUNTIME_ERROR,"AttributeError(""'Parameter' object has no attribute 'weight'"")",0.688619,63.928284,1623376384,1918894080,FAIL,failure tail charged to cumulative runtime wall
+,model_load,v18_M2_prefix_FP16,1.629340,65.690944,996321792,1040187392,PASS,local-only frozen v18 M2 dense-dequant prefix
+,cuda_kernel_warmup,512x512_fp16_matmul,0.406337,66.994329,1005890048,1061158912,PASS,
+,target_pristine_weight_io,L12_gate_up_down_norm,0.032258,67.036184,1030992384,1082130432,PASS,selective safetensors reads; pristine tensors from frozen base revision
+S0,prefix_capture_resume_cache_hit,P0,0.000000,67.244481,1030992384,1082130432,PASS,
+S0,D_identity_regression,norm+gate_up,0.000000,67.474232,1134807552,1203765248,PASS,exact FP16 parameter and captured-input identity
+S0,correctness_selected_D_unquantized_MLP_fold,gate_up_shared_D,0.000000,67.864998,1623376384,1918894080,PASS,"{""D_sha256"": ""5f2eaa6d65470374e7cfd70beb27e1a2e390b0afd1a84063f890647fb4f6a8bc"", ""finite"": true, ""fold_rule"": ""norm weight / D and gate/up input columns * D in FP16; actual folded norm re-evaluated"", ""input_tokens"": 16384, ""selected_D_unquantized_full_MLP_fold_max_abs"": 5.8447265625, ""selected_D_unquantized_full_MLP_fold_mse"": 0.02460469374669458, ""split"": ""S0"", ""status"": ""PASS""}"
+S0,search_gate_up_to_down_activation_refresh,G00,0.313462,68.805078,1327129088,1918894080,PASS,committed full gate/up Linear; actual arm input for down H/GPTQ
+S0,GPTQ_damping_factor_preparation,down_G00,0.262802,69.608829,1974737920,2304770048,PASS,H_sha256=158c48705d7cbe8c98e160d921289051f13fd332a1da26d53c9952bed36502db; arm-specific actual down input
+S0,full_Linear_dynamic_GPTQ_candidate,down_G00,3.167602,72.993389,1941229568,2306867200,PASS,"alpha=1.0; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G00,0.152151,73.002328,1941229568,2306867200,PASS,alpha=1.0; rows=896; tokens=16384
+,RUNTIME_ERROR,"RuntimeError('Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:0! (when checking argument for argument other in method wrapper_CUDA__equal)')",3.094703,76.106914,2140198912,2405433344,FAIL,failure tail charged to cumulative runtime wall
+"","runtime_tail_accounting_buffer","round up last failed process wall","0.020000","76.126914","","","CHARGED","Conservative 20ms charge for process teardown/report tail not in last recorded cumulative timestamp"
+,model_load,v18_M2_prefix_FP16,1.440810,77.719107,996321792,1040187392,PASS,local-only frozen v18 M2 dense-dequant prefix
+,cuda_kernel_warmup,512x512_fp16_matmul,0.391841,79.115749,1005890048,1061158912,PASS,
+,target_pristine_weight_io,L12_gate_up_down_norm,0.022987,79.149673,1030992384,1082130432,PASS,selective safetensors reads; pristine tensors from frozen base revision
+S0,prefix_capture_resume_cache_hit,P0,0.000000,79.340099,1030992384,1082130432,PASS,
+S0,D_identity_regression,norm+gate_up,0.000000,79.561683,1134807552,1203765248,PASS,exact FP16 parameter and captured-input identity
+S0,correctness_selected_D_unquantized_MLP_fold,gate_up_shared_D,0.000000,79.986395,1623376384,1918894080,PASS,"{""D_sha256"": ""5f2eaa6d65470374e7cfd70beb27e1a2e390b0afd1a84063f890647fb4f6a8bc"", ""finite"": true, ""fold_rule"": ""norm weight / D and gate/up input columns * D in FP16; actual folded norm re-evaluated"", ""input_tokens"": 16384, ""selected_D_unquantized_full_MLP_fold_max_abs"": 5.8447265625, ""selected_D_unquantized_full_MLP_fold_mse"": 0.02460469374669458, ""split"": ""S0"", ""status"": ""PASS""}"
+S0,GPTQ_damping_factor_preparation,down_G00,0.256757,81.379746,1974737920,2304770048,PASS,H_sha256=158c48705d7cbe8c98e160d921289051f13fd332a1da26d53c9952bed36502db; arm-specific actual down input
+S0,alpha1_independent_native_parity,down_G00,2.917152,84.382473,2166657536,2422210560,PASS,"{""g_idx"": true, ""group_entries"": true, ""group_entry_count"": true, ""scale"": true, ""weight"": true, ""zero"": true}"
+,RUNTIME_ERROR,"NameError(""name 'cmp' is not defined"")",0.226074,84.620805,2166657536,2422210560,FAIL,failure tail charged to cumulative runtime wall
+"","runtime_tail_accounting_buffer","round up last failed process wall","0.020000","84.640805","","","CHARGED","Conservative 20ms charge for process teardown/report tail not in last recorded cumulative timestamp"
+,model_load,v18_M2_prefix_FP16,1.674961,86.468285,996321792,1040187392,PASS,local-only frozen v18 M2 dense-dequant prefix
+,cuda_kernel_warmup,512x512_fp16_matmul,0.394716,87.889808,1005890048,1061158912,PASS,
+,target_pristine_weight_io,L12_gate_up_down_norm,0.033171,87.931134,1030992384,1082130432,PASS,selective safetensors reads; pristine tensors from frozen base revision
+S0,prefix_capture_resume_cache_hit,P0,0.000000,88.129661,1030992384,1082130432,PASS,
+S0,D_identity_regression,norm+gate_up,0.000000,88.356957,1134807552,1203765248,PASS,exact FP16 parameter and captured-input identity
+S0,correctness_selected_D_unquantized_MLP_fold,gate_up_shared_D,0.000000,88.786310,1623376384,1918894080,PASS,"{""D_sha256"": ""5f2eaa6d65470374e7cfd70beb27e1a2e390b0afd1a84063f890647fb4f6a8bc"", ""finite"": true, ""fold_rule"": ""norm weight / D and gate/up input columns * D in FP16; actual folded norm re-evaluated"", ""input_tokens"": 16384, ""selected_D_unquantized_full_MLP_fold_max_abs"": 5.8447265625, ""selected_D_unquantized_full_MLP_fold_mse"": 0.02460469374669458, ""split"": ""S0"", ""status"": ""PASS""}"
+S0,search_gate_up_to_down_activation_refresh,G01,0.343094,90.246032,1458027008,1937768448,PASS,committed full gate/up Linear; actual arm input for down H/GPTQ
+S0,GPTQ_damping_factor_preparation,down_G01,0.327070,91.124582,2104849408,2420113408,PASS,H_sha256=b952664ef44d8f3f89c07bd895fb83863ff3fc8dd2e0ff1b65e55cf174143801; arm-specific actual down input
+S0,full_Linear_dynamic_GPTQ_candidate,down_G01,3.025847,94.340721,2072127488,2422210560,PASS,"alpha=1.0; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G01,0.124228,94.352704,2072127488,2422210560,PASS,alpha=1.0; rows=896; tokens=16384
+S0,alpha1_parity_direct_row_score,down_G01,0.132418,97.265481,2269531648,2518679552,PASS,"all 896 rows; separate correctness score, not a main candidate slot"
+S0,alpha1_independent_native_parity,down_G01,2.760200,97.281718,2269531648,2518679552,PASS,"{""direct_row_output_scores"": true, ""g_idx"": true, ""group_entries"": true, ""group_entry_count"": true, ""scale"": true, ""weight"": true, ""zero"": true}"
+S0,full_Linear_dynamic_GPTQ_candidate,down_G01,2.376485,99.861840,2081449472,2518679552,PASS,"alpha=0.1; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G01,0.109326,99.869795,2081449472,2518679552,PASS,alpha=0.1; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G01,2.316137,102.362591,2081457152,2518679552,PASS,"alpha=0.2; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G01,0.122885,102.372065,2081457152,2518679552,PASS,alpha=0.2; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G01,2.437858,105.019463,2081464832,2518679552,PASS,"alpha=0.3; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G01,0.145202,105.029953,2081464832,2518679552,PASS,alpha=0.3; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G01,2.414220,107.641422,2081449472,2518679552,PASS,"alpha=0.4; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G01,0.144151,107.652079,2081449472,2518679552,PASS,alpha=0.4; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G01,2.399323,110.252174,2081457152,2518679552,PASS,"alpha=0.5; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G01,0.143395,110.264275,2081457152,2518679552,PASS,alpha=0.5; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G01,2.478036,112.942455,2081464832,2518679552,PASS,"alpha=0.6; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G01,0.142932,112.950440,2081464832,2518679552,PASS,alpha=0.6; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G01,2.382614,115.541076,2081449472,2518679552,PASS,"alpha=0.7; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G01,0.150346,115.554428,2081449472,2518679552,PASS,alpha=0.7; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G01,2.407988,118.162203,2081457152,2518679552,PASS,"alpha=0.8; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G01,0.146624,118.172282,2081457152,2518679552,PASS,alpha=0.8; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G01,2.518041,120.908921,2081464832,2518679552,PASS,"alpha=0.9; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G01,0.153097,120.920625,2081464832,2518679552,PASS,alpha=0.9; rows=896; tokens=16384
+S0,search_gate_up_to_down_activation_refresh,G10,0.353923,121.542941,1931211776,2518679552,PASS,committed full gate/up Linear; actual arm input for down H/GPTQ
+S0,GPTQ_damping_factor_preparation,down_G10,0.176686,122.362257,2578032128,2904555520,PASS,H_sha256=50b5a0e8704abeaa16bcb7aa00a0b2c5aa03482c5881e120b4d95d035fdf265c; arm-specific actual down input
+S0,full_Linear_dynamic_GPTQ_candidate,down_G10,2.746769,125.314423,2545310208,2904555520,PASS,"alpha=1.0; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G10,0.132349,125.323224,2545310208,2904555520,PASS,alpha=1.0; rows=896; tokens=16384
+S0,alpha1_parity_direct_row_score,down_G10,0.117882,128.265206,2742714368,3001024512,PASS,"all 896 rows; separate correctness score, not a main candidate slot"
+S0,alpha1_independent_native_parity,down_G10,2.804187,128.286242,2742714368,3001024512,PASS,"{""direct_row_output_scores"": true, ""g_idx"": true, ""group_entries"": true, ""group_entry_count"": true, ""scale"": true, ""weight"": true, ""zero"": true}"
+S0,search_gate_up_to_down_activation_refresh,G11,0.337033,128.920846,2025845760,3001024512,PASS,committed full gate/up Linear; actual arm input for down H/GPTQ
+S0,GPTQ_damping_factor_preparation,down_G11,0.178597,129.682083,2672666112,3001024512,PASS,H_sha256=7900b58f90a6a1a3df7954c7aa4d364adefeb6e1a5a585f01659c63d80369193; arm-specific actual down input
+S0,full_Linear_dynamic_GPTQ_candidate,down_G11,2.664158,132.549234,2639944192,3001024512,PASS,"alpha=1.0; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G11,0.128736,132.559074,2639944192,3001024512,PASS,alpha=1.0; rows=896; tokens=16384
+S0,alpha1_parity_direct_row_score,down_G11,0.126998,135.695570,2837348352,3097493504,PASS,"all 896 rows; separate correctness score, not a main candidate slot"
+S0,alpha1_independent_native_parity,down_G11,2.985985,135.708304,2837348352,3097493504,PASS,"{""direct_row_output_scores"": true, ""g_idx"": true, ""group_entries"": true, ""group_entry_count"": true, ""scale"": true, ""weight"": true, ""zero"": true}"
+S0,full_Linear_dynamic_GPTQ_candidate,down_G11,2.371585,138.459125,2649258496,3097493504,PASS,"alpha=0.1; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G11,0.271103,138.469486,2649258496,3097493504,PASS,alpha=0.1; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G11,2.206518,140.847998,2649266176,3097493504,PASS,"alpha=0.2; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G11,0.116164,140.857246,2649266176,3097493504,PASS,alpha=0.2; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G11,2.451282,143.641267,2649273856,3097493504,PASS,"alpha=0.3; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G11,0.270284,143.651436,2649273856,3097493504,PASS,alpha=0.3; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G11,2.104807,145.905159,2649281536,3097493504,PASS,"alpha=0.4; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G11,0.103331,145.916552,2649281536,3097493504,PASS,alpha=0.4; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G11,2.075340,148.256732,2649258496,3097493504,PASS,"alpha=0.5; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G11,0.212569,148.265398,2649258496,3097493504,PASS,alpha=0.5; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G11,2.010548,150.469665,2649266176,3097493504,PASS,"alpha=0.6; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G11,0.141479,150.480939,2649266176,3097493504,PASS,alpha=0.6; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G11,2.077628,152.846781,2649273856,3097493504,PASS,"alpha=0.7; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G11,0.236023,152.856733,2649273856,3097493504,PASS,alpha=0.7; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G11,1.850206,154.893656,2270709760,3097493504,PASS,"alpha=0.8; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G11,0.136488,154.902798,2270709760,3097493504,PASS,alpha=0.8; rows=896; tokens=16384
+S0,full_Linear_dynamic_GPTQ_candidate,down_G11,1.876385,156.931864,2270717440,3097493504,PASS,"alpha=0.9; shape=[896, 4864]"
+S0,all_row_direct_output_score,down_G11,0.107901,156.940097,2270717440,3097493504,PASS,alpha=0.9; rows=896; tokens=16384
+S0,down_candidate_isolation_replay,G01,1.879346,159.742029,2631302656,3097493504,PASS,"{""H_unchanged"": true, ""g_idx"": true, ""pristine_W_unchanged"": true, ""scale"": true, ""score_exact"": true, ""weight"": true, ""zero"": true}"
+S0,down_candidate_isolation_replay,G11,1.765738,162.129480,3018866688,3386900480,PASS,"{""H_unchanged"": true, ""g_idx"": true, ""pristine_W_unchanged"": true, ""scale"": true, ""score_exact"": true, ""weight"": true, ""zero"": true}"
+,RUNTIME_ERROR,"RuntimeError('Expected all tensors to be on the same device, but found at least two devices, cpu and cuda:0! (when checking argument for argument other in method wrapper_CUDA__equal)')",0.025466,162.166557,3018866688,3386900480,FAIL,failure tail charged to cumulative runtime wall
+"","runtime_tail_accounting_buffer","round up last failed process wall","0.020000","162.186557","","","CHARGED","Conservative 20ms charge for process teardown/report tail not in last recorded cumulative timestamp"
+,model_load,v18_M2_prefix_FP16,0.755012,163.044618,996321792,1040187392,PASS,local-only frozen v18 M2 dense-dequant prefix
+,cuda_kernel_warmup,512x512_fp16_matmul,0.316081,164.155722,1005890048,1061158912,PASS,
+,target_pristine_weight_io,L12_gate_up_down_norm,0.019664,164.185667,1030992384,1082130432,PASS,selective safetensors reads; pristine tensors from frozen base revision
+S0,prefix_capture_resume_cache_hit,P0,0.000000,164.356853,1030992384,1082130432,PASS,
+S0,D_identity_regression,norm+gate_up,0.000000,164.537169,1134807552,1203765248,PASS,exact FP16 parameter and captured-input identity
+S0,correctness_selected_D_unquantized_MLP_fold,gate_up_shared_D,0.000000,164.864038,1623376384,1918894080,PASS,"{""D_sha256"": ""5f2eaa6d65470374e7cfd70beb27e1a2e390b0afd1a84063f890647fb4f6a8bc"", ""finite"": true, ""fold_rule"": ""norm weight / D and gate/up input columns * D in FP16; actual folded norm re-evaluated"", ""input_tokens"": 16384, ""selected_D_unquantized_full_MLP_fold_max_abs"": 5.8447265625, ""selected_D_unquantized_full_MLP_fold_mse"": 0.02460469374669458, ""split"": ""S0"", ""status"": ""PASS""}"
+S0,down_candidate_isolation_replay,G01,1.881456,169.474054,2359372288,2675965952,PASS,"{""H_unchanged"": true, ""g_idx"": true, ""pristine_W_unchanged"": true, ""scale"": true, ""score_exact"": true, ""weight"": true, ""zero"": true}"
+S0,down_candidate_isolation_replay,G11,1.810292,171.861796,2746936320,3061841920,PASS,"{""H_unchanged"": true, ""g_idx"": true, ""pristine_W_unchanged"": true, ""scale"": true, ""score_exact"": true, ""weight"": true, ""zero"": true}"
+S0,prefix_activation_capture,P1,0.678506,173.023628,2198039552,3061841920,PASS,8 complete articles x 2048; prefix v18 M2 through L12 attention; held group not read
+S0,held_reference_MLP_forward,pristine_target,0.037559,173.137724,2660365312,3539992576,PASS,unquantized target reference on all held L12 postnorm inputs
+S0,held_selected_D_fold_reference,unquantized_fold,0.032874,173.181921,2719085568,3539992576,PASS,FP16-folded norm and original MLP; full held L12 MLP
+S0,held_full_mlp_arm_and_L13_boundary,G00,0.097781,173.329813,2393521152,3539992576,PASS,whole L12 block; one commit for entire Linear; no row-batch refresh
+S0,held_full_mlp_output_scoring,G00,0.068084,173.406292,2590070784,3539992576,PASS,"full-output MSE, article MSE, row MSE; all 8 held articles"
+S0,held_full_mlp_arm_and_L13_boundary,G01,0.085646,173.547368,2393521152,3539992576,PASS,whole L12 block; one commit for entire Linear; no row-batch refresh
+S0,held_full_mlp_output_scoring,G01,0.065661,173.621785,2590070784,3539992576,PASS,"full-output MSE, article MSE, row MSE; all 8 held articles"
+S0,held_full_mlp_arm_and_L13_boundary,G10,0.109101,173.788848,2393523200,3539992576,PASS,whole L12 block; one commit for entire Linear; no row-batch refresh
+S0,held_full_mlp_output_scoring,G10,0.069340,173.870431,2590072832,3539992576,PASS,"full-output MSE, article MSE, row MSE; all 8 held articles"
+S0,held_full_mlp_arm_and_L13_boundary,G11,0.094583,174.019598,2393523200,3539992576,PASS,whole L12 block; one commit for entire Linear; no row-batch refresh
+S0,held_full_mlp_output_scoring,G11,0.073144,174.103164,2590072832,3539992576,PASS,"full-output MSE, article MSE, row MSE; all 8 held articles"
+S0,held_projection_row_diagnostics,all_arms,0.362700,174.479150,5038566912,6887047168,PASS,diagnostic projection row losses; not used for full MLP gate
+S0,held_result_io,compressed_full_mlp_outputs,4.710058,179.198269,5038566912,6887047168,PASS,compressed outputs for four arms plus FP16 reference
+S1,prefix_activation_capture,P2,0.781277,180.228105,1697086976,1931476992,PASS,8 complete articles x 2048; prefix v18 M2 through L12 attention; held group not read
+,CORRECTNESS_FAIL,D=I norm output differs from frozen prefix capture,0.068678,180.307436,1697086976,1931476992,FAIL,failure tail charged to cumulative runtime wall
+"","final_failure_report_and_tail_accounting","close cumulative wall after correctness stop","0.028493","180.335929","","","CHARGED","Includes gap from last stage record to final failure report plus a conservative 20ms process teardown reserve; no more GPU work authorized by frozen stop rule"

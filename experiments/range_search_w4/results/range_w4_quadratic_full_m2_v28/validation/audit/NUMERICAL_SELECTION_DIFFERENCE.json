@@ -1,0 +1,133 @@
+{
+  "selection_differences": [
+    {
+      "layer": 7,
+      "module": "mlp.gate_proj",
+      "row": 884,
+      "alpha_grid": [
+        0.1,
+        0.2,
+        0.30000000000000004,
+        0.4,
+        0.5,
+        0.6000000000000001,
+        0.7000000000000001,
+        0.8,
+        0.9,
+        1.0
+      ],
+      "direct_scores": [
+        0.261007004484747,
+        0.09422115154136258,
+        0.040594276785780994,
+        0.020136621144599052,
+        0.010103855029091632,
+        0.005011326126829869,
+        0.0027968267213968907,
+        0.0019798153425943554,
+        0.0019798172176922705,
+        0.0021701695545011126
+      ],
+      "quadratic_scores": [
+        0.26100716050954076,
+        0.09422118166429436,
+        0.04059430777673548,
+        0.02013663274169289,
+        0.010103860715360033,
+        0.005011330129219181,
+        0.0027968298746666046,
+        0.001979817868246532,
+        0.0019798176131071337,
+        0.0021701713428989708
+      ],
+      "direct_order_best_to_worst": [
+        0.8,
+        0.9,
+        1.0,
+        0.7000000000000001,
+        0.6000000000000001,
+        0.5,
+        0.4,
+        0.30000000000000004,
+        0.2,
+        0.1
+      ],
+      "quadratic_order_best_to_worst": [
+        0.9,
+        0.8,
+        1.0,
+        0.7000000000000001,
+        0.6000000000000001,
+        0.5,
+        0.4,
+        0.30000000000000004,
+        0.2,
+        0.1
+      ],
+      "direct_best_second_gap": 1.8750979150460034e-09,
+      "quadratic_best_second_gap": 2.551393983238337e-10,
+      "max_abs_score_error": 1.5602479375154132e-07,
+      "direct_recheck": [
+        {
+          "alpha": 0.8,
+          "exact_to_direct_recorded_score": false,
+          "max_abs_delta": 4.029513268194451e-12
+        },
+        {
+          "alpha": 0.9,
+          "exact_to_direct_recorded_score": false,
+          "max_abs_delta": 1.3887875224827262e-12
+        }
+      ],
+      "direct_recheck_interpretation": "the original direct scorer rescored the retained same-run alpha 0.8 and 0.9 candidate rows; subset GEMM changed the last few FP bits, with recorded max deviations below the full-row direct winner gap",
+      "selected_weight_row_equal": false,
+      "selected_weight_differing_elements": 792,
+      "selected_weight_max_abs_difference": 0.0103302001953125,
+      "selected_weight_mean_abs_difference": 0.002463481156155467,
+      "selected_direct_weight_row_sha256": "f2b49c6225c63c27a3c5cce1f3e3453d6ee8634f53e69d4489e00798ff088b17",
+      "selected_quadratic_weight_row_sha256": "7e267fc2eadbe19921501db73f0e68c315379b8a4ac0995d02a64aada8d59328",
+      "selected_scale_row_equal": false,
+      "selected_direct_scale_row_sha256": "5c41e5c2257bc578c7bca33aec4f094e8b296707892750f083ece25c5209d329",
+      "selected_quadratic_scale_row_sha256": "76d4131a37a4dbc7ef8c3ba4ae9e0443defd5bc5b4985d45d47029e70b52a7e4",
+      "selected_direct_scale_values": [
+        0.00510416692122817,
+        0.006239260546863079,
+        0.0070588416419923306,
+        0.006737390998750925,
+        0.007095870561897755,
+        0.006326113827526569,
+        0.006183922290802002
+      ],
+      "selected_quadratic_scale_values": [
+        0.005742187146097422,
+        0.006988030858337879,
+        0.007764365524053574,
+        0.0074275764636695385,
+        0.007902320474386215,
+        0.0069235158152878284,
+        0.006911881268024445
+      ],
+      "selected_zero_row_equal": true,
+      "selected_direct_zero_values": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "selected_quadratic_zero_values": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "g_idx_equal": true,
+      "g_idx_group_boundary_sha256": "10f4026984d8381cfbf9fe513fb54596c6413fdd45c0b8366211aaa455d52712"
+    }
+  ]
+}

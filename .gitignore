@@ -17,3 +17,43 @@ __pycache__/
 
 # Local logs
 *.log
+
+# Experiment-local environments, vendored clones, and generated caches
+**/.venv*/
+**/site-packages/
+**/upstream/
+**/official_source/
+**/omniquant_source/
+**/.pytest_cache/
+**/.cache/
+
+# Large model and tensor artifacts stay local; see docs/experiment_archive/
+**/*.safetensors
+**/*.pt
+**/*.pth
+**/pytorch_model.bin
+**/optimizer*.bin
+**/*.f16
+**/*.npy
+**/*.npz
+**/*.mat
+**/activation_cache*/
+**/hessian_cache/
+**/candidate_bank/
+**/raw/activations/
+**/WIKITEXT_TEST_MANIFEST.json
+**/C4_EVAL_MANIFEST.json
+**/dense_export/tokenizer.json
+**/dense_export/tokenizer_config.json
+**/P[0-3]_tokens.json
+**/tokens_by_group.json
+**/kaggle_bundle_v20_1*.zip
+**/kaggle_upload/
+
+# Keep the large profiling source local; archive its lossless gzip copy.
+/experiments/range_search_w4/results/range_w4_m2_runtime_v17_3/REFERENCE_PROFILE_TRACE.json
+
+# Keep experiment logs in the v1-v62 archive evidence set
+!experiments/range_search_w4/results/**/*.log
+!results/v61_m3_calibration_cost_memory/**/*.log
+!results/v62_m3_vs_repaired_quality_cost/**/*.log

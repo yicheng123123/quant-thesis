@@ -1,0 +1,8 @@
+{
+  "exception_type": "FloatingPointError",
+  "latest_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21_1\\M3\\checkpoints\\LATEST.json",
+  "message": "LWC loss/gradient check failed at layer=21, epoch=0, sample=0",
+  "status": "FAILED_OR_INTERRUPTED",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21_1\\M3\\run_formal_m3.py\", line 711, in main\n    summary = run_calibration(config, token_ids, lock)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21_1\\M3\\run_formal_m3.py\", line 559, in run_calibration\n    result_model = omni_module.omniquant(lm, args, dataloader, None, None, NullLogger())\n                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21_1\\M3\\official_port\\quantize\\omniquant.py\", line 401, in omniquant\n    args.v21_step_check_callback(qlayer, i, epochs, j, loss)\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21_1\\M3\\run_formal_m3.py\", line 442, in step_check\n    raise FloatingPointError(f\"LWC loss/gradient check failed at layer={layer}, epoch={epoch}, sample={sample}\")\nFloatingPointError: LWC loss/gradient check failed at layer=21, epoch=0, sample=0\n",
+  "updated_at": "2026-10-01 19:08:48+0800"
+}

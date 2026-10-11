@@ -1,0 +1,29 @@
+{
+  "version": "v57",
+  "status": "PRECHECK_COMPLETE_FORMAL_EVALUATION_NOT_STARTED_BUDGET_INFEASIBLE",
+  "formal_evaluations_requested": 8,
+  "formal_evaluations_completed": 0,
+  "P3_read": false,
+  "quantization_or_repair_run": false,
+  "new_calibration_run": false,
+  "historical_files_modified": false,
+  "checkpoint_hashes_match": {
+    "M1": true,
+    "M2": true,
+    "M1_plus_repair": true,
+    "M2_plus_repair": true
+  },
+  "effective_configs_all_equal": true,
+  "named_tensor_manifest_checks": {
+    "M1": "new_v57_cpu_recomputation",
+    "M2": "new_v57_cpu_recomputation",
+    "M1_plus_repair": true,
+    "M2_plus_repair": true
+  },
+  "input_manifest_checks": {
+    "wikitext": true,
+    "c4_fixed_budget": true
+  },
+  "full_runtime_model_loads_verified_in_v57": false,
+  "stop_reason": "A v56 measured WT2+C4 pair takes 2283.58 s process wall; v57 hard cap is 1800 s. The WT2 synchronized stage alone is 2146.70 s."
+}

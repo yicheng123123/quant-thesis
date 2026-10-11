@@ -1,0 +1,8 @@
+{
+  "source": "gptqmodel.models.definitions.qwen2.Qwen2GPTQ.layer_modules",
+  "groups": [["self_attn.k_proj", "self_attn.v_proj", "self_attn.q_proj"], ["self_attn.o_proj"], ["mlp.up_proj", "mlp.gate_proj"], ["mlp.down_proj"]],
+  "true_sequential": true,
+  "semantics": "All group-member inputs are captured at group entry; the complete group is installed before producing next-group activations.",
+  "smoke_target": "L0 self_attn.k_proj, first 32 rows",
+  "recorded_before_stop": true
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "M1_source": "run_formal.run_method('M1') invokes load_model(original FP16 checkpoint) independently and quantize_native_module; no M2 candidate is used",
+  "M2_source": "run_formal.run_method('M2') invokes a second load_model(original FP16 checkpoint) and commits its own stitched module/layer checkpoints",
+  "M1_last_chain": "c0a19a665213f532fa07e097f9cbb41d80c34b728d1456e09d0c773311f9d38e",
+  "M2_last_chain": "9a936988459ad6069e4a0af278d23bf78b9d958e6cc7d0d14a87ca4fb0387272",
+  "same_initial_layer0_qkv_input_and_k_hessian_hashes": true,
+  "distinct_final_weight_hashes": true
+}

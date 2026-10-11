@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "E:\quant-thesis\experiments\range_search_w4\results\v53_decoder_interface_propagation_audit\finalize_v53.py", line 16, in <module>
+    for n,h in j('FROZEN_VALIDATION_LOCK.json')['files'].items():assert sha(O/n)==h,f'frozen validation changed{n}'
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\quant-thesis\experiments\range_search_w4\results\v53_decoder_interface_propagation_audit\finalize_v53.py", line 5, in j
+    def j(n):return json.loads((O/n).read_text(encoding='utf8-sig'))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gaoyi\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gaoyi\AppData\Local\Programs\Python\Python312\Lib\pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+LookupError: unknown encoding: utf8-sig

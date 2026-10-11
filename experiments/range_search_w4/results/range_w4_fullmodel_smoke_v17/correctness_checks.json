@@ -1,0 +1,28 @@
+{
+  "verdict": "FORMAL_EXECUTION_NOT_READY",
+  "checks": {
+    "v16_protocol_copy_matches_frozen_source": "PASS",
+    "official_source_commit_exact": "PASS",
+    "isolated_environment_recorded": "PASS",
+    "python_syntax_compilation": "PASS",
+    "native_qwen_port_quant_off_equivalence": "NOT_RUN",
+    "seven_linear_discovery": "NOT_RUN",
+    "omni_lwc_gradient_and_optimizer_update": "NOT_RUN",
+    "omni_smoke_finite": "NOT_RUN",
+    "dense_export_reload": "NOT_RUN",
+    "tiny_ppl_evaluator": "NOT_RUN",
+    "m2_sequential_order": "PASS",
+    "m2_alpha1_native_parity": "FAIL",
+    "m2_candidate_isolation": "NOT_RUN",
+    "m2_selected_commit": "NOT_RUN",
+    "m2_self_prefix_propagation": "NOT_RUN",
+    "m2_serial_grid_equivalence": "NOT_RUN",
+    "calibration_manifest_exact_loader": "PARTIAL",
+    "wt2_c4_eval_manifest_exact_loader": "NOT_RUN",
+    "historical_v16_integrity": "PASS (31 v16 release artifacts); v8-v15 fingerprints not recomputed",
+    "m2_cost_gate": "NOT_EVALUATED",
+    "m3_cost_gate": "NOT_EVALUATED",
+    "8gb_memory_gate": "NOT_EVALUATED"
+  },
+  "stop_reason": "M2 alpha=1 strict native parity failed; no candidate search or subsequent smoke was run."
+}

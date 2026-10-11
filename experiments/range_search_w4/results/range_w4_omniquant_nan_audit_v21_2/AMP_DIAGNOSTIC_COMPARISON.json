@@ -1,0 +1,141 @@
+{
+  "diagnostic_only": true,
+  "same_frozen_input_weight_target_values": true,
+  "D2_uses_FP32_math_and_same_65536_loss_scale": true,
+  "D3_uses_same_autocast_forward_and_unit_backward_scale": true,
+  "runs": {
+    "D1": {
+      "mode": "D1",
+      "loss": 0.15326565504074097,
+      "all_lwc_gradients_finite": false,
+      "nonfinite_parameter_names": [
+        "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor"
+      ],
+      "amp": {
+        "autocast_enabled": true,
+        "autocast_dtype": "torch.float16",
+        "parameter_dtype": "torch.float32",
+        "grad_scaler_used": true,
+        "state_before": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "state_after": {
+          "scale": 32768.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "scale_factor": 65536.0,
+        "scaled_loss": 10044.41796875,
+        "native_scaler_call_with_step_and_update": true
+      },
+      "peak_allocated_bytes": 632392192,
+      "peak_reserved_bytes": 782237696,
+      "timing_instrumented_seconds": 1.985631799994735,
+      "all_observed_backward_gradients_finite": false
+    },
+    "D2": {
+      "mode": "D2",
+      "loss": 0.15303973853588104,
+      "all_lwc_gradients_finite": true,
+      "nonfinite_parameter_names": [],
+      "amp": {
+        "autocast_enabled": false,
+        "autocast_dtype": null,
+        "parameter_dtype": "torch.float32",
+        "grad_scaler_used": true,
+        "state_before": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "state_after": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "scale_factor": 65536.0,
+        "scaled_loss": 10029.6123046875,
+        "native_scaler_call_with_step_and_update": false
+      },
+      "peak_allocated_bytes": 726119936,
+      "peak_reserved_bytes": 832569344,
+      "timing_instrumented_seconds": 1.6067233000067063,
+      "all_observed_backward_gradients_finite": false,
+      "limitation": "LWC gradients finite, but original unoptimized FP16 weight leaf receives Inf at terminal ToCopyBackward0; not a fully FP32 graph."
+    },
+    "D3": {
+      "mode": "D3",
+      "loss": 0.15326565504074097,
+      "all_lwc_gradients_finite": true,
+      "nonfinite_parameter_names": [],
+      "amp": {
+        "autocast_enabled": true,
+        "autocast_dtype": "torch.float16",
+        "parameter_dtype": "torch.float32",
+        "grad_scaler_used": false,
+        "state_before": null,
+        "state_after": null,
+        "scale_factor": 1.0,
+        "scaled_loss": 0.15326565504074097,
+        "native_scaler_call_with_step_and_update": false
+      },
+      "peak_allocated_bytes": 634073600,
+      "peak_reserved_bytes": 731906048,
+      "timing_instrumented_seconds": 1.603249899984803,
+      "all_observed_backward_gradients_finite": true
+    },
+    "D2_FULL_FP32": {
+      "mode": "D2_FULL_FP32",
+      "loss": 0.15303973853588104,
+      "all_lwc_gradients_finite": true,
+      "nonfinite_parameter_names": [],
+      "amp": {
+        "autocast_enabled": false,
+        "autocast_dtype": null,
+        "parameter_dtype": "torch.float32",
+        "grad_scaler_used": true,
+        "state_before": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "state_after": {
+          "scale": 65536.0,
+          "growth_factor": 2.0,
+          "backoff_factor": 0.5,
+          "growth_interval": 2000,
+          "_growth_tracker": 0
+        },
+        "scale_factor": 65536.0,
+        "scaled_loss": 10029.6123046875,
+        "native_scaler_call_with_step_and_update": false
+      },
+      "peak_allocated_bytes": 726469120,
+      "peak_reserved_bytes": 799014912,
+      "timing_instrumented_seconds": 1.6964281999971718,
+      "all_observed_backward_gradients_finite": true,
+      "graph_leaf_dtypes": [
+        "torch.float32"
+      ],
+      "diagnostic_precision_change": "Construct original native weight leaves in FP32 before QuantLinear buffers; all frozen numerical values unchanged."
+    }
+  },
+  "baseline_changed": false,
+  "D2_not_equal_to_a_full_deactive_amp_formal_run": "D2 uses the frozen actual-prefix HALF values promoted to FP32 and the frozen HALF teacher targets promoted to FP32. Official deactive_amp would change whole prefix/cache dtype and leaves teacher autocast enabled.",
+  "timing_not_a_calibration_speed_benchmark": "instrumentation and node/tensor statistics are included; do not extrapolate these diagnostic times to full-model runtime"
+}

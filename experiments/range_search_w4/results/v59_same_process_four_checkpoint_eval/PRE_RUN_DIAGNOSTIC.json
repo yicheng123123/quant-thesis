@@ -1,0 +1,21 @@
+{
+  "count": 2,
+  "phase": "CPU-only source preflight before first model load/forward",
+  "events": [
+    {
+      "initial_issue": "A preliminary read-only lookup assumed v57-v59 artifacts were directly under results; actual files are under experiments/range_search_w4/results.",
+      "resolution": "Located and used the existing nested experiment results directory.",
+      "effect": "No files outside v59 were written and no model/GPU operation occurred."
+    },
+    {
+      "initial_issue": "A preliminary hash assertion compared the v58 run_v58_eval.py source to the v56 runtime_v54.py evaluator-helper hash; the two files are different artifacts.",
+      "evidence": {
+        "v56_helper_sha256": "bbe1e4c22200f1ccb3d85f35a274c44cf5d46cd606160b59b0cd9afc346bae11",
+        "v58_runner_sha256": "c27fb3a5dbf2f940a7ed0fd465ac02a07da8de94c9dc2a060adea962a63ed2df"
+      },
+      "resolution": "Read the v58 ARTIFACT_HASHES.csv; separately locked the v58 runner hash and retained the v56 helper hash as a distinct source record.",
+      "effect": "No model load, GPU forward, checkpoint write, or evaluation occurred during the failed assertion."
+    }
+  ],
+  "charged_with": "pre-run charged wall from v59 directory creation through runner entry"
+}

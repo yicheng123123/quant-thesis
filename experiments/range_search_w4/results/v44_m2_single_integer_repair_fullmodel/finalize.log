@@ -1,0 +1,170 @@
+{
+  "category": "D",
+  "verdict": "正确性停止，完整模型与PPL质量未验证",
+  "original_failure_status": {
+    "status": "FAILED_STOP",
+    "category": "D",
+    "error": "ArithmeticError('material numerical inconsistency beyond original delta tolerance')",
+    "traceback": "Traceback (most recent call last):\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v44_m2_single_integer_repair_fullmodel\\run_v44.py\", line 113, in <module>\n    try:main()\n        ^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v44_m2_single_integer_repair_fullmodel\\run_v44.py\", line 98, in main\n    t=time.perf_counter();hidden=rt.run_layer(model,li,hidden);sec=time.perf_counter()-t\n                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v44_m2_single_integer_repair_fullmodel\\run_v42.py\", line 244, in run_layer\n    result=batch_repair(s['codes'],s['scales'],s['g_idx'],W,X,C,name)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v44_m2_single_integer_repair_fullmodel\\rejection_repair.py\", line 96, in batch_repair\n    accepted,rejected,actual,error,tol,before_updates=settle(st,proposal,newloss,C,SC)\n                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v44_m2_single_integer_repair_fullmodel\\rejection_repair.py\", line 53, in settle\n    if not bool((error<=tol).all()):raise ArithmeticError('material numerical inconsistency beyond original delta tolerance')\n                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nArithmeticError: material numerical inconsistency beyond original delta tolerance\n",
+    "elapsed_seconds": 145.2112946510315,
+    "complete_model": false,
+    "PPL_run": false
+  },
+  "coverage": {
+    "modules": 27,
+    "rows": 49792,
+    "accepted_updates": 1560222,
+    "modified_coordinates": 1518467,
+    "actual_candidate_evaluations": 3444648140
+  },
+  "new_v44_committed": {
+    "modules": 2,
+    "rows": 9728,
+    "accepted_updates": 310427,
+    "modified_coordinates": 302727,
+    "actual_candidate_evaluations": 549302876
+  },
+  "reused_v43_committed": {
+    "modules": 25,
+    "rows": 40064,
+    "accepted_updates": 1249795,
+    "modified_coordinates": 1215740,
+    "actual_candidate_evaluations": 2895345264
+  },
+  "counts_scope": "committed groups only; validation and failed down group are separate",
+  "local_reconstruction_gain_percent": 11.07837913435583,
+  "committed_rejections": {
+    "count": 7,
+    "unique_rows": 7,
+    "predicted_delta": {
+      "minimum": -1.4915972146847425e-10,
+      "median": -6.024940804925395e-11,
+      "maximum": -2.2123920257544042e-11,
+      "maximum_absolute": 1.4915972146847425e-10
+    },
+    "direct_delta": {
+      "minimum": 2.830711793438967e-12,
+      "median": 2.1192804022102107e-11,
+      "maximum": 6.84192075824791e-11,
+      "maximum_absolute": 6.84192075824791e-11
+    },
+    "relative_predicted_delta": {
+      "minimum": -7.213442822006649e-08,
+      "median": -2.165666292009222e-08,
+      "maximum": -1.1915783507634943e-08,
+      "maximum_absolute": 7.213442822006649e-08
+    },
+    "relative_direct_delta": {
+      "minimum": 1.2836418311784429e-09,
+      "median": 8.384320487870277e-09,
+      "maximum": 4.140590447597297e-08,
+      "maximum_absolute": 4.140590447597297e-08
+    }
+  },
+  "stop_counts_committed_rows": {
+    "NO_REMAINING_PREDICTED_DESCENT": 5200,
+    "EVALUATION_CAP": 0,
+    "UPDATE_CAP": 44592
+  },
+  "incomplete_states": [
+    {
+      "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v44_m2_single_integer_repair_fullmodel\\CRITICAL_FAILURE_formal_3_mlp_down_proj.pt",
+      "sha256": "59929ace02efdf05fd543882e7387bd4055e5aa5e6eddd8721f473f0821cd5d2",
+      "layer": 3,
+      "module": "mlp.down_proj",
+      "group_committed": false,
+      "accepted_updates_in_uncommitted_state": 896,
+      "candidate_evaluations_in_uncommitted_state": 17068608,
+      "rejections_in_uncommitted_state": 0,
+      "bad_rows": [
+        211
+      ],
+      "proposed_rows_in_failed_batch": 896,
+      "failed_batch_not_accepted": true,
+      "codes_legal": true,
+      "counts_under_cap": true,
+      "bad_predicted_delta": [
+        -9.852102460456653e-07
+      ],
+      "bad_direct_delta": [
+        -9.84100198216819e-07
+      ],
+      "bad_allowed_error": [
+        9.852102460456652e-10
+      ],
+      "bad_absolute_error": [
+        1.1100478288463026e-09
+      ],
+      "bad_error_over_tolerance": [
+        1.126711616430805
+      ]
+    }
+  ],
+  "numerical_diagnosis": {
+    "pass_diagnosis": true,
+    "rows": [
+      {
+        "row": 211,
+        "coordinate": 144,
+        "offset": -1,
+        "actual_grid_delta": -0.00616455078125,
+        "saved_prediction": -9.852102460456653e-07,
+        "fresh_prediction": -9.852102460456642e-07,
+        "fresh_minus_saved_prediction": 1.0587911840678754e-21,
+        "saved_FP32_direct_delta": -9.84100198216819e-07,
+        "fresh_original_fullbatch_FP32_delta": -9.84100198216819e-07,
+        "FP64_direct_delta_diagnostic_only": -9.852102460456487e-07,
+        "FP64_paired_delta_diagnostic_only": -9.852102460456627e-07,
+        "FP64_paired_minus_prediction": 1.4823076576950256e-21,
+        "original_tolerance": 9.852102460456652e-10,
+        "absolute_discrepancy": 1.1100478288463026e-09,
+        "error_over_original_tolerance": 1.126711616430805,
+        "old_loss": 0.00024047624772425495,
+        "direct_relative_delta": -0.004092296879753586
+      }
+    ],
+    "full_direct_output_rows": 896,
+    "input_dim": 4864,
+    "N": 262144,
+    "chunk": 4096,
+    "input_sha256": "187e9d6716138ba2169399d1479f2abb8d51e8bc32026fcddc31a74245fa57ea",
+    "C_sha256": "04822a903a351327df1bfdf9f24f38fbaa68951926647d4f689c86e390ca86d1",
+    "exact_actual_grid_E_and_proposal_verified": true,
+    "code_grid_legal": true,
+    "all_state_values_finite": true,
+    "p_max_absolute_drift": 3.552713678800501e-15,
+    "original_fullbatch_FP32_old_new_loss_bitwise_reproduced": true,
+    "no_commit_or_accept_or_PPL": true,
+    "failed_group_checkpoint_exists": false,
+    "interpretation": "FP32 full-batch scoring discrepancy exceeds frozen tolerance even though actual loss descends. The allowed near-zero tie/rise rejection branch does not cover this case. Alternate FP64 output is diagnostic only; no tolerance change or recovery authorized.",
+    "original_gpu_budget_global_wall_seconds_including_diagnosis": 475.2909038066864
+  },
+  "PPL_comparison": [],
+  "PPL_unverified": true,
+  "v44_attempt_wall_seconds": 145.2112946510315,
+  "v44_gpu_budget_global_wall_seconds_including_diagnosis": 475.2909038066864,
+  "v44_synchronized_stage_seconds_by_mode": {
+    "formal": 129.43518059993949,
+    "diagnostic": 71.02948839998862,
+    "warmup": 0.27232180000282824,
+    "validation": 11.483150399988517
+  },
+  "v44_all_synchronized_stages_seconds": 212.22014119991945,
+  "v44_unitemized_wall_seconds": 263.07076260676695,
+  "v42_GPU_budget_wall_seconds": 252.25650310516357,
+  "v42_pilot_block_seconds_subset_of_v42_wall": 226.10666029999993,
+  "v43_GPU_budget_wall_seconds_includes_failure": 964.5525724887848,
+  "v43_failed_repair_attempt_wall_seconds": 741.2125687599182,
+  "cumulative_v42_v43_v44_GPU_budget_wall_seconds": 1692.0999794006348,
+  "historical_M2_build_seconds_separate": 2115.9353341000096,
+  "M2_plus_repair_validation_chain_wall_seconds": 3808.0353135006444,
+  "peak_GPU_allocated_bytes": 1733743104,
+  "peak_GPU_reserved_bytes": 2071986176,
+  "v44_failures": 1,
+  "v44_recoveries": 0,
+  "pre_run_forecast_seconds_prediction_only": 6920.123819504998,
+  "GPU_hard_cap_seconds": 10800,
+  "historical_v43_preserved": true,
+  "automatic_followup": false,
+  "model_setting": "Sol high requested; interface cannot confirm or switch."
+}

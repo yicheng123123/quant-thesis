@@ -1,0 +1,3352 @@
+{
+  "status": "PASS",
+  "definition": "For equal per-group alpha, one-row native GPTQ must reproduce the matching full-Linear scalar candidate.",
+  "cases": [
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 0,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0007557539316525011,
+      "row_output_mse_2doc": 0.0007557539316525011,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 7.55753931652501e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 224,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0009305145382047512,
+      "row_output_mse_2doc": 0.0009305145382047512,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 9.305145382047512e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 448,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0009846641512856731,
+      "row_output_mse_2doc": 0.0009846641512856731,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 9.84664151285673e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 672,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0010615453398007812,
+      "row_output_mse_2doc": 0.0010615453398007812,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 1.061545339800781e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 0,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0004904449389950139,
+      "row_output_mse_2doc": 0.0004904449389950139,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.904449389950139e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 224,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0006842097528223658,
+      "row_output_mse_2doc": 0.0006842097528223658,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 6.842097528223658e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 448,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0007309103603200656,
+      "row_output_mse_2doc": 0.0007309103603200656,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 7.309103603200656e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 672,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0008418271234397049,
+      "row_output_mse_2doc": 0.0008418271234397049,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 8.418271234397049e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 0,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0004937058948775456,
+      "row_output_mse_2doc": 0.0004937058948775456,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.937058948775456e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 224,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0006604243445917687,
+      "row_output_mse_2doc": 0.0006604243445917687,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 6.604243445917687e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 448,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0007198001291415094,
+      "row_output_mse_2doc": 0.0007198001291415094,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 7.198001291415094e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 672,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0007687803252540737,
+      "row_output_mse_2doc": 0.0007687803252540737,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 7.687803252540737e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 0,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0006745560637352939,
+      "row_output_mse_2doc": 0.0006745560637352939,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 6.745560637352939e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 224,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0007030592460544431,
+      "row_output_mse_2doc": 0.0007030592460544431,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 7.030592460544431e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 448,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0006849938591000694,
+      "row_output_mse_2doc": 0.0006849938591000694,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 6.849938591000693e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S0",
+      "row": 672,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0005847091636035911,
+      "row_output_mse_2doc": 0.0005847091636035911,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 5.847091636035911e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 0,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.000896228660152813,
+      "row_output_mse_2doc": 0.000896228660152813,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 8.962286601528129e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 224,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.00108301131986703,
+      "row_output_mse_2doc": 0.00108301131986703,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 1.08301131986703e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 448,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0009965839658458969,
+      "row_output_mse_2doc": 0.0009965839658458969,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 9.965839658458969e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 672,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0010860654800941656,
+      "row_output_mse_2doc": 0.0010860654800941656,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 1.0860654800941655e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 0,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.000611696894778623,
+      "row_output_mse_2doc": 0.000611696894778623,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 6.116968947786229e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 224,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.000729807511676644,
+      "row_output_mse_2doc": 0.000729807511676644,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 7.29807511676644e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 448,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0006978175540206016,
+      "row_output_mse_2doc": 0.0006978175540206016,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 6.978175540206016e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 672,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0008840049195620802,
+      "row_output_mse_2doc": 0.0008840049195620802,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 8.840049195620802e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 0,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0005553851703533186,
+      "row_output_mse_2doc": 0.0005553851703533186,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 5.553851703533186e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 224,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.000821790720741026,
+      "row_output_mse_2doc": 0.000821790720741026,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 8.217907207410259e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 448,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0008011895346111687,
+      "row_output_mse_2doc": 0.0008011895346111687,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 8.011895346111687e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 672,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0008960337137132434,
+      "row_output_mse_2doc": 0.0008960337137132434,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 8.960337137132434e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 0,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0006497579619217209,
+      "row_output_mse_2doc": 0.0006497579619217209,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 6.497579619217209e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 224,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0008621224277999644,
+      "row_output_mse_2doc": 0.0008621224277999644,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 8.621224277999644e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 448,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0007628802141261946,
+      "row_output_mse_2doc": 0.0007628802141261946,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 7.628802141261946e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "split": "S1",
+      "row": 672,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.000764285798763989,
+      "row_output_mse_2doc": 0.000764285798763989,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 7.64285798763989e-10,
+      "output_mse_pass": true,
+      "range_find_params_calls": 8
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 0,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.007027736175835478,
+      "row_output_mse_2doc": 0.007027736175835478,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 7.027736175835477e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 224,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 1.3969838619232178e-09,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.004726451341125435,
+      "row_output_mse_2doc": 0.004726451341125435,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.726451341125434e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 448,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.004713189844824879,
+      "row_output_mse_2doc": 0.004713189844824879,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.713189844824878e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 672,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 1.3969838619232178e-09,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.004067344732907723,
+      "row_output_mse_2doc": 0.004067344732907723,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.067344732907723e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 0,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.006913346673605315,
+      "row_output_mse_2doc": 0.006913346673605315,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 6.9133466736053144e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 224,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.004646513704455034,
+      "row_output_mse_2doc": 0.004646513704455034,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.646513704455033e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 448,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.004151018335223938,
+      "row_output_mse_2doc": 0.004151018335223938,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.151018335223938e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 672,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0037993630101926744,
+      "row_output_mse_2doc": 0.0037993630101926744,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 3.799363010192674e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 0,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 1.862645149230957e-09,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.007168685798054327,
+      "row_output_mse_2doc": 0.007168685798054327,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 7.168685798054327e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 224,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.005485392360870112,
+      "row_output_mse_2doc": 0.005485392360870112,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 5.485392360870112e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 448,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.005118875731650121,
+      "row_output_mse_2doc": 0.005118875731650121,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 5.118875731650121e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 672,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.003928624124513402,
+      "row_output_mse_2doc": 0.003928624124513402,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 3.928624124513402e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 0,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.009356403335995736,
+      "row_output_mse_2doc": 0.009356403335995736,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 9.356403335995735e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 224,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.00561726857544745,
+      "row_output_mse_2doc": 0.00561726857544745,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 5.61726857544745e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 448,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 1.3969838619232178e-09,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.005944129137837814,
+      "row_output_mse_2doc": 0.005944129137837814,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 5.944129137837814e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S0",
+      "row": 672,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 1.862645149230957e-09,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.004255585747114028,
+      "row_output_mse_2doc": 0.004255585747114028,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.255585747114028e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 0,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 1.3969838619232178e-09,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0069571890459771205,
+      "row_output_mse_2doc": 0.0069571890459771205,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 6.95718904597712e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 224,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0046963056805055334,
+      "row_output_mse_2doc": 0.0046963056805055334,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.6963056805055336e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 448,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.004325300079933176,
+      "row_output_mse_2doc": 0.004325300079933176,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.325300079933176e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 672,
+      "alpha": 0.7,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.0035480094336966914,
+      "row_output_mse_2doc": 0.0035480094336966914,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 3.548009433696691e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 0,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 1.3969838619232178e-09,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.007056472599846093,
+      "row_output_mse_2doc": 0.007056472599846093,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 7.056472599846093e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 224,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.004152715152320972,
+      "row_output_mse_2doc": 0.004152715152320972,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.152715152320972e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 448,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 4.656612873077393e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.004035411177764828,
+      "row_output_mse_2doc": 0.004035411177764828,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.035411177764828e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 672,
+      "alpha": 0.8,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 1.3969838619232178e-09,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.003693625101213167,
+      "row_output_mse_2doc": 0.003693625101213167,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 3.693625101213167e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 0,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.008339514968749065,
+      "row_output_mse_2doc": 0.008339514968749065,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 8.339514968749065e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 224,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 1.3969838619232178e-09,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.004413371703378981,
+      "row_output_mse_2doc": 0.004413371703378981,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.413371703378981e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 448,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.004292412288812976,
+      "row_output_mse_2doc": 0.004292412288812976,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.292412288812976e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 672,
+      "alpha": 0.9,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.003942593170919632,
+      "row_output_mse_2doc": 0.003942593170919632,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 3.942593170919632e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 0,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.008341485994909432,
+      "row_output_mse_2doc": 0.008341485994909432,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 8.34148599490943e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 224,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.005825725431386716,
+      "row_output_mse_2doc": 0.005825725431386716,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 5.825725431386715e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 448,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 1.3969838619232178e-09,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.006127175252036372,
+      "row_output_mse_2doc": 0.006127175252036372,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 6.127175252036372e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    },
+    {
+      "layer": 23,
+      "projection": "down_proj",
+      "split": "S1",
+      "row": 672,
+      "alpha": 1.0,
+      "field_checks": {
+        "weight": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "scale": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 9.313225746154785e-10,
+          "exact": false,
+          "rtol": 1e-06,
+          "atol": 1e-09
+        },
+        "zero": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "g_idx": {
+          "pass": true,
+          "shape_equal": true,
+          "dtype_equal": true,
+          "max_abs_diff": 0.0,
+          "exact": true,
+          "rtol": 0.0,
+          "atol": 0.0
+        },
+        "pass": true
+      },
+      "full_output_mse_2doc": 0.004498987596837894,
+      "row_output_mse_2doc": 0.004498987596837894,
+      "output_mse_abs_diff": 0.0,
+      "output_mse_tolerance": 4.498987596837893e-09,
+      "output_mse_pass": true,
+      "range_find_params_calls": 39
+    }
+  ],
+  "case_count": 64,
+  "alphas": [
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "representative_targets": [
+    "L0/up_proj",
+    "L23/down_proj"
+  ],
+  "weight_zero_g_idx_tolerance": "exact",
+  "scale_tolerance": {
+    "rtol": 1e-06,
+    "atol": 1e-09
+  },
+  "output_mse_tolerance": "max(1e-12, 1e-6 * abs(reference MSE)) on two search documents",
+  "held_data_used": false
+}

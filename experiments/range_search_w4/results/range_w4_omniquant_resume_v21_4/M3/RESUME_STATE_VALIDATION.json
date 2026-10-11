@@ -1,0 +1,107 @@
+{
+  "calibration_manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+  "completed_layer_count": 21,
+  "config_sha256": "c9d40132698c1dda4fcaf8f0502f1eb148bb608c80fb25792dc3fcb0b509d09a",
+  "gradscaler_skipped_steps": 0,
+  "historical_float_tensor_count": 294,
+  "historical_model_state_all_finite": true,
+  "historical_model_state_keys": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "historical_model_state_tensor_count": 294,
+  "historical_rng_state_keys": [
+    "numpy",
+    "python",
+    "torch_cpu",
+    "torch_cuda"
+  ],
+  "historical_source_checkpoint": "experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21_1\\M3\\checkpoints\\block_20",
+  "historical_source_latest_pointer_sha256": "b041fac390e1b133cf99412da40d55b90c09d8ea2833a18d667c6f67858c0a14",
+  "historical_source_manifest_preserved_in_v21_4": "M3/checkpoints/block_20/CHECKPOINT_MANIFEST_V21_1.json",
+  "historical_source_manifest_sha256": "950421d4b4954fc8512300cbb5683665e7455afedc457fbf89f937fc42847411",
+  "historical_step_log_audit": {
+    "all_losses_finite": true,
+    "all_owned_lwc_gradients_finite": true,
+    "attempt_id": "20261001_183359_6c00bf87",
+    "complete_prefix_rows": 53760,
+    "note": "Historical source did not record AdamW hook counts or GradScaler found_inf snapshots; successful-step total remains an evidence-based inference, not a directly observed counter.",
+    "unique_layer_epoch_sample_locations": 53760
+  },
+  "isolated_checkpoint_files": {
+    "rng": {
+      "bytes": 14520,
+      "path": "M3\\checkpoints\\block_20\\rng_state.pth",
+      "sha256": "996b6941bc86572042f55107a255991029c416c11fdc6144659b5328aaceb2a2"
+    },
+    "state": {
+      "bytes": 9890562,
+      "path": "M3\\checkpoints\\block_20\\omni_parameters.pth",
+      "sha256": "62c98139583c389483cd5e124fa261544ed84b615ef323683d8ae57d2567fd16"
+    }
+  },
+  "latest_completed_block_id": 20,
+  "latest_pointer_sha256": "1ea2451bdbc2fbb21f7880ed34c3dc7f4baa8eb1c8f2fb36078fe875c6c0784d",
+  "migrated_checkpoint_manifest_sha256": "907b279a61b04035e18c25ed6efaab1aa6f8be8d7223ac4564c6ee3b92799dfb",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "ordered_token_hashes_sha256": "552ff2b2ad6226feb21e8b0664b1d90a0ce841b0b73978385def43bdce46159d",
+  "pretraining_bootstrap_failure": {
+    "exception_type": "ModuleNotFoundError",
+    "latest_checkpoint": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4\\M3\\checkpoints\\LATEST.json",
+    "message": "No module named 'run_local_preflight'",
+    "status": "FAILED_OR_INTERRUPTED",
+    "traceback": "Traceback (most recent call last):\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4\\M3\\run_formal_m3.py\", line 898, in main\n    summary = run_calibration(config, token_ids, lock)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4\\M3\\run_formal_m3.py\", line 709, in run_calibration\n    from run_local_preflight import load_exact_model\nModuleNotFoundError: No module named 'run_local_preflight'\n",
+    "updated_at": "2026-10-01 23:38:57+0800"
+  },
+  "protocol_lock_sha256": "a79645796ea331b491c2da880ae7f8d9d2d53078f12abfe894a96c6f943a7735",
+  "resume_boundary_semantics": {
+    "completed_quantized_prefix_replayed": true,
+    "fresh_adamw_for_layer21": true,
+    "fresh_native_dynamic_gradscaler_for_layer21": true,
+    "optimizer_or_scaler_state_loaded_from_block20": false,
+    "reason": "Upstream source creates AdamW and NativeScaler inside each decoder-block iteration; a completed-block checkpoint does not contain optimizer/scaler moments. v21.3 explicitly directs a fresh layer-21 optimizer/scaler and RNG restoration at the boundary.",
+    "saved_rng_restored_at_first_incomplete_block": true
+  },
+  "rng_state_hash_and_structure_valid": true,
+  "scheduled_iterations": 53760,
+  "source_audit_sha256": "a4d81c562ca527e5c09fb621df06636e42122343996c62b0b560515e928bfd6f",
+  "status": "PASS",
+  "successful_optimizer_steps": 53760,
+  "successful_step_count_is_inferred": true,
+  "successful_step_count_provenance": "inferred from complete v21.1 owned-LWC finite-gradient rows and exact v21.3 native GradScaler semantics; no historical optimizer step hooks or found_inf snapshots were recorded",
+  "v21_3_resume_evidence": {
+    "FORMAL_RESUME_PLAN.md": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_omniquant_amp_audit_v21_3\\FORMAL_RESUME_PLAN.md",
+      "sha256": "9621ed2145cbd0893808980f81f2d04e96db532f1b97af02d7b6c6633ecdc671"
+    },
+    "FORMAL_STEP_SEMANTICS.md": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_omniquant_amp_audit_v21_3\\FORMAL_STEP_SEMANTICS.md",
+      "sha256": "5d4918bff881b9bb83be96923c89616d8929766f49d6d7281210be0bf0088542"
+    },
+    "STOP_GATE_ASSESSMENT.md": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_omniquant_amp_audit_v21_3\\STOP_GATE_ASSESSMENT.md",
+      "sha256": "d9c3b377280fc6b794961674d3fed114411d75636728bc3e01a23dcb9d106e24"
+    }
+  },
+  "validation_scope": "isolated v21.4 block_20 resume preconditions; no training step executed",
+  "validation_time_local": "2026-10-01 23:41:50+0800"
+}

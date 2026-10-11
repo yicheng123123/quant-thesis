@@ -1,0 +1,30 @@
+{
+  "python": "3.12.10",
+  "pytorch": "2.6.0+cu124",
+  "cuda_runtime": "12.4",
+  "transformers": "5.16.1",
+  "tokenizers": "0.23.2",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "dtype": "FP16",
+  "device": "CUDA; NVIDIA GeForce RTX 4060 Laptop GPU in frozen runs",
+  "device_query_in_v57": false,
+  "attention_requested": "SDPA via attn_implementation=sdpa",
+  "actual_attention_kernel": "NOT_MEASURED; selected lower-level SDPA backend is not present in logs",
+  "tf32": false,
+  "fp32_matmul_precision": "highest per v56 protocol",
+  "eval_mode": true,
+  "use_cache": false,
+  "max_length": 2048,
+  "stride": 512,
+  "add_special_tokens": false,
+  "chat_template": false,
+  "score_aggregation": "sum raw window NLL / sum valid_tokens, then exp for PPL",
+  "tokenizer_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "history_runtime": {
+    "M1_M2": "torch 2.6.0+cu124; Transformers 4.49.0; Python not recorded",
+    "M1_plus_repair": "torch 2.6.0+cu124; Transformers 5.16.1; Python version not recorded",
+    "M2_plus_repair": "torch 2.5.1+cu121; Transformers and Python unknown"
+  },
+  "v57_full_hf_model_loads": "not attempted; preflight stopped on measured budget infeasibility"
+}

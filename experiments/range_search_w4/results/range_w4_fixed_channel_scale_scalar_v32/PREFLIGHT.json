@@ -1,0 +1,146 @@
+{
+  "status": "PASS",
+  "protocol_sha256": "fa6b61785cd2ce633f402b0b93be7761389ffc9e48e4bdb10f151ecd62e1b12e",
+  "D_identity": [
+    {
+      "stem": "L0_up_proj_S0",
+      "H_sha256": "6df966fec06f99aa1d664f048a7cc4470c9366da601ac75213636eae0847522d",
+      "H_exact_vs_v24": true,
+      "nsamples": 16,
+      "candidate_tensor_exact_vs_v24": {
+        "weight_fp16": true,
+        "scales": true,
+        "zeros": true,
+        "g_idx": true
+      },
+      "search_alpha1_score_exact_vs_v24": {
+        "0": true,
+        "224": true,
+        "448": true,
+        "672": true
+      },
+      "D_identity_scaled_path_score_exact_vs_direct": {
+        "0": true,
+        "224": true,
+        "448": true,
+        "672": true
+      },
+      "original_W_unchanged": true,
+      "H_unchanged": true,
+      "hessian_seconds": 0.2766132000251673,
+      "factor_seconds": 0.134172500052955,
+      "additional_full_linear_GPTQ_calls": 1,
+      "candidate_score_seconds": 0.043478299980051816,
+      "scaled_path_score_seconds": 0.0392238000058569
+    },
+    {
+      "stem": "L0_down_proj_S0",
+      "H_sha256": "1c9911052a1c9a7905174e19780d83a09043ec0afd74445f3a1912aaee255373",
+      "H_exact_vs_v24": true,
+      "nsamples": 16,
+      "candidate_tensor_exact_vs_v24": {
+        "weight_fp16": true,
+        "scales": true,
+        "zeros": true,
+        "g_idx": true
+      },
+      "search_alpha1_score_exact_vs_v24": {
+        "0": true,
+        "224": true,
+        "448": true,
+        "672": true
+      },
+      "D_identity_scaled_path_score_exact_vs_direct": {
+        "0": true,
+        "224": true,
+        "448": true,
+        "672": true
+      },
+      "original_W_unchanged": true,
+      "H_unchanged": true,
+      "hessian_seconds": 0.3977733999490738,
+      "factor_seconds": 0.184004399983678,
+      "additional_full_linear_GPTQ_calls": 1,
+      "candidate_score_seconds": 0.12015760003123432,
+      "scaled_path_score_seconds": 0.11785499996040016
+    }
+  ],
+  "unquantized_coordinate_equivalence": [
+    {
+      "spot_tokens": 128,
+      "spot_rows": [
+        0,
+        224,
+        448,
+        672
+      ],
+      "real_identity": "(X D^-1)(W D)^T = X W^T by diagonal cancellation",
+      "fp64_max_abs": 6.245004513516506e-17,
+      "fp64_mse": 1.9466333386410934e-34,
+      "fp32_max_abs": 1.1920928955078125e-07,
+      "fp32_mse": 1.4713639920165e-15,
+      "fp16_cast_max_abs": 0.00029075145721435547,
+      "fp16_cast_mse": 8.130802697792205e-09,
+      "stem": "L0_up_proj_S0",
+      "D_sha256": "e3a2996fc3413433682d311f35c1d9bab8ee03349a7068c6dddd608bded91ee8",
+      "spot_seconds": 0.050357599975541234,
+      "D_min": 0.43694379925727844,
+      "D_max": 2.288623809814453
+    },
+    {
+      "spot_tokens": 128,
+      "spot_rows": [
+        0,
+        224,
+        448,
+        672
+      ],
+      "real_identity": "(X D^-1)(W D)^T = X W^T by diagonal cancellation",
+      "fp64_max_abs": 5.551115123125783e-17,
+      "fp64_mse": 4.292317622027583e-35,
+      "fp32_max_abs": 1.1920928955078125e-07,
+      "fp32_mse": 6.693292465686108e-16,
+      "fp16_cast_max_abs": 0.00022745132446289062,
+      "fp16_cast_mse": 1.921746095590038e-09,
+      "stem": "L0_down_proj_S0",
+      "D_sha256": "9a05fac324ebf75667592a157fa1b3b08f00cdb05a7d1faa6bfd9592d69dd4c5",
+      "spot_seconds": 0.002505799988284707,
+      "D_min": 0.4776284098625183,
+      "D_max": 2.0936777591705322
+    }
+  ],
+  "scaled_alpha1_native_parity": "PASS",
+  "state_independence_spot": {
+    "stem": "L0_up_proj_S0",
+    "order": [
+      1.0,
+      0.8,
+      1.0
+    ],
+    "repeated_alpha1_equal": {
+      "weight_fp16": true,
+      "scales": true,
+      "zeros": true,
+      "g_idx": true
+    },
+    "pristine_Wprime_unchanged": true,
+    "scaled_H_unchanged": true,
+    "additional_full_linear_GPTQ_calls": 1
+  },
+  "preflight_candidate_alphas_banked": [
+    1.0,
+    0.8
+  ],
+  "search_full_16_document_fp16_coordinate_drift": {
+    "unquantized_fp16_coordinate_drift_mse_by_row": {
+      "0": 8.50010714319002e-09,
+      "224": 6.491649059220873e-09,
+      "448": 7.414985380959463e-09,
+      "672": 7.9689613328649e-09
+    },
+    "unquantized_fp16_coordinate_drift_max_abs": 0.0004339739680290222,
+    "reference": "original X_FP16.float @ W_FP16.float.T"
+  },
+  "no_held_data_used": true,
+  "new_model_forwards": 0
+}

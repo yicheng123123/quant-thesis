@@ -1,0 +1,63 @@
+{
+  "status": "PASS",
+  "canonical_final_model_accounting": {
+    "scheduled_iterations": 61440,
+    "successful_optimizer_steps": 61438,
+    "gradscaler_skipped_steps": 2,
+    "skip_fraction": 3.255208333333333e-05,
+    "skip_percent": 0.0032552083333333335,
+    "resumed_v21_4_attempt_rows": 7680,
+    "resumed_v21_4_successful_steps": 7678,
+    "resumed_v21_4_skips": 2,
+    "canonical_final_artifact_counts_match_block23_manifest": true
+  },
+  "events": [
+    {
+      "scheduled_iteration_count": 53761,
+      "layer": 21,
+      "epoch_index": 0,
+      "sample_index": 0,
+      "loss": 0.15326565504074097,
+      "found_inf": 1.0,
+      "scale_before": 65536.0,
+      "scale_after": 32768.0,
+      "lwc_parameters_finite": true,
+      "optimizer_state_unchanged": true
+    },
+    {
+      "scheduled_iteration_count": 53835,
+      "layer": 21,
+      "epoch_index": 0,
+      "sample_index": 74,
+      "loss": 0.16976092755794525,
+      "found_inf": 1.0,
+      "scale_before": 32768.0,
+      "scale_after": 16384.0,
+      "lwc_parameters_finite": true,
+      "optimizer_state_unchanged": true
+    }
+  ],
+  "historical_block0_20": {
+    "scheduled_iterations": 53760,
+    "successful_updates_inferred": 53760,
+    "skips_inferred": 0,
+    "evidence": "v21.3 CPU historical audit: complete prefix has finite owned LWC gradients after native scaler on all recorded rows; direct hook/found_inf snapshots were not saved",
+    "prefix_inference_not_direct_step_hook_measurement": true,
+    "legacy_manifest_field_caveat": "block20 effective_optimizer_updates_in_checkpoint=53760; its separate total_optimizer_updates=61440 is a schedule total and is not used as effective-update count"
+  },
+  "earlier_abandoned_boundary_attempt": {
+    "location": {
+      "layer": 21,
+      "epoch_index": 0,
+      "sample_index": 0
+    },
+    "included_in_canonical_final_model_counts": false,
+    "evidence": "v21.1 stopped after block20 at this boundary; the row was rerun under the v21.4 native-scaler gate and is counted once in the final model ledger",
+    "separate_nonfinal_attempt_is_disclosed": true
+  },
+  "other_hidden_skips_in_canonical_v21_4_attempt": 0,
+  "step_log_sha256": "f0072fa0463d624bbf41a56b995924e6655c1fcf183da6dd4864a99a6f5a191f",
+  "amp_event_log_sha256": "151a7ef910e550f9db8fe2bebabb07fe56c893414fa1d4df3851eb343dafb369",
+  "block23_manifest_sha256": "3641627bf11979d159b769123eeaf5dabdea2ff35475fb77f30b66900fcf9366",
+  "historical_audit_sha256": "3503f501b025a03504637da8b3e5a0eb827445e3b18b60878b7bbf6428e08e57"
+}

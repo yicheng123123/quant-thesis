@@ -1,0 +1,200 @@
+{
+  "name": "v29 quadratic fast score with original-score numerical recheck",
+  "status": "FROZEN_BEFORE_V29_GPU_EXECUTION",
+  "v18_protocol": {
+    "name": "v18 Formal M2 Full-Model Quantization and Model-Level Evaluation",
+    "status": "PRECHECK_PENDING",
+    "source_protocol": {
+      "v16_protocol_draft_sha256": "64dacbba12ef0d4625111d201e48a43c63fd8347dd85f2aeb82a1c86703bc0a4",
+      "v16_ppl_eval_protocol_sha256": "eec9b7d01c0191809e63282cac82cb8fa85f266a3b5016c8ab91eb22e8c1c7d0",
+      "v16_baseline_matrix_sha256": "68b5f09dfb3ce3009e5d1b7b2f4339710329036e1f538e4658d3b18e3d6c483b",
+      "v16_calibration_manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+      "v16_wikitext_manifest_sha256": "acd46b20a6b84b534d5625bfab505d599001679a775d619960a40e8da4f62f46",
+      "v16_c4_manifest_sha256": "0b0d70d70d3c1e0ba62126c81a3f3e97531e58d6701236fb8b3315450b7188d4",
+      "v17_1_native_m2_sha256": "7cd0f8c062b79572b56458b6547b122eaf57b25aadf92fdc33c59fd41a579e0b"
+    },
+    "model": {
+      "id": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "dtype": "FP16",
+      "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "attention": "SDPA",
+      "use_cache": false,
+      "tf32": false
+    },
+    "quantization": {
+      "scope": "all 168 decoder Linear modules; embeddings, tied lm_head, norms, and biases remain FP16",
+      "weight_bits": 4,
+      "activation_bits": 16,
+      "group_size": 128,
+      "block_size": 128,
+      "symmetric": true,
+      "desc_act": false,
+      "static_groups": false,
+      "true_sequential": true,
+      "damp_percent": 0.1,
+      "damp_auto_increment": 0,
+      "mse": 0.0,
+      "math": "FP32 GPTQ statistics and compensation; dense quantized weights stored FP16"
+    },
+    "m2": {
+      "alpha_grid": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+      ],
+      "selection_unit": "independent alpha per output row, shared across all G128 groups of that row",
+      "objective": "direct local calibration output reconstruction MSE, X @ (Q_FP16.float() - W_FP16.float()).T",
+      "tie_break": "exact loss ties prefer the larger alpha",
+      "prefix": "the method's own previously committed dense quantized weights; q/k/v and up/gate use shared group input/H; refresh only at dependency boundaries",
+      "candidate_isolation": "all ten candidates use the same pristine current target W and shared H/Hinv state; candidate-local compensation state is fresh",
+      "candidate_calls": 1680,
+      "row_alpha_score_slots": 3041280
+    },
+    "calibration": {
+      "source": "v16 CALIBRATION_MANIFEST.json, copied byte-for-byte to this run directory",
+      "dataset": "WikiText-2 train",
+      "documents": 128,
+      "tokens_per_document": 2048,
+      "token_budget": 262144,
+      "seed": 20261005,
+      "special_tokens": false,
+      "resampling": false
+    },
+    "evaluation": {
+      "primary_representation": "dense-dequant FP16 weights for M1 and M2; original FP16 for M0",
+      "evaluator": "benchmark.eval.ppl.evaluate_ppl token-weighted sliding windows",
+      "max_length": 2048,
+      "stride": 512,
+      "add_special_tokens": false,
+      "chat_template": false,
+      "wiki_text_test_input_tokens": 299078,
+      "wiki_text_test_scored_tokens": 299077,
+      "c4_validation_fixed_budget_input_tokens": 131072,
+      "c4_validation_fixed_budget_scored_tokens": 131071,
+      "c4_label": "C4 validation fixed token budget PPL; not standard/full C4 PPL",
+      "selection_or_tuning_on_eval": false
+    },
+    "gate": {
+      "conservative_m2_calibration_hours_max": 48,
+      "source": "v16 frozen protocol and v17.3 corrected cost audit",
+      "change_allowed": false
+    },
+    "prohibited": [
+      "OmniQuant",
+      "PrefixQuant",
+      "Gate",
+      "robust objective",
+      "alpha grid tuning",
+      "packed-kernel performance claims"
+    ]
+  },
+  "inherit_from": {
+    "v18_protocol_sha256": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+    "v28_protocol_sha256": "5fa8cb2af7a82ef55ed8013e202c9ff2f7d5d2363e91e3fdd5130efc9ea6edb6",
+    "v28_pure_quadratic_verdict": "FAIL: 1 output row differs; retained as-is",
+    "model_checkpoint": "v18 M2; same immutable revision and all non-search settings"
+  },
+  "scope": {
+    "model": "Qwen/Qwen2.5-0.5B-Instruct@7ae557604adf67be50417f59c2c2f167def9a775",
+    "quantization": "W4A16 symmetric dynamic GPTQ G128, block=128, damp_percent=0.1, desc_act=false, original compensation",
+    "alpha_grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "linear_modules": 168,
+    "output_rows": 304128,
+    "calibration": "v18 frozen WikiText-2 train 128 documents x 2048 tokens; exact M2 own-prefix activations",
+    "selection": "per-row exact argmin; exact ties choose larger alpha",
+    "heldout_ppl": "NOT_RUN"
+  },
+  "frozen_hybrid_rule": {
+    "default_scorer": "v27/v28 complete quadratic scorer C=X.T@X/N and e@C then FP64 row reduction",
+    "sensitivity_criterion": "2 * max_alpha(abs(quadratic_score-direct_score)) >= direct_best_second_gap, using v28 full-score empirical errors and exact frozen direct tie rule",
+    "empirical_only": true,
+    "row_allowlist": null,
+    "trigger_unit": "one full output-row Linear because v18 score_rows forms delta for all rows and one GEMM with the full output dimension; no output-row chunking",
+    "recheck": "for any Linear with >=1 sensitive row, run all 10 candidates through unchanged v18 score_rows over the full row matrix; mixed scorer uses rechecked direct scores for every row in that Linear, quadratic scores elsewhere",
+    "selection": "same frozen exact argmin and larger-alpha exact-tie rule; no fixed alpha and no threshold relaxation",
+    "claim_limit": "experience-based numerical guard only; no general error guarantee"
+  },
+  "frozen_evidence_audit": {
+    "v28_sensitive_rows": 201,
+    "v28_triggered_full_linears": 82,
+    "total_full_linears": 168,
+    "rechecked_full_score_calls": 820,
+    "rechecked_output_rows_per_candidate": 258432,
+    "rechecked_row_alpha_values": 2584320,
+    "rechecked_linear_fraction": 0.4880952380952381,
+    "direct_score_time_v28_all_s": 718.5237990000169,
+    "direct_score_time_v28_trigger_subset_s": 460.4815902992268,
+    "trigger_subset_fraction_of_direct_score_time": 0.6408717302615274,
+    "row_884_covered": true,
+    "row_884_direct_best_second_gap": 1.8750979150460034e-09,
+    "row_884_max_abs_score_error": 1.5602479375154132e-07,
+    "v28_full_run_wall_s": 2774.4991111999843,
+    "v28_hybrid_recheck_subset_historical_timing_estimate_s": 460.4815902992268,
+    "original_scoring_output_row_chunks": 1,
+    "direct_score_calls_for_triggered_linear_alpha_grid": 10,
+    "sensitivity_set_matches_saved_v28_csv": true
+  },
+  "validation": {
+    "phase1": "full v29 score-mode dual run: one candidate per alpha; direct and quadratic share Q; recheck all 10 full-matrix direct scores for every trigger Linear; commit direct selection; save quadratic and hybrid results and compare tensors/selections",
+    "phase2_gate": "standalone hybrid-only M2 is optional and may run only if phase1 passes and remaining cumulative 90-minute budget covers measured/projected full run; never derive a claimed wall by subtracting score stages",
+    "candidate_cache": "retain each current Linear's ten Q/scale/zero candidate tensors on GPU until sensitivity decision and any recheck finish; record logical bytes and observed CUDA peak; no disk candidate cache",
+    "recoverability": "atomic checkpoints after dependency groups and layers; resume only verified contiguous groups; budget includes load, capture, warmup, candidate scoring, rechecks, checkpoint and final save",
+    "gpu_wall_budget_seconds": 5400,
+    "ppl": "NOT_RUN"
+  },
+  "source_sha256": {
+    "v18_PROTOCOL.json": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+    "v18_run_precheck.py": "2bf4f624d7ce569cbb72dac9aabeac6c2ef31ebb5b96540df3c6316bf4900cf7",
+    "v18_run_formal.py": "b7cef35c7ce7cae4fbf2735227c0cb343bf5beb8df5d6519a984dfa18d6cc59b",
+    "v28_PROTOCOL.json": "5fa8cb2af7a82ef55ed8013e202c9ff2f7d5d2363e91e3fdd5130efc9ea6edb6",
+    "v28_run_v28.py": "8f14ba057bb4813ba5eb6694630a131eeee3f9bce5867e34f034ab61e9665219",
+    "v28_sensitive_rows.csv": "a7ed9412f545350052acf4694272a88dfe4a5ef208ed47ec3a823e92c01cfe0c",
+    "v28_known_difference.json": "8da950ed18456287a4ecfd659edab83ad7ad0dae82cd100c7c772f4a3712ccc2",
+    "v28_raw_scores_layer_00_23": {
+      "layer_00": "c96a6cbe5361df87d912322de1c3db8260ca595efd4d6ffc6d4a612e5767d056",
+      "layer_01": "cc81829ba415887afa88fce439ee84d9f5a0db6c3fab4f1c01791b7e5d10e9bd",
+      "layer_02": "e256d2a7aa6304075a3f62e8500637d411dc2f093dda9445129914497231a554",
+      "layer_03": "427c03774287edf27c534308c5fc19b79bb01ae78e01df564c17b75ae73e0fb6",
+      "layer_04": "86c65ba30af43130f04587cae6860fb9f0fd2a3ea4d80fe1490ea232e2e2d31e",
+      "layer_05": "55ec42f620aa62df6a35de153607003e084812e08aafb45a308a89bbcd2ee689",
+      "layer_06": "db524e8280ac36989d8304212fe06437dfecd289f8387c6f1ffc87ad65ee9c04",
+      "layer_07": "4646193ef1ed349d99885fe8b5094c1ba9feeff5f7525d1c11e419ca1ce6ced1",
+      "layer_08": "5108f884d55ea3b2519ad127d170637f52bae0962fa15657f596d126098e00d6",
+      "layer_09": "739ebfac06c436fb03987cd97d46096520a6164a89562a43fb15fc13ccef3c9b",
+      "layer_10": "e00cdd9ff282cd1856085d50bceab840625740423686faa377a5fc36e35b1333",
+      "layer_11": "06eb516fbbdc14076b2cd8ee79fdbe3be7fe41bec3d5fe90f4599b7c532f3227",
+      "layer_12": "57ff010887e8ba0e706ffa3529cde1770b11c8649372fbfa485620275ce20cd2",
+      "layer_13": "854941c0ae037111616e57e4d24a70dc2efc9d6f194e7eeb7ec7e61a311bc3c2",
+      "layer_14": "ea94f7fe509b89c0a39c9aa26009ca76a2b53647fec3db46e5844af02f751c8a",
+      "layer_15": "5e95aa1c001689179bd04b7d957889230c70d052ffce531a3cfd78277229def8",
+      "layer_16": "5f69dc19d497d558dfda3c0937628fecd9fb2bfc868831ff52209dfa1548d001",
+      "layer_17": "944db2d4f46d2f3d42936ee9b454b19addbe589f6ecf9e8fa076d14ea3e3a85e",
+      "layer_18": "b66c63a9a3c33cd1f88149ca7fee6738734b6efe6a63bff04618411946455367",
+      "layer_19": "7bb906ea67f07655af67a9fb0798aa5d919ef2069c22298fbc906e94f4f70aa8",
+      "layer_20": "fdee7b4363f9b99eecc1179a2d402d245f9cc9a7558e06e323f4232cc787ba65",
+      "layer_21": "e309994e75ca9bb5cdcb0085d2f2f44ee28abbc8d943cbf9972c1eb371058f63",
+      "layer_22": "7ea844c9dc2c71888f5c668fea04bc385d506599eeeb07ee1108a002771b82ac",
+      "layer_23": "e1c0c13a08ec05601a5dfbf308d380114370c739f57206f5399f3c62e1a75723"
+    }
+  },
+  "new_artifacts": "v29 directory only; v18/v28 read-only"
+}

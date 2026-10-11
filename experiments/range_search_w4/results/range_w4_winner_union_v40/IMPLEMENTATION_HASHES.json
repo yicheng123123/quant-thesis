@@ -1,0 +1,133 @@
+{
+  "schema": "v40-implementation-freeze-v1",
+  "sealed_utc": "2026-10-04T19:24:57.619552+00:00",
+  "builder": {
+    "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\build_v40.py",
+    "sha256": "de79a487c84317732911e218ee7ece78fc3da7271eaee6a4f154f62bda00ba42",
+    "bytes": 36675
+  },
+  "sealer": {
+    "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\seal_v40_freeze.py",
+    "sha256": "f1f4885a77f77534ad51e3685e49326a2da6abb77f28b2cdfb9c7475859546a8",
+    "bytes": 7727
+  },
+  "candidate_generation_call_unchanged": true,
+  "direct_row_scoring_call_unchanged": true,
+  "candidate_specific_runtime_changes": [
+    "A iterates the unchanged v18 scalar10 grid; B and pilot iterate each frozen per-Linear winner union plus alpha=1 in original order.",
+    "Validation and progress counters use the per-module candidate list.",
+    "The run entry executes M2 only; model quantization, native GPTQ compensation, Hessian preparation, direct scoring, row selection, stitch, commit and refresh remain v18 calls.",
+    "The pilot stops after the complete layer-0 checkpoint and next-layer input boundary.",
+    "Checkpoint fallback counts are derived from saved per-module candidate states for safe resume."
+  ],
+  "runs": {
+    "PILOT": {
+      "run_formal": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\PILOT\\run_formal.py",
+        "sha256": "4fd924e7541a4310cc5b31f1fd7f50b1b2a81b64865dfa4dc76c428e14e93624",
+        "bytes": 66201
+      },
+      "run_precheck": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\PILOT\\run_precheck.py",
+        "sha256": "883a9587b1ba632bfa96cbbd5ed6a98e93303daaea5121c951b0279fa23589a3",
+        "bytes": 43690
+      },
+      "run_config": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\PILOT\\V40_RUN_CONFIG.json",
+        "sha256": "3bcb520c40a41bf5b2b06d60c272162ed19c6855dee720c69085c5318f01c4f4",
+        "bytes": 766
+      },
+      "protocol_copy": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\PILOT\\PROTOCOL.json",
+        "sha256": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+        "bytes": 3570
+      },
+      "calibration_copy": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\PILOT\\CALIBRATION_MANIFEST.json",
+        "sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+        "bytes": 3883242
+      },
+      "code_bundle_sha256": "889a3af178fd92d82b834905c91c18a1497c2ad389522f702cd088e46458b4a4"
+    },
+    "A": {
+      "run_formal": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\A\\run_formal.py",
+        "sha256": "4fd924e7541a4310cc5b31f1fd7f50b1b2a81b64865dfa4dc76c428e14e93624",
+        "bytes": 66201
+      },
+      "run_precheck": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\A\\run_precheck.py",
+        "sha256": "883a9587b1ba632bfa96cbbd5ed6a98e93303daaea5121c951b0279fa23589a3",
+        "bytes": 43690
+      },
+      "run_config": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\A\\V40_RUN_CONFIG.json",
+        "sha256": "c7e46bae48661e94bad734983e9ea4d4b0dc223fce7e2c14bb881e0599e96397",
+        "bytes": 664
+      },
+      "protocol_copy": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\A\\PROTOCOL.json",
+        "sha256": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+        "bytes": 3570
+      },
+      "calibration_copy": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\A\\CALIBRATION_MANIFEST.json",
+        "sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+        "bytes": 3883242
+      },
+      "code_bundle_sha256": "874d840f298bbf4ecb83991956958136fe7571b6b1f53d2e0b776cff19bc6be6"
+    },
+    "B": {
+      "run_formal": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\B\\run_formal.py",
+        "sha256": "4fd924e7541a4310cc5b31f1fd7f50b1b2a81b64865dfa4dc76c428e14e93624",
+        "bytes": 66201
+      },
+      "run_precheck": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\B\\run_precheck.py",
+        "sha256": "883a9587b1ba632bfa96cbbd5ed6a98e93303daaea5121c951b0279fa23589a3",
+        "bytes": 43690
+      },
+      "run_config": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\B\\V40_RUN_CONFIG.json",
+        "sha256": "b2f38b9e86232bdb506317b3a0cc953b6e42aedcd9aa0f9d5d583aa0f4765bfc",
+        "bytes": 670
+      },
+      "protocol_copy": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\B\\PROTOCOL.json",
+        "sha256": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+        "bytes": 3570
+      },
+      "calibration_copy": {
+        "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\B\\CALIBRATION_MANIFEST.json",
+        "sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+        "bytes": 3883242
+      },
+      "code_bundle_sha256": "11d38ca7ae4cde109326784af8ba8d4c1076b598562e22015c854598f8c7078e"
+    }
+  },
+  "support_files": {
+    "seal_v40_freeze.py": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\seal_v40_freeze.py",
+      "sha256": "f1f4885a77f77534ad51e3685e49326a2da6abb77f28b2cdfb9c7475859546a8",
+      "bytes": 7727
+    },
+    "verify_v40_freeze.py": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\verify_v40_freeze.py",
+      "sha256": "5054f6f4e2ab2692e35cc547dd1b4276dd2b006bb70c4fda05ebb4c042774a41",
+      "bytes": 5101
+    },
+    "run_v40_stage.py": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\run_v40_stage.py",
+      "sha256": "301b76ce90b7e68f7834827544e29ca8727af6d3cdd65c6c19ad3bc29175b548",
+      "bytes": 9408
+    },
+    "analyze_v40.py": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_winner_union_v40\\analyze_v40.py",
+      "sha256": "ad41732c89739a66114d2805c2ccccc3a9f40deb63d31d01e710f66d664d4f3f",
+      "bytes": 18502
+    }
+  },
+  "reference_audit_sha256": "44d3c980c16cb7a0be85e8c331478021a288cf47aea70f90706a6ed715661cad",
+  "runner_diff_b_sha256": "9ddc06d3b6f8ada4a1c786956689084796bbafe7e537dc07757a9f386ee4f471"
+}

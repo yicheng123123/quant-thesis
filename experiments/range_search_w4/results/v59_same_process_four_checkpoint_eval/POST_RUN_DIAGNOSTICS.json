@@ -1,0 +1,9 @@
+{
+  "count": 1,
+  "phase": "CPU-only finalizer before any result table was written",
+  "initial_issue": "The first finalizer invocation used the unsupported codec spelling utf8-sig.",
+  "resolution": "Changed to Python's utf-8-sig codec name; reran the finalizer.",
+  "effect": "No evaluation, score, journal, or checkpoint was modified by the failed invocation.",
+  "first_failed_finalizer_wall_seconds": 1.705,
+  "charged_with": "conservative 60 second postprocessing charge"
+}

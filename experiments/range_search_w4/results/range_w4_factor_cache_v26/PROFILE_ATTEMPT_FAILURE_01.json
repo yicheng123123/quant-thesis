@@ -1,0 +1,12 @@
+{
+  "status": "DIAGNOSED_AND_FIXED",
+  "stage": "after full formal-input capture, first H build",
+  "error": "TypeError unsupported ScalarType BFloat16 during pristine W hash",
+  "cause": "source model.safetensors stores BF16; v18 AutoModel loads/converts to FP16. v26 pristine read needed explicit FP16 conversion",
+  "fix": "read base target W with dtype=torch.float16 matching v18",
+  "candidate_profile_executions": 0,
+  "new_held_or_ppl": 0,
+  "gpu_seconds_recorded_before_failure": 8.998944199993275,
+  "additional_failed_stage_seconds": "not precisely measured; budget ledger conservatively adds 10 seconds on resume",
+  "activation_cache_reused": true
+}

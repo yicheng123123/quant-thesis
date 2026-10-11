@@ -1,0 +1,48 @@
+{
+  "status": "PASS",
+  "planned_steps": 61440,
+  "logged_scheduled_positions": 61440,
+  "unique_positions": 61440,
+  "actual_optimizer_steps": 61438,
+  "skipped_steps": 2,
+  "difference": 2,
+  "source_csv": "E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\M3\\logs\\training_steps.csv",
+  "source_csv_sha256": "b811da79c8f97d9ad1df69b1b47eaef475ef2e29fbc48ead7127128fedacd79f",
+  "interpretation": "Two native dynamic GradScaler updates saw found_inf=1 and skipped optimizer.step; the frozen runner consumes each scheduled sample once and does not retry or add compensating samples. Logs show finite loss but non-finite LWC gradient and gradient norm at those positions; the exact lower-level overflow source is not further decomposed.",
+  "original_implementation_behavior": "skip update and reduce scale, no retry/compensating sample per v61 frozen protocol",
+  "skips": [
+    {
+      "scheduled_iteration_count": "53761",
+      "layer": "21",
+      "epoch_index": "0",
+      "sample_index": "0",
+      "loss": "0.15334051847457886",
+      "scale_before": "65536.0",
+      "found_inf": "1.0",
+      "grad_norm_finite": "False",
+      "optimizer_step_skipped": "True",
+      "scale_after": "32768.0",
+      "optimizer_step_executed": "False",
+      "lwc_grad_finite": "False",
+      "lwc_parameters_unchanged_on_skip": "True",
+      "optimizer_state_unchanged_on_skip": "True"
+    },
+    {
+      "scheduled_iteration_count": "53833",
+      "layer": "21",
+      "epoch_index": "0",
+      "sample_index": "72",
+      "loss": "0.16300268471240997",
+      "scale_before": "32768.0",
+      "found_inf": "1.0",
+      "grad_norm_finite": "False",
+      "optimizer_step_skipped": "True",
+      "scale_after": "16384.0",
+      "optimizer_step_executed": "False",
+      "lwc_grad_finite": "False",
+      "lwc_parameters_unchanged_on_skip": "True",
+      "optimizer_state_unchanged_on_skip": "True"
+    }
+  ],
+  "not_rerun_or_modified": true
+}

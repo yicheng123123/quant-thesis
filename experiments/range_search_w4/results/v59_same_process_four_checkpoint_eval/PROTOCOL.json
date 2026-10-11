@@ -1,0 +1,68 @@
+{
+  "version": "v59",
+  "status": "FROZEN_BEFORE_FIRST_MODEL_LOAD",
+  "requested_model_setting": "Luna Max requested; execution interface cannot verify model selection",
+  "objective": "Actual same-process, same-runtime PPL comparison of M1, M2, v56 M1+repair and v55 M2+repair",
+  "prohibited": [
+    "quantization",
+    "integer repair",
+    "search",
+    "new calibration",
+    "P3",
+    "PPL tuning"
+  ],
+  "model_order": [
+    "M1",
+    "M2",
+    "M1_plus_repair",
+    "M2_plus_repair"
+  ],
+  "dataset_order_per_model": [
+    "wikitext",
+    "c4_fixed_budget"
+  ],
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "tokenizer_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "loader": {
+    "dtype": "FP16",
+    "device": "CUDA",
+    "attn_implementation": "sdpa",
+    "local_files_only": true,
+    "low_cpu_mem_usage": true,
+    "eval": true,
+    "use_cache": false
+  },
+  "runtime_signature_sha256": "aafd13dd7d35c6aedcd919270a30522afcd1288681970e44c217d6818fba8a32",
+  "evaluator_core_sha256": "5062225fc58d6d1272ba7c828f697ff9540407db5409340d2a94662ff32841a1",
+  "evaluator_wrapper_source": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v58_m2_repaired_unified_eval\\run_v58_eval.py",
+  "evaluator_wrapper_source_sha256": "c27fb3a5dbf2f940a7ed0fd465ac02a07da8de94c9dc2a060adea962a63ed2df",
+  "source_manifest_sha256": "d1d184e5e359afe28960ef6731e34631001e542542cff83924a1e9abf0b8f778",
+  "evaluation": {
+    "wikitext": {
+      "manifest_sha256": "acd46b20a6b84b534d5625bfab505d599001679a775d619960a40e8da4f62f46",
+      "token_ids_sha256_i64le": "8ffcee84dd4b684ec631cb52845e18c9c181ce6fdb8b26d65a4ffdc3d35fbda3",
+      "input_tokens": 299078,
+      "valid_tokens": 299077,
+      "windows": 582,
+      "max_length": 2048,
+      "stride": 512,
+      "add_special_tokens": false,
+      "chat_template": false
+    },
+    "c4_fixed_budget": {
+      "manifest_sha256": "0b0d70d70d3c1e0ba62126c81a3f3e97531e58d6701236fb8b3315450b7188d4",
+      "token_ids_sha256_i64le": "bc9a7575527abbc41352352a0439c6bee062ea265b7bd03120704e83f4af7053",
+      "input_tokens": 131072,
+      "valid_tokens": 131071,
+      "windows": 253,
+      "max_length": 2048,
+      "stride": 512,
+      "add_special_tokens": false,
+      "chat_template": false
+    }
+  },
+  "four_arms_main_table_only_from_this_v59_run": true,
+  "historical_calibration_propagation_validity": "UNKNOWN and not re-evaluated here",
+  "budget_seconds": 3600.0,
+  "resume": "window journal rows are reused only after runtime/run lock, model, manifest, input and label-mask validation; resumed rows retain source process id, and same-process eligibility is checked explicitly"
+}

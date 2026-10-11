@@ -1,0 +1,85 @@
+{
+  "name": "range_w4_omniquant_kaggle_v20_1",
+  "config": {
+    "protocol_id": "range_w4_omniquant_kaggle_v20_1",
+    "upstream_repository": "https://github.com/OpenGVLab/OmniQuant",
+    "upstream_commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+    "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dtype": "float16",
+    "device_policy": "cuda:0 only",
+    "attention_implementation": "sdpa",
+    "quantization": {
+      "weight_bits": 4,
+      "activation_bits": 16,
+      "group_size": 128,
+      "weight_group_axis": "per output row, consecutive input features",
+      "symmetric": false,
+      "integer_range": [
+        0,
+        15
+      ],
+      "zero_point": "official OmniQuant UniformAffineQuantizer; asymmetric affine",
+      "lwc": true,
+      "let": false
+    },
+    "formal_training": {
+      "epochs": 20,
+      "calibration_manifest": "calibration/CALIBRATION_MANIFEST.json",
+      "calibration_manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+      "samples": 128,
+      "tokens_per_sample": 2048,
+      "seed": 20261005,
+      "batch_size": 1,
+      "lwc_learning_rate": 0.01,
+      "let_learning_rate_recorded_but_inactive": 0.005,
+      "weight_decay": 0.0
+    },
+    "preflight": {
+      "representative_layers": [
+        0,
+        12,
+        23
+      ],
+      "l0_warmup_steps": 1,
+      "l0_measured_steps": 5,
+      "l12_warmup_steps": 1,
+      "l12_measured_steps": 3,
+      "l23_warmup_steps": 1,
+      "l23_measured_steps": 3,
+      "l0_continuous_sequence_steps": 8,
+      "sequence_length_must_equal_formal": true,
+      "representative_prefix": "native FP16 full-model activations from the exact frozen token samples; formal quantized-prefix equivalence is not claimed",
+      "memory_allocated_growth_warning_gib": 0.25,
+      "memory_growth_min_steps": 6,
+      "frozen_v20_reserved_vram_gate_gib": 8.0,
+      "frozen_formal_runtime_gate_hours": 24.0,
+      "conservative_safety_multiplier": 1.25,
+      "representative_layer_cost_weights": {
+        "0": 8,
+        "12": 8,
+        "23": 8
+      }
+    },
+    "prohibited": [
+      "formal 20-epoch training",
+      "WT2 or C4 full PPL",
+      "changing M2",
+      "changing M3 quantizer, LWC, loss, optimizer, group size, epochs, sample count, or sequence length",
+      "using more than cuda:0",
+      "using a model revision other than model_revision"
+    ]
+  },
+  "config_sha256": "c9d40132698c1dda4fcaf8f0502f1eb148bb608c80fb25792dc3fcb0b509d09a",
+  "bundle_tree_sha256": "467465a5fe2de26eb7c5b22a265fa502de906292e441e61cce495335504a25cf",
+  "v20_upstream_tree_sha256": "a622961257aece95960e85f7e1c10f6af76c8e23e7b224bb4ce585e3c251ab4b",
+  "v20_patch_sha256": {
+    "quantize/omniquant.py": "dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00",
+    "models/int_qwen2_layer.py": "0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9"
+  },
+  "calibration_manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+  "formal_optimizer_updates": 61440,
+  "runtime_protocol_status": "frozen; Kaggle preflight running",
+  "formal_training_executed": false,
+  "formal_ppl_executed": false
+}

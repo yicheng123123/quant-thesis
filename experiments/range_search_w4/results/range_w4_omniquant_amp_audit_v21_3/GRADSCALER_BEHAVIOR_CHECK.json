@@ -1,0 +1,224 @@
+{
+  "status": "PASS",
+  "torch_version": "2.6.0+cu124",
+  "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "implementation": "exact frozen upstream NativeScalerWithGradNormCount; default dynamic GradScaler",
+  "iterations": [
+    {
+      "iteration": 0,
+      "input_value": 512.0,
+      "loss": 262144.0,
+      "scale_before": 65536.0,
+      "scale_after": 32768.0,
+      "optimizer_step_executed": false,
+      "parameter_changed": false,
+      "parameter_finite": true,
+      "optimizer_state_before": {
+        "entries": 0,
+        "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "tensors": {},
+        "all_finite": true
+      },
+      "optimizer_state_after": {
+        "entries": 0,
+        "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "tensors": {},
+        "all_finite": true
+      },
+      "scaled_gradients": {
+        "weight": {
+          "present": true,
+          "shape": [
+            1,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 1,
+          "finite_count": 0,
+          "nan_count": 0,
+          "posinf_count": 1,
+          "neginf_count": 0,
+          "all_finite": false,
+          "min": null,
+          "max": null,
+          "mean": null,
+          "std": null,
+          "max_finite_abs": null,
+          "mean_finite_abs": null
+        }
+      },
+      "unscaled_gradients": {
+        "weight": {
+          "present": true,
+          "shape": [
+            1,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 1,
+          "finite_count": 0,
+          "nan_count": 0,
+          "posinf_count": 1,
+          "neginf_count": 0,
+          "all_finite": false,
+          "min": null,
+          "max": null,
+          "mean": null,
+          "std": null,
+          "max_finite_abs": null,
+          "mean_finite_abs": null
+        }
+      },
+      "found_inf_per_device": {
+        "cuda:0": 1.0
+      },
+      "found_inf": 1.0,
+      "stage_after_unscale": "OptState.UNSCALED",
+      "stage_after_step": "OptState.STEPPED",
+      "optimizer_tracking_cleared_after_update": true
+    },
+    {
+      "iteration": 1,
+      "input_value": 0.001,
+      "loss": 1.000808879325632e-06,
+      "scale_before": 32768.0,
+      "scale_after": 32768.0,
+      "optimizer_step_executed": true,
+      "parameter_changed": true,
+      "parameter_finite": true,
+      "optimizer_state_before": {
+        "entries": 0,
+        "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "tensors": {},
+        "all_finite": true
+      },
+      "optimizer_state_after": {
+        "entries": 1,
+        "sha256": "e1ee74339f632a78ace8b14a1fbf0e1bb470607036545df75377483be6418ec1",
+        "tensors": {
+          "0:step": {
+            "sha256": "e00e5eb9444182f352323374ef4e08ebcb784725fdd4fd612d7730540b3e0c8c",
+            "stats": {
+              "present": true,
+              "shape": [],
+              "dtype": "torch.float32",
+              "numel": 1,
+              "finite_count": 1,
+              "nan_count": 0,
+              "posinf_count": 0,
+              "neginf_count": 0,
+              "all_finite": true,
+              "min": 1.0,
+              "max": 1.0,
+              "mean": 1.0,
+              "std": 0.0,
+              "max_finite_abs": 1.0,
+              "mean_finite_abs": 1.0
+            }
+          },
+          "0:exp_avg": {
+            "sha256": "8787623a10907a93e932937217d261d43505e3fa9fc3eea5eb61709b695c8ba0",
+            "stats": {
+              "present": true,
+              "shape": [
+                1,
+                1
+              ],
+              "dtype": "torch.float32",
+              "numel": 1,
+              "finite_count": 1,
+              "nan_count": 0,
+              "posinf_count": 0,
+              "neginf_count": 0,
+              "all_finite": true,
+              "min": 2.0023435354232788e-07,
+              "max": 2.0023435354232788e-07,
+              "mean": 2.0023435354232788e-07,
+              "std": 0.0,
+              "max_finite_abs": 2.0023435354232788e-07,
+              "mean_finite_abs": 2.0023435354232788e-07
+            }
+          },
+          "0:exp_avg_sq": {
+            "sha256": "87795e1cbbe401d12e5bc14fde3b2d92fb59ab2d5d93c1189202a117b72cced6",
+            "stats": {
+              "present": true,
+              "shape": [
+                1,
+                1
+              ],
+              "dtype": "torch.float32",
+              "numel": 1,
+              "finite_count": 1,
+              "nan_count": 0,
+              "posinf_count": 0,
+              "neginf_count": 0,
+              "all_finite": true,
+              "min": 4.0093796338513954e-15,
+              "max": 4.0093796338513954e-15,
+              "mean": 4.0093796338513954e-15,
+              "std": 0.0,
+              "max_finite_abs": 4.0093796338513954e-15,
+              "mean_finite_abs": 4.0093796338513954e-15
+            }
+          }
+        },
+        "all_finite": true
+      },
+      "scaled_gradients": {
+        "weight": {
+          "present": true,
+          "shape": [
+            1,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 1,
+          "finite_count": 1,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 0.06561279296875,
+          "max": 0.06561279296875,
+          "mean": 0.06561279296875,
+          "std": 0.0,
+          "max_finite_abs": 0.06561279296875,
+          "mean_finite_abs": 0.06561279296875
+        }
+      },
+      "unscaled_gradients": {
+        "weight": {
+          "present": true,
+          "shape": [
+            1,
+            1
+          ],
+          "dtype": "torch.float32",
+          "numel": 1,
+          "finite_count": 1,
+          "nan_count": 0,
+          "posinf_count": 0,
+          "neginf_count": 0,
+          "all_finite": true,
+          "min": 2.002343535423279e-06,
+          "max": 2.002343535423279e-06,
+          "mean": 2.002343535423279e-06,
+          "std": 0.0,
+          "max_finite_abs": 2.002343535423279e-06,
+          "mean_finite_abs": 2.002343535423279e-06
+        }
+      },
+      "found_inf_per_device": {
+        "cuda:0": 0.0
+      },
+      "found_inf": 0.0,
+      "stage_after_unscale": "OptState.UNSCALED",
+      "stage_after_step": "OptState.STEPPED",
+      "optimizer_tracking_cleared_after_update": true
+    }
+  ],
+  "purpose": "independent finite-loss overflow -> skip/backoff -> next finite update",
+  "manually_set_loss_scale": false,
+  "formal_committed_updates": 0
+}

@@ -1,0 +1,23 @@
+{
+  "status": "FAIL",
+  "repeats": 3,
+  "reference_loss": 0.15326565504074097,
+  "replayed_losses": [
+    0.15326565504074097,
+    0.15326565504074097,
+    0.15326565504074097
+  ],
+  "loss_bitwise_equal_to_historical_scalar": true,
+  "all_replays_nonfinite": true,
+  "replay_gradients_bitwise_equal": false,
+  "same_named_nonfinite_parameters_across_repeats": true,
+  "nonfinite_parameter_names": [
+    "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+    "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+    "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+    "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor"
+  ],
+  "historical_per_parameter_comparison": "not available: v21.1 saved only aggregate gradient flags, not named gradient tensors",
+  "optimizer_and_scaler_restoration": "fresh per-block AdamW (empty state) and fresh native GradScaler, following official loop; checkpoint RNG restored",
+  "committed_updates": 0
+}

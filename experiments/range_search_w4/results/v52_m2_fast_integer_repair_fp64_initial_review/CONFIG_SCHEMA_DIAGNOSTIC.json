@@ -1,0 +1,313 @@
+{
+  "transformers_version": "5.16.1",
+  "raw_config_differences": {
+    "M2": {},
+    "v52": {
+      "dtype": {
+        "a": "<missing>",
+        "b": "float16"
+      },
+      "layer_types": {
+        "a": "<missing>",
+        "b": [
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention"
+        ]
+      },
+      "pad_token_id": {
+        "a": "<missing>",
+        "b": null
+      },
+      "rope_parameters": {
+        "a": "<missing>",
+        "b": {
+          "rope_theta": 1000000.0,
+          "rope_type": "default"
+        }
+      },
+      "rope_scaling": {
+        "a": null,
+        "b": "<missing>"
+      },
+      "rope_theta": {
+        "a": 1000000.0,
+        "b": "<missing>"
+      },
+      "sliding_window": {
+        "a": 32768,
+        "b": null
+      },
+      "torch_dtype": {
+        "a": "float16",
+        "b": "<missing>"
+      }
+    },
+    "original_R2": {}
+  },
+  "loaded_config_differences": {
+    "M2": {},
+    "v52": {},
+    "original_R2": {}
+  },
+  "all_loaded_fields_equal_excluding_original_ignore": true,
+  "excluded_fields": [
+    "_name_or_path",
+    "transformers_version"
+  ],
+  "loaded_configs": {
+    "M2": {
+      "transformers_version": "5.16.1",
+      "architectures": [
+        "Qwen2ForCausalLM"
+      ],
+      "output_hidden_states": false,
+      "return_dict": true,
+      "dtype": "float16",
+      "chunk_size_feed_forward": 0,
+      "is_encoder_decoder": false,
+      "id2label": {
+        "0": "LABEL_0",
+        "1": "LABEL_1"
+      },
+      "label2id": {
+        "LABEL_0": 0,
+        "LABEL_1": 1
+      },
+      "problem_type": null,
+      "vocab_size": 151936,
+      "hidden_size": 896,
+      "intermediate_size": 4864,
+      "num_hidden_layers": 24,
+      "num_attention_heads": 14,
+      "num_key_value_heads": 2,
+      "hidden_act": "silu",
+      "max_position_embeddings": 32768,
+      "initializer_range": 0.02,
+      "rms_norm_eps": 1e-06,
+      "use_cache": true,
+      "tie_word_embeddings": true,
+      "rope_parameters": {
+        "rope_theta": 1000000.0,
+        "rope_type": "default"
+      },
+      "use_sliding_window": false,
+      "sliding_window": null,
+      "max_window_layers": 21,
+      "layer_types": [
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention"
+      ],
+      "attention_dropout": 0.0,
+      "pad_token_id": null,
+      "bos_token_id": 151643,
+      "eos_token_id": 151645,
+      "_name_or_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\M2\\checkpoint\\final",
+      "model_type": "qwen2",
+      "output_attentions": false
+    },
+    "v52": {
+      "transformers_version": "5.16.1",
+      "architectures": [
+        "Qwen2ForCausalLM"
+      ],
+      "output_hidden_states": false,
+      "return_dict": true,
+      "dtype": "float16",
+      "chunk_size_feed_forward": 0,
+      "is_encoder_decoder": false,
+      "id2label": {
+        "0": "LABEL_0",
+        "1": "LABEL_1"
+      },
+      "label2id": {
+        "LABEL_0": 0,
+        "LABEL_1": 1
+      },
+      "problem_type": null,
+      "vocab_size": 151936,
+      "hidden_size": 896,
+      "intermediate_size": 4864,
+      "num_hidden_layers": 24,
+      "num_attention_heads": 14,
+      "num_key_value_heads": 2,
+      "hidden_act": "silu",
+      "max_position_embeddings": 32768,
+      "initializer_range": 0.02,
+      "rms_norm_eps": 1e-06,
+      "use_cache": true,
+      "tie_word_embeddings": true,
+      "rope_parameters": {
+        "rope_theta": 1000000.0,
+        "rope_type": "default"
+      },
+      "use_sliding_window": false,
+      "sliding_window": null,
+      "max_window_layers": 21,
+      "layer_types": [
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention"
+      ],
+      "attention_dropout": 0.0,
+      "pad_token_id": null,
+      "bos_token_id": 151643,
+      "eos_token_id": 151645,
+      "_name_or_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v52_m2_fast_integer_repair_fp64_initial_review\\R1\\checkpoint\\final",
+      "model_type": "qwen2",
+      "output_attentions": false
+    },
+    "original_R2": {
+      "transformers_version": "5.16.1",
+      "architectures": [
+        "Qwen2ForCausalLM"
+      ],
+      "output_hidden_states": false,
+      "return_dict": true,
+      "dtype": "float16",
+      "chunk_size_feed_forward": 0,
+      "is_encoder_decoder": false,
+      "id2label": {
+        "0": "LABEL_0",
+        "1": "LABEL_1"
+      },
+      "label2id": {
+        "LABEL_0": 0,
+        "LABEL_1": 1
+      },
+      "problem_type": null,
+      "vocab_size": 151936,
+      "hidden_size": 896,
+      "intermediate_size": 4864,
+      "num_hidden_layers": 24,
+      "num_attention_heads": 14,
+      "num_key_value_heads": 2,
+      "hidden_act": "silu",
+      "max_position_embeddings": 32768,
+      "initializer_range": 0.02,
+      "rms_norm_eps": 1e-06,
+      "use_cache": true,
+      "tie_word_embeddings": true,
+      "rope_parameters": {
+        "rope_theta": 1000000.0,
+        "rope_type": "default"
+      },
+      "use_sliding_window": false,
+      "sliding_window": null,
+      "max_window_layers": 21,
+      "layer_types": [
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention",
+        "full_attention"
+      ],
+      "attention_dropout": 0.0,
+      "pad_token_id": null,
+      "bos_token_id": 151643,
+      "eos_token_id": 151645,
+      "_name_or_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v45_m2_single_integer_repair_fullmodel\\R\\checkpoint\\final",
+      "model_type": "qwen2",
+      "output_attentions": false
+    }
+  },
+  "sources": {
+    "M2": {
+      "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\M2\\checkpoint\\final\\config.json",
+      "sha256": "dd9cec52d3cdb33e45dd91c2cc06722cd31ada297a44febda75c1deb9fd80a10"
+    },
+    "v52": {
+      "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v52_m2_fast_integer_repair_fp64_initial_review\\R1\\checkpoint\\final\\config.json",
+      "sha256": "7101cfb3475d42d7e81a9e5a75aabf5f9cfd39308ffdc367d35a6b27242fd5bb"
+    },
+    "original_R2": {
+      "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v45_m2_single_integer_repair_fullmodel\\R\\checkpoint\\final\\config.json",
+      "sha256": "3133241d63cd1f42bd43c836c1cbb3126378dea2518a7e90856161ce2f36b7af"
+    }
+  },
+  "CPU_only": true,
+  "timestamp": 1791489314.7975771
+}

@@ -1,0 +1,11 @@
+{
+  "status": "DIAGNOSED_AND_FIXED",
+  "stage": "first instrumented original candidate after formal input/H parity",
+  "error": "AttributeError GPTQ object has no attribute measure",
+  "cause": "instrumentation closure shadowed profiler with GPTQ method self",
+  "fix": "capture profiler in closure and pass GPTQ instance to original cache-hit callback",
+  "quantizer_or_candidate_result_difference": false,
+  "candidate_profile_executions_completed": 0,
+  "budget_penalty_seconds_conservative": 10,
+  "gpu_seconds_recorded_plus_penalty": 30.104037699988112
+}

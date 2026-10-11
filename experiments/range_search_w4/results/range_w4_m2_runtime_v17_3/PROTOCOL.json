@@ -1,0 +1,60 @@
+{
+  "name": "v17.3 M2 native dynamic GPTQ runtime reuse audit",
+  "frozen_protocol_source": "v17.2 M2 plus v16 full-model search plan",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "runtime": {
+    "torch": "2.6.0+cu124",
+    "cuda": "12.4"
+  },
+  "weight_dtype": "FP16",
+  "quantization": {
+    "format": "W4A16",
+    "bits": 4,
+    "activation_bits": 16,
+    "symmetric": true,
+    "group_size": 128,
+    "block_size": 128,
+    "desc_act": false,
+    "static_groups": false,
+    "true_sequential": true,
+    "damp_percent": 0.1,
+    "damp_auto_increment": 0,
+    "mse": 0.0,
+    "math_dtype": "FP32"
+  },
+  "search": {
+    "alpha_grid": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+    "unit": "one shared alpha per output row across all native dynamic G128 groups",
+    "alpha_1_semantics": "native dynamic GPTQ baseline",
+    "candidate_isolation": "each alpha starts from pristine FP16 W and pristine H; all candidate-local GPTQ and compensation state is fresh"
+  },
+  "calibration": {
+    "manifest": "v16 CALIBRATION_MANIFEST.json",
+    "manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+    "formal_documents": 128,
+    "formal_sequence_length": 2048,
+    "formal_tokens": 262144,
+    "runtime_smoke_subset": "reuse v17.2 frozen samples 0 and 1, first 64 token ids each; no resampling"
+  },
+  "runtime_smoke": {
+    "target": "L0 self_attn.k_proj",
+    "linear_shape": [128, 896],
+    "rows_scored_per_alpha": 32,
+    "row_alpha_scores": 320,
+    "full_linear_alpha_executions": 10,
+    "timing_repeats": 5,
+    "warmups_excluded_per_implementation": 1,
+    "formal_full_model_search": false,
+    "ppl": false
+  },
+  "full_model_work_units": {
+    "linear_modules": 168,
+    "output_rows": 304128,
+    "row_alpha_score_slots": 3041280,
+    "full_linear_alpha_executions": 1680,
+    "unique_activation_hessian_groups": 96,
+    "dependency_transitions": 95
+  }
+}

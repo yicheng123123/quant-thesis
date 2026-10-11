@@ -1,0 +1,256 @@
+{
+  "name": "v24 E2 Structured 2-Region Group-Alpha Diagnostic",
+  "status": "FROZEN_BEFORE_E2_SEARCH",
+  "verdict": "NOT_RUN",
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dtype": "FP16",
+    "attention": "SDPA",
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "tf32": false
+  },
+  "quantization": {
+    "weight_bits": 4,
+    "activation_bits": 16,
+    "symmetric": true,
+    "group_size": 128,
+    "dynamic_groups": true,
+    "block_size": 128,
+    "damp_percent": 0.1,
+    "desc_act": false,
+    "static_groups": false,
+    "native_gptq_compensation": true,
+    "alpha_1_is_strict_native_noop": true,
+    "model_dtype": "FP16",
+    "hessian_and_gptq_math": "FP32",
+    "quantizer_or_compensation_modified": false
+  },
+  "targets": {
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "projections": [
+      "up_proj",
+      "down_proj"
+    ],
+    "rows": {
+      "up_proj": [
+        0,
+        224,
+        448,
+        672
+      ],
+      "down_proj": [
+        0,
+        224,
+        448,
+        672
+      ]
+    },
+    "unit_count": 48
+  },
+  "documents": {
+    "manifest": "E2_DOCUMENT_MANIFEST.json",
+    "source": "WikiText-2 train; reuse the exact 64 complete documents selected under v22's frozen SHA ordering, materialized in E1 v23",
+    "tokens_per_document": 2048,
+    "split_ids": {
+      "S0": {
+        "search_positions": [
+          0,
+          15
+        ],
+        "held_positions": [
+          16,
+          31
+        ]
+      },
+      "S1": {
+        "search_positions": [
+          32,
+          47
+        ],
+        "held_positions": [
+          48,
+          63
+        ]
+      }
+    },
+    "selection_unit": "complete article/document; no token fragments are split across search and held",
+    "test_or_c4_used_for_selection": false
+  },
+  "objective": {
+    "name": "frozen M2 local projection output reconstruction MSE",
+    "formula": "mean((X @ (Q_FP16.float()-W_FP16.float()).T)^2) per selected output row",
+    "selection_data": "search documents only",
+    "held_data_use": "final metrics and retrospective oracle only after search lock"
+  },
+  "methods": {
+    "M1_native": {
+      "selection": "alpha=1.0",
+      "candidate_source": "shared full-Linear candidate bank"
+    },
+    "M2_original_scalar": {
+      "alpha_grid": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+      ],
+      "selection": "per-row local search MSE"
+    },
+    "dense_scalar_control": {
+      "definition": "original 10-point grid plus alpha=0.1+0.9*j/37 for j=1..36",
+      "additional_alpha_count": 36,
+      "total_unique_alpha_count": 46,
+      "selection": "per-row local search MSE"
+    },
+    "structured_2region": {
+      "grid": [
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+      ],
+      "initialization": "M2 original scalar selected alpha copied to both regions",
+      "sweeps": 2,
+      "order": [
+        "region_A",
+        "region_B"
+      ],
+      "per_region_alternatives_per_sweep": 9,
+      "acceptance": "strict search-loss improvement only; ties retain current pair; among tied improving alternatives choose larger alpha",
+      "each_candidate": "rerun GPTQ from pristine selected row weight and immutable split-specific H/Hinv; native compensation runs through every subsequent group"
+    }
+  },
+  "regions": {
+    "assignment_source": "v22 E2 frozen group-index partition",
+    "input_dim_896_group_count_7": {
+      "A_group_indices": [
+        0,
+        1,
+        2
+      ],
+      "B_group_indices": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    "input_dim_4864_group_count_38": {
+      "A_group_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "B_group_indices": [
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+      ]
+    },
+    "threshold_or_statistic_search": false,
+    "descriptive_statistics_only": [
+      "pristine group max_abs/range",
+      "native alpha=1 group reconstruction error",
+      "search H diagonal mean"
+    ]
+  },
+  "scoring_and_budget": {
+    "score_positions_per_selected_row": {
+      "M1": 1,
+      "M2_original": 10,
+      "dense_scalar": 46,
+      "structured_2region_max": 46
+    },
+    "full_linear_candidate_calls": {
+      "M2_original_base": 120,
+      "dense_scalar_additional": 432,
+      "dense_scalar_total_unique_bank": 552
+    },
+    "structured_additional_per_row_gptq_max": 1728,
+    "row_split_units": 48,
+    "count_repeated_scheduled_structured_tuples": true,
+    "deduplicate_exact_tuple_state_for_cache": true,
+    "score_evaluations_and_gptq_executions_are_distinct": true
+  },
+  "primary_comparisons": [
+    "structured_2region vs M2_original_scalar",
+    "structured_2region vs dense_scalar_control"
+  ],
+  "promotion_gate": "v22 E2: improve pooled held row SSE beyond frozen epsilon vs both scalar baselines in both splits; at least 4/6 layer-projection targets positive; no new < -10% native-alpha1 failure case",
+  "prohibitions": [
+    "block objective",
+    "PPL",
+    "C4 evaluation",
+    "AWQ scaling",
+    "more than two regions",
+    "adaptive/threshold search",
+    "second model",
+    "full-model method"
+  ],
+  "frozen_source_sha256": {
+    "experiments/range_search_w4/results/range_w4_research_gap_v22/PARAMETERIZATION_ASSESSMENT.md": "791a02441457b53f557e1bb9cd51fd809585a941a025e60b28764072b2b14f8d",
+    "experiments/range_search_w4/results/range_w4_research_gap_v22/MINIMAL_DISCRIMINATING_EXPERIMENTS.md": "069ed462cfb2fd6196611fdefb20ca8e8446a4e1bc4663b2d47c4656719ce95b",
+    "experiments/range_search_w4/results/range_w4_research_gap_v22/M3_RANGE_DIAGNOSTIC.md": "4a384f1aeca1c62070d91a4cce6d943610f0c7124724e22ea26e6a04881688f9",
+    "experiments/range_search_w4/results/range_w4_research_gap_v22/BACKUP_DIRECTION.md": "8f5c0f0feba44ea5610b6d880a206ffd7b1095d8e696f4cd864a82d8367febeb",
+    "experiments/range_search_w4/results/range_w4_research_gap_v22/REPORT.md": "5350c648d53b9f74fef3843841fa4ba72237bfa34d8623376a133abb5eb1f484",
+    "experiments/range_search_w4/results/range_w4_block_objective_e1_v23/E1_DOCUMENT_MANIFEST.json": "0d7b213349a6b04d9f9e59c703ab54ec8ad7beaf7f4eac7a61e4052a270f05c1",
+    "experiments/range_search_w4/results/range_w4_block_objective_e1_v23/PROTOCOL.json": "1b0330ac680f695b238bf05d73487308314bcfb92f98d8563c68c49266ef26d4",
+    "experiments/range_search_w4/results/range_w4_block_objective_e1_v23/cache/PREFIX_CACHE_MANIFEST.json": "c0294f19c51997705e4e0bae889b4940b8b48e22696907eb1faff4da039e855c",
+    "experiments/range_search_w4/results/range_w4_fullmodel_v18/PROTOCOL.json": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+    "experiments/range_search_w4/results/range_w4_fullmodel_v18/M2/checkpoint/final/model.safetensors": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+    "experiments/range_search_w4/results/range_w4_fullmodel_baseline_v16/WIKITEXT_TEST_MANIFEST.json": "acd46b20a6b84b534d5625bfab505d599001679a775d619960a40e8da4f62f46",
+    "experiments/range_search_w4/results/range_w4_fullmodel_baseline_v16/C4_EVAL_MANIFEST.json": "0b0d70d70d3c1e0ba62126c81a3f3e97531e58d6701236fb8b3315450b7188d4",
+    ".hf_cache/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snapshots/7ae557604adf67be50417f59c2c2f167def9a775/config.json": "18e18afcaccafade98daf13a54092927904649e1dd4eba8299ab717d5d94ff45",
+    ".hf_cache/hub/models--Qwen--Qwen2.5-0.5B-Instruct/snapshots/7ae557604adf67be50417f59c2c2f167def9a775/model.safetensors": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe"
+  },
+  "source_manifest_reuse": "v23 E1 document/prefix artifacts are read-only inputs; v8-v23 artifacts are not modified"
+}

@@ -1,0 +1,35 @@
+{
+  "pass": true,
+  "adapted_runner_sha256": "0a9dd05a8016e6c2be10f10e6fa8842520ef07799c39e99f2993f4ee5c016b25",
+  "copied_frozen_code_dependencies_from_v46_source": {
+    "repair_control_source": "repair_v45.py",
+    "repair_control_sha256": "ede71ff8abe69927196b01ca5c2d755fff11154c5e918f68d172cf2508dbab37",
+    "precision_check_source": "precision_check.py",
+    "precision_check_sha256": "ff743bdaa2f862ea87e6605d6f788404418c7e6bf933d78edd6fa7449d83b0cd",
+    "loaded_from_v56_local_copy": true,
+    "parameters_loaded": false
+  },
+  "copied_exact_from_v55": {
+    "fast_accept_v52.py": true,
+    "initialization_review.py": true,
+    "decoder_interface.py": true
+  },
+  "runtime_changes": [
+    "output directory labels R1 -> M1_REPAIRED only"
+  ],
+  "runner_changes": [
+    "M2 source -> official M1",
+    "fresh layer0 start; no inherited group checkpoints",
+    "drop different-initializer v53 input hash assertions",
+    "read v18 eval manifests directly",
+    "remove v46 repair checkpoint comparison/import",
+    "standalone v56 budget and measured online estimate",
+    "four-arm final checkpoint/config comparison"
+  ],
+  "algorithm_changes": false,
+  "search_helper_behavior_reused_byte_for_byte": true,
+  "C_builder_changes": false,
+  "candidate_order_or_budget_changes": false,
+  "acceptance_or_tolerance_changes": false,
+  "source_map_only_from_v55_algorithm": true
+}

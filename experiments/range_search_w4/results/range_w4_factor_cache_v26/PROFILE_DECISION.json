@@ -1,0 +1,31 @@
+{
+  "status": "PROFILE_COMPLETE",
+  "decision": {
+    "up_proj": {
+      "factor_mean_seconds": 0.0028177600055933,
+      "candidate_mean_seconds": 0.3869734749896452,
+      "factor_share": 0.007281532683005467,
+      "warmed_repeat_range_seconds": 0.013071800058241934,
+      "one_time_upper_build_estimate_seconds": 0.001628688007593155,
+      "net_factor_saving_per_candidate_for_four_calls_seconds": 0.0024105880036950113,
+      "meets_both": false
+    },
+    "down_proj": {
+      "factor_mean_seconds": 0.04221811199188233,
+      "candidate_mean_seconds": 2.1651072500098962,
+      "factor_share": 0.019499316715922206,
+      "warmed_repeat_range_seconds": 0.1794639000436291,
+      "one_time_upper_build_estimate_seconds": 0.021251368045806886,
+      "net_factor_saving_per_candidate_for_four_calls_seconds": 0.03690526998043061,
+      "meets_both": false
+    }
+  },
+  "implement_full_factor_cache": false,
+  "frozen_threshold": {
+    "factor_share_min": 0.05,
+    "factor_savings_vs_warmed_range_min": 2.0,
+    "rule": "Both matrices must exceed both thresholds, including one-time full-factor build; otherwise stop after profiling"
+  },
+  "gpu_wall_seconds": 65.2983090999769,
+  "reason": "Both full matrices must exceed factor-share and noise gates"
+}

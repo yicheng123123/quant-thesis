@@ -1,0 +1,183 @@
+--- historical/run_formal_m3.py
++++ v61/run_formal_m3.py
+@@ -26,8 +26,8 @@
+ 
+ HERE = Path(__file__).resolve().parent
+ ROOT = HERE.parent
+-PREFLIGHT = ROOT / "LOCAL_PREFLIGHT"
+-BUNDLE = ROOT.parent / "range_w4_omniquant_kaggle_v20_1" / "kaggle_bundle"
++PREFLIGHT = Path('E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_resume_v21_4\\LOCAL_PREFLIGHT')
++BUNDLE = Path('E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_omniquant_kaggle_v20_1\\kaggle_bundle')
+ FROZEN_MODEL = Path(r"E:\quant-thesis\artifacts\models\qwen2.5-0.5b-instruct-7ae5576\7ae557604adf67be50417f59c2c2f167def9a775")
+ MODEL_ID = "Qwen/Qwen2.5-0.5B-Instruct"
+ MODEL_REVISION = "7ae557604adf67be50417f59c2c2f167def9a775"
+@@ -450,7 +450,7 @@
+     if state_keys != list(range(completed)):
+         raise RuntimeError("checkpoint state is not a contiguous prefix from block zero")
+     rng_state = torch.load(checkpoint_dir / manifest["rng_file"], map_location="cpu", weights_only=False)
+-    return checkpoint_dir / manifest["state_file"], completed, {"rng_state": rng_state, "state": state}
++    return checkpoint_dir / manifest["state_file"], completed, {"rng_state": rng_state, "state": state, "manifest": manifest}
+ 
+ 
+ class CsvAppend:
+@@ -699,6 +699,7 @@
+         sys.modules["termcolor"] = termcolor
+     Path(args.output_dir).mkdir(parents=True, exist_ok=True)
+     counts, csv_logs = install_source_callbacks(args, lock, resume_state, attempt_id)
++    args.v61_phase_callback = METER.switch
+ 
+     def checkpointing_torch_save(value, f, *save_args, **save_kwargs):
+         try:
+@@ -706,7 +707,9 @@
+         except TypeError:
+             target = None
+         if target is not None and target.name == "omni_parameters.pth":
++            METER.switch("checkpoint_save", len(value)-1)
+             record = save_block_checkpoint(value, lock, original_torch_save, args.v21_count_state)
++            METER.switch("block_cleanup", len(value)-1)
+             print(f"CHECKPOINT_COMMITTED block={record['completed_block_id']} scheduled={record['manifest']['scheduled_training_iterations']} successful={record['manifest']['successful_optimizer_steps']} skipped={record['manifest']['gradscaler_skipped_steps']}", flush=True)
+             return None
+         return original_torch_save(value, f, *save_args, **save_kwargs)
+@@ -721,7 +724,10 @@
+     omni_module = importlib.import_module("quantize.omniquant")
+     sys.path.insert(0, str(PREFLIGHT))
+     from run_local_preflight import load_exact_model
++    METER.switch("model_load")
+     model, identity = load_exact_model(MODEL_ID, MODEL_REVISION, str(FROZEN_MODEL), DEVICE, HERE)
++    METER.record_runtime(model, args)
++    METER.switch("data_prepare")
+     tokenizer = AutoTokenizer.from_pretrained(str(FROZEN_MODEL), local_files_only=True, use_fast=True)
+     if tokenizer.__class__.__name__ != "Qwen2TokenizerFast":
+         raise RuntimeError(f"unexpected frozen tokenizer class {tokenizer.__class__.__name__}")
+@@ -729,7 +735,7 @@
+                   for index, ids in enumerate(token_ids)]
+     lm = SimpleNamespace(model=model, device=DEVICE, _device=DEVICE, seqlen=SEQUENCE_LENGTH)
+     calibration_wall_started = time.perf_counter()
+-    torch.cuda.reset_peak_memory_stats(DEVICE)
++    # stage/global peak bookkeeping is owned by METER
+     torch.cuda.synchronize(DEVICE)
+     torch.save = checkpointing_torch_save
+     try:
+@@ -810,8 +816,9 @@
+     if EXPORT_DIR.exists():
+         raise RuntimeError(f"dense export directory already exists; refusing to overwrite: {EXPORT_DIR}")
+     torch.cuda.synchronize(DEVICE)
++    METER.switch("export_finalize")
+     export_total_started = time.perf_counter()
+-    torch.cuda.reset_peak_memory_stats(DEVICE)
++    # stage/global peak bookkeeping is owned by METER
+     EXPORT_DIR.mkdir(parents=True, exist_ok=False)
+     model.eval()
+     model.to(DEVICE)
+@@ -846,6 +853,7 @@
+     model.cpu().eval()
+     torch.cuda.empty_cache()
+     torch.cuda.synchronize(DEVICE)
++    METER.switch("model_save")
+     export_started = time.perf_counter()
+     model.save_pretrained(EXPORT_DIR, safe_serialization=True, max_shard_size="2GB")
+     tokenizer.save_pretrained(EXPORT_DIR)
+@@ -860,6 +868,7 @@
+     torch.cuda.empty_cache()
+ 
+     torch.cuda.synchronize(DEVICE)
++    METER.switch("reload_check")
+     reload_started = time.perf_counter()
+     reloaded = AutoModelForCausalLM.from_pretrained(str(EXPORT_DIR), torch_dtype=torch.float16,
+                                                     low_cpu_mem_usage=True, attn_implementation="sdpa",
+@@ -900,6 +909,7 @@
+     if not torch.cuda.is_available() or torch.cuda.device_count() != 1:
+         raise RuntimeError("frozen formal protocol requires exactly one CUDA device on cuda:0")
+     write_runtime_environment()
++    METER.switch("source_validation")
+     config, calibration, token_ids, lock = frozen_context()
+     if not args_cli.resume and (CHECKPOINTS / "LATEST.json").exists():
+         raise RuntimeError("checkpoint exists; use --resume to continue from the verified latest completed block")
+@@ -939,4 +949,14 @@
+ 
+ 
+ if __name__ == "__main__":
+-    raise SystemExit(main())
++    from measurement import StageMeter
++    METER = StageMeter(ROOT)
++    try:
++        METER.switch("runtime_setup")
++        result = main()
++    except BaseException as exc:
++        METER.finish("FAILED", repr(exc))
++        raise
++    else:
++        METER.finish("COMPLETE")
++        raise SystemExit(result)
+--- historical/official_port/quantize/omniquant.py
++++ v61/official_port/quantize/omniquant.py
+@@ -49,6 +49,9 @@
+     act_shifts,
+     logger=None,
+ ):
++    def phase(name, block=-1):
++        args.v61_phase_callback(name, block)
++    phase("initial_activation_capture")
+     logger.info("Starting ...")
+     
+     # move embedding layer and first layer to target device
+@@ -223,6 +226,7 @@
+     for i in range(smoke_layer_limit):
+         if args.resume and i == v21_resume_completed_layers and hasattr(args, "v21_restore_rng"):
+             args.v21_restore_rng()
++        phase("block_setup", i)
+         logger.info(f"=== Start quantize layer {i} ===")
+         layer = layers[i].to(dev)
+         if "mixtral" in args.net.lower():  
+@@ -242,6 +246,7 @@
+         if args.epochs > 0:
+             with torch.no_grad():
+                 with torch.cuda.amp.autocast():
++                    phase("teacher_capture", i)
+                     teacher_started = __import__("time").perf_counter()
+                     for j in range(args.nsamples):
+                         fp_inps[j] = block_forward(qlayer, fp_inps[j].unsqueeze(0), j)
+@@ -251,6 +256,7 @@
+                         torch.cuda.synchronize(dev)
+                     if hasattr(args, "v20_timing_callback"):
+                         args.v20_timing_callback("teacher_forward", __import__("time").perf_counter() - teacher_started)
++        phase("block_setup", i)
+         # init smooth parameters
+         set_quant_state(qlayer, weight_quant=False, act_quant=True)  # weight will be manually quantized before forward
+         qlayer.let = args.let
+@@ -303,6 +309,7 @@
+         
+ 
+         if args.epochs > 0:
++            phase("optimization", i)
+             with torch.no_grad():
+                 qlayer.float()      # required for AMP training
+             # create optimizer
+@@ -480,16 +487,19 @@
+                 args.v21_layer_callback("optimizer_complete", i, qlayer)
+             clear_temp_variable(qlayer)
+             del optimizer
++        phase("quantization_finalize", i)
+         qlayer.half() 
+         # real smooth and quantization
+         smooth_and_quant_inplace(qlayer, args, is_llama)
+         if args.epochs>0:
++            phase("student_activation_refresh", i)
+             # update input of quantization model
+             with torch.no_grad():
+                 # with torch.cuda.amp.autocast():
+                 with traincast():
+                     for j in range(args.nsamples):
+                         quant_inps[j] = block_forward(qlayer, quant_inps[j].unsqueeze(0), j)
++            phase("quantization_finalize", i)
+             register_scales_and_zeros(qlayer)
+             layers[i] = qlayer.to("cpu")
+             omni_parameters[i] = omni_state_dict(qlayer)
+@@ -520,6 +530,7 @@
+         del layer
+         torch.cuda.empty_cache()
+ 
++    phase("calibration_cleanup")
+     del inps
+     del quant_inps
+     del fp_inps

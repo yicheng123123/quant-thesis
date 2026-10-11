@@ -1,0 +1,94 @@
+{
+  "protocol_id": "range_w4_calibration_coverage_v14",
+  "status": "FROZEN_BEFORE_PREFLIGHT_AND_CANDIDATES",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "checkpoint_sha256": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+  "model_dtype": "float16",
+  "math_dtype": "float32",
+  "layers": [
+    2,
+    6,
+    14,
+    18
+  ],
+  "projections": [
+    "q_proj",
+    "o_proj",
+    "up_proj",
+    "down_proj"
+  ],
+  "rows": 48,
+  "row_manifest_sha256": "9d78172e59cf4979dd57bfa4dd5d2349d98b2de923b0fd599925c4c637faf809",
+  "article_manifest_sha256": "08123d206f603bcc489e53193263abd50a28cbf9a2e915f2bdc980c3bdb83daf",
+  "quantization": {
+    "format": "uniform W4A16",
+    "symmetric": true,
+    "integer_range": [
+      0,
+      15
+    ],
+    "zero_point": 8,
+    "rounding": "torch.round ties to even",
+    "group_size": 128,
+    "block_size": 128,
+    "damp_percent": 0.1,
+    "desc_act": false,
+    "static_groups": false,
+    "true_sequential": true,
+    "native_dynamic_range_at_each_group": true,
+    "shared_alpha_applied_after_native_dynamic_minmax": true
+  },
+  "alpha_grid": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "coverage_levels": [
+    4,
+    8,
+    16,
+    32
+  ],
+  "D_K": "alpha=1.0 dynamic GPTQ using H_K built from the first K calibration articles",
+  "C_K": "select argmin mean projection output MSE over the same K calibration articles; each candidate starts from pristine W and fresh compensation state",
+  "candidate_slots": {
+    "nominal": 1920,
+    "reusable": 0,
+    "new": 1920
+  },
+  "heldout": "the same H01-H32 pool for every K; evaluated only after search alpha is fixed",
+  "input_semantics": "FP model projection activations, no quantized prefix",
+  "dataset": "Salesforce/wikitext:wikitext-2-raw-v1:train; first 128 tokens/article; no test split",
+  "historical_tree_fingerprints_file_sha256": "96457459f308ea1a7b966c59a92407427b6d7b85265188e91f469df5c643dce2",
+  "historical_tree_file_counts": {
+    "v8": 33,
+    "v9": 34,
+    "v10": 155,
+    "v11": 2075,
+    "v12": 995,
+    "v13": 15
+  },
+  "manifest_correctness_checks": {
+    "row_count_48": true,
+    "three_buckets_each_layer_projection": true,
+    "new_layers_unstudied": true,
+    "article_count_64": true,
+    "articles_unique_by_id": true,
+    "articles_unique_by_hash": true,
+    "articles_unique_by_token_hash": true,
+    "calibration_heldout_disjoint": true,
+    "historical_id_disjoint": true,
+    "historical_hash_disjoint": true,
+    "nested_K_exact": true,
+    "row_manifest_frozen": true,
+    "article_manifest_frozen": true
+  }
+}

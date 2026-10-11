@@ -1,0 +1,46 @@
+{
+  "id": "range_w4_failure_mechanism_v13",
+  "mode": "cached_data_read_only_no_GPTQ",
+  "source_directory": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_gate_v12",
+  "source_file_sha256": {
+    "GATE_V1.json": "7943b8f26e5f94456b7b00144f6d47fc775d0224ccca4a6a1eff38e5740999c9",
+    "VALIDATION_SUMMARY.json": "0b27c7b5b3634ac63a257ee0cedef1940279c0332a7ac96f6836e7dc5b874317",
+    "VALIDATION_CORRECTNESS.json": "45cccd84dc8eb78097e9bbfb6fd4191844eec6b0aca3ececfe9d56837d411fdf",
+    "VALIDATION_PROTOCOL.json": "a7db8ec9cd44f26c731b72aaa10f773038441470675b8c7738376a51dfd989b0",
+    "validation_row_manifest.json": "0e26c120f805772ea7619a4891979272afa0db43e619e46a35acfb133efcd91d",
+    "validation_split_manifest.json": "8aa736fc321667f086f20c05f998f70d246bbee52fda96fe96e6a58265eb4274"
+  },
+  "activation_cache_sha256": "0ec5a4fb55c7705e6e3a1cfa669f33041ba01e2df6b931da9ba545a867e8374c",
+  "source_audit_independent_from_raw": {
+    "C_pooled_gain": 0.10989108447115181,
+    "Gate_pooled_gain": 0.026172349811936613,
+    "C_severe_count": 69,
+    "Gate_severe_count": 40,
+    "C_catastrophic_count": 20,
+    "Gate_retained_gain": 0.23816627106639665,
+    "accepted_rows": 25,
+    "fallback_rows": 23,
+    "worst_row_id": "L20_o_proj_R287",
+    "worst_split_id": "S08",
+    "worst_gain": -4.120855466502888,
+    "D_heldout_sse": 1109.4257135018706,
+    "C_heldout_sse": 987.5097187049687,
+    "Gate_heldout_sse": 1080.3894356377423
+  },
+  "case_definitions": {
+    "robust_success": "heldout_gain_C >= 0.10",
+    "severe": "heldout_gain_C < -0.10",
+    "catastrophic": "heldout_gain_C < -0.40"
+  },
+  "matched_case_rule": "same layer and projection; prefer heldout_gain_C>=0.10; among those choose closest absolute log D heldout MSE; tie row_id then split_id",
+  "quadratic_definition": "X is 512xinput_dim FP32, e=q_FP16_as_FP32-W_FP32, q=e^T(X^TX/N)e=mean((Xe)^2)",
+  "article_definition": "four contiguous 128-token full articles in frozen split manifest order",
+  "rank_definition": "ascending loss, ten alpha candidates; top3 Jaccard; Spearman of average tie ranks",
+  "floating_tolerance": {
+    "absolute": 1e-08,
+    "relative": 1e-05
+  },
+  "global_gram_frobenius_method": "low-rank Gram identity using XX^T and XsXh^T; no dxd materialization",
+  "torch_version": "2.6.0+cu124",
+  "device": "NVIDIA GeForce RTX 4060 Laptop GPU"
+}

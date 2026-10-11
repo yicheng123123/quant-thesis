@@ -1,0 +1,20 @@
+{
+  "pass": true,
+  "source_template": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v49_fullmodel_fast_integer_repair\\run_v49.py",
+  "source_template_sha256": "3dccc6306c3e35f1a4babed4266d8fa2af0261e7a345a5596daf4709dc560979",
+  "derived_runner": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\run_v51.py",
+  "derived_runner_sha256": "6d3f8c1cfd7d999eec3ac50ed0b6ab4440e1dea363d348c3357a1e1ddeb3157c",
+  "frozen_core_sha256": "c3a760c0f48723b3784774263af71bc9e469115c2ab5d0c35ba3145671e079a2",
+  "changes": [
+    "new v51 output root",
+    "load official M2 checkpoint and validate its hash",
+    "compare deployment tensors/config with original v45 R2",
+    "reuse R2 PPL only after full equality, otherwise run frozen evaluator exactly once per corpus",
+    "read-only v46 cost-projection source for budget gates",
+    "v51 output metadata"
+  ],
+  "search_core_modified": false,
+  "search_budget_neighborhood_order_and_acceptance_changed": false,
+  "v50_mixed_gram_imported": false,
+  "compiled_cpu_only": true
+}

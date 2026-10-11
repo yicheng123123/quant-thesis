@@ -1,0 +1,81 @@
+{
+  "cap_seconds": 5400.0,
+  "cpu_precheck_and_prior_diagnostics_charged_seconds": 180.0,
+  "runner_wall_seconds": 923.7546913999977,
+  "runner_cpu_process_seconds": 742.46875,
+  "charged_v62_active_seconds": 1145.7546913999977,
+  "remaining_seconds": 4254.245308600002,
+  "model_load_seconds": {
+    "v61_M3": 1.1741218000097433,
+    "v55_M2_plus_repair": 1.1715955999970902
+  },
+  "loaded_named_hash_seconds": {
+    "v61_M3": 1.660490900001605,
+    "v55_M2_plus_repair": 1.3972807000100147
+  },
+  "evaluation_seconds": {
+    "v61_M3/wikitext": 309.79736609999964,
+    "v61_M3/c4_fixed_budget": 135.93440959999862,
+    "v55_M2_plus_repair/wikitext": 315.3145164000016,
+    "v55_M2_plus_repair/c4_fixed_budget": 137.33788199999253
+  },
+  "unload_seconds": {
+    "v61_M3": 0.26464799999666866,
+    "v55_M2_plus_repair": 0.234435599995777
+  },
+  "evaluation_stage_sum_seconds": 898.3841740999924,
+  "setup_io_finalize_seconds_unassigned_within_runner": 24.871433700012858,
+  "v59_pair_timing_reference_seconds": {
+    "M1": {
+      "wikitext": 317.87452529999973,
+      "c4_fixed_budget": 140.01706459999969
+    },
+    "M2": {
+      "wikitext": 362.1254884,
+      "c4_fixed_budget": 183.14450320000014
+    },
+    "M1_plus_repair": {
+      "wikitext": 694.5140138000006,
+      "c4_fixed_budget": 181.14795380000032
+    },
+    "M2_plus_repair": {
+      "wikitext": 362.72403159999976,
+      "c4_fixed_budget": 141.4873249000002
+    },
+    "M1_pair_eval_seconds": 457.8915898999994,
+    "M2_pair_eval_seconds": 545.2699916000001,
+    "M1_plus_repair_pair_eval_seconds": 875.6619676000009,
+    "M2_plus_repair_pair_eval_seconds": 504.21135649999997,
+    "one_checkpoint_pair_process_wall_from_v58_seconds": 445.34196853637695,
+    "v56_one_checkpoint_pair_continuation_seconds": 2283.576
+  },
+  "v61_calibration_cost_separate_seconds": 2384.344,
+  "v55_effective_repair_cost_separate_seconds": 4240.101995,
+  "failures_and_retries": "see CPU_DIAGNOSTIC_LEDGER.csv and attempts/*/ATTEMPT_ACCOUNTING.json; no scoring resumes across process ids",
+  "historical_ledgers_reset": false,
+  "GPU scoring activity present": true,
+  "historical_reference": {
+    "M1_native_GPTQ_build_seconds": 648.8761009000009,
+    "M2_scalar10_build_seconds": 2115.9353341000096,
+    "v61_M3_full_data_to_finalized_pipeline_seconds": 2384.344,
+    "v61_M3_successful_load_save_reload_invocation_seconds": 2404.328,
+    "v61_M3_all_attempts_including_failure_seconds": 2442.875,
+    "v61_M3_failure_seconds": 38.547,
+    "v55_M2_repair_measured_layer2_to23_seconds": 4240.101995000034,
+    "v55_M2_repair_full24_net_seconds": "NOT_IDENTIFIABLE_FROM_RECOVERY_CHAIN",
+    "v55_continuation_runner_seconds": 4383.6175282001495,
+    "v55_added_shared_chain_charge_seconds": 5057.273140605757,
+    "v55_cumulative_history_seconds": 11037.312983144591,
+    "v56_M1_repair_full_model_seconds": 5699.771163356906,
+    "v56_original_eval_only_continuation_seconds": 2283.5778515338898,
+    "v56_conservative_all_attempt_total_seconds": 8590.488573099388,
+    "v59_total_evaluation_stage_seconds_all_8": 2383.0349056000005,
+    "v56_pair_seconds_are_seconds_not_minutes": true
+  },
+  "no_strict_speed_ratios_reported": true,
+  "cost_interpretation": "M3 training/calibration, original M1/M2 quantization, integer repair, evaluation, and recovery/diagnostic totals are different work and timer scopes; rows are not added into algorithm speed ratios. v55 full 24-block net repair cannot be reconstructed from its inherited recovery chain; the missing block0/1 generation time is not replaced with cumulative debugging costs.",
+  "successful_attempt_prelock_source_and_input_archive_charge_seconds": 30.0,
+  "final_report_hash_and_CPU_finalizer_attempts_charge_seconds": 12.0,
+  "runner_wall_scope_note": "runner_wall_seconds starts after pre-lock source verification and exact input-window archive creation; the conservative 30 s pre-lock charge is separate",
+  "finalization_scope_note": "12 s conservative CPU charge covers report creation, manifest hashing, verification and earlier failed CPU finalizer passes"
+}

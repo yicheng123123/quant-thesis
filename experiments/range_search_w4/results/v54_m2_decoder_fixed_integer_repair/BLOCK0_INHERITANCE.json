@@ -1,0 +1,62 @@
+{
+  "pass": true,
+  "v53_report_sha256": "5c2fd84195624edaf8d87be32ad610e5872dc15b9f60cf94c5810705f7229aad",
+  "v53_resume_boundary_sha256": "031e1ee384efd48b4b167d5096443cde599401a5c1393694e77d8f3339dc3c98",
+  "v53_gpu_result_sha256": "ad537faacb2808c69eb5e338faab44dbb9fb62df8d8aeda0ae85f8791c6f9470",
+  "base_M2_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+  "block0_groups": [
+    {
+      "group": "qkv",
+      "source_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\formal\\groups\\layer_00_qkv.pt",
+      "source_sha256": "a0b5f0fcf07f09a11800370b7528f86ad1850eeeaf7ae253adb6bf61abbdc33f",
+      "v54_group_sha256": "966963eeb0c17ba4d32841cf56e730645874bf81261c658604c8f0092bae7dc7",
+      "input_sha256": "09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96",
+      "C_sha256_source_record_only": "a68678662541a95ab201b445aa114891b730efebeb4a29acf8adbc2cc0bc35f6",
+      "modules": [
+        "self_attn.k_proj",
+        "self_attn.v_proj",
+        "self_attn.q_proj"
+      ],
+      "inherited_without_repair": true
+    },
+    {
+      "group": "o",
+      "source_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\formal\\groups\\layer_00_o.pt",
+      "source_sha256": "c912dc33c89790a9f21e90aff9f3531d6bbe266403d44f9a177703605bfd7a36",
+      "v54_group_sha256": "d3434e2750d11f90e35fc66b3d908b153b506b7c7adcd9655e64f3848e4e6df5",
+      "input_sha256": "2937cc4e2524f9164ad01b71cdd60c8d409a0c39c801d59fadc389fa0b90cb25",
+      "C_sha256_source_record_only": "9fbc711feb618f534670d840a5a2508eeedacee4d37e311b2d16190a284cb145",
+      "modules": [
+        "self_attn.o_proj"
+      ],
+      "inherited_without_repair": true
+    },
+    {
+      "group": "up_gate",
+      "source_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\formal\\groups\\layer_00_up_gate.pt",
+      "source_sha256": "35a6e16b5e94ab2524b7d856b0d5e6494999a1ecc50faf2525ecd37192181491",
+      "v54_group_sha256": "2ebf472da91780b339b1616bf81e18d07c3c229b49c347904959e22ecc607fe9",
+      "input_sha256": "0f071b6a8fb1b0800bb7080cf13949b5602bcedc698d5ab10f76c7edf97efa40",
+      "C_sha256_source_record_only": "dc7506b18569c23497a1b2d2d7d02f43ad50b46775af3cac062c3cab1d065b3c",
+      "modules": [
+        "mlp.up_proj",
+        "mlp.gate_proj"
+      ],
+      "inherited_without_repair": true
+    },
+    {
+      "group": "down",
+      "source_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v51_m2_fast_integer_repair_fullmodel\\formal\\groups\\layer_00_down.pt",
+      "source_sha256": "cc37962839ffccee49f3ea87137bd384e9eb4fd693db6d11df2ab852a289bf91",
+      "v54_group_sha256": "3bbd8846a5f4f3656a38a34736685f5f11b6164bcb9794aae0737c3ecdfd460a",
+      "input_sha256": "c43c4d7ed3fb968e7f89d132dd1f8a334556cbebfc2e866643659144ee926450",
+      "C_sha256_source_record_only": "25854d7ac9f81cb954e1e1fffe9def150c8118885cfb1446ef125e8202761a53",
+      "modules": [
+        "mlp.down_proj"
+      ],
+      "inherited_without_repair": true
+    }
+  ],
+  "v52_layer1_plus_loaded": false,
+  "v52_activations_or_C_loaded": false
+}

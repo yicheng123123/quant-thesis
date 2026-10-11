@@ -1,0 +1,439 @@
+{
+  "operation": "FP32 mean reduction of the Hessian diagonal before damping",
+  "classification": "H/Hinv preprocessing implementation mismatch (contiguous diag copy vs strided diagonal view)",
+  "native_source": {
+    "path": "E:\\quant-thesis\\.venv-gptq\\Lib\\site-packages\\gptqmodel\\quantization\\gptq.py",
+    "function": "GPTQ.quantize",
+    "first_line": 281,
+    "file_sha256": "73f00f7950e611deb45efb157f68c84656a786386e782af04f7afc7b66087bd8"
+  },
+  "custom_source": {
+    "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_smoke_v17\\m2_sequential_smoke.py",
+    "function": "main",
+    "file_sha256": "458b1baa9306521f1af122d374e6bfb2a235822cc32c4f29d99e458ced4175ea"
+  },
+  "native_line": 346,
+  "custom_line": 77,
+  "native_expression": "torch.mean(torch.diag(H))",
+  "custom_expression": "h.diagonal().mean()",
+  "input_values_exact": {
+    "exact": true,
+    "max_abs_diff": 0.0,
+    "mean_abs_diff": 0.0,
+    "num_diff": 0,
+    "first_differing_index": null,
+    "native": {
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "shape": [
+        896
+      ],
+      "stride": [
+        1
+      ],
+      "contiguous": true,
+      "sha256": "1e1fdb5286aa32cb9accf189653dad4fc506be2d38fa393effda7281d6905deb"
+    },
+    "custom": {
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "shape": [
+        896
+      ],
+      "stride": [
+        897
+      ],
+      "contiguous": false,
+      "sha256": "1e1fdb5286aa32cb9accf189653dad4fc506be2d38fa393effda7281d6905deb"
+    }
+  },
+  "native_reduction_input": {
+    "dtype": "torch.float32",
+    "device": "cuda:0",
+    "shape": [
+      896
+    ],
+    "stride": [
+      1
+    ],
+    "contiguous": true,
+    "sha256": "1e1fdb5286aa32cb9accf189653dad4fc506be2d38fa393effda7281d6905deb"
+  },
+  "custom_reduction_input": {
+    "dtype": "torch.float32",
+    "device": "cuda:0",
+    "shape": [
+      896
+    ],
+    "stride": [
+      897
+    ],
+    "contiguous": false,
+    "sha256": "1e1fdb5286aa32cb9accf189653dad4fc506be2d38fa393effda7281d6905deb"
+  },
+  "output": {
+    "exact": false,
+    "max_abs_diff": 1.862645149230957e-09,
+    "mean_abs_diff": 1.862645149230957e-09,
+    "num_diff": 1,
+    "first_differing_index": [],
+    "native": {
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "shape": [],
+      "stride": [],
+      "contiguous": true,
+      "sha256": "1013264200dc2585bd9d9bce7d62659889843801ba69ceaa09043b38e2be4baa"
+    },
+    "custom": {
+      "dtype": "torch.float32",
+      "device": "cuda:0",
+      "shape": [],
+      "stride": [],
+      "contiguous": true,
+      "sha256": "f872b99cf2b51fe0c6fddfbfa2fcd79cdecdd19b9bc3c93e32e4427ec1ffa8a9"
+    },
+    "native_value": 0.028906324878335,
+    "custom_value": 0.02890632301568985,
+    "native_bits_hex": "0x3cecccf5",
+    "custom_bits_hex": "0x3cecccf4"
+  },
+  "dtype_before": "torch.float32",
+  "dtype_after": "torch.float32",
+  "shape_before": [
+    896
+  ],
+  "shape_after": [],
+  "previous_numerical_state": "undamped Hessian and diagonal element values exact; extraction layout differs",
+  "exact_values_tensor_file": "FIRST_DIVERGENCE_TENSORS.pt",
+  "observed_native_variants": [
+    {
+      "name": "native_expression",
+      "mean": 0.028906324878335,
+      "mean_exact_native": true,
+      "damped_H": {
+        "exact": true,
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "num_diff": 0,
+        "first_differing_index": null,
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+        }
+      },
+      "Hinv": {
+        "exact": true,
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "num_diff": 0,
+        "first_differing_index": null,
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+        }
+      }
+    },
+    {
+      "name": "native_mean_view_write",
+      "mean": 0.028906324878335,
+      "mean_exact_native": true,
+      "damped_H": {
+        "exact": true,
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "num_diff": 0,
+        "first_differing_index": null,
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+        }
+      },
+      "Hinv": {
+        "exact": true,
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "num_diff": 0,
+        "first_differing_index": null,
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+        }
+      }
+    },
+    {
+      "name": "view_mean_index_write",
+      "mean": 0.02890632301568985,
+      "mean_exact_native": false,
+      "damped_H": {
+        "exact": false,
+        "max_abs_diff": 1.862645149230957e-09,
+        "mean_abs_diff": 3.1553897816611796e-13,
+        "num_diff": 136,
+        "first_differing_index": [
+          1,
+          1
+        ],
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "99104de7588a6d0eab88d386c4d3edee374f2d0e202cce969b04e6651691ab4f"
+        },
+        "native_value": 0.02990250289440155,
+        "custom_value": 0.0299025010317564,
+        "native_bits_hex": "0x3cf4f618",
+        "custom_bits_hex": "0x3cf4f617"
+      },
+      "Hinv": {
+        "exact": false,
+        "max_abs_diff": 0.00044183433055877686,
+        "mean_abs_diff": 5.5159537241491825e-06,
+        "num_diff": 401548,
+        "first_differing_index": [
+          0,
+          1
+        ],
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "26171c3a97741883b151b69cfd4563197e8047900f3b7dd37ef4248fdca682fe"
+        },
+        "native_value": 0.1774436980485916,
+        "custom_value": 0.17744359374046326,
+        "native_bits_hex": "0x3e35b3cd",
+        "custom_bits_hex": "0x3e35b3c6"
+      }
+    },
+    {
+      "name": "v17_expression",
+      "mean": 0.02890632301568985,
+      "mean_exact_native": false,
+      "damped_H": {
+        "exact": false,
+        "max_abs_diff": 1.862645149230957e-09,
+        "mean_abs_diff": 3.1553897816611796e-13,
+        "num_diff": 136,
+        "first_differing_index": [
+          1,
+          1
+        ],
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "9db0905045fdd7fe20cf35290650606c0a48560ccb7e48be24a5f9ac104f983c"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            896,
+            1
+          ],
+          "contiguous": true,
+          "sha256": "99104de7588a6d0eab88d386c4d3edee374f2d0e202cce969b04e6651691ab4f"
+        },
+        "native_value": 0.02990250289440155,
+        "custom_value": 0.0299025010317564,
+        "native_bits_hex": "0x3cf4f618",
+        "custom_bits_hex": "0x3cf4f617"
+      },
+      "Hinv": {
+        "exact": false,
+        "max_abs_diff": 0.00044183433055877686,
+        "mean_abs_diff": 5.5159537241491825e-06,
+        "num_diff": 401548,
+        "first_differing_index": [
+          0,
+          1
+        ],
+        "native": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "d81f49be36b7fce43820d2644e34d39068e558e42bb0f72120ac9851fec35ac1"
+        },
+        "custom": {
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "shape": [
+            896,
+            896
+          ],
+          "stride": [
+            1,
+            896
+          ],
+          "contiguous": false,
+          "sha256": "26171c3a97741883b151b69cfd4563197e8047900f3b7dd37ef4248fdca682fe"
+        },
+        "native_value": 0.1774436980485916,
+        "custom_value": 0.17744359374046326,
+        "native_bits_hex": "0x3e35b3cd",
+        "custom_bits_hex": "0x3e35b3c6"
+      }
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "status": "PASS",
+  "tie_rule": "exact score ties choose larger alpha, matching frozen v36 strict-comparison/update rule",
+  "note": "The initial v37 checker compared FP32 down alpha to an FP64 decimal alpha without casting and therefore had two false mismatches; saved producer state and row argmin agree after casting to recorded dtype.",
+  "results": {
+    "G01.gate": {
+      "rows": 4864,
+      "score_rows": 10,
+      "recorded_dtype": "torch.float64",
+      "row_alpha_exact_after_recorded_dtype_cast": true,
+      "best_loss_exact": true,
+      "max_alpha_abs_error_before_cast": 0.0,
+      "selection_histogram": {
+        "0.1": 0,
+        "0.2": 0,
+        "0.3": 0,
+        "0.4": 0,
+        "0.5": 0,
+        "0.6": 1,
+        "0.7": 20,
+        "0.8": 652,
+        "0.9": 3904,
+        "1.0": 287
+      },
+      "selected_tensor_alpha_exact": true
+    },
+    "G01.up": {
+      "rows": 4864,
+      "score_rows": 10,
+      "recorded_dtype": "torch.float64",
+      "row_alpha_exact_after_recorded_dtype_cast": true,
+      "best_loss_exact": true,
+      "max_alpha_abs_error_before_cast": 0.0,
+      "selection_histogram": {
+        "0.1": 0,
+        "0.2": 0,
+        "0.3": 0,
+        "0.4": 0,
+        "0.5": 0,
+        "0.6": 0,
+        "0.7": 10,
+        "0.8": 760,
+        "0.9": 3911,
+        "1.0": 183
+      },
+      "selected_tensor_alpha_exact": true
+    },
+    "G11.gate": {
+      "rows": 4864,
+      "score_rows": 10,
+      "recorded_dtype": "torch.float64",
+      "row_alpha_exact_after_recorded_dtype_cast": true,
+      "best_loss_exact": true,
+      "max_alpha_abs_error_before_cast": 0.0,
+      "selection_histogram": {
+        "0.1": 0,
+        "0.2": 0,
+        "0.3": 0,
+        "0.4": 0,
+        "0.5": 0,
+        "0.6": 0,
+        "0.7": 2,
+        "0.8": 315,
+        "0.9": 4351,
+        "1.0": 196
+      },
+      "selected_tensor_alpha_exact": true
+    },
+    "G11.up": {
+      "rows": 4864,
+      "score_rows": 10,
+      "recorded_dtype": "torch.float64",
+      "row_alpha_exact_after_recorded_dtype_cast": true,
+      "best_loss_exact": true,
+      "max_alpha_abs_error_before_cast": 0.0,
+      "selection_histogram": {
+        "0.1": 0,
+        "0.2": 0,
+        "0.3": 0,
+        "0.4": 0,
+        "0.5": 0,
+        "0.6": 0,
+        "0.7": 0,
+        "0.8": 347,
+        "0.9": 4340,
+        "1.0": 177
+      },
+      "selected_tensor_alpha_exact": true
+    },
+    "G01.down": {
+      "rows": 896,
+      "score_rows": 10,
+      "recorded_dtype": "torch.float32",
+      "row_alpha_exact_after_recorded_dtype_cast": true,
+      "best_loss_exact": true,
+      "max_alpha_abs_error_before_cast": 2.384185793236071e-08,
+      "selection_histogram": {
+        "0.1": 0,
+        "0.2": 0,
+        "0.3": 0,
+        "0.4": 0,
+        "0.5": 0,
+        "0.6": 0,
+        "0.7": 0,
+        "0.8": 70,
+        "0.9": 819,
+        "1.0": 7
+      },
+      "selected_tensor_alpha_exact": true
+    },
+    "G11.down": {
+      "rows": 896,
+      "score_rows": 10,
+      "recorded_dtype": "torch.float32",
+      "row_alpha_exact_after_recorded_dtype_cast": true,
+      "best_loss_exact": true,
+      "max_alpha_abs_error_before_cast": 2.384185793236071e-08,
+      "selection_histogram": {
+        "0.1": 0,
+        "0.2": 0,
+        "0.3": 0,
+        "0.4": 0,
+        "0.5": 0,
+        "0.6": 0,
+        "0.7": 0,
+        "0.8": 66,
+        "0.9": 824,
+        "1.0": 6
+      },
+      "selected_tensor_alpha_exact": true
+    }
+  }
+}

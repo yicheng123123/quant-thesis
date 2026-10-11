@@ -1,0 +1,321 @@
+{
+  "schema": "v40-reference-audit-v1",
+  "recorded_utc": "2026-10-04T19:24:57.494062+00:00",
+  "v18": {
+    "m2_status": "COMPLETE",
+    "m2_wall_seconds": 2115.9353341000096,
+    "candidate_gptq_executions": 1680,
+    "row_alpha_score_slots": 3041280,
+    "row_results_sha256": "577881567379539eb4b00771788609ff066e5cf0cbe81d185fc3d89ae8e9c0b9"
+  },
+  "v28": {
+    "direct_path_against_v18": {
+      "modules": 168,
+      "rows": 304128,
+      "input_hashes_equal": true,
+      "H_hashes_equal": true,
+      "direct_scores_exact": true,
+      "direct_alpha_and_selected_tensors_exact": true,
+      "boundary_hashes_exact": true,
+      "normalized_named_tensor_hash_exact": true,
+      "named_tensor_count": 290
+    },
+    "direct_runtime_correctness": {
+      "status": "PASS",
+      "score_mode": "dual",
+      "checks": {
+        "m2_168_linears_304128_rows": true,
+        "m2_1680_full_linear_alpha_candidates": true,
+        "m2_3041280_row_alpha_score_slots": true,
+        "m2_35_alpha1_native_spot_references": true,
+        "m2_reload_output_match": true
+      },
+      "m2_candidate_executions": 1680,
+      "m2_row_alpha_score_slots": 3041280,
+      "m2_spot_parity_reference_executions": 35
+    },
+    "quadratic_scorer": {
+      "status": "FAIL",
+      "modules": 168,
+      "rows": 304128,
+      "row_alpha_scores": 3041280,
+      "selection_difference_rows": 1,
+      "sensitive_rows": 201,
+      "modules_direct_selected_tensors_exact_vs_v18": 168,
+      "modules_quadratic_selected_tensors_exact_vs_direct": 167,
+      "modules_direct_scores_exact_vs_v18": 168,
+      "modules_input_hash_exact_vs_v18": 168,
+      "modules_hessian_hash_exact_vs_v18": 168,
+      "modules_direct_alpha_exact_vs_v18": 168,
+      "boundary_hashes_exact": 119,
+      "boundary_hashes_total": 119,
+      "modules_with_bias": 72,
+      "modules_without_bias": 96,
+      "max_abs_score_error": 0.0019005428735852092,
+      "max_relative_score_error": 0.0008292146435786346,
+      "median_abs_score_error_all_row_alpha_pairs": 5.459580072102524e-09,
+      "median_relative_score_error_all_row_alpha_pairs": 7.371581670752206e-07,
+      "normalized_final_model_named_tensors_exact_vs_v18": true,
+      "inference_config_and_quant_format_exact_vs_v18": true,
+      "C_dependency_groups": 96,
+      "C_groups_one_correctly_shared_matrix": 96,
+      "alpha_grid_tie_rule": "strict minimum; exact score ties resolve to larger alpha, matching existing M2 streaming update",
+      "raw_score_artifacts": "audit/raw_scores/layer_XX_scores.npz",
+      "selection_rule": "existing exact argmin/tie rule; alpha in frozen ascending grid; no tolerance",
+      "sensitivity_rule": "2 * max_abs_score_error(row) >= direct best-second gap(row)"
+    },
+    "interpretation": "The original direct path matched v18; the quadratic scorer had one row selection difference. v40 uses the original direct scorer."
+  },
+  "v39": {
+    "summary": {
+      "status": "COMPLETE",
+      "verdict": "B_DIFFERENT_SELECTION_SPACE_STATISTICAL_RULE_NOT_ESTABLISHED",
+      "M3_conflict": "SUMMARY_OMISSION_OF_COMPLETED_CONTINUATION",
+      "selection_space": {
+        "candidate_rows": 480,
+        "units": 48,
+        "bank_states": 120,
+        "changing_units": 17,
+        "invariant_units": 31,
+        "common_minimizer_units": 31,
+        "active_candidate_intervals": 65,
+        "legacy_full_intervals": 18,
+        "legacy_full_boundaries": 17,
+        "boundary_rounding_discrepancies": 0,
+        "independent_matrix_rho_open_interval_configs": 7200,
+        "common_tau_open_interval_configs": 18,
+        "maximum_raw_H_input_kappa_relative_gap": 2.1430284569685965e-07,
+        "held_read_or_rescored": false,
+        "new_tau_experiments": 0,
+        "tensor_values_deserialized": false,
+        "matrix_statistics_built": 0,
+        "eigendecompositions": 0
+      },
+      "checks_passed": 2709,
+      "checks_total": 2709,
+      "budget": {
+        "cpu_seconds": 1.765625,
+        "wall_seconds": 1.7860875999995187,
+        "cpu_cap_seconds": 300,
+        "phases": [
+          {
+            "phase": "M3_artifact_hash_and_window_reaggregation",
+            "wall_seconds": 0.8348289999994449
+          },
+          {
+            "phase": "search_only_exact_affine_envelope_and_provenance",
+            "wall_seconds": 0.8696180999995704
+          }
+        ],
+        "new_gpu_seconds": 0,
+        "new_model_forwards": 0,
+        "new_candidate_executions": 0,
+        "new_held_scores": 0,
+        "new_ppl_runs": 0,
+        "P3_contents_read": false,
+        "scope": "this standard-library executable, including hashes and window reaggregation; interactive reading/research wall separate"
+      }
+    },
+    "report_sha256": "6b591ea4499cfbe3d2116836205623dce085c27068f816900082b6ef84b09957",
+    "decision_sha256": "40377e0f6f74e8d4d1ea9a1ecb7c08330feecdf15fcd2e62fcda4c3c77200c81",
+    "p3_read_by_v39": false,
+    "scope": "Robust-Hessian mathematical precheck only; no new candidates or GPU quality experiment."
+  },
+  "candidate_budget_precheck": {
+    "summary": {
+      "status": "COMPLETE_ARTIFACT_ONLY_CANDIDATE_BUDGET_PRECHECK",
+      "analysis_cpu_seconds": 3.515000000001237,
+      "cpu_limit_seconds": 300,
+      "gpu_initializations": 0,
+      "model_forwards": 0,
+      "gptq_runs": 0,
+      "new_held_scoring": 0,
+      "ppl_runs": 0,
+      "p3_read": false,
+      "v39_modified": false,
+      "m2_full_model": {
+        "linears": 168,
+        "rows": 304128,
+        "tokens_per_row": 262144,
+        "selected_alpha_counts": {
+          "0.1": 0,
+          "0.2": 0,
+          "0.3": 0,
+          "0.4": 1,
+          "0.5": 30,
+          "0.6": 554,
+          "0.7": 3044,
+          "0.8": 54155,
+          "0.9": 226034,
+          "1.0": 20310
+        },
+        "global_winner_union_plus_alpha1": "0.4;0.5;0.6;0.7;0.8;0.9;1.0",
+        "global_winner_union_size": 7,
+        "module_specific_winner_union_candidate_executions": 675,
+        "module_winner_union_size_histogram": {
+          "2": 3,
+          "3": 40,
+          "4": 85,
+          "5": 32,
+          "6": 7,
+          "7": 1
+        },
+        "module_winner_union_sizes_le_budget": {
+          "3": 43,
+          "4": 128,
+          "5": 160
+        },
+        "budgets": {
+          "3": {
+            "candidate_execs": 501,
+            "full_winner_union_preserved_modules": 43,
+            "module_subset_retention_rows": 300790,
+            "module_subset_retention_pct": 98.90243581649831,
+            "module_subset_changed_rows": 3338,
+            "module_subset_loss_upper_mse": 5.949335197018987,
+            "module_subset_loss_upper_pct": 0.802585481785032,
+            "module_subset_worst_upper_pct": 659.5502550433655,
+            "global_subset_retention_rows": 300499,
+            "global_subset_retention_pct": 98.80675242003367,
+            "global_subset_changed_rows": 3629,
+            "global_subset_loss_upper_pct": 1.107935792076071,
+            "global_subset_candidate_execs": 504,
+            "global_subset_alpha_set": "0.8;0.9;1.0"
+          },
+          "4": {
+            "candidate_execs": 626,
+            "full_winner_union_preserved_modules": 128,
+            "module_subset_retention_rows": 303570,
+            "module_subset_retention_pct": 99.81652462121212,
+            "module_subset_changed_rows": 558,
+            "module_subset_loss_upper_mse": 1.893298489800913,
+            "module_subset_loss_upper_pct": 0.25541238311149905,
+            "module_subset_worst_upper_pct": 391.8233819098075,
+            "global_subset_retention_rows": 303543,
+            "global_subset_retention_pct": 99.80764678030303,
+            "global_subset_changed_rows": 585,
+            "global_subset_loss_upper_pct": 0.2618447614070943,
+            "global_subset_candidate_execs": 672,
+            "global_subset_alpha_set": "0.7;0.8;0.9;1.0"
+          },
+          "5": {
+            "candidate_execs": 666,
+            "full_winner_union_preserved_modules": 160,
+            "module_subset_retention_rows": 304097,
+            "module_subset_retention_pct": 99.98980692340068,
+            "module_subset_changed_rows": 31,
+            "module_subset_loss_upper_mse": 0.039869287467398,
+            "module_subset_loss_upper_pct": 0.005378502005817549,
+            "module_subset_worst_upper_pct": 210.88498362309812,
+            "global_subset_retention_rows": 304097,
+            "global_subset_retention_pct": 99.98980692340068,
+            "global_subset_changed_rows": 31,
+            "global_subset_loss_upper_pct": 0.005378502005817549,
+            "global_subset_candidate_execs": 840,
+            "global_subset_alpha_set": "0.6;0.7;0.8;0.9;1.0"
+          }
+        },
+        "global_budget_summary": {
+          "3": {
+            "subset_alpha_set": "0.8;0.9;1.0",
+            "candidate_execs": 504,
+            "retained_rows": 300499,
+            "retention_pct": 98.80675242003367,
+            "changed_rows": 3629,
+            "loss_upper_pct": 1.107935792076071,
+            "worst_upper_pct": 659.5502550433655
+          },
+          "4": {
+            "subset_alpha_set": "0.7;0.8;0.9;1.0",
+            "candidate_execs": 672,
+            "retained_rows": 303543,
+            "retention_pct": 99.80764678030303,
+            "changed_rows": 585,
+            "loss_upper_pct": 0.2618447614070943,
+            "worst_upper_pct": 521.3170640691701
+          },
+          "5": {
+            "subset_alpha_set": "0.6;0.7;0.8;0.9;1.0",
+            "candidate_execs": 840,
+            "retained_rows": 304097,
+            "retention_pct": 99.98980692340068,
+            "changed_rows": 31,
+            "loss_upper_pct": 0.005378502005817549,
+            "worst_upper_pct": 210.88498362309812
+          }
+        },
+        "m2_candidate_execution_baseline": 1680
+      },
+      "v24_v30_direct_search_scope": {
+        "row_alpha_scores": 480,
+        "row_split_units": 12,
+        "complete_grid_per_row": true,
+        "target_bank_full_linears": 12,
+        "representative_output_rows_per_target_bank": 4,
+        "search_tokens_per_bank": 32768,
+        "full_linear_candidate_tensor_states_historical": 120,
+        "input_cohort_matches_formal_m2": false
+      },
+      "scope_limits": [
+        "v18 stores full-model chosen alpha, chosen direct loss, and alpha1 direct loss, but no all-ten direct score matrix per row.",
+        "Exact best-to-second-best gaps and exact k=3/4/5 restricted-grid loss are unavailable for full M2 rows when a selected alpha is removed; only alpha1-fallback upper bounds are computed.",
+        "v24/v30 full-grid direct score analysis covers four fixed representative rows per target-bank Linear, not every output row, and uses a different search cohort/Hessian than formal v18 M2.",
+        "All subset design results are retrospective search-data analysis, not new-data validation and do not save the already incurred scalar10 search cost."
+      ],
+      "output_files": [
+        "SOURCE_AUDIT.csv",
+        "ALPHA_USAGE.csv",
+        "SUBSET_RESULTS.csv",
+        "COST_PROJECTION.csv",
+        "DECISION.md"
+      ]
+    },
+    "gpu_initializations": 0,
+    "model_forwards": 0,
+    "gptq_runs": 0,
+    "new_held_scoring": 0,
+    "p3_read": false
+  },
+  "sources": {
+    "experiments\\range_search_w4\\results\\range_w4_quadratic_full_m2_v28\\validation\\correctness_checks.json": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_quadratic_full_m2_v28\\validation\\correctness_checks.json",
+      "sha256": "227356d6ef732e53fae36f02004d1fd34e807e0c7bc08ba0fb910f6010c0cebe",
+      "bytes": 419
+    },
+    "experiments\\range_search_w4\\results\\range_w4_quadratic_full_m2_v28\\validation\\audit\\CONSISTENCY_SUMMARY.json": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_quadratic_full_m2_v28\\validation\\audit\\CONSISTENCY_SUMMARY.json",
+      "sha256": "1ef478d9a33fcc98ea01d70a0a6dfd59478c6c7f0ace3860565dd9dde9864a6e",
+      "bytes": 1407
+    },
+    "experiments\\range_search_w4\\results\\range_w4_quadratic_full_m2_v28\\validation\\audit\\FINAL_SUMMARY.json": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_quadratic_full_m2_v28\\validation\\audit\\FINAL_SUMMARY.json",
+      "sha256": "c1814ed4c20e0a4719a831a54c73832fe51fb18aa8f29fee128a86ca939bec4f",
+      "bytes": 7804
+    },
+    "experiments\\range_search_w4\\results\\range_w4_robust_hessian_precheck_v39\\REPORT.md": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_robust_hessian_precheck_v39\\REPORT.md",
+      "sha256": "6b591ea4499cfbe3d2116836205623dce085c27068f816900082b6ef84b09957",
+      "bytes": 4915
+    },
+    "experiments\\range_search_w4\\results\\range_w4_robust_hessian_precheck_v39\\DECISION.md": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_robust_hessian_precheck_v39\\DECISION.md",
+      "sha256": "40377e0f6f74e8d4d1ea9a1ecb7c08330feecdf15fcd2e62fcda4c3c77200c81",
+      "bytes": 1322
+    },
+    "experiments\\range_search_w4\\results\\range_w4_robust_hessian_precheck_v39\\SUMMARY.json": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_robust_hessian_precheck_v39\\SUMMARY.json",
+      "sha256": "9b6109396fc5285dc120e12f5075c1ea739eb9ae2ec7e09af3566a47a3cd2876",
+      "bytes": 1631
+    },
+    "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\FORMAL_RUNTIME.json": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\FORMAL_RUNTIME.json",
+      "sha256": "073b1aa7ddd1b2b4ab8bb0179697244a70766c53af99ddf71a23d2680b77092b",
+      "bytes": 4156
+    },
+    "experiments\\range_search_w4\\results\\range_w4_candidate_budget_precheck\\RUN_SUMMARY.json": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_candidate_budget_precheck\\RUN_SUMMARY.json",
+      "sha256": "0ec9ec0bd72b42ba057ab8d402f11f60838f29bb604342c7ad827012377ea978",
+      "bytes": 5587
+    }
+  }
+}

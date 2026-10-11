@@ -1,0 +1,34 @@
+{
+  "version": "v58",
+  "status": "FROZEN_BEFORE_EVALUATION",
+  "objective": "Re-evaluate only v55 M2+repair under current runtime using the unchanged v56 PPL evaluator and frozen WT2/C4 inputs",
+  "no_quantization_repair_search_or_calibration": true,
+  "no_P3": true,
+  "checkpoint_sha256": "0fa87105e36deac2ead4c871e6e0a802590418e6ccacd616929cdf91ecc8ec0c",
+  "named_tensor_manifest_sha256": "148edfee1108593cd62d160cf8c227c5205f2a8a027acebfbb30c8f05a5fb745",
+  "effective_config_sha256": "a33901fd787a1385efbdd5574d88012774c97110064a3f6a2cb05d070cba9dd2",
+  "evaluator_wrapper_sha256": "bbe1e4c22200f1ccb3d85f35a274c44cf5d46cd606160b59b0cd9afc346bae11",
+  "evaluator_core_source_sha256_current": "5062225fc58d6d1272ba7c828f697ff9540407db5409340d2a94662ff32841a1",
+  "evaluation": {
+    "datasets": [
+      "wikitext",
+      "c4_fixed_budget"
+    ],
+    "max_length": 2048,
+    "stride": 512,
+    "token_weighted": true,
+    "use_cache": false,
+    "dtype": "FP16",
+    "attention_requested": "SDPA",
+    "TF32": false,
+    "progress_journal": "atomic per-window JSON"
+  },
+  "runtime_matches_v56": "strict identity unverified: v56 evaluation process Python and Transformers versions not recorded",
+  "v56_result_reuse": "not used as strict main comparison; values retained as contextual reference",
+  "four_arm_interaction": "not computed; historical M1/M2 runtimes differ and v56 process runtime is incompletely recorded",
+  "budget": {
+    "cap_seconds": 3600.0,
+    "finish_reserve_seconds": 180.0,
+    "prior_history_budgets_reset": false
+  }
+}

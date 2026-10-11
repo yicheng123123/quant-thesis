@@ -1,0 +1,278 @@
+{
+  "status": "PASS",
+  "input_tokens": 64,
+  "token_ids_sha256": "6c783b81c93d6cafa714aeb7de9a0a3cd1de87626cbe00c53d222a04ce7f5cab",
+  "dtype": "FP16",
+  "device": "cuda:0",
+  "rtol": 1e-05,
+  "atol": 1e-06,
+  "native_vs_port": [
+    {
+      "layer": 0,
+      "comparisons": {
+        "logits": {
+          "shape": [
+            1,
+            64,
+            151936
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "layer_0": {
+          "shape": [
+            1,
+            64,
+            896
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "attention_block_output": {
+          "shape": [
+            1,
+            64,
+            896
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "q_proj_output": {
+          "shape": [
+            1,
+            64,
+            896
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "k_proj_output": {
+          "shape": [
+            1,
+            64,
+            128
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "v_proj_output": {
+          "shape": [
+            1,
+            64,
+            128
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        }
+      }
+    },
+    {
+      "layer": 12,
+      "comparisons": {
+        "logits": {
+          "shape": [
+            1,
+            64,
+            151936
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "layer_12": {
+          "shape": [
+            1,
+            64,
+            896
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "attention_block_output": {
+          "shape": [
+            1,
+            64,
+            896
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "q_proj_output": {
+          "shape": [
+            1,
+            64,
+            896
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "k_proj_output": {
+          "shape": [
+            1,
+            64,
+            128
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "v_proj_output": {
+          "shape": [
+            1,
+            64,
+            128
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        }
+      }
+    },
+    {
+      "layer": 23,
+      "comparisons": {
+        "logits": {
+          "shape": [
+            1,
+            64,
+            151936
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "layer_23": {
+          "shape": [
+            1,
+            64,
+            896
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "attention_block_output": {
+          "shape": [
+            1,
+            64,
+            896
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "q_proj_output": {
+          "shape": [
+            1,
+            64,
+            896
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "k_proj_output": {
+          "shape": [
+            1,
+            64,
+            128
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        },
+        "v_proj_output": {
+          "shape": [
+            1,
+            64,
+            128
+          ],
+          "dtype_a": "torch.float16",
+          "dtype_b": "torch.float16",
+          "max_abs_diff": 0.0,
+          "mean_abs_diff": 0.0,
+          "finite": true,
+          "allclose_rtol_1e-5_atol_1e-6": true,
+          "bitwise_equal": true
+        }
+      }
+    }
+  ]
+}

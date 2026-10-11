@@ -1,0 +1,64 @@
+{
+  "scope": "budget smoke only, reused historical H, first32 pristine L2 q/down rows, alpha0.9; no grid search or PPL",
+  "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+  "total_device_bytes": 8585216000,
+  "cases": [
+    {
+      "projection": "q_proj",
+      "rows": 3,
+      "input_dim": 896,
+      "alpha": 0.9,
+      "seconds": 0.6712246999959461,
+      "peak_allocated_bytes": 15208960,
+      "peak_reserved_bytes": 23068672,
+      "finite": true,
+      "candidate_slots": 3
+    },
+    {
+      "projection": "q_proj",
+      "rows": 32,
+      "input_dim": 896,
+      "alpha": 0.9,
+      "seconds": 0.238440700006322,
+      "peak_allocated_bytes": 15552512,
+      "peak_reserved_bytes": 23068672,
+      "finite": true,
+      "candidate_slots": 32,
+      "batch_first3_half_exact": true,
+      "batch_first3_half_max_abs": 0.0,
+      "pristine_and_hinv_unchanged": true,
+      "quadratic_loss_max_abs": 0.0,
+      "quadratic_loss_allclose": true
+    },
+    {
+      "projection": "down_proj",
+      "rows": 3,
+      "input_dim": 4864,
+      "alpha": 0.9,
+      "seconds": 1.2923522999917623,
+      "peak_allocated_bytes": 199212544,
+      "peak_reserved_bytes": 216006656,
+      "finite": true,
+      "candidate_slots": 3
+    },
+    {
+      "projection": "down_proj",
+      "rows": 32,
+      "input_dim": 4864,
+      "alpha": 0.9,
+      "seconds": 1.1986854999995558,
+      "peak_allocated_bytes": 201008640,
+      "peak_reserved_bytes": 218103808,
+      "finite": true,
+      "candidate_slots": 32,
+      "batch_first3_half_exact": true,
+      "batch_first3_half_max_abs": 0.0,
+      "pristine_and_hinv_unchanged": true,
+      "quadratic_loss_max_abs": 1.862645149230957e-09,
+      "quadratic_loss_allclose": true
+    }
+  ],
+  "candidate_slots": 70,
+  "wall_seconds": 3.8574319000035757,
+  "timing_note": "single synchronized cold call per geometry; not a steady-state benchmark or speedup measurement"
+}

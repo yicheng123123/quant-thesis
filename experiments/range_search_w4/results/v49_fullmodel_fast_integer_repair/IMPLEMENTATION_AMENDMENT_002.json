@@ -1,0 +1,19 @@
+{
+  "amendment_id": "002",
+  "scope": "v49 result schema/recovery wiring only",
+  "reason": "Post-block0 verification found the frozen fast function did not expose packed_u4 although v49 group validation needs exact packed codes.",
+  "change": "v49 wrapper now stores rt.pack(result.codes) as packed_u4; four already committed block0 checkpoints were migrated by adding this exact packed representation.",
+  "algorithm_changed": false,
+  "acceptance_rule_changed": false,
+  "candidate_order_or_budget_changed": false,
+  "v48_files_modified": false,
+  "protocol_changed": false,
+  "block0_groups_repaired_again": false,
+  "block0_checkpoint_schema_migration_sha256": "0baaa182ab3edae6a8ea27186a650c19d9bb5d913ebf261b133d9e4fbeac50c7",
+  "previous_runner_sha256": "2d6c6114c6fd7533a4c35bf06f978a8b5c1eee639f74d241e29b913969317db8",
+  "current_runner_sha256": "42a34f2dc07ff0625711189c36d600863cfc07945ffb870cefe7f6ab0f0e8697",
+  "gpu_start_epoch_unchanged": 1791391007.328674,
+  "cumulative_gpu_elapsed_before_resume": 289.9730577468872,
+  "protocol_sha256": "6c44516cb14921873903c3c3185442460bdef423c0ee272479bc44a5192b3512",
+  "fast_accept_sha256": "c3a760c0f48723b3784774263af71bc9e469115c2ab5d0c35ba3145671e079a2"
+}

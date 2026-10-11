@@ -1,0 +1,531 @@
+{
+  "status": "PASS",
+  "reference_source": "v17.2 candidate_cache.pt and M2_SMOKE_RAW.json; certified GPTQ native path",
+  "optimized_source": "optimized_native_m2.py; unchanged installed GPTQ.quantize() with cached immutable block inverse",
+  "candidate_count": 320,
+  "full_native_shape": [
+    128,
+    896
+  ],
+  "per_candidate_tensor_comparisons": [
+    {
+      "alpha": 0.1,
+      "tensor": "q",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.1,
+      "tensor": "scale",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.1,
+      "tensor": "zero",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.1,
+      "tensor": "g_idx",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.1,
+      "tensor": "search_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.1,
+      "tensor": "weight_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.2,
+      "tensor": "q",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.2,
+      "tensor": "scale",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.2,
+      "tensor": "zero",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.2,
+      "tensor": "g_idx",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.2,
+      "tensor": "search_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.2,
+      "tensor": "weight_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.3,
+      "tensor": "q",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.3,
+      "tensor": "scale",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.3,
+      "tensor": "zero",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.3,
+      "tensor": "g_idx",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.3,
+      "tensor": "search_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.3,
+      "tensor": "weight_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.4,
+      "tensor": "q",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.4,
+      "tensor": "scale",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.4,
+      "tensor": "zero",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.4,
+      "tensor": "g_idx",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.4,
+      "tensor": "search_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.4,
+      "tensor": "weight_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.5,
+      "tensor": "q",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.5,
+      "tensor": "scale",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.5,
+      "tensor": "zero",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.5,
+      "tensor": "g_idx",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.5,
+      "tensor": "search_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.5,
+      "tensor": "weight_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.6,
+      "tensor": "q",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.6,
+      "tensor": "scale",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.6,
+      "tensor": "zero",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.6,
+      "tensor": "g_idx",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.6,
+      "tensor": "search_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.6,
+      "tensor": "weight_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.7,
+      "tensor": "q",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.7,
+      "tensor": "scale",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.7,
+      "tensor": "zero",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.7,
+      "tensor": "g_idx",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.7,
+      "tensor": "search_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.7,
+      "tensor": "weight_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.8,
+      "tensor": "q",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.8,
+      "tensor": "scale",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.8,
+      "tensor": "zero",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.8,
+      "tensor": "g_idx",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.8,
+      "tensor": "search_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.8,
+      "tensor": "weight_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.9,
+      "tensor": "q",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.9,
+      "tensor": "scale",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.9,
+      "tensor": "zero",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.9,
+      "tensor": "g_idx",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.9,
+      "tensor": "search_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 0.9,
+      "tensor": "weight_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 1.0,
+      "tensor": "q",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 1.0,
+      "tensor": "scale",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 1.0,
+      "tensor": "zero",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 1.0,
+      "tensor": "g_idx",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 1.0,
+      "tensor": "search_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    {
+      "alpha": 1.0,
+      "tensor": "weight_mse",
+      "exact": true,
+      "max_abs_diff": 0.0
+    }
+  ],
+  "forward_candidate_order": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "reverse_candidate_order": [
+    1.0,
+    0.9,
+    0.8,
+    0.7,
+    0.6,
+    0.5,
+    0.4,
+    0.3,
+    0.2,
+    0.1
+  ],
+  "reverse_exact": true,
+  "reverse_per_alpha": [
+    {
+      "alpha": 1.0,
+      "exact": {
+        "q": true,
+        "scale": true,
+        "zero": true,
+        "g_idx": true
+      }
+    },
+    {
+      "alpha": 0.9,
+      "exact": {
+        "q": true,
+        "scale": true,
+        "zero": true,
+        "g_idx": true
+      }
+    },
+    {
+      "alpha": 0.8,
+      "exact": {
+        "q": true,
+        "scale": true,
+        "zero": true,
+        "g_idx": true
+      }
+    },
+    {
+      "alpha": 0.7,
+      "exact": {
+        "q": true,
+        "scale": true,
+        "zero": true,
+        "g_idx": true
+      }
+    },
+    {
+      "alpha": 0.6,
+      "exact": {
+        "q": true,
+        "scale": true,
+        "zero": true,
+        "g_idx": true
+      }
+    },
+    {
+      "alpha": 0.5,
+      "exact": {
+        "q": true,
+        "scale": true,
+        "zero": true,
+        "g_idx": true
+      }
+    },
+    {
+      "alpha": 0.4,
+      "exact": {
+        "q": true,
+        "scale": true,
+        "zero": true,
+        "g_idx": true
+      }
+    },
+    {
+      "alpha": 0.3,
+      "exact": {
+        "q": true,
+        "scale": true,
+        "zero": true,
+        "g_idx": true
+      }
+    },
+    {
+      "alpha": 0.2,
+      "exact": {
+        "q": true,
+        "scale": true,
+        "zero": true,
+        "g_idx": true
+      }
+    },
+    {
+      "alpha": 0.1,
+      "exact": {
+        "q": true,
+        "scale": true,
+        "zero": true,
+        "g_idx": true
+      }
+    }
+  ],
+  "direct_output_mse_equivalence": {
+    "0.1": {
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    "0.2": {
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    "0.3": {
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    "0.4": {
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    "0.5": {
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    "0.6": {
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    "0.7": {
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    "0.8": {
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    "0.9": {
+      "exact": true,
+      "max_abs_diff": 0.0
+    },
+    "1.0": {
+      "exact": true,
+      "max_abs_diff": 0.0
+    }
+  }
+}

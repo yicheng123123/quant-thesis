@@ -1,0 +1,60 @@
+{
+  "protocol_id": "range_w4_omniquant_full_v21_1",
+  "status": "MODEL_REPAIR_AND_PREFLIGHT",
+  "parent_v21_protocol_path": "experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21\\PROTOCOL.json",
+  "parent_v21_protocol_sha256": "61ca0754e368099c176a6060e3f32d3c37874e12cb8facbed1ab8d6dff56ae2e",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "isolated_snapshot_path": "E:\\quant-thesis\\artifacts\\models\\qwen2.5-0.5b-instruct-7ae5576\\7ae557604adf67be50417f59c2c2f167def9a775",
+  "isolated_snapshot_manifest_sha256": "d7bd8bf43014f41baf1dedebadfa2c4f78f655714a014af778cea08e88cf1432",
+  "model_lock_path": "experiments\\range_search_w4\\results\\range_w4_omniquant_kaggle_v20_1\\kaggle_bundle\\manifests\\MODEL_FILE_HASHES.json",
+  "model_lock_sha256": "955528c557f8ebe2084247abde045ed76c7ca17bbf610fb2f7b10467f6504d94",
+  "official_omniquant_commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+  "official_source_hashes": {
+    "quantize/omniquant.py": "dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00",
+    "quantize/quantizer.py": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140",
+    "quantize/int_linear.py": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409",
+    "quantize/utils.py": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5",
+    "models/int_qwen2_layer.py": "0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9"
+  },
+  "quantization_and_training": {
+    "upstream_repository": "OpenGVLab/OmniQuant",
+    "upstream_commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+    "weight_bits": 4,
+    "activation_bits": 16,
+    "group_size": 128,
+    "weight_quantization": "official asymmetric affine [0,15] per output row and consecutive G128 input groups",
+    "lwc": true,
+    "let": false,
+    "epochs": 20,
+    "batch_size": 1,
+    "loss": "official block reconstruction; FP teacher and quantized student",
+    "optimizer_semantics": "frozen v20/v20.1 AdamW and AMP semantics; no optimizer/algorithm edits",
+    "upstream_source_sha256": {
+      "quantize/omniquant.py": "dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00",
+      "quantize/quantizer.py": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140",
+      "quantize/int_linear.py": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409",
+      "quantize/utils.py": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5",
+      "models/int_qwen2_layer.py": "0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9"
+    }
+  },
+  "calibration": {
+    "source": "frozen v16/v18/v19 WikiText-2 train manifest, reused byte-identically",
+    "manifest_path": "experiments\\range_search_w4\\results\\range_w4_omniquant_kaggle_v20_1\\kaggle_bundle\\calibration\\CALIBRATION_MANIFEST.json",
+    "manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+    "documents": 128,
+    "tokens_per_document": 2048,
+    "token_budget": 262144,
+    "seed": 20261005,
+    "order": "frozen manifest order; no resampling or tokenizer re-encoding"
+  },
+  "formal_optimizer_updates_source": "experiments\\range_search_w4\\results\\range_w4_omniquant_kaggle_v20_1\\FORMAL_STEP_COUNT.json",
+  "formal_optimizer_updates_sha256": "076c88ac6805c5242cf9f71ace3f22e04f9d4c161a8af160fee77063f515e39d",
+  "formal_optimizer_updates": 61440,
+  "preflight_config_sha256": "c9d40132698c1dda4fcaf8f0502f1eb148bb608c80fb25792dc3fcb0b509d09a",
+  "preflight_semantics": "reuse v21/v20.1 runner and timing module; only execute after exact isolated model load and 64-token native/port parity PASS",
+  "no_algorithm_changes": true,
+  "downloaded_model_in_this_round": false,
+  "cache_policy": "preserve all existing Hugging Face caches; do not reuse a mixed global cache for formal model loading",
+  "formal_m3_authorized_conditionally": "Only if exact model identity, tokenizer identity, quant-off parity, 2048 memory and conservative local 24-hour cost gates all pass."
+}

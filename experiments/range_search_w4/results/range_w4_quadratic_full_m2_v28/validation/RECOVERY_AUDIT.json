@@ -1,0 +1,15 @@
+{
+  "event": "resume_finalization_without_candidate_rerun",
+  "reason": "first complete pass wrote QUANTIZATION_CORRECTNESS.json before creating validation/M2",
+  "failed_formal_status": "FORMAL_FAILED_RESUMABLE",
+  "all_layers_checkpointed": true,
+  "checkpoint_code_bundle_sha256": "9553008ccc94438083ce218d8648a98ed088cdc018be43971bfec8f485f1135b",
+  "current_recovery_code_bundle_sha256": "462d29dd6518c1a1f67ddb11b2e8812c8be2e796fe90185020eb74ce99ced5b6",
+  "recovery_compatibility": "accept only the exact old hash stored in every checkpoint, while verifying calibration/protocol, per-module hashes, alpha table, and full sequential model-state chain",
+  "candidate_rerun": false,
+  "activation_replay": "not repeated during output finalization; all 24 layers had completed during the original pass, and their per-boundary hashes are audited against v18",
+  "budget_start_seconds": 2774.4991111999843,
+  "budget_limit_seconds": 5400.0,
+  "recovery_finalization_reserve_seconds": 120,
+  "updated_utc": "2026-10-02T19:04:59.569818+00:00"
+}

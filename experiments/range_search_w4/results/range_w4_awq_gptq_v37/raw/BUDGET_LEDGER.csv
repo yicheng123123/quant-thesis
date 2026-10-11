@@ -1,0 +1,75 @@
+stage,task,gpu_seconds,cumulative_v37_gpu_seconds,cumulative_route_gpu_seconds,peak_allocated_bytes,peak_reserved_bytes,status,detail
+cuda_init,fresh_diagnostic_process,0.158269,0.158810,180.494741,0,0,PASS,CUDA context and initial synchronize; charged against v37 subbudget
+cuda_warmup,512x512_fp16_matmul,0.458093,0.623842,180.959773,9568256,23068672,PASS,
+model_load,fresh_v18_M2_prefix_process,2.728566,3.359969,183.695900,1005038080,1061158912,PASS,
+pristine_target_weight_load,L12_norm_gate_up_down,0.133627,3.502144,183.838075,1031188992,1082130432,PASS,
+clean_process_prefix_capture,S1_P2_search_only_no_P3,1.480702,7.315368,187.651298,1113010688,1170210816,FAIL,"RuntimeError(""Can't call numpy() on Tensor that requires grad. Use tensor.detach().numpy() instead."")"
+cuda_init,fresh_diagnostic_process,0.157942,7.474252,187.810183,0,0,PASS,CUDA context and initial synchronize; charged against v37 subbudget
+cuda_warmup,512x512_fp16_matmul,0.463435,7.944241,188.280171,9568256,23068672,PASS,
+model_load,fresh_v18_M2_prefix_process,2.040299,9.992892,190.328823,1005038080,1061158912,PASS,
+pristine_target_weight_load,L12_norm_gate_up_down,0.035095,10.034800,190.370731,1031188992,1082130432,PASS,
+clean_process_prefix_capture,S1_P2_search_only_no_P3,4.309415,16.589391,196.925321,1113010688,1170210816,PASS,
+native_alpha1_parity_GPTQ,S0_G00_down,7.129823,24.332684,204.668614,1600902656,1692401664,PASS,
+direct_alpha1_candidate_score,S0_G00_down_all_896_rows,0.091780,24.454333,204.790264,1271183360,1692401664,PASS,
+direct_alpha1_native_score,S0_G00_down_all_896_rows,0.078933,24.539086,204.875017,1262466560,1692401664,PASS,
+S0_fold_held_recompute_and_candidate_validation,P0_search_P1_held_no_new_candidates,4.754966,29.362414,209.698345,2747652608,3764387840,FAIL,RuntimeError('The size of tensor a (2048) must match the size of tensor b (16384) at non-singleton dimension 1')
+cuda_init,fresh_diagnostic_process,0.158932,29.522325,209.858257,0,0,PASS,CUDA context and initial synchronize; charged against v37 subbudget
+cuda_warmup,512x512_fp16_matmul,0.471525,30.000237,210.336168,9568256,23068672,PASS,
+model_load,fresh_v18_M2_prefix_process,1.974568,31.982371,212.318301,1005038080,1061158912,PASS,
+pristine_target_weight_load,L12_norm_gate_up_down,0.033723,32.022344,212.358275,1031188992,1082130432,PASS,
+clean_process_prefix_capture,S1_P2_search_only_no_P3,4.842513,39.136975,219.472906,1113010688,1170210816,PASS,
+direct_alpha1_candidate_score,S0_G00_down_all_896_rows,0.143816,39.905771,220.241702,1253451264,1352663040,PASS,
+S0_fold_held_recompute_and_candidate_validation,P0_search_P1_held_no_new_candidates,6.043661,46.047671,226.383601,3906847232,4540334080,FAIL,KeyError('losses')
+cuda_init,fresh_diagnostic_process,0.188992,46.237726,226.573657,0,0,PASS,CUDA context and initial synchronize; charged against v37 subbudget
+cuda_warmup,512x512_fp16_matmul,0.457665,46.702319,227.038250,9568256,23068672,PASS,
+model_load,fresh_v18_M2_prefix_process,2.040997,48.753700,229.089631,1005038080,1061158912,PASS,
+pristine_target_weight_load,L12_norm_gate_up_down,0.024958,48.785993,229.121923,1031188992,1082130432,PASS,
+S0_fold_held_recompute_and_candidate_validation,P0_search_P1_held_no_new_candidates,8.519538,59.690332,240.026262,3905274368,4529848320,FAIL,KeyError('best_weight')
+cuda_init,fresh_diagnostic_process,0.175067,59.866647,240.202579,0,0,PASS,CUDA context and initial synchronize; charged against v37 subbudget
+cuda_warmup,512x512_fp16_matmul,0.450635,60.323867,240.659797,9568256,23068672,PASS,
+model_load,fresh_v18_M2_prefix_process,1.346680,61.679788,242.015718,1005038080,1061158912,PASS,
+pristine_target_weight_load,L12_norm_gate_up_down,0.023559,61.711462,242.047393,1031188992,1082130432,PASS,
+S0_fold_held_recompute_and_candidate_validation,P0_search_P1_held_no_new_candidates,8.482230,72.485256,252.821186,3905274368,4529848320,FAIL,"RuntimeError('Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu!')"
+cuda_init,fresh_diagnostic_process,0.170559,72.657004,252.992937,0,0,PASS,CUDA context and initial synchronize; charged against v37 subbudget
+cuda_warmup,512x512_fp16_matmul,0.434390,73.099323,253.435253,9568256,23068672,PASS,
+model_load,fresh_v18_M2_prefix_process,1.309709,74.415916,254.751846,1005038080,1061158912,PASS,
+pristine_target_weight_load,L12_norm_gate_up_down,0.024662,74.447286,254.783217,1031188992,1082130432,PASS,
+S0_fold_held_recompute_and_candidate_validation,P0_search_P1_held_no_new_candidates,9.152780,86.001124,266.337055,3905274368,4529848320,PASS,
+unattributed_finalization_interval,prior_v37_output_finalization,1.880117,87.881241,268.217170,0,0,PASS,Conservative elapsed-wall reconciliation from final ledger event to persisted V37_STATE; counted before further diagnostics.
+cuda_init,S0_P1_norm_replay,0.166689,88.048801,268.384733,0,0,PASS,
+model_load,S0_P1_norm_replay,2.046010,90.102629,270.438561,996321792,1040187392,PASS,
+pristine_norm_load,L12_base_norm,0.039302,90.148640,270.484571,1022472704,1082130432,PASS,
+norm_replay,S0_P0_batched_and_per_doc,0.274895,90.537282,270.873213,1172615680,1258291200,PASS,
+norm_replay,S0_P1_batched_and_per_doc,0.008788,90.885384,271.221315,1172615680,1493172224,PASS,
+norm_replay,S1_P2_batched_and_per_doc,0.010812,91.109433,271.445364,1172615680,1493172224,PASS,
+cuda_init,S0_P1_norm_replay,0.092961,91.215087,271.551019,0,0,PASS,
+model_load,S0_P1_norm_replay,2.068117,93.289169,273.625100,996321792,1040187392,PASS,
+pristine_norm_load,L12_base_norm,0.039035,93.336418,273.672349,1022472704,1082130432,PASS,
+locked_D_load,S0_search_selected_D,0.006293,93.353421,273.689352,996323840,1082130432,PASS,
+norm_replay,S0_P0_batched_and_per_doc,0.151225,93.765642,274.101572,1172619776,1258291200,PASS,
+locked_S0_D_norm_replay,S0_P0_using_S0_selected_D,0.008056,93.783889,274.119819,1231342080,1317011456,PASS,
+norm_replay,S0_P1_batched_and_per_doc,0.004485,94.111302,274.447233,1172619776,1551892480,PASS,
+locked_S0_D_norm_replay,S0_P1_using_S0_selected_D,0.006431,94.124504,274.460434,1231342080,1551892480,PASS,
+norm_replay,S1_P2_batched_and_per_doc,0.005919,94.342433,274.678366,1172619776,1551892480,PASS,
+locked_S0_D_norm_replay,S1_P2_using_S0_selected_D,0.006670,94.357823,274.693753,1231342080,1551892480,PASS,
+unattributed_finalization_interval,norm_replay_output_finalization,0.005329,94.363152,274.699082,0,0,PASS,Conservative elapsed-wall reconciliation before S0 held repair.
+cuda_init,S0_P1_repair,0.154382,94.528829,274.864761,0,0,PASS,
+model_load,frozen_v18_M2_prefix,1.839556,96.375106,276.711037,996321792,1040187392,PASS,
+pristine_weight_load,L12_target,0.283230,96.666347,277.002278,1022472704,1082130432,PASS,
+pristine_P1_norm_replay,all_8_articles,0.160829,97.105098,277.441029,1110555136,1182793728,PASS,
+pristine_P1_reference_forward,all_16384_tokens,0.401790,97.515099,277.851030,1594016256,1660944384,PASS,
+full_block_arm_replay,S0_P1_G00,0.000022,97.528165,277.864096,1145225728,1660944384,FAIL,"AttributeError(""module 'run_v37_correctness' has no attribute 'run_full_mlp_and_boundary'"")"
+unattributed_finalization_interval,failed_repair_attempt_finalization,0.005414,97.533579,277.869509,0,0,PASS,Conservative elapsed-wall reconciliation after failed helper import; includes failed attempt overhead.
+cuda_init,S0_P1_repair,0.140375,97.684748,278.020679,0,0,PASS,
+model_load,frozen_v18_M2_prefix,1.832599,99.523966,279.859898,996321792,1040187392,PASS,
+pristine_weight_load,L12_target,0.042076,99.573982,279.909913,1022472704,1082130432,PASS,
+pristine_P1_norm_replay,all_8_articles,0.270193,100.133069,280.469000,1110555136,1182793728,PASS,
+pristine_P1_reference_forward,all_16384_tokens,0.442713,100.585220,280.921151,1594016256,1660944384,PASS,
+full_block_arm_replay,S0_P1_G00,0.616525,101.213943,281.549874,1464994304,1780482048,PASS,
+full_block_arm_replay,S0_P1_G01,0.346681,101.988864,282.324794,1464994304,1780482048,PASS,
+full_block_arm_replay,S0_P1_G10,0.344900,102.786856,283.122786,1464996352,1780482048,PASS,
+full_block_arm_replay,S0_P1_G11,0.332838,103.564666,283.900597,1464996352,1780482048,PASS,
+projection_and_row_scoring,all_rows_all_arms_correct_P1,5.008829,109.005588,289.341519,4795292160,5924454400,PASS,
+correct_full_fold_reference,S0_P0_search,0.324990,109.336832,289.672763,1740816896,5924454400,PASS,
+correct_full_fold_reference,S0_P1_held,0.205262,109.547296,289.883227,1711456768,5924454400,PASS,
+unattributed_finalization_interval,final_S0_repair_postprocessing,0.777767,110.325063,290.661003,0,0,PASS,Conservative process elapsed-wall reconciliation after the last measured GPU stage.

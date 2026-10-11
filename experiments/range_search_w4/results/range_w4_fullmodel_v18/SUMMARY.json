@@ -1,0 +1,162 @@
+{
+  "status": "PASS",
+  "verdict": "FULLMODEL_M2_QUALITY_IMPROVED",
+  "protocol": {
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "weight_bits": 4,
+    "activation_bits": 16,
+    "group_size": 128,
+    "block_size": 128,
+    "symmetric": true,
+    "alpha_grid": [
+      "0.1",
+      "0.2",
+      "0.3",
+      "0.4",
+      "0.5",
+      "0.6",
+      "0.7",
+      "0.8",
+      "0.9",
+      "1.0"
+    ],
+    "search_semantics": "10 full-Linear dynamic GPTQ candidates; row-wise alpha selection and whole-Linear stitch"
+  },
+  "work_units": {
+    "m2_full_linear_alpha_candidate_executions": 1680,
+    "m2_row_alpha_score_slots": 3041280,
+    "m2_auxiliary_alpha1_native_parity_references": 35,
+    "m1_native_full_linear_gptq_executions": 168,
+    "m2_output_rows": 304128
+  },
+  "calibration": {
+    "M1_seconds": 648.8761009000009,
+    "M2_seconds": 2115.9353341000096,
+    "M2_over_M1_runtime_ratio": 3.2609235124628193,
+    "estimated_conservative_M2_hours": 1.3377576619069744,
+    "estimated_conservative_M1_plus_M2_hours": 1.5739587550993464,
+    "hard_gate_hours": 48.0,
+    "cost_gate": "M2_COST_GO",
+    "quantization_total_wall_seconds": 2770.9410771999974,
+    "peak_allocated_bytes": 2347887104,
+    "peak_reserved_bytes": 2684354560
+  },
+  "evaluation": {
+    "wikitext": {
+      "M0": {
+        "ppl": 12.463409495878363,
+        "nll": 2.522797111231235,
+        "tokens": 299077,
+        "windows": 582
+      },
+      "M1": {
+        "ppl": 13.884369572857866,
+        "nll": 2.6307637162607898,
+        "tokens": 299077,
+        "windows": 582
+      },
+      "M2": {
+        "ppl": 13.760556051038424,
+        "nll": 2.6218062423746398,
+        "tokens": 299077,
+        "windows": 582
+      }
+    },
+    "c4_fixed_budget": {
+      "M0": {
+        "ppl": 19.248555817997712,
+        "nll": 2.9574360354777918,
+        "tokens": 131071,
+        "windows": 253
+      },
+      "M1": {
+        "ppl": 22.23392445006841,
+        "nll": 3.10161925085964,
+        "tokens": 131071,
+        "windows": 253
+      },
+      "M2": {
+        "ppl": 22.032883164065005,
+        "nll": 3.0925360266978292,
+        "tokens": 131071,
+        "windows": 253
+      }
+    },
+    "M2_vs_M1_wt2_absolute_ppl": -0.12381352181944116,
+    "M2_vs_M1_wt2_relative_ppl_percent": -0.8917475234992311,
+    "M2_vs_M1_wt2_nll_per_token": -0.00895747388614998,
+    "M2_vs_M1_c4_absolute_ppl": -0.20104128600340587,
+    "M2_vs_M1_c4_relative_ppl_percent": -0.9042096299953339,
+    "M2_vs_M1_c4_nll_per_token": -0.009083224161810843,
+    "aggregate_evaluation_forward_seconds": 388.8082510000095
+  },
+  "alpha_distribution": {
+    "counts": {
+      "0.1": {
+        "rows": 0,
+        "fraction": 0.0
+      },
+      "0.2": {
+        "rows": 0,
+        "fraction": 0.0
+      },
+      "0.3": {
+        "rows": 0,
+        "fraction": 0.0
+      },
+      "0.4": {
+        "rows": 1,
+        "fraction": 3.2880892255892254e-06
+      },
+      "0.5": {
+        "rows": 30,
+        "fraction": 9.864267676767677e-05
+      },
+      "0.6": {
+        "rows": 554,
+        "fraction": 0.001821601430976431
+      },
+      "0.7": {
+        "rows": 3044,
+        "fraction": 0.010008943602693603
+      },
+      "0.8": {
+        "rows": 54155,
+        "fraction": 0.17806647201178452
+      },
+      "0.9": {
+        "rows": 226034,
+        "fraction": 0.743219960016835
+      },
+      "1.0": {
+        "rows": 20310,
+        "fraction": 0.06678109217171717
+      }
+    },
+    "statistics": {
+      "mean_alpha": 0.8862820917508418,
+      "median_alpha": 0.9,
+      "alpha_1_fraction": 0.06678109217171717,
+      "alpha_0_9_fraction": 0.743219960016835,
+      "alpha_0_8_fraction": 0.17806647201178452,
+      "alpha_le_0_7_fraction": 0.011932475799663299
+    }
+  },
+  "local_search_diagnostic": {
+    "mean_row_relative_output_gain": 0.1282674808450752,
+    "median_row_relative_output_gain": 0.12662136009199998,
+    "aggregate_row_mse_gain": 0.1321941692936468,
+    "rows_improved": 283818,
+    "rows_tied": 20310,
+    "scope_note": "local search objective is not a causal predictor; one full model only"
+  },
+  "correctness": {
+    "quantization": "PASS",
+    "save_reload": "PASS",
+    "evaluation": "PASS",
+    "known_frozen_v16_v17_1_v17_2_hashes": "PASS",
+    "v17_3_hashes": "recorded as consumed; no upstream expected-hash manifest was published",
+    "all_168_linears": true,
+    "all_304128_rows": true
+  }
+}

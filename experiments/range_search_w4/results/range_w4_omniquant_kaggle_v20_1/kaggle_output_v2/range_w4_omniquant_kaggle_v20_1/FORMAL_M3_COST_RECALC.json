@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "formal_optimizer_updates": 61440,
+  "representative_layers": [
+    0,
+    12,
+    23
+  ],
+  "representative_layer_weights": {
+    "0": 8,
+    "12": 8,
+    "23": 8
+  },
+  "training_step_mean_seconds_by_layer": {
+    "0": 0.03393141599999581,
+    "12": 0.03556908366668191,
+    "23": 0.03343827233330406
+  },
+  "training_step_median_seconds_by_layer": {
+    "0": 0.033751897513866425,
+    "12": 0.033611491322517395,
+    "23": 0.033620964735746384
+  },
+  "pooled_measured_step_p95_seconds": 0.037420061500000656,
+  "optimistic_training_seconds": 2065.0900268554688,
+  "central_training_seconds": 2108.186050559627,
+  "conservative_training_seconds_before_margin": 2299.0885785600403,
+  "conservative_safety_multiplier": 1.25,
+  "cost_components_seconds": {
+    "initial_model_load": 28.580742219,
+    "calibration_capture": 3.6605088000023898,
+    "teacher_cache_prep": 12.806973098670522,
+    "optimizer_training": 2108.186050559627,
+    "layer_transition": 11.177020121256511,
+    "final_quantization": 0.10914576799996212,
+    "scale_registration": 0.0035595919994193537,
+    "checkpoint_io": 0.4526834000046165,
+    "block_overhead": 303.72882435875135,
+    "dense_export": 2.3000598430000423,
+    "dense_export_reload_proxy": 0.5875248130000159,
+    "diagnostic_full_native_capture_not_charged": 1.4890818459999196
+  },
+  "optimistic_total_hours": 0.6745825191303205,
+  "central_total_hours": 0.68655363682592,
+  "conservative_total_hours": 0.8992410458927043,
+  "cost_formula_note": "Training uses measured 2048-token step durations and three equal 8-layer strata; teacher, transition and checkpoint components are added separately. Native full-model target-input capture is diagnostic and excluded. Dense-export time was not measured; the conservative safety multiplier covers this uncertainty but is not a measured export cost.",
+  "memory_peak_reserved_gib_by_layer": {
+    "0": 1.564453125,
+    "12": 1.52734375,
+    "23": 1.52734375
+  },
+  "maximum_peak_reserved_gib": 1.564453125,
+  "memory_gate_pass": true,
+  "correctness_gate_pass": true,
+  "runtime_gate_pass_le_24h": true,
+  "kaggle_single_session_status": "KAGGLE_SINGLE_SESSION_REQUIRES_RESUME",
+  "single_session_budget_hours": null,
+  "single_session_reason": "No Kaggle runtime-budget API was available; retain block-level checkpoint/resume for a formal run.",
+  "verdict": "M3_KAGGLE_FORMAL_EXECUTION_READY"
+}

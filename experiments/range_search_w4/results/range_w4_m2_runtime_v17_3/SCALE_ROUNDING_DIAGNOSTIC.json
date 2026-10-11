@@ -1,0 +1,153 @@
+{
+  "scope": "one preselected row 0; alpha=0.1; compare full [128,896] GPTQ to isolated [1,896] GPTQ",
+  "full_calls": 1,
+  "single_row_calls": 1,
+  "full_output_row_exact": true,
+  "groups": [
+    {
+      "find_params_call": 0,
+      "kind": "initial whole-weight estimate",
+      "input_shape_full": [
+        128,
+        896
+      ],
+      "input_shape_single_row": [
+        1,
+        896
+      ],
+      "current_weight_row_exact": true,
+      "current_weight_row_max_abs_diff": 0.0,
+      "pre_alpha_scale_exact": true,
+      "pre_alpha_scale_max_abs_diff": 0.0,
+      "pre_alpha_scale_max_rel_diff": 0.0,
+      "zero_exact": true
+    },
+    {
+      "find_params_call": 1,
+      "kind": "dynamic group 0",
+      "input_shape_full": [
+        128,
+        128
+      ],
+      "input_shape_single_row": [
+        1,
+        128
+      ],
+      "current_weight_row_exact": true,
+      "current_weight_row_max_abs_diff": 0.0,
+      "pre_alpha_scale_exact": true,
+      "pre_alpha_scale_max_abs_diff": 0.0,
+      "pre_alpha_scale_max_rel_diff": 0.0,
+      "zero_exact": true
+    },
+    {
+      "find_params_call": 2,
+      "kind": "dynamic group 1",
+      "input_shape_full": [
+        128,
+        128
+      ],
+      "input_shape_single_row": [
+        1,
+        128
+      ],
+      "current_weight_row_exact": false,
+      "current_weight_row_max_abs_diff": 1.4901161193847656e-08,
+      "pre_alpha_scale_exact": false,
+      "pre_alpha_scale_max_abs_diff": 1.862645149230957e-09,
+      "pre_alpha_scale_max_rel_diff": 8.354032843271852e-08,
+      "zero_exact": true
+    },
+    {
+      "find_params_call": 3,
+      "kind": "dynamic group 2",
+      "input_shape_full": [
+        128,
+        128
+      ],
+      "input_shape_single_row": [
+        1,
+        128
+      ],
+      "current_weight_row_exact": false,
+      "current_weight_row_max_abs_diff": 1.4901161193847656e-08,
+      "pre_alpha_scale_exact": false,
+      "pre_alpha_scale_max_abs_diff": 1.862645149230957e-09,
+      "pre_alpha_scale_max_rel_diff": 8.344628099621332e-08,
+      "zero_exact": true
+    },
+    {
+      "find_params_call": 4,
+      "kind": "dynamic group 3",
+      "input_shape_full": [
+        128,
+        128
+      ],
+      "input_shape_single_row": [
+        1,
+        128
+      ],
+      "current_weight_row_exact": false,
+      "current_weight_row_max_abs_diff": 1.4901161193847656e-08,
+      "pre_alpha_scale_exact": true,
+      "pre_alpha_scale_max_abs_diff": 0.0,
+      "pre_alpha_scale_max_rel_diff": 0.0,
+      "zero_exact": true
+    },
+    {
+      "find_params_call": 5,
+      "kind": "dynamic group 4",
+      "input_shape_full": [
+        128,
+        128
+      ],
+      "input_shape_single_row": [
+        1,
+        128
+      ],
+      "current_weight_row_exact": false,
+      "current_weight_row_max_abs_diff": 2.9802322387695312e-08,
+      "pre_alpha_scale_exact": true,
+      "pre_alpha_scale_max_abs_diff": 0.0,
+      "pre_alpha_scale_max_rel_diff": 0.0,
+      "zero_exact": true
+    },
+    {
+      "find_params_call": 6,
+      "kind": "dynamic group 5",
+      "input_shape_full": [
+        128,
+        128
+      ],
+      "input_shape_single_row": [
+        1,
+        128
+      ],
+      "current_weight_row_exact": false,
+      "current_weight_row_max_abs_diff": 5.21540641784668e-08,
+      "pre_alpha_scale_exact": false,
+      "pre_alpha_scale_max_abs_diff": 3.725290298461914e-09,
+      "pre_alpha_scale_max_rel_diff": 7.729259010602618e-08,
+      "zero_exact": true
+    },
+    {
+      "find_params_call": 7,
+      "kind": "dynamic group 6",
+      "input_shape_full": [
+        128,
+        128
+      ],
+      "input_shape_single_row": [
+        1,
+        128
+      ],
+      "current_weight_row_exact": false,
+      "current_weight_row_max_abs_diff": 1.1920928955078125e-07,
+      "pre_alpha_scale_exact": true,
+      "pre_alpha_scale_max_abs_diff": 0.0,
+      "pre_alpha_scale_max_rel_diff": 0.0,
+      "zero_exact": true
+    }
+  ],
+  "interpretation": "If compensated group-entry weight rows differ, the first differing group locates shape-dependent arithmetic; if entry rows match but find_params scales differ, the ULP difference is in the per-channel FP32 reduction/arithmetic. The full-linear candidate/stitch path itself always retains the original [out,in] geometry."
+}

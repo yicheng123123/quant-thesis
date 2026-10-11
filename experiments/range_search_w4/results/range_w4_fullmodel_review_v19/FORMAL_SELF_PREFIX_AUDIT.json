@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "checked_boundary_hash_count": 336,
+  "cross_layer_transition_hash_count": 46,
+  "dependency_order": [
+    "q/k/v shared norm input; commit all three",
+    "capture o input from committed q/k/v",
+    "commit o; capture up/gate shared input",
+    "commit up and gate; capture down input",
+    "commit down; forward to next-layer qkv input"
+  ],
+  "source": "v18 run_formal.run_method, run_block_capture, run_block_to_next and 48 layer checkpoint boundary hashes",
+  "limit": "Hash chain and source control flow support formal self-prefix; this audit does not recompute 128x2048 GPU activations."
+}

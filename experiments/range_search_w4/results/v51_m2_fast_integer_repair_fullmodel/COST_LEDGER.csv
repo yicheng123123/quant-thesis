@@ -1,0 +1,11 @@
+item,seconds,basis
+M2 scalar10 initialization,2115.9353341000096,historical measured v18 FORMAL_RUNTIME; outside v51 GPU job
+v49 M1 + fast-repair formal full-model repair,4543.0753269,historical measured v49 report/block accounting; different initialization and inputs
+v49 complete job including failures/save/evaluation,5126.393651485443,historical measured v49 RUN_STATUS
+v51 completed formal block0 repair once,187.08484039996983,"measured BLOCK_TIMINGS; all 7 L0 Linear, 12672 rows, group commits/terminal checks included"
+v51 block0 restore/replay without repair,3.4549413999775425,measured BLOCK_TIMINGS new_groups=0; committed groups restored and propagation replayed
+v51 all CUDA-synchronized timer intervals,264.6193641994032,"measured STAGE_TIMINGS sum across formal, diagnostic, preflight scopes; excludes untimed gaps"
+v51 cumulative job wall through final diagnostic,657.3046090602875,measured elapsed from GPU_START through final diagnostic; includes failures/recovery/diagnosis and intervening wall
+v51 new full-model save/reload,0.0,not reached
+v51 new WT2/C4 PPL evaluation,0.0,not reached
+historical M2 build plus v51 attempted job through stop,2773.239943160297,sum of historical measured M2 construction plus incomplete v51 job window; not a completed pipeline cost

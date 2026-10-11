@@ -1,0 +1,345 @@
+{
+  "row_id": "L23_q_proj_R192",
+  "layer": 23,
+  "projection": "self_attn.q_proj",
+  "projection_short": "q_proj",
+  "row_index": 192,
+  "output_dim": 896,
+  "input_dim": 896,
+  "split_id": "S05",
+  "source": "v11_stage2",
+  "row_manifest_sha256": "c56eeaa1d1af6e4ed8dd78f811c811c66758b215659a98bf8550052c786e6106",
+  "v9_manifest_sha256": "34a24ef8602b8ce1e38e7a284f112acf7f766962d87d737f69148b78bcfaba78",
+  "weight_sha256": "a12fe03483fdf4414814154c992fee2f0936e07eee47e2be639ff5a6d92dccc7",
+  "search_article_ids": [
+    81,
+    14,
+    60,
+    29
+  ],
+  "heldout_article_ids": [
+    68,
+    74,
+    17,
+    66
+  ],
+  "search_x_sha256": "6ac02116343fc4b5a26de5aeece8f9b156d71f7d55b7be8c3594905df3378bcc",
+  "heldout_x_sha256": "e1e6cc5704b51404c26dddf21be22d4b8111a936e359a29849d9c836f6a566c8",
+  "selected_alpha": 0.7,
+  "search_D_sse": 0.052521657198667526,
+  "search_D_mse": 0.00010258136171614751,
+  "search_C_sse": 0.039015885442495346,
+  "search_C_mse": 7.620290125487372e-05,
+  "heldout_D_sse": 0.16436553001403809,
+  "heldout_D_mse": 0.00032102642580866814,
+  "heldout_C_sse": 0.12922869622707367,
+  "heldout_C_mse": 0.00025239979731850326,
+  "search_gain": 0.2571467176880097,
+  "held_gain": 0.21377252142808445,
+  "candidate_evaluations_this_run": 10,
+  "candidate_seconds_total": 3.844990699999471,
+  "hessian_seconds": 0.007096599998476449,
+  "weights_path": "experiments\\range_search_w4\\results\\range_w4_96row_v11\\raw\\stage2\\weights\\L23_q_proj_R192_S05.pt",
+  "candidates": [
+    {
+      "alpha": 0.1,
+      "search_sse": 0.871931791305542,
+      "heldout_sse": 1.5579626560211182,
+      "search_output_mse": 0.0017029917798936367,
+      "heldout_output_mse": 0.0030428958125412464,
+      "weight_mse": 7.595582246722188e-06,
+      "scale": [
+        0.00017252603720407933,
+        0.00016460816550534219,
+        0.00014420213119592518,
+        0.00011957616516156122,
+        0.00014685765199828893,
+        0.0001297988201258704,
+        0.00012970523675903678
+      ],
+      "zero": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "candidate_seconds": 0.4586476999975275,
+      "candidate_peak_allocated_bytes": 35685376,
+      "candidate_peak_reserved_bytes": 44040192,
+      "weight_sha256": "75f65ff83a8b2c01ed77797e1a3e7abf57cb202562c7ef84e38b1feb1a400e3f"
+    },
+    {
+      "alpha": 0.2,
+      "search_sse": 0.33281081914901733,
+      "heldout_sse": 0.8019986152648926,
+      "search_output_mse": 0.0006500211311504245,
+      "heldout_output_mse": 0.0015664035454392433,
+      "weight_mse": 4.584518592309905e-06,
+      "scale": [
+        0.00034505207440815866,
+        0.0003312701010145247,
+        0.0002857200161088258,
+        0.00023241252347361296,
+        0.00029735543648712337,
+        0.0002577048435341567,
+        0.0002589272626210004
+      ],
+      "zero": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "candidate_seconds": 0.43696149999959744,
+      "candidate_peak_allocated_bytes": 35685376,
+      "candidate_peak_reserved_bytes": 44040192,
+      "weight_sha256": "1b9350144812d738ba89cd22f4d2a94420fa951c8af2285654d599b8cd1c4691"
+    },
+    {
+      "alpha": 0.3,
+      "search_sse": 0.16144981980323792,
+      "heldout_sse": 0.4340934157371521,
+      "search_output_mse": 0.00031533167930319905,
+      "heldout_output_mse": 0.0008478387026116252,
+      "weight_mse": 2.7062437766289804e-06,
+      "scale": [
+        0.0005175781552679837,
+        0.0005025359569117427,
+        0.00042151170782744884,
+        0.0003507783985696733,
+        0.00042940242565236986,
+        0.0003855635004583746,
+        0.00038495121407322586
+      ],
+      "zero": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "candidate_seconds": 0.35909040000115056,
+      "candidate_peak_allocated_bytes": 35685376,
+      "candidate_peak_reserved_bytes": 44040192,
+      "weight_sha256": "2bf046e89c446173b16f085ab9e1fa8e4d3bde6ed28e335dc614af29845768b6"
+    },
+    {
+      "alpha": 0.4,
+      "search_sse": 0.08829736709594727,
+      "heldout_sse": 0.23232856392860413,
+      "search_output_mse": 0.000172455795109272,
+      "heldout_output_mse": 0.00045376672642305493,
+      "weight_mse": 1.572827500240237e-06,
+      "scale": [
+        0.0006901041488163173,
+        0.0006775439833290875,
+        0.0005517933168448508,
+        0.00046724590356461704,
+        0.0005684900679625571,
+        0.0005033955676481128,
+        0.0005114874220453203
+      ],
+      "zero": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "candidate_seconds": 0.37035180000020773,
+      "candidate_peak_allocated_bytes": 35685376,
+      "candidate_peak_reserved_bytes": 44040192,
+      "weight_sha256": "d71bb35a692c7c4de23ad1f687c8254fea0d83c1c1361df8986eaa0d7e4bee70"
+    },
+    {
+      "alpha": 0.5,
+      "search_sse": 0.052873969078063965,
+      "heldout_sse": 0.1404150128364563,
+      "search_output_mse": 0.00010326947085559368,
+      "heldout_output_mse": 0.0002742480719462037,
+      "weight_mse": 9.101418640966585e-07,
+      "scale": [
+        0.0008626302005723119,
+        0.0008342625224031508,
+        0.0006808422040194273,
+        0.0005848176078870893,
+        0.0006901099113747478,
+        0.00062669807812199,
+        0.000634265539702028
+      ],
+      "zero": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "candidate_seconds": 0.40168700000140234,
+      "candidate_peak_allocated_bytes": 35685376,
+      "candidate_peak_reserved_bytes": 44040192,
+      "weight_sha256": "211c5c8881963b856dd52b8acab95a9405a0b7bae37a84e8189afeba95095503"
+    },
+    {
+      "alpha": 0.6,
+      "search_sse": 0.0447205975651741,
+      "heldout_sse": 0.11260668188333511,
+      "search_output_mse": 8.734491711948067e-05,
+      "heldout_output_mse": 0.0002199349255533889,
+      "weight_mse": 5.195487915443664e-07,
+      "scale": [
+        0.0010351563105359674,
+        0.000990552012808621,
+        0.0008301289635710418,
+        0.0007085037068463862,
+        0.0008229285595007241,
+        0.0007425592630170286,
+        0.0007512208539992571
+      ],
+      "zero": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "candidate_seconds": 0.33417499999995925,
+      "candidate_peak_allocated_bytes": 35685376,
+      "candidate_peak_reserved_bytes": 44040192,
+      "weight_sha256": "fb7b6369cc7fefd80a88f142390a96a463b5f185790aaa3af36df6d47268c542"
+    },
+    {
+      "alpha": 0.7,
+      "search_sse": 0.039015885442495346,
+      "heldout_sse": 0.12922869622707367,
+      "search_output_mse": 7.620290125487372e-05,
+      "heldout_output_mse": 0.00025239979731850326,
+      "weight_mse": 3.116905418210081e-07,
+      "scale": [
+        0.001207682304084301,
+        0.0011556121753528714,
+        0.0009819109691306949,
+        0.0008520708652213216,
+        0.00099669408518821,
+        0.0008850687299855053,
+        0.0009274252224713564
+      ],
+      "zero": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "candidate_seconds": 0.3676599999998871,
+      "candidate_peak_allocated_bytes": 35685376,
+      "candidate_peak_reserved_bytes": 44040192,
+      "weight_sha256": "c00b6e9cc4880df2d0ac441df0e3ee58650dffd1ad6d6b99dc323014e84c6616"
+    },
+    {
+      "alpha": 0.8,
+      "search_sse": 0.04064158722758293,
+      "heldout_sse": 0.1377737820148468,
+      "search_output_mse": 7.937810005387291e-05,
+      "heldout_output_mse": 0.00026908941799774766,
+      "weight_mse": 2.599657307200687e-07,
+      "scale": [
+        0.0013802082976326346,
+        0.0013056708266958594,
+        0.0010729822097346187,
+        0.0009283011895604432,
+        0.001082642120309174,
+        0.001017673290334642,
+        0.0010024012299254537
+      ],
+      "zero": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "candidate_seconds": 0.37280939999982365,
+      "candidate_peak_allocated_bytes": 35685376,
+      "candidate_peak_reserved_bytes": 44040192,
+      "weight_sha256": "13b6317ef9c4177f76ed8ee590a52ac2848622a38f6290c84d5e3fa74acffe58"
+    },
+    {
+      "alpha": 0.9,
+      "search_sse": 0.04471728950738907,
+      "heldout_sse": 0.15452316403388977,
+      "search_output_mse": 8.733845606911927e-05,
+      "heldout_output_mse": 0.00030180305475369096,
+      "weight_mse": 2.4933365239121486e-07,
+      "scale": [
+        0.0015527342911809683,
+        0.0014554652152583003,
+        0.0012233442394062877,
+        0.0010677881073206663,
+        0.0012388485483825207,
+        0.001098073204047978,
+        0.0011771911522373557
+      ],
+      "zero": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "candidate_seconds": 0.3679429000003438,
+      "candidate_peak_allocated_bytes": 35685376,
+      "candidate_peak_reserved_bytes": 44040192,
+      "weight_sha256": "6317054e1011e4e9f4fc4e8338530b2885601bfbf608a7594371f54715b49fbc"
+    },
+    {
+      "alpha": 1.0,
+      "search_sse": 0.052521657198667526,
+      "heldout_sse": 0.16436553001403809,
+      "search_output_mse": 0.00010258136171614751,
+      "heldout_output_mse": 0.00032102642580866814,
+      "weight_mse": 2.7566849780669145e-07,
+      "scale": [
+        0.0017252604011446238,
+        0.0016258766409009695,
+        0.0013541994849219918,
+        0.0011515624355524778,
+        0.0013714057859033346,
+        0.0011955020017921925,
+        0.0012917545391246676
+      ],
+      "zero": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "candidate_seconds": 0.3756649999995716,
+      "candidate_peak_allocated_bytes": 35685376,
+      "candidate_peak_reserved_bytes": 44040192,
+      "weight_sha256": "331f8508f4a0038b3b28dde4c1c28c9fcb17b24e333c419eb3587d83fa6c65f0"
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "status": "COMPLETE",
+  "verdict": "E1_BLOCK_OBJECTIVE_SIGNAL_NOT_SUPPORTED",
+  "protocol_id": "range_w4_block_objective_e1_v23",
+  "primary_metric": "held block output MSE per row intervention; selector block-vs-local uses the same candidate bank and frozen local-M2 all-row stitch",
+  "units": 48,
+  "candidate_alpha_values": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "held_selected_local_score_positions": 127,
+  "held_selected_local_score_positions_max": 144,
+  "selector_comparison": {
+    "win_tie_loss": {
+      "block_better": 14,
+      "tie": 17,
+      "block_worse": 17
+    },
+    "median_delta_block_minus_local_mse": 0.0,
+    "mean_delta_block_minus_local_mse": 9.484276712625267e-09,
+    "pooled_sse_delta_block_minus_local": 13.366059756604955,
+    "pooled_sse_improvement_fraction": -1.2097001610803551e-06,
+    "median_relative_improvement_block_vs_local": 0.0,
+    "mean_relative_improvement_block_vs_local": 1.1902262361084335e-06,
+    "worst_case_unit_id": "L23/up_proj/R2432/S0",
+    "worst_case_relative_improvement_block_vs_local": -6.468235532539372e-05,
+    "numeric_repeat_mse_noise_reference": 0.0
+  },
+  "alpha_disagreement": {
+    "units": 48,
+    "disagreement_units": 37,
+    "disagreement_fraction": 0.7708333333333334,
+    "changed_non_tie_units": 31,
+    "block_better": 14,
+    "block_tie": 6,
+    "block_worse": 17,
+    "block_win_fraction_among_changed_non_ties": 0.45161290322580644
+  },
+  "alpha_frequency": {
+    "alpha_local": {
+      "0.1": 0,
+      "0.2": 0,
+      "0.3": 0,
+      "0.4": 0,
+      "0.5": 2,
+      "0.6": 2,
+      "0.7": 9,
+      "0.8": 12,
+      "0.9": 22,
+      "1.0": 1
+    },
+    "alpha_block": {
+      "0.1": 2,
+      "0.2": 0,
+      "0.3": 2,
+      "0.4": 4,
+      "0.5": 2,
+      "0.6": 1,
+      "0.7": 8,
+      "0.8": 12,
+      "0.9": 12,
+      "1.0": 5
+    }
+  },
+  "split_breakdown": {
+    "S0": {
+      "units": 24,
+      "local_block_mse_sum": 0.18871117383742927,
+      "block_block_mse_sum": 0.18871381950437685,
+      "pooled_sse_delta_block_minus_local": 77.67712022620253,
+      "pooled_improvement_fraction": -1.4019662396118902e-05,
+      "numeric_epsilon_sse": 5.540632932943873,
+      "improved_beyond_epsilon": false
+    },
+    "S1": {
+      "units": 24,
+      "local_block_mse_sum": 0.1876178511890636,
+      "block_block_mse_sum": 0.18761566076739822,
+      "pooled_sse_delta_block_minus_local": -64.31106046959758,
+      "pooled_improvement_fraction": 1.1674910737438317e-05,
+      "numeric_epsilon_sse": 5.508442551051555,
+      "improved_beyond_epsilon": true
+    }
+  },
+  "target_breakdown": [
+    {
+      "layer": 0,
+      "projection": "q_proj",
+      "units": 8,
+      "local_block_mse_sum": 0.002430846824340729,
+      "block_block_mse_sum": 0.002430844531071054,
+      "pooled_improvement_fraction": 9.434036122264866e-07,
+      "improved_beyond_numeric_floor": false
+    },
+    {
+      "layer": 0,
+      "projection": "up_proj",
+      "units": 8,
+      "local_block_mse_sum": 0.002477353814238012,
+      "block_block_mse_sum": 0.0024773329234666235,
+      "pooled_improvement_fraction": 8.432695914618632e-06,
+      "improved_beyond_numeric_floor": true
+    },
+    {
+      "layer": 12,
+      "projection": "q_proj",
+      "units": 8,
+      "local_block_mse_sum": 0.005822922707991276,
+      "block_block_mse_sum": 0.0058229128076090035,
+      "pooled_improvement_fraction": 1.700242776551347e-06,
+      "improved_beyond_numeric_floor": true
+    },
+    {
+      "layer": 12,
+      "projection": "up_proj",
+      "units": 8,
+      "local_block_mse_sum": 0.00588372294878952,
+      "block_block_mse_sum": 0.005883731131368873,
+      "pooled_improvement_fraction": -1.3907145907486493e-06,
+      "improved_beyond_numeric_floor": false
+    },
+    {
+      "layer": 23,
+      "projection": "q_proj",
+      "units": 8,
+      "local_block_mse_sum": 0.17564786115910397,
+      "block_block_mse_sum": 0.17564918148558278,
+      "pooled_improvement_fraction": -7.516894712537011e-06,
+      "improved_beyond_numeric_floor": false
+    },
+    {
+      "layer": 23,
+      "projection": "up_proj",
+      "units": 8,
+      "local_block_mse_sum": 0.18406631757202935,
+      "block_block_mse_sum": 0.18406547739267673,
+      "pooled_improvement_fraction": 4.564546972529404e-06,
+      "improved_beyond_numeric_floor": true
+    }
+  ],
+  "v22_promotion_gate": {
+    "both_split_pooled_sse_improve_beyond_epsilon": false,
+    "targets_improved_at_least_4_of_6": false,
+    "changed_non_tie_units_block_win_fraction_at_least_0_60": false,
+    "no_case_block_selector_worse_than_local_by_over_1pct": true,
+    "meaningful_search_block_objective_gain_observed": true,
+    "meaningful_search_units": 35,
+    "positive_targets_of_6": 3,
+    "changed_non_tie_block_win_fraction": 0.45161290322580644,
+    "worst_relative_improvement": -6.468235532539372e-05,
+    "pass": false
+  },
+  "ranking": {
+    "local_selector_mean_spearman": 0.7292929292929293,
+    "block_selector_mean_spearman": 0.6969696969696969,
+    "local_selector_median_held_oracle_regret_mse": 2.6991422190847034e-09,
+    "block_selector_median_held_oracle_regret_mse": 2.233869423966771e-09,
+    "local_selector_mean_held_oracle_regret_mse": 1.2203409185123588e-07,
+    "block_selector_mean_held_oracle_regret_mse": 1.3151836856386114e-07
+  },
+  "tail_analysis_file": "TAIL_RISK_ANALYSIS.csv",
+  "projection_depth_file": "PROJECTION_DEPTH_BREAKDOWN.csv",
+  "held_oracle_usage": "retrospective diagnostic only; never used in alpha selection",
+  "limits": [
+    "48 row-split units, not independent trained models",
+    "single-document WT2 train split E1 only",
+    "local block interventions do not constitute a full-model method or PPL result"
+  ]
+}

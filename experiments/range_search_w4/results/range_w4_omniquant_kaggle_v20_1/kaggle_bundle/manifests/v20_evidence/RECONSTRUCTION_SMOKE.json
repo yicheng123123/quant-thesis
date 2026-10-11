@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "objective": "official torch.nn.MSELoss between FP teacher block output and quantized student block output",
+  "teacher_source": "same frozen FP Qwen2.5 L0 input; qlayer weight and activation quant initially disabled",
+  "student_source": "official QuantLinear LWC/STE path; quantized weights evaluated on the same frozen block inputs",
+  "formal_epoch_config": 20,
+  "smoke_optimizer_steps": 2,
+  "losses": [
+    {
+      "phase": "before_optimization",
+      "loss": 0.0005276203155517578,
+      "finite": true
+    },
+    {
+      "phase": "after_step_1",
+      "loss": 0.0005269050598144531,
+      "finite": true
+    },
+    {
+      "phase": "after_step_2",
+      "loss": 0.0005249977111816406,
+      "finite": true
+    }
+  ],
+  "step_losses": [
+    {
+      "step": 1,
+      "pre_update_loss": 0.0005548111512325704
+    },
+    {
+      "step": 2,
+      "pre_update_loss": 0.000499878020491451
+    }
+  ],
+  "finite": true,
+  "monotonic_decrease_required": false
+}

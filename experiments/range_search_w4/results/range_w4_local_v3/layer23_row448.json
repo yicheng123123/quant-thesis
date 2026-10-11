@@ -1,0 +1,607 @@
+{
+  "layer": 23,
+  "row": 448,
+  "document_hashes": [
+    "80e4b66bcf07f4f1795583b1bea945c22ebd41ed411282a56882308c1c698e62",
+    "41b77ce386d682f9d0cdb4b2a7abcfc07e328c5bba013908d3da8c0efa0bbef9",
+    "9b7eaeadf487cfeea4ae53d465cb191e5b194057704fd59d8533be9ccc96c470",
+    "6ede3528f489b61ec1dc4abaccd685da9daa03c31123119ca458603b118fa53c",
+    "85b0026c767235c86911699304edea9cf700a622e35507d8c9b464c27cd7c5e1",
+    "85e5ceac8d94ccef25c28c18a6b4c309b987d997e4645ceb9ac0e694e0287be8",
+    "cbde7e57ffc47f0f9817bfcaf5aa843121cbc484dcf7e3d948fd74e7e1065d8e",
+    "fe7a52e6156f6622bd1b214763539ce78945b5870fe3a961823b8628b059b5f3"
+  ],
+  "symmetric": [
+    {
+      "method": "single_10/A_minmax_fixed_gptq",
+      "selected_on": "minmax",
+      "alpha": 1.0,
+      "beta": 1.0,
+      "scale": 0.007194010416666666,
+      "zero": 8.0,
+      "actual_low": -0.053955078125,
+      "actual_high": 0.053955078125,
+      "search_output_mse": 0.0032344083301723003,
+      "heldout_output_mse": 0.010854830965399742,
+      "weight_mse": 7.495853878936032e-06,
+      "candidate_evaluations": 10,
+      "evaluation_seconds": 0.17243469999993977,
+      "peak_allocated_bytes": 15597056,
+      "rtn_search_output_mse": 0.012815406545996666,
+      "rtn_weight_mse": 4.41952306573512e-06,
+      "gptq_search_output_mse": 0.0032344083301723003,
+      "nominal_candidates": 10,
+      "unique_candidates": 10,
+      "shared_evaluated_candidates_all_families": 10,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "symmetric"
+    },
+    {
+      "method": "single_10/B_rtn_weight_fixed_gptq",
+      "selected_on": "rtn",
+      "alpha": 0.8,
+      "beta": 0.8,
+      "scale": 0.0057552083333333335,
+      "zero": 8.0,
+      "actual_low": -0.0431640625,
+      "actual_high": 0.0431640625,
+      "search_output_mse": 0.0018102829344570637,
+      "heldout_output_mse": 0.005406960844993591,
+      "weight_mse": 4.805488970305305e-06,
+      "candidate_evaluations": 10,
+      "evaluation_seconds": 0.17243469999993977,
+      "peak_allocated_bytes": 15597056,
+      "rtn_search_output_mse": 0.013520849868655205,
+      "rtn_weight_mse": 3.307559836684959e-06,
+      "gptq_search_output_mse": 0.0018102829344570637,
+      "nominal_candidates": 10,
+      "unique_candidates": 10,
+      "shared_evaluated_candidates_all_families": 10,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "symmetric"
+    },
+    {
+      "method": "single_10/B_rtn_output_fixed_gptq",
+      "selected_on": "rtn",
+      "alpha": 0.6,
+      "beta": 0.6,
+      "scale": 0.00431640625,
+      "zero": 8.0,
+      "actual_low": -0.032373046875,
+      "actual_high": 0.032373046875,
+      "search_output_mse": 0.001498471014201641,
+      "heldout_output_mse": 0.005089921876788139,
+      "weight_mse": 6.350716830638703e-06,
+      "candidate_evaluations": 10,
+      "evaluation_seconds": 0.17243469999993977,
+      "peak_allocated_bytes": 15597056,
+      "rtn_search_output_mse": 0.005568347871303558,
+      "rtn_weight_mse": 5.243598025117535e-06,
+      "gptq_search_output_mse": 0.001498471130616963,
+      "nominal_candidates": 10,
+      "unique_candidates": 10,
+      "shared_evaluated_candidates_all_families": 10,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "symmetric"
+    },
+    {
+      "method": "single_10/C_gptq_output_fixed_gptq",
+      "selected_on": "gptq",
+      "alpha": 0.7,
+      "beta": 0.7,
+      "scale": 0.005035807291666666,
+      "zero": 8.0,
+      "actual_low": -0.0377685546875,
+      "actual_high": 0.0377685546875,
+      "search_output_mse": 0.0014914919156581163,
+      "heldout_output_mse": 0.004489046521484852,
+      "weight_mse": 4.870770681009162e-06,
+      "candidate_evaluations": 10,
+      "evaluation_seconds": 0.17243469999993977,
+      "peak_allocated_bytes": 15597056,
+      "rtn_search_output_mse": 0.006147873587906361,
+      "rtn_weight_mse": 3.5532304991647834e-06,
+      "gptq_search_output_mse": 0.0014914919156581163,
+      "nominal_candidates": 10,
+      "unique_candidates": 10,
+      "shared_evaluated_candidates_all_families": 10,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "symmetric"
+    }
+  ],
+  "asymmetric_format_control": [
+    {
+      "method": "independent_100/A_minmax_fixed_gptq",
+      "selected_on": "minmax",
+      "alpha": 1.0,
+      "beta": 1.0,
+      "scale": 0.006673177083333333,
+      "zero": 7.0,
+      "actual_low": -0.046142578125,
+      "actual_high": 0.053955078125,
+      "search_output_mse": 0.002368250861763954,
+      "heldout_output_mse": 0.008291266858577728,
+      "weight_mse": 6.532065071951365e-06,
+      "candidate_evaluations": 100,
+      "evaluation_seconds": 2.2904908000000432,
+      "peak_allocated_bytes": 18683392,
+      "rtn_search_output_mse": 0.010207509621977806,
+      "rtn_weight_mse": 3.7937008983135456e-06,
+      "gptq_search_output_mse": 0.002368250861763954,
+      "nominal_candidates": 100,
+      "unique_candidates": 100,
+      "shared_evaluated_candidates_all_families": 200,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "asymmetric"
+    },
+    {
+      "method": "independent_100/B_rtn_weight_fixed_gptq",
+      "selected_on": "rtn",
+      "alpha": 0.8,
+      "beta": 0.8,
+      "scale": 0.005338541666666667,
+      "zero": 7.0,
+      "actual_low": -0.036914062500000004,
+      "actual_high": 0.0431640625,
+      "search_output_mse": 0.0016541193472221494,
+      "heldout_output_mse": 0.004629052244126797,
+      "weight_mse": 4.264925792085705e-06,
+      "candidate_evaluations": 100,
+      "evaluation_seconds": 2.2904908000000432,
+      "peak_allocated_bytes": 18683392,
+      "rtn_search_output_mse": 0.006815755739808083,
+      "rtn_weight_mse": 2.8473048132582335e-06,
+      "gptq_search_output_mse": 0.0016541193472221494,
+      "nominal_candidates": 100,
+      "unique_candidates": 100,
+      "shared_evaluated_candidates_all_families": 200,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "asymmetric"
+    },
+    {
+      "method": "independent_100/B_rtn_output_fixed_gptq",
+      "selected_on": "rtn",
+      "alpha": 0.6,
+      "beta": 0.4,
+      "scale": 0.0032845052083333337,
+      "zero": 8.0,
+      "actual_low": -0.027685546874999998,
+      "actual_high": 0.02158203125,
+      "search_output_mse": 0.0014729308895766735,
+      "heldout_output_mse": 0.006014077924191952,
+      "weight_mse": 1.4125110283202957e-05,
+      "candidate_evaluations": 100,
+      "evaluation_seconds": 2.2904908000000432,
+      "peak_allocated_bytes": 18683392,
+      "rtn_search_output_mse": 0.0054368022829294205,
+      "rtn_weight_mse": 1.2526400496426504e-05,
+      "gptq_search_output_mse": 0.0014729308895766735,
+      "nominal_candidates": 100,
+      "unique_candidates": 100,
+      "shared_evaluated_candidates_all_families": 200,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "asymmetric"
+    },
+    {
+      "method": "independent_100/C_gptq_output_fixed_gptq",
+      "selected_on": "gptq",
+      "alpha": 0.6,
+      "beta": 0.6,
+      "scale": 0.00400390625,
+      "zero": 7.0,
+      "actual_low": -0.027685546874999998,
+      "actual_high": 0.032373046875,
+      "search_output_mse": 0.0013137825299054384,
+      "heldout_output_mse": 0.00500902533531189,
+      "weight_mse": 7.205883775895927e-06,
+      "candidate_evaluations": 100,
+      "evaluation_seconds": 2.2904908000000432,
+      "peak_allocated_bytes": 18683392,
+      "rtn_search_output_mse": 0.005499961320310831,
+      "rtn_weight_mse": 6.109026344347512e-06,
+      "gptq_search_output_mse": 0.0013137825299054384,
+      "nominal_candidates": 100,
+      "unique_candidates": 100,
+      "shared_evaluated_candidates_all_families": 200,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "asymmetric"
+    },
+    {
+      "method": "single_10/A_minmax_fixed_gptq",
+      "selected_on": "minmax",
+      "alpha": 1.0,
+      "beta": 1.0,
+      "scale": 0.006673177083333333,
+      "zero": 7.0,
+      "actual_low": -0.046142578125,
+      "actual_high": 0.053955078125,
+      "search_output_mse": 0.002368250861763954,
+      "heldout_output_mse": 0.008291266858577728,
+      "weight_mse": 6.532065071951365e-06,
+      "candidate_evaluations": 10,
+      "evaluation_seconds": 2.2904908000000432,
+      "peak_allocated_bytes": 18683392,
+      "rtn_search_output_mse": 0.010207509621977806,
+      "rtn_weight_mse": 3.7937008983135456e-06,
+      "gptq_search_output_mse": 0.002368250861763954,
+      "nominal_candidates": 10,
+      "unique_candidates": 10,
+      "shared_evaluated_candidates_all_families": 200,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "asymmetric"
+    },
+    {
+      "method": "single_10/B_rtn_weight_fixed_gptq",
+      "selected_on": "rtn",
+      "alpha": 0.8,
+      "beta": 0.8,
+      "scale": 0.005338541666666667,
+      "zero": 7.0,
+      "actual_low": -0.036914062500000004,
+      "actual_high": 0.0431640625,
+      "search_output_mse": 0.0016541193472221494,
+      "heldout_output_mse": 0.004629052244126797,
+      "weight_mse": 4.264925792085705e-06,
+      "candidate_evaluations": 10,
+      "evaluation_seconds": 2.2904908000000432,
+      "peak_allocated_bytes": 18683392,
+      "rtn_search_output_mse": 0.006815755739808083,
+      "rtn_weight_mse": 2.8473048132582335e-06,
+      "gptq_search_output_mse": 0.0016541193472221494,
+      "nominal_candidates": 10,
+      "unique_candidates": 10,
+      "shared_evaluated_candidates_all_families": 200,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "asymmetric"
+    },
+    {
+      "method": "single_10/B_rtn_output_fixed_gptq",
+      "selected_on": "rtn",
+      "alpha": 0.6,
+      "beta": 0.6,
+      "scale": 0.00400390625,
+      "zero": 7.0,
+      "actual_low": -0.027685546874999998,
+      "actual_high": 0.032373046875,
+      "search_output_mse": 0.0013137825299054384,
+      "heldout_output_mse": 0.00500902533531189,
+      "weight_mse": 7.205883775895927e-06,
+      "candidate_evaluations": 10,
+      "evaluation_seconds": 2.2904908000000432,
+      "peak_allocated_bytes": 18683392,
+      "rtn_search_output_mse": 0.005499961320310831,
+      "rtn_weight_mse": 6.109026344347512e-06,
+      "gptq_search_output_mse": 0.0013137825299054384,
+      "nominal_candidates": 10,
+      "unique_candidates": 10,
+      "shared_evaluated_candidates_all_families": 200,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "asymmetric"
+    },
+    {
+      "method": "single_10/C_gptq_output_fixed_gptq",
+      "selected_on": "gptq",
+      "alpha": 0.6,
+      "beta": 0.6,
+      "scale": 0.00400390625,
+      "zero": 7.0,
+      "actual_low": -0.027685546874999998,
+      "actual_high": 0.032373046875,
+      "search_output_mse": 0.0013137825299054384,
+      "heldout_output_mse": 0.00500902533531189,
+      "weight_mse": 7.205883775895927e-06,
+      "candidate_evaluations": 10,
+      "evaluation_seconds": 2.2904908000000432,
+      "peak_allocated_bytes": 18683392,
+      "rtn_search_output_mse": 0.005499961320310831,
+      "rtn_weight_mse": 6.109026344347512e-06,
+      "gptq_search_output_mse": 0.0013137825299054384,
+      "nominal_candidates": 10,
+      "unique_candidates": 10,
+      "shared_evaluated_candidates_all_families": 200,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "asymmetric"
+    },
+    {
+      "method": "single_100/A_minmax_fixed_gptq",
+      "selected_on": "minmax",
+      "alpha": 1.0,
+      "beta": 1.0,
+      "scale": 0.006673177083333333,
+      "zero": 7.0,
+      "actual_low": -0.046142578125,
+      "actual_high": 0.053955078125,
+      "search_output_mse": 0.002368250861763954,
+      "heldout_output_mse": 0.008291266858577728,
+      "weight_mse": 6.532065071951365e-06,
+      "candidate_evaluations": 100,
+      "evaluation_seconds": 2.2904908000000432,
+      "peak_allocated_bytes": 18683392,
+      "rtn_search_output_mse": 0.010207509621977806,
+      "rtn_weight_mse": 3.7937008983135456e-06,
+      "gptq_search_output_mse": 0.002368250861763954,
+      "nominal_candidates": 100,
+      "unique_candidates": 100,
+      "shared_evaluated_candidates_all_families": 200,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "asymmetric"
+    },
+    {
+      "method": "single_100/B_rtn_weight_fixed_gptq",
+      "selected_on": "rtn",
+      "alpha": 0.81,
+      "beta": 0.81,
+      "scale": 0.0054052734375,
+      "zero": 7.0,
+      "actual_low": -0.03737548828125,
+      "actual_high": 0.043703613281250005,
+      "search_output_mse": 0.0015906544867902994,
+      "heldout_output_mse": 0.005327447317540646,
+      "weight_mse": 4.190864274278283e-06,
+      "candidate_evaluations": 100,
+      "evaluation_seconds": 2.2904908000000432,
+      "peak_allocated_bytes": 18683392,
+      "rtn_search_output_mse": 0.007928799837827682,
+      "rtn_weight_mse": 2.845893277481082e-06,
+      "gptq_search_output_mse": 0.0015906544867902994,
+      "nominal_candidates": 100,
+      "unique_candidates": 100,
+      "shared_evaluated_candidates_all_families": 200,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "asymmetric"
+    },
+    {
+      "method": "single_100/B_rtn_output_fixed_gptq",
+      "selected_on": "rtn",
+      "alpha": 0.66,
+      "beta": 0.66,
+      "scale": 0.004404296875000001,
+      "zero": 7.0,
+      "actual_low": -0.030454101562500002,
+      "actual_high": 0.0356103515625,
+      "search_output_mse": 0.0015928816283121705,
+      "heldout_output_mse": 0.006185607053339481,
+      "weight_mse": 5.5522987167933024e-06,
+      "candidate_evaluations": 100,
+      "evaluation_seconds": 2.2904908000000432,
+      "peak_allocated_bytes": 18683392,
+      "rtn_search_output_mse": 0.004849888850003481,
+      "rtn_weight_mse": 4.351653842604719e-06,
+      "gptq_search_output_mse": 0.0015928817447274923,
+      "nominal_candidates": 100,
+      "unique_candidates": 100,
+      "shared_evaluated_candidates_all_families": 200,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "asymmetric"
+    },
+    {
+      "method": "single_100/C_gptq_output_fixed_gptq",
+      "selected_on": "gptq",
+      "alpha": 0.59,
+      "beta": 0.59,
+      "scale": 0.003937174479166666,
+      "zero": 7.0,
+      "actual_low": -0.027224121093749998,
+      "actual_high": 0.03183349609375,
+      "search_output_mse": 0.0012922437163069844,
+      "heldout_output_mse": 0.0055479006841778755,
+      "weight_mse": 7.64679043641081e-06,
+      "candidate_evaluations": 100,
+      "evaluation_seconds": 2.2904908000000432,
+      "peak_allocated_bytes": 18683392,
+      "rtn_search_output_mse": 0.005654467269778252,
+      "rtn_weight_mse": 6.498188668047078e-06,
+      "gptq_search_output_mse": 0.0012922437163069844,
+      "nominal_candidates": 100,
+      "unique_candidates": 100,
+      "shared_evaluated_candidates_all_families": 200,
+      "evaluation_seconds_scope": "all candidates of this quantizer format, shared across four method selections",
+      "quantizer_format": "asymmetric"
+    }
+  ],
+  "group_diagnostic": {
+    "minmax": {
+      "search": {
+        "independent_sum_squares": 5.945711016654968,
+        "full_sum_squares": 7.125600337982178,
+        "cross_term": 1.1798893213272095,
+        "full_mse": 0.013917188160121441
+      },
+      "heldout": {
+        "independent_sum_squares": 5.761465281248093,
+        "full_sum_squares": 7.1781768798828125,
+        "cross_term": 1.4167115986347198,
+        "full_mse": 0.014019876718521118
+      },
+      "weight_mse": 3.2563907552685123e-06
+    },
+    "independent_group_search": {
+      "search": {
+        "independent_sum_squares": 2.6174389868974686,
+        "full_sum_squares": 2.9643614292144775,
+        "cross_term": 0.34692244231700897,
+        "full_mse": 0.0057897684164345264
+      },
+      "heldout": {
+        "independent_sum_squares": 2.8730482906103134,
+        "full_sum_squares": 2.6776998043060303,
+        "cross_term": -0.19534848630428314,
+        "full_mse": 0.005229882430285215
+      },
+      "weight_mse": 7.238789294206072e-06
+    },
+    "ranking_diagnostic": [
+      {
+        "group": 0,
+        "search": {
+          "independent_alpha": 0.5,
+          "full_alpha_with_other_groups_minmax": 0.9,
+          "ranking_disagrees": true
+        },
+        "heldout": {
+          "independent_alpha": 0.5,
+          "full_alpha_with_other_groups_minmax": 1.0,
+          "ranking_disagrees": true
+        }
+      },
+      {
+        "group": 1,
+        "search": {
+          "independent_alpha": 0.8,
+          "full_alpha_with_other_groups_minmax": 0.4,
+          "ranking_disagrees": true
+        },
+        "heldout": {
+          "independent_alpha": 0.7,
+          "full_alpha_with_other_groups_minmax": 0.5,
+          "ranking_disagrees": true
+        }
+      },
+      {
+        "group": 2,
+        "search": {
+          "independent_alpha": 0.9,
+          "full_alpha_with_other_groups_minmax": 0.7,
+          "ranking_disagrees": true
+        },
+        "heldout": {
+          "independent_alpha": 0.8,
+          "full_alpha_with_other_groups_minmax": 0.7,
+          "ranking_disagrees": true
+        }
+      },
+      {
+        "group": 3,
+        "search": {
+          "independent_alpha": 0.5,
+          "full_alpha_with_other_groups_minmax": 0.7,
+          "ranking_disagrees": true
+        },
+        "heldout": {
+          "independent_alpha": 0.5,
+          "full_alpha_with_other_groups_minmax": 0.7,
+          "ranking_disagrees": true
+        }
+      },
+      {
+        "group": 4,
+        "search": {
+          "independent_alpha": 0.7,
+          "full_alpha_with_other_groups_minmax": 0.4,
+          "ranking_disagrees": true
+        },
+        "heldout": {
+          "independent_alpha": 0.8,
+          "full_alpha_with_other_groups_minmax": 0.4,
+          "ranking_disagrees": true
+        }
+      },
+      {
+        "group": 5,
+        "search": {
+          "independent_alpha": 0.7,
+          "full_alpha_with_other_groups_minmax": 0.5,
+          "ranking_disagrees": true
+        },
+        "heldout": {
+          "independent_alpha": 0.6,
+          "full_alpha_with_other_groups_minmax": 0.5,
+          "ranking_disagrees": true
+        }
+      },
+      {
+        "group": 6,
+        "search": {
+          "independent_alpha": 0.7,
+          "full_alpha_with_other_groups_minmax": 1.0,
+          "ranking_disagrees": true
+        },
+        "heldout": {
+          "independent_alpha": 0.6,
+          "full_alpha_with_other_groups_minmax": 0.7,
+          "ranking_disagrees": true
+        }
+      }
+    ],
+    "coordinate_replace_one_sweep": {
+      "search": {
+        "independent_sum_squares": 3.0864348113536835,
+        "full_sum_squares": 1.8331139087677002,
+        "cross_term": -1.2533209025859833,
+        "full_mse": 0.0035803006030619144
+      },
+      "heldout": {
+        "independent_sum_squares": 3.210482507944107,
+        "full_sum_squares": 3.616041898727417,
+        "cross_term": 0.40555939078330994,
+        "full_mse": 0.007062581833451986
+      },
+      "accepted": [
+        {
+          "group": 0,
+          "alpha": 0.7,
+          "search_full_mse_after": 0.0047772955149412155
+        },
+        {
+          "group": 1,
+          "alpha": 0.7,
+          "search_full_mse_after": 0.00437739584594965
+        },
+        {
+          "group": 2,
+          "alpha": 0.8,
+          "search_full_mse_after": 0.004232476931065321
+        },
+        {
+          "group": 4,
+          "alpha": 0.5,
+          "search_full_mse_after": 0.004058714956045151
+        },
+        {
+          "group": 6,
+          "alpha": 0.9,
+          "search_full_mse_after": 0.0035803006030619144
+        }
+      ],
+      "semantics": "RTN replace one group only"
+    },
+    "gptq_minmax_external": {
+      "search": {
+        "independent_sum_squares": 4.585435688495636,
+        "full_sum_squares": 1.0934301614761353,
+        "cross_term": -3.4920055270195007,
+        "full_mse": 0.0021356057841330767
+      },
+      "heldout": {
+        "independent_sum_squares": 5.844328075647354,
+        "full_sum_squares": 3.993243932723999,
+        "cross_term": -1.851084142923355,
+        "full_mse": 0.007799304556101561
+      },
+      "weight_mse": 5.213374151935568e-06,
+      "semantics": "full GPTQ rerun for changed grid"
+    },
+    "gptq_independent_external": {
+      "search": {
+        "independent_sum_squares": 3.6935051530599594,
+        "full_sum_squares": 0.7349290251731873,
+        "cross_term": -2.958576127886772,
+        "full_mse": 0.0014354082522913814
+      },
+      "heldout": {
+        "independent_sum_squares": 3.776879146695137,
+        "full_sum_squares": 2.7050323486328125,
+        "cross_term": -1.0718467980623245,
+        "full_mse": 0.005283266305923462
+      },
+      "weight_mse": 8.495866495650262e-06,
+      "semantics": "full GPTQ rerun for changed grid"
+    },
+    "cost": {
+      "candidate_evaluations": 142,
+      "seconds_including_cache": 0.2931756000000405,
+      "peak_allocated_bytes": 18683392
+    }
+  },
+  "row_total_seconds": 2.7762794999998732
+}

@@ -1,0 +1,22 @@
+{
+  "status": "PASS_CPU_PRECHECK",
+  "forecast": {
+    "cap_seconds": 5400.0,
+    "source_v59_max_measured_pair_eval_seconds": 875.6619676000009,
+    "two_checkpoint_pairs_at_2x_slowest_v59_pair_seconds": 3502.6478704000037,
+    "source_precheck_load_finalization_allowance_seconds": 600.0,
+    "projected_active_seconds": 4102.647870400004,
+    "remaining_margin_seconds": 1297.3521295999963,
+    "v56_2283_576s_scope": "one checkpoint WT2+C4 eval-only continuation wall including load; seconds, not minutes; historical slower execution, not the current forecast",
+    "v59_scope": "eight complete evaluation stages across four checkpoints, total 2383.0349 s; max measured per-checkpoint WT2+C4 evaluation pair used conservatively above",
+    "decision": "WITHIN_BUDGET",
+    "prior_cpu_active_charge_seconds": 180.0,
+    "projected_total_including_prior_cpu_charge_seconds": 4282.647870400004,
+    "remaining_margin_after_prior_cpu_charge_seconds": 1117.3521295999963
+  },
+  "current_runtime_reference": "v59 same-process evaluator; actual 8 evaluation-stage sum 2383.0349 s, per-checkpoint pair timings recorded in CPU_PRECHECK.json",
+  "historical_v56_pair_seconds": 2283.576,
+  "v56_scope": "one checkpoint WT2+C4 successful eval-only continuation in seconds, not minutes",
+  "actual_GPU_evaluation_started": false,
+  "created_before_first_model_load": true
+}

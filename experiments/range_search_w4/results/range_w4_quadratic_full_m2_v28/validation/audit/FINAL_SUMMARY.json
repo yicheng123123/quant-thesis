@@ -1,0 +1,231 @@
+{
+  "version": "v28",
+  "frozen_protocol_sha256": "5fa8cb2af7a82ef55ed8013e202c9ff2f7d5d2363e91e3fdd5130efc9ea6edb6",
+  "checkpoint_execution_bundle_sha256": "9553008ccc94438083ce218d8648a98ed088cdc018be43971bfec8f485f1135b",
+  "recovery_output_bundle_sha256": "462d29dd6518c1a1f67ddb11b2e8812c8be2e796fe90185020eb74ce99ced5b6",
+  "direct_path_vs_v18": {
+    "modules": 168,
+    "rows": 304128,
+    "input_hashes_equal": true,
+    "H_hashes_equal": true,
+    "direct_scores_exact": true,
+    "direct_alpha_and_selected_tensors_exact": true,
+    "boundary_hashes_exact": true,
+    "normalized_named_tensor_hash_exact": true,
+    "named_tensor_count": 290
+  },
+  "quadratic_scorer_substitution": {
+    "status": "FAIL_SELECTION_MISMATCH",
+    "selection_difference_rows": 1,
+    "sensitive_rows": 201,
+    "modules_with_exact_selected_W_scale_zero_g_idx": 167,
+    "difference_detail": {
+      "layer": 7,
+      "module": "mlp.gate_proj",
+      "row": 884,
+      "alpha_grid": [
+        0.1,
+        0.2,
+        0.30000000000000004,
+        0.4,
+        0.5,
+        0.6000000000000001,
+        0.7000000000000001,
+        0.8,
+        0.9,
+        1.0
+      ],
+      "direct_scores": [
+        0.261007004484747,
+        0.09422115154136258,
+        0.040594276785780994,
+        0.020136621144599052,
+        0.010103855029091632,
+        0.005011326126829869,
+        0.0027968267213968907,
+        0.0019798153425943554,
+        0.0019798172176922705,
+        0.0021701695545011126
+      ],
+      "quadratic_scores": [
+        0.26100716050954076,
+        0.09422118166429436,
+        0.04059430777673548,
+        0.02013663274169289,
+        0.010103860715360033,
+        0.005011330129219181,
+        0.0027968298746666046,
+        0.001979817868246532,
+        0.0019798176131071337,
+        0.0021701713428989708
+      ],
+      "direct_order_best_to_worst": [
+        0.8,
+        0.9,
+        1.0,
+        0.7000000000000001,
+        0.6000000000000001,
+        0.5,
+        0.4,
+        0.30000000000000004,
+        0.2,
+        0.1
+      ],
+      "quadratic_order_best_to_worst": [
+        0.9,
+        0.8,
+        1.0,
+        0.7000000000000001,
+        0.6000000000000001,
+        0.5,
+        0.4,
+        0.30000000000000004,
+        0.2,
+        0.1
+      ],
+      "direct_best_second_gap": 1.8750979150460034e-09,
+      "quadratic_best_second_gap": 2.551393983238337e-10,
+      "max_abs_score_error": 1.5602479375154132e-07,
+      "direct_recheck": [
+        {
+          "alpha": 0.8,
+          "exact_to_direct_recorded_score": false,
+          "max_abs_delta": 4.029513268194451e-12
+        },
+        {
+          "alpha": 0.9,
+          "exact_to_direct_recorded_score": false,
+          "max_abs_delta": 1.3887875224827262e-12
+        }
+      ],
+      "direct_recheck_interpretation": "the original direct scorer rescored the retained same-run alpha 0.8 and 0.9 candidate rows; subset GEMM changed the last few FP bits, with recorded max deviations below the full-row direct winner gap",
+      "selected_weight_row_equal": false,
+      "selected_weight_differing_elements": 792,
+      "selected_weight_max_abs_difference": 0.0103302001953125,
+      "selected_weight_mean_abs_difference": 0.002463481156155467,
+      "selected_direct_weight_row_sha256": "f2b49c6225c63c27a3c5cce1f3e3453d6ee8634f53e69d4489e00798ff088b17",
+      "selected_quadratic_weight_row_sha256": "7e267fc2eadbe19921501db73f0e68c315379b8a4ac0995d02a64aada8d59328",
+      "selected_scale_row_equal": false,
+      "selected_direct_scale_row_sha256": "5c41e5c2257bc578c7bca33aec4f094e8b296707892750f083ece25c5209d329",
+      "selected_quadratic_scale_row_sha256": "76d4131a37a4dbc7ef8c3ba4ae9e0443defd5bc5b4985d45d47029e70b52a7e4",
+      "selected_direct_scale_values": [
+        0.00510416692122817,
+        0.006239260546863079,
+        0.0070588416419923306,
+        0.006737390998750925,
+        0.007095870561897755,
+        0.006326113827526569,
+        0.006183922290802002
+      ],
+      "selected_quadratic_scale_values": [
+        0.005742187146097422,
+        0.006988030858337879,
+        0.007764365524053574,
+        0.0074275764636695385,
+        0.007902320474386215,
+        0.0069235158152878284,
+        0.006911881268024445
+      ],
+      "selected_zero_row_equal": true,
+      "selected_direct_zero_values": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "selected_quadratic_zero_values": [
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0,
+        8.0
+      ],
+      "g_idx_equal": true,
+      "g_idx_group_boundary_sha256": "10f4026984d8381cfbf9fe513fb54596c6413fdd45c0b8366211aaa455d52712"
+    },
+    "quadratic_only_full_m2": "NOT_RUN_GATED_BY_SELECTION_MISMATCH",
+    "new_ppl": "NOT_RUN"
+  },
+  "work_units": {
+    "linear_modules": 168,
+    "output_rows": 304128,
+    "candidate_gptq_executions": 1680,
+    "native_alpha1_parity_executions": 35,
+    "row_alpha_scores_per_scorer": 3041280,
+    "row_alpha_scores_both_scorers": 6082560,
+    "C_builds": 96,
+    "C_shared_dependency_groups_valid": 96
+  },
+  "selection_summary": {
+    "direct_exact_tie_rows": 0,
+    "quadratic_exact_tie_rows": 0,
+    "direct_alpha_histogram": {
+      "0.1": 0,
+      "0.2": 0,
+      "0.3": 0,
+      "0.4": 1,
+      "0.5": 30,
+      "0.6": 0,
+      "0.7": 0,
+      "0.8": 54155,
+      "0.9": 226034,
+      "1.0": 20310
+    },
+    "quadratic_alpha_histogram": {
+      "0.1": 0,
+      "0.2": 0,
+      "0.3": 0,
+      "0.4": 1,
+      "0.5": 30,
+      "0.6": 0,
+      "0.7": 0,
+      "0.8": 54154,
+      "0.9": 226035,
+      "1.0": 20310
+    }
+  },
+  "timing_seconds": {
+    "first_dual_formal_pass_wall": 2774.4991111999843,
+    "recovery_finalization_wall": 16.15256670000963,
+    "cumulative_v28_wall_including_recovery": 2790.651677899994,
+    "dual_validation_stage_timing_sum_noninclusive": 2482.5098399992567,
+    "unattributed_wall_difference": 308.1418379007373,
+    "direct_score_all_rows_all_candidates": 718.5237990000169,
+    "quadratic_score_all_rows_all_candidates": 3.5819795012357645,
+    "C_build_all_dependency_groups": 70.12173779978184,
+    "quadratic_plus_C_scoring_stage_total": 73.7037173010176,
+    "direct_minus_quadratic_plus_C_scoring_stage_difference": 644.8200816989993,
+    "score_stage_fraction_saved": 0.8974234153362874,
+    "candidate_full_linear_gptq": 1393.720944402332,
+    "native_H_build": 86.9645505999797,
+    "native_Hinv_preparation": 9.68647870013956,
+    "activation_capture_and_dependency_refresh": 154.37754149612738,
+    "argmin_update": 1.7740373995620757,
+    "stitch_and_commit": 0.13636129989754409,
+    "checkpoint_IO": 6.034743199998047,
+    "alpha1_native_parity": 31.31304640014423,
+    "direct_difference_recheck": 0.4618239999981597,
+    "model_load_and_reload": 4.954996200045571,
+    "final_dense_model_save": 0.8577999999979511,
+    "quadratic_only_end_to_end_wall": "NOT_RUN",
+    "end_to_end_calibration_speedup": "NOT_MEASURED"
+  },
+  "peak_gpu_memory": {
+    "allocated_bytes": 3013633024,
+    "allocated_gib": 2.80666446685791,
+    "reserved_bytes": 3388997632,
+    "reserved_gib": 3.15625
+  },
+  "budget": {
+    "hard_cap_seconds": 5400.0,
+    "actual_cumulative_wall_seconds": 2790.651677899994,
+    "remaining_seconds": 2609.348322100006,
+    "timer_semantics": "perf_counter process wall, including CPU and GPU portions; conservative for the GPU budget",
+    "ledger_note": "FINAL_SUMMARY uses FORMAL_RUNTIME after post-scoring artifact finalization; BUDGET was last persisted before the final CPU artifact pass"
+  }
+}

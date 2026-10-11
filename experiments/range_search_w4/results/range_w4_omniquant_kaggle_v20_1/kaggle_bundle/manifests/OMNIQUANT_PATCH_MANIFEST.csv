@@ -1,0 +1,7 @@
+file,function_class,upstream_behavior,patched_behavior,reason,architecture_only,algorithm_semantic_change
+upstream/models/int_qwen2_layer.py,QuantQwen2DecoderLayer,not present,deep-copy native Qwen2 layer and replace exactly seven nn.Linear with unmodified QuantLinear,Qwen2 architecture mapping,yes,no
+upstream/quantize/omniquant.py,omniquant Qwen2 dispatch,supports llama/opt/falcon/mixtral branches,add config.model_type=qwen2 layer/device discovery and Qwen-specific native decoder adapter,architecture plumbing,yes,no
+upstream/quantize/omniquant.py,Catcher.forward/block_forward Qwen2 branch,captures shared attention_mask and limited position_ids; replays fixed kwargs,capture and replay each sample's full native Qwen decoder kwargs including position_embeddings/cache_position,preserve Qwen forward semantics,yes,no
+upstream/quantize/omniquant.py,smoke_layer_limit/smoke_step_limit,full upstream layer/epoch loop,optional explicit 1-layer/2-update smoke budget; default formal loop remains full,bounded compatibility smoke only,no,no
+upstream/quantize/omniquant.py,v20 loss/gradient/update/timing observers,no v20 observers,optional callbacks and synchronized timing events; observers do not feed model state or optimizer inputs,smoke diagnostics,no,no
+run_smoke.py,quant-off parity/discovery/calibration/export/evaluator harness,not present,fixed local checkpoint/manifests; no random sampler; invoke official block optimizer path for 2 updates,experiment harness,no,no

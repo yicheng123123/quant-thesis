@@ -1,0 +1,173 @@
+{
+  "protocol_id": "range_w4_omniquant_full_v21",
+  "status": "FROZEN_BEFORE_LOCAL_PREFLIGHT",
+  "scope": "Local RTX 4060 2048-token preflight, then formal M3 only if all local gates pass; otherwise stop and route to frozen Kaggle fallback.",
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dtype": "float16",
+    "attention": "sdpa",
+    "device_policy": "cuda:0 only"
+  },
+  "algorithm": {
+    "upstream_repository": "OpenGVLab/OmniQuant",
+    "upstream_commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+    "weight_bits": 4,
+    "activation_bits": 16,
+    "group_size": 128,
+    "weight_quantization": "official asymmetric affine [0,15] per output row and consecutive G128 input groups",
+    "lwc": true,
+    "let": false,
+    "epochs": 20,
+    "batch_size": 1,
+    "loss": "official block reconstruction; FP teacher and quantized student",
+    "optimizer_semantics": "frozen v20/v20.1 AdamW and AMP semantics; no optimizer/algorithm edits",
+    "upstream_source_sha256": {
+      "quantize/omniquant.py": "dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00",
+      "quantize/quantizer.py": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140",
+      "quantize/int_linear.py": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409",
+      "quantize/utils.py": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5",
+      "models/int_qwen2_layer.py": "0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9"
+    }
+  },
+  "calibration": {
+    "source": "frozen v16/v18/v19 WikiText-2 train manifest, reused byte-identically",
+    "manifest_path": "experiments\\range_search_w4\\results\\range_w4_omniquant_kaggle_v20_1\\kaggle_bundle\\calibration\\CALIBRATION_MANIFEST.json",
+    "manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+    "documents": 128,
+    "tokens_per_document": 2048,
+    "token_budget": 262144,
+    "seed": 20261005,
+    "order": "frozen manifest order; no resampling or tokenizer re-encoding"
+  },
+  "formal_update_count": {
+    "source": "v20.1 audited FORMAL_STEP_COUNT.json; copied without reinterpretation",
+    "artifact_sha256": "076c88ac6805c5242cf9f71ace3f22e04f9d4c161a8af160fee77063f515e39d",
+    "audit_status": "PASS",
+    "total_optimizer_updates": 61440,
+    "formula": "24 decoder blocks × 20 epochs × (128 calibration samples / batch size 1) = 61,440 optimizer updates"
+  },
+  "preflight": {
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "warmup_and_measured": {
+      "0": [
+        1,
+        5
+      ],
+      "12": [
+        1,
+        3
+      ],
+      "23": [
+        1,
+        3
+      ]
+    },
+    "sequence_length": 2048,
+    "reserved_vram_gate_gib": 8.0,
+    "conservative_runtime_gate_hours": 24.0,
+    "conservative_safety_multiplier": 1.25,
+    "no_cpu_offload_sequence_reduction_batch_change_or_algorithm_modification": true
+  },
+  "evaluation": {
+    "reuse": "v18/v19 benchmark.eval.ppl.evaluate_ppl",
+    "wt2_scored_targets": 299077,
+    "c4_scored_targets": 131071,
+    "c4_label": "C4 validation fixed token budget, not standard/full C4 PPL",
+    "max_length": 2048,
+    "stride": 512,
+    "token_weighted_nll": true,
+    "tail_retained": true,
+    "chat_template": false,
+    "final_eval_tuning": false
+  },
+  "comparators": {
+    "reuse_v18_m0_m1_m2_without_rerun": true,
+    "v18_artifacts": {
+      "WT2_M0": 12.4634095,
+      "WT2_M1": 13.88436957,
+      "WT2_M2": 13.76055605,
+      "C4_M0": 19.24855582,
+      "C4_M1": 22.23392445,
+      "C4_M2": 22.03288316
+    }
+  },
+  "parent_artifacts": {
+    "v18_report": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\REPORT.md",
+      "sha256": "6fc304e09bc3436a6ab05dec468249f451a8b239b5a618d08565529bedabdb76"
+    },
+    "v18_comparison": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\FULLMODEL_COMPARISON.csv",
+      "sha256": "c521700fea42b18bb57aca005252ce502e684b0fb3bb1aad2c01f3682255f7bb"
+    },
+    "v18_wt2": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\evaluation\\WT2_RESULTS.csv",
+      "sha256": "42d2682b3381cbb39dd0bef8587dd82f8a811213746da9733fa17ee4cb68a0c6"
+    },
+    "v18_c4": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\evaluation\\C4_RESULTS.csv",
+      "sha256": "e6117225b21e76e77122eedcdc8405397e22968fa88f85b5381569f3b68dcbe7"
+    },
+    "v19_report": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_review_v19\\REPORT.md",
+      "sha256": "7775dcc89db9ea0b7a263480980adfb821256cf85a24dba2a6d41e8de70869ae"
+    },
+    "v19_protocol": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_fullmodel_review_v19\\OMNIQUANT_COMPARISON_PROTOCOL.md",
+      "sha256": "067c68bdb1e6cd314c9b6a7ed9fe466f354313150204c9ba1e6132090fc15862"
+    },
+    "v20_report": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_omniquant_smoke_v20\\REPORT.md",
+      "sha256": "cbdb669150bbb6e277f3272ef2696ae8a50f8fb12b5b6a99bd1947b605da938d"
+    },
+    "v20_protocol": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_omniquant_smoke_v20\\PROTOCOL.json",
+      "sha256": "0e4e15920070b0bf539616212a3e47a74c0675dc5f11d97ab81264e87fa48ab2"
+    },
+    "v20_patch_manifest": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_omniquant_smoke_v20\\OMNIQUANT_PATCH_MANIFEST.csv",
+      "sha256": "b5af1ea6d44868f94ba7a878a5ff2b11179b644faffe28fb20a5313cd7a55742"
+    },
+    "v20_port": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_omniquant_smoke_v20\\QWEN25_PORT_IMPLEMENTATION.md",
+      "sha256": "c6e62f81c71706800268adfc877be54eccb4404fa09c192eaac8e2502b9c253a"
+    },
+    "v20_1_report": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_omniquant_kaggle_v20_1\\REPORT.md",
+      "sha256": "8f29dd05d25d8dca7e2753cb5a0a0443ae8a2f1f778309759e37add02018bd9c"
+    },
+    "v20_1_step_count": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_omniquant_kaggle_v20_1\\FORMAL_STEP_COUNT.json",
+      "sha256": "076c88ac6805c5242cf9f71ace3f22e04f9d4c161a8af160fee77063f515e39d"
+    },
+    "v20_1_cost_audit": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_omniquant_kaggle_v20_1\\COST_MODEL_AUDIT.json",
+      "sha256": "aaa2dc9be15f0f109cd4d8667bae64307efc6c5ce9c9216d3456bbc85914a70e"
+    },
+    "v20_1_remote_manifest": {
+      "path": "experiments\\range_search_w4\\results\\range_w4_omniquant_kaggle_v20_1\\KAGGLE_OUTPUT_MANIFEST.json",
+      "sha256": "de423ea8b7c6b57719add601513da3cef2d3a314394c75cc594c85acd1806752"
+    }
+  },
+  "formal_stop_conditions": [
+    "calibration identity mismatch",
+    "native/port parity failure",
+    "nonfinite LWC gradient/update/loss/weights/scales",
+    "2048-token OOM",
+    "conservative runtime above 24 hours",
+    "dense export/reload parity failure"
+  ],
+  "interpretation_limits": [
+    "M2 versus M3 is a method-level comparison",
+    "dense-dequant quality evaluation does not establish packed-kernel inference speed",
+    "one checkpoint does not establish broad model generalization or statistical significance"
+  ],
+  "output_directory": "experiments\\range_search_w4\\results\\range_w4_omniquant_full_v21",
+  "execution_verdict": "LOCAL_M3_NOT_READY_USE_KAGGLE",
+  "local_stop_reason": "Frozen model file hash validation failed before model load; formal M3 and evaluation were not run."
+}

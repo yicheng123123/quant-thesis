@@ -1,0 +1,7 @@
+{
+  "status": "NOT_RUN",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "expected_projection_names": ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+  "reason": "Seven-linear adapter discovery smoke was not reached after the M2 parity failure. The M2 run independently observed L0 self_attn.k_proj weight shape [128, 896]."
+}

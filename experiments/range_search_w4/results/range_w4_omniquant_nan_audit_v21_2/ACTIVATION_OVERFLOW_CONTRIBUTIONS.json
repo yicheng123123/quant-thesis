@@ -1,0 +1,260 @@
+{
+  "data": [
+    {
+      "weight_row": 567,
+      "weight_column": 62,
+      "official_G128_bound_factor_flat_index": 3969,
+      "top_absolute_dot_product_contributions": [
+        {
+          "token_position": 0,
+          "token_id": 284,
+          "input_half_value": 256.5,
+          "incoming_scaled_half_gradient": 478.75,
+          "product_fp64": 122799.375
+        },
+        {
+          "token_position": 52,
+          "token_id": 12375,
+          "input_half_value": 5.10546875,
+          "incoming_scaled_half_gradient": 1.424551010131836e-05,
+          "product_fp64": 7.273000665009022e-05
+        },
+        {
+          "token_position": 1464,
+          "token_id": 504,
+          "input_half_value": 4.83984375,
+          "incoming_scaled_half_gradient": 5.7220458984375e-06,
+          "product_fp64": 2.769380807876587e-05
+        },
+        {
+          "token_position": 1460,
+          "token_id": 75466,
+          "input_half_value": 7.265625,
+          "incoming_scaled_half_gradient": 3.5762786865234375e-06,
+          "product_fp64": 2.598389983177185e-05
+        },
+        {
+          "token_position": 1449,
+          "token_id": 979,
+          "input_half_value": 7.94140625,
+          "incoming_scaled_half_gradient": 2.9802322387695312e-06,
+          "product_fp64": 2.3667234927415848e-05
+        }
+      ],
+      "fp64_dot": 122799.37525627553
+    },
+    {
+      "weight_row": 3486,
+      "weight_column": 62,
+      "official_G128_bound_factor_flat_index": 24402,
+      "top_absolute_dot_product_contributions": [
+        {
+          "token_position": 0,
+          "token_id": 284,
+          "input_half_value": 256.5,
+          "incoming_scaled_half_gradient": 269.5,
+          "product_fp64": 69126.75
+        },
+        {
+          "token_position": 377,
+          "token_id": 19,
+          "input_half_value": -4.4609375,
+          "incoming_scaled_half_gradient": 0.016632080078125,
+          "product_fp64": -0.07419466972351074
+        },
+        {
+          "token_position": 1259,
+          "token_id": 1948,
+          "input_half_value": 6.5234375,
+          "incoming_scaled_half_gradient": 0.010711669921875,
+          "product_fp64": 0.06987690925598145
+        },
+        {
+          "token_position": 1512,
+          "token_id": 12656,
+          "input_half_value": 6.26171875,
+          "incoming_scaled_half_gradient": 0.01020050048828125,
+          "product_fp64": 0.06387266516685486
+        },
+        {
+          "token_position": 928,
+          "token_id": 315,
+          "input_half_value": 6.609375,
+          "incoming_scaled_half_gradient": 0.0096588134765625,
+          "product_fp64": 0.06383872032165527
+        }
+      ],
+      "fp64_dot": 69136.64730513132
+    }
+  ],
+  "post_attention_norm_weight_channel62": 8.6875,
+  "layer21_post_attention_norm_weight_stats": {
+    "present": true,
+    "shape": [
+      896
+    ],
+    "dtype": "torch.float32",
+    "numel": 896,
+    "finite_count": 896,
+    "nan_count": 0,
+    "posinf_count": 0,
+    "neginf_count": 0,
+    "all_finite": true,
+    "min": 0.0123291015625,
+    "max": 8.6875,
+    "mean": 2.0730946404593333,
+    "std": 0.47544513338742916,
+    "max_finite_abs": 8.6875,
+    "mean_finite_abs": 2.0730946404593333
+  },
+  "failed_parameters": [
+    {
+      "parameter_name": "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+      "parameter_shape": [
+        34048,
+        1
+      ],
+      "nonfinite_indices": [
+        [
+          3969,
+          0
+        ],
+        [
+          24402,
+          0
+        ]
+      ],
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34046,
+        "nan_count": 1,
+        "posinf_count": 0,
+        "neginf_count": 1,
+        "all_finite": false,
+        "min": -3.198578724550316e-06,
+        "max": 3.6404497222974896e-05,
+        "mean": 2.146108811047728e-09,
+        "std": 2.0393889539660248e-07,
+        "max_finite_abs": 3.6404497222974896e-05,
+        "mean_finite_abs": 5.768886835445837e-09
+      }
+    },
+    {
+      "parameter_name": "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+      "parameter_shape": [
+        34048,
+        1
+      ],
+      "nonfinite_indices": [
+        [
+          3969,
+          0
+        ],
+        [
+          24402,
+          0
+        ]
+      ],
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34046,
+        "nan_count": 1,
+        "posinf_count": 0,
+        "neginf_count": 1,
+        "all_finite": false,
+        "min": -2.4294583909068024e-06,
+        "max": 2.9458906283252873e-05,
+        "mean": 1.9118612531619583e-09,
+        "std": 1.6586041527924186e-07,
+        "max_finite_abs": 2.9458906283252873e-05,
+        "mean_finite_abs": 5.465092575882809e-09
+      }
+    },
+    {
+      "parameter_name": "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+      "parameter_shape": [
+        34048,
+        1
+      ],
+      "nonfinite_indices": [
+        [
+          3969,
+          0
+        ],
+        [
+          24402,
+          0
+        ]
+      ],
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34046,
+        "nan_count": 2,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": false,
+        "min": -7.99184272182174e-06,
+        "max": 2.5916655431501567e-05,
+        "mean": 3.178945973833393e-09,
+        "std": 1.7540595545874007e-07,
+        "max_finite_abs": 2.5916655431501567e-05,
+        "mean_finite_abs": 8.18874451100764e-09
+      }
+    },
+    {
+      "parameter_name": "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+      "parameter_shape": [
+        34048,
+        1
+      ],
+      "nonfinite_indices": [
+        [
+          3969,
+          0
+        ],
+        [
+          24402,
+          0
+        ]
+      ],
+      "gradient": {
+        "present": true,
+        "shape": [
+          34048,
+          1
+        ],
+        "dtype": "torch.float32",
+        "numel": 34048,
+        "finite_count": 34046,
+        "nan_count": 2,
+        "posinf_count": 0,
+        "neginf_count": 0,
+        "all_finite": false,
+        "min": -6.4637970353942364e-06,
+        "max": 3.163056680932641e-05,
+        "mean": 3.330993090005016e-09,
+        "std": 1.9857519439355856e-07,
+        "max_finite_abs": 3.163056680932641e-05,
+        "mean_finite_abs": 8.280293801056389e-09
+      }
+    }
+  ]
+}

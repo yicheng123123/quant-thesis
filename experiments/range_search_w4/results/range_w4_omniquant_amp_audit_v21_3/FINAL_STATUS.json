@@ -1,0 +1,17 @@
+{
+  "verdict": "STOP_GATE_TOO_STRICT_RESUME_ALLOWED",
+  "overflow_classification": "RECOVERABLE_DYNAMIC_LOSS_SCALE_OVERFLOW",
+  "stop_gate_classification": "STOP_GATE_TOO_STRICT",
+  "upstream_case": "A: dynamic GradScaler",
+  "actual_STOP_boundary": "after native scaler.step and scaler.update; extra runner callback stopped next sample",
+  "resume_allowed_meaning": "source/control-flow justification and plan only; execution requires next-round instruction",
+  "correctness": "PASS",
+  "formal_resume_executed": false,
+  "formal_committed_updates": 0,
+  "last_formal_checkpoint": "block_20",
+  "single_diagnostic_optimizer_updates": 0,
+  "continuous_diagnostic_optimizer_updates": 3,
+  "FP32_baseline_adopted": false,
+  "T4_executed": false,
+  "WT2_C4_export_executed": false
+}

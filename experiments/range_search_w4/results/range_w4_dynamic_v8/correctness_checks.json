@@ -1,0 +1,73 @@
+{
+  "status": "PASS",
+  "checks": {
+    "native_parity": true,
+    "all_six_rows_match_native_full_layer": true,
+    "fixed_alpha1_matches_native_minmax_params": true,
+    "pristine_weight_unchanged": true,
+    "D_is_C_alpha1": true,
+    "document_disjoint": true,
+    "matching_candidate_sets": true,
+    "group_intervention_candidate_sets": true,
+    "rerank_includes_minmax": true,
+    "alpha1_restarts_match_D": true,
+    "all_recorded_zeros_are_eight": true,
+    "batch_matches_sequential_fp16": true,
+    "direct_output_matches_delta": true,
+    "total_sse_from_raw": true,
+    "historical_v7_unchanged": true,
+    "legacy_diagnostic_reproduced": true,
+    "candidate_count": true,
+    "six_rows_complete": true
+  },
+  "per_row_checks": {
+    "L0R0": {
+      "pristine_unchanged": true,
+      "D_equals_C_alpha1": true,
+      "A_scale_equals_initial_minmax": true,
+      "batch_vs_sequential_fp16_max_abs": 0.0,
+      "direct_output_vs_delta_relative": 0.0,
+      "rerank_includes_minmax": true
+    },
+    "L0R448": {
+      "pristine_unchanged": true,
+      "D_equals_C_alpha1": true,
+      "A_scale_equals_initial_minmax": true,
+      "batch_vs_sequential_fp16_max_abs": 0.0,
+      "direct_output_vs_delta_relative": 2.3533326602801926e-07,
+      "rerank_includes_minmax": true
+    },
+    "L12R0": {
+      "pristine_unchanged": true,
+      "D_equals_C_alpha1": true,
+      "A_scale_equals_initial_minmax": true,
+      "batch_vs_sequential_fp16_max_abs": 0.0,
+      "direct_output_vs_delta_relative": 6.718268729021606e-07,
+      "rerank_includes_minmax": true
+    },
+    "L12R448": {
+      "pristine_unchanged": true,
+      "D_equals_C_alpha1": true,
+      "A_scale_equals_initial_minmax": true,
+      "batch_vs_sequential_fp16_max_abs": 0.0,
+      "direct_output_vs_delta_relative": 2.9446563615472636e-07,
+      "rerank_includes_minmax": true
+    },
+    "L23R0": {
+      "pristine_unchanged": true,
+      "D_equals_C_alpha1": true,
+      "A_scale_equals_initial_minmax": true,
+      "batch_vs_sequential_fp16_max_abs": 0.0,
+      "direct_output_vs_delta_relative": 1.590580455297293e-07,
+      "rerank_includes_minmax": true
+    },
+    "L23R448": {
+      "pristine_unchanged": true,
+      "D_equals_C_alpha1": true,
+      "A_scale_equals_initial_minmax": true,
+      "batch_vs_sequential_fp16_max_abs": 0.0,
+      "direct_output_vs_delta_relative": 1.5873393810963752e-07,
+      "rerank_includes_minmax": true
+    }
+  }
+}

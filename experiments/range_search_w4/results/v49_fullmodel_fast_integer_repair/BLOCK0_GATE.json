@@ -1,0 +1,108 @@
+{
+  "pass": true,
+  "role": "formal block, repaired once",
+  "linear_modules": 7,
+  "output_rows": 12672,
+  "groups": [
+    "qkv",
+    "o",
+    "up_gate",
+    "down"
+  ],
+  "group_code_grid_terminal_checks_pass": true,
+  "no_old_R1_activation_cache_substituted": true,
+  "metrics": [
+    {
+      "layer": 0,
+      "group": "qkv",
+      "module": "self_attn.k_proj",
+      "rows": 128,
+      "accepted": 4096,
+      "evaluations": 7297811,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96",
+      "C_sha256": "a68678662541a95ab201b445aa114891b730efebeb4a29acf8adbc2cc0bc35f6",
+      "committed": true
+    },
+    {
+      "layer": 0,
+      "group": "qkv",
+      "module": "self_attn.v_proj",
+      "rows": 128,
+      "accepted": 4096,
+      "evaluations": 7302226,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96",
+      "C_sha256": "a68678662541a95ab201b445aa114891b730efebeb4a29acf8adbc2cc0bc35f6",
+      "committed": true
+    },
+    {
+      "layer": 0,
+      "group": "qkv",
+      "module": "self_attn.q_proj",
+      "rows": 896,
+      "accepted": 28672,
+      "evaluations": 51117316,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "09475d472790c55ee3311b274c4105407954af5549e5f7464d6422bc2ac2db96",
+      "C_sha256": "a68678662541a95ab201b445aa114891b730efebeb4a29acf8adbc2cc0bc35f6",
+      "committed": true
+    },
+    {
+      "layer": 0,
+      "group": "o",
+      "module": "self_attn.o_proj",
+      "rows": 896,
+      "accepted": 28615,
+      "evaluations": 51013586,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "a33823fa9169fb02c66ac5f4a969f18c7558c20b13d7a6855d67a864cb9c97a8",
+      "C_sha256": "6cc6911f9d89edeeeaaa68f57d411627dc6262092f85dce7661a94eace68f1e0",
+      "committed": true
+    },
+    {
+      "layer": 0,
+      "group": "up_gate",
+      "module": "mlp.up_proj",
+      "rows": 4864,
+      "accepted": 140498,
+      "evaluations": 253768708,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "c1a2ac37ca6dec81885228eac867e7edeb10bbcff047611474fda7dc908f7371",
+      "C_sha256": "887179c2cf53592acae50b35937cef5f969a14d59276058dc9b2d33f8c19b0d6",
+      "committed": true
+    },
+    {
+      "layer": 0,
+      "group": "up_gate",
+      "module": "mlp.gate_proj",
+      "rows": 4864,
+      "accepted": 140445,
+      "evaluations": 253712165,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "c1a2ac37ca6dec81885228eac867e7edeb10bbcff047611474fda7dc908f7371",
+      "C_sha256": "887179c2cf53592acae50b35937cef5f969a14d59276058dc9b2d33f8c19b0d6",
+      "committed": true
+    },
+    {
+      "layer": 0,
+      "group": "down",
+      "module": "mlp.down_proj",
+      "rows": 896,
+      "accepted": 28672,
+      "evaluations": 277386920,
+      "rejected": 0,
+      "raw64_rechecks": 0,
+      "input_sha256": "d70e66d98a16a394278ce2fa16cdb32e123854596f898164dff4b34a8086fd14",
+      "C_sha256": "4516e56921b8612a47bcb7509383e7920d6a9217c283b729b0d25c77b28e3714",
+      "committed": true
+    }
+  ],
+  "timestamp_unix": 1791391567.8520606
+}

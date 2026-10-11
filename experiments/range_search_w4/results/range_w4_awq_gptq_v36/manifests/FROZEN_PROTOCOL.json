@@ -1,0 +1,299 @@
+{
+  "protocol_id": "v36_l12_awq_selector_dynamic_gptq_32_new_articles",
+  "schema_version": "1.0-v36",
+  "status": "PROTOCOL_ONLY_NOT_RUN",
+  "scope": "One bounded local compatibility experiment on complete L12 Qwen2.5-0.5B MLP. No full-model quantization, PPL, AWQ final quantization, clipping, gradients, or additional scale/alpha grid.",
+  "provenance": {
+    "frozen_m2": "experiments/range_search_w4/results/range_w4_fullmodel_v18",
+    "v32": "experiments/range_search_w4/results/range_w4_fixed_channel_scale_scalar_v32",
+    "v33": "experiments/range_search_w4/results/range_w4_shared_coordinate_selection_v33",
+    "official_upstream": {
+      "repository": "mit-han-lab/llm-awq",
+      "commit": "d6e797a42b9ef7778de8ee2352116e0f48a78d61",
+      "files": [
+        "awq/quantize/auto_scale.py",
+        "awq/quantize/pre_quant.py",
+        "awq/quantize/quantizer.py",
+        "awq/quantize/auto_clip.py",
+        "awq/entry.py"
+      ]
+    }
+  },
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dtype": "FP16",
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU (frozen v18 device; verify available during future preflight)",
+    "layer": 12,
+    "layer_rule": "floor(num_hidden_layers/2), fixed before this experiment; not selected from v33 held results",
+    "target_linears": [
+      {
+        "name": "gate_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "rows": 4864
+      },
+      {
+        "name": "up_proj",
+        "shape": [
+          4864,
+          896
+        ],
+        "rows": 4864
+      },
+      {
+        "name": "down_proj",
+        "shape": [
+          896,
+          4864
+        ],
+        "rows": 896
+      }
+    ]
+  },
+  "final_gptq": {
+    "bits": 4,
+    "activation_bits": 16,
+    "symmetric": true,
+    "group_size": 128,
+    "block_size": 128,
+    "dynamic_groups": true,
+    "desc_act": false,
+    "static_groups": false,
+    "true_sequential": true,
+    "damp_percent": 0.1,
+    "damp_auto_increment": 0,
+    "mse": 0,
+    "stats_and_compensation": "FP32 native GPTQ",
+    "dense_weight_storage": "FP16",
+    "alpha_grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1
+    ],
+    "selection": "independent alpha per output row, shared across dynamic G128 groups; direct M2 local output MSE on all rows; exact ties choose larger alpha",
+    "state": "each candidate starts from pristine coordinate-specific W and fresh mutable compensation state; H shared only for identical input/config"
+  },
+  "awq_D_selection": {
+    "mapping": "post_attention_layernorm -> shared gate_proj and up_proj; inspect full MLP output",
+    "activation_input": "post_attention_layernorm output at L12 MLP boundary from read-only v18 M2 prefix",
+    "statistic": "upstream get_act_scale: flatten batch/token dims, mean(abs(X)) per input channel in captured X dtype (expected FP16); record actual dtype",
+    "ratio_grid": [
+      0,
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.35,
+      0.4,
+      0.45,
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9,
+      0.95
+    ],
+    "scale": "s=act_mean**ratio; per-channel clamp min=1e-4; divide by sqrt(max(s)*min(s)); D=s, length 896",
+    "ratio_0_is_identity": true,
+    "tie_break": "upstream strict loss < update; exact ties keep first/smaller ratio",
+    "proxy": "RTN pseudo-quantize pristine gate/up weights after multiplying input columns by D; inverse fold to original-coordinate input; run whole MLP with down_proj FP; choose minimum FP32 mean squared output error",
+    "proxy_quantizer": {
+      "source": "pinned MIT pseudo_quantize_tensor",
+      "bits": 4,
+      "q_group_size": 128,
+      "zero_point": true,
+      "format": "asymmetric affine 0..15",
+      "scale": "clamp(max-min,1e-5)/15",
+      "zero": "clip(-round(min/scale),0,15)",
+      "rounding": "round/add zero/clamp/subtract zero/dequantize"
+    },
+    "important_format_boundary": "D selector is AWQ RTN asymmetric W4G128 proxy; every final arm remains project M2 symmetric W4G128 GPTQ. Do not call final arms original AWQ or asymmetric GPTQ.",
+    "clipping": false,
+    "restore": "restore pristine MLP state before every ratio; no candidate state carryover"
+  },
+  "transform": {
+    "equations": [
+      "W_prime=W@D",
+      "X_prime=X/D",
+      "X_prime@W_prime.T=X@W.T in real arithmetic",
+      "H_prime=D^-1@H@D^-1 when H is proportional to X.T@X"
+    ],
+    "fold": "post_attention_layernorm weight and optional bias divide by D; gate_proj and up_proj input columns multiply by D; Linear output biases unchanged",
+    "dtype": "Mirror upstream arithmetic: activation mean, power, clamp and normalization remain in captured X dtype (expected FP16); retain native-dtype D for folding and store an FP32 reporting copy. Cast D to each parameter/input dtype before in-place operations; hash each representation and post-fold tensors.",
+    "hessian": "rebuild H from actual X_prime; redo dead-column handling, damping and native factorization; do not transform/reuse already damped H",
+    "boundary": "D changes shared gate/up input coordinates only; after committing gate/up, recompute arm-specific SiLU(gate)*up down input and H_down"
+  },
+  "data": {
+    "source": "Salesforce/wikitext:wikitext-2-raw-v1 train",
+    "unit": "whole article; never split documents into pseudo-independent token groups",
+    "order": "after exclusion, sort by SHA256(dataset fingerprint || full-article SHA256)",
+    "assignment": "first 16 S0 search; next 16 S0 held; next 16 S1 search; next 16 S1 held",
+    "article_length_tokens": 2048,
+    "articles_per_group": 16,
+    "tokens_per_group": 32768,
+    "total_unique_articles": 64,
+    "pre_gpu_exclusion": "exclude IDs/full-text/token hashes in v18 formal calibration, all v24/v31/v32/v33 manifests and all prior calibration/search/held lists, plus WT2 test/C4 evaluation. Materialize/hash manifest before GPU. If fewer than 64 disjoint whole articles remain, stop without shrinking or substituting history.",
+    "selection_data": "search only for activation statistics, D, GPTQ H and alpha",
+    "held_data": "unread until D/alpha selection lock is saved; evaluate only",
+    "manifest": [
+      "dataset revision/fingerprint",
+      "article ID",
+      "full-text SHA256",
+      "token-ID SHA256",
+      "split",
+      "token count",
+      "exclusion audit"
+    ]
+  },
+  "prefix_and_reference": {
+    "prefix_checkpoint": "v18 M2 final checkpoint, read-only, for all upstream layers and existing L12 attention path",
+    "target_weights": "pristine FP16 weights from the same frozen model revision; do not take target MLP W from quantized M2 checkpoint",
+    "common_input": "capture post_attention_layernorm output before target MLP; identical X for A/B/C/D within a split",
+    "reference": "unquantized target L12 MLP output using common prefix input and pristine target MLP weights",
+    "candidate_scoring": "direct FP32; gate/up candidate output X_prime@Q_prime.T versus X@W.T, including FP16 fold drift; each down candidate uses arm-specific freshly propagated input and pristine down weight",
+    "held_outputs": "all gate/up/down rows and full MLP output versus the same split's common unquantized target MLP reference",
+    "next_boundary": "capture complete L12 decoder-block output as actual L13 input for each arm; no full model after L13 and no PPL"
+  },
+  "arms": {
+    "A": "original coordinates; native dynamic GPTQ alpha=1 for gate/up/down",
+    "B": "original coordinates; M2 scalar10 with independent search-selected alpha per output row",
+    "C": "same split-specific D folded into postnorm and both gate/up; transformed-coordinate native GPTQ alpha=1",
+    "D": "exact same split-specific D as C; transformed-coordinate M2 scalar10",
+    "contrasts": {
+      "C-A": "D scaling effect at alpha1",
+      "D-C": "range search after same D",
+      "D-B": "combined method versus current scalar10; primary held contrast"
+    },
+    "prefix": "common frozen v18 M2 prefix through L12 immediately before MLP",
+    "down_input": "separate capture and H for A/B/C/D after gate/up commit",
+    "sharing": "A/B share original gate/up banks; C/D share transformed gate/up banks; down banks are arm-specific; no bank/H shared across splits"
+  },
+  "correctness": [
+    "FP64/FP32 real-transform equality and source-compatible FP16 folded unquantized MLP/block drift",
+    "ratio 0 / D=I regression of baseline input and parameter hashes within frozen tolerance",
+    "independent native alpha1 parity for gate/up shared states and each actual down input state (A/B/C/D), both coordinates and both splits: group-entry compensated weights, scale, zero, g_idx, final weights and direct all-row outputs",
+    "pristine W/H hashes unchanged; every alpha has fresh mutable GPTQ compensation state",
+    "for each split and coordinate, replay one complete down_proj alpha after another alpha; weights/qparams/scores must match",
+    "stitch all rows W/scale/zero/g_idx; verify A/C alpha1 and B/D search-selected candidates",
+    "after whole gate/up commit, refresh once per arm for actual down input/H; verify full L12 MLP and real L13 input boundary; never refresh per row batch",
+    "do not read held scores before selection lock is written",
+    "FP64 linear-transform max abs <= 1e-9; FP32 max abs <= 1e-3 (inherited from v32 correctness gate); FP16 fold drift is finite and fully reported, with no post-result tolerance adjustment",
+    "full unquantized selected-D L12 MLP FP16 fold drift measured before GPTQ candidates on search and after lock on held",
+    "alpha=1 checked before any non-native alpha candidate in each full-Linear bank; group-entry weights, W, scale, zero, g_idx and direct row scores compare exactly",
+    "selected row-wise W/scale/zero/g_idx stitched and copied into actual L12 modules with hash check before the selection lock"
+  ],
+  "workload": {
+    "awq_proxy": {
+      "ratios_per_split": 20,
+      "total_ratio_candidates": 40,
+      "quantized_linears_per_ratio": 2,
+      "total_rtn_linear_ops": 80,
+      "full_mlp_candidate_forwards": 40,
+      "reference_mlp_forwards": 2
+    },
+    "gptq_candidates": {
+      "gate_up_per_split": "four full Linear banks (original gate/up and transformed gate/up) x10 = 40",
+      "down_per_split": "A alpha1 1 + B alpha10 + C alpha1 1 + D alpha10 = 22",
+      "main_full_linear_gptq_per_split": 62,
+      "main_full_linear_gptq_total": 124,
+      "row_alpha_score_slots_per_split": 214272,
+      "row_alpha_score_slots_total": 428544
+    },
+    "correctness_gptq_calls": {
+      "independent_alpha1_parity": 16,
+      "candidate_isolation_down_replays": 4,
+      "total_full_linear_gptq_including_checks": 144,
+      "per_split": {
+        "alpha1_gate_up_native_parity": 4,
+        "alpha1_down_native_parity": 4,
+        "down_isolation_replays": 2
+      }
+    },
+    "unique_hessians": {
+      "per_split": 6,
+      "total": 12,
+      "composition": "one original gate/up H; one transformed gate/up H; four arm-specific down H"
+    },
+    "forwards": {
+      "common_prefix_capture_sets": 4,
+      "search_gate_up_to_down_refreshes": 8,
+      "held_full_mlp_arm_forwards": 8,
+      "l13_boundary_captures": 8,
+      "refresh_per_output_row_batch": false,
+      "fold_error_measurement": 2,
+      "forward_count_note": "Two additional FP16 unquantized selected-D fold-error MLP forwards (one per split, on held after lock) are explicitly added to v34 count; the two reference MLP forwards are held unquantized-target references."
+    },
+    "cache_io": {
+      "all_candidate_weight_bank_upper_bound": "124 x 4864 x 896 x 2 bytes ~= 1.01 GiB if every FP16 matrix is persisted",
+      "resume": "stream one complete Linear alpha candidate; persist all-row score vector, current best stitched rows/qparams per arm, hashes and completed-candidate journal at each Linear boundary; persist selected tensors and D",
+      "destination": "new v34-only cache; never write historical paths"
+    },
+    "gpu_budget": {
+      "cumulative_hard_cap_minutes": 30,
+      "includes": [
+        "load",
+        "warmup",
+        "prefix capture",
+        "D search",
+        "GPTQ",
+        "all-row scores",
+        "parity/replay",
+        "refresh",
+        "cache/checkpoint I/O",
+        "retries"
+      ],
+      "abort": "after first full split, update forecast from synchronized actual full-matrix timings; if projected cumulative wall exceeds 25 minutes, do not start next split; never pass 30 minutes",
+      "timing_reference": "v18 FORMAL_TIMING.csv at 128x2048: per-candidate gate GPTQ/score 0.3420/0.6600s; up 0.3455/0.6594s; down 1.8632/0.9236s",
+      "estimate_seconds": {
+        "main_candidate_gptq": 109.6,
+        "main_all_row_score": 93.4,
+        "parity_and_replay_gptq": 25.1,
+        "parity_and_replay_score": 16.4,
+        "awq_full_mlp_proxy": "rough upper proxy 90 s using same-shape summed M2 score means for 40 full MLP passes; RTN fakequant overhead not separately timed",
+        "prefix": "about 34 s by linear scaling v18 M1 activation refresh stages to four 16-article inputs; estimate only"
+      },
+      "planning_envelope": "approximately 6-10 GPU minutes including load, I/O and unmeasured proxy overhead; estimate only, not a benchmark"
+    }
+  },
+  "held_gate": {
+    "primary": "D must improve full-MLP held output MSE versus B by >=1% in both S0 and S1, and exceed 5x measured same-split FP16 unquantized-fold error",
+    "per_projection": "no gate/up/down pooled held MSE regression >5% versus B",
+    "row_tail": "at most 5% of projection rows regress >10%; any individual row regression >50% fails",
+    "report": "absolute/relative held loss per arm and split; C-A,D-C,D-B; all projections/rows; W/T/L, median, worst, concentration and D/alpha distributions; no held oracle",
+    "stop": "if correctness, article exclusion, budget or any quality/tail gate fails, preserve negative results and stop; never alter target, data, grid or thresholds",
+    "fold_error_interpretation": "The v34 phrase is applied literally as final G11 full-MLP held MSE >= 5x the same-split FP16 unquantized selected-D fold-error MSE; this is a quantization-signal floor check, not an improvement threshold.",
+    "wtl_tie_rule": "Descriptive W/T/L tables use exact equality only; no new epsilon is used to modify any quality gate."
+  },
+  "prohibited": [
+    "additional D families/strength",
+    "v33-held-guided choice",
+    "independent D per row/projection",
+    "AWQ auto_clip or M2 clipping changes",
+    "gradients/backprop/learned parameters",
+    "alternate GPTQ format/compensation",
+    "full-model quantization or new PPL",
+    "row-time x model rows estimate",
+    "online inference speedup or novelty claims"
+  ],
+  "execution_status": {
+    "gpu_experiment": "FROZEN_NOT_STARTED",
+    "harness": "run_v36.py",
+    "runtime": true
+  }
+}

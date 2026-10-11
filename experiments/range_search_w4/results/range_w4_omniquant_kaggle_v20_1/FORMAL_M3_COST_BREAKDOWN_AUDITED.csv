@@ -1,0 +1,10 @@
+scenario,component,seconds,hours,interpretation
+fixed_call_residual_floor,block_overhead_residual,10.769748,0.002991597,"The measured non-step residual is paid once per formal decoder-block call; this is a lower scenario, not a measured decomposition."
+fixed_call_residual_floor,central_total,,0.605176116,Measured per-layer mean step time plus common measured extras and this residual scenario.
+fixed_call_residual_floor,conservative_total,,0.817863525,Pooled measured P95 step time times 1.25 plus common measured extras and this residual scenario.
+remote_report_scaling,block_overhead_residual,303.728824,0.084369118,Preserves the remote report's residual scaling by samples divided by observed smoke updates.
+remote_report_scaling,central_total,,0.686553637,Measured per-layer mean step time plus common measured extras and this residual scenario.
+remote_report_scaling,conservative_total,,0.899241046,Pooled measured P95 step time times 1.25 plus common measured extras and this residual scenario.
+all_residual_as_per_update_stress,block_overhead_residual,6074.576487,1.687382358,"Treats every second of measured non-step residual as if it recurred at every formal update. This deliberately over-allocates call/epoch setup and is a stress bound, not an expected runtime."
+all_residual_as_per_update_stress,central_total,,2.289566876,Measured per-layer mean step time plus common measured extras and this residual scenario.
+all_residual_as_per_update_stress,conservative_total,,2.502254286,Pooled measured P95 step time times 1.25 plus common measured extras and this residual scenario.

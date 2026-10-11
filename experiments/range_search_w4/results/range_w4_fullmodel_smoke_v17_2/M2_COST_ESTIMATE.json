@@ -1,0 +1,65 @@
+{
+  "status": "M2_COST_NO_GO",
+  "shape_counts": {
+    "128x896": 48,
+    "896x896": 48,
+    "4864x896": 48,
+    "896x4864": 24
+  },
+  "projection_count": 168,
+  "output_rows": 304128,
+  "row_alpha_candidates": 3041280,
+  "native_candidate_core_calls_extrapolated": 1680,
+  "measured_core_seconds": {
+    "k_v_128x896_median": 0.33458240001345985,
+    "q_o_896x896_transition_q": 0.36401250000926666,
+    "up_4864x896_single": 0.4564533999946434,
+    "down_896x4864_single": 2.0788676999800373
+  },
+  "shared_Hessian_build_source_seconds": 2.053,
+  "shared_Hessian_build_scale_factor": 336.0,
+  "shared_Hessian_build_central_seconds": 689.808,
+  "candidate_calls_rebuild_native_Hinv": true,
+  "cost_scenarios": {
+    "optimistic": {
+      "core_candidate_seconds": 1053.3514320035465,
+      "sequential_capture_seconds": 17033.728,
+      "shared_Hessian_build_seconds": 689.808,
+      "commit_refresh_seconds": 68134.912,
+      "selection_export_seconds": 900.0,
+      "checkpoint_seconds": 10.46991916232639,
+      "total_seconds": 87822.26935116587,
+      "total_hours": 24.395074819768297
+    },
+    "central": {
+      "core_candidate_seconds": 1580.0271480053198,
+      "sequential_capture_seconds": 25550.591999999997,
+      "shared_Hessian_build_seconds": 1034.712,
+      "commit_refresh_seconds": 102202.36799999999,
+      "selection_export_seconds": 1350.0,
+      "checkpoint_seconds": 15.704878743489584,
+      "total_seconds": 131733.4040267488,
+      "total_hours": 36.59261222965244
+    },
+    "conservative": {
+      "core_candidate_seconds": 2106.702864007093,
+      "sequential_capture_seconds": 34067.456,
+      "shared_Hessian_build_seconds": 1379.616,
+      "commit_refresh_seconds": 136269.824,
+      "selection_export_seconds": 1800.0,
+      "checkpoint_seconds": 20.93983832465278,
+      "total_seconds": 175644.53870233175,
+      "total_hours": 48.790149639536594
+    }
+  },
+  "conservative_hours": 48.790149639536594,
+  "capture_source_seconds": 133.076,
+  "capture_scale_tokens": 128.0,
+  "capture_central_seconds": 17033.728,
+  "refresh_assumption": "4 module groups per decoder layer; 4 times full-prefix capture cost as an explicit conservative proxy",
+  "checkpoint_assumption": "two 942.3 MiB checkpoint writes using the frozen v16 model payload estimate and a stated conservative 180 MiB/s; scenario multiplier applied",
+  "calibration_manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+  "source": "certified v17.2 full-shape candidate timing plus frozen v15 prefix timing evidence",
+  "method": "168 linears x 10 full-row alpha passes; each pass yields all row-alpha scores for that linear; the 3,041,280 row-alpha evaluations are not mislabeled as 3,041,280 separate CUDA launches",
+  "limitations": "up/down shape timings are single observations. Capture, refresh and checkpoint terms are explicit extrapolations; conservative gate doubles each base estimate."
+}

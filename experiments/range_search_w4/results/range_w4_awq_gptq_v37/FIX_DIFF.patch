@@ -1,0 +1,100 @@
+--- experiments/range_search_w4/results/range_w4_awq_gptq_v36/run_v36.py
++++ experiments/range_search_w4/results/range_w4_awq_gptq_v36/run_v36.py (v37 proposed fix)
+@@ -262,7 +262,7 @@
+ 
+ 
+ @torch.inference_mode()
+-def prepare_prefix_inputs(model, group: str, budget: Budget, split: str):
++def prepare_prefix_inputs(model, group: str, budget: Budget, split: str, pristine_norm: torch.Tensor):
+     rows = json_tokens(group)  # called only with search group until lock.
+     stem = f"{split}_{group}"
+     hidden_path = CACHE / f"{stem}_hidden_l12.f16"
+@@ -271,6 +271,10 @@
+     shape = (N_DOCS, SEQ, int(model.config.hidden_size))
+     paths = (hidden_path, prenorm_path, x_path)
+     side = RAW / f"{stem}_capture.json"
++    layer12 = model.model.layers[LAYER_INDEX]
++    set_weight(layer12.post_attention_layernorm, pristine_norm)
++    norm_sha256 = sha_tensor(pristine_norm)
++    prefix_sha256 = sha_file(PREFIX_DIR / "model.safetensors")
+     if side.exists():
+         meta = json.loads(side.read_text(encoding="utf-8"))
+         if meta.get("token_group_sha256") != sha_file(TOKEN_DIR / f"{group}_tokens.json"):
+@@ -278,13 +282,14 @@
+         if all(p.is_file() and p.stat().st_size == np.prod(shape)*2 for p in paths):
+             h = [np.memmap(p, dtype=np.float16, mode="r", shape=shape) for p in paths]
+             hashes = [sha_memmap(x) for x in h]
+-            if hashes == [meta["hidden_sha256"], meta["prenorm_sha256"], meta["postnorm_sha256"]]:
++            same_capture_state = (meta.get("norm_weight_sha256") == norm_sha256 and
++                                  meta.get("prefix_checkpoint_sha256") == prefix_sha256)
++            if same_capture_state and hashes == [meta["hidden_sha256"], meta["prenorm_sha256"], meta["postnorm_sha256"]]:
+                 budget.record(split, "prefix_capture_resume_cache_hit", group, 0.0)
+                 return tuple(h)
+             for mm in h:
+                 mm._mmap.close()
+     hidden_mm, pre_mm, x_mm = [new_mm(p, shape) for p in paths]
+-    layer12 = model.model.layers[LAYER_INDEX]
+     active = {"pre": None, "post": None}
+     def pre_hook(_m, args):
+         active["pre"] = args[0].detach()
+@@ -322,6 +327,7 @@
+     budget.record(split, "prefix_activation_capture", group, elapsed,
+                   detail=f"8 complete articles x 2048; prefix v18 M2 through L12 attention; held group not read")
+     meta = {"split": split, "group": group, "token_group_sha256": sha_file(TOKEN_DIR / f"{group}_tokens.json"),
++            "norm_weight_sha256": norm_sha256, "prefix_checkpoint_sha256": prefix_sha256,
+             "hidden_sha256": sha_memmap(hidden_mm), "prenorm_sha256": sha_memmap(pre_mm),
+             "postnorm_sha256": sha_memmap(x_mm), "shape": list(shape), "dtype": "float16"}
+     stable_json(side, meta)
+@@ -785,6 +791,14 @@
+         ref_start=time.perf_counter();peak_reset()
+         native=native_dynamic_gptq(w,h,nsamples=ns,alpha=1.0,trace=True);sync(); parity_seconds=time.perf_counter()-ref_start
+         parity=compare_parity(native_state,native)
++        score_start=time.perf_counter();peak_reset()
++        native_loss=score_rows_direct(xdown,xdown,w,w,native_state["weight"],transformed=False)
++        sync();score_seconds=time.perf_counter()-score_start
++        parity["direct_row_output_scores"]=torch.equal(native_loss,native_state["losses"].to(DEVICE))
++        if not parity["direct_row_output_scores"]:
++            parity["direct_row_output_max_abs"]=float((native_loss-native_state["losses"].to(DEVICE)).abs().max().item())
++        budget.record(split,"alpha1_parity_direct_row_score",f"down_{arm}",score_seconds,
++                      detail="all output rows; resumed native alpha1 weight and frozen direct score objective")
+         budget.record(split,"alpha1_independent_native_parity",f"down_{arm}",parity_seconds,
+                       status="PASS" if all(v for k,v in parity.items() if isinstance(v,bool)) else "FAIL",detail=json.dumps(parity,sort_keys=True))
+         if not all(v for k,v in parity.items() if isinstance(v,bool)): raise CorrectnessFail(f"down alpha1 parity failed {split}/{arm}: {parity}")
+@@ -1051,6 +1065,8 @@
+     x=collect_flat(x_mm)
+     with torch.inference_mode(): ref=mlp(x)
+     set_weight(norm,(base["norm"].float()/d.float()).half())
++    set_weight(mlp.gate_proj,(base["gate"].float()*d.float()[None,:]).half())
++    set_weight(mlp.up_proj,(base["up"].float()*d.float()[None,:]).half())
+     xp=norm(collect_flat(pre_mm))
+     with torch.inference_mode(): folded=mlp(xp)
+     diff=folded.float()-ref.float()
+@@ -1130,7 +1146,9 @@
+     fold_start=time.perf_counter();peak_reset()
+     ddev=d.to(DEVICE)
+     set_weight(layer.post_attention_layernorm,(base["norm"].float()/ddev.float()).half())
+-    for n,k in (("gate_proj","gate"),("up_proj","up"),("down_proj","down")): set_weight(mlp.get_submodule(n),base[k])
++    set_weight(mlp.gate_proj,(base["gate"].float()*ddev.float()[None,:]).half())
++    set_weight(mlp.up_proj,(base["up"].float()*ddev.float()[None,:]).half())
++    set_weight(mlp.down_proj,base["down"])
+     xfold=layer.post_attention_layernorm(collect_flat(pre_mm))
+     with torch.inference_mode(): folded_ref=mlp(xfold).detach().clone()
+     fold_error=float((folded_ref.float()-ref.float()).square().mean().item())
+@@ -1222,7 +1240,7 @@
+     try:
+         for split,groups in SPLITS.items():
+             search_group=groups["search"]
+-            hidden_mm,pre_mm,x_mm=prepare_prefix_inputs(model,search_group,budget,split)
++            hidden_mm,pre_mm,x_mm=prepare_prefix_inputs(model,search_group,budget,split,base["norm"])
+             validate_d_identity(layer,pre_mm,x_mm,base,budget,split)
+             # D-selector uses only this split's search documents.
+             d,d_info=awq_select(layer,x_mm,pre_mm,base,split,budget)
+@@ -1355,7 +1373,7 @@
+             # Only now are held tokens read/materialized and evaluation results produced.
+             held_group=groups["held"]
+             held_rows=read_actual_group(held_group)
+-            hh,pp,xx=prepare_prefix_inputs(model,held_group,budget,split)
++            hh,pp,xx=prepare_prefix_inputs(model,held_group,budget,split,base["norm"])
+             article_rows,row_metrics,held_meta=eval_held(model,split,held_group,held_rows,base,arms,d,pp,hh,xx,budget)
+             all_article.extend(article_rows); all_rows.extend(row_metrics)
+             all_results[split]={"D_selection":d_info,"selection_lock_sha256":sha_file(FINAL/f"{split}_SELECTION_LOCK.json"),

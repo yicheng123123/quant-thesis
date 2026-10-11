@@ -1,0 +1,143 @@
+{
+  "algorithm_semantics_changed": false,
+  "change_scope": [
+    "block-boundary prefix replay for resume",
+    "resume-aware checkpoint parameter lookup",
+    "optional finite-gradient/epoch/block diagnostics callbacks",
+    "post-native-GradScaler step diagnostics and AdamW pre/post hooks",
+    "forward output finite gate before reconstruction loss",
+    "nonfinite loss raises instead of opening pdb"
+  ],
+  "files": {
+    "models/LMClass.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": null,
+      "official_sha256": "a50c0e1f2192a7cb3d9228da79773f373af98609ff5a32abcb881c0813c1c526",
+      "patched_sha256": "a50c0e1f2192a7cb3d9228da79773f373af98609ff5a32abcb881c0813c1c526",
+      "historical_effective_sha256": "a50c0e1f2192a7cb3d9228da79773f373af98609ff5a32abcb881c0813c1c526"
+    },
+    "models/int_falcon_layer.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": null,
+      "official_sha256": "676def588442e89c0afbac9a6c7800453a42da4a1fcc00b9e911bc7d4ac66f55",
+      "patched_sha256": "676def588442e89c0afbac9a6c7800453a42da4a1fcc00b9e911bc7d4ac66f55",
+      "historical_effective_sha256": "676def588442e89c0afbac9a6c7800453a42da4a1fcc00b9e911bc7d4ac66f55"
+    },
+    "models/int_llama_layer.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": null,
+      "official_sha256": "c37bcad153a4d824c9fb00c129e3e1899acd0f3269cbddb7d0bc3e2c7a85b660",
+      "patched_sha256": "c37bcad153a4d824c9fb00c129e3e1899acd0f3269cbddb7d0bc3e2c7a85b660",
+      "historical_effective_sha256": "c37bcad153a4d824c9fb00c129e3e1899acd0f3269cbddb7d0bc3e2c7a85b660"
+    },
+    "models/int_opt_layer.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": null,
+      "official_sha256": "25dbe090bd58607faf68002a19a1cbb27fae671b5d3d4b77ff78e092558ac684",
+      "patched_sha256": "25dbe090bd58607faf68002a19a1cbb27fae671b5d3d4b77ff78e092558ac684",
+      "historical_effective_sha256": "25dbe090bd58607faf68002a19a1cbb27fae671b5d3d4b77ff78e092558ac684"
+    },
+    "models/int_qwen2_layer.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": "0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9",
+      "official_sha256": "0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9",
+      "patched_sha256": "0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9",
+      "historical_effective_sha256": "0a11dfdde944098ffaf1adc71ca08720ee18c070fad31e54805b7aac4f8cf2e9"
+    },
+    "models/models_utils.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": null,
+      "official_sha256": "7e50734c5920f2aad4867446950a0d4ca56f64612903cfeddada48c777524a0f",
+      "patched_sha256": "7e50734c5920f2aad4867446950a0d4ca56f64612903cfeddada48c777524a0f",
+      "historical_effective_sha256": "7e50734c5920f2aad4867446950a0d4ca56f64612903cfeddada48c777524a0f"
+    },
+    "models/transformation.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": null,
+      "official_sha256": "b90691a0f805a371ef7e0713272433132a551c662cb7b22faf8ff6f89faf4f27",
+      "patched_sha256": "b90691a0f805a371ef7e0713272433132a551c662cb7b22faf8ff6f89faf4f27",
+      "historical_effective_sha256": "b90691a0f805a371ef7e0713272433132a551c662cb7b22faf8ff6f89faf4f27"
+    },
+    "quantize/__init__.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": null,
+      "official_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "patched_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "historical_effective_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "quantize/int_linear.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409",
+      "official_sha256": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409",
+      "patched_sha256": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409",
+      "historical_effective_sha256": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409"
+    },
+    "quantize/int_matmul.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": null,
+      "official_sha256": "e5d4acc5c07b36cc94c292bdd356205711760eef56936fd5eec3c5973cee886e",
+      "patched_sha256": "e5d4acc5c07b36cc94c292bdd356205711760eef56936fd5eec3c5973cee886e",
+      "historical_effective_sha256": "e5d4acc5c07b36cc94c292bdd356205711760eef56936fd5eec3c5973cee886e"
+    },
+    "quantize/omni_norm.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": null,
+      "official_sha256": "4851781c2e36efcf25ff69fd8b362f37d637528c89811e2de6d0a97d0e92fd2c",
+      "patched_sha256": "4851781c2e36efcf25ff69fd8b362f37d637528c89811e2de6d0a97d0e92fd2c",
+      "historical_effective_sha256": "4851781c2e36efcf25ff69fd8b362f37d637528c89811e2de6d0a97d0e92fd2c"
+    },
+    "quantize/omniquant.py": {
+      "byte_identical_to_v20_1": false,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": "dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00",
+      "official_sha256": "dfd92608d70d666bd5f768de437f7567322c43158f2097631ba9de4cfd5f6a00",
+      "patched_sha256": "f9235eb55dbdae53118ef46d8625c6abb8736edf3767389e7be43f05138101a2",
+      "historical_effective_sha256": "30d46495d12930bd6142b170a3003edb988b73ed30f1919a9135a190bd822fb7"
+    },
+    "quantize/quantizer.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140",
+      "official_sha256": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140",
+      "patched_sha256": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140",
+      "historical_effective_sha256": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140"
+    },
+    "quantize/utils.py": {
+      "byte_identical_to_v20_1": true,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5",
+      "official_sha256": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5",
+      "patched_sha256": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5",
+      "historical_effective_sha256": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5"
+    },
+    "utils.py": {
+      "byte_identical_to_v20_1": false,
+      "official_protocol_hash_match": true,
+      "official_protocol_sha256": null,
+      "official_sha256": "b209ca43c737e583eb4e23c8bdcd9292c592e7378c6f5c5aac87a8700600b868",
+      "patched_sha256": "127f73283141b12baca8be510ed9369eca9c0ad5f9fa2b36585db535b8b330c6",
+      "historical_effective_sha256": "127f73283141b12baca8be510ed9369eca9c0ad5f9fa2b36585db535b8b330c6"
+    }
+  },
+  "formal_gate_semantics": "known found_inf is accepted only after native scaler step/update, observed optimizer skip, scale backoff, finite parameters/state/scaler, and unchanged LWC parameters; nonfinite forward output or loss remains fatal",
+  "official_commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+  "only_algorithm_source_modified": "quantize/omniquant.py and utils.py contain resume, observer, and correctness-gate code; quantizer, optimizer update math, loss math, and AMP operation sequence unchanged",
+  "optimizer_or_loss_math_modified": false,
+  "other_upstream_python_files_byte_identical": true,
+  "quantizer_source_modified": false,
+  "source_file_count": 15,
+  "source_scope": "models/*.py, quantize/*.py, upstream/utils.py; only the dependencies used by the frozen Qwen2 OmniQuant port",
+  "status": "PASS",
+  "measurement_parent_audit_sha256": "a4d81c562ca527e5c09fb621df06636e42122343996c62b0b560515e928bfd6f"
+}

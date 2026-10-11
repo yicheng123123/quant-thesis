@@ -1,0 +1,150 @@
+{
+  "protocol_id": "range_w4_quantized_prefix_v15",
+  "status": "FROZEN_BEFORE_PREFLIGHT_AND_CANDIDATES",
+  "research_question": "Does FP-input shared-alpha range-search gain transfer to real native-sequential GPTQ quantized-prefix inputs?",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "checkpoint_sha256": "fdf756fa7fcbe7404d5c60e26bff1a0c8b8aa1f72ced49e7dd0210fe288fb7fe",
+  "dtype": {
+    "weights": "float16",
+    "GPTQ_Hessian_output_loss": "float32"
+  },
+  "targets": {
+    "row_count": 48,
+    "layers": [
+      2,
+      6,
+      14,
+      18
+    ],
+    "projections": [
+      "q_proj",
+      "o_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "row_source": "exact v14 frozen row manifest"
+  },
+  "row_manifest_reference_sha256": "c33c11098b4b113527ac8f355d9f5124323ab679879b27827bac0bf616775143",
+  "v14_row_manifest_sha256": "9d78172e59cf4979dd57bfa4dd5d2349d98b2de923b0fd599925c4c637faf809",
+  "article_manifest_sha256": "0a14cd134e0d888c9745ec33cfe2baa0354bd92ad94e296c06b96fcba0f22d5e",
+  "module_execution_order_sha256": "e670ee2409f64a3d709717b6a0330f62bbdf9314877356a6097d3657def05a48",
+  "dataset": {
+    "name": "Salesforce/wikitext:wikitext-2-raw-v1",
+    "split": "train",
+    "articles": 48,
+    "calibration_articles": 16,
+    "heldout_articles": 32,
+    "tokens_per_article": 128,
+    "seed": 20261004,
+    "article_manifest_contains_exact_token_ids": true,
+    "same_documents_for_FP_and_QPREFIX": true,
+    "disjoint_from_v8_v14": true
+  },
+  "quantization": {
+    "format": "uniform W4A16",
+    "bits": 4,
+    "symmetric": true,
+    "group_size": 128,
+    "block_size": 128,
+    "damp_percent": 0.1,
+    "desc_act": false,
+    "static_groups": false,
+    "true_sequential": true,
+    "alpha_grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ]
+  },
+  "gptqmodel": {
+    "version": "2.2.0",
+    "native_model_definition": "Qwen2GPTQ",
+    "native_layer_groups": [
+      [
+        "self_attn.k_proj",
+        "self_attn.v_proj",
+        "self_attn.q_proj"
+      ],
+      [
+        "self_attn.o_proj"
+      ],
+      [
+        "mlp.up_proj",
+        "mlp.gate_proj"
+      ],
+      [
+        "mlp.down_proj"
+      ]
+    ],
+    "qprefix_uses_alpha": 1.0,
+    "qprefix_native_full_model_pass": true,
+    "lm_head_quantized": false
+  },
+  "input_regimes": {
+    "FP_INPUT": "FP16 model full forward; capture pristine target module inputs on all 48 frozen documents.",
+    "QUANTIZED_PREFIX_INPUT": "GPTQModel native full sequential W4A16 G128 alpha=1 baseline using C01-C16; capture hidden states at target block inputs from that quantized model, then replay the target block with each target projection temporarily restored to its pristine FP16 weight before capturing X_Q.",
+    "target_weight": "same pristine FP16 target row in both regimes; its input is captured with dense target module while all required earlier native module groups remain quantized."
+  },
+  "candidate_semantics": {
+    "D": "alpha=1 dynamic GPTQ with regime-specific calibration input",
+    "C": "ten shared alpha candidates; select by mean calibration output MSE using that regime's 16 calibration articles",
+    "heldout": "H01-H32 in both regimes; used only after alpha selection"
+  },
+  "candidate_workload": {
+    "nominal_row_level_candidates": 960,
+    "historical_candidates_reusable": 0,
+    "new_candidates": 960
+  },
+  "preflight_requirements": [
+    "four FP alpha=1 parity checks",
+    "four QPREFIX alpha=1 parity checks",
+    "same pristine target W hash",
+    "target module restored dense during Q input capture",
+    "all required prefix modules are native W4A16 G128 alpha=1",
+    "finite outputs and activations"
+  ],
+  "primary_metrics": [
+    "exact and within-one-step alpha agreement",
+    "gain sign agreement",
+    "positive-to-positive and positive-to-negative counts",
+    "Spearman(gain_FP,gain_Q)",
+    "median and pooled gain by regime",
+    "tail regression counts and worst row",
+    "D_Q/D_FP heldout MSE ratio",
+    "activation drift",
+    "calibration Gram/Hessian drift",
+    "cross-alpha evaluation"
+  ],
+  "transfer_support_gate": {
+    "verdict_if_all_pass": "TRANSFER_SIGNAL_PRESERVED",
+    "A": "QPREFIX pooled C_Q vs D_Q gain > 0",
+    "B": "QPREFIX median row gain >= 0",
+    "C": "at least two thirds of FP-positive rows stay positive under QPREFIX",
+    "D": "QPREFIX severe count gain < -0.10 <= max(FP severe count * 2, FP severe count + 3)",
+    "otherwise": "TRANSFER_SIGNAL_NOT_PRESERVED"
+  },
+  "source_hashes": {
+    "dynamic_core.py": "f92e797425dcfb544d86b79e7ec60b149eb16e5a9c1c6b484891d495596cbb64",
+    "qwen2_definition.py": "ed5afe754d16a982b6899320f47bfa30c4bc19be5bb6924fd0e4942940075fdd",
+    "gptqmodel_base.py": "da217ad4814ea118dff0b46f0c1e2e66f51df96abf3088a866cfe02e882635e3",
+    "task_instruction_attachment": "24c9adc15566219e2912f4f7cdc6548971cd590a245f9d0ba9fc952c9cdec41a"
+  },
+  "historical_tree_fingerprints_file_sha256": "4daf3ee22c9b771e1fe7b034c7911819fad9562ac873b835f525c86be9a6a526",
+  "historical_tree_names": [
+    "v8",
+    "v9",
+    "v10",
+    "v11",
+    "v12",
+    "v13",
+    "v14"
+  ]
+}

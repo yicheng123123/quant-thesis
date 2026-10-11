@@ -1,0 +1,44 @@
+{
+  "v55_model_sha256": "0fa87105e36deac2ead4c871e6e0a802590418e6ccacd616929cdf91ecc8ec0c",
+  "v55_config_sha256": "7101cfb3475d42d7e81a9e5a75aabf5f9cfd39308ffdc367d35a6b27242fd5bb",
+  "v55_named_tensor_manifest_sha256": "148edfee1108593cd62d160cf8c227c5205f2a8a027acebfbb30c8f05a5fb745",
+  "v55_named_tensor_count": 290,
+  "v55_named_tensor_source_audit": "v57 recomputed all 290 named tensor hashes and matched the v55 manifest; direct checkpoint SHA rechecked in v58",
+  "v55_original_eval_runtime": "torch=2.5.1+cu121; transformers and Python not recorded in v55 evaluation source",
+  "v56_checkpoint_sha256": "9d768808bf1fd3581406df3538aebc00ed177eafc6e46372da679e9db85ccac0",
+  "v56_protocol_torch": "2.6.0+cu124",
+  "v56_runtime_python_record": "MISSING",
+  "v56_runtime_transformers_record": "MISSING; config serialization transformers_version is save-time metadata only",
+  "v56_evaluator_wrapper_sha256": "bbe1e4c22200f1ccb3d85f35a274c44cf5d46cd606160b59b0cd9afc346bae11",
+  "v56_core_evaluator_source_hash": "NOT_RECORDED",
+  "current_vs_v56_strict_runtime_identity": "NOT_PROVEN because v56 evaluation-process Python and Transformers versions are absent",
+  "manifests": {
+    "wikitext": {
+      "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\evaluation\\manifests\\WIKITEXT_TEST_MANIFEST.json",
+      "manifest_sha256": "acd46b20a6b84b534d5625bfab505d599001679a775d619960a40e8da4f62f46",
+      "token_ids_sha256_i64le": "8ffcee84dd4b684ec631cb52845e18c9c181ce6fdb8b26d65a4ffdc3d35fbda3",
+      "input_tokens": 299078,
+      "expected_valid_tokens": 299077,
+      "expected_windows": 582,
+      "max_length": 2048,
+      "stride": 512,
+      "add_special_tokens": false,
+      "chat_template": false
+    },
+    "c4_fixed_budget": {
+      "path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_v18\\evaluation\\manifests\\C4_EVAL_MANIFEST.json",
+      "manifest_sha256": "0b0d70d70d3c1e0ba62126c81a3f3e97531e58d6701236fb8b3315450b7188d4",
+      "token_ids_sha256_i64le": "bc9a7575527abbc41352352a0439c6bee062ea265b7bd03120704e83f4af7053",
+      "input_tokens": 131072,
+      "expected_valid_tokens": 131071,
+      "expected_windows": 253,
+      "max_length": 2048,
+      "stride": 512,
+      "add_special_tokens": false,
+      "chat_template": false
+    }
+  },
+  "historical_propagation_validity": "UNKNOWN; re-evaluation does not establish calibration propagation validity",
+  "P3_read": false,
+  "quantization_or_repair_run": false
+}

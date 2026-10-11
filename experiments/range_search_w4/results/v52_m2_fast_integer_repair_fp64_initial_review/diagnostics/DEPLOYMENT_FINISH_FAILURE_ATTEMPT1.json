@@ -1,0 +1,6 @@
+{
+  "error": "NameError(\"name 'outcfg' is not defined\")",
+  "traceback": "Traceback (most recent call last):\n  File \"E:\\quant-thesis\\experiments\\range_search_w4\\results\\v52_m2_fast_integer_repair_fp64_initial_review\\finish_v52.py\", line 54, in main\n    lock={'final_model_sha256':sha(modelpath),'config_sha256':sha(outcfg),'protocol_sha256':sha(OUT/'PROTOCOL.json'),'group_checkpoints':[{'path':str(p),'sha256':sha(p)} for p in sorted((OUT/'formal/groups').glob('*.pt'))],'modules_compared_with_original_R2':len(quant_rows),'named_model_tensor_differences_vs_original_R2':len(diffs),'inference_config_equal_original_R2':config_equal,'equivalent_to_original_R2':equal,'locked_before_evaluation_or_reuse_unix':time.time()}\n                                                                  ^^^^^^\nNameError: name 'outcfg' is not defined\n",
+  "cumulative_seconds": 5108.114217691422,
+  "no_repair_rerun": true
+}

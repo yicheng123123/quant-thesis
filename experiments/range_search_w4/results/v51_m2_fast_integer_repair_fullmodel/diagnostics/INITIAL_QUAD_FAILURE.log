@@ -1,0 +1,23 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]
+Loading weights: 100%|��������������������| 290/290 [00:00<00:00, 3982.82it/s]
+Traceback (most recent call last):
+  File "E:\quant-thesis\experiments\range_search_w4\results\v51_m2_fast_integer_repair_fullmodel\diagnose_initial_quad_failure.py", line 134, in <module>
+    main()
+  File "E:\quant-thesis\experiments\range_search_w4\results\v51_m2_fast_integer_repair_fullmodel\diagnose_initial_quad_failure.py", line 39, in main
+    ids = rt.zero_model_check(model)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\quant-thesis\experiments\range_search_w4\results\v46_m1_single_integer_repair_fullmodel\runtime_v46.py", line 170, in zero_model_check
+    with timer('zero_model_output'):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\gaoyi\AppData\Local\Programs\Python\Python312\Lib\contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "E:\quant-thesis\experiments\range_search_w4\results\v46_m1_single_integer_repair_fullmodel\runtime_v46.py", line 39, in timer
+    deadline();torch.cuda.synchronize();t=time.perf_counter()
+    ^^^^^^^^^^
+  File "E:\quant-thesis\experiments\range_search_w4\results\v51_m2_fast_integer_repair_fullmodel\run_v51.py", line 24, in deadline
+    if elapsed()>CAP-reserve:raise TimeoutError(f'v51 180-minute cumulative GPU budget exhausted: {elapsed():.1f}s; reserve={reserve:.1f}s')
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TimeoutError: v51 180-minute cumulative GPU budget exhausted: 1791475475.7s; reserve=0.0s

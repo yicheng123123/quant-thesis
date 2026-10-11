@@ -1,0 +1,10 @@
+{
+  "status": "DIAGNOSED_AND_FIXED_BEFORE_GPU_WORK",
+  "stage": "module import before model load",
+  "error": "ModuleNotFoundError: run_precheck",
+  "cause": "copied runner searched the isolated v28 run folder instead of read-only v18 source directory",
+  "fix": "v18 directory added as the import path for frozen run_precheck.py",
+  "model_loads": 0,
+  "candidate_executions": 0,
+  "gpu_wall_seconds": 0
+}

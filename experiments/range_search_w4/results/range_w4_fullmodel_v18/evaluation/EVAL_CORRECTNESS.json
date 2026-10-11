@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "all_methods_all_datasets": true,
+  "max_length": 2048,
+  "stride": 512,
+  "all_token_counts_match_frozen_manifests": true,
+  "all_window_weighted_nll_matches_shared_evaluator": true,
+  "all_aggregates_finite": true,
+  "results": {
+    "wikitext": {
+      "M0": {
+        "ppl": 12.463409495878363,
+        "nll": 2.522797111231235,
+        "tokens": 299077,
+        "windows": 582
+      },
+      "M1": {
+        "ppl": 13.884369572857866,
+        "nll": 2.6307637162607898,
+        "tokens": 299077,
+        "windows": 582
+      },
+      "M2": {
+        "ppl": 13.760556051038424,
+        "nll": 2.6218062423746398,
+        "tokens": 299077,
+        "windows": 582
+      }
+    },
+    "c4_fixed_budget": {
+      "M0": {
+        "ppl": 19.248555817997712,
+        "nll": 2.9574360354777918,
+        "tokens": 131071,
+        "windows": 253
+      },
+      "M1": {
+        "ppl": 22.23392445006841,
+        "nll": 3.10161925085964,
+        "tokens": 131071,
+        "windows": 253
+      },
+      "M2": {
+        "ppl": 22.032883164065005,
+        "nll": 3.0925360266978292,
+        "tokens": 131071,
+        "windows": 253
+      }
+    }
+  }
+}

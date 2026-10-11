@@ -1,0 +1,20 @@
+component,seconds,scope
+preflight correctness and cost gate,147.82292839998263,actual measured preformal work
+formal model load and M2 restore,1.457299800007604,formal process
+formal v23 prefix cache validation,2.0883719999692403,read-only cache validation
+formal E2 down-input cache validation,3.2774152999627404,read-only cache validation
+new down-input activation capture,6.911360400001286,one target block replay per document; no per-row refresh
+formal Hessian construction,9.135877200169489,new H cache construction during formal process
+formal Hessian checkpoint I/O,1.9074376001954079,new H cache serialization
+formal Hinv preparation,10.209211999870604,immutable split-specific GPTQ state
+full-Linear candidate GPTQ,737.1478597998794,552 complete GPTQ calls
+structured per-row GPTQ,1238.2548496006057,929 row-specific full compensation runs
+search local-score evaluation,167.44265969996923,scalar and structured search candidates
+held local-score and oracle evaluation,154.0372620007838,after selection lock
+repeat-score numeric-floor checks,9.695385699800681,alpha=1 search/held repeat; diagnostic only
+candidate and result checkpoint I/O,6.780757599233026,actual serialized candidate and held result payloads
+formal search stage wall across attempts,2257.427406200013,reconstructed from RUN_EVENTS stage boundaries; includes resumed search work and H cache loads
+formal held stage wall across attempts,222.01694189998491,reconstructed from prior stage boundaries plus current held stage
+total formal process wall,31.602024500025436,from formal model load through report validation
+prior failed formal process wall,2513.015699099982,includes two corrected resumable implementation failures and one finalization wiring failure
+preflight plus all formal attempts wall,2692.44065199999,measured experiment work; excludes idle time between resumes

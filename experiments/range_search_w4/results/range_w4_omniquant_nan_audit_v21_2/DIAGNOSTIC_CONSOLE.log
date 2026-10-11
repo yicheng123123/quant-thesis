@@ -1,0 +1,17 @@
+Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
+E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_full_v21_1\M3\official_port\utils.py:31: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self._scaler = torch.cuda.amp.GradScaler()
+E:\quant-thesis\experiments\range_search_w4\results\range_w4_omniquant_nan_audit_v21_2\replay_basic.py:62: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with torch.cuda.amp.autocast(enabled=not is_fp32):
+D1 loss=0.15326565504074097 grad_finite=False
+D2 loss=0.15303973853588104 grad_finite=True
+D3 loss=0.15326565504074097 grad_finite=True
+SAMPLE 1 loss=0.17120549082756042 grad_finite=False
+SAMPLE 2 loss=0.16791699826717377 grad_finite=False
+SAMPLE 3 loss=0.16904057562351227 grad_finite=False
+LAYER actual_l20 loss=0.07404229044914246 grad_finite=True
+LAYER actual_l21 loss=0.15326565504074097 grad_finite=False
+LAYER fp_l20 loss=0.01764606684446335 grad_finite=True
+LAYER fp_l21 loss=0.07143910974264145 grad_finite=False
+LAYER fp_l22 loss=0.021916182711720467 grad_finite=True
+LAYER fp_l23 loss=0.06680014729499817 grad_finite=True

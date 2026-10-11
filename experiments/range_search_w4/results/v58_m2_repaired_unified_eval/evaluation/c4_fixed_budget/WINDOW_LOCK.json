@@ -1,0 +1,27 @@
+{
+  "checkpoint_sha256": "0fa87105e36deac2ead4c871e6e0a802590418e6ccacd616929cdf91ecc8ec0c",
+  "config_sha256": "7101cfb3475d42d7e81a9e5a75aabf5f9cfd39308ffdc367d35a6b27242fd5bb",
+  "effective_config_sha256": "a33901fd787a1385efbdd5574d88012774c97110064a3f6a2cb05d070cba9dd2",
+  "evaluator_wrapper_sha256": "bbe1e4c22200f1ccb3d85f35a274c44cf5d46cd606160b59b0cd9afc346bae11",
+  "core_evaluator_sha256_current": "5062225fc58d6d1272ba7c828f697ff9540407db5409340d2a94662ff32841a1",
+  "runtime": {
+    "python": "3.12.10",
+    "pytorch": "2.6.0+cu124",
+    "cuda_build": "12.4",
+    "transformers": "5.16.1",
+    "tokenizers": "0.23.2",
+    "device": "NVIDIA GeForce RTX 4060 Laptop GPU"
+  },
+  "max_length": 2048,
+  "stride": 512,
+  "use_cache": false,
+  "eval_mode": true,
+  "dtype": "float16",
+  "attention_requested": "sdpa",
+  "tf32": false,
+  "score": "sum(window_loss * valid_tokens) / sum(valid_tokens); PPL=exp(weighted_NLL)",
+  "dataset": "c4_fixed_budget",
+  "manifest_sha256": "0b0d70d70d3c1e0ba62126c81a3f3e97531e58d6701236fb8b3315450b7188d4",
+  "token_ids_sha256_i64le": "bc9a7575527abbc41352352a0439c6bee062ea265b7bd03120704e83f4af7053",
+  "run_lock_sha256": "028ddd46dc95274c16b698bb83bac74ad2444dfb9d5d57a40a1becede0060733"
+}

@@ -1,0 +1,11 @@
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading weights:   0%|          | 0/290 [00:00<?, ?it/s]
+Loading weights: 100%|��������������������| 290/290 [00:00<00:00, 7242.97it/s]
+Traceback (most recent call last):
+  File "E:\quant-thesis\experiments\range_search_w4\results\v51_m2_fast_integer_repair_fullmodel\diagnose_initial_quad_failure.py", line 135, in <module>
+    main()
+  File "E:\quant-thesis\experiments\range_search_w4\results\v51_m2_fast_integer_repair_fullmodel\diagnose_initial_quad_failure.py", line 91, in main
+    finite = bool(torch.isfinite(X).all() and torch.isfinite(C).all() and torch.isfinite(W).all() and torch.isfinite(E).all() and torch.isfinite(initial_fp32).all() and torch.isfinite(initial_quad).all() and torch.isfinite(initial_raw64).all())
+                  ^^^^^^^^^^^^^^^^^
+TypeError: isfinite(): argument 'input' (position 1) must be Tensor, not numpy.ndarray

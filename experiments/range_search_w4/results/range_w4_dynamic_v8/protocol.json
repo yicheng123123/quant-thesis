@@ -1,0 +1,109 @@
+{
+  "id": "range_w4_dynamic_v8",
+  "source_v7": {
+    "id": "range_w4_local_v7",
+    "base_model": "Qwen/Qwen2.5-0.5B-Instruct",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "weight_dtype": "float16",
+    "device": "cuda",
+    "dataset": "Salesforce/wikitext:wikitext-2-raw-v1:train",
+    "document_rule": "first eight distinct top-level articles with >=128 tokens, in source order; semicolon table headers are not article starts",
+    "search_document_indices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "heldout_document_indices": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "tokens_per_document": 128,
+    "seed": 42,
+    "layers": [
+      0,
+      12,
+      23
+    ],
+    "projection": "self_attn.q_proj",
+    "row_indices": [
+      0,
+      448
+    ],
+    "input_semantics": "FP model activations at each projection, no preceding quantized layers",
+    "bits": 4,
+    "activation_bits": 16,
+    "quantizer": "GPTQModel 2.2.0 affine [0,15], round-to-even, symmetric zero=8",
+    "symmetric": true,
+    "group_sizes": [
+      -1,
+      128
+    ],
+    "damp_percent": 0.1,
+    "desc_act": false,
+    "block_size": 128,
+    "static_external_ranges": true,
+    "grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "asymmetric_scope": "separate format-control diagnostic; never compare gains against symmetric baseline",
+    "asymmetric_budget_matched_single_grid": "0.01..1.00 step 0.01"
+  },
+  "main_semantics": "native dynamic G128 find_params timing, shared alpha across seven groups",
+  "D": "dynamic GPTQ alpha=1",
+  "A": "pristine-weight fixed MinMax G128 GPTQ",
+  "B": "RTN whole-row search MSE selects alpha; final dynamic GPTQ",
+  "C": "10 full dynamic GPTQ runs; search output MSE selects alpha",
+  "group_interventions": "one group alpha changed with other groups alpha=1; full GPTQ rerun",
+  "alpha_grid": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "layers": [
+    0,
+    12,
+    23
+  ],
+  "rows": [
+    0,
+    448
+  ],
+  "rerank_k": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "rounding": "torch.round ties to even",
+  "integer_range": [
+    0,
+    15
+  ],
+  "zero": 8,
+  "per_channel": true,
+  "group_size": 128,
+  "block_size": 128,
+  "damp_percent": 0.1,
+  "static_groups": false,
+  "model_dtype": "float16",
+  "compute_dtype": "float32"
+}

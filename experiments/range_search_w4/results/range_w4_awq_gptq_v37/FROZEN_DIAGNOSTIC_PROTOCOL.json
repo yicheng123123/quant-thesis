@@ -1,0 +1,55 @@
+{
+  "protocol_id": "v37_v36_correctness_repair_and_s0_validity",
+  "status": "FROZEN_BEFORE_V37_GPU_DIAGNOSTICS",
+  "scope": "Trace three v36 correctness defects, independently reproduce S1/P2 search-prefix D=I capture in a clean process, repair the S0 G00/down alpha=1 direct-score parity evidence, correct the FP16 full-fold reference, and independently verify saved S0 candidate selection, propagation, held reference, and four-arm metrics.",
+  "immutable_source": {
+    "v36_directory": "experiments/range_search_w4/results/range_w4_awq_gptq_v36",
+    "v36_protocol_sha256": "23d0d285ade51ac79b239a0ad09566d3e45c6161347a6f2cf9767aa2f6bca5f0",
+    "v36_runner_sha256": "1c9c88fec20686c0f4e3e3c0d0df1094323ddb6c909d09bdde3ad8cbc833854e",
+    "native_parity_source": "experiments/range_search_w4/results/range_w4_m2_parity_v17_1/native_m2.py",
+    "prefix_checkpoint_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+    "base_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775"
+  },
+  "preserved_protocol": {
+    "model": "Qwen2.5-0.5B-Instruct",
+    "dtype": "FP16",
+    "device": "v36 frozen RTX 4060 Laptop GPU; record runtime device",
+    "target": "L12 complete MLP",
+    "quantization": "symmetric W4/G128 dynamic GPTQ, native error compensation, damping 0.1",
+    "alpha_grid": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+    "awq_ratio_grid": "unchanged from v36; no selector candidates are generated in v37",
+    "data": "reuse v36 frozen article/token/cache files; S0 P0/P1 may be re-read because they were already evaluated; S1 P2 is used only for search-prefix correctness reproduction; P3 held data is forbidden",
+    "selection_and_quality_thresholds": "unchanged from v36/v34; no new selection or quality search"
+  },
+  "diagnostics_in_order": [
+    "Read-only code/artifact trace for all three defects and their dependency scope.",
+    "Fresh independent process: load exact frozen v18 M2 prefix checkpoint; recapture only S1 search group P2 through L12; compare model/config/norm/token/input/output hashes to v36; clone hook tensors for alias detection; replay norm on old and fresh pre-norm tensors; do not open P3.",
+    "One native full-Linear GPTQ rerun for the missing S0/G00/down alpha=1 direct-score parity field, using saved pristine W, saved H, saved actual down input, and saved v36 candidate scores.",
+    "Correctly recompute S0 P0 search and P1 held FP16 selected-D fold with norm/D and gate/up W*D; down remains unchanged. Verify original target references and saved four-arm held full-MLP outputs using the frozen inputs and selected tensors.",
+    "Recompute S0 full-MLP held metrics from frozen saved outputs; decide whether S0 reaches the unchanged >=1 percent G11-vs-G01 primary gate. If it does not, do not run S1 candidates or held evaluation."
+  ],
+  "no_go": [
+    "No S1 AWQ selector, GPTQ candidates, selection, or P3 held access.",
+    "No new quality search, methods, layers, models, PPL, or full-model quantization.",
+    "No threshold/tolerance change; exact v36 D=I and alpha=1 parity criteria remain exact.",
+    "No writes to v36, v35, v34, shared quantization code, or historical checkpoints."
+  ],
+  "budget": {
+    "v36_gpu_seconds_already_charged": 180.335929,
+    "original_route_hard_cap_seconds": 1800,
+    "remaining_route_budget_seconds_before_v37": 1619.664071,
+    "v37_additional_gpu_subbudget_seconds": 300,
+    "v37_stop_before_seconds": 270,
+    "accounting": "GPU initialization, model load, warmup, all forward/GPTQ/score work, synchronization, and failed attempts are charged. CPU-only inspection is separately logged and not charged as GPU time."
+  },
+  "required_outputs": [
+    "ROOT_CAUSE.md",
+    "BUG_IMPACT_TABLE.csv",
+    "FIX_DIFF.patch",
+    "correctness/v37_correctness_results.json",
+    "S0_VALIDITY.json",
+    "raw/S0_METRICS_RECOMPUTED.json",
+    "raw/BUDGET_LEDGER.csv",
+    "REPRODUCE.md"
+  ]
+}

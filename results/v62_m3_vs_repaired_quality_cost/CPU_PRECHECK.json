@@ -1,0 +1,591 @@
+{
+  "status": "PASS",
+  "mode": "CPU-only preflight; no CUDA initialization or model forward",
+  "python": "3.12.10",
+  "python_executable": "E:\\quant-thesis\\.venv\\Scripts\\python.exe",
+  "pytorch": "2.6.0+cu124",
+  "transformers": "5.16.1",
+  "checkpoints": {
+    "v61_M3": {
+      "checkpoint_path": "E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\M3\\dense_export\\model.safetensors",
+      "checkpoint_sha256": "3dc3de1e82e4451bd787bf24f85d2fefe89816e2886e51a3b0b26f29b9ac94b4",
+      "bytes": 988097536,
+      "config_path": "E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\M3\\dense_export\\config.json",
+      "config_sha256": "e0d3bfacf9313a79c19dd7a43f5e72f1caac55655677ffb1342ba5cbf77f27f5",
+      "effective_config_sha256": "a33901fd787a1385efbdd5574d88012774c97110064a3f6a2cb05d070cba9dd2",
+      "effective_config": {
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "output_hidden_states": false,
+        "return_dict": true,
+        "dtype": "float16",
+        "chunk_size_feed_forward": 0,
+        "is_encoder_decoder": false,
+        "id2label": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        },
+        "label2id": {
+          "LABEL_0": 0,
+          "LABEL_1": 1
+        },
+        "problem_type": null,
+        "vocab_size": 151936,
+        "hidden_size": 896,
+        "intermediate_size": 4864,
+        "num_hidden_layers": 24,
+        "num_attention_heads": 14,
+        "num_key_value_heads": 2,
+        "hidden_act": "silu",
+        "max_position_embeddings": 32768,
+        "initializer_range": 0.02,
+        "rms_norm_eps": 1e-06,
+        "use_cache": true,
+        "tie_word_embeddings": true,
+        "rope_parameters": {
+          "rope_theta": 1000000.0,
+          "rope_type": "default"
+        },
+        "use_sliding_window": false,
+        "sliding_window": null,
+        "max_window_layers": 21,
+        "layer_types": [
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention"
+        ],
+        "attention_dropout": 0.0,
+        "pad_token_id": null,
+        "bos_token_id": 151643,
+        "eos_token_id": 151645,
+        "model_type": "qwen2",
+        "output_attentions": false
+      },
+      "named_tensor_count": 290,
+      "named_tensor_manifest_csv": "E:\\quant-thesis\\results\\v62_m3_vs_repaired_quality_cost\\v61_M3_NAMED_TENSORS.csv",
+      "named_tensor_manifest_sha256": "6d099a6201e472557c38b98205f435d803724dcacb9a818b69fb7657631fa5d3",
+      "named_tensor_manifest_matches_checkpoint_lock": "computed_from_locked_safetensors"
+    },
+    "v55_M2_plus_repair": {
+      "checkpoint_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v55_m2_decoder_fixed_integer_repair\\R1\\checkpoint\\final\\model.safetensors",
+      "checkpoint_sha256": "0fa87105e36deac2ead4c871e6e0a802590418e6ccacd616929cdf91ecc8ec0c",
+      "bytes": 988097536,
+      "config_path": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v55_m2_decoder_fixed_integer_repair\\R1\\checkpoint\\final\\config.json",
+      "config_sha256": "7101cfb3475d42d7e81a9e5a75aabf5f9cfd39308ffdc367d35a6b27242fd5bb",
+      "effective_config_sha256": "a33901fd787a1385efbdd5574d88012774c97110064a3f6a2cb05d070cba9dd2",
+      "effective_config": {
+        "architectures": [
+          "Qwen2ForCausalLM"
+        ],
+        "output_hidden_states": false,
+        "return_dict": true,
+        "dtype": "float16",
+        "chunk_size_feed_forward": 0,
+        "is_encoder_decoder": false,
+        "id2label": {
+          "0": "LABEL_0",
+          "1": "LABEL_1"
+        },
+        "label2id": {
+          "LABEL_0": 0,
+          "LABEL_1": 1
+        },
+        "problem_type": null,
+        "vocab_size": 151936,
+        "hidden_size": 896,
+        "intermediate_size": 4864,
+        "num_hidden_layers": 24,
+        "num_attention_heads": 14,
+        "num_key_value_heads": 2,
+        "hidden_act": "silu",
+        "max_position_embeddings": 32768,
+        "initializer_range": 0.02,
+        "rms_norm_eps": 1e-06,
+        "use_cache": true,
+        "tie_word_embeddings": true,
+        "rope_parameters": {
+          "rope_theta": 1000000.0,
+          "rope_type": "default"
+        },
+        "use_sliding_window": false,
+        "sliding_window": null,
+        "max_window_layers": 21,
+        "layer_types": [
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention",
+          "full_attention"
+        ],
+        "attention_dropout": 0.0,
+        "pad_token_id": null,
+        "bos_token_id": 151643,
+        "eos_token_id": 151645,
+        "model_type": "qwen2",
+        "output_attentions": false
+      },
+      "named_tensor_count": 290,
+      "named_tensor_manifest_csv": "E:\\quant-thesis\\results\\v62_m3_vs_repaired_quality_cost\\v55_M2_plus_repair_NAMED_TENSORS.csv",
+      "named_tensor_manifest_sha256": "5d087229116ce711109adabcd0a91628c51a4c12df636758da15393ad3f54175",
+      "named_tensor_manifest_matches_checkpoint_lock": true
+    }
+  },
+  "tokenizers": {
+    "M3_export": {
+      "source": "E:\\quant-thesis\\results\\v61_m3_calibration_cost_memory\\M3\\dense_export",
+      "class": "Qwen2Tokenizer",
+      "is_fast": true,
+      "vocab_size": 151643,
+      "len_tokenizer": 151665,
+      "bos_token_id": null,
+      "eos_token_id": 151645,
+      "pad_token_id": 151643,
+      "files": [
+        {
+          "name": "added_tokens.json",
+          "bytes": 629,
+          "sha256": "f0acedf99e19ec0a5b797ffbd0b94328172ccd90f7f385bbc521cda2701b03ab"
+        },
+        {
+          "name": "merges.txt",
+          "bytes": 1671853,
+          "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5"
+        },
+        {
+          "name": "special_tokens_map.json",
+          "bytes": 644,
+          "sha256": "57255613bbe23c9497211ca68561ff429a51e871dbaf5a59998fa4c8f7fe168a"
+        },
+        {
+          "name": "tokenizer.json",
+          "bytes": 11421896,
+          "sha256": "9c5ae00e602b8860cbd784ba82a8aa14e8feecec692e7076590d014d7b7fdafa"
+        },
+        {
+          "name": "tokenizer_config.json",
+          "bytes": 7544,
+          "sha256": "c87faf40774f8b5526c7446ceabbb578d5c9837d930869037f2a49933849822f"
+        },
+        {
+          "name": "vocab.json",
+          "bytes": 2776833,
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+        }
+      ],
+      "probe_token_ids": [
+        [
+          44220,
+          2022,
+          5711,
+          264,
+          8356,
+          5827,
+          13
+        ],
+        [
+          785,
+          3974,
+          13876,
+          38835,
+          34208,
+          916,
+          220,
+          16,
+          18,
+          15678,
+          12590,
+          13
+        ],
+        [
+          108048,
+          99307,
+          99308,
+          90885,
+          104817,
+          21894,
+          1773
+        ]
+      ]
+    },
+    "v18_revision": {
+      "source": "E:\\quant-thesis\\artifacts\\models\\qwen2.5-0.5b-instruct-7ae5576\\7ae557604adf67be50417f59c2c2f167def9a775",
+      "class": "Qwen2Tokenizer",
+      "is_fast": true,
+      "vocab_size": 151643,
+      "len_tokenizer": 151665,
+      "bos_token_id": null,
+      "eos_token_id": 151645,
+      "pad_token_id": 151643,
+      "files": [
+        {
+          "name": "merges.txt",
+          "bytes": 1671839,
+          "sha256": "599bab54075088774b1733fde865d5bd747cbcc7a547c5bc12610e874e26f5e3"
+        },
+        {
+          "name": "tokenizer.json",
+          "bytes": 7031645,
+          "sha256": "c0382117ea329cdf097041132f6d735924b697924d6f6fc3945713e96ce87539"
+        },
+        {
+          "name": "tokenizer_config.json",
+          "bytes": 7305,
+          "sha256": "5b5d4f65d0acd3b2d56a35b56d374a36cbc1c8fa5cf3b3febbbfabf22f359583"
+        },
+        {
+          "name": "vocab.json",
+          "bytes": 2776833,
+          "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+        }
+      ],
+      "probe_token_ids": [
+        [
+          44220,
+          2022,
+          5711,
+          264,
+          8356,
+          5827,
+          13
+        ],
+        [
+          785,
+          3974,
+          13876,
+          38835,
+          34208,
+          916,
+          220,
+          16,
+          18,
+          15678,
+          12590,
+          13
+        ],
+        [
+          108048,
+          99307,
+          99308,
+          90885,
+          104817,
+          21894,
+          1773
+        ]
+      ]
+    }
+  },
+  "v61_calibration": {
+    "scheduled_steps": 61440,
+    "successful_optimizer_steps": 61438,
+    "skips": 2,
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "calibration_manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+    "ordered_token_sha256": "552ff2b2ad6226feb21e8b0664b1d90a0ce841b0b73978385def43bdce46159d"
+  },
+  "v55_quantization": {
+    "weight_bits": 4,
+    "activation_bits": 16,
+    "group_size": 128,
+    "symmetric": true,
+    "zero": 8,
+    "codes": [
+      0,
+      15
+    ],
+    "scale_zero_g_idx_fixed": true,
+    "dequant_grid": "FP16 round(scales[row,g_idx[col]] * (code-8))",
+    "full_model_linear_modules": 168,
+    "output_rows": 304128
+  },
+  "v55_calibration": {
+    "manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+    "ordered_token_ids_sha256": "0446661da0f0d99b09803d1c352fcd9c8e516d038cef8348c557b22972634d22",
+    "documents": 128,
+    "tokens_each": 2048,
+    "evaluation_separated": true
+  },
+  "v59_runtime": {
+    "python": "3.12.10",
+    "python_executable": "E:\\quant-thesis\\.venv\\Scripts\\python.exe",
+    "pytorch": "2.6.0+cu124",
+    "cuda_runtime": "12.4",
+    "transformers": "5.16.1",
+    "tokenizers": "0.23.2",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU",
+    "gpu_total_memory_bytes": 8585216000,
+    "gpu_free_memory_at_process_start_bytes": 7443841024,
+    "gpu_total_memory_driver_bytes": 8585216000,
+    "device_index": 0,
+    "default_dtype": "torch.float32",
+    "threads": 4,
+    "tf32_matmul": false,
+    "tf32_cudnn": false,
+    "fp32_matmul_precision": "highest",
+    "fp16_reduced_precision_reduction": true,
+    "cudnn_benchmark": false,
+    "deterministic_algorithms": false,
+    "autocast_cuda_enabled": false,
+    "autocast_cpu_enabled": false,
+    "sdpa_backend_policy": {
+      "flash_enabled": true,
+      "memory_efficient_enabled": true,
+      "math_enabled": true,
+      "cudnn_enabled": true,
+      "forced_context": "none; PyTorch default backend dispatch",
+      "actual_kernel": "not instrumented; backend policy is recorded"
+    },
+    "environment_variables": {
+      "CUDA_VISIBLE_DEVICES": null,
+      "CUDA_DEVICE_ORDER": null,
+      "CUDA_MODULE_LOADING": "LAZY",
+      "CUBLAS_WORKSPACE_CONFIG": null,
+      "PYTORCH_CUDA_ALLOC_CONF": null
+    },
+    "model_code_source": "E:\\quant-thesis\\.venv\\Lib\\site-packages\\transformers\\models\\qwen2\\modeling_qwen2.py",
+    "model_code_sha256": "34390fea7648b444d5727abef0b85acceba28f856aedec6c335d51253806bfee",
+    "runner_source": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\v59_same_process_four_checkpoint_eval\\run_v59_eval.py",
+    "runner_source_sha256": "0580bc165209aeddaf451e11941861078e114641bd121c07ba5bd4392b30a0d3",
+    "requested_model_setting": "Luna Max requested by user; model-selection API unavailable to runner",
+    "attention_loader_request": "attn_implementation=sdpa",
+    "eval_mode": true,
+    "use_cache": false,
+    "dtype": "float16",
+    "evaluator_core_path": "E:\\quant-thesis\\benchmark\\eval\\ppl.py",
+    "evaluator_core_sha256": "5062225fc58d6d1272ba7c828f697ff9540407db5409340d2a94662ff32841a1",
+    "evaluator_wrapper_sha256": "c27fb3a5dbf2f940a7ed0fd465ac02a07da8de94c9dc2a060adea962a63ed2df",
+    "v56_evaluator_helper_sha256": "bbe1e4c22200f1ccb3d85f35a274c44cf5d46cd606160b59b0cd9afc346bae11",
+    "model_code_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "tokenizer_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "process_id": 32696
+  },
+  "v59_evaluator_and_manifests": {
+    "wikitext": {
+      "manifest_sha256": "acd46b20a6b84b534d5625bfab505d599001679a775d619960a40e8da4f62f46",
+      "token_ids_sha256_i64le": "8ffcee84dd4b684ec631cb52845e18c9c181ce6fdb8b26d65a4ffdc3d35fbda3",
+      "input_tokens": 299078,
+      "valid_tokens": 299077,
+      "windows": 582,
+      "max_length": 2048,
+      "stride": 512,
+      "add_special_tokens": false,
+      "chat_template": false
+    },
+    "c4_fixed_budget": {
+      "manifest_sha256": "0b0d70d70d3c1e0ba62126c81a3f3e97531e58d6701236fb8b3315450b7188d4",
+      "token_ids_sha256_i64le": "bc9a7575527abbc41352352a0439c6bee062ea265b7bd03120704e83f4af7053",
+      "input_tokens": 131072,
+      "valid_tokens": 131071,
+      "windows": 253,
+      "max_length": 2048,
+      "stride": 512,
+      "add_special_tokens": false,
+      "chat_template": false
+    }
+  },
+  "v59_cost_reference": {
+    "cap_seconds": 3600.0,
+    "runner_active_seconds": 3103.730016708374,
+    "process_id": 32696,
+    "model_load_seconds": {
+      "M1": 0.9601558000003934,
+      "M2": 1.579575300000215,
+      "M1_plus_repair": 1.1006716000001688,
+      "M2_plus_repair": 0.8480877000001783
+    },
+    "loaded_named_tensor_hash_seconds": {
+      "M1": 1.0843547000004037,
+      "M2": 0.9248989999996411,
+      "M1_plus_repair": 0.9591378000004624,
+      "M2_plus_repair": 0.9062278000001243
+    },
+    "evaluation_seconds_by_arm_dataset": {
+      "M1/wikitext": 317.87452529999973,
+      "M1/c4_fixed_budget": 140.01706459999969,
+      "M2/wikitext": 362.1254884,
+      "M2/c4_fixed_budget": 183.14450320000014,
+      "M1_plus_repair/wikitext": 694.5140138000006,
+      "M1_plus_repair/c4_fixed_budget": 181.14795380000032,
+      "M2_plus_repair/wikitext": 362.72403159999976,
+      "M2_plus_repair/c4_fixed_budget": 141.4873249000002
+    },
+    "prediction_from_v58_not_actual_speed_claim": {
+      "source_pair_wall_seconds": 445.34196853637695,
+      "four_pair_projection_seconds": 1781.3678741455078
+    },
+    "source_and_setup_seconds_not_separately_synchronized": "included in runner_active_seconds",
+    "post_report_reserve_seconds": 60.0,
+    "history_ledgers_reset": false,
+    "runner_active_seconds_including_preflight_charge": 3103.730016708374,
+    "pre_runner_charged_wall_seconds": 679.7934896945953,
+    "formal_runner_process_wall_seconds_excluding_preflight_charge": 2423.9365270137787,
+    "cpu_preflight_script_measured_seconds": 4.41644449999967,
+    "evaluation_stage_sum_seconds": 2383.0349056000005,
+    "model_load_synchronized_seconds_sum": 4.488490400000956,
+    "loaded_named_tensor_hash_seconds_sum": 3.8746193000006315,
+    "unload_gc_empty_cache_seconds_sum": 0.9211736000006567,
+    "formal_process_unassigned_setup_io_aggregation_seconds": 31.617338113775986,
+    "postprocessing_cpu_measured_seconds_before_accounting": 1.4054706999995688,
+    "postprocessing_budget_charge_seconds_conservative": 60.0,
+    "total_charged_seconds_including_postprocessing": 3163.730016708374,
+    "remaining_seconds_after_postprocessing_charge": 436.269983291626,
+    "gpu_evaluation_included_in_runner_total": true,
+    "GPU time and CPU wall are not interchangeable": true,
+    "historical_ledgers_reset": false,
+    "v58_based_total_projection_seconds": 2851.161363840103,
+    "actual_total_minus_precheck_projection_seconds": 312.5686528682709,
+    "actual_formal_runner_wall_per_checkpoint_pair_average_seconds": 605.9841317534447,
+    "actual_formal_runner_average_minus_v58_measured_pair_seconds": 160.64216321706772,
+    "postprocessing_charge_basis": "Conservative allowance includes the failed CPU finalizer attempt, successful independent window aggregation, documentation and final artifact-hash refresh."
+  },
+  "v59_pair_times": {
+    "M1": {
+      "wikitext": 317.87452529999973,
+      "c4_fixed_budget": 140.01706459999969
+    },
+    "M2": {
+      "wikitext": 362.1254884,
+      "c4_fixed_budget": 183.14450320000014
+    },
+    "M1_plus_repair": {
+      "wikitext": 694.5140138000006,
+      "c4_fixed_budget": 181.14795380000032
+    },
+    "M2_plus_repair": {
+      "wikitext": 362.72403159999976,
+      "c4_fixed_budget": 141.4873249000002
+    },
+    "M1_pair_eval_seconds": 457.8915898999994,
+    "M2_pair_eval_seconds": 545.2699916000001,
+    "M1_plus_repair_pair_eval_seconds": 875.6619676000009,
+    "M2_plus_repair_pair_eval_seconds": 504.21135649999997,
+    "one_checkpoint_pair_process_wall_from_v58_seconds": 445.34196853637695,
+    "v56_one_checkpoint_pair_continuation_seconds": 2283.576
+  },
+  "forecast": {
+    "cap_seconds": 5400.0,
+    "source_v59_max_measured_pair_eval_seconds": 875.6619676000009,
+    "two_checkpoint_pairs_at_2x_slowest_v59_pair_seconds": 3502.6478704000037,
+    "source_precheck_load_finalization_allowance_seconds": 600.0,
+    "projected_active_seconds": 4102.647870400004,
+    "remaining_margin_seconds": 1297.3521295999963,
+    "v56_2283_576s_scope": "one checkpoint WT2+C4 eval-only continuation wall including load; seconds, not minutes; historical slower execution, not the current forecast",
+    "v59_scope": "eight complete evaluation stages across four checkpoints, total 2383.0349 s; max measured per-checkpoint WT2+C4 evaluation pair used conservatively above",
+    "decision": "WITHIN_BUDGET"
+  },
+  "v59_independent_quality_recalc": [
+    {
+      "dataset": "wikitext",
+      "arms": "M1",
+      "windows": 582,
+      "valid_tokens": 299077,
+      "nll_sum": 786798.8830375671,
+      "weighted_nll": 2.630756905537929,
+      "ppl": 13.884275010586627
+    },
+    {
+      "dataset": "c4_fixed_budget",
+      "arms": "M1",
+      "windows": 253,
+      "valid_tokens": 131071,
+      "nll_sum": 406528.5773689747,
+      "weighted_nll": 3.1015905682338176,
+      "ppl": 22.233286731878604
+    },
+    {
+      "dataset": "wikitext",
+      "arms": "M2",
+      "windows": 582,
+      "valid_tokens": 299077,
+      "nll_sum": 784128.0391120911,
+      "weighted_nll": 2.62182661693173,
+      "ppl": 13.76083641912946
+    },
+    {
+      "dataset": "c4_fixed_budget",
+      "arms": "M2",
+      "windows": 253,
+      "valid_tokens": 131071,
+      "nll_sum": 405339.6470966339,
+      "weighted_nll": 3.092519680910605,
+      "ppl": 22.032523022188276
+    },
+    {
+      "dataset": "wikitext",
+      "arms": "M1_plus_repair",
+      "windows": 582,
+      "valid_tokens": 299077,
+      "nll_sum": 781288.9244275093,
+      "weighted_nll": 2.6123336947592404,
+      "ppl": 13.630823945465503
+    },
+    {
+      "dataset": "c4_fixed_budget",
+      "arms": "M1_plus_repair",
+      "windows": 253,
+      "valid_tokens": 131071,
+      "nll_sum": 405985.7633090019,
+      "weighted_nll": 3.0974491940169977,
+      "ppl": 22.141400769856865
+    },
+    {
+      "dataset": "wikitext",
+      "arms": "M2_plus_repair",
+      "windows": 582,
+      "valid_tokens": 299077,
+      "nll_sum": 778389.4404826164,
+      "weighted_nll": 2.6026389206880385,
+      "ppl": 13.499314693184203
+    },
+    {
+      "dataset": "c4_fixed_budget",
+      "arms": "M2_plus_repair",
+      "windows": 253,
+      "valid_tokens": 131071,
+      "nll_sum": 404516.818097353,
+      "weighted_nll": 3.0862419459480206,
+      "ppl": 21.894641925412596
+    }
+  ],
+  "preflight_elapsed_seconds": 7.7722767000086606
+}

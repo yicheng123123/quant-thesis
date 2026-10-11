@@ -1,0 +1,44 @@
+{
+  "config_sha256": "18e18afcaccafade98daf13a54092927904649e1dd4eba8299ab717d5d94ff45",
+  "module_count": 168,
+  "output_rows": 304128,
+  "row_alpha_candidates": 3041280,
+  "quantized_weight_elements": 357826560,
+  "scale_zero_pairs": 2795520,
+  "excluded": [
+    "lm_head tied to embed_tokens",
+    "embeddings",
+    "RMSNorm",
+    "all biases"
+  ],
+  "dims": {
+    "self_attn.q_proj": [
+      896,
+      896
+    ],
+    "self_attn.k_proj": [
+      128,
+      896
+    ],
+    "self_attn.v_proj": [
+      128,
+      896
+    ],
+    "self_attn.o_proj": [
+      896,
+      896
+    ],
+    "mlp.gate_proj": [
+      4864,
+      896
+    ],
+    "mlp.up_proj": [
+      4864,
+      896
+    ],
+    "mlp.down_proj": [
+      896,
+      4864
+    ]
+  }
+}

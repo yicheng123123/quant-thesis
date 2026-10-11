@@ -1,0 +1,210 @@
+{
+  "name": "v33 Shared Coordinate Selection Diagnostic",
+  "status": "FROZEN_BEFORE_SELECTION",
+  "interpretation": "Retrospective exploratory diagnostic on previously viewed articles; no new quality validation",
+  "compute_scope": "CPU artifact analysis only; no CUDA calls, model forwards, GPTQ, PPL, or whole-model quantization",
+  "cpu_wall_budget_seconds": 300,
+  "inherits": {
+    "model": {
+      "id": "Qwen/Qwen2.5-0.5B-Instruct",
+      "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "dtype": "FP16",
+      "attention": "SDPA",
+      "device": "NVIDIA GeForce RTX 4060 Laptop GPU",
+      "tf32": false
+    },
+    "quantization": {
+      "weight_bits": 4,
+      "activation_bits": 16,
+      "symmetric": true,
+      "group_size": 128,
+      "dynamic_groups": true,
+      "block_size": 128,
+      "damp_percent": 0.1,
+      "desc_act": false,
+      "static_groups": false,
+      "native_gptq_compensation": true,
+      "alpha_1_is_strict_native_noop": true,
+      "model_dtype": "FP16",
+      "hessian_and_gptq_math": "FP32",
+      "quantizer_or_compensation_modified": false
+    },
+    "alpha_grid": [
+      0.1,
+      0.2,
+      0.3,
+      0.4,
+      0.5,
+      0.6,
+      0.7,
+      0.8,
+      0.9,
+      1.0
+    ],
+    "targets": {
+      "layers": [
+        0,
+        12,
+        23
+      ],
+      "projections": [
+        "up_proj",
+        "down_proj"
+      ],
+      "rows": {
+        "up_proj": [
+          0,
+          224,
+          448,
+          672
+        ],
+        "down_proj": [
+          0,
+          224,
+          448,
+          672
+        ]
+      },
+      "unit_count": 48
+    },
+    "split_documents": {
+      "S0": {
+        "search": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "held": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31
+        ]
+      },
+      "S1": {
+        "search": [
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "held": [
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      }
+    },
+    "article_unit": "16 complete 2048-token WT2 train articles per search or held group; no token splitting",
+    "prefix": "fixed v18 M2 quantized prefix, identical v23/v24 cached inputs for all four arms",
+    "scoring": {
+      "target": "same original unquantized reference X_FP16.float()@W_FP16.float().T; bias cancels",
+      "scaled_error": "Xprime_FP16.float()@(Qprime_FP16.float()-Wprime_FP16.float()).T + [Xprime_FP16.float()@Wprime_FP16.float().T - X_FP16.float()@W_FP16.float().T]",
+      "input_chunk": "2 complete documents = 4096 tokens; 4 fixed output rows; FP32 GEMM and FP64 squared-sum accumulation",
+      "normalization": "divide by 16*2048 tokens for each row",
+      "selection": "argmin on search MSE over the original 10 alphas; exact ties choose larger alpha",
+      "held_use": "score only G10 alpha1 and G11 search-selected row candidates after selection lock",
+      "baseline": "reused v24/v31 original scalar10 search and held scores with exact source check",
+      "Qeff": "optional diagnostic Qprime*D^-1 in FP32 only; not a packable original G128 weight"
+    }
+  },
+  "selection_unit": "one target x split, with four fixed output rows sharing one coordinate choice D",
+  "coordinate_choices": {
+    "identity": "D=I, original-coordinate v24/v32 scalar10 candidate bank",
+    "fixed": "the already frozen v32 target x split activation-derived D; no new D or strength search",
+    "rowwise_D_selection": false
+  },
+  "selection_rule": {
+    "per_coordinate_per_row": "argmin over the original 10 alpha search MSE values; exact ties choose larger alpha",
+    "coordinate_score": "sum over the four fixed rows of per-row minimum search MSE * 32768 tokens",
+    "coordinate_choice": "choose the smaller coordinate score; exact equality selects D=I with zero tolerance",
+    "data_access": "selection process consumes search_mse values only; no held score values are read before SEARCH_SELECTION_LOCK.json is written",
+    "expected_identity_inclusion": "shared minimum search score must be <= G01 sum because D=I arm is in the candidate set"
+  },
+  "held_analysis": {
+    "timing": "separate command after frozen search choices and lock are written",
+    "baseline": "v32 G01 held result for each row",
+    "selected_fixed": "v32 G11 held result at the already selected fixed D row alpha",
+    "selected_identity": "v32 G01 held result at the already selected identity-coordinate row alpha",
+    "epsilon": "v32/v24 frozen per-row repeat-noise epsilon; no new tolerance",
+    "severe_regression_threshold": "strictly worse than -10% relative to G01, regardless of WTL epsilon",
+    "aggregation": "four-row SSE within each target x split; row-wise diagnostics remain paired units"
+  },
+  "source_files_sha256": {
+    "v32_protocol": "fa6b61785cd2ce633f402b0b93be7761389ffc9e48e4bdb10f151ecd62e1b12e",
+    "v32_correctness": "586b495e1cadd128e6c4fa2adaf557613d8785240b082b3fdc43dc89e7a0378c",
+    "v32_source_audit": "1e35f1f7b16f9a31aae64f5b31731704cab9c6243cdbc9e8d10f88b656e04155",
+    "v32_scaled_search_scores": "97cc314445aaa45d4915373b4a5e6d1323db4883b8dc98d5d09efc23605abe6d",
+    "v24_protocol": "b9894f84a7d40624ddbf903bf8bda6e8cec0e9d1ea52a9bf33d7529a0a378204",
+    "v24_search_scores": "209b23bf0d39a7c768ca64b07f4ac9366ea0e6d3a79b318410b5762aa72e6dc1",
+    "v24_search_lock": "eba0c9ac54a26ccfca3e4ce5407dc4a7f76f14637364144e4dd05e6db8f03264"
+  },
+  "held_score_sources_excluded_until_selection_lock": [
+    "v32 raw/*_HELD_RESULTS.json",
+    "v24 HELD_RESULTS.csv",
+    "v32 FOUR_ARM_ROW_RESULTS.csv"
+  ],
+  "prohibitions": [
+    "new D computation",
+    "scaling strength search",
+    "GPU",
+    "model forward",
+    "GPTQ",
+    "PPL",
+    "whole-model quantization",
+    "held-based selection or rule changes",
+    "row-specific D",
+    "third coordinate system",
+    "held oracle selection"
+  ]
+}

@@ -1,0 +1,17 @@
+category,stage,calls,seconds,pct_of_block_wall,accounting,coverage
+1 input capture,dependency_input_capture,96,87.73809350001102,1.599403726199284,exclusive measured synchronized wall,Formal dependency input capture
+2 FP64 C construction,C_construction,96,1909.2740680000425,34.804723203776355,exclusive measured synchronized wall,"Full undamped FP64 C, including chunk transfer, symmetrization and finite check"
+3 initial e/p,repair_initialization,168,9.232982400011679,0.16831077432186548,exclusive measured synchronized wall,"Code/grid materialization, Q/e and p; initial loss is attributed separately below"
+4-5 candidate score and minimum,candidate_scoring,5378,79.27772169982927,1.4451770996286903,exclusive measured synchronized wall,"Combined eligibility, delta score, budget, minimum selection and row status; no internal split"
+6-8 accepted update / reject handling,accepted_update_and_rejection_restore,5376,29.473302199789032,0.5372775664624422,exclusive measured synchronized wall,"Merged code/Q/p update, rejection restore/blacklist and assertions; nested FP64 rechecks excluded from exclusive sum"
+7 direct FP32 path,initial direct loss,168,92.86555659997975,1.692873771659507,exclusive measured synchronized wall,First direct_recompute call per Linear; ordering fixed by batch_repair
+7 direct FP32 path,proposal direct checks,5376,2963.64736980047,54.02520680938872,exclusive measured synchronized wall,"Middle direct_recompute calls; each proposal call scores every output row, only proposed rows are consumed"
+7 direct FP32 path,final direct loss,168,92.73233550000441,1.690445244719736,exclusive measured synchronized wall,Last direct_recompute call per Linear; ordering fixed by batch_repair
+8 independent FP64 recheck,independent_FP64_increment_recheck,4,11.247239899988926,0.2050292716412546,"nested, not additive","Nested in accepted-update timer; report separately, not additive"
+8 cache drift check,p_drift_check,840,50.42269969998597,0.9191703462894935,exclusive measured synchronized wall,Periodic p-cache refresh/check; separate timer
+1 input hash,input_hash,96,64.17697160002717,1.1699010477502134,exclusive measured synchronized wall,SHA-256 of captured input; measured separately
+1 dependency refresh,down_commit_prefix_refresh,24,24.574125599981926,0.4479690233147746,exclusive measured synchronized wall,Full block forward used to refresh next-block input
+9 packing/checkpoint IO,packing_checkpoint_IO,96,10.792066800007888,0.19673178621463927,exclusive measured synchronized wall,Group checkpoint and commit metadata write
+9 group commit,whole_group_commit,96,0.9205915999991703,0.016781737288903465,exclusive measured synchronized wall,Copy repaired sibling weights into the working model
+9 final correctness/packing,final_correctness,168,12.33260110005358,0.2248146428341597,exclusive measured synchronized wall,Final code/grid/pack correctness checks; not checkpoint write
+10 unattributed,block wall minus exclusive timers,,58.21471039981407,1.061213220151212,derived residual,"Python gaps, loop/status handling, notes/logging, timer gaps and other untimed block work"

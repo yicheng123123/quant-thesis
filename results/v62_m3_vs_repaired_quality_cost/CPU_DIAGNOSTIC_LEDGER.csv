@@ -1,0 +1,12 @@
+item,charged_seconds,scope
+initial_source_and_cost_audit,30.0,CPU/read-only file and report inspection; conservative charge; no model forward or CUDA work
+failed_preflight_attempt_1,60.0,CPU-only metadata/hash pass; failed on absent revision field in v61 completeness JSON; no model forward/CUDA
+failed_preflight_attempt_2,10.0,CPU-only metadata/hash pass; failed on absent revision field in runtime JSON; no model forward/CUDA
+successful_preflight_command_wall,31.1,CPU-only process wall; Python perf_counter body 7.772 s; no model forward/CUDA
+initial_precheck_buffer,3.9,conservative buffer; no GPU work
+prior_precheck_subtotal,135.0,cumulative CPU-only preflight and source work before first v62 model load
+failed_v62_attempt_1_preload_and_lock_work,30.0,"CPU/preload work before the runner's in-model timer; conservative wall charge, no evaluator forwards"
+failed_v62_attempt_1_model_load_and_hash_check,6.2705027,runner wall through full M3 load and 290 tensor hashes; GPU load but no scored forward
+failure_diagnosis_and_metadata_label_fix,8.0,CPU inspection and exact dtype-label normalization; no weights or evaluator changes
+budget_rounding_buffer,0.7294972999999914,conservative rounding buffer
+cumulative_precheck_and_failed_attempt_charge,180.0,included in v62 5400-second active budget

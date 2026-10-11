@@ -1,0 +1,35 @@
+stage,replicate,alpha,seconds,execution_calls,row_alpha_scores,shape,peak_allocated_bytes,measurement
+certified_native_GPTQ_candidate,1,0.1,0.38944689999334514,1,32,128x896,60364800,cuda synchronize before and after
+certified_native_GPTQ_candidate,2,0.2,0.35401040001306683,1,32,128x896,61191680,cuda synchronize before and after
+certified_native_GPTQ_candidate,3,0.3,0.33547180000459775,1,32,128x896,61422592,cuda synchronize before and after
+certified_native_GPTQ_candidate,4,0.4,0.33369300002232194,1,32,128x896,60960768,cuda synchronize before and after
+certified_native_GPTQ_candidate,5,0.5,0.32878450001589954,1,32,128x896,61191680,cuda synchronize before and after
+certified_native_GPTQ_candidate,6,0.6,0.3414679999987129,1,32,128x896,61422592,cuda synchronize before and after
+certified_native_GPTQ_candidate,7,0.7,0.3336241999932099,1,32,128x896,61653504,cuda synchronize before and after
+certified_native_GPTQ_candidate,8,0.8,0.32255179999629036,1,32,128x896,60960768,cuda synchronize before and after
+certified_native_GPTQ_candidate,9,0.9,0.33764690000680275,1,32,128x896,61191680,cuda synchronize before and after
+certified_native_GPTQ_candidate,10,1.0,0.3327751999895554,1,32,128x896,61422592,cuda synchronize before and after
+candidate_reverse_order_replay,1,1.0,0.3693848999973852,1,32,128x896,,cuda synchronize before and after
+candidate_reverse_order_replay,2,0.9,0.3832584999909159,1,32,128x896,,cuda synchronize before and after
+candidate_reverse_order_replay,3,0.8,0.3705947999842465,1,32,128x896,,cuda synchronize before and after
+candidate_reverse_order_replay,4,0.7,0.384275999997044,1,32,128x896,,cuda synchronize before and after
+candidate_reverse_order_replay,5,0.6,0.363744999980554,1,32,128x896,,cuda synchronize before and after
+candidate_reverse_order_replay,6,0.5,0.37752089998684824,1,32,128x896,,cuda synchronize before and after
+candidate_reverse_order_replay,7,0.4,0.3774664000084158,1,32,128x896,,cuda synchronize before and after
+candidate_reverse_order_replay,8,0.3,0.35939009999856353,1,32,128x896,,cuda synchronize before and after
+candidate_reverse_order_replay,9,0.2,0.38038429999141954,1,32,128x896,,cuda synchronize before and after
+candidate_reverse_order_replay,10,0.1,0.3868067000003066,1,32,128x896,,cuda synchronize before and after
+direct_native_reference_equivalence,1,0.1,0.3714241999841761,1,4,128x896,,cuda synchronize before and after
+direct_native_reference_equivalence,2,0.2,0.3917723000049591,1,4,128x896,,cuda synchronize before and after
+direct_native_reference_equivalence,3,0.3,0.42775350000010803,1,4,128x896,,cuda synchronize before and after
+direct_native_reference_equivalence,4,0.4,0.3961972999968566,1,4,128x896,,cuda synchronize before and after
+direct_native_reference_equivalence,5,0.5,0.37577960002818145,1,4,128x896,,cuda synchronize before and after
+direct_native_reference_equivalence,6,0.6,0.4220594000071287,1,4,128x896,,cuda synchronize before and after
+direct_native_reference_equivalence,7,0.7,0.43622050000703894,1,4,128x896,,cuda synchronize before and after
+direct_native_reference_equivalence,8,0.8,0.40880179998930544,1,4,128x896,,cuda synchronize before and after
+direct_native_reference_equivalence,9,0.9,0.42409549999865703,1,4,128x896,,cuda synchronize before and after
+direct_native_reference_equivalence,10,1.0,0.4292082999891136,1,4,128x896,,cuda synchronize before and after
+native_find_params_range_estimation_cuda_event_sum,1,0.8,0.009893888056278229,8,32,128x896,,CUDA events; includes native initial plus 7 dynamic groups
+selected_rows_selection_and_commit,1,mixed,0.026373300002887845,1,32,128x896,,cuda synchronize before and after CPU selection plus GPU row commit
+self_prefix_forward_refresh,1,mixed,0.004137299983995035,1,32,L0 decoder layer,,cuda synchronize before and after forward hooks
+shared_Hessian_setup_k_proj,1,all,0.00032309998641721904,1,32,896x896 H; X=128x896,,native GPTQ.process_batch; cuda synchronize around wall timer

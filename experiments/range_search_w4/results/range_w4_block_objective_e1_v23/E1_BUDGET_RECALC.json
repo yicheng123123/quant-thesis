@@ -1,0 +1,46 @@
+{
+  "status": "RECALCULATED_MATCHES_V22",
+  "frozen_target_cells": 6,
+  "splits": 2,
+  "rows_per_cell": 4,
+  "row_split_units": 48,
+  "alpha_candidates": 10,
+  "full_linear_gptq_executions": {
+    "formula": "6 target cells * 2 search splits * 10 alpha candidates",
+    "count": 120,
+    "unit": "one complete output-by-input GPTQ run, with fresh candidate-local compensation state"
+  },
+  "row_alpha_score_positions": {
+    "search_local_scores": "48 row-split units * 10 alphas = 480 local search losses",
+    "search_block_scores": "48 row-split units * 10 alphas = 480 block search losses",
+    "held_block_landscape_scores": "48 row-split units * 10 alphas = 480 block held losses",
+    "held_selected_local_scores": "48 units * unique(alpha=1, alpha_local, alpha_block), at most 144 local held losses",
+    "all_unit_alpha_loss_values_max": 1584,
+    "unit_alpha_landscape_score_positions": 1440,
+    "all_row_candidate_local_score_values": 345600,
+    "row_alpha_score_positions": 346704,
+    "search_all_row_local_score_positions": 345600,
+    "held_selected_local_score_positions_max": 144,
+    "not_gptq_execution_count": true
+  },
+  "candidate_block_forward_budget": {
+    "formula": "6 cells * 2 splits * 4 rows * 10 alphas * 16 search docs + the same count for 16 held docs",
+    "search_single_document_block_forwards": 7680,
+    "held_all_alpha_single_document_block_forwards": 7680,
+    "formal_candidate_single_document_block_forwards": 15360,
+    "why_held_scores_all_10": "required for frozen search-to-held Spearman, selected-alpha rank, and held oracle regret; held losses cannot enter alpha selection",
+    "native_local_block_selected_metric_reuse": "alpha=1, search-selected local alpha, and search-selected block alpha are read from the held ten-alpha landscape; no extra candidate block forward is needed",
+    "one_forward_definition": "one candidate full decoder-layer forward for one full 2048-token document and one row-alpha intervention"
+  },
+  "separately_counted_non_candidate_forwards": {
+    "quantized_prefix_capture": "64 documents * 24 M2 quantized decoder layers = 1536 decoder-layer forwards, plus embedding capture",
+    "fixed_fp_teacher": "64 documents * 3 target blocks = 192 decoder-layer forwards",
+    "parity_and_repeat": "preflight-only, reported separately"
+  },
+  "separately_counted_search_work": {
+    "local_all_row_scores": "all output rows scored on search-X for each of 120 full-Linear candidate tensors so the search-selected all-row local stitch is defined",
+    "hessian_and_hinv": "one independent search-only H/Hinv per target-cell and split = 12 preparations",
+    "held_local_selected_scores": "calculated by direct Linear scoring of alpha=1/local-selected/block-selected rows; no block forward"
+  },
+  "invariant": "The frozen v22 120 full-Linear executions and 15360 formal candidate block forwards reproduce exactly. Prefix and teacher costs, held local GEMMs, correctness preflight, I/O, and all-row local scoring are additional stages and must appear in measured cost accounting."
+}

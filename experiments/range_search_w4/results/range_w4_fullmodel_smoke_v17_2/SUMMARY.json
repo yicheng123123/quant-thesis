@@ -1,0 +1,143 @@
+{
+  "verdict": "M2_FULLMODEL_SMOKE_NOT_READY",
+  "m2_cost_gate": "M2_COST_NO_GO",
+  "candidate_row_alpha_scores": 320,
+  "full_shape_alpha_executions": 10,
+  "alpha_counts": {
+    "0.1": 0,
+    "0.2": 0,
+    "0.3": 0,
+    "0.4": 0,
+    "0.5": 0,
+    "0.6": 0,
+    "0.7": 0,
+    "0.8": 10,
+    "0.9": 12,
+    "1.0": 10
+  },
+  "search_subset_only": true,
+  "heldout_evaluated": false,
+  "ppl_evaluated": false,
+  "search_mse_mean_alpha1": 1.571252343168794e-05,
+  "search_mse_mean_selected": 1.3718535477380556e-05,
+  "mean_row_relative_search_mse_gain_percent": 18.499644457235988,
+  "rows_with_positive_search_gain": 22,
+  "rows_with_zero_search_gain": 10,
+  "min_row_relative_search_gain_percent": 0.0,
+  "max_row_relative_search_gain_percent": 56.53398912698704,
+  "native_candidate_seconds": {
+    "mean_ms": 340.94727000338025,
+    "median_ms": 334.58240001345985,
+    "p95_ms": 389.44689999334514,
+    "min_ms": 322.55179999629036,
+    "max_ms": 389.44689999334514
+  },
+  "per_10alpha_row_ms": {
+    "mean": 106.54602187605633,
+    "median": 106.54602187605633,
+    "p95": 106.54602187605633,
+    "basis": "full-target alpha results score all32 rows concurrently; divide synchronized full-grid time by32"
+  },
+  "prefix_drift": {
+    "status": "PASS",
+    "searched_rows_with_selected_nonunit_alpha": [
+      0,
+      2,
+      5,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      19,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      30
+    ],
+    "selection_rule": "first row index meeting selected alpha != 1 and distinct FP16 weight",
+    "selected_row": 0,
+    "selected_alpha": 0.9,
+    "k_weight_changed": true,
+    "input_before": {
+      "hash": "50958e327a08f56c3fd865fb91820a8699a6389b2132e284624b90bfd2569b65",
+      "shape": [
+        128,
+        896
+      ]
+    },
+    "input_after": {
+      "hash": "62c4a94139c6983cc7f7fbc585a3257dd4746251a4846822543f72af2734dc1c",
+      "shape": [
+        128,
+        896
+      ]
+    },
+    "L2_norm": 0.000940225669182837,
+    "relative_L2_drift": 0.00015363708371296525,
+    "max_abs_diff": 0.0001220703125,
+    "candidate_captured_time_seconds": 0.004137299983995035,
+    "forward_dependency": "k_proj changes K; causal attention context then changes o_proj input",
+    "next_target_after_refresh": {
+      "module": "self_attn.o_proj",
+      "input_hash": "0307ef1c6a3d361e14aadecd0eca21770abb5c6f0dfa95c11f83b58f9dfafa6a",
+      "input_shape": [
+        128,
+        896
+      ],
+      "baseline_input_hash": "50958e327a08f56c3fd865fb91820a8699a6389b2132e284624b90bfd2569b65",
+      "input_diff_max_abs_vs_FP_prefix": 0.0043487548828125,
+      "H_built_from_current_committed_prefix": true,
+      "H_input_activation_sha256": "0307ef1c6a3d361e14aadecd0eca21770abb5c6f0dfa95c11f83b58f9dfafa6a",
+      "current_H_sha256": "2a19dfdb9e190b071e21fde3ec2c032ec6409a0fbaf1e54d9e7318b9cf699ba7",
+      "stale_FP_prefix_H_sha256": "cc673d21b4e1b45806d6ae59efc87d9acdf8ddfda0720dcdc9c01fbc78f11d0f",
+      "stale_H_was_not_used": true,
+      "nsamples": 2,
+      "alpha1_native_parity": true,
+      "committed_full_o_proj_weight_hash": "d286becfe85fde4a5f33e8b15cdf6e816cb422abce2a4fa834712b74ef590cb4"
+    }
+  },
+  "cost_estimate_hours": {
+    "optimistic": {
+      "core_candidate_seconds": 1053.3514320035465,
+      "sequential_capture_seconds": 17033.728,
+      "shared_Hessian_build_seconds": 689.808,
+      "commit_refresh_seconds": 68134.912,
+      "selection_export_seconds": 900.0,
+      "checkpoint_seconds": 10.46991916232639,
+      "total_seconds": 87822.26935116587,
+      "total_hours": 24.395074819768297
+    },
+    "central": {
+      "core_candidate_seconds": 1580.0271480053198,
+      "sequential_capture_seconds": 25550.591999999997,
+      "shared_Hessian_build_seconds": 1034.712,
+      "commit_refresh_seconds": 102202.36799999999,
+      "selection_export_seconds": 1350.0,
+      "checkpoint_seconds": 15.704878743489584,
+      "total_seconds": 131733.4040267488,
+      "total_hours": 36.59261222965244
+    },
+    "conservative": {
+      "core_candidate_seconds": 2106.702864007093,
+      "sequential_capture_seconds": 34067.456,
+      "shared_Hessian_build_seconds": 1379.616,
+      "commit_refresh_seconds": 136269.824,
+      "selection_export_seconds": 1800.0,
+      "checkpoint_seconds": 20.93983832465278,
+      "total_seconds": 175644.53870233175,
+      "total_hours": 48.790149639536594
+    }
+  },
+  "history_integrity_checks": 78,
+  "source_manifest_integrity_pass": true
+}

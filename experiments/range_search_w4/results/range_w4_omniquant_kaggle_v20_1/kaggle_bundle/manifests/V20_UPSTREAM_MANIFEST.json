@@ -1,0 +1,41 @@
+{
+  "repository": "https://github.com/OpenGVLab/OmniQuant",
+  "commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+  "expected_commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+  "commit_pass": true,
+  "frozen_source_manifest": "OFFICIAL_SOURCE_SHA256.json",
+  "frozen_source_manifest_sha256": "ddf8c4bf69a458cdc80d59a1016a266b2e2c9f2fd17dc1de4b41189d89ffc1bb",
+  "source_tree_hash_algorithm": "sha256 over sorted (relative POSIX path + NUL + raw file SHA256 bytes) from the 257-file frozen source manifest",
+  "source_tree_sha256": "a622961257aece95960e85f7e1c10f6af76c8e23e7b224bb4ce585e3c251ab4b",
+  "source_files_checked": 257,
+  "source_file_mismatches": [],
+  "patched_upstream_files": [
+    "quantize/omniquant.py",
+    "models/int_qwen2_layer.py"
+  ],
+  "protected_algorithm_files": {
+    "quantize/quantizer.py": {
+      "official": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140",
+      "v20_copy": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140",
+      "identical": true
+    },
+    "quantize/int_linear.py": {
+      "official": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409",
+      "v20_copy": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409",
+      "identical": true
+    },
+    "quantize/utils.py": {
+      "official": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5",
+      "v20_copy": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5",
+      "identical": true
+    },
+    "utils.py": {
+      "official": "b209ca43c737e583eb4e23c8bdcd9292c592e7378c6f5c5aac87a8700600b868",
+      "v20_copy": "b209ca43c737e583eb4e23c8bdcd9292c592e7378c6f5c5aac87a8700600b868",
+      "identical": true
+    }
+  },
+  "algorithm_semantic_change": false,
+  "patch_manifest": "OMNIQUANT_PATCH_MANIFEST.csv",
+  "v20_original_manifest_sha256": "a79b46b6765f55f6ac7706067017e96e9f7ad7b0386af6f1d6ac6561ba3a06f8"
+}

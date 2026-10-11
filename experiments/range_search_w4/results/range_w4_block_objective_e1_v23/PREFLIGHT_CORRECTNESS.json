@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "checks": {
+    "candidate_order_tensor_invariance": true,
+    "alpha1_native_gptq_parity": true,
+    "alpha1_parity_fields": {
+      "weight": true,
+      "scale": true,
+      "zero": true,
+      "g_idx": true
+    },
+    "alpha1_direct_output_parity": true,
+    "alpha1_is_unmodified_native_candidate": true,
+    "frozen_local_score_alpha_0.8": true,
+    "direct_local_score_equivalence_alpha_0.8": true,
+    "direct_output_difference_equivalence_alpha_0.8": true,
+    "frozen_local_score_alpha_1.0": true,
+    "direct_local_score_equivalence_alpha_1.0": true,
+    "direct_output_difference_equivalence_alpha_1.0": true,
+    "q_block_score_repeat_deterministic": true,
+    "teacher_independent_of_candidate": true,
+    "up_block_candidate_scores_finite": true,
+    "held_data_cannot_enter_selector": true,
+    "all_required_checks_pass": true
+  },
+  "forward_reverse_exact_by_alpha": {
+    "0.1": true,
+    "0.2": true,
+    "0.3": true,
+    "0.4": true,
+    "0.5": true,
+    "0.6": true,
+    "0.7": true,
+    "0.8": true,
+    "0.9": true,
+    "1.0": true
+  },
+  "alpha1_parity": {
+    "weight": true,
+    "scale": true,
+    "zero": true,
+    "g_idx": true
+  },
+  "preflight_candidate_execution_count": 23,
+  "preflight_alpha_candidate_gptq_executions": 22,
+  "preflight_native_parity_reference_executions": 1,
+  "repeat_mse_abs_difference": 0.0,
+  "candidate_tensors_are_shared_between_objectives": true,
+  "held_selection_independence_check": true,
+  "local_scorer": "same FP32 X@(Q-W)^T, FP64 SSE accumulation and four-document chunks as v18 run_precheck.score_rows",
+  "peak_cuda": {
+    "allocated_bytes": 1955741696,
+    "reserved_bytes": 2124414976
+  }
+}

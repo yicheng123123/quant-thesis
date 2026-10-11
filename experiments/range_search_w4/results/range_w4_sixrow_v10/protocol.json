@@ -1,0 +1,50 @@
+{
+  "id": "range_w4_sixrow_v10",
+  "source_protocol": "range_w4_dynamic_v8 + range_w4_l23r448_v9",
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "layers": [
+    0,
+    12,
+    23
+  ],
+  "projection": "self_attn.q_proj",
+  "rows": [
+    0,
+    448
+  ],
+  "weight_dtype": "float16",
+  "math_dtype": "float32",
+  "quantization": "W4A16 symmetric G128",
+  "integer_range": [
+    0,
+    15
+  ],
+  "zero": 8,
+  "rounding": "round-to-even",
+  "group_size": 128,
+  "block_size": 128,
+  "damp_percent": 0.1,
+  "desc_act": false,
+  "static_groups": false,
+  "true_sequential": true,
+  "input_semantics": "FP model projection inputs",
+  "alpha_grid": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+    1.0
+  ],
+  "method": "D=alpha1 native dynamic; C=search-MSE-selected shared-alpha dynamic GPTQ",
+  "frozen_splits_manifest_sha256": "34a24ef8602b8ce1e38e7a284f112acf7f766962d87d737f69148b78bcfaba78",
+  "n_new_rows": 5,
+  "n_splits": 10,
+  "n_alpha": 10,
+  "expected_new_candidate_evaluations": 500
+}

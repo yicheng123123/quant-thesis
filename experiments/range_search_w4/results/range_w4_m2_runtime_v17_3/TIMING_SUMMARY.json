@@ -1,0 +1,82 @@
+{
+  "warmup_runs_excluded_per_implementation": 1,
+  "measured_repeats": 5,
+  "candidate_count_per_full_grid": 10,
+  "rows_scored_per_alpha": 32,
+  "full_native_shape_per_alpha": [
+    128,
+    896
+  ],
+  "reference_candidate_seconds": {
+    "n": 50,
+    "mean": 0.42704234200064095,
+    "median": 0.4146383000042988,
+    "p95_nearest_rank": 0.49655139999231324,
+    "min": 0.3720205999852624,
+    "max": 0.5460132000152953
+  },
+  "optimized_candidate_seconds_excluding_prepare": {
+    "n": 50,
+    "mean": 0.39058375399908984,
+    "median": 0.3852140499948291,
+    "p95_nearest_rank": 0.43304319999879226,
+    "min": 0.3601836000161711,
+    "max": 0.4467616000038106
+  },
+  "optimized_prepare_seconds_per_full_grid": {
+    "n": 5,
+    "mean": 0.010357479995582253,
+    "median": 0.010092999989865348,
+    "p95_nearest_rank": 0.012385300011374056,
+    "min": 0.008462199999485165,
+    "max": 0.012385300011374056
+  },
+  "reference_per_10alpha_row_seconds": {
+    "n": 5,
+    "mean": 0.1334507318752003,
+    "median": 0.13567752500057395,
+    "p95_nearest_rank": 0.13852613124890922,
+    "min": 0.1260009125007855,
+    "max": 0.13852613124890922
+  },
+  "optimized_per_10alpha_row_seconds_including_prepare": {
+    "n": 5,
+    "mean": 0.12238109437457752,
+    "median": 0.12245928749871382,
+    "p95_nearest_rank": 0.12353531874850887,
+    "min": 0.12081373750061175,
+    "max": 0.12353531874850887
+  },
+  "reference_32row_grid_seconds": {
+    "n": 5,
+    "mean": 4.270423420006409,
+    "median": 4.341680800018366,
+    "p95_nearest_rank": 4.432836199965095,
+    "min": 4.032029200025136,
+    "max": 4.432836199965095
+  },
+  "optimized_32row_grid_seconds_including_prepare": {
+    "n": 5,
+    "mean": 3.9161950199864806,
+    "median": 3.9186971999588422,
+    "p95_nearest_rank": 3.953130199952284,
+    "min": 3.866039600019576,
+    "max": 3.953130199952284
+  },
+  "speedup_reference_over_optimized_grid_median": 1.1079398530879003,
+  "reference_grid_replicates_seconds": [
+    4.432836199965095,
+    4.032029200025136,
+    4.341680800018366,
+    4.354783300048439,
+    4.19078759997501
+  ],
+  "optimized_grid_replicates_seconds_including_prepare": [
+    3.9479190000274684,
+    3.9186971999588422,
+    3.895189099974232,
+    3.866039600019576,
+    3.953130199952284
+  ],
+  "timing_conditions": "RTX 4060 Laptop GPU, same saved W/H/X, synchronized wall boundaries around each candidate and each prepared-state build"
+}

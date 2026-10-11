@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "checks": {
+    "v14_row_manifest_exact_reuse": true,
+    "new_article_manifest_frozen_and_unique": true,
+    "new_articles_disjoint_v8_v14": true,
+    "same_articles_fp_qprefix": true,
+    "native_module_order_recorded": true,
+    "qprefix_target_pristine_during_capture": true,
+    "required_prefix_modules_native_w4_quantized": true,
+    "prefix_always_native_alpha1": true,
+    "fp_q_target_pristine_weight_hashes_equal": true,
+    "four_projection_fp_and_qprefix_alpha1_parity": true,
+    "candidate_state_isolation": true,
+    "heldout_did_not_select_alpha": true,
+    "raw_to_summary_independent_recomputation": true,
+    "v8_v14_source_trees_unchanged": true,
+    "no_gate_or_robust_objective_activated": true,
+    "finite_fp_qprefix_and_candidate_tensors": true,
+    "expected_candidate_workload_complete": true
+  },
+  "historical_tree_checks": {
+    "v8": true,
+    "v9": true,
+    "v10": true,
+    "v11": true,
+    "v12": true,
+    "v13": true,
+    "v14": true
+  },
+  "candidate_isolation_spot_check": {
+    "status": "PASS",
+    "checks": {
+      "original_weight_unchanged": true,
+      "hessian_unchanged": true,
+      "alpha1_independent_of_prior_candidate": true,
+      "candidate_outputs_differ_for_test_alpha": true
+    },
+    "row_id": "L2_q_proj_R82",
+    "alphas": [
+      1.0,
+      0.4,
+      1.0
+    ]
+  },
+  "raw_record_count": 96,
+  "candidate_slots": 960,
+  "summary_independent_pooled_gain_FP": 0.1387222470924243,
+  "summary_independent_pooled_gain_QPREFIX": 0.15811104159950407
+}

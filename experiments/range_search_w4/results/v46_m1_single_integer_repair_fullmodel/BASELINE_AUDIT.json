@@ -1,0 +1,97 @@
+{
+  "pass": true,
+  "comparison_protocol_shared": true,
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "calibration_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3",
+  "quantization_protocol_sha256": "136c9c363c609aa10fe98f2d9f4e5a94961293da02f06b2b5f2090ecb09a78a2",
+  "evaluation_manifests": {
+    "wikitext": "acd46b20a6b84b534d5625bfab505d599001679a775d619960a40e8da4f62f46",
+    "c4_fixed_budget": "0b0d70d70d3c1e0ba62126c81a3f3e97531e58d6701236fb8b3315450b7188d4"
+  },
+  "token_counts": {
+    "wikitext": [
+      299077,
+      582
+    ],
+    "c4_fixed_budget": [
+      131071,
+      253
+    ]
+  },
+  "models": {
+    "M1": {
+      "checkpoint_sha256": "3678f867d064abc9730d392f279516223ef17de16351c577e0f1977e9b7bba33",
+      "checkpoint_bytes": 988097536,
+      "config_sha256": "dd9cec52d3cdb33e45dd91c2cc06722cd31ada297a44febda75c1deb9fd80a10",
+      "run_report_sha256": "fe3b371b82a88c7cb8fd2eadc2fa636035ebb4720d8d4508eafd367f5e6f0ecb"
+    },
+    "M2": {
+      "checkpoint_sha256": "810d6329cdc51d995543dbb701e2368568b19459a44f340df1a8a0019d447eed",
+      "checkpoint_bytes": 988097536,
+      "config_sha256": "dd9cec52d3cdb33e45dd91c2cc06722cd31ada297a44febda75c1deb9fd80a10",
+      "run_report_sha256": "7557d450ca05fc913a6b71b7e9dbae5fb77b261066bf59a0695957ad2854d980"
+    }
+  },
+  "ppl_and_window_baselines": {
+    "M1_wikitext": {
+      "status": "PASS",
+      "ppl": 13.884369572857866,
+      "average_nll_valid_tokens": 2.6307637162607898,
+      "valid_tokens": 299077,
+      "windows": 582,
+      "result_sha256": "1f60d47a6a6201f281ebea45263f2a12a22f1237093a13af5af75225df7f47dc",
+      "windows_sha256": "19b4140fb0c9f862f0162a04fee714bbb59d8cc641e9c73b92d4302586059831"
+    },
+    "M1_c4_fixed_budget": {
+      "status": "PASS",
+      "ppl": 22.23392445006841,
+      "average_nll_valid_tokens": 3.10161925085964,
+      "valid_tokens": 131071,
+      "windows": 253,
+      "result_sha256": "6d75bfceaa41b89124bb571580739a2115d67910348a22233f4217b92b246ded",
+      "windows_sha256": "ff01bef5f2d9b643a45acf78d5c3324a3746dfdbc3330266a00d749a9c216124"
+    },
+    "M2_wikitext": {
+      "status": "PASS",
+      "ppl": 13.760556051038424,
+      "average_nll_valid_tokens": 2.6218062423746398,
+      "valid_tokens": 299077,
+      "windows": 582,
+      "result_sha256": "9d98808426b4d7460c1d8fdf46a25852b83837dc84bd5e470af1de994a50b3d2",
+      "windows_sha256": "c2abac747e150e2c7b40a09ae824aad3dda84ec4525940374496d6edae9bec87"
+    },
+    "M2_c4_fixed_budget": {
+      "status": "PASS",
+      "ppl": 22.032883164065005,
+      "average_nll_valid_tokens": 3.0925360266978292,
+      "valid_tokens": 131071,
+      "windows": 253,
+      "result_sha256": "05659ba59279de51ff7a2eba6724bfa740595c413d77b54af3e6b03e64420bfa",
+      "windows_sha256": "8175672e0ce7435b80d6e2b62ad3f2748d04e4ebbe57700874fe1dfb1d817a42"
+    },
+    "R2_wikitext": {
+      "status": "PASS",
+      "ppl": 13.553100465077515,
+      "average_nll_valid_tokens": 2.6066153377620687,
+      "valid_tokens": 299077,
+      "windows": 582,
+      "result_sha256": "5e0c961ec7db21c79c0854d3042494879f282090fc149d53969944a9375a0ede",
+      "windows_sha256": "bcac717ccf58ac79e688c4278f5187ee75a936b9b766a072755684f95d51ef26"
+    },
+    "R2_c4_fixed_budget": {
+      "status": "PASS",
+      "ppl": 21.941980716618833,
+      "average_nll_valid_tokens": 3.0884017295606605,
+      "valid_tokens": 131071,
+      "windows": 253,
+      "result_sha256": "0d7bd3aec565a896e25c748ce49fd00cb82261755cf2ad3bd1f47fe5519302a5",
+      "windows_sha256": "c39be70abfefc1f3753f10384e6d71617d5751b434a46529771bc94ff36033d3"
+    }
+  },
+  "M1_zero_reload_and_quantization_correctness": true,
+  "M1_method": "native GPTQ; all rows selected alpha=1.0",
+  "M2_method": "scalar10 independent row-alpha selection",
+  "R2": "v45 final checkpoint and lock verified; windows reaggregated; no reevaluation",
+  "M1_codes": "v46 SOURCE_AUDIT: all16 legal code values bitwise enumerated and uniquely matched per stored FP16 coordinate",
+  "P3_read": false
+}

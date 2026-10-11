@@ -1,0 +1,795 @@
+{
+  "status": "PASS",
+  "optimizer_steps": 2,
+  "steps": [
+    {
+      "layer": 0,
+      "epoch_index": 0,
+      "sample_index": 0,
+      "loss_before_update": 0.0005548111512325704,
+      "grad_norm": 7.351576021475058e-07,
+      "grad_tensor_count": 14,
+      "gradients_finite": true,
+      "nonzero_grad_tensor_count": 14,
+      "lwc_parameter_names": [
+        "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor",
+        "native_layer.self_attn.k_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.k_proj.weight_quantizer.lowbound_factor",
+        "native_layer.self_attn.v_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.v_proj.weight_quantizer.lowbound_factor",
+        "native_layer.self_attn.o_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.o_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.down_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.down_proj.weight_quantizer.lowbound_factor"
+      ],
+      "lwc_parameter_count": 14,
+      "lwc_before_state": [
+        {
+          "name": "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "6c94dc664269eaf01d77641e513ad5c3b35bc8ba4acfab4ed1e78e2c0b48a4db"
+        },
+        {
+          "name": "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "6c94dc664269eaf01d77641e513ad5c3b35bc8ba4acfab4ed1e78e2c0b48a4db"
+        },
+        {
+          "name": "native_layer.self_attn.k_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "f3ba7912870ac8bd76b343ca3b1475149ae61314dc67fde765aaf809534478e1"
+        },
+        {
+          "name": "native_layer.self_attn.k_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "f3ba7912870ac8bd76b343ca3b1475149ae61314dc67fde765aaf809534478e1"
+        },
+        {
+          "name": "native_layer.self_attn.v_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "f3ba7912870ac8bd76b343ca3b1475149ae61314dc67fde765aaf809534478e1"
+        },
+        {
+          "name": "native_layer.self_attn.v_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "f3ba7912870ac8bd76b343ca3b1475149ae61314dc67fde765aaf809534478e1"
+        },
+        {
+          "name": "native_layer.self_attn.o_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "6c94dc664269eaf01d77641e513ad5c3b35bc8ba4acfab4ed1e78e2c0b48a4db"
+        },
+        {
+          "name": "native_layer.self_attn.o_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "6c94dc664269eaf01d77641e513ad5c3b35bc8ba4acfab4ed1e78e2c0b48a4db"
+        },
+        {
+          "name": "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "de719dc3ce3c4b7bee95bcb28fae6443e7b921997f2563876b4fb8e58d53a2ce"
+        },
+        {
+          "name": "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "de719dc3ce3c4b7bee95bcb28fae6443e7b921997f2563876b4fb8e58d53a2ce"
+        },
+        {
+          "name": "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "de719dc3ce3c4b7bee95bcb28fae6443e7b921997f2563876b4fb8e58d53a2ce"
+        },
+        {
+          "name": "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "de719dc3ce3c4b7bee95bcb28fae6443e7b921997f2563876b4fb8e58d53a2ce"
+        },
+        {
+          "name": "native_layer.mlp.down_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "de719dc3ce3c4b7bee95bcb28fae6443e7b921997f2563876b4fb8e58d53a2ce"
+        },
+        {
+          "name": "native_layer.mlp.down_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 4.0,
+          "mean": 4.0,
+          "max": 4.0,
+          "sha256": "de719dc3ce3c4b7bee95bcb28fae6443e7b921997f2563876b4fb8e58d53a2ce"
+        }
+      ],
+      "lwc_after_state": [
+        {
+          "name": "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 3.9934020042419434,
+          "mean": 3.999997615814209,
+          "max": 4.006783962249756,
+          "sha256": "94b7dfd7ce655799936152a0a70c5c83cdc992d0aa7c4bcef8d7650de5cadff8"
+        },
+        {
+          "name": "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 3.992842435836792,
+          "mean": 3.999997854232788,
+          "max": 4.006861686706543,
+          "sha256": "a230de4adc667be50c1e0ed9648ae9c1a561841fa122597b51dc386b8c092430"
+        },
+        {
+          "name": "native_layer.self_attn.k_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 3.994520425796509,
+          "mean": 3.9999277591705322,
+          "max": 4.0060648918151855,
+          "sha256": "9df3e85524e3082a57a98966ff01c37e5c8dbb46165d3a4a2886451bd4c71a52"
+        },
+        {
+          "name": "native_layer.self_attn.k_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 3.9945719242095947,
+          "mean": 3.9999277591705322,
+          "max": 4.005410671234131,
+          "sha256": "0b087d29ae43ee3a11a8b616b08a7a83babd8c2428dea3cf30b3b7bdf6e6ae3a"
+        },
+        {
+          "name": "native_layer.self_attn.v_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 3.991670608520508,
+          "mean": 3.999250650405884,
+          "max": 4.009509563446045,
+          "sha256": "3038e053a1739fbf4d1898fda48d21b7da8908d8222c83309ae4bbbf44cc434d"
+        },
+        {
+          "name": "native_layer.self_attn.v_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 3.9916632175445557,
+          "mean": 3.999256134033203,
+          "max": 4.00961446762085,
+          "sha256": "9b1ff59ac33a18f4035e45f4e1925820ddac9541c08d9ad7f89f0dcbb7f714bb"
+        },
+        {
+          "name": "native_layer.self_attn.o_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 3.992075204849243,
+          "mean": 3.9998984336853027,
+          "max": 4.0097270011901855,
+          "sha256": "8500767c8973efacce2ce9de83930c3029883eb63399cd5a0a4c788010cf4d98"
+        },
+        {
+          "name": "native_layer.self_attn.o_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 3.99247670173645,
+          "mean": 3.9999001026153564,
+          "max": 4.009549617767334,
+          "sha256": "c410af682fe88d25179ac3bb3ecd5376bffd0c28b8f0588564e5cae7f3348d2e"
+        },
+        {
+          "name": "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.99166202545166,
+          "mean": 3.9999687671661377,
+          "max": 4.0088982582092285,
+          "sha256": "173fef77225bbe954a2b4e071da2ecd95ad64d2aeebc47d4fd60ec6e8e1aa136"
+        },
+        {
+          "name": "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.991422653198242,
+          "mean": 3.9999682903289795,
+          "max": 4.00857400894165,
+          "sha256": "956a98046595a7b5f61e3fd83006183ab4c60d583035cabb0cffbf0994487a59"
+        },
+        {
+          "name": "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.99253249168396,
+          "mean": 3.9999349117279053,
+          "max": 4.006830215454102,
+          "sha256": "46eb424558be68dc9a89d24146b5727d2ee10691c0acdf564b369d3f5c549b3a"
+        },
+        {
+          "name": "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.992522954940796,
+          "mean": 3.999934434890747,
+          "max": 4.006330490112305,
+          "sha256": "db62db3b03442a13c58efa5b463325575c832e8c01cab77f2112f4063a3d7110"
+        },
+        {
+          "name": "native_layer.mlp.down_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.992771625518799,
+          "mean": 3.9999165534973145,
+          "max": 4.009064197540283,
+          "sha256": "84d8ad2ec32e6070c1cbb04e101ce9d1410ff0c4fe109a23d4989ec58dff326d"
+        },
+        {
+          "name": "native_layer.mlp.down_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.9929146766662598,
+          "mean": 3.999915599822998,
+          "max": 4.008955001831055,
+          "sha256": "b94022d7f270750a0675e3b45b4062dbc3669ddbe207ae72ce5dc6e25af54425"
+        }
+      ],
+      "lwc_update_l1": 51.41235017776489,
+      "lwc_changed_parameter_names": [
+        "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor",
+        "native_layer.self_attn.k_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.k_proj.weight_quantizer.lowbound_factor",
+        "native_layer.self_attn.v_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.v_proj.weight_quantizer.lowbound_factor",
+        "native_layer.self_attn.o_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.o_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.down_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.down_proj.weight_quantizer.lowbound_factor"
+      ],
+      "non_lwc_parameter_grad_names": [],
+      "lwc_changed": true,
+      "student_loss_seconds": 0.01251230001798831,
+      "student_quant_forward_seconds": 0.01151852798461914,
+      "loss_seconds": 0.00026624000072479246,
+      "backward_optimizer_seconds": 0.30151680001290515,
+      "backward_seconds_excluding_optimizer": 0.21181810001144186,
+      "optimizer_step_seconds": 0.0896987000014633,
+      "step_total_seconds": 0.31141210001078434
+    },
+    {
+      "layer": 0,
+      "epoch_index": 0,
+      "sample_index": 1,
+      "loss_before_update": 0.000499878020491451,
+      "grad_norm": 1.0399509412935452e-06,
+      "grad_tensor_count": 14,
+      "gradients_finite": true,
+      "nonzero_grad_tensor_count": 14,
+      "lwc_parameter_names": [
+        "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor",
+        "native_layer.self_attn.k_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.k_proj.weight_quantizer.lowbound_factor",
+        "native_layer.self_attn.v_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.v_proj.weight_quantizer.lowbound_factor",
+        "native_layer.self_attn.o_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.o_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.down_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.down_proj.weight_quantizer.lowbound_factor"
+      ],
+      "lwc_parameter_count": 14,
+      "lwc_before_state": [
+        {
+          "name": "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 3.9934020042419434,
+          "mean": 3.999997615814209,
+          "max": 4.006783962249756,
+          "sha256": "94b7dfd7ce655799936152a0a70c5c83cdc992d0aa7c4bcef8d7650de5cadff8"
+        },
+        {
+          "name": "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 3.992842435836792,
+          "mean": 3.999997854232788,
+          "max": 4.006861686706543,
+          "sha256": "a230de4adc667be50c1e0ed9648ae9c1a561841fa122597b51dc386b8c092430"
+        },
+        {
+          "name": "native_layer.self_attn.k_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 3.994520425796509,
+          "mean": 3.9999277591705322,
+          "max": 4.0060648918151855,
+          "sha256": "9df3e85524e3082a57a98966ff01c37e5c8dbb46165d3a4a2886451bd4c71a52"
+        },
+        {
+          "name": "native_layer.self_attn.k_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 3.9945719242095947,
+          "mean": 3.9999277591705322,
+          "max": 4.005410671234131,
+          "sha256": "0b087d29ae43ee3a11a8b616b08a7a83babd8c2428dea3cf30b3b7bdf6e6ae3a"
+        },
+        {
+          "name": "native_layer.self_attn.v_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 3.991670608520508,
+          "mean": 3.999250650405884,
+          "max": 4.009509563446045,
+          "sha256": "3038e053a1739fbf4d1898fda48d21b7da8908d8222c83309ae4bbbf44cc434d"
+        },
+        {
+          "name": "native_layer.self_attn.v_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 3.9916632175445557,
+          "mean": 3.999256134033203,
+          "max": 4.00961446762085,
+          "sha256": "9b1ff59ac33a18f4035e45f4e1925820ddac9541c08d9ad7f89f0dcbb7f714bb"
+        },
+        {
+          "name": "native_layer.self_attn.o_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 3.992075204849243,
+          "mean": 3.9998984336853027,
+          "max": 4.0097270011901855,
+          "sha256": "8500767c8973efacce2ce9de83930c3029883eb63399cd5a0a4c788010cf4d98"
+        },
+        {
+          "name": "native_layer.self_attn.o_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 3.99247670173645,
+          "mean": 3.9999001026153564,
+          "max": 4.009549617767334,
+          "sha256": "c410af682fe88d25179ac3bb3ecd5376bffd0c28b8f0588564e5cae7f3348d2e"
+        },
+        {
+          "name": "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.99166202545166,
+          "mean": 3.9999687671661377,
+          "max": 4.0088982582092285,
+          "sha256": "173fef77225bbe954a2b4e071da2ecd95ad64d2aeebc47d4fd60ec6e8e1aa136"
+        },
+        {
+          "name": "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.991422653198242,
+          "mean": 3.9999682903289795,
+          "max": 4.00857400894165,
+          "sha256": "956a98046595a7b5f61e3fd83006183ab4c60d583035cabb0cffbf0994487a59"
+        },
+        {
+          "name": "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.99253249168396,
+          "mean": 3.9999349117279053,
+          "max": 4.006830215454102,
+          "sha256": "46eb424558be68dc9a89d24146b5727d2ee10691c0acdf564b369d3f5c549b3a"
+        },
+        {
+          "name": "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.992522954940796,
+          "mean": 3.999934434890747,
+          "max": 4.006330490112305,
+          "sha256": "db62db3b03442a13c58efa5b463325575c832e8c01cab77f2112f4063a3d7110"
+        },
+        {
+          "name": "native_layer.mlp.down_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.992771625518799,
+          "mean": 3.9999165534973145,
+          "max": 4.009064197540283,
+          "sha256": "84d8ad2ec32e6070c1cbb04e101ce9d1410ff0c4fe109a23d4989ec58dff326d"
+        },
+        {
+          "name": "native_layer.mlp.down_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.9929146766662598,
+          "mean": 3.999915599822998,
+          "max": 4.008955001831055,
+          "sha256": "b94022d7f270750a0675e3b45b4062dbc3669ddbe207ae72ce5dc6e25af54425"
+        }
+      ],
+      "lwc_after_state": [
+        {
+          "name": "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 3.988295793533325,
+          "mean": 3.999993085861206,
+          "max": 4.009397506713867,
+          "sha256": "336ef862f9461b7055a0e715aa19fa725038637e0344c67c6d85401570ebb041"
+        },
+        {
+          "name": "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 3.9872045516967773,
+          "mean": 3.9999938011169434,
+          "max": 4.009511470794678,
+          "sha256": "9fe1825c58156779658c1bb54e3ed62c20349e80adbe7ba42c11354881b3eb79"
+        },
+        {
+          "name": "native_layer.self_attn.k_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 3.988746404647827,
+          "mean": 3.9998385906219482,
+          "max": 4.00856876373291,
+          "sha256": "74c678534e00e2a2e52e6dc0c3accbfbf077071f6c7ce274934b8359582dc943"
+        },
+        {
+          "name": "native_layer.self_attn.k_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 3.990011692047119,
+          "mean": 3.9998409748077393,
+          "max": 4.007596969604492,
+          "sha256": "a1573b440c66176e0140b74622d8eaa305f6b5fc151e8ed1a448d0c50234d73d"
+        },
+        {
+          "name": "native_layer.self_attn.v_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 3.984076738357544,
+          "mean": 3.998533010482788,
+          "max": 4.019069671630859,
+          "sha256": "0ff0ba8a3efc8b9dafea7b4626515a1276d17de2df1a77f6b0f696d96e50fd84"
+        },
+        {
+          "name": "native_layer.self_attn.v_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            896,
+            1
+          ],
+          "min": 3.983081579208374,
+          "mean": 3.9985432624816895,
+          "max": 4.019268035888672,
+          "sha256": "a41e5052b7d0f0bdc9d0202cdf4816bd573f876d7ed41c06584da03cbc3d3042"
+        },
+        {
+          "name": "native_layer.self_attn.o_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 3.986692190170288,
+          "mean": 3.999803304672241,
+          "max": 4.019405841827393,
+          "sha256": "a0d921fdac49606ba8457c6dfa55b44c76330653b3b541bb7ccbea831a0e1990"
+        },
+        {
+          "name": "native_layer.self_attn.o_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            6272,
+            1
+          ],
+          "min": 3.9872913360595703,
+          "mean": 3.9998059272766113,
+          "max": 4.019091606140137,
+          "sha256": "0eb30b09a0e4dbf99fde77e040f9d1376c6238acdd562f7c3e69925fd97c76bb"
+        },
+        {
+          "name": "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.9830777645111084,
+          "mean": 3.99993896484375,
+          "max": 4.017554759979248,
+          "sha256": "170d9f743a9a0c52d9abfafa0afb08821c6d34b678b8f4d0857f6084307d8bc3"
+        },
+        {
+          "name": "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.983825922012329,
+          "mean": 3.999939441680908,
+          "max": 4.016209125518799,
+          "sha256": "82f6e3d085ea6c9eac1d9ae42719cbbcc358c91200ccac5079cb7bf4d3cea687"
+        },
+        {
+          "name": "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.985675573348999,
+          "mean": 3.9998769760131836,
+          "max": 4.0137619972229,
+          "sha256": "103c68d2880c617e31eabc0231b62ebe865e585fa9c32744fc194de97babcfb9"
+        },
+        {
+          "name": "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.985534191131592,
+          "mean": 3.999875068664551,
+          "max": 4.012684345245361,
+          "sha256": "a4a8dae86795fc3eec5c50d512db42c1f3baca2fde383c31534cee287b3c5a26"
+        },
+        {
+          "name": "native_layer.mlp.down_proj.weight_quantizer.upbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.9862184524536133,
+          "mean": 3.9998393058776855,
+          "max": 4.017072677612305,
+          "sha256": "480ae04f452476f0d2137cbf54a55c02e57da66701cca31539b1ae3bb041a352"
+        },
+        {
+          "name": "native_layer.mlp.down_proj.weight_quantizer.lowbound_factor",
+          "dtype": "torch.float32",
+          "shape": [
+            34048,
+            1
+          ],
+          "min": 3.986994504928589,
+          "mean": 3.999838352203369,
+          "max": 4.017982482910156,
+          "sha256": "68dbb81270d8c79d1b845dc3b784714e7ad12e2c450223b858094e9bda93f479"
+        }
+      ],
+      "lwc_update_l1": 38.53095507621765,
+      "lwc_changed_parameter_names": [
+        "native_layer.self_attn.q_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.q_proj.weight_quantizer.lowbound_factor",
+        "native_layer.self_attn.k_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.k_proj.weight_quantizer.lowbound_factor",
+        "native_layer.self_attn.v_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.v_proj.weight_quantizer.lowbound_factor",
+        "native_layer.self_attn.o_proj.weight_quantizer.upbound_factor",
+        "native_layer.self_attn.o_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.gate_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.up_proj.weight_quantizer.lowbound_factor",
+        "native_layer.mlp.down_proj.weight_quantizer.upbound_factor",
+        "native_layer.mlp.down_proj.weight_quantizer.lowbound_factor"
+      ],
+      "non_lwc_parameter_grad_names": [],
+      "lwc_changed": true,
+      "student_loss_seconds": 0.009322600002633408,
+      "student_quant_forward_seconds": 0.007556287765502929,
+      "loss_seconds": 0.000942080020904541,
+      "backward_optimizer_seconds": 0.0178652000031434,
+      "backward_seconds_excluding_optimizer": 0.01724310001009144,
+      "optimizer_step_seconds": 0.0006220999930519611,
+      "step_total_seconds": 0.024626099999295548
+    }
+  ],
+  "all_gradients_finite": true,
+  "lwc_nonzero_gradient_each_step": true,
+  "non_lwc_parameters_with_grad": []
+}

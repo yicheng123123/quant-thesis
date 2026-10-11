@@ -1,0 +1,35 @@
+{
+  "status": "INCOMPLETE_STOPPED",
+  "official_omniquant_commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+  "quantization": "W4A16 asymmetric affine G128, LWC enabled, LET disabled",
+  "calibration": {
+    "documents": 128,
+    "tokens_per_document": 2048,
+    "seed": 20261005,
+    "manifest_sha256": "664419273f63df3c0b0746b18bb66b593a5384bbe6ba8afcd6f4905c9479aae3"
+  },
+  "required_updates": 61440,
+  "committed_updates": 53760,
+  "completed_blocks": 21,
+  "total_blocks": 24,
+  "completion_fraction": 0.875,
+  "stop": {
+    "layer": 21,
+    "epoch": 0,
+    "sample": 0,
+    "loss_finite": true,
+    "loss": 0.15326565504074097,
+    "lwc_gradients_finite": false,
+    "lwc_gradient_parameter_count": 14
+  },
+  "attempts": {
+    "first_attempt_discarded_steps": 2560,
+    "second_attempt_step_rows_including_failing_sample": 53761,
+    "second_attempt_committed_updates": 53760
+  },
+  "complete_model_artifact": false,
+  "dense_export": "NOT_RUN",
+  "reload_check": "NOT_RUN",
+  "wikitext2_ppl": "NOT_RUN",
+  "c4_fixed_budget_ppl": "NOT_RUN"
+}

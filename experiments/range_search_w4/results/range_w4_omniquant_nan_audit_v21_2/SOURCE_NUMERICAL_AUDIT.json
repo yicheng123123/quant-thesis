@@ -1,0 +1,41 @@
+{
+  "official_commit": "feffe8ea87d80f7bb57b6e25e7cff9dc950fcc14",
+  "protected_algorithm_sources": {
+    "quantize/quantizer.py": {
+      "official_source_sha256": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140",
+      "formal_source_sha256": "a361beda80ad5e80a941235141ccb1be62601037cc1089bbd23e37d19168b140",
+      "identical": true
+    },
+    "quantize/int_linear.py": {
+      "official_source_sha256": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409",
+      "formal_source_sha256": "9ca5906ca966f2beeb20df3bfd119452a7074e71ae30538872a51a996bddc409",
+      "identical": true
+    },
+    "quantize/utils.py": {
+      "official_source_sha256": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5",
+      "formal_source_sha256": "905c1b5193407af3a8d4a0137b3f39d9e969243e2a0fcf1296c1bf5f3a308ff5",
+      "identical": true
+    },
+    "utils.py": {
+      "official_source_sha256": "b209ca43c737e583eb4e23c8bdcd9292c592e7378c6f5c5aac87a8700600b868",
+      "formal_source_sha256": "b209ca43c737e583eb4e23c8bdcd9292c592e7378c6f5c5aac87a8700600b868",
+      "identical": true
+    }
+  },
+  "official_main": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_baseline_v16\\official_source\\main.py",
+  "official_block_driver": "E:\\quant-thesis\\experiments\\range_search_w4\\results\\range_w4_fullmodel_baseline_v16\\official_source\\quantize\\omniquant.py",
+  "official_W4A16_default": "deactive_amp=False; qlayer.float(); student autocast FP16; per-block fresh GradScaler",
+  "official_deactive_amp_flag": "exposed CLI; auto-enabled for 8<=bits<16, not W4; explicit flag changes activation cache dtype/student traincast but not the unconditional teacher autocast or GradScaler wrapper",
+  "quantizer_guards": "scale clamp[1e-5,1e4], zero clamp[-1e4,1e4], integer clamp[0,15], sigmoid clipping factors; no sqrt/log in LWC affine path",
+  "LET_truncate_guard": "truncate_number threshold1e-2 applies to LET smooth_scale only; LET is off here",
+  "native_family_source_comparison": "upstream QuantLlamaMLP and native Qwen2MLP both use down_proj(SiLU(gate_proj(x))*up_proj(x)); shared unmodified QuantLinear uses F.linear; no extra MLP GEMM overflow guard in the upstream Llama adapter",
+  "attention_guards": "upstream OPT/Llama upcast softmax; native Qwen SDPA/RMSNorm plumbing preserved; first bad node is MLP weight-gradient GEMM, not attention",
+  "qwen_native_source": "E:\\quant-thesis\\.venv-gptq\\Lib\\site-packages\\transformers\\models\\qwen2\\modeling_qwen2.py",
+  "qwen_native_source_sha256": "47b16c0075bf2406ea17175ad3b63fc00a72fa210767b50d68423bec7a8b384b",
+  "implementation_or_port_bug_confirmed": false,
+  "native_supported_family_runtime_executed": false,
+  "scope": "source comparison only; no additional model download or native-family calibration run",
+  "deactive_amp_W4_end_to_end_certified": false,
+  "deactive_amp_source_only_handoff_caveat": "Official quantize/omniquant.py:277,284 and formal port:468,475 unconditionally cast qlayer.half() before final propagation under traincast(); with deactive_amp=True traincast is nullcontext and cache is FP32. This dtype handoff requires a separate end-to-end check; not an executed/confirmed bug and not the cause of the audited AMP failure.",
+  "FP32_fixture_diagnostic_is_not_official_flag_end_to_end_validation": true
+}

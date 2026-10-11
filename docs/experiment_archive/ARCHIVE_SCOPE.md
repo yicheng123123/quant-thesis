@@ -41,11 +41,12 @@
 
 ## Worktree changes not included
 
-The pre-existing changes under `benchmark/`, root `README.md`, and unrelated
-untracked project directories were left unstaged and untouched. They are not
-part of this range-search v1–v62 archive. No historical report or checkpoint
-was rewritten, deleted, or changed to `PASS`. No global Git configuration or
-Git LFS policy was changed.
+The root README now presents the v1–v62 quantization research as the project
+mainline. The legacy root `benchmark/` tree is removed from the tracked mainline
+and ignored, while all of its existing local files are retained in place.
+Other unrelated untracked project directories remain outside this archive.
+No historical experiment report or checkpoint was rewritten, deleted, or
+changed to `PASS`. No global Git configuration or Git LFS policy was changed.
 
 ## Evidence limits
 
